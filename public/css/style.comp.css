@@ -1,0 +1,122 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #1e212c;
+}
+
+.container {
+  width: 123rem;
+  margin: 0 auto;
+}
+
+.navigation {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  background-color: #1e212c;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1.1rem 0;
+}
+.navigation .topbar {
+  display: flex;
+  align-items: center;
+}
+.navigation .topbar__phone-link:link, .navigation .topbar__phone-link:visited {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 900;
+  transition: all 0.5s;
+}
+.navigation .topbar__phone-link:hover, .navigation .topbar__phone-link:active {
+  color: rgba(255, 255, 255, 0.3);
+}
+.navigation .topbar__list {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+  margin: 0 19.5rem;
+}
+.navigation .topbar__link:link, .navigation .topbar__link:visited {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+.navigation .topbar__link:link:hover, .navigation .topbar__link:link:active, .navigation .topbar__link:visited:hover, .navigation .topbar__link:visited:active {
+  color: rgba(255, 255, 255, 0.3);
+}
+.navigation .topbar__lang {
+  display: flex;
+  align-items: center;
+}
+.navigation .topbar__lang-container {
+  display: flex;
+  align-items: center;
+}
+.navigation .topbar__lang-container .flag-icon {
+  width: 2rem;
+  height: 1.2rem;
+  margin-right: 1.2rem;
+}
+.navigation .topbar__lang .btn-lang {
+  background-color: #1e212c;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 0.4rem;
+}
+.navigation .topbar__lang .down-chevron-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+.navigation .topbar__lang .down-chevron-icon:hover, .navigation .topbar__lang .down-chevron-icon:active {
+  fill: rgba(255, 255, 255, 0.3);
+}
+.navigation .topbar__account {
+  display: flex;
+  align-items: center;
+  margin-left: 6rem;
+}
+.navigation .topbar__account .profile-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: rgba(255, 255, 255, 0.6);
+  margin-right: 0.8rem;
+}
+.navigation .topbar__account .btn-user {
+  background-color: #1e212c;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.navigation .topbar__account .btn-user:hover, .navigation .topbar__account .btn-user:active {
+  color: rgba(255, 255, 255, 0.3);
+}
+.navigation .topbar__account span {
+  margin: 0 0.4rem;
+}
+
+/*# sourceMappingURL=style.comp.css.map */

@@ -13,5 +13,58 @@
         <link rel="stylesheet" href="css/style.comp.css" />
         <title>Createx</title>
     </head>
-    <body></body>
+    <body>
+        <div class="navigation">
+            <nav class="topbar container">
+                <p class="topbar__phone">
+                    Available 24/7 at
+                    <a class="topbar__phone-link" href="tel:(405)555-0128"
+                        >(405) 555-0128</a
+                    >
+                </p>
+                <ul class="topbar__list">
+                    <li class="topbar__item">
+                        <a href="#" class="topbar__link">Delivery & returns</a>
+                    </li>
+                    <li class="topbar__item">
+                        <a href="#" class="topbar__link">Track order</a>
+                    </li>
+                    <li class="topbar__item">
+                        <a href="#" class="topbar__link">Blog</a>
+                    </li>
+                    <li class="topbar__item">
+                        <a href="#" class="topbar__link">Contacts</a>
+                    </li>
+                </ul>
+                <div class="topbar__lang">
+                    <div class="topbar__lang-container">
+                        <svg class="flag-icon">
+                            <use
+                                xlink:href="../src/assets/svg/sprite.svg#flag-usa"
+                            ></use>
+                        </svg>
+                        <p class="topbar__currancy">Eng / &dollar;</p>
+                    </div>
+                    <button class="btn-lang">
+                        <svg class="down-chevron-icon">
+                            <use
+                                xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                            ></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="topbar__account">
+                    <svg class="profile-icon">
+                        <use
+                            xlink:href="../src/assets/svg/sprite.svg#profile"
+                        ></use>
+                    </svg>
+                    <button class="btn-user topbar__login">Log in</button>
+                    <span>/</span>
+                    <button class="btn-user topbar__register">Register</button>
+                </div>
+            </nav>
+            <nav class="navigation__main"></nav>
+        </div>
+    </body>
 </html>
