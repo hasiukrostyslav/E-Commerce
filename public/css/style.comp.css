@@ -32,6 +32,37 @@ body {
   margin: 0 auto;
 }
 
+.offers {
+  background-color: #17696a;
+  padding: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.offers__text {
+  display: flex;
+  color: #fff;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  margin: 0 1.2rem;
+}
+.offers__heading {
+  font-weight: 900;
+  margin-right: 0.4rem;
+}
+.offers__link:link, .offers__link:visited {
+  color: inherit;
+  transition: all 0.5s;
+}
+.offers__link:hover, .offers__link:active {
+  color: rgba(255, 255, 255, 0.7);
+}
+.offers__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #fff;
+}
+
 .navbar {
   font-size: 1.4rem;
   font-weight: 400;
