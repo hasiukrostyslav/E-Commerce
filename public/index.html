@@ -14,57 +14,126 @@
         <title>Createx</title>
     </head>
     <body>
-        <div class="navigation">
-            <nav class="topbar container">
-                <p class="topbar__phone">
-                    Available 24/7 at
-                    <a class="topbar__phone-link" href="tel:(405)555-0128"
-                        >(405) 555-0128</a
-                    >
-                </p>
-                <ul class="topbar__list">
-                    <li class="topbar__item">
-                        <a href="#" class="topbar__link">Delivery & returns</a>
-                    </li>
-                    <li class="topbar__item">
-                        <a href="#" class="topbar__link">Track order</a>
-                    </li>
-                    <li class="topbar__item">
-                        <a href="#" class="topbar__link">Blog</a>
-                    </li>
-                    <li class="topbar__item">
-                        <a href="#" class="topbar__link">Contacts</a>
-                    </li>
-                </ul>
-                <div class="topbar__lang">
-                    <div class="topbar__lang-container">
-                        <svg class="flag-icon">
-                            <use
-                                xlink:href="../src/assets/svg/sprite.svg#flag-usa"
-                            ></use>
-                        </svg>
-                        <p class="topbar__currancy">Eng / &dollar;</p>
+        <section class="navbar">
+            <div class="navbar__cover--dark">
+                <nav class="topbar container">
+                    <p class="topbar__phone">
+                        Available 24/7 at
+                        <a class="topbar__phone-link" href="tel:(405)555-0128"
+                            >(405) 555-0128</a
+                        >
+                    </p>
+                    <ul class="topbar__list">
+                        <li class="topbar__item">
+                            <a href="#" class="topbar__link"
+                                >Delivery & returns</a
+                            >
+                        </li>
+                        <li class="topbar__item">
+                            <a href="#" class="topbar__link">Track order</a>
+                        </li>
+                        <li class="topbar__item">
+                            <a href="#" class="topbar__link">Blog</a>
+                        </li>
+                        <li class="topbar__item">
+                            <a href="#" class="topbar__link">Contacts</a>
+                        </li>
+                    </ul>
+                    <div class="topbar__lang">
+                        <div class="topbar__lang-container">
+                            <svg class="flag-icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#flag-usa"
+                                ></use>
+                            </svg>
+                            <p class="topbar__currancy">Eng / &dollar;</p>
+                        </div>
+                        <button class="btn-lang">
+                            <svg class="down-chevron-icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                ></use>
+                            </svg>
+                        </button>
                     </div>
-                    <button class="btn-lang">
-                        <svg class="down-chevron-icon">
+                    <div class="topbar__account">
+                        <svg class="profile-icon">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                xlink:href="../src/assets/svg/sprite.svg#profile"
                             ></use>
                         </svg>
-                    </button>
-                </div>
-                <div class="topbar__account">
-                    <svg class="profile-icon">
-                        <use
-                            xlink:href="../src/assets/svg/sprite.svg#profile"
-                        ></use>
-                    </svg>
-                    <button class="btn-user topbar__login">Log in</button>
-                    <span>/</span>
-                    <button class="btn-user topbar__register">Register</button>
-                </div>
-            </nav>
-            <nav class="navigation__main"></nav>
-        </div>
+                        <button class="btn-user topbar__login">Log in</button>
+                        <span>/</span>
+                        <button class="btn-user topbar__register">
+                            Register
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="navbar__cover--light">
+                <nav class="navigation container">
+                    <a href="index.html" class="logo-link"
+                        ><img
+                            class="logo"
+                            src="../src/assets/images/logo.png"
+                            alt="Createx logo"
+                    /></a>
+
+                    <ul class="navigation__list">
+                        <li class="navigation__item">
+                            <a href="" class="navigation__link">Women</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="" class="navigation__link">Men</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="" class="navigation__link">Girls</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="" class="navigation__link">Boys</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a
+                                href=""
+                                class="navigation__link navigation__link--red"
+                                >Sale</a
+                            >
+                        </li>
+                    </ul>
+                    <form action="#" class="search">
+                        <input
+                            type="text"
+                            class="search__input"
+                            placeholder="Search for products..."
+                        />
+                        <button class="search__button">
+                            <svg class="search__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#search"
+                                ></use>
+                            </svg>
+                        </button>
+                    </form>
+                    <div class="navigation__toolbar">
+                        <a href="#" class="navigation__like-link">
+                            <svg class="navigation__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                            <span class="navigation__like-count">2</span>
+                        </a>
+                        <a href="#" class="navigation__cart-link">
+                            <svg class="navigation__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#cart"
+                                ></use>
+                            </svg>
+                            <span class="navigation__cart-count">4</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </section>
     </body>
 </html>
