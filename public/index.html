@@ -137,20 +137,25 @@
         </section>
 
         <section class="offers">
-            <svg class="offers__icon">
-                <use
-                    xlink:href="../src/assets/svg/sprite.svg#left-chevron"
-                ></use>
-            </svg>
+            <button class="offers__btn">
+                <svg class="offers__icon">
+                    <use
+                        xlink:href="../src/assets/svg/sprite.svg#left-chevron"
+                    ></use>
+                </svg>
+            </button>
+
             <div class="offers__text">
                 <p class="offers__heading">Up to 70% Off.</p>
                 <a href="#" class="offers__link">Shop our latest sale styles</a>
             </div>
-            <svg class="offers__icon">
-                <use
-                    xlink:href="../src/assets/svg/sprite.svg#right-chevron"
-                ></use>
-            </svg>
+            <button class="offers__btn">
+                <svg class="offers__icon">
+                    <use
+                        xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                    ></use>
+                </svg>
+            </button>
         </section>
 
         <main class="main">
@@ -160,10 +165,82 @@
                         New collection
                     </h1>
                     <h1 class="heading-primary heading-primary--main">
-                        Menswaer 2020
+                        Menswear 2020
                     </h1>
+                    <button
+                        class="btn btn--large btn--outline u-margin-right-medium"
+                    >
+                        Shop sale
+                    </button>
+                    <button class="btn btn--large btn--solid">
+                        Shop the meanswear
+                    </button>
+                    <div class="slider">
+                        <button
+                            class="btn-round btn-round--light slider__btn slider__btn--left"
+                        >
+                            <svg class="slider__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#left"
+                                ></use>
+                            </svg>
+                        </button>
+                        <button
+                            class="btn-round btn-round--light slider__btn slider__btn--right"
+                        >
+                            <svg class="slider__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#right"
+                                ></use>
+                            </svg>
+                        </button>
+
+                        <div class="slider__pages">
+                            <button
+                                class="slider__page-btn slider__page-btn--active"
+                            >
+                                01
+                            </button>
+                            <button class="slider__page-btn">02</button>
+                            <button class="slider__page-btn">03</button>
+                            <button class="slider__page-btn">04</button>
+                        </div>
+                    </div>
                 </div>
             </header>
+
+            <section class="top-categories">
+                <figure class="top-categories__type">
+                    <img
+                        class="top-categories__img"
+                        src="../src/assets/images/category-1.jpg"
+                        alt="Women's"
+                    />
+                    <figcaption class="top-categories__heading">
+                        <a class="top-categories__link" href="#">Women's</a>
+                    </figcaption>
+                </figure>
+                <figure class="top-categories__type">
+                    <img
+                        class="top-categories__img"
+                        src="../src/assets/images/category-2.jpg"
+                        alt="Men's"
+                    />
+                    <figcaption class="top-categories__heading">
+                        <a class="top-categories__link" href="#">Men's</a>
+                    </figcaption>
+                </figure>
+                <figure class="top-categories__type">
+                    <img
+                        class="top-categories__img"
+                        src="../src/assets/images/category-3.jpg"
+                        alt="Kids"
+                    />
+                    <figcaption class="top-categories__heading">
+                        <a class="top-categories__link" href="#">Kids'</a>
+                    </figcaption>
+                </figure>
+            </section>
         </main>
     </body>
 </html>

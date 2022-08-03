@@ -31,6 +31,13 @@
         }
     }
 
+    &__btn {
+        border: none;
+        background-color: $color-primary;
+        cursor: pointer;
+        display: flex;
+    }
+
     &__icon {
         width: 1.6rem;
         height: 1.6rem;

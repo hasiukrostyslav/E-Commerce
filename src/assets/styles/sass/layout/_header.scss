@@ -1,4 +1,70 @@
 .header {
-    background-image: url();
+    background-image: url('../../src/assets/images/hero.jpg');
     background-size: cover;
+    background-position: top;
+    padding: 14rem 0 18rem;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+    margin-top: 18.1rem;
+
+    &__btn {
+        position: absolute;
+
+        &:hover,
+        &:focus {
+            outline: 1.6rem solid rgba($color-primary, 0.12);
+        }
+
+        &--left {
+            top: -19rem;
+            left: -31.3rem;
+        }
+
+        &--right {
+            top: -19rem;
+            right: -31.3rem;
+        }
+    }
+
+    &__icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        fill: $color-gray-dark-2;
+    }
+
+    &__pages {
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.4rem;
+    }
+
+    &__page-btn {
+        font-size: 2.8rem;
+        line-height: 1.5;
+        font-weight: 700;
+        color: rgba($color-gray-dark-2, 0.6);
+        width: 17.8rem;
+        padding-bottom: 1.2rem;
+        border: none;
+        border-bottom: 2px solid rgba($color-gray-dark-2, 0.6);
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        transition: all 0.5s;
+
+        &--active {
+            color: $color-gray-dark-2;
+            border-bottom: 2px solid $color-gray-dark-2;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-gray-dark-2;
+            border-bottom: 2px solid $color-gray-dark-2;
+        }
+    }
 }
