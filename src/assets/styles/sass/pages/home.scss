@@ -2,4 +2,72 @@
     display: flex;
     justify-content: center;
     gap: 3rem;
+    margin-bottom: 12rem;
+}
+
+.arrivals {
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    display: grid;
+    // grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) 1fr minmax(
+            min-content,
+            auto
+        );
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 3rem;
+    justify-items: center;
+    margin: 0 3rem 18rem 3rem;
+
+    .heading-secondary {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+    }
+
+    &__text {
+        color: $color-gray-dark-3;
+        margin-bottom: 6rem;
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        text-align: center;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            color: $color-primary;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgba($color-primary, 0.8);
+        }
+    }
+
+    &__slider {
+        grid-column: 1/ -1;
+        grid-row: 4 / -1;
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 8rem;
+    }
+
+    &__btn {
+        border: none;
+        width: 3rem;
+        height: 0.3rem;
+        cursor: pointer;
+        background-color: $color-gray-dark-5;
+        border-radius: 3px;
+
+        &--current {
+            background-color: $color-gray-dark-2;
+        }
+    }
+}
+
+.banners {
+    margin: 0 3rem 18rem;
 }

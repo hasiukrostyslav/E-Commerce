@@ -1,0 +1,87 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__img {
+        margin-bottom: 1.6rem;
+        border-radius: 4px;
+        position: relative;
+
+        &--small {
+            width: 28.5rem;
+            height: 32rem;
+        }
+    }
+
+    &__stars {
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        display: flex;
+        gap: 0.2rem;
+        cursor: pointer;
+
+        .star__icon {
+            width: 1.4rem;
+            height: 1.4rem;
+            fill: $color-gold;
+
+            &--4 {
+                fill: $color-gray-dark-5;
+            }
+        }
+    }
+
+    &__wishlist {
+        position: absolute;
+        background-color: $color-white;
+        width: 3.2rem;
+        height: 3.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        transition: all 0.5s;
+
+        &:hover {
+            background-color: $color-gray-light-1;
+        }
+
+        &--small {
+            right: 1.6rem;
+            top: 27.2rem;
+        }
+    }
+
+    &__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: $color-gray-dark-2;
+    }
+
+    &__heading {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        font-weight: 400;
+        color: $color-gray-dark-2;
+        margin-bottom: 0.8rem;
+    }
+
+    &__price {
+        color: $color-gray-dark-1;
+        line-height: 1.3;
+        font-weight: 700;
+
+        &--small {
+            font-size: 2rem;
+        }
+        &--regular {
+        }
+        &--sale {
+        }
+    }
+}
