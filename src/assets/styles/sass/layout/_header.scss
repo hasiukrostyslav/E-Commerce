@@ -10,31 +10,6 @@
     position: relative;
     margin-top: 18.1rem;
 
-    &__btn {
-        position: absolute;
-
-        &:hover,
-        &:focus {
-            outline: 1.6rem solid rgba($color-primary, 0.12);
-        }
-
-        &--left {
-            top: -19rem;
-            left: -31.3rem;
-        }
-
-        &--right {
-            top: -19rem;
-            right: -31.3rem;
-        }
-    }
-
-    &__icon {
-        width: 2.4rem;
-        height: 2.4rem;
-        fill: $color-gray-dark-2;
-    }
-
     &__pages {
         display: flex;
         justify-content: flex-start;

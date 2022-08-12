@@ -17,11 +17,13 @@
     }
 
     &--medium-right {
+        position: relative;
         font-size: 1.4rem;
         padding: 1.15rem 3.2rem;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         transform: translateX(-102%);
+        z-index: 1000;
     }
 
     &--small {
@@ -89,4 +91,55 @@
     &--dark {
         background-color: $color-primary;
     }
+}
+
+.slider {
+    &__btn {
+        position: absolute;
+
+        &:hover,
+        &:focus {
+            outline: 1.6rem solid rgba($color-primary, 0.12);
+        }
+
+        &--left {
+            top: -19rem;
+            left: -31.3rem;
+        }
+
+        &--right {
+            top: -19rem;
+            right: -31.3rem;
+        }
+    }
+
+    &__icon {
+        width: 2.4rem;
+        height: 2.4rem;
+
+        &--white {
+        }
+        fill: $color-gray-dark-2;
+
+        &--green {
+            fill: $color-white;
+        }
+    }
+}
+
+.btn-arr {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--left {
+    }
+    &--right {
+    }
+}
+
+.trend__btns {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }

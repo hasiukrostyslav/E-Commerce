@@ -43,9 +43,7 @@
         }
 
         &__delivery {
-            background-image: url(../../src/assets/images/delivery.png);
-
-            background-position: top;
+            // background-image: url(../../src/assets/images/delivery.png);
             background-color: $color-gray-light-3;
             // transform: scaleX(-1);
         }
@@ -56,6 +54,12 @@
     }
 
     .delivery {
+        position: relative;
+        overflow: hidden;
+
+        &__form {
+            position: relative;
+        }
         &__label {
             display: block;
             font-size: 1.4rem;
@@ -63,9 +67,11 @@
             font-weight: 400;
             margin-bottom: 0.8rem;
             color: $color-gray-dark-2;
+            z-index: 1000;
         }
 
         &__input {
+            position: relative;
             width: 36rem;
             padding: 1.2rem 1.6rem;
             padding-right: 16rem;
@@ -73,6 +79,7 @@
             border: 1px solid $color-gray-light-4;
             border-radius: 4px;
             margin-bottom: 2rem;
+            z-index: 1000;
 
             &::-webkit-input-placeholder {
                 font-family: inherit;
@@ -86,9 +93,21 @@
         }
 
         &__text {
+            position: relative;
             font-size: 1.4rem;
             line-height: 1.5;
             color: $color-gray-dark-2;
+            z-index: 100;
+        }
+
+        &__img {
+            // width: 43.9rem;
+            height: 113%;
+            position: absolute;
+            bottom: -10.4rem;
+            right: -18rem;
+            transform: scaleX(-1);
+            z-index: 0;
         }
     }
 }

@@ -50,6 +50,10 @@ body {
   margin-bottom: 6rem;
 }
 
+.heading-tertiary {
+  position: relative;
+  z-index: 100;
+}
 .heading-tertiary--main {
   font-size: 3.2rem;
   font-weight: 900;
@@ -175,9 +179,14 @@ body {
   margin-right: 1.6rem;
 }
 .banners .banner__delivery {
-  background-image: url(../../src/assets/images/delivery.png);
-  background-position: top;
   background-color: #e5e8ed;
+}
+.banners .delivery {
+  position: relative;
+  overflow: hidden;
+}
+.banners .delivery__form {
+  position: relative;
 }
 .banners .delivery__label {
   display: block;
@@ -186,8 +195,10 @@ body {
   font-weight: 400;
   margin-bottom: 0.8rem;
   color: #424551;
+  z-index: 1000;
 }
 .banners .delivery__input {
+  position: relative;
   width: 36rem;
   padding: 1.2rem 1.6rem;
   padding-right: 16rem;
@@ -195,6 +206,7 @@ body {
   border: 1px solid #d7dadd;
   border-radius: 4px;
   margin-bottom: 2rem;
+  z-index: 1000;
 }
 .banners .delivery__input::-webkit-input-placeholder {
   font-family: inherit;
@@ -205,9 +217,19 @@ body {
   border: 1px solid rgba(23, 105, 106, 0.4);
 }
 .banners .delivery__text {
+  position: relative;
   font-size: 1.4rem;
   line-height: 1.5;
   color: #424551;
+  z-index: 100;
+}
+.banners .delivery__img {
+  height: 113%;
+  position: absolute;
+  bottom: -10.4rem;
+  right: -18rem;
+  transform: scaleX(-1);
+  z-index: 0;
 }
 
 .btn {
@@ -227,11 +249,13 @@ body {
   padding: 1.3rem 3.2rem;
 }
 .btn--medium-right {
+  position: relative;
   font-size: 1.4rem;
   padding: 1.15rem 3.2rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   transform: translateX(-102%);
+  z-index: 1000;
 }
 .btn--small {
   font-size: 1.2rem;
@@ -288,6 +312,40 @@ body {
   background-color: #17696a;
 }
 
+.slider__btn {
+  position: absolute;
+}
+.slider__btn:hover, .slider__btn:focus {
+  outline: 1.6rem solid rgba(23, 105, 106, 0.12);
+}
+.slider__btn--left {
+  top: -19rem;
+  left: -31.3rem;
+}
+.slider__btn--right {
+  top: -19rem;
+  right: -31.3rem;
+}
+.slider__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: #424551;
+}
+.slider__icon--green {
+  fill: #fff;
+}
+
+.btn-arr {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.trend__btns {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -302,6 +360,10 @@ body {
 .card__img--small {
   width: 28.5rem;
   height: 32rem;
+}
+.card__img--medium {
+  width: 39rem;
+  height: 44rem;
 }
 .card__stars {
   position: absolute;
@@ -344,12 +406,17 @@ body {
   height: 1.6rem;
   fill: #424551;
 }
-.card__heading {
+.card__heading:link, .card__heading:visited {
+  display: inline-block;
   font-size: 1.8rem;
   line-height: 1.5;
   font-weight: 400;
   color: #424551;
   margin-bottom: 0.8rem;
+  text-decoration: none;
+}
+.card__heading:hover, .card__heading:active {
+  color: #424551;
 }
 .card__price {
   color: #1e212c;
@@ -382,6 +449,48 @@ body {
   color: rgba(66, 69, 81, 0.5);
 }
 
+.categories__types {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin-bottom: 18rem;
+  text-align: center;
+}
+.categories__img {
+  border-radius: 50%;
+  margin-bottom: 2.4rem;
+}
+.categories__link {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  text-decoration: none;
+}
+.categories__link:link, .categories__link:visited {
+  color: #1e212c;
+  transition: all 0.5s;
+}
+.categories__link:hover, .categories__link:active {
+  color: rgba(30, 33, 44, 0.5);
+}
+
+.grid {
+  display: grid;
+}
+.grid--col-3 {
+  grid-template-columns: repeat(3, min-content);
+  column-gap: 3rem;
+}
+.grid--col-4 {
+  grid-template-columns: repeat(4, min-content);
+}
+.grid--row-3 {
+  grid-template-rows: repeat(3, min-content);
+}
+.grid--row-3-fix {
+  grid-template-rows: 12rem repeat(2, min-content);
+}
+
 .header {
   background-image: url("../../src/assets/images/hero.jpg");
   background-size: cover;
@@ -393,25 +502,6 @@ body {
   width: 100%;
   position: relative;
   margin-top: 18.1rem;
-}
-.slider__btn {
-  position: absolute;
-}
-.slider__btn:hover, .slider__btn:focus {
-  outline: 1.6rem solid rgba(23, 105, 106, 0.12);
-}
-.slider__btn--left {
-  top: -19rem;
-  left: -31.3rem;
-}
-.slider__btn--right {
-  top: -19rem;
-  right: -31.3rem;
-}
-.slider__icon {
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: #424551;
 }
 .slider__pages {
   display: flex;
@@ -708,6 +798,15 @@ body {
 
 .banners {
   margin: 0 3rem 18rem;
+}
+
+.categories .heading-secondary {
+  text-align: center;
+}
+
+.trend {
+  background-color: #e5e8ed;
+  padding: 8rem 0;
 }
 
 /*# sourceMappingURL=style.comp.css.map */

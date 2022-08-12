@@ -13,6 +13,11 @@
             width: 28.5rem;
             height: 32rem;
         }
+
+        &--medium {
+            width: 39rem;
+            height: 44rem;
+        }
     }
 
     &__stars {
@@ -64,11 +69,21 @@
     }
 
     &__heading {
-        font-size: 1.8rem;
-        line-height: 1.5;
-        font-weight: 400;
-        color: $color-gray-dark-2;
-        margin-bottom: 0.8rem;
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            font-weight: 400;
+            color: $color-gray-dark-2;
+            margin-bottom: 0.8rem;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-gray-dark-2;
+        }
     }
 
     &__price {
