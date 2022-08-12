@@ -139,7 +139,13 @@
 }
 
 .trend__btns {
+    position: absolute;
+    top: 2.4rem;
+    right: -1.2rem;
     display: flex;
     align-items: center;
+    margin-left: 1.2rem;
     gap: 1.5rem;
+    grid-column: 3 / -1;
+    justify-self: end;
 }

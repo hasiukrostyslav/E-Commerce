@@ -341,9 +341,15 @@ body {
   cursor: pointer;
 }
 .trend__btns {
+  position: absolute;
+  top: 2.4rem;
+  right: -1.2rem;
   display: flex;
   align-items: center;
+  margin-left: 1.2rem;
   gap: 1.5rem;
+  grid-column: 3/-1;
+  justify-self: end;
 }
 
 .card {
@@ -400,6 +406,10 @@ body {
 .card__wishlist--small {
   right: 1.6rem;
   top: 27.2rem;
+}
+.card__wishlist--medium {
+  bottom: 11.4rem;
+  right: 1.6rem;
 }
 .card__icon {
   width: 1.6rem;
@@ -475,6 +485,7 @@ body {
 }
 
 .grid {
+  position: relative;
   display: grid;
 }
 .grid--col-3 {
@@ -807,6 +818,24 @@ body {
 .trend {
   background-color: #e5e8ed;
   padding: 8rem 0;
+}
+.trend__btn {
+  margin-top: 8rem;
+  grid-column: 2/3;
+  grid-row: 3/-1;
+  justify-self: center;
+}
+.trend__card-1 {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.trend__card-2 {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+.trend__card-3 {
+  grid-row: 2/3;
+  grid-column: 3/-1;
 }
 
 /*# sourceMappingURL=style.comp.css.map */
