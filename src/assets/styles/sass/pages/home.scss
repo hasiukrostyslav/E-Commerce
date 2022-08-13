@@ -89,16 +89,28 @@
         justify-self: center;
     }
 
-    &__card-1 {
-        grid-row: 2 / 3;
-        grid-column: 1 / 2;
+    @include card-grid;
+}
+
+.sale {
+    background-color: $color-white;
+    padding: 8rem 0;
+
+    &__card {
+        position: relative;
     }
-    &__card-2 {
-        grid-row: 2 / 3;
-        grid-column: 2 / 3;
+
+    &__percent {
+        position: absolute;
+        top: 1.6rem;
+        left: 1.6rem;
+        background-color: $color-secondary;
+        color: $color-white;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        border-radius: 4px;
+        padding: 0.1rem 0.8rem;
     }
-    &__card-3 {
-        grid-row: 2 / 3;
-        grid-column: 3 / -1;
-    }
+
+    @include card-grid;
 }
