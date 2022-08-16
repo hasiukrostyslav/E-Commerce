@@ -94,7 +94,7 @@
 
 .sale {
     background-color: $color-white;
-    padding: 8rem 0;
+    padding: 10rem 0 12rem;
 
     &__card {
         position: relative;
@@ -112,5 +112,20 @@
         padding: 0.1rem 0.8rem;
     }
 
+    &__btn {
+        margin-top: 0;
+        transform: translateY(-2.8rem);
+    }
+
     @include card-grid;
+}
+
+.cta {
+    background-color: $color-gray-dark-1;
+    margin: 3rem 0 9rem;
+    height: 30rem;
+}
+
+.services {
+    margin-bottom: 18rem;
 }

@@ -20,3 +20,21 @@
         grid-column: 3 / -1;
     }
 }
+
+@mixin icon-small($color: $color-gray-dark-2) {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: $color;
+}
+
+@mixin icon-medium($color: $color-gray-dark-2) {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: $color;
+}
+
+@mixin icon-large($color: $color-primary) {
+    width: 4.8rem;
+    height: 4.8rem;
+    fill: $color;
+}

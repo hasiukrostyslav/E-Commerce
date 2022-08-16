@@ -726,11 +726,25 @@
                             <p class="card__price card__price--regular card__price--sale">&dollar;40.00<span class="card__price--old">&dollar;80.00</span></p>
                         </div>
                     </div>
-                    <div class="card sale__card sale__card-3">
+                    <div class="card sale__card sale__card-3 card__current">
                         <a href="#" class="card__img-link">
                             <img src="../src/assets/images/sale-3.jpg" alt="Photo of boots" class="card__img card__img--medium">
                         </a>
                         <p class="sale__percent">-20%</p>
+                        <button type="button" class="card__btn card__btn--left">
+                            <svg class="sale__icon sale__icon--left">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#left-chevron"
+                                ></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="card__btn card__btn--right">
+                            <svg class="sale__icon sale__icon--right">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                                ></use>
+                            </svg>
+                        </button>
                         <div class="card__stars card__stars--5">
                             <svg class="star__icon">
                             <use
@@ -777,16 +791,68 @@
                                     <button class="btn btn--size">40</button>
                                 </div>
                                 <div class="card__color">
-                                    <button class="btn-color btn-color--current btn-color--black">&nbsp;</button>
-                                    <button class="btn-color btn-color--brown">&nbsp;</button>
-                                    <button class="btn-color btn-color--blue-gray">&nbsp;</button>
+                                    <button class="btn-color btn-color--current"><span class="btn-color-round btn-color--black">&nbsp;</span></button>
+                                    <button class="btn-color "><span class="btn-color-round btn-color--brown">&nbsp;</span></button>
+                                    <button class="btn-color"><span class="btn-color-round btn-color--blue-gray">&nbsp;</span></button>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn--solid btn--medium btn--sale">Add to cart</button>
+                            <button type="button" class="btn btn--solid btn--medium btn--sale">
+                                <svg class="sale__icon-cart">
+                                    <use xlink:href="../src/assets/svg/sprite.svg#cart"></use>
+                                </svg>
+                            Add to cart</button>
                         </div>
                     </div>
-                    <button class="btn btn--large btn--outline trend__btn">See all sale products</button>
+                    <button class="btn btn--large btn--outline trend__btn sale__btn">See all sale products</button>
                 </div>
+            </section>
+
+            <section class="cta">
+                <div class="container cta__flex">
+                    <img src="../src/assets/images/shopping.png" alt="shopping img" class="cta__img">
+                    <div class="cta__container">
+                        <h2 class="cta__heading">Enjoy mobile shopping with our Createx Store App!</h2>
+                        <a href="#" target="_blank" class="store-link store-apple">
+                            <img class="store-img" src="../src/assets/images/app-store.png" alt="App store">
+                        </a>
+                        <a href="#" target="_blank" class="store-link store-google">
+                            <img class="store-img" src="../src/assets/images/google-play.png" alt="google play">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services container">
+                <ul class="services__list">
+                    <li class="services__item">
+                        <svg class="services__icon">
+                            <use xlink:href="../src/assets/svg/sprite.svg#ic-delivery"></use>
+                        </svg>
+                        <h4 class="services__heading">Fast Worldwide Shipping</h4>
+                        <p class="services__text">Get free shipping over $250</p>
+                    </li>
+                    <li class="services__item">
+                        <svg class="services__icon">
+                            <use xlink:href="../src/assets/svg/sprite.svg#ic-call-center"></use>
+                        </svg>
+                        <h4 class="services__heading">24/7 Customer Support</h4>
+                        <p class="services__text">Friendly 24/7 customer support</p>
+                    </li>
+                    <li class="services__item">
+                        <svg class="services__icon">
+                            <use xlink:href="../src/assets/svg/sprite.svg#ic-shield"></use>
+                        </svg>
+                        <h4 class="services__heading">Money Back Guarantee</h4>
+                        <p class="services__text">We return money within 30 days</p>
+                    </li>
+                    <li class="services__item">
+                        <svg class="services__icon">
+                            <use xlink:href="../src/assets/svg/sprite.svg#ic-credit-card"></use>
+                        </svg>
+                        <h4 class="services__heading">Secure Online Payment</h4>
+                        <p class="services__text">Accept all major credit cards</p>
+                    </li>
+                </ul>
             </section>
         </main>
     </body>

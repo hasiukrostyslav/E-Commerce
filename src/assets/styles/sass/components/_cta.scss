@@ -1,0 +1,12 @@
+.cta {
+    &__flex {
+        display: flex;
+        gap: 16rem;
+    }
+
+    &__img {
+        width: 49rem;
+        height: 33rem;
+        transform: translate(-2.8rem, -3rem);
+    }
+}

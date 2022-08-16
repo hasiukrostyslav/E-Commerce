@@ -1,0 +1,16 @@
+.services {
+    &__list {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        gap: 9rem;
+    }
+    &__item {
+        width: 24rem;
+        text-align: center;
+    }
+    &__icon {
+        @include icon-large;
+        margin-bottom: 2.4rem;
+    }
+}

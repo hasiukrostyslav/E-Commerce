@@ -56,12 +56,12 @@
         }
 
         &--small {
-            right: 1.6rem;
             top: 27.2rem;
+            right: 1.6rem;
         }
 
         &--medium {
-            bottom: 9.4rem;
+            top: 39.2rem;
             right: 1.6rem;
         }
 
@@ -142,7 +142,35 @@
     }
 
     &__size {
-        display: flex;
-        gap: 0.8rem;
+        @extend %flex-btn;
+    }
+
+    &__color {
+        @extend %flex-btn;
+    }
+
+    .card__btn {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 21.2rem;
+
+        &--left {
+            left: 1.6rem;
+        }
+
+        &--right {
+            right: 1.6rem;
+        }
+    }
+
+    .sale {
+        &__icon {
+            @include icon-medium;
+        }
+    }
+
+    &__current {
     }
 }

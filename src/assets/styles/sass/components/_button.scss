@@ -90,15 +90,31 @@
 
     &--sale {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+
+        .sale__icon-cart {
+            @include icon-small($color: $color-white);
+        }
     }
 }
 
 .btn-color {
     border: 1px solid $color-gray-dark-4;
+    background-color: transparent;
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
     cursor: pointer;
+
+    &-round {
+        display: inline-block;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+    }
 
     &--current {
         border: 1px solid $color-primary;
@@ -186,4 +202,23 @@
 
 .sale__btns {
     @include btn-flex;
+}
+
+.store-link {
+    &:link,
+    &:visited {
+        display: inline-block;
+        text-decoration: none;
+        width: 16.2rem;
+        height: auto;
+    }
+}
+
+.store-apple {
+    margin-right: 2.4rem;
+}
+
+.store-img {
+    width: 16.2rem;
+    height: auto;
 }
