@@ -5,6 +5,7 @@
     border: 1px solid $color-primary;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 
     &--large {
         font-size: 1.6rem;
@@ -59,17 +60,13 @@
     }
 
     &--arrow {
-        padding-right: 5.6rem;
-        position: relative;
+        @include btn-with-icon;
     }
 
     &__icon {
         width: 1.6rem;
         height: 1.6rem;
         fill: $color-primary;
-        position: absolute;
-        top: 1.4rem;
-        right: 3.2rem;
         transition: all 0.5s;
     }
 
@@ -90,10 +87,7 @@
 
     &--sale {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
+        @include btn-with-icon;
 
         .sale__icon-cart {
             @include icon-small($color: $color-white);
@@ -221,4 +215,21 @@
 .store-img {
     width: 16.2rem;
     height: auto;
+}
+
+.instagram {
+    &__btn {
+        @include btn-with-icon;
+
+        &:hover,
+        &:active {
+            & .instagram__icon {
+                fill: $color-white;
+            }
+        }
+    }
+    &__icon {
+        @include icon-medium($color: $color-primary);
+        transition: all 0.5s;
+    }
 }

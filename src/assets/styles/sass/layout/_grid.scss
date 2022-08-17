@@ -2,6 +2,11 @@
     position: relative;
     display: grid;
 
+    &--col-2 {
+        grid-template-columns: repeat(2, min-content);
+        column-gap: 3rem;
+    }
+
     &--col-3 {
         grid-template-columns: repeat(3, min-content);
         column-gap: 3rem;
@@ -9,6 +14,10 @@
     &--col-4 {
         grid-template-columns: repeat(4, min-content);
     }
+    &--row-2 {
+        grid-template-rows: repeat(2, min-content);
+    }
+
     &--row-3 {
         grid-template-rows: repeat(3, min-content);
     }

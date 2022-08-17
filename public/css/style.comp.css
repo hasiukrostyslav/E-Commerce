@@ -95,17 +95,39 @@ body {
   margin: 6rem 0 4.8rem;
 }
 
-.services__heading {
+.heading-quaternary--heading {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.5;
   color: #1e212c;
 }
-.services__text {
+.heading-quaternary--heading:link, .heading-quaternary--heading:visited {
+  text-decoration: none;
+  display: block;
+  transition: all 0.5s;
+}
+.heading-quaternary--heading:hover, .heading-quaternary--heading:active {
+  color: #17696a;
+}
+.heading-quaternary--description {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.6;
   color: #787a80;
+}
+
+.instagram__text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.blog__text {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .container {
@@ -115,6 +137,14 @@ body {
 
 .u-margin-right-medium {
   margin-right: 2.4rem;
+}
+
+.u-margin-bottom-small-1 {
+  margin-bottom: 1.2rem;
+}
+
+.u-margin-bottom-small-2 {
+  margin-bottom: 1.6rem;
 }
 
 .u-margin-bottom-medium {
@@ -258,6 +288,53 @@ body {
   z-index: 0;
 }
 
+.blog__card {
+  width: 60rem;
+}
+.blog__btn {
+  align-self: start;
+  justify-self: end;
+  transform: translateY(1rem);
+}
+.blog__img {
+  display: block;
+  width: 60rem;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.blog__description {
+  padding: 2.4rem 2.4rem 2.1rem;
+  box-shadow: 0 1.2rem 4rem -1.6rem #9a9ca5;
+}
+.blog__list {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+}
+.blog__item {
+  position: relative;
+}
+.blog__item:not(:last-child)::after {
+  position: absolute;
+  content: "";
+  top: 0.8rem;
+  right: -1.2rem;
+  width: 1px;
+  height: 1.2rem;
+  background-color: #787a80;
+  border-radius: 4px;
+}
+.blog__item:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.blog__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #787a80;
+}
+
 .btn {
   display: inline-block;
   font-size: inherit;
@@ -265,6 +342,7 @@ body {
   border: 1px solid #17696a;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
 }
 .btn--large {
   font-size: 1.6rem;
@@ -308,16 +386,15 @@ body {
   background-color: #145c5d;
 }
 .btn--arrow {
-  padding-right: 5.6rem;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
 }
 .btn__icon {
   width: 1.6rem;
   height: 1.6rem;
   fill: #17696a;
-  position: absolute;
-  top: 1.4rem;
-  right: 3.2rem;
   transition: all 0.5s;
 }
 .btn--size {
@@ -452,6 +529,22 @@ body {
 .store-img {
   width: 16.2rem;
   height: auto;
+}
+
+.instagram__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.instagram__btn:hover .instagram__icon, .instagram__btn:active .instagram__icon {
+  fill: #fff;
+}
+.instagram__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: #17696a;
+  transition: all 0.5s;
 }
 
 .card {
@@ -654,8 +747,18 @@ body {
   gap: 9rem;
 }
 .services__item {
+  position: relative;
   width: 24rem;
   text-align: center;
+}
+.services__item:not(:last-child)::after {
+  content: "";
+  width: 0.1rem;
+  height: 13.6rem;
+  position: absolute;
+  top: 0;
+  right: -4.5rem;
+  background-image: linear-gradient(rgba(218, 219, 221, 0) 0%, rgba(218, 219, 221, 0.5) 20%, #dadbdd 50%, rgba(218, 219, 221, 0.5) 80%, rgba(218, 219, 221, 0) 100%);
 }
 .services__icon {
   width: 4.8rem;
@@ -668,12 +771,19 @@ body {
   position: relative;
   display: grid;
 }
+.grid--col-2 {
+  grid-template-columns: repeat(2, min-content);
+  column-gap: 3rem;
+}
 .grid--col-3 {
   grid-template-columns: repeat(3, min-content);
   column-gap: 3rem;
 }
 .grid--col-4 {
   grid-template-columns: repeat(4, min-content);
+}
+.grid--row-2 {
+  grid-template-rows: repeat(2, min-content);
 }
 .grid--row-3 {
   grid-template-rows: repeat(3, min-content);
@@ -1061,6 +1171,24 @@ body {
 
 .services {
   margin-bottom: 18rem;
+}
+
+.instagram {
+  margin-bottom: 18rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.instagram__imgs {
+  display: flex;
+  gap: 1.5rem;
+}
+.instagram__img {
+  height: 26rem;
+}
+
+.blog {
+  margin-bottom: 12rem;
 }
 
 /*# sourceMappingURL=style.comp.css.map */

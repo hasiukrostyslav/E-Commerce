@@ -6,8 +6,27 @@
         gap: 9rem;
     }
     &__item {
+        position: relative;
         width: 24rem;
         text-align: center;
+
+        &:not(:last-child) {
+            &::after {
+                content: '';
+                width: 0.1rem;
+                height: 13.6rem;
+                position: absolute;
+                top: 0;
+                right: -4.5rem;
+                background-image: linear-gradient(
+                    rgba($color-gray-light-5, 0) 0%,
+                    rgba($color-gray-light-5, 0.5) 20%,
+                    rgba($color-gray-light-5, 1) 50%,
+                    rgba($color-gray-light-5, 0.5) 80%,
+                    rgba($color-gray-light-5, 0) 100%
+                );
+            }
+        }
     }
     &__icon {
         @include icon-large;

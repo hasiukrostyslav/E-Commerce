@@ -72,17 +72,44 @@ body {
     margin: 6rem 0 4.8rem;
 }
 
-.services {
-    &__heading {
+.heading-quaternary {
+    &--heading {
         font-size: 2rem;
         font-weight: 700;
         line-height: 1.5;
         color: $color-gray-dark-1;
+
+        &:link,
+        &:visited {
+            text-decoration: none;
+            display: block;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+        }
     }
-    &__text {
+
+    &--description {
         font-size: 1.6rem;
         font-weight: 400;
         line-height: 1.6;
         color: $color-gray-dark-3;
     }
+}
+
+.instagram__text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.blog__text {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6;
 }

@@ -38,3 +38,10 @@
     height: 4.8rem;
     fill: $color;
 }
+
+@mixin btn-with-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
