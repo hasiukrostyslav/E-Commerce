@@ -166,14 +166,14 @@
                 <h1 class="heading-primary heading-primary--main">
                     Menswear 2020
                 </h1>
-                <button
+                <a href="#"
                     class="btn btn--large btn--outline u-margin-right-medium"
                 >
                     Shop sale
-                </button>
-                <button class="btn btn--large btn--solid">
+                </a>
+                <a href="#" class="btn btn--large btn--solid">
                     Shop the meanswear
-                </button>
+                </a>
                 <div class="slider">
                     <button
                         class="btn-round btn-round--light slider__btn slider__btn--left"
@@ -449,12 +449,12 @@
                 <div class="banner banner__summer">
                     <h4 class="heading-tertiary--sub">Summer collections</h4>
                     <h3 class="heading-tertiary--main">Sale Up to 70%</h3>
-                    <button class="btn btn--medium btn--outline">Explore new prices</button>
+                    <a href="#" class="btn btn--medium btn--outline">Explore new prices</a>
                 </div>
                 <div class="banner banner__week">
                     <h4 class="heading-tertiary--sub">Deal of the week</h4>
                     <h3 class="heading-tertiary--main u-heading-break-medium">Stay Warm With Our New Sweaters</h3>
-                    <button class="btn btn--medium btn--outline">Shop now</button>
+                    <a href="#" class="btn btn--medium btn--outline">Shop now</a>
                     <div class="banner__countdown">
                         <h4 class="heading-tertiary--sub heading-countdown">Limited time offer</h4>
                         <p class="digit">06</p>
@@ -470,22 +470,24 @@
                 <div class="banner banner__new">
                     <h4 class="heading-tertiary--sub">New Collection</h4>
                     <h3 class="heading-tertiary--main u-heading-break-small">Shoes & Bags&nbsp;&nbsp; autumn / winter 2020</h3>
-                    <button class="btn btn--medium btn--outline btn--arrow">
+                    <a href="#" class="btn btn--medium btn--outline btn--arrow">
                         See offers
                         <svg class="btn__icon">
                             <use
                                 xlink:href="../src/assets/svg/sprite.svg#right"
                             ></use>
                         </svg>
-                    </button>
+                    </a>
                 </div>
                 <div class="banner banner__delivery delivery">
                     <h4 class="heading-tertiary heading-tertiary--sub">For all new email subscribers</h4>
                     <h3 class="heading-tertiary heading-tertiary--main">Get 5% Off & Free Delivery</h3>
                     <form class="delivery__form" action="#">
-                        <label class="delivery__label" for="email">Email</label>
-                        <input class="delivery__input" type="email" name="email" id="email" placeholder="Your working email" required>
-                        <button type="submit" class="btn btn--medium-right btn--solid">Subscribe</button>
+                        <label class="delivery__email-label" for="email-sb">Email</label>
+                            <div class="delivery__input-container">
+                                <input class="delivery__email-input" type="email" name="email" id="email-sb" placeholder="Your working email" required>
+                                <input type="submit" class="btn btn--solid btn--medium-right" value="Subscribe">
+                            </div>
                     </form>
                     <p class="delivery__text u-heading-break-medium">*Sign up to be the first to hear about exlusive deals, special offers and upcoming collections.</p>
                     <img class="delivery__img" src="../src/assets/images/delivery.png" alt="Delivery photo">
@@ -642,7 +644,7 @@
                             <p class="card__price card__price--regular">&dollar;183.45</p>
                         </div>
                     </div>
-                    <button class="btn btn--large btn--outline trend__btn">Explore top sales</button>
+                    <a href="#" class="btn btn--large btn--outline trend__btn">Explore top sales</a>
                 </div>
             </section>
 
@@ -782,20 +784,52 @@
                         <div class="card__bottom card__bottom--current">
                             <a href="#" class="card__heading">Wide heel suede ankle boots</a>
                             <p class="card__price card__price--regular card__price--sale">&dollar;119.16<span class="card__price--old">&dollar;148.95</span></p>
-                            <div class="card__flex-container">
-                                <div class="card__size">
-                                    <button class="btn btn--size">36</button>
-                                    <button class="btn btn--size btn--size-current">37</button>
-                                    <button class="btn btn--size">38</button>
-                                    <button class="btn btn--size">39</button>
-                                    <button class="btn btn--size">40</button>
-                                </div>
-                                <div class="card__color">
-                                    <button class="btn-color btn-color--current"><span class="btn-color-round btn-color--black">&nbsp;</span></button>
-                                    <button class="btn-color "><span class="btn-color-round btn-color--brown">&nbsp;</span></button>
-                                    <button class="btn-color"><span class="btn-color-round btn-color--blue-gray">&nbsp;</span></button>
-                                </div>
-                            </div>
+                            <form action="#" class="card__form">
+                                <ul class="card__radio-list">
+                                    <li class="card__radio-item">
+                                        <input class="size__radio" type="radio" name="size" id="36">
+                                        <label class="size__label" for="36">36</label>
+                                    </li>
+                                    <li class="card__radio-item">
+                                        <input class="size__radio" type="radio" name="size" id="37" checked>
+                                        <label class="size__label" for="37">37</label>
+                                    </li>
+                                    <li class="card__radio-item">
+                                        <input class="size__radio" type="radio" name="size" id="38">
+                                        <label class="size__label" for="38">38</label>
+                                    </li>
+                                    <li class="card__radio-item"> 
+                                        <input class="size__radio" type="radio" name="size" id="39">
+                                        <label class="size__label" for="39">39</label>
+                                    </li>
+                                    <li class="card__radio-item">
+                                        <input class="size__radio" type="radio" name="size" id="40">
+                                        <label class="size__label" for="40">40</label>
+                                    </li>
+                         
+                                </ul>
+                                <ul class="card__radio-list">
+                                    <li class="card__radio-item">
+                                        <input class="color__radio" type="radio" name="color" id="black" checked>
+                                        <label class="color__label " for="black">&nbsp;
+                                            <span class="color__type color__type--black">&nbsp;</span>
+                                        </label>
+                                        
+                                    </li>
+                                    <li class="card__radio-item">
+                                        <input class="color__radio" type="radio" name="color" id="brown">
+                                        <label class="color__label" for="brown">&nbsp;
+                                            <span class="color__type color__type--brown">&nbsp;</span>
+                                        </label>
+                                    </li>
+                                    <li class="card__radio-item">
+                                        <input class="color__radio" type="radio" name="color" id="blue-gray">
+                                        <label class="color__label" for="blue-gray">&nbsp;
+                                            <span class="color__type color__type--blue-gray">&nbsp;</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                             <button type="button" class="btn btn--solid btn--medium btn--sale">
                                 <svg class="sale__icon-cart">
                                     <use xlink:href="../src/assets/svg/sprite.svg#cart"></use>
@@ -803,7 +837,7 @@
                             Add to cart</button>
                         </div>
                     </div>
-                    <button class="btn btn--large btn--outline trend__btn sale__btn">See all sale products</button>
+                    <a href="#" class="btn btn--large btn--outline trend__btn sale__btn">See all sale products</a>
                 </div>
             </section>
 
@@ -859,12 +893,12 @@
                 <div class="insagram__cta">
                     <h6 class="instagram__text">Follow us on instagram</h6>
                     <h2 class="heading-secondary">@createx_store</h2>
-                    <button class="btn btn--outline btn--large instagram__btn">
+                    <a href="#" target="_blank" class="btn btn--outline btn--large instagram__btn">
                         <svg class="instagram__icon">
                             <use xlink:href="../src/assets/svg/sprite.svg#instagram"></use>
                         </svg>
                         Follow instagram
-                    </button>
+                    </a>
                 </div>
                 <div class="instagram__imgs">
                     <img class="instagram__img" src="../src/assets/images/insta-1.jpg" alt="instagram photo">
@@ -978,7 +1012,7 @@
                         <div class="checkbox">
                             <input class="checkbox__input " type="checkbox" name="mark" id="mark" checked>
                             <label class="checkbox__label" for="mark">
-                                <span class="checkbox__mark"></span>
+                                <span class="checkbox__mark">&nbsp;</span>
                                 I agree to receive communications from Createx Store.
                             </label>
                         </div>

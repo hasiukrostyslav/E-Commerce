@@ -134,19 +134,18 @@
         }
     }
 
-    &__flex-container {
+    &__form {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin: 2rem 0;
     }
 
-    &__size {
-        @extend %flex-btn;
-    }
-
-    &__color {
-        @extend %flex-btn;
+    &__radio-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
     }
 
     .card__btn {

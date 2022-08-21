@@ -20,11 +20,10 @@
     &--medium-right {
         position: relative;
         font-size: 1.4rem;
-        padding: 1.15rem 3.2rem;
+        padding: 1.35rem 3.2rem;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        transform: translateX(-102%);
-        z-index: 1000;
+        transform: translateX(-5px);
     }
 
     &--small {
@@ -61,6 +60,7 @@
 
     &--arrow {
         @include btn-with-icon;
+        width: 15.5rem;
     }
 
     &__icon {
@@ -70,21 +70,6 @@
         transition: all 0.5s;
     }
 
-    &--size {
-        border: 1px solid $color-gray-dark-4;
-        background-color: transparent;
-        font-weight: 400;
-        font-size: 1.2rem;
-        line-height: 1.5;
-        color: $color-gray-dark-2;
-        width: 2.4rem;
-        height: 2.4rem;
-
-        &-current {
-            border: 1px solid $color-primary;
-        }
-    }
-
     &--sale {
         width: 100%;
         @include btn-with-icon;
@@ -92,38 +77,6 @@
         .sale__icon-cart {
             @include icon-small($color: $color-white);
         }
-    }
-}
-
-.btn-color {
-    border: 1px solid $color-gray-dark-4;
-    background-color: transparent;
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &-round {
-        display: inline-block;
-        width: 1.6rem;
-        height: 1.6rem;
-        border-radius: 50%;
-    }
-
-    &--current {
-        border: 1px solid $color-primary;
-    }
-
-    &--black {
-        background-color: $btn-color-black;
-    }
-
-    &--brown {
-        background-color: $btn-color-brown;
-    }
-
-    &--blue-gray {
-        background-color: $btn-color-blue-gray;
     }
 }
 
@@ -220,6 +173,7 @@
 .instagram {
     &__btn {
         @include btn-with-icon;
+        width: 24.2rem;
 
         &:hover,
         &:active {

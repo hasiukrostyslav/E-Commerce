@@ -55,40 +55,44 @@
 
     .delivery {
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
 
         &__form {
             position: relative;
+            z-index: 100;
+            margin-bottom: 2rem;
         }
-        &__label {
+
+        &__input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        &__email-label {
             display: block;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: $color-gray-dark-2;
+            margin-bottom: 0.8rem;
+        }
+
+        &__email-input {
+            width: 23rem;
+            padding: 1.1rem 5rem 1.1rem 1.6rem;
+            border: 1px solid $color-gray-light-4;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
             font-size: 1.4rem;
             line-height: 1.5;
-            font-weight: 400;
-            margin-bottom: 0.8rem;
             color: $color-gray-dark-2;
-            z-index: 1000;
-        }
-
-        &__input {
-            position: relative;
-            width: 36rem;
-            padding: 1.2rem 1.6rem;
-            padding-right: 16rem;
-            color: $color-gray-dark-2;
-            border: 1px solid $color-gray-light-4;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            z-index: 1000;
-
-            &::-webkit-input-placeholder {
-                font-family: inherit;
-                color: $color-gray-dark-4;
-            }
 
             &:focus {
                 outline: none;
-                border: 1px solid rgba($color-primary, 0.4);
+                border: 1px solid $color-primary;
+            }
+
+            &::-webkit-input-placeholder {
+                color: $color-gray-dark-4;
             }
         }
 
@@ -101,11 +105,11 @@
         }
 
         &__img {
-            // width: 43.9rem;
-            height: 113%;
+            width: 43.9rem;
+            height: 38rem;
             position: absolute;
-            bottom: -10.4rem;
-            right: -18rem;
+            bottom: 0;
+            right: 0;
             transform: scaleX(-1);
             z-index: 0;
         }

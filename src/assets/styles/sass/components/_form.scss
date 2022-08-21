@@ -1,4 +1,4 @@
-// Checkboxes
+// CHECKBOXES
 .checkbox {
     &__input {
         display: none;
@@ -63,5 +63,74 @@
 
     &__input:disabled ~ &__label &__marl {
         background-color: $color-gray-light-1;
+    }
+}
+
+// RADIO BUTTON
+// Size
+.size {
+    &__radio {
+        display: none;
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: $color-gray-dark-2;
+        border: 1px solid $color-gray-light-4;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    &__radio:checked ~ &__label {
+        border: 1px solid $color-primary;
+    }
+}
+
+// Color
+.color {
+    &__radio {
+        display: none;
+    }
+
+    &__label {
+        position: relative;
+        display: block;
+        width: 2.4rem;
+        height: 2.4rem;
+        border: 1px solid $color-gray-light-4;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__radio:checked ~ &__label {
+        border: 1px solid $color-primary;
+    }
+
+    &__type {
+        position: absolute;
+        width: 1.6rem;
+        height: 1.6rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+
+        &--black {
+            background-color: $btn-color-black;
+        }
+
+        &--brown {
+            background-color: $btn-color-brown;
+        }
+
+        &--blue-gray {
+            background-color: $btn-color-blue-gray;
+        }
     }
 }
