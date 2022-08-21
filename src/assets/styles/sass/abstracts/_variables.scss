@@ -35,3 +35,11 @@ $btn-color-white: #f1f1f1;
 // SHADOW
 
 $shadow: 0rem 8rem 8rem -2rem rgba(49, 50, 51, 0.16);
+
+$divider: linear-gradient(
+    rgba($color-gray-light-5, 0) 0%,
+    rgba($color-gray-light-5, 0.5) 20%,
+    rgba($color-gray-light-5, 1) 50%,
+    rgba($color-gray-light-5, 0.5) 80%,
+    rgba($color-gray-light-5, 0) 100%
+);

@@ -237,13 +237,7 @@
                 position: absolute;
                 top: 0;
                 left: 45%;
-                background-image: linear-gradient(
-                    rgba($color-gray-light-5, 0) 0%,
-                    rgba($color-gray-light-5, 0.5) 20%,
-                    rgba($color-gray-light-5, 1) 50%,
-                    rgba($color-gray-light-5, 0.5) 80%,
-                    rgba($color-gray-light-5, 0) 100%
-                );
+                background-image: $divider;
             }
         }
 
@@ -275,5 +269,112 @@
             height: 2rem;
             fill: $color-gray-dark-2;
         }
+    }
+}
+
+.menu {
+    display: none;
+    padding: 2rem 0 4rem;
+    border-top: 1px solid $color-gray-light-3;
+
+    &__navigation {
+        display: flex;
+        gap: 3rem;
+    }
+
+    &__heading {
+        font-style: 1.4rem;
+        font-weight: 700;
+        color: $color-gray-dark-1;
+        text-transform: uppercase;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        margin-bottom: 0.8rem;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: $color-gray-dark-2;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgba($color-gray-dark-2, 0.8);
+        }
+
+        &--sale {
+            &:link,
+            &:visited {
+                color: $color-secondary;
+            }
+
+            &:hover,
+            &:active {
+                color: rgba($color-secondary, 0.8);
+            }
+        }
+    }
+
+    &__flex {
+        display: flex;
+        gap: 13.5rem;
+    }
+
+    &__offers {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: -6.8rem;
+            width: 1px;
+            height: 100%;
+            background-image: $divider;
+        }
+    }
+
+    &__img {
+        width: 28.5rem;
+        height: 28.5rem;
+        border-radius: 4px;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        font-weight: 700;
+        color: $color-gray-dark-2;
+    }
+
+    &__btn-link {
+        width: 13rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    &__btn-icon {
+        @include icon-small($color: $color-primary);
+        transition: all 0.5s;
+    }
+
+    &__btn-link:hover &__btn-icon,
+    &__btn-link:active &__btn-icon {
+        fill: $color-white;
     }
 }
