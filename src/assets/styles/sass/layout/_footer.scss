@@ -1,0 +1,95 @@
+.footer {
+    &__flex {
+        padding: 6rem 0 4rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__heading {
+        color: $color-white;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 1.2rem;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: rgba($color-white, 0.6);
+            font-size: 1.6rem;
+            line-height: 1.6;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgba($color-white, 0.8);
+        }
+
+        span {
+            color: $color-white;
+        }
+    }
+
+    &__list-social {
+        margin-top: 2.4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.2rem;
+        list-style: none;
+    }
+
+    &__bottom {
+        border-top: 1px solid rgba($color-white, 0.15);
+    }
+    &__rights {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2.4rem 0 3.2rem;
+    }
+
+    &__text {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        font-weight: 400;
+        color: $color-white;
+    }
+
+    &__heart {
+        display: inline-block;
+        margin: 0 0.3rem;
+    }
+
+    &__icon {
+        @include icon-small($color-primary);
+        transform: translateY(30%);
+    }
+
+    &__btn-up {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            font-size: 1.6rem;
+            color: rgba($color-white, 0.6);
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgba($color-white, 0.8);
+        }
+    }
+}
