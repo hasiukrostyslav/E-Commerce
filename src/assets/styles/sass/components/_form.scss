@@ -5,12 +5,19 @@
     }
 
     &__label {
-        font-size: 1.6rem;
-        line-height: 1.6;
         color: $color-gray-dark-2;
         cursor: pointer;
         position: relative;
         padding-left: 2.8rem;
+
+        &--small {
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+        &--large {
+            font-size: 1.6rem;
+            line-height: 1.6;
+        }
     }
 
     &__mark {
@@ -92,6 +99,55 @@
     }
 }
 
+// Radio btn
+.radio {
+    &__input {
+        display: none;
+    }
+
+    &__label {
+        color: $color-gray-dark-2;
+        cursor: pointer;
+        position: relative;
+        padding-left: 2.8rem;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        font-weight: 700;
+    }
+
+    &__mark {
+        position: absolute;
+        display: inline-block;
+        width: 1.6rem;
+        height: 1.6rem;
+        border: 1px solid $color-gray-dark-5;
+        border-radius: 50%;
+        left: 0;
+        top: 0.5rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0.8rem;
+            height: 0.8rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: $color-primary;
+            opacity: 0;
+        }
+    }
+
+    &__input:checked ~ &__label &__mark {
+        border: 1px solid $color-primary;
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
 // Color
 .color {
     &__radio {
@@ -131,6 +187,129 @@
 
         &--blue-gray {
             background-color: $btn-color-blue-gray;
+        }
+    }
+}
+
+// INPUT
+// Input text
+.label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: $color-gray-dark-2;
+
+    &--small {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    &--medium {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    &--large {
+        font-size: 1.6rem;
+        line-height: 1.6;
+    }
+
+    &--disabled > .label {
+        color: $color-gray-dark-3;
+    }
+}
+
+.input {
+    display: block;
+    font-family: inherit;
+    border: 1px solid $color-gray-light-4;
+    border-radius: 4px;
+    color: $color-gray-dark-2;
+    width: 100%;
+
+    &__box {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    &--small {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        padding: 0.9rem 1.2rem;
+    }
+
+    &--medium {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        padding: 1.1rem 1.6rem 1.2rem;
+    }
+
+    &--large {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        padding: 1.3rem 1.6rem;
+    }
+
+    &--padding-small {
+        padding-right: 3.2rem;
+    }
+
+    &--padding-medium {
+        padding-right: 3.6rem;
+    }
+
+    &--padding-large {
+        padding-right: 4rem;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid rgba($color-primary, 0.4);
+        box-shadow: 0px 80px 80px -20px rgba(23, 105, 106, 0.08),
+            0px 30px 24px -10px rgba(23, 105, 106, 0.05),
+            0px 12px 10px -6px rgba(23, 105, 106, 0.04),
+            0px 4px 4px -4px rgba(30, 33, 44, 0.03);
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: inherit;
+        color: $color-gray-dark-4;
+    }
+
+    &__btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &--small {
+            right: 1.2rem;
+            top: 3.6rem;
+        }
+        &--medium {
+            right: 1.6rem;
+            top: 4.5rem;
+        }
+        &--large {
+            right: 1.6rem;
+            top: 5rem;
+        }
+    }
+
+    &__icon {
+        fill: $color-gray-dark-2;
+        &--small {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+        &--medium {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+        &--large {
+            width: 2rem;
+            height: 2rem;
         }
     }
 }

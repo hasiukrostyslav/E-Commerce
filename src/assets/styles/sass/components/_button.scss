@@ -78,6 +78,30 @@
             @include icon-small($color: $color-white);
         }
     }
+
+    &--modal {
+        width: 100%;
+    }
+
+    &--close {
+        position: absolute;
+        top: 2.4rem;
+        right: 2.4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.close__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: $color-gray-dark-3;
 }
 
 .btn-round {
@@ -189,6 +213,19 @@
 }
 
 .social {
+    &__list {
+        margin-top: 2.4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.2rem;
+        list-style: none;
+
+        &--center {
+            justify-content: center;
+        }
+    }
+
     &__link {
         &:link,
         &:visited {
