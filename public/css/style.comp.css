@@ -882,7 +882,7 @@ body {
   color: rgba(66, 69, 81, 0.5);
   cursor: default;
 }
-.checkbox__input:disabled ~ .checkbox__label .checkbox__marl {
+.checkbox__input:disabled ~ .checkbox__label .checkbox__mark {
   background-color: #f4f5f6;
 }
 
@@ -945,6 +945,13 @@ body {
 }
 .radio__input:checked ~ .radio__label .radio__mark::after {
   opacity: 1;
+}
+.radio__input:disabled ~ .radio__label {
+  color: rgba(66, 69, 81, 0.5);
+  cursor: default;
+}
+.radio__input:disabled ~ .radio__label .radio__mark {
+  background-color: #f4f5f6;
 }
 
 .color__radio {
