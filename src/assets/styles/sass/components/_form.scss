@@ -68,7 +68,7 @@
         cursor: default;
     }
 
-    &__input:disabled ~ &__label &__marl {
+    &__input:disabled ~ &__label &__mark {
         background-color: $color-gray-light-1;
     }
 }
@@ -124,6 +124,7 @@
         border-radius: 50%;
         left: 0;
         top: 0.5rem;
+        transition: all 0.5s;
 
         &::after {
             content: '';
@@ -136,6 +137,7 @@
             border-radius: 50%;
             background-color: $color-primary;
             opacity: 0;
+            transition: opacity 0.5s;
         }
     }
 
@@ -145,6 +147,15 @@
         &::after {
             opacity: 1;
         }
+    }
+
+    &__input:disabled ~ &__label {
+        color: rgba($color-gray-dark-2, 0.5);
+        cursor: default;
+    }
+
+    &__input:disabled ~ &__label &__mark {
+        background-color: $color-gray-light-1;
     }
 }
 

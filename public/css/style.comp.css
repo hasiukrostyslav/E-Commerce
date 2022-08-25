@@ -349,6 +349,42 @@ body {
   fill: #787a80;
 }
 
+.breadcrumb {
+  background-color: #f4f5f7;
+  padding: 1.6rem 0;
+}
+.breadcrumb__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb__link:link, .breadcrumb__link:visited {
+  text-decoration: none;
+  color: #424551;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.breadcrumb__link--current:link, .breadcrumb__link--current:visited {
+  color: #9a9ca5;
+}
+.breadcrumb__link--icon {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #424551;
+}
+.breadcrumb__icon--light {
+  fill: #9a9ca5;
+}
+
 .btn {
   display: inline-block;
   font-size: inherit;
@@ -927,6 +963,7 @@ body {
   border-radius: 50%;
   left: 0;
   top: 0.5rem;
+  transition: all 0.5s;
 }
 .radio__mark::after {
   content: "";
@@ -939,6 +976,7 @@ body {
   border-radius: 50%;
   background-color: #17696a;
   opacity: 0;
+  transition: opacity 0.5s;
 }
 .radio__input:checked ~ .radio__label .radio__mark {
   border: 1px solid #17696a;
@@ -1617,6 +1655,7 @@ body {
 }
 
 .menu {
+  display: none;
   padding: 2rem 0 4rem;
   border-top: 1px solid #e5e8ed;
 }

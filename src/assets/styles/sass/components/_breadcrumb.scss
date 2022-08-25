@@ -1,0 +1,46 @@
+.breadcrumb {
+    background-color: $color-gray-light-6;
+    padding: 1.6rem 0;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: $color-gray-dark-2;
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+
+        &--current {
+            &:link,
+            &:visited {
+                color: $color-gray-dark-4;
+            }
+        }
+
+        &--icon {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__icon {
+        @include icon-small($color: $color-gray-dark-2);
+
+        &--light {
+            fill: $color-gray-dark-4;
+        }
+    }
+}
