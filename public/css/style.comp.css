@@ -11,6 +11,10 @@
   color: #1e212c;
 }
 
+.input__box--large {
+  width: 39rem;
+}
+
 *,
 *::after,
 *::before {
@@ -60,10 +64,6 @@ body {
   margin-bottom: 2.4rem;
 }
 
-.heading-tertiary {
-  position: relative;
-  z-index: 100;
-}
 .heading-tertiary--main {
   font-size: 3.2rem;
   font-weight: 900;
@@ -157,6 +157,10 @@ body {
   margin-bottom: 2.4rem !important;
 }
 
+.u-margin-top-large {
+  margin-top: 4.8rem;
+}
+
 .u-heading-break-small {
   width: 31.7rem;
 }
@@ -167,6 +171,78 @@ body {
 
 .u-width {
   width: 18rem;
+}
+
+.account__aside {
+  width: 28.5rem;
+  border: 1px solid #e5e8ed;
+  border-radius: 4px;
+  box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08), 0px 30px 24px -10px rgba(154, 156, 165, 0.05), 0px 12px 10px -6px rgba(154, 156, 165, 0.04), 0px 4px 4px -4px rgba(30, 33, 44, 0.03);
+  align-self: flex-start;
+}
+.account__user-name {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 2rem 2rem 0.2rem;
+  color: #424551;
+}
+.account__user-email {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin: 0 2rem 2rem;
+  color: #787a80;
+}
+.account__list {
+  list-style: none;
+}
+.account__item {
+  padding: 1.2rem 2rem;
+  border-top: 1px solid #e5e8ed;
+  transition: all 0.5s;
+}
+.account__item--current {
+  background-color: #17696a;
+}
+.account__item--message {
+  position: relative;
+}
+.account__item--message::after {
+  position: absolute;
+  content: "2";
+  top: 1.6rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #f89828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.account__item--current .account__link:link, .account__item--current .account__link:visited {
+  color: #fff;
+}
+.account__item--current .account__link .account__icon {
+  fill: #fff;
+}
+.account__link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.account__link:link, .account__link:visited {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #424551;
+  text-decoration: none;
+}
+.account__icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #424551;
 }
 
 .offers {
@@ -388,6 +464,7 @@ body {
 .btn {
   display: inline-block;
   font-size: inherit;
+  font-family: inherit;
   font-weight: 700;
   border: 1px solid #17696a;
   border-radius: 4px;
@@ -474,6 +551,27 @@ body {
   justify-content: center;
   cursor: pointer;
   border: none;
+}
+.btn--delete {
+  border: none;
+  background-color: transparent;
+  color: #ff4242;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0.8rem;
+  right: 0;
+}
+
+.btn-delete__icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #ff4242;
 }
 
 .close__icon {
@@ -1059,6 +1157,12 @@ body {
   margin-bottom: 2rem;
   position: relative;
 }
+.input__box--large {
+  margin-bottom: 2.4rem;
+}
+.input__box--large:nth-child(odd) {
+  margin-right: 3rem;
+}
 .input--small {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -1126,6 +1230,22 @@ body {
 .input__icon--large {
   width: 2rem;
   height: 2rem;
+}
+.input__icon--light {
+  fill: #9a9ca5;
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+}
+.select__btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: default;
 }
 
 .modal {
@@ -1738,6 +1858,21 @@ body {
 }
 .menu__btn-link:hover .menu__btn-icon, .menu__btn-link:active .menu__btn-icon {
   fill: #fff;
+}
+
+.account-main {
+  padding: 4rem 0 18rem;
+  display: flex;
+  gap: 13.5rem;
+}
+.account__profile {
+  width: 81rem;
+  position: relative;
+}
+.account__form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .top-categories {

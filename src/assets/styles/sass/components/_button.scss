@@ -1,6 +1,7 @@
 .btn {
     display: inline-block;
     font-size: inherit;
+    font-family: inherit;
     font-weight: 700;
     border: 1px solid $color-primary;
     border-radius: 4px;
@@ -96,6 +97,28 @@
         cursor: pointer;
         border: none;
     }
+
+    &--delete {
+        border: none;
+        background-color: transparent;
+        color: $color-secondary;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.6;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        position: absolute;
+        top: 0.8rem;
+        right: 0;
+    }
+}
+
+.btn-delete__icon {
+    width: 2rem;
+    height: 2rem;
+    fill: $color-secondary;
 }
 
 .close__icon {

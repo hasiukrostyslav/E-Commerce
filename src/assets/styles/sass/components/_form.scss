@@ -240,6 +240,14 @@
     &__box {
         margin-bottom: 2rem;
         position: relative;
+
+        &--large {
+            margin-bottom: 2.4rem;
+
+            &:nth-child(odd) {
+                margin-right: 3rem;
+            }
+        }
     }
 
     &--small {
@@ -322,5 +330,24 @@
             width: 2rem;
             height: 2rem;
         }
+
+        &--light {
+            fill: $color-gray-dark-4;
+        }
+    }
+}
+
+// Select
+.select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+
+    &__btn {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: default;
     }
 }
