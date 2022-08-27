@@ -15,4 +15,14 @@
         display: flex;
         flex-wrap: wrap;
     }
+
+    &__orders {
+        width: 81rem;
+    }
+
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
 }

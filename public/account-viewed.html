@@ -393,7 +393,9 @@
                         </svg>
                     </li>
                     <li class="breadcrumb__item">
-                        <a href="#" class="breadcrumb__link">Account</a>
+                        <a href="account-profile.html" class="breadcrumb__link"
+                            >Account</a
+                        >
                     </li>
                     <li class="breadcrumb__item">
                         <svg class="breadcrumb__icon breadcrumb__icon--light">
@@ -406,7 +408,7 @@
                         <a
                             href="#"
                             class="breadcrumb__link breadcrumb__link--current"
-                            >My profile</a
+                            >Recently viewed</a
                         >
                     </li>
                 </ul>
@@ -418,8 +420,8 @@
                 <p class="account__user-name">Annette Black</p>
                 <p class="account__user-email">annetteb@example</p>
                 <ul class="account__list">
-                    <li class="account__item account__item--current">
-                        <a href="#" class="account__link">
+                    <li class="account__item">
+                        <a href="account-profile.html" class="account__link">
                             <svg class="account__icon">
                                 <use
                                     xlink:href="../src/assets/svg/sprite.svg#profile"
@@ -448,7 +450,7 @@
                             Wishlist
                         </a>
                     </li>
-                    <li class="account__item">
+                    <li class="account__item account__item--current">
                         <a href="account-viewed.html" class="account__link">
                             <svg class="account__icon">
                                 <use
@@ -481,199 +483,15 @@
                 </ul>
             </aside>
             <section class="account__profile">
-                <h2 class="heading-tertiary--main">My profile</h2>
+                <h2 class="heading-tertiary--main">Recently viewed</h2>
                 <button type="button" class="btn btn--delete">
                     <svg class="btn-delete__icon">
                         <use
                             xlink:href="../src/assets/svg/sprite.svg#delete"
                         ></use>
                     </svg>
-                    Delete account
+                    Delete all
                 </button>
-                <form action="#" class="account__form">
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="first-name"
-                            >First name</label
-                        >
-                        <input
-                            class="input input--large input--half"
-                            type="text"
-                            name="first-name"
-                            id="first-name"
-                            value="Annette"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="last-name"
-                            >Last name</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="last-name"
-                            id="last-name"
-                            value="Black"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-email"
-                            >Email</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="email"
-                            name="profile-email"
-                            id="profile-email"
-                            value="annetteb@example.com"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="phone"
-                            >Phone</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="tel"
-                            name="phone"
-                            id="phone"
-                            value="(629) 555-0129"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-new-pass"
-                            >New Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-new-pass"
-                            id="profile-new-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
-                            >
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label
-                            class="label label--large"
-                            for="profile-confirm-pass"
-                            >Confirm Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-confirm-pass"
-                            id="profile-confirm-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
-                            >
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="country"
-                            >Country</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="country"
-                            id="country"
-                        >
-                            <option value="Poland">Poland</option>
-                            <option value="UK">UK</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="USA" selected>USA</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="city"
-                            >City</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="city"
-                            id="city"
-                        >
-                            <option value="Chicago">Chicago</option>
-                            <option value="Dallas">Dallas</option>
-                            <option value="New Jersey" selected>
-                                New Jersey
-                            </option>
-                            <option value="San Francisco">San Francisco</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="address"
-                            >Address</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="address"
-                            id="address"
-                            value="2464 Royal Ln. Mesa, New Jersey"
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="code"
-                            >ZIP Code</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="code"
-                            id="code"
-                            value="45463"
-                        />
-                    </div>
-                    <button
-                        class="btn btn--solid btn--large u-margin-top-large"
-                        type="submit"
-                    >
-                        Save changes
-                    </button>
-                </form>
             </section>
         </main>
 

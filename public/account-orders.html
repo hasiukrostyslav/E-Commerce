@@ -393,7 +393,9 @@
                         </svg>
                     </li>
                     <li class="breadcrumb__item">
-                        <a href="#" class="breadcrumb__link">Account</a>
+                        <a href="account-profile.html" class="breadcrumb__link"
+                            >Account</a
+                        >
                     </li>
                     <li class="breadcrumb__item">
                         <svg class="breadcrumb__icon breadcrumb__icon--light">
@@ -406,7 +408,7 @@
                         <a
                             href="#"
                             class="breadcrumb__link breadcrumb__link--current"
-                            >My profile</a
+                            >My orders</a
                         >
                     </li>
                 </ul>
@@ -418,8 +420,8 @@
                 <p class="account__user-name">Annette Black</p>
                 <p class="account__user-email">annetteb@example</p>
                 <ul class="account__list">
-                    <li class="account__item account__item--current">
-                        <a href="#" class="account__link">
+                    <li class="account__item">
+                        <a href="account-profile.html" class="account__link">
                             <svg class="account__icon">
                                 <use
                                     xlink:href="../src/assets/svg/sprite.svg#profile"
@@ -428,7 +430,7 @@
                             My profile
                         </a>
                     </li>
-                    <li class="account__item">
+                    <li class="account__item account__item--current">
                         <a href="account-orders.html" class="account__link">
                             <svg class="account__icon">
                                 <use
@@ -480,200 +482,534 @@
                     </li>
                 </ul>
             </aside>
-            <section class="account__profile">
-                <h2 class="heading-tertiary--main">My profile</h2>
-                <button type="button" class="btn btn--delete">
-                    <svg class="btn-delete__icon">
+            <section class="account__orders">
+                <div class="account__top">
+                    <h2 class="heading-tertiary--main">My orders</h2>
+                    <form action="#" class="sort__form">
+                        <label class="sort__label" for="orders"
+                            >Sort orders</label
+                        >
+                        <select class="sort__select" name="orders" id="orders">
+                            <option value="All" selected>All</option>
+                            <option value="Canceled">Canceled</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="In progress">In progress</option>
+                        </select>
+                        <button type="button" class="sort__btn">
+                            <svg class="input__icon input__icon--medium">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                ></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <ul class="order__accordion">
+                    <li class="order__panel u-padding-top">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id"># 34BV66580K92</p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">September 9, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--progress"
+                                >
+                                    In progress
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;750.00</p>
+                            </li>
+                            <li class="order__item">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="order__panel order__panel--open">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id order__id--open">
+                                    # 50HV46580V84
+                                </p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">August 29, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--progress"
+                                >
+                                    In progress
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;230.00</p>
+                            </li>
+                            <li class="order__item">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#minus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                        <ul
+                            class="order__accordion u-margin-top-medium order__accordion--inner"
+                        >
+                            <li class="order__inner-items">
+                                <ul
+                                    class="order__details order__details--top order__details--item"
+                                >
+                                    <li class="order__inner-item">
+                                        <img
+                                            class="order__img"
+                                            src="../src/assets/images/order-item-1.png"
+                                            alt="sweatshirt"
+                                        />
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <a href="#" class="order__name">
+                                            Basic hooded sweatshirt in pink
+                                        </a>
+                                        <p class="order__color">
+                                            Color:
+                                            <span class="order__color-value"
+                                                >pink</span
+                                            >
+                                        </p>
+                                        <p class="order__size">
+                                            Size:
+                                            <span class="order__size-value"
+                                                >S</span
+                                            >
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__price-head">Price:</p>
+                                        <p class="order__price-value">
+                                            &dollar;15.50
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__quantity-head">
+                                            Quantity:
+                                        </p>
+                                        <p class="order__quantity-value">1</p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__subtotal-head">
+                                            Subtotal:
+                                        </p>
+                                        <p class="order__subtotal-value">
+                                            &dollar;15.50
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="order__inner-items">
+                                <ul class="order__details order__details--item">
+                                    <li class="order__inner-item">
+                                        <img
+                                            class="order__img"
+                                            src="../src/assets/images/order-item-2.png"
+                                            alt="Cap"
+                                        />
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <a href="#" class="order__name">
+                                            Black and white sport cap
+                                        </a>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__price-head">Price:</p>
+                                        <p class="order__price-value">
+                                            &dollar;18.15
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__quantity-head">
+                                            Quantity:
+                                        </p>
+                                        <p class="order__quantity-value">1</p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__subtotal-head">
+                                            Subtotal:
+                                        </p>
+                                        <p class="order__subtotal-value">
+                                            &dollar;18.15
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="order__inner-items">
+                                <ul class="order__details order__details--item">
+                                    <li class="order__inner-item">
+                                        <img
+                                            class="order__img"
+                                            src="../src/assets/images/order-item-3.png"
+                                            alt="Jeans"
+                                        />
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <a href="#" class="order__name">
+                                            Mid-rise slim cropped fit jeans
+                                        </a>
+                                        <p class="order__size">
+                                            Size:
+                                            <span class="order__size-value"
+                                                >M</span
+                                            >
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__price-head">Price:</p>
+                                        <p class="order__price-value">
+                                            &dollar;40.00
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__quantity-head">
+                                            Quantity:
+                                        </p>
+                                        <p class="order__quantity-value">2</p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__subtotal-head">
+                                            Subtotal:
+                                        </p>
+                                        <p class="order__subtotal-value">
+                                            &dollar;80.00
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="order__inner-items">
+                                <ul class="order__details order__details--item">
+                                    <li class="order__inner-item">
+                                        <img
+                                            class="order__img"
+                                            src="../src/assets/images/order-item-4.png"
+                                            alt="shoes"
+                                        />
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <a href="#" class="order__name">
+                                            Men fashion gray shoes
+                                        </a>
+                                        <p class="order__color">
+                                            Color:
+                                            <span class="order__color-value"
+                                                >gray</span
+                                            >
+                                        </p>
+                                        <p class="order__size">
+                                            Size:
+                                            <span class="order__size-value"
+                                                >44</span
+                                            >
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__price-head">Price:</p>
+                                        <p class="order__price-value">
+                                            &dollar;85.00
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__quantity-head">
+                                            Quantity:
+                                        </p>
+                                        <p class="order__quantity-value">1</p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex"
+                                    >
+                                        <p class="order__subtotal-head">
+                                            Subtotal:
+                                        </p>
+                                        <p class="order__subtotal-value">
+                                            &dollar;85.00
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="order__inner-items">
+                                <ul
+                                    class="order__details order__details--bottom"
+                                >
+                                    <li
+                                        class="order__inner-item order__inner-item--flex-row"
+                                    >
+                                        <p
+                                            class="order__value-name order__stotal"
+                                        >
+                                            Subtotal:
+                                        </p>
+                                        <p
+                                            class="order__value order__stotal-value"
+                                        >
+                                            &dollar;85.00
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex-row"
+                                    >
+                                        <p
+                                            class="order__value-name order__shipping"
+                                        >
+                                            Shipping:
+                                        </p>
+                                        <p
+                                            class="order__value order__shipping-value"
+                                        >
+                                            &dollar;25.00
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex-row"
+                                    >
+                                        <p class="order__value-name order__tax">
+                                            Tax:
+                                        </p>
+                                        <p
+                                            class="order__value order__tax-value"
+                                        >
+                                            &dollar;6.35
+                                        </p>
+                                    </li>
+                                    <li
+                                        class="order__inner-item order__inner-item--flex-row"
+                                    >
+                                        <p
+                                            class="order__value-name order__total"
+                                        >
+                                            Total:
+                                        </p>
+                                        <p
+                                            class="order__value order__total-value"
+                                        >
+                                            &dollar;230.00
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="order__track-box">
+                            <p class="order__track-cta">
+                                You can track your order here
+                            </p>
+                            <a
+                                href="#"
+                                class="order__track-link btn btn--small btn--outline"
+                                >Order tracking</a
+                            >
+                        </div>
+                    </li>
+                    <li class="order__panel">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id order__id--open">
+                                    # 93BR64523J71
+                                </p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">August 4, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--delivered"
+                                >
+                                    Delivered
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;92.40</p>
+                            </li>
+                            <li class="order__item">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="order__panel">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id order__id--open">
+                                    # 66TU12580L11
+                                </p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">July 27, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--canceled"
+                                >
+                                    Canceled
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;102.95</p>
+                            </li>
+                            <li class="order__item">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#minus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="order__panel">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id order__id--open">
+                                    # 12WE95534P90
+                                </p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">July 12, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--delivered"
+                                >
+                                    Delivered
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;267.00</p>
+                            </li>
+                            <li class="order__item order__item--btn">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="order__panel">
+                        <ul class="order__panel-list">
+                            <li class="order__item">
+                                <p class="order__id order__id--open">
+                                    # 47IK678871Y45
+                                </p>
+                            </li>
+                            <li class="order__item order__item--date">
+                                <svg class="order__icon-clock">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#clock"
+                                    ></use>
+                                </svg>
+                                <p class="order__date">June 5, 2020</p>
+                            </li>
+                            <li class="order__item">
+                                <p
+                                    class="order__status order__status--delivered"
+                                >
+                                    Delivered
+                                </p>
+                            </li>
+                            <li class="order__item">
+                                <p class="order__price">&dollar;19.50</p>
+                            </li>
+                            <li class="order__item">
+                                <button class="order__btn">
+                                    <svg class="order__btn-plus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="order__btn-load">
+                    <svg class="order__btn-load-icon">
                         <use
-                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                            xlink:href="../src/assets/svg/sprite.svg#convert"
                         ></use>
                     </svg>
-                    Delete account
+                    Load more
                 </button>
-                <form action="#" class="account__form">
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="first-name"
-                            >First name</label
-                        >
-                        <input
-                            class="input input--large input--half"
-                            type="text"
-                            name="first-name"
-                            id="first-name"
-                            value="Annette"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="last-name"
-                            >Last name</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="last-name"
-                            id="last-name"
-                            value="Black"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-email"
-                            >Email</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="email"
-                            name="profile-email"
-                            id="profile-email"
-                            value="annetteb@example.com"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="phone"
-                            >Phone</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="tel"
-                            name="phone"
-                            id="phone"
-                            value="(629) 555-0129"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-new-pass"
-                            >New Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-new-pass"
-                            id="profile-new-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
-                            >
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label
-                            class="label label--large"
-                            for="profile-confirm-pass"
-                            >Confirm Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-confirm-pass"
-                            id="profile-confirm-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
-                            >
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="country"
-                            >Country</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="country"
-                            id="country"
-                        >
-                            <option value="Poland">Poland</option>
-                            <option value="UK">UK</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="USA" selected>USA</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="city"
-                            >City</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="city"
-                            id="city"
-                        >
-                            <option value="Chicago">Chicago</option>
-                            <option value="Dallas">Dallas</option>
-                            <option value="New Jersey" selected>
-                                New Jersey
-                            </option>
-                            <option value="San Francisco">San Francisco</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="address"
-                            >Address</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="address"
-                            id="address"
-                            value="2464 Royal Ln. Mesa, New Jersey"
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="code"
-                            >ZIP Code</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="code"
-                            id="code"
-                            value="45463"
-                        />
-                    </div>
-                    <button
-                        class="btn btn--solid btn--large u-margin-top-large"
-                        type="submit"
-                    >
-                        Save changes
-                    </button>
-                </form>
             </section>
         </main>
 
