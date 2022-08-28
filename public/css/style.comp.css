@@ -738,6 +738,25 @@ body {
   fill: #787a80;
 }
 
+.btn-load {
+  margin: 6.3rem auto 0;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: 700;
+  color: #424551;
+  cursor: pointer;
+  background-color: transparent;
+}
+.btn-load__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: #424551;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -1575,23 +1594,108 @@ body {
 .order__track-link:link, .order__track-link:visited {
   text-decoration: none;
 }
-.order__btn-load {
-  margin: 6.3rem auto 0;
+
+.review {
+  list-style: none;
   display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  border: none;
+  flex-direction: column;
+  margin-bottom: 6rem;
+}
+.review__block:not(:last-child) {
+  border-bottom: 1px solid #e5e8ed;
+  padding-bottom: 2.8rem;
+}
+.review__block:not(:first-child) {
+  padding-top: 2.8rem;
+}
+.review__for-product {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #787a80;
+  margin-bottom: 2rem;
+  grid-column: 1/-1;
+}
+.review__link:link, .review__link:visited {
+  text-decoration: none;
+  color: #17696a;
   font-size: 1.6rem;
   line-height: 1.6;
   font-weight: 700;
-  color: #424551;
-  cursor: pointer;
-  background-color: transparent;
+  transition: all 0.5s;
 }
-.order__btn-load-icon {
-  width: 2.4rem;
-  height: 2.4rem;
-  fill: #424551;
+.review__link:hover, .review__link:active {
+  color: rgba(23, 105, 106, 0.8);
+}
+.review__info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.review__user {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+.review__day {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #787a80;
+  margin-bottom: 1.6rem;
+}
+.review__rating {
+  display: flex;
+  gap: 0.2rem;
+  cursor: pointer;
+}
+.review__rating-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: #f89828;
+}
+.review__rating-icon--outline {
+  fill: #b3b7bc;
+}
+.review__text {
+  width: 63rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #424551;
+  grid-column: 2/-1;
+}
+.review__vote {
+  grid-row: 3/-1;
+  grid-column: 1/-1;
+  justify-self: end;
+  display: flex;
+  gap: 1.6rem;
+}
+.review__vote-btn {
+  font-family: inherit;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #787a80;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.review__vote-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.review__vote-icon--like {
+  fill: #03cea4;
+}
+.review__vote-icon--dislike {
+  fill: #ff4242;
 }
 
 .services__list {
@@ -1780,6 +1884,9 @@ body {
 .grid--col-3 {
   grid-template-columns: repeat(3, min-content);
   column-gap: 3rem;
+}
+.grid--col-3-fix {
+  grid-template-columns: 18rem 54rem 9rem;
 }
 .grid--col-4 {
   grid-template-columns: repeat(4, min-content);
@@ -2163,6 +2270,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+}
+.account__reviews {
+  margin-bottom: 6rem;
 }
 
 .top-categories {

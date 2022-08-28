@@ -237,22 +237,4 @@
             }
         }
     }
-
-    &__btn-load {
-        margin: 6.3rem auto 0;
-        display: flex;
-        align-items: center;
-        gap: 1.6rem;
-        border: none;
-        font-size: 1.6rem;
-        line-height: 1.6;
-        font-weight: 700;
-        color: $color-gray-dark-2;
-        cursor: pointer;
-        background-color: transparent;
-
-        &-icon {
-            @include icon-medium($color: $color-gray-dark-2);
-        }
-    }
 }
