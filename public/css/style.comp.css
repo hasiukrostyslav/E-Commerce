@@ -805,6 +805,9 @@ body {
   height: 1.6rem;
   fill: #424551;
 }
+.card__icon--filled {
+  fill: #17696a;
+}
 .card__heading:link, .card__heading:visited {
   display: inline-block;
   font-size: 1.8rem;
@@ -1132,6 +1135,9 @@ body {
 }
 .color__type--blue-gray {
   background-color: #c0dded;
+}
+.color__type--red-dark {
+  background-color: #6b3a44;
 }
 
 .label {
@@ -2126,6 +2132,9 @@ body {
   display: flex;
   gap: 13.5rem;
 }
+.account-main--pad-sm {
+  padding-bottom: 7.2rem;
+}
 .account__profile {
   width: 81rem;
   position: relative;
@@ -2142,6 +2151,10 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+.account__wishlist {
+  display: flex;
+  gap: 3rem;
 }
 
 .top-categories {

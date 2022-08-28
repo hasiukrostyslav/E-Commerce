@@ -3,6 +3,10 @@
         padding: 4rem 0 18rem;
         display: flex;
         gap: 13.5rem;
+
+        &--pad-sm {
+            padding-bottom: 7.2rem;
+        }
     }
 
     &__profile {
@@ -24,5 +28,10 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+    }
+
+    &__wishlist {
+        display: flex;
+        gap: 3rem;
     }
 }
