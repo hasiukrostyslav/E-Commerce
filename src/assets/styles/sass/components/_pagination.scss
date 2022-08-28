@@ -1,0 +1,21 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+
+    &__btn {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        color: $color-gray-dark-2;
+        border: none;
+        background-color: transparent;
+
+        &--current {
+            color: $color-primary;
+        }
+    }
+
+    &__icon {
+        @include icon-medium($color: $color-gray-dark-2);
+    }
+}

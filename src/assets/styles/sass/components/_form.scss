@@ -73,6 +73,38 @@
     }
 }
 
+// Checkbox button
+.tag {
+    &__checkbox-container {
+        display: flex;
+        gap: 1.2rem;
+        margin-bottom: 3.2rem;
+    }
+
+    &__checkbox-btn {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &__checkbox-btn-label {
+        display: inline-block;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        font-weight: 700;
+        color: $color-gray-dark-3;
+        padding: 0.55rem 1.6rem;
+        border: 1px solid $color-gray-light-4;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    &__checkbox-btn:checked + label {
+        color: $color-white;
+        background-color: $color-primary;
+        border: 1px solid $color-primary;
+    }
+}
 // RADIO BUTTON
 // Size
 .size {
@@ -404,5 +436,62 @@
         top: 1.4rem;
         right: 1.6rem;
         background-color: transparent;
+    }
+}
+
+// Search input
+
+.search {
+    flex: 0 0 38rem;
+    margin-right: 4.8rem;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &--sidebar {
+        padding-bottom: 3.2rem;
+        border-bottom: 1px solid $color-gray-light-3;
+    }
+
+    &__input {
+        font-family: inherit;
+        color: $color-gray-dark-2;
+        font-size: 1.4rem;
+        width: 100%;
+        padding: 1.2rem 3.6rem 1.2rem 1.6rem;
+        border: 1px solid $color-gray-light-4;
+        border-radius: 4px;
+
+        &:focus {
+            outline: none;
+            border: 1px solid rgba($color-primary, 0.4);
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-gray-dark-4;
+            font-weight: 400;
+        }
+    }
+
+    &__button {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.6rem;
+        border: none;
+        background-color: $color-white;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: $color-gray-dark-2;
     }
 }

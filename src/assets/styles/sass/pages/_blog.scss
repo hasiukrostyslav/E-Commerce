@@ -1,0 +1,17 @@
+.blog-pg {
+    padding: 3.2rem 0 18rem;
+    display: flex;
+    gap: 7.8rem;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5.8rem;
+        margin-bottom: 6rem;
+    }
+
+    &__sidebar {
+        width: 100%;
+    }
+}

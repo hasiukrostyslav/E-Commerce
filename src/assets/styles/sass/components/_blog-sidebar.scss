@@ -1,0 +1,88 @@
+.sidebar {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__box {
+        padding: 3.2rem 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-gray-light-3;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+
+        &--row {
+            flex-direction: row;
+        }
+        &--col {
+            flex-direction: column;
+        }
+
+        &--gap-sm {
+            gap: 0.8rem;
+        }
+        &--gap-md {
+            gap: 1.2rem;
+        }
+        &--gap-lg {
+            gap: 2.4rem;
+        }
+    }
+
+    &__item {
+        display: flex;
+
+        &--horizontal {
+            justify-content: space-between;
+        }
+    }
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            font-weight: 700;
+            color: $color-gray-dark-2;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+        }
+
+        &--regular {
+            &:link,
+            &:visited {
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 4px;
+        margin-right: 2rem;
+    }
+
+    &__date {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        color: $color-gray-dark-3;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        margin-bottom: 0.4rem;
+    }
+
+    &__checkbox {
+        flex-wrap: wrap;
+    }
+}

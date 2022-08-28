@@ -10,35 +10,6 @@
         align-items: flex-start;
     }
 
-    &__checkbox-container {
-        display: flex;
-        gap: 1.2rem;
-        margin-bottom: 3.2rem;
-    }
-
-    &__checkbox-btn {
-        position: absolute;
-        visibility: hidden;
-        opacity: 0;
-    }
-
-    &__checkbox-btn-label {
-        font-size: 1.4rem;
-        line-height: 1.5;
-        font-weight: 700;
-        color: $color-gray-dark-3;
-        padding: 0.55rem 1.6rem;
-        border: 1px solid $color-gray-light-4;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    &__checkbox-btn:checked + label {
-        color: $color-white;
-        background-color: $color-primary;
-        border: 1px solid $color-primary;
-    }
-
     &__email-label {
         display: block;
         font-size: 1.6rem;
