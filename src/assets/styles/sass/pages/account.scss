@@ -34,4 +34,10 @@
         display: flex;
         gap: 3rem;
     }
+
+    &__viewed {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
 }
