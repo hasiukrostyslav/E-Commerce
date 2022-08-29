@@ -105,6 +105,11 @@ body {
         color: $color-gray-dark-3;
     }
 
+    &--description-main {
+        font-weight: 700;
+        color: $color-primary;
+    }
+
     &--item {
         font-size: 1.4rem;
         line-height: 1.5;

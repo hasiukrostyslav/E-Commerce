@@ -64,6 +64,12 @@
             align-items: center;
             gap: 0.8rem;
         }
+
+        &--top {
+            &:not(:last-child)::after {
+                top: 0.3rem;
+            }
+        }
     }
 
     &__icon {
