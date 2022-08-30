@@ -57,5 +57,10 @@
 
 .u-order-first {
     order: -1;
-    justify-self: end;
+    margin-right: 2rem;
+    text-align: right;
+}
+
+.u-right {
+    justify-content: flex-end;
 }
