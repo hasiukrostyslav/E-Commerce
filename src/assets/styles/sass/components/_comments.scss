@@ -1,17 +1,38 @@
-.review {
+.comment {
     list-style: none;
     display: flex;
     flex-direction: column;
     margin-bottom: 6rem;
 
     &__block {
-        &:not(:last-child) {
-            border-bottom: 1px solid $color-gray-light-3;
-            padding-bottom: 2.8rem;
-        }
+        &--sm {
+            &:not(:last-child) {
+                padding-bottom: 3rem;
+            }
 
-        &:not(:first-child) {
-            padding-top: 2.8rem;
+            &:not(:first-child) {
+                padding-top: 3rem;
+            }
+        }
+        &--md {
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-gray-light-3;
+                padding-bottom: 2.8rem;
+            }
+
+            &:not(:first-child) {
+                padding-top: 2.8rem;
+            }
+        }
+        &--lg {
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-gray-light-3;
+                padding-bottom: 3.2rem;
+            }
+
+            &:not(:first-child) {
+                padding-top: 3.2rem;
+            }
         }
     }
 
@@ -46,7 +67,6 @@
         flex-direction: column;
         justify-content: flex-start;
         grid-column: 1 / 2;
-        grid-row: 2 / 3;
     }
 
     &__user {
@@ -85,27 +105,33 @@
         line-height: 1.6;
         color: $color-gray-dark-2;
         grid-column: 2 / -1;
+
+        &--tag {
+            color: $color-primary;
+            cursor: pointer;
+            font-weight: 700;
+        }
+    }
+
+    &__vote-btn,
+    &__reply-btn {
+        font-family: inherit;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-3;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 
     &__vote {
-        grid-row: 3 / -1;
-        grid-column: 1 / -1;
+        grid-column: 3 / -1;
         justify-self: end;
         display: flex;
         gap: 1.6rem;
-
-        &-btn {
-            font-family: inherit;
-            font-size: 1.4rem;
-            line-height: 1.5;
-            color: $color-gray-dark-3;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-        }
 
         &-icon {
             width: 1.6rem;
@@ -117,6 +143,17 @@
             &--dislike {
                 fill: $color-secondary;
             }
+        }
+    }
+
+    &__reply {
+        &-btn {
+            grid-column: 2 / 3;
+            justify-self: start;
+        }
+        &-icon {
+            @include icon-small($color: $color-gray-dark-3);
+            transform: matrix(-1, 0, 0, 1, 0, 0);
         }
     }
 }

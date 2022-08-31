@@ -68,7 +68,6 @@ body {
 }
 .heading-secondary--low {
   text-transform: lowercase;
-  text-align: center;
 }
 
 .heading-tertiary--main {
@@ -168,7 +167,7 @@ body {
 }
 
 .u-margin-top-medium {
-  margin-top: 2.4rem;
+  margin-top: 2.4rem !important;
 }
 
 .u-margin-bottom-small-1 {
@@ -188,7 +187,7 @@ body {
 }
 
 .u-margin-bottom-large {
-  margin-bottom: 4.8rem;
+  margin-bottom: 4.8rem !important;
 }
 
 .u-margin-top-large {
@@ -606,6 +605,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
+  letter-spacing: 0.5px;
 }
 .btn--large {
   font-size: 1.6rem;
@@ -1032,20 +1032,33 @@ body {
   height: 2.4rem;
   fill: #424551;
 }
-.review {
+.comment {
   list-style: none;
   display: flex;
   flex-direction: column;
   margin-bottom: 6rem;
 }
-.review__block:not(:last-child) {
+.comment__block--sm:not(:last-child) {
+  padding-bottom: 3rem;
+}
+.comment__block--sm:not(:first-child) {
+  padding-top: 3rem;
+}
+.comment__block--md:not(:last-child) {
   border-bottom: 1px solid #e5e8ed;
   padding-bottom: 2.8rem;
 }
-.review__block:not(:first-child) {
+.comment__block--md:not(:first-child) {
   padding-top: 2.8rem;
 }
-.review__for-product {
+.comment__block--lg:not(:last-child) {
+  border-bottom: 1px solid #e5e8ed;
+  padding-bottom: 3.2rem;
+}
+.comment__block--lg:not(:first-child) {
+  padding-top: 3.2rem;
+}
+.comment__for-product {
   display: flex;
   gap: 0.8rem;
   font-size: 1.6rem;
@@ -1054,7 +1067,7 @@ body {
   margin-bottom: 2rem;
   grid-column: 1/-1;
 }
-.review__link:link, .review__link:visited {
+.comment__link:link, .comment__link:visited {
   text-decoration: none;
   color: #17696a;
   font-size: 1.6rem;
@@ -1062,57 +1075,54 @@ body {
   font-weight: 700;
   transition: all 0.5s;
 }
-.review__link:hover, .review__link:active {
+.comment__link:hover, .comment__link:active {
   color: rgba(23, 105, 106, 0.8);
 }
-.review__info {
+.comment__info {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   grid-column: 1/2;
-  grid-row: 2/3;
 }
-.review__user {
+.comment__user {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 0.8rem;
 }
-.review__day {
+.comment__day {
   font-size: 1.4rem;
   line-height: 1.5;
   color: #787a80;
   margin-bottom: 1.6rem;
 }
-.review__rating {
+.comment__rating {
   display: flex;
   gap: 0.2rem;
   cursor: pointer;
 }
-.review__rating-icon {
+.comment__rating-icon {
   width: 1.4rem;
   height: 1.4rem;
   fill: #f89828;
 }
-.review__rating-icon--outline {
+.comment__rating-icon--outline {
   fill: #b3b7bc;
 }
-.review__text {
+.comment__text {
   width: 63rem;
   font-size: 1.6rem;
   line-height: 1.6;
   color: #424551;
   grid-column: 2/-1;
 }
-.review__vote {
-  grid-row: 3/-1;
-  grid-column: 1/-1;
-  justify-self: end;
-  display: flex;
-  gap: 1.6rem;
+.comment__text--tag {
+  color: #17696a;
+  cursor: pointer;
+  font-weight: 700;
 }
-.review__vote-btn {
+.comment__vote-btn, .comment__reply-btn {
   font-family: inherit;
   font-size: 1.4rem;
   line-height: 1.5;
@@ -1124,15 +1134,31 @@ body {
   border: none;
   cursor: pointer;
 }
-.review__vote-icon {
+.comment__vote {
+  grid-column: 3/-1;
+  justify-self: end;
+  display: flex;
+  gap: 1.6rem;
+}
+.comment__vote-icon {
   width: 1.6rem;
   height: 1.6rem;
 }
-.review__vote-icon--like {
+.comment__vote-icon--like {
   fill: #03cea4;
 }
-.review__vote-icon--dislike {
+.comment__vote-icon--dislike {
   fill: #ff4242;
+}
+.comment__reply-btn {
+  grid-column: 2/3;
+  justify-self: start;
+}
+.comment__reply-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #787a80;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .cta__flex {
@@ -1635,6 +1661,23 @@ body {
   fill: #424551;
 }
 
+.form__header-grid {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+.form__btn-grid {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+.form__textarea-box {
+  grid-column: 1/-1;
+  margin-bottom: 4.8rem;
+}
+.form__textarea {
+  resize: none;
+  height: 10rem;
+}
+
 .modal {
   position: relative;
   padding: 4.8rem;
@@ -2077,6 +2120,10 @@ body {
 }
 .grid--col-2 {
   grid-template-columns: repeat(2, min-content);
+  column-gap: 3rem;
+}
+.grid--col-2-fix {
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 3rem;
 }
 .grid--col-3 {
@@ -2577,6 +2624,9 @@ body {
 }
 .post__comments {
   margin-top: 12rem;
+  margin-bottom: 12rem;
+}
+.post__form {
   margin-bottom: 12rem;
 }
 

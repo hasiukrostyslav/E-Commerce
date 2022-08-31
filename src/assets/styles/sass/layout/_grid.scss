@@ -7,6 +7,11 @@
         column-gap: 3rem;
     }
 
+    &--col-2-fix {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+    }
+
     &--col-3 {
         grid-template-columns: repeat(3, min-content);
         column-gap: 3rem;

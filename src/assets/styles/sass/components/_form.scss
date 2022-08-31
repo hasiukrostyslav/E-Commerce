@@ -495,3 +495,26 @@
         fill: $color-gray-dark-2;
     }
 }
+
+// Grid Form
+.form {
+    &__header-grid {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    &__btn-grid {
+        grid-column: 1 /-1;
+        justify-self: center;
+    }
+
+    &__textarea-box {
+        grid-column: 1 / -1;
+        margin-bottom: 4.8rem;
+    }
+
+    &__textarea {
+        resize: none;
+        height: 10rem;
+    }
+}
