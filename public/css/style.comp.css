@@ -2735,6 +2735,43 @@ body {
   justify-self: start;
 }
 
+.faq {
+  width: 81rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.faq__panel {
+  position: relative;
+}
+.faq__panel:not(:last-child) {
+  border-bottom: 1px solid #e5e8ed;
+  padding-bottom: 2rem;
+}
+.faq__panel:not(:first-child) {
+  padding-top: 2rem;
+}
+.faq__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.faq__text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #787a80;
+}
+.faq__btn {
+  position: absolute;
+  right: 0;
+}
+.faq__btn--first {
+  top: 0.5rem;
+}
+.faq__btn--rest {
+  top: 2.5rem;
+}
+
 .top-categories {
   display: flex;
   justify-content: center;

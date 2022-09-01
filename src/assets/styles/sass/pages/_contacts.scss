@@ -108,3 +108,48 @@
         justify-self: start;
     }
 }
+
+.faq {
+    width: 81rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    &__panel {
+        position: relative;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-gray-light-3;
+            padding-bottom: 2rem;
+        }
+
+        &:not(:first-child) {
+            padding-top: 2rem;
+        }
+    }
+
+    &__heading {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        color: $color-gray-dark-3;
+    }
+
+    &__btn {
+        position: absolute;
+        right: 0;
+
+        &--first {
+            top: 0.5rem;
+        }
+
+        &--rest {
+            top: 2.5rem;
+        }
+    }
+}
