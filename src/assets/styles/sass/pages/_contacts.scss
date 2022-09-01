@@ -1,0 +1,90 @@
+.contacts {
+    &__container {
+        margin-top: 3.2rem;
+        margin-bottom: 18rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__navbar {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: $color-gray-dark-3;
+            transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgba($color-primary, 0.8);
+        }
+
+        &--current {
+            &:link,
+            &:visited {
+                color: $color-primary;
+            }
+        }
+    }
+
+    &__form {
+        width: 81rem;
+        display: grid;
+    }
+
+    &__heading {
+        margin-bottom: 3.2rem;
+        grid-column: 1 / -1;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-bottom: 6rem;
+    }
+
+    &__type {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: $color-gray-dark-2;
+            transition: all 0.5s;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+        }
+    }
+
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        fill: $color-primary;
+    }
+
+    &__textarea {
+        height: 13rem;
+    }
+
+    &__btn {
+        justify-self: start;
+    }
+}

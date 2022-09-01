@@ -157,6 +157,12 @@ body {
   margin-bottom: 2.4rem;
 }
 
+.contacts__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .container {
   width: 123rem;
   margin: 0 auto;
@@ -2628,6 +2634,72 @@ body {
 }
 .post__form {
   margin-bottom: 12rem;
+}
+
+.contacts__container {
+  margin-top: 3.2rem;
+  margin-bottom: 18rem;
+  display: flex;
+  justify-content: space-between;
+}
+.contacts__navbar {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contacts__link:link, .contacts__link:visited {
+  text-decoration: none;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #787a80;
+  transition: all 0.5s;
+}
+.contacts__link:hover, .contacts__link:active {
+  color: rgba(23, 105, 106, 0.8);
+}
+.contacts__link--current:link, .contacts__link--current:visited {
+  color: #17696a;
+}
+.contacts__form {
+  width: 81rem;
+  display: grid;
+}
+.contacts__heading {
+  margin-bottom: 3.2rem;
+  grid-column: 1/-1;
+}
+.contacts__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 6rem;
+}
+.contacts__type:link, .contacts__type:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #424551;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.contacts__type:hover, .contacts__type:active {
+  color: #17696a;
+}
+.contacts__icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #17696a;
+}
+.contacts__textarea {
+  height: 13rem;
+}
+.contacts__btn {
+  justify-self: start;
 }
 
 .top-categories {
