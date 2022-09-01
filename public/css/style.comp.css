@@ -189,7 +189,7 @@ body {
 }
 
 .u-margin-bottom-medium-2 {
-  margin-bottom: 3.2rem;
+  margin-bottom: 3.2rem !important;
 }
 
 .u-margin-bottom-large {
@@ -1997,6 +1997,29 @@ body {
   margin-bottom: 2.4rem;
 }
 
+.store {
+  width: 81rem;
+  list-style: none;
+  row-gap: 4.8rem;
+}
+.store__card {
+  border: 1px solid #e5e8ed;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.store__card:hover {
+  box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.16), 0px 30px 24px -10px rgba(154, 156, 165, 0.1), 0px 12px 10px -6px rgba(154, 156, 165, 0.08), 0px 4px 4px -4px rgba(30, 33, 44, 0.05);
+}
+.store__city {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 2.4rem;
+}
+.store__list {
+  margin-left: 2.4rem;
+}
+
 .subscribe__flex-container {
   display: flex;
   justify-content: space-between;
@@ -2678,17 +2701,27 @@ body {
   margin-bottom: 6rem;
 }
 .contacts__type:link, .contacts__type:visited {
-  text-decoration: none;
   font-size: 1.6rem;
   line-height: 1.6;
-  color: #424551;
   transition: all 0.5s;
   display: flex;
   align-items: center;
   gap: 1.2rem;
 }
-.contacts__type:hover, .contacts__type:active {
+.contacts__type--regular:link, .contacts__type--regular:visited {
+  text-decoration: none;
+  color: #424551;
+  transition: all 0.5s;
+}
+.contacts__type--regular:hover, .contacts__type--regular:active {
   color: #17696a;
+}
+.contacts__type--location:link, .contacts__type--location:visited {
+  color: #17696a;
+  transition: all 0.5s;
+}
+.contacts__type--location:hover, .contacts__type--location:active {
+  color: rgba(23, 105, 106, 0.8);
 }
 .contacts__icon {
   width: 2rem;

@@ -58,19 +58,39 @@
     &__type {
         &:link,
         &:visited {
-            text-decoration: none;
             font-size: 1.6rem;
             line-height: 1.6;
-            color: $color-gray-dark-2;
             transition: all 0.5s;
             display: flex;
             align-items: center;
             gap: 1.2rem;
         }
 
-        &:hover,
-        &:active {
-            color: $color-primary;
+        &--regular {
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: $color-gray-dark-2;
+                transition: all 0.5s;
+            }
+
+            &:hover,
+            &:active {
+                color: $color-primary;
+            }
+        }
+
+        &--location {
+            &:link,
+            &:visited {
+                color: $color-primary;
+                transition: all 0.5s;
+            }
+
+            &:hover,
+            &:active {
+                color: rgba($color-primary, 0.8);
+            }
         }
     }
 
