@@ -43,4 +43,31 @@
             fill: $color-gray-dark-4;
         }
     }
+
+    &__catalog {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__catalog-list {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__catalog-item {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+    }
+
+    &__catalog-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
 }
