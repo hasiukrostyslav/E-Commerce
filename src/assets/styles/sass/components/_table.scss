@@ -1,0 +1,105 @@
+.table {
+    flex-basis: 66.5rem;
+    border-collapse: collapse;
+    // border: 1px solid #333;
+
+    &__row {
+        &:not(:last-child) {
+            border-bottom: thin solid $color-gray-light-3;
+        }
+
+        &--head {
+            border-bottom: thin solid $color-gray-light-3;
+        }
+    }
+
+    &--width {
+        width: 21rem;
+    }
+
+    &__heading {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: start;
+        height: 3.7rem;
+        vertical-align: top;
+
+        &:nth-child(3) {
+            width: 17rem;
+        }
+    }
+
+    &__data {
+        font-size: 1.6rem;
+        line-height: 1;
+        height: 6.6rem;
+        position: relative;
+
+        &--first {
+            &::after {
+                position: absolute;
+                content: '';
+                top: 4.2rem;
+                left: -2.85rem;
+                width: 1px;
+                height: 5rem;
+                background-color: $color-primary;
+            }
+        }
+
+        &--done {
+            color: $color-gray-dark-2;
+        }
+        &--no-done {
+            color: $color-gray-dark-4;
+        }
+    }
+
+    &__circle {
+        &::before {
+            position: absolute;
+            content: '';
+            top: 2.9rem;
+            left: -3.2rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        &--y {
+            &::before {
+                background-color: $color-primary;
+            }
+        }
+
+        &--n {
+            &::before {
+                background-color: $color-gray-dark-4;
+            }
+        }
+    }
+
+    &__line {
+        &::after {
+            position: absolute;
+            content: '';
+            top: 4.2rem;
+            left: -2.85rem;
+            width: 1px;
+            height: 5rem;
+        }
+
+        &--y {
+            &::after {
+                background-color: $color-primary;
+            }
+        }
+
+        &--n {
+            &::after {
+                background-color: $color-gray-dark-4;
+            }
+        }
+    }
+}

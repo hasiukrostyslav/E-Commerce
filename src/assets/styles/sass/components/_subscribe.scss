@@ -39,6 +39,10 @@
         line-height: 1.5;
         color: $color-gray-dark-2;
 
+        &--md {
+            width: 100%;
+        }
+
         &:focus {
             outline: none;
             border: 1px solid $color-primary;

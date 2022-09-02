@@ -2055,6 +2055,9 @@ body {
   line-height: 1.5;
   color: #424551;
 }
+.subscribe__email-input--md {
+  width: 100%;
+}
 .subscribe__email-input:focus {
   outline: none;
   border: 1px solid #17696a;
@@ -2065,6 +2068,81 @@ body {
 .subscribe__img {
   width: 46.1rem;
   transform: scaleX(-1);
+}
+
+.table {
+  flex-basis: 66.5rem;
+  border-collapse: collapse;
+}
+.table__row:not(:last-child) {
+  border-bottom: thin solid #e5e8ed;
+}
+.table__row--head {
+  border-bottom: thin solid #e5e8ed;
+}
+.table--width {
+  width: 21rem;
+}
+.table__heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: start;
+  height: 3.7rem;
+  vertical-align: top;
+}
+.table__heading:nth-child(3) {
+  width: 17rem;
+}
+.table__data {
+  font-size: 1.6rem;
+  line-height: 1;
+  height: 6.6rem;
+  position: relative;
+}
+.table__data--first::after {
+  position: absolute;
+  content: "";
+  top: 4.2rem;
+  left: -2.85rem;
+  width: 1px;
+  height: 5rem;
+  background-color: #17696a;
+}
+.table__data--done {
+  color: #424551;
+}
+.table__data--no-done {
+  color: #9a9ca5;
+}
+.table__circle::before {
+  position: absolute;
+  content: "";
+  top: 2.9rem;
+  left: -3.2rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.table__circle--y::before {
+  background-color: #17696a;
+}
+.table__circle--n::before {
+  background-color: #9a9ca5;
+}
+.table__line::after {
+  position: absolute;
+  content: "";
+  top: 4.2rem;
+  left: -2.85rem;
+  width: 1px;
+  height: 5rem;
+}
+.table__line--y::after {
+  background-color: #17696a;
+}
+.table__line--n::after {
+  background-color: #9a9ca5;
 }
 
 .footer__flex {
@@ -2922,6 +3000,52 @@ body {
 
 .footer {
   background-color: #1e212c;
+}
+
+.track {
+  margin-top: 3.2rem;
+  margin-bottom: 18rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 55.5rem;
+}
+.track__sidebar {
+  flex-basis: 39rem;
+}
+.track__text {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #787a80;
+  margin-bottom: 3.2rem;
+}
+.track__info-list {
+  list-style: none;
+  border: 1px solid #e5e8ed;
+  border-radius: 4px;
+  padding: 2.4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08), 0px 30px 24px -10px rgba(154, 156, 165, 0.05), 0px 12px 10px -6px rgba(154, 156, 165, 0.04), 0px 4px 4px -4px rgba(30, 33, 44, 0.03);
+}
+.track__info-item {
+  display: flex;
+  gap: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+.track__info {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+.track__info--title {
+  color: #424551;
+  font-weight: 700;
+  width: 10.7rem;
+}
+.track__info--data {
+  color: #787a80;
+}
+.track__table {
+  margin-top: 1.6rem;
 }
 
 /*# sourceMappingURL=style.comp.css.map */

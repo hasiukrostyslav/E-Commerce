@@ -486,6 +486,221 @@
             </div>
         </section>
 
+        <main class="track container">
+            <aside class="track__sidebar">
+                <h2 class="heading-secondary u-margin-bottom-medium">
+                    Track your order
+                </h2>
+                <p class="track__text">
+                    This form allows you to search for tracking details from
+                    anywhere within Createx Tracking Service.
+                </p>
+                <form class="track__form">
+                    <label class="subscribe__email-label" for="order"
+                        >Order No</label
+                    >
+                    <div
+                        class="subscribe__input-container u-margin-bottom-large"
+                    >
+                        <input
+                            class="subscribe__email-input subscribe__email-input--md"
+                            type="text"
+                            name="order"
+                            id="order-sb"
+                            placeholder="Order number"
+                            required
+                            value="# 34BV66580K92"
+                        />
+                        <input
+                            type="submit"
+                            class="btn btn--solid btn--large"
+                            value="Search"
+                        />
+                    </div>
+
+                    <ul class="track__info-list">
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Order No:
+                            </p>
+                            <p class="track__info track__info--data">
+                                34BV66580K92
+                            </p>
+                        </li>
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Shiped via:
+                            </p>
+                            <p class="track__info track__info--data">
+                                UPS Ground
+                            </p>
+                        </li>
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Shipped on:
+                            </p>
+                            <p class="track__info track__info--data">
+                                August 29, 2020, 6:00 pm
+                            </p>
+                        </li>
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Destination:
+                            </p>
+                            <p class="track__info track__info--data">
+                                London, United Kingdom
+                            </p>
+                        </li>
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Expected date:
+                            </p>
+                            <p class="track__info track__info--data">
+                                September 4, 2020
+                            </p>
+                        </li>
+                        <li class="track__info-item">
+                            <p class="track__info track__info--title">
+                                Status:
+                            </p>
+                            <p class="track__info track__info--data">
+                                In Transit
+                            </p>
+                        </li>
+                    </ul>
+
+                    <div class="checkbox">
+                        <input
+                            class="checkbox__input"
+                            type="checkbox"
+                            name="mark"
+                            id="mark"
+                            checked
+                        />
+                        <label
+                            class="checkbox__label checkbox__label--large"
+                            for="mark"
+                        >
+                            <span class="checkbox__mark">&nbsp;</span>
+                            Notify me when order is delivered
+                        </label>
+                    </div>
+                </form>
+            </aside>
+            <table class="track__table table">
+                <thead class="table__head">
+                    <tr class="table__row table__row--head">
+                        <th class="table__heading table--width">Status</th>
+                        <th class="table__heading table--width">Location</th>
+                        <th class="table__heading">Date</th>
+                        <th class="table__heading">Time</th>
+                    </tr>
+                </thead>
+                <tbody class="table__body">
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
+                        >
+                            Order Placed
+                        </td>
+                        <td class="table__data table__data--done">
+                            New York, USA
+                        </td>
+                        <td class="table__data table__data--done">
+                            August 29, 2020
+                        </td>
+                        <td class="table__data table__data--done">2:00 pm</td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
+                        >
+                            Documentation Prepared
+                        </td>
+                        <td class="table__data table__data--done">
+                            New York, USA
+                        </td>
+                        <td class="table__data table__data--done">
+                            August 29, 2020
+                        </td>
+                        <td class="table__data table__data--done">3:30 pm</td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
+                        >
+                            Booking Arranged
+                        </td>
+                        <td class="table__data table__data--done">
+                            New York, USA
+                        </td>
+                        <td class="table__data table__data--done">
+                            August 29, 2020
+                        </td>
+                        <td class="table__data table__data--done">3:35 pm</td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
+                        >
+                            Collected
+                        </td>
+                        <td class="table__data table__data--done">
+                            New York, USA
+                        </td>
+                        <td class="table__data table__data--done">
+                            August 29, 2020
+                        </td>
+                        <td class="table__data table__data--done">4:00 pm</td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--done table__circle table__circle--y table__line table__line--n"
+                        >
+                            In Transit to Destination
+                        </td>
+                        <td class="table__data table__data--done">
+                            New York, USA
+                        </td>
+                        <td class="table__data table__data--done">
+                            August 29, 2020
+                        </td>
+                        <td class="table__data table__data--done">6:00 pm</td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n"
+                        >
+                            Arrived at Destination
+                        </td>
+                        <td class="table__data table__data--no-done">
+                            London, United Kingdom
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n"
+                        >
+                            Out for Delivery
+                        </td>
+                        <td class="table__data table__data--no-done">
+                            London, United Kingdom
+                        </td>
+                    </tr>
+                    <tr class="table__row">
+                        <td
+                            class="table__data table__data--no-done table__circle table__circle--n"
+                        >
+                            Delivered
+                        </td>
+                        <td class="table__data table__data--no-done">
+                            London, United Kingdom
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
         <footer class="footer">
             <div class="footer__navigation">
                 <div class="container footer__flex">
