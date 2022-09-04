@@ -652,7 +652,9 @@
 
                 <aside class="catalog__filter">
                     <ul class="catalog__filter-list">
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Clothes</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--first"
@@ -663,63 +665,780 @@
                                     ></use>
                                 </svg>
                             </button>
+                            <form action="#" class="search search--filter">
+                                <input
+                                    type="text"
+                                    class="search__input"
+                                    placeholder="Search the clothes type"
+                                />
+                                <button class="search__button">
+                                    <svg
+                                        class="search__icon search__icon--light"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#search"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </form>
+                            <form
+                                class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                                action="#"
+                            >
+                                <ul class="catalog__check-list">
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="coats"
+                                            checked
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="coats"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Coats
+                                            <span class="catalog__amount"
+                                                >(16)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="jackets"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="jackets"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Jackets
+                                            <span class="catalog__amount"
+                                                >(12)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="suits"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="suits"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Suits
+                                            <span class="catalog__amount"
+                                                >(5)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="dresses"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="dresses"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Dresses
+                                            <span class="catalog__amount"
+                                                >(11)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="sweaters"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="sweaters"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Cardigans & sweaters
+                                            <span class="catalog__amount"
+                                                >(18)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="clothes"
+                                            id="hoodies"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="hoodies"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Sweatshirts & hoodies
+                                            <span class="catalog__amount"
+                                                >(21)</span
+                                            >
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </li>
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Size</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
-                                <svg class="catalog__filter-btn-plus">
+                                <svg class="catalog__filter-btn-minus">
                                     <use
-                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
                                     ></use>
                                 </svg>
                             </button>
+                            <form class="catalog__check-form" action="#">
+                                <ul class="catalog__check-list">
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="xs"
+                                            checked
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="xs"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >XS
+                                            <span class="catalog__amount"
+                                                >(16)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="s"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="s"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >S
+                                            <span class="catalog__amount"
+                                                >(12)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="m"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="m"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >M
+                                            <span class="catalog__amount"
+                                                >(5)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="l"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="l"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >L
+                                            <span class="catalog__amount"
+                                                >(11)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="xl"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="xl"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >XL
+                                            <span class="catalog__amount"
+                                                >(18)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="size"
+                                            id="plus"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="plus"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Plus Size
+                                            <span class="catalog__amount"
+                                                >(4)</span
+                                            >
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </li>
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Color</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
-                                <svg class="catalog__filter-btn-plus">
+                                <svg class="catalog__filter-btn-minus">
                                     <use
-                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
                                     ></use>
                                 </svg>
                             </button>
+                            <form class="catalog__color catalog__scroll catalog__scroll-md" action="#">
+                                <ul class="catalog__color-list">
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="black"
+                                            checked
+                                        />
+                                        <label class="color__label color__label--lg" for="black"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--black"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Black</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="blue-gray"
+                                        />
+                                        <label class="color__label color__label--lg" for="blue-gray"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--blue-gray"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Blue gray</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="yellow"
+                                        />
+                                        <label class="color__label color__label--lg" for="yellow"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--yellow"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Yellow</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="red"
+                                        />
+                                        <label class="color__label color__label--lg" for="red"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--red"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Red</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="blue-dark"
+                                        />
+                                        <label class="color__label color__label--lg" for="blue-dark"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--blue-dark"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Dark blue</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="beige"
+                                        />
+                                        <label class="color__label color__label--lg" for="beige"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--beige"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Beige</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="brown"
+                                        />
+                                        <label class="color__label color__label--lg" for="brown"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--brown"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Brown</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="gray"
+                                        />
+                                        <label class="color__label color__label--lg" for="gray"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--gray"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Gray</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="purple"
+                                        />
+                                        <label class="color__label color__label--lg" for="purple"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--purple"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Purple</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="green"
+                                        />
+                                        <label class="color__label color__label--lg" for="green"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--green"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Green</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="orange"
+                                        />
+                                        <label class="color__label color__label--lg" for="orange"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--orange"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">Orange</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog__color-item">
+                                        <input
+                                            class="color__radio"
+                                            type="radio"
+                                            name="color"
+                                            id="white"
+                                        />
+                                        <label class="color__label color__label--lg" for="white"
+                                            >&nbsp;
+                                            <span
+                                                class="color__type color__type--lg color__type--white"
+                                                >&nbsp;</span
+                                            >
+                                            <span class="color__name">White</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
+                            </form>
                         </li>
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Material</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
-                                <svg class="catalog__filter-btn-plus">
+                                <svg class="catalog__filter-btn-minus">
                                     <use
-                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
                                     ></use>
                                 </svg>
                             </button>
+                            <form action="#" class="search search--filter">
+                                <input
+                                    type="text"
+                                    class="search__input"
+                                    placeholder="Search the clothes type"
+                                />
+                                <button class="search__button">
+                                    <svg
+                                        class="search__icon search__icon--light"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#search"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </form>
+                            <form
+                                class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                                action="#"
+                            >
+                                <ul class="catalog__check-list">
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="cotton"
+                                            checked
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="cotton"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Cotton
+                                            <span class="catalog__amount"
+                                                >(162)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="synthetics"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="synthetics"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Synthetics
+                                            <span class="catalog__amount"
+                                                >(12)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="nappa-leather"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="nappa-leather"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Nappa leather
+                                            <span class="catalog__amount"
+                                                >(26)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="leather"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="leather"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Leather
+                                            <span class="catalog__amount"
+                                                >(5)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="cashmere"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="cashmere"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Cashmere
+                                            <span class="catalog__amount"
+                                                >(41)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="material"
+                                            id="denim"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="denim"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Denim
+                                            <span class="catalog__amount"
+                                                >(48)</span
+                                            >
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </li>
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Brand</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
-                                <svg class="catalog__filter-btn-plus">
+                                <svg class="catalog__filter-btn-minus">
                                     <use
-                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
                                     ></use>
                                 </svg>
                             </button>
+                            <form action="#" class="search search--filter">
+                                <input
+                                    type="text"
+                                    class="search__input"
+                                    placeholder="Search the clothes type"
+                                />
+                                <button class="search__button">
+                                    <svg
+                                        class="search__icon search__icon--light"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#search"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </form>
+                            <form
+                                class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                                action="#"
+                            >
+                                <ul class="catalog__check-list">
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="adidas"
+                                            checked
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="adidas"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Adidas
+                                            <span class="catalog__amount"
+                                                >(162)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="ann-taylor"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="ann-taylor"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Ann Taylor
+                                            <span class="catalog__amount"
+                                                >(12)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="armani"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="armani"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Armani
+                                            <span class="catalog__amount"
+                                                >(26)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="banana-republic"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="banana-republic"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Banana Republic
+                                            <span class="catalog__amount"
+                                                >(5)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="calvin-klein"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="calvin-klein"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Calvin Klein
+                                            <span class="catalog__amount"
+                                                >(41)</span
+                                            >
+                                        </label>
+                                    </li>
+                                    <li class="catalog__check-item">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="brand"
+                                            id="columbia"
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="columbia"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Columbia
+                                            <span class="catalog__amount"
+                                                >(48)</span
+                                            >
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </li>
-                        <li class="catalog__filter-item">
+                        <li
+                            class="catalog__filter-item catalog__filter-item--open"
+                        >
                             <p class="catalog__filter-category">Price</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
-                                <svg class="catalog__filter-btn-plus">
+                                <svg class="catalog__filter-btn-minus">
                                     <use
-                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
                                     ></use>
                                 </svg>
                             </button>

@@ -89,6 +89,66 @@
         }
     }
 
+    &__amount {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-4;
+        display: inline-block;
+        margin-left: 2px;
+    }
+
+    &__scroll {
+        overflow-y: scroll;
+
+        &--sm {
+            height: 16.6rem;
+        }
+
+        &--md {
+            height: 17.2rem;
+        }
+
+        &::-webkit-scrollbar {
+            width: 3px;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: $color-gray-light-3;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-gray-dark-5;
+            border-radius: 3px;
+        }
+    }
+
+    &__check-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    &__color {
+        &-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 5.2rem);
+            column-gap: 1rem;
+            row-gap: 0.8rem;
+        }
+
+        &-item {
+            height: 5.2rem;
+            justify-self: center;
+        }
+    }
+
+    &__filter-item--open &__filter-category {
+        margin-bottom: 1.6rem;
+    }
+
     &__product {
         margin-bottom: 8rem;
         grid-column: 2 / -1;
