@@ -1,0 +1,104 @@
+.catalog {
+    margin-top: 3.2rem;
+    margin-bottom: 18rem;
+    display: grid;
+    grid-template-columns: 25.5rem 1fr;
+    grid-template-rows: repeat(3, minmax(min-content, max-content));
+    column-gap: 6rem;
+
+    &__toolbar {
+        display: flex;
+        align-items: center;
+        gap: 6rem;
+
+        &--top {
+            grid-column: 1 / -1;
+            margin-bottom: 3.2rem;
+        }
+        &--bottom {
+            grid-column: 2 / -1;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 1.35rem 7.6rem;
+    }
+
+    &__icon {
+        @include icon-small($color: $color-white);
+    }
+
+    &__pagination {
+        margin-left: auto;
+    }
+
+    &__filter {
+        grid-column: 1 / 2;
+
+        &-list {
+            list-style: none;
+        }
+
+        &-item {
+            position: relative;
+            &:not(:last-child) {
+                padding-bottom: 2rem;
+                border-bottom: $border;
+            }
+
+            &:not(:first-child) {
+                padding-top: 2rem;
+            }
+        }
+
+        &-category {
+            font-size: 1.6rem;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        &-btn {
+            position: absolute;
+
+            right: 0;
+            width: 1.6rem;
+            height: 1.6rem;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &--first {
+                top: 4.5px;
+            }
+
+            &--other {
+                top: 2.45rem;
+            }
+
+            &-plus,
+            &-minus {
+                @include icon-small($color: $color-primary);
+            }
+        }
+    }
+
+    &__product {
+        margin-bottom: 8rem;
+        grid-column: 2 / -1;
+        row-gap: 6rem;
+        column-gap: 3rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 28.5rem);
+
+        &--col-4 {
+            grid-column: 1 / -1;
+        }
+    }
+}

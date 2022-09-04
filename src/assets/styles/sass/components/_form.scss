@@ -316,6 +316,16 @@
         padding-right: 4rem;
     }
 
+    &[type='number'] {
+        width: 8rem;
+
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+
     &:focus {
         outline: none;
         border: 1px solid rgba($color-primary, 0.4);
@@ -516,5 +526,39 @@
     &__textarea {
         resize: none;
         height: 10rem;
+    }
+}
+
+// Number filter
+.number {
+    &__box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    &__label {
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.6;
+        color: $color-gray-dark-2;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-3;
+    }
+
+    &__btn {
+        border: none;
+        width: 1.6rem;
+        height: 1.6rem;
+        position: absolute;
+        top: 1.4rem;
+        left: 10rem;
+        background-color: transparent;
+        cursor: pointer;
     }
 }

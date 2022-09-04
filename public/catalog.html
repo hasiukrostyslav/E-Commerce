@@ -454,7 +454,7 @@
         </section>
 
         <section class="breadcrumb">
-            <div class="container">
+            <div class="container breadcrumb__catalog">
                 <ul class="breadcrumb__list">
                     <li class="breadcrumb__item">
                         <a
@@ -495,8 +495,929 @@
                         >
                     </li>
                 </ul>
+                <ul class="breadcrumb__catalog-list">
+                    <li class="breadcrumb__catalog-item">
+                        <button class="breadcrumb__catalog-btn">
+                            <svg
+                                class="breadcrumb__icon breadcrumb__icon--light"
+                            >
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#cross"
+                                ></use>
+                            </svg>
+                        </button>
+                        <a
+                            href="#"
+                            class="breadcrumb__link breadcrumb__link--current"
+                            >Dresses</a
+                        >
+                    </li>
+                    <li class="breadcrumb__catalog-item">
+                        <button class="breadcrumb__catalog-btn">
+                            <svg
+                                class="breadcrumb__icon breadcrumb__icon--light"
+                            >
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#cross"
+                                ></use>
+                            </svg>
+                        </button>
+                        <a
+                            href="#"
+                            class="breadcrumb__link breadcrumb__link--current"
+                            >Yellow</a
+                        >
+                    </li>
+                    <li class="breadcrumb__catalog-item">
+                        <button class="breadcrumb__catalog-btn">
+                            <svg
+                                class="breadcrumb__icon breadcrumb__icon--light"
+                            >
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#cross"
+                                ></use>
+                            </svg>
+                        </button>
+                        <a
+                            href="#"
+                            class="breadcrumb__link breadcrumb__link--current"
+                            >Cotton</a
+                        >
+                    </li>
+                    <li class="breadcrumb__catalog-item">
+                        <button class="breadcrumb__catalog-btn">
+                            <svg class="breadcrumb__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#cross"
+                                ></use>
+                            </svg>
+                        </button>
+                        <a href="#" class="breadcrumb__link">Clear all</a>
+                    </li>
+                </ul>
             </div>
         </section>
+
+        <main class="main__catalog">
+            <section class="catalog container">
+                <section class="catalog__toolbar catalog__toolbar--top">
+                    <button type="button" class="btn btn--solid catalog__btn">
+                        <svg class="catalog__icon">
+                            <use
+                                xlink:href="../src/assets/svg/sprite.svg#filter-1"
+                            ></use>
+                        </svg>
+                        Hide filters
+                    </button>
+                    <form action="#" class="sort__form">
+                        <label class="sort__label" for="orders">Sort by</label>
+                        <select class="sort__select" name="orders" id="orders">
+                            <option value="All">oldest</option>
+                            <option value="All">newest</option>
+                            <option value="Canceled" selected>
+                                popularity
+                            </option>
+                        </select>
+                        <button type="button" class="sort__btn">
+                            <svg class="input__icon input__icon--medium">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                ></use>
+                            </svg>
+                        </button>
+                    </form>
+                    <form action="#" class="number__form">
+                        <div class="number__box">
+                            <label class="number__label" for="number-1"
+                                >Show</label
+                            >
+                            <input
+                                class="input input--medium input--number"
+                                type="number"
+                                name="number"
+                                id="number-1"
+                                value="12"
+                                min="1"
+                            />
+                            <button type="button" class="number__btn">
+                                <svg class="input__icon input__icon--medium">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                    ></use>
+                                </svg>
+                            </button>
+                            <p class="number__text">products per page</p>
+                        </div>
+                    </form>
+                    <ul class="pagination catalog__pagination">
+                        <li class="pagination__item">
+                            <button
+                                type="button"
+                                class="btn pagination__btn pagination__btn--current"
+                            >
+                                1
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                2
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                3
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                ...
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                10
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                <svg class="pagination__icon">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#right"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+
+                <aside class="catalog__filter">
+                    <ul class="catalog__filter-list">
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Clothes</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--first"
+                            >
+                                <svg class="catalog__filter-btn-minus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#minus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Size</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--other"
+                            >
+                                <svg class="catalog__filter-btn-plus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Color</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--other"
+                            >
+                                <svg class="catalog__filter-btn-plus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Material</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--other"
+                            >
+                                <svg class="catalog__filter-btn-plus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Brand</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--other"
+                            >
+                                <svg class="catalog__filter-btn-plus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="catalog__filter-item">
+                            <p class="catalog__filter-category">Price</p>
+                            <button
+                                class="catalog__filter-btn catalog__filter-btn--other"
+                            >
+                                <svg class="catalog__filter-btn-plus">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#plus"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </aside>
+
+                <section class="catalog__product">
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-1.jpg"
+                                alt="Photo of shirt"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--5">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Shirt with insertion lace trims</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;49.95
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-2.jpg"
+                                alt="Photo of jeans"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Mid-rise slim cropped fit jeans</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;40.00
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-3.jpg"
+                                alt="Photo of cap"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--5">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Black and white sport cap</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;18.15
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-4.jpg"
+                                alt="Photo of romper"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--4">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon star__icon--4">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-outline"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Green baby romper</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;20.40
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-5.jpg"
+                                alt="Photo of coat"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Check coat with colour contrast</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;183.45
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-6.jpg"
+                                alt="Photo of earrings"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--5">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Red dangle earrings</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;29.95
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-7.jpg"
+                                alt="Photo of watch"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--4">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon star__icon--4">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-outline"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Chrono watch with blue...</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;120.60
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-8.jpg"
+                                alt="Photo of shoes"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Baby shoes with laces</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;30.60
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card sale__card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-9.jpg"
+                                alt="Photo of sweaters"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--4">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon star__icon--4">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-outline"
+                                ></use>
+                            </svg>
+                        </div>
+                        <p class="sale__percent">-50%</p>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Basic hooded sweatshirt in pink</a
+                            >
+                            <p
+                                class="card__price card__price--regular card__price--sale"
+                            >
+                                &dollar;15.50<span class="card__price--old"
+                                    >&dollar;31.00</span
+                                >
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card sale__card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-10.jpg"
+                                alt="Photo of jeans"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <p class="sale__percent">-50%</p>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Skinny push-up jeans</a
+                            >
+                            <p
+                                class="card__price card__price--regular card__price--sale"
+                            >
+                                &dollar;40.00<span class="card__price--old"
+                                    >&dollar;80.00</span
+                                >
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card sale__card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-11.jpg"
+                                alt="Photo of bag"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--5">
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                        </div>
+                        <p class="sale__percent">-50%</p>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Leather crossbody bag with...</a
+                            >
+                            <p
+                                class="card__price card__price--regular card__price--sale"
+                            >
+                                &dollar;89.50<span class="card__price--old"
+                                    >&dollar;179.00</span
+                                >
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="../src/assets/images/catalog-12.jpg"
+                                alt="Photo of shoes"
+                                class="card__img card__img--small"
+                            />
+                        </a>
+                        <button class="card__wishlist card__wishlist--small">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Men fashion gray shoes</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;85.50
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="catalog__toolbar catalog__toolbar--bottom">
+                    <form action="#" class="sort__form">
+                        <label class="sort__label" for="orders">Sort by</label>
+                        <select class="sort__select" name="orders" id="orders">
+                            <option value="All">oldest</option>
+                            <option value="All">newest</option>
+                            <option value="Canceled" selected>
+                                popularity
+                            </option>
+                        </select>
+                        <button type="button" class="sort__btn">
+                            <svg class="input__icon input__icon--medium">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                ></use>
+                            </svg>
+                        </button>
+                    </form>
+                    <form action="#" class="number__form">
+                        <div class="number__box">
+                            <label class="number__label" for="number-1"
+                                >Show</label
+                            >
+                            <input
+                                class="input input--medium input--number"
+                                type="number"
+                                name="number"
+                                id="number-1"
+                                value="12"
+                                min="1"
+                            />
+                            <button type="button" class="number__btn">
+                                <svg class="input__icon input__icon--medium">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                    ></use>
+                                </svg>
+                            </button>
+                            <p class="number__text">products per page</p>
+                        </div>
+                    </form>
+                    <ul class="pagination catalog__pagination">
+                        <li class="pagination__item">
+                            <button
+                                type="button"
+                                class="btn pagination__btn pagination__btn--current"
+                            >
+                                1
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                2
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                3
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                ...
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                10
+                            </button>
+                        </li>
+                        <li class="pagination__item">
+                            <button type="button" class="btn pagination__btn">
+                                <svg class="pagination__icon">
+                                    <use
+                                        xlink:href="../src/assets/svg/sprite.svg#right"
+                                    ></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section class="subscribe">
+                <div class="container subscribe__flex-container">
+                    <div class="subscribe__updates">
+                        <h2 class="heading-secondary heading-secondary--margin">
+                            Subscribe for updates
+                        </h2>
+                        <p class="subscribe__text">
+                            Subscribe for exclusive early sale access and new
+                            arrivals.
+                        </p>
+                        <form class="subscribe__form">
+                            <div class="tag__checkbox-container">
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="women"
+                                        id="women"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="women"
+                                        >Women</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="men"
+                                        id="men"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="men"
+                                        >Men</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="girls"
+                                        id="girls"
+                                        checked
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="girls"
+                                        >Girls</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="boys"
+                                        id="boys"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="boys"
+                                        >Boys</label
+                                    >
+                                </div>
+                            </div>
+
+                            <label class="subscribe__email-label" for="email-sb"
+                                >Email</label
+                            >
+                            <div class="subscribe__input-container">
+                                <input
+                                    class="subscribe__email-input"
+                                    type="email"
+                                    name="email"
+                                    id="email-sb"
+                                    placeholder="Your working email"
+                                    required
+                                />
+                                <input
+                                    type="submit"
+                                    class="btn btn--solid btn--large"
+                                    value="Subscribe"
+                                />
+                            </div>
+
+                            <div class="checkbox">
+                                <input
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    name="mark"
+                                    id="mark"
+                                    checked
+                                />
+                                <label
+                                    class="checkbox__label checkbox__label--large"
+                                    for="mark"
+                                >
+                                    <span class="checkbox__mark">&nbsp;</span>
+                                    I agree to receive communications from
+                                    Createx Store.
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <img
+                        class="subscribe__img"
+                        src="../src/assets/images/messages.png"
+                        alt="Mailman"
+                    />
+                </div>
+            </section>
+        </main>
 
         <footer class="footer">
             <div class="footer__navigation">

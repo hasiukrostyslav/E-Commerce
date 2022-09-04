@@ -25,6 +25,10 @@
         grid-template-columns: repeat(4, min-content);
     }
 
+    &--auto {
+        grid-auto-flow: column;
+    }
+
     &--row-2 {
         grid-template-rows: repeat(2, min-content);
     }
