@@ -149,6 +149,10 @@
         margin-bottom: 1.6rem;
     }
 
+    &__filter-item--open &__filter-category--bottom {
+        margin-bottom: 5.2rem;
+    }
+
     &__product {
         margin-bottom: 8rem;
         grid-column: 2 / -1;

@@ -1432,7 +1432,7 @@
                         <li
                             class="catalog__filter-item catalog__filter-item--open"
                         >
-                            <p class="catalog__filter-category">Price</p>
+                            <p class="catalog__filter-category catalog__filter-category--bottom">Price</p>
                             <button
                                 class="catalog__filter-btn catalog__filter-btn--other"
                             >
@@ -1442,6 +1442,26 @@
                                     ></use>
                                 </svg>
                             </button>
+                            <form action="#" class="range">
+                                <div class="range__slider">
+                                    <div class="range__progress"></div>
+                                </div>
+                                <div class="range__btns">
+                                    <div class="range__container">
+                                        <label class="range__label range__label--min" for="range-min">&dollar;480</label>
+                                        <input type="range" class="range__btn range__btn--min" id="range-min" min="0" max="1000" value="480">
+                                    </div>
+                                    <div class="range__container">
+                                        <label class="range__label range__label--max" for="range-max">&dollar;800</label>
+                                        <input type="range" class="range__btn range__btn--max" id="range-max" min="0" max="1000" value="800">
+                                    </div>
+                                </div>
+                                <div class="range__price">
+                                    <input class="range__input range__input--min" type="number" name="num" value="480">
+                                    <span class="range__separator">&nbsp;</span>
+                                    <input class="range__input range__input--max" type="number" name="num" value="800">
+                                </div>
+                            </form>
                         </li>
                     </ul>
                 </aside>
