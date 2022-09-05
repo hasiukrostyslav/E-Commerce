@@ -1,0 +1,71 @@
+.product {
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 6rem;
+    }
+
+    &__card {
+        margin-top: 3.2rem;
+        margin-bottom: 18rem;
+    }
+
+    &__btns {
+        @include btn-flex;
+        transform: translateY(1rem);
+    }
+
+    &__look {
+        margin-bottom: 10rem;
+    }
+
+    &__look-container {
+        display: flex;
+        gap: 13.5rem;
+    }
+
+    &__look-img {
+        display: inline-block;
+        width: 49.5rem;
+        height: 60rem;
+        border-radius: 4px;
+    }
+
+    &__slider {
+        display: flex;
+        gap: 1.2rem;
+        position: absolute;
+        bottom: 10.7rem;
+        left: 50%;
+        transform: translatex(-50%);
+    }
+
+    &__btn-slide {
+        width: 3rem;
+        height: 0.3rem;
+        border: none;
+        border-radius: 3px;
+        background-color: $color-gray-dark-5;
+        &--current {
+            background-color: $color-gray-dark-2;
+        }
+    }
+
+    &__list {
+        display: flex;
+        gap: 3rem;
+        position: relative;
+    }
+
+    &__interest {
+        padding-top: 8rem;
+        padding-bottom: 10rem;
+        background-color: $color-gray-light-3;
+    }
+
+    &__viewed {
+        margin-top: 10rem;
+        margin-bottom: 18rem;
+    }
+}

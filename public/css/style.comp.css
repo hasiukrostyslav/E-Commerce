@@ -69,6 +69,9 @@ body {
 .heading-secondary--low {
   text-transform: lowercase;
 }
+.heading-secondary--zero {
+  margin-bottom: 0;
+}
 
 .heading-tertiary--main {
   font-size: 3.2rem;
@@ -3353,6 +3356,70 @@ body {
 
 .footer {
   background-color: #1e212c;
+}
+
+.product__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 6rem;
+}
+.product__card {
+  margin-top: 3.2rem;
+  margin-bottom: 18rem;
+}
+.product__btns {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  grid-column: 3/-1;
+  justify-self: end;
+  transform: translateY(1rem);
+}
+.product__look {
+  margin-bottom: 10rem;
+}
+.product__look-container {
+  display: flex;
+  gap: 13.5rem;
+}
+.product__look-img {
+  display: inline-block;
+  width: 49.5rem;
+  height: 60rem;
+  border-radius: 4px;
+}
+.product__slider {
+  display: flex;
+  gap: 1.2rem;
+  position: absolute;
+  bottom: 10.7rem;
+  left: 50%;
+  transform: translatex(-50%);
+}
+.product__btn-slide {
+  width: 3rem;
+  height: 0.3rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #b3b7bc;
+}
+.product__btn-slide--current {
+  background-color: #424551;
+}
+.product__list {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+}
+.product__interest {
+  padding-top: 8rem;
+  padding-bottom: 10rem;
+  background-color: #e5e8ed;
+}
+.product__viewed {
+  margin-top: 10rem;
+  margin-bottom: 18rem;
 }
 
 .track {

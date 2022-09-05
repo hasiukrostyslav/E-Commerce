@@ -40,6 +40,10 @@ body {
     &--low {
         text-transform: lowercase;
     }
+
+    &--zero {
+        margin-bottom: 0;
+    }
 }
 
 .heading-tertiary {
