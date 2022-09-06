@@ -21,6 +21,10 @@
         grid-template-columns: 18rem 54rem 9rem;
     }
 
+    &--col-3-fix-2 {
+        grid-template-columns: 18rem 46.5rem 9rem;
+    }
+
     &--col-4 {
         grid-template-columns: repeat(4, min-content);
     }

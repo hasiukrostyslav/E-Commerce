@@ -1324,6 +1324,10 @@ body {
   color: #424551;
   grid-column: 2/-1;
 }
+.comment__text--sm {
+  width: 55.5rem;
+  margin-bottom: 1.6rem;
+}
 .comment__text--tag {
   color: #17696a;
   cursor: pointer;
@@ -2683,6 +2687,9 @@ body {
 .grid--col-3-fix {
   grid-template-columns: 18rem 54rem 9rem;
 }
+.grid--col-3-fix-2 {
+  grid-template-columns: 18rem 46.5rem 9rem;
+}
 .grid--col-4 {
   grid-template-columns: repeat(4, min-content);
 }
@@ -3783,6 +3790,110 @@ body {
   height: 2rem;
   fill: #787a80;
 }
+.product__reviews {
+  gap: 10.5rem;
+}
+.product__reviews .reviews {
+  flex-basis: 73.5rem;
+}
+.product__reviews .reviews__wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rem;
+}
+.product__reviews .reviews__heading {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+}
+.product__reviews .reviews__rating {
+  display: flex;
+  gap: 0.2rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+.product__reviews .reviews__rating-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: #f89828;
+}
+.product__reviews .reviews__rating-icon--4 {
+  fill: #b3b7bc;
+}
+.product__reviews .reviews__text {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #787a80;
+}
+.product__reviews .reviews__breakdown {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.product__reviews .reviews__progress {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+.product__reviews .reviews__score, .product__reviews .reviews__count {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #787a80;
+}
+.product__reviews .reviews__score {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.product__reviews .reviews__progres-bg {
+  position: relative;
+  width: 35.6rem;
+  height: 4px;
+  background-color: #e5e8ed;
+  border-radius: 4px;
+}
+.product__reviews .reviews__progres-bar {
+  display: inline-block;
+  height: 4px;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.product__reviews .reviews__progres-bar--5 {
+  background-color: #03cea4;
+  width: 31.2rem;
+}
+.product__reviews .reviews__progres-bar--4 {
+  background-color: #1fdf58;
+  width: 17rem;
+}
+.product__reviews .reviews__progres-bar--3 {
+  background-color: #f2ea2b;
+  width: 8.6rem;
+}
+.product__reviews .reviews__progres-bar--2 {
+  background-color: #f89828;
+  width: 8.6rem;
+}
+.product__reviews .reviews__progres-bar--1 {
+  background-color: #ff4242;
+  width: 8.6rem;
+}
+.product__reviews .reviews__toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+}
+.product__reviews .reviews__btn {
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 1.2rem 4.05rem;
+}
+.product__reviews .reviews__pagination {
+  transform: translateX(40%);
+}
 .product__look {
   margin-bottom: 10rem;
 }
@@ -3833,10 +3944,6 @@ body {
   fill: #fff;
   width: 3.2rem;
   height: 3.2rem;
-}
-
-.product__info {
-  display: none;
 }
 
 .track {
