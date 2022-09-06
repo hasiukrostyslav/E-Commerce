@@ -293,11 +293,26 @@
                 background-color: rgba($color-primary, 0.12);
             }
         }
+
+        &--small {
+            &:link,
+            &:visited {
+                width: 2rem;
+                height: 2rem;
+                background-color: transparent;
+                flex-basis: 2rem;
+            }
+        }
     }
 
     &__icon {
         width: 1.6rem;
         height: 1.6rem;
+
+        &--lg {
+            width: 2rem;
+            height: 2rem;
+        }
     }
 
     &__link--dark &__icon {
@@ -324,5 +339,27 @@
 
     &__icon {
         @include icon-medium($color: $color-gray-dark-2);
+    }
+}
+
+.cart__btn {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    padding: 1.1rem 6.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-basis: 24.4rem;
+}
+
+.favourite__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    &:hover {
+        .catalog__icon--prime {
+            fill: $color-white;
+        }
     }
 }

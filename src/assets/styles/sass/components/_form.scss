@@ -99,10 +99,32 @@
         cursor: pointer;
     }
 
-    &__checkbox-btn:checked + label {
+    &__checkbox-radio {
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.6;
+        padding: 1rem 2rem;
+        color: $color-gray-dark-4;
+        border-radius: 4px;
+        cursor: pointer;
+
+        sup {
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 900;
+        }
+    }
+
+    &__checkbox-btn:checked + &__checkbox-btn-label {
         color: $color-white;
         background-color: $color-primary;
         border: 1px solid $color-primary;
+    }
+
+    &__checkbox-btn:checked + &__checkbox-radio {
+        color: $color-primary;
+        outline: 1px solid $color-primary;
     }
 }
 // RADIO BUTTON
@@ -300,6 +322,14 @@
 
         &--white {
             background-color: $btn-color-white;
+        }
+
+        &--yellow-light {
+            background-color: $btn-color-yellow-light;
+        }
+
+        &--pink {
+            background-color: $btn-color-pink;
         }
     }
 }
@@ -634,6 +664,10 @@
         left: 10rem;
         background-color: transparent;
         cursor: pointer;
+
+        &--sm {
+            left: 4.8rem;
+        }
     }
 }
 

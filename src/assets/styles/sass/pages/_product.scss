@@ -6,9 +6,111 @@
         margin-bottom: 6rem;
     }
 
+    &__flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
+    }
+
     &__card {
+        position: relative;
         margin-top: 3.2rem;
         margin-bottom: 18rem;
+    }
+
+    &__article {
+        position: absolute;
+        top: 1.6rem;
+        right: 0;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        color: $color-gray-dark-3;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    &__tabs {
+        list-style: none;
+        display: flex;
+        align-items: baseline;
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__gallery {
+        position: relative;
+    }
+
+    &__img {
+        display: block;
+        border-radius: 4px;
+
+        &--current {
+            outline: 1px solid $color-primary;
+        }
+
+        &--sm {
+            width: 10.4rem;
+            height: 10.4rem;
+        }
+
+        &--lg {
+            width: 60rem;
+            height: 60rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__img-list {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__img-video {
+        position: relative;
+    }
+
+    &__play-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 10.4rem;
+        height: 10.4rem;
+        border-radius: 4px;
+        background-color: rgba($color-gray-dark-1, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__slider-btn {
+        position: absolute;
+        top: 27.6rem;
+
+        &:hover,
+        &:active {
+            background-color: transparent;
+        }
+
+        &--left {
+            left: 3.2rem;
+        }
+
+        &--right {
+            right: 3.2rem;
+        }
+    }
+
+    &__descript {
+        border-top: $border;
+        padding-top: 3.2rem;
+        display: flex;
+        justify-content: space-between;
     }
 
     &__btns {
@@ -16,6 +118,181 @@
         transform: translateY(1rem);
     }
 
+    &__sidebar {
+        flex-basis: 52.5rem;
+    }
+
+    &__price {
+        display: flex;
+        gap: 3.4rem;
+        align-items: center;
+    }
+
+    &__rating {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-end;
+    }
+
+    &__rating-amount {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-3;
+    }
+
+    &__sale-badge {
+        display: inline-block;
+        color: $color-white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.6;
+        background-color: $color-secondary;
+        padding: 0.1rem 0.8rem;
+        border-radius: 4px;
+    }
+
+    &__heading {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-2;
+    }
+
+    &__color-switcher {
+        list-style: none;
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+        align-items: center;
+    }
+
+    &__radio-item {
+        &:last-child {
+            margin-left: 0.8rem;
+        }
+    }
+
+    &__color-type {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-4;
+    }
+
+    &__form {
+        margin-top: 2.4rem;
+    }
+
+    .size__select {
+        position: relative;
+        margin-top: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+
+        select {
+            flex-basis: 34.8rem;
+        }
+    }
+
+    .size__btns {
+        display: flex;
+        gap: 2.4rem;
+        margin-top: 3.2rem;
+    }
+
+    .select__arrow {
+        position: absolute;
+        top: 1.4rem;
+        right: 19.3rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .placeholder {
+        color: $color-gray-dark-4;
+    }
+
+    .size-chart {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        letter-spacing: 0.5px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        font-family: inherit;
+        color: $color-gray-dark-2;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    &__accordion {
+        list-style: none;
+        margin-top: 4.8rem;
+        margin-bottom: 2rem;
+
+        .accordion {
+            &__item {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: $border;
+                padding-bottom: 2rem;
+
+                &:not(:first-child) {
+                    padding-top: 2rem;
+                }
+            }
+
+            &__category {
+                font-size: 1.6rem;
+                line-height: 1.6n;
+                font-weight: 700;
+            }
+
+            &__btn {
+                font-family: inherit;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__sharing {
+        list-style: none;
+        display: flex;
+        gap: 1.6rem;
+        align-items: center;
+        width: 15.4rem;
+
+        .sharing {
+            &__heading {
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: 1.6;
+            }
+        }
+    }
+
+    &__payment {
+        list-style: none;
+        margin-top: 6rem;
+        display: flex;
+        gap: 2.4rem;
+
+        .payment {
+            &__img {
+                width: 12rem;
+                height: 6.4rem;
+                border-radius: 4px;
+            }
+        }
+    }
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+    /////////////////////////////////////////////////////
     &__look {
         margin-bottom: 10rem;
     }
@@ -68,4 +345,10 @@
         margin-top: 10rem;
         margin-bottom: 18rem;
     }
+}
+
+.play-icon {
+    fill: $color-white;
+    width: 3.2rem;
+    height: 3.2rem;
 }

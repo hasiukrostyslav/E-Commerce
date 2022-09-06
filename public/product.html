@@ -511,7 +511,430 @@
         </section>
 
         <main class="product">
-            <section class="product__card container"></section>
+            <section class="product__card container">
+                <h2 class="heading-secondary heading-secondary--margin-md">
+                    Basic hooded sweatshirt in pink
+                </h2>
+                <p class="product__article">
+                    <span>Art. No.</span>
+                    183260098
+                </p>
+                <div class="product__tabs">
+                    <div class="tag__checkbox">
+                        <input
+                            class="tag__checkbox-btn"
+                            type="radio"
+                            name="tabs"
+                            id="info"
+                            checked
+                        />
+                        <label class="tag__checkbox-radio" for="info"
+                            >General info</label
+                        >
+                    </div>
+                    <div class="tag__checkbox">
+                        <input
+                            class="tag__checkbox-btn"
+                            type="radio"
+                            name="tabs"
+                            id="details"
+                        />
+                        <label class="tag__checkbox-radio" for="details"
+                            >Product details</label
+                        >
+                    </div>
+                    <div class="tag__checkbox">
+                        <input
+                            class="tag__checkbox-btn"
+                            type="radio"
+                            name="tabs"
+                            id="reviews"
+                        />
+                        <label class="tag__checkbox-radio" for="reviews"
+                            >Reviews <sup>12</sup>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="product__descript product__info">
+                    <div class="product__gallery">
+                        <button
+                            class="btn-round btn-round--light product__slider-btn product__slider-btn--left"
+                        >
+                            <svg class="slider__icon slider__icon--white">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#left"
+                                ></use>
+                            </svg>
+                        </button>
+                        <button
+                            class="btn-round btn-round--light product__slider-btn product__slider-btn--right"
+                        >
+                            <svg class="slider__icon slider__icon--white">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#right"
+                                ></use>
+                            </svg>
+                        </button>
+                        <a href="#">
+                            <img
+                                class="product__img product__img--lg"
+                                src="../src/assets/images/gallery-1.jpg"
+                                alt="hoodie"
+                            />
+                        </a>
+                        <ul class="product__img-list">
+                            <li class="product__img-item">
+                                <a href="#">
+                                    <img
+                                        class="product__img product__img--current product__img--sm"
+                                        src="../src/assets/images/gallery-1.jpg"
+                                        alt="hoodie"
+                                    />
+                                </a>
+                            </li>
+                            <li class="product__img-item">
+                                <a href="#">
+                                    <img
+                                        class="product__img product__img--sm"
+                                        src="../src/assets/images/gallery-2.jpg"
+                                        alt="hoodie"
+                                    />
+                                </a>
+                            </li>
+                            <li class="product__img-item">
+                                <a href="#">
+                                    <img
+                                        class="product__img product__img--sm"
+                                        src="../src/assets/images/gallery-3.jpg"
+                                        alt="hoodie"
+                                    />
+                                </a>
+                            </li>
+                            <li class="product__img-item">
+                                <a href="#">
+                                    <img
+                                        class="product__img product__img--sm"
+                                        src="../src/assets/images/gallery-4.jpg"
+                                        alt="hoodie"
+                                    />
+                                </a>
+                            </li>
+                            <li class="product__img-item product__img-video">
+                                <a href="#">
+                                    <img
+                                        class="product__img product__img--sm"
+                                        src="../src/assets/images/gallery-5.jpg"
+                                        alt="hoodie"
+                                    />
+                                    <span class="product__play-btn">
+                                        <svg class="play-icon">
+                                            <use
+                                                xlink:href="../src/assets/svg/sprite.svg#play"
+                                            ></use>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <aside class="product__sidebar">
+                        <div class="product__flex-container">
+                            <div class="product__price">
+                                <p
+                                    class="card__price card__price--regular card__price--sale"
+                                >
+                                    &dollar;15.50<span class="card__price--old"
+                                        >&dollar;31.00</span
+                                    >
+                                </p>
+                                <p class="product__sale-badge">-50%</p>
+                            </div>
+                            <div class="product__rating">
+                                <div class="comment__rating">
+                                    <svg class="comment__rating-icon">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                        ></use>
+                                    </svg>
+                                    <svg class="comment__rating-icon">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                        ></use>
+                                    </svg>
+                                    <svg class="comment__rating-icon">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                        ></use>
+                                    </svg>
+                                    <svg class="comment__rating-icon">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#star-filled"
+                                        ></use>
+                                    </svg>
+                                    <svg
+                                        class="comment__rating-icon comment__rating-icon--outline"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#star-outline"
+                                        ></use>
+                                    </svg>
+                                </div>
+                                <span class="product__rating-amount"
+                                    >12 reviews</span
+                                >
+                            </div>
+                        </div>
+                        <div class="product__color">
+                            <p class="product__heading">Color</p>
+                            <ul class="product__color-switcher">
+                                <li class="product__radio-item">
+                                    <input
+                                        class="color__radio"
+                                        type="radio"
+                                        name="color"
+                                        id="pink"
+                                        checked
+                                    />
+                                    <label
+                                        class="color__label color__label--sm"
+                                        for="pink"
+                                        >&nbsp;
+                                        <span
+                                            class="color__type color__type--sm color__type--pink"
+                                            >&nbsp;</span
+                                        >
+                                    </label>
+                                </li>
+                                <li class="product__radio-item">
+                                    <input
+                                        class="color__radio"
+                                        type="radio"
+                                        name="color"
+                                        id="blue-gray"
+                                    />
+                                    <label
+                                        class="color__label color__label--sm"
+                                        for="blue-gray"
+                                        >&nbsp;
+                                        <span
+                                            class="color__type color__type--sm color__type--blue-gray"
+                                            >&nbsp;</span
+                                        >
+                                    </label>
+                                </li>
+                                <li class="product__radio-item">
+                                    <input
+                                        class="color__radio"
+                                        type="radio"
+                                        name="color"
+                                        id="yellow-light"
+                                    />
+                                    <label
+                                        class="color__label color__label--sm"
+                                        for="yellow-light"
+                                        >&nbsp;
+                                        <span
+                                            class="color__type color__type--sm color__type--yellow-light"
+                                            >&nbsp;</span
+                                        >
+                                    </label>
+                                </li>
+                                <li class="product__radio-item">
+                                    <span class="product__color-type"
+                                        >Pink</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <form action="#" class="product__form">
+                            <p class="product__heading">Size</p>
+                            <div class="size__select">
+                                <select
+                                    class="input input--medium select"
+                                    name="country"
+                                    id="size"
+                                >
+                                    <option
+                                        value=""
+                                        class="placeholder"
+                                        disabled
+                                        selected
+                                    >
+                                        Please select
+                                    </option>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="xl">XL</option>
+                                </select>
+                                <button
+                                    type="button"
+                                    class="select__btn select__arrow"
+                                >
+                                    <svg class="input__icon input__icon--small">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                        ></use>
+                                    </svg>
+                                </button>
+                                <button class="size-chart" type="button">
+                                    <svg class="input__icon input__icon--small">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#hanger"
+                                        ></use>
+                                    </svg>
+                                    Size chart
+                                </button>
+                            </div>
+                            <div class="size__btns">
+                                <div class="number__box">
+                                    <input
+                                        class="input input--medium input--number"
+                                        type="number"
+                                        name="number"
+                                        id="number-1"
+                                        value="1"
+                                        min="1"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="number__btn number__btn--sm"
+                                    >
+                                        <svg
+                                            class="input__icon input__icon--medium"
+                                        >
+                                            <use
+                                                xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                            ></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <button
+                                    type="button"
+                                    class="btn btn--solid cart__btn"
+                                >
+                                    <svg class="catalog__icon">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#cart"
+                                        ></use>
+                                    </svg>
+                                    Add to cart
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn--outline btn--medium favourite__btn"
+                                >
+                                    <svg
+                                        class="catalog__icon catalog__icon--prime"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                        ></use>
+                                    </svg>
+                                    Favourite
+                                </button>
+                            </div>
+                        </form>
+                        <ul class="product__accordion">
+                            <li class="accordion__item accordion__item--close">
+                                <p class="accordion__category">Delivery</p>
+                                <button class="accordion__btn">
+                                    <svg class="catalog__filter-btn-minus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                            <li class="accordion__item accordion__item--close">
+                                <p class="accordion__category">Return</p>
+                                <button class="accordion__btn">
+                                    <svg class="catalog__filter-btn-minus">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#plus"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="product__sharing">
+                            <li class="sharing__item">
+                                <p class="sharing__heading">Share:</p>
+                            </li>
+                            <li class="social__item">
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    class="social__link social__link--small social__link--light"
+                                >
+                                    <svg class="social__icon social__icon--lg">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#facebook"
+                                        ></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    class="social__link social__link--small social__link--light"
+                                >
+                                    <svg class="social__icon social__icon--lg">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#twitter"
+                                        ></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    class="social__link social__link--small social__link--light"
+                                >
+                                    <svg class="social__icon social__icon--lg">
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#pinterest"
+                                        ></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="product__payment">
+                            <li class="payment__item">
+                                <a href="#" class="payment__link">
+                                    <img
+                                        class="payment__img"
+                                        src="../src/assets/images/visa.jpg"
+                                        alt="Visa"
+                                    />
+                                </a>
+                            </li>
+                            <li class="payment__item">
+                                <a href="#" class="payment__link">
+                                    <img
+                                        class="payment__img"
+                                        src="../src/assets/images/master-card.jpg"
+                                        alt="MasterCard"
+                                    />
+                                </a>
+                            </li>
+                            <li class="payment__item">
+                                <a href="#" class="payment__link">
+                                    <img
+                                        class="payment__img"
+                                        src="../src/assets/images/pay-pal.jpg"
+                                        alt="PayPal"
+                                    />
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </section>
+
             <section class="product__look container">
                 <div class="product__wrapper">
                     <h2 class="heading-secondary heading-secondary--zero">
@@ -642,6 +1065,7 @@
                     </div>
                 </div>
             </section>
+
             <section class="product__interest">
                 <div class="container">
                     <div class="product__wrapper">
