@@ -3728,6 +3728,61 @@ body {
   height: 6.4rem;
   border-radius: 4px;
 }
+.product__details {
+  gap: 10.5rem;
+}
+.product__details .details__wrapper:not(:last-child) {
+  border-bottom: 1px solid #e5e8ed;
+}
+.product__details .details__wrapper:not(:first-child) {
+  padding-top: 2.4rem;
+}
+.product__details .details__heading {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+.product__details .details__text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #424551;
+}
+.product__details .details__text--margin {
+  margin-bottom: 2rem;
+}
+.product__details .details__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 2.4rem;
+}
+.product__details .details__item--bullet {
+  padding-left: 2rem;
+  position: relative;
+}
+.product__details .details__item--bullet::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #17696a;
+}
+.product__details .details__item--icon {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+.product__details .details__icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #787a80;
+}
 .product__look {
   margin-bottom: 10rem;
 }
@@ -3778,6 +3833,10 @@ body {
   fill: #fff;
   width: 3.2rem;
   height: 3.2rem;
+}
+
+.product__info {
+  display: none;
 }
 
 .track {

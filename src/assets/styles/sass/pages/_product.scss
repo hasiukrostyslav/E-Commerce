@@ -268,9 +268,6 @@
                 }
             }
 
-            &__table {
-            }
-
             &__text {
                 font-size: 1.4rem;
                 line-height: 1.5;
@@ -336,6 +333,74 @@
             }
         }
     }
+
+    &__details {
+        gap: 10.5rem;
+        .details {
+            &__wrapper {
+                &:not(:last-child) {
+                    border-bottom: $border;
+                }
+                &:not(:first-child) {
+                    padding-top: 2.4rem;
+                }
+            }
+            &__heading {
+                font-size: 2rem;
+                line-height: 1.5;
+                font-weight: 700;
+                margin-bottom: 1.6rem;
+            }
+
+            &__text {
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: $color-gray-dark-2;
+
+                &--margin {
+                    margin-bottom: 2rem;
+                }
+            }
+            &__list {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                padding-bottom: 2.4rem;
+            }
+
+            &__item {
+                &--bullet {
+                    padding-left: 2rem;
+                    position: relative;
+
+                    &::before {
+                        position: absolute;
+                        content: '';
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        background-color: $color-primary;
+                    }
+                }
+
+                &--icon {
+                    display: flex;
+                    gap: 1.6rem;
+                    align-items: center;
+                }
+            }
+
+            &__icon {
+                width: 2rem;
+                height: 2rem;
+                fill: $color-gray-dark-3;
+            }
+        }
+    }
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     /////////////////////////////////////////////////////
@@ -397,4 +462,8 @@
     fill: $color-white;
     width: 3.2rem;
     height: 3.2rem;
+}
+
+.product__info {
+    display: none;
 }
