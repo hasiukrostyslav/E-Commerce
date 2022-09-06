@@ -103,3 +103,42 @@
         }
     }
 }
+
+.accordion {
+    &__table {
+        width: 48.5rem;
+        margin: 2.4rem 2rem 0;
+        border-collapse: collapse;
+    }
+
+    &__trow {
+        &--head,
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-gray-light-5;
+        }
+    }
+
+    &__theading {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: $color-gray-dark-3;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding-bottom: 1.2rem;
+
+        &:not(:last-child) {
+            width: 20rem;
+        }
+
+        &:last-child {
+            width: 8.5rem;
+        }
+    }
+
+    &__tdata {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-2;
+        padding: 1.2rem 0;
+    }
+}
