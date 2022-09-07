@@ -135,4 +135,35 @@
             }
         }
     }
+    .review {
+        &__textarea {
+            height: 10.7rem;
+        }
+
+        &__textarea-box {
+            margin-bottom: 4rem;
+        }
+
+        &__icon {
+            @include icon-medium($color: $color-gray-dark-4);
+            position: absolute;
+            top: 5.425rem;
+            left: 18.425rem;
+            cursor: pointer;
+        }
+
+        &__btn {
+            position: absolute;
+            left: 13.4rem;
+            bottom: 2.4rem;
+        }
+    }
+
+    &--sign-in {
+        // display: none;
+    }
+
+    &--sign-up {
+        // display: none;
+    }
 }
