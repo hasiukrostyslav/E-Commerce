@@ -142,3 +142,45 @@
         padding: 1.2rem 0;
     }
 }
+
+// Size table
+.size {
+    &__table {
+        border: $border;
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 4px;
+        border-style: hidden;
+        box-shadow: 0 0 0 1px $color-gray-light-3;
+    }
+    &__theading {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        font-weight: 700;
+        padding: 1.6rem;
+    }
+
+    &__trow:nth-child(odd) {
+        background-color: $color-gray-light-1;
+    }
+
+    &__tdata {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: $color-gray-dark-2;
+        padding-top: 0.9rem;
+        padding-bottom: 1rem;
+        width: 7.7rem;
+        padding-right: 1.6rem;
+
+        &:first-child {
+            padding-left: 1.6rem;
+            padding-right: 2rem;
+            width: 15.6rem;
+        }
+
+        &:last-child {
+            padding-right: 1.8rem;
+        }
+    }
+}

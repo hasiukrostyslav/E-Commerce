@@ -12,10 +12,6 @@
         flex-direction: column;
     }
 
-    &--large {
-        width: 87rem;
-    }
-
     &__heading {
         font-size: 2.8rem;
         font-weight: 700;
@@ -87,5 +83,56 @@
     &__list-social {
         list-style: none;
         display: flex;
+    }
+
+    // Modal Size chart
+    &--size {
+        position: relative;
+        border-radius: 4px;
+        margin: 0 auto;
+        border: $border;
+        width: 87rem;
+        padding-top: 4.8rem;
+        padding-bottom: 4.8rem;
+
+        .size {
+            &__wrapper {
+                padding-left: 4.8rem;
+                padding-right: 4.8rem;
+            }
+
+            &__tabs {
+                display: flex;
+                gap: 1.2rem;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 2.4rem;
+            }
+
+            &__table {
+                margin-bottom: 3.2rem;
+            }
+
+            &__text {
+                font-size: 1.6rem;
+                line-height: 1.5;
+                font-weight: 700;
+                color: $color-gray-dark-2;
+            }
+
+            &__units {
+                display: flex;
+                gap: 1.2rem;
+            }
+
+            &__choice {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2.4rem;
+                padding: 3.2rem 0 2.4rem;
+                border-top: $border;
+            }
+        }
     }
 }
