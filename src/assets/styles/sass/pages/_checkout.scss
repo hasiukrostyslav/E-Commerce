@@ -1,0 +1,119 @@
+.checkout {
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin: 3.2rem 0 18rem;
+    }
+
+    &__section {
+        flex: 0 0 73.5rem;
+    }
+
+    //////////
+    &__sidebar {
+        flex: 0 0 39rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__apply {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        .apply {
+            &__label {
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: $color-gray-dark-2;
+            }
+            &__container {
+                display: flex;
+            }
+            &__input {
+                font-family: inherit;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: $color-gray-dark-2;
+                padding: 1.3rem 1.6rem;
+                border: 1px solid $color-gray-light-4;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+                width: 26.5rem;
+
+                &:focus {
+                    border: 1px solid $color-primary;
+                    outline: none;
+                }
+
+                &::-webkit-input-placeholder {
+                    color: $color-gray-dark-3;
+                }
+            }
+            &__btn {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    &__summary {
+        margin: 2.4rem 0;
+        background-color: $color-gray-light-1;
+        border-radius: 4px;
+        list-style: none;
+
+        &-item {
+            padding: 1.6rem 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:first-child {
+                padding-top: 2.4rem;
+                padding-bottom: 2.4rem;
+                border-bottom: $border;
+            }
+
+            &:last-child {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                border-top: $border;
+            }
+        }
+
+        .summary {
+            &__list {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                width: 100%;
+            }
+            &__item {
+                display: flex;
+                justify-content: space-between;
+            }
+            &__total {
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: $color-gray-dark-2;
+
+                &--bold {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    &__heading {
+        font-size: 2.4rem;
+        line-height: 1.3;
+        font-weight: 700;
+    }
+
+    &__total {
+        font-size: 2rem;
+        line-height: 1.5;
+        font-weight: 700;
+    }
+}

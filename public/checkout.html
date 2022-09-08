@@ -486,6 +486,83 @@
             </div>
         </section>
 
+        <main class="checkout container">
+            <div class="checkout__wrapper">
+                <section class="checkout__section"></section>
+                <aside class="checkout__sidebar">
+                    <form class="checkout__apply" action="#">
+                        <label class="apply__label" for="apply"
+                            >Apply a promo code</label
+                        >
+                        <div class="apply__container">
+                            <input
+                                class="apply__input"
+                                type="text"
+                                name="apply"
+                                id="apply"
+                                placeholder="Enter promo code"
+                                required
+                            />
+                            <input
+                                type="submit"
+                                class="btn btn--solid btn--large apply__btn"
+                                value="Apply"
+                            />
+                        </div>
+                    </form>
+                    <ul class="checkout__summary">
+                        <li class="checkout__summary-item">
+                            <h4 class="checkout__heading">Order totals</h4>
+                        </li>
+
+                        <li class="checkout__summary-item">
+                            <ul class="summary__list">
+                                <li class="summary__item">
+                                    <p
+                                        class="summary__total summary__total--bold"
+                                    >
+                                        Subtotal:
+                                    </p>
+                                    <span
+                                        class="summary__total summary__total--bold"
+                                        >&dollar;198.65</span
+                                    >
+                                </li>
+                                <li class="summary__item">
+                                    <p class="summary__total">
+                                        Shipping costs:
+                                    </p>
+                                    <span class="summary__total"
+                                        >&dollar;25.00</span
+                                    >
+                                </li>
+                                <li class="summary__item">
+                                    <p class="summary__total">Discount:</p>
+                                    <span class="summary__total">&dash;</span>
+                                </li>
+                                <li class="summary__item">
+                                    <p class="summary__total">
+                                        Estimated sales tax:
+                                    </p>
+                                    <span class="summary__total"
+                                        >&dollar;6.35</span
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="checkout__summary-item">
+                            <p class="checkout__total">Order total:</p>
+                            <span class="checkout__total">&dollar;230.00</span>
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn btn--solid btn--large">
+                        Complete order
+                    </button>
+                </aside>
+            </div>
+        </main>
+
         <footer class="footer">
             <div class="footer__navigation">
                 <div class="container footer__flex">
