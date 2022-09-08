@@ -69,6 +69,10 @@
         height: 1.6rem;
         fill: $color-primary;
         transition: all 0.5s;
+
+        &--right {
+            width: 1.2rem;
+        }
     }
 
     &--sale {
@@ -240,7 +244,9 @@
         }
     }
     &__icon {
-        @include icon-medium($color: $color-primary);
+        width: 2rem;
+        height: 2rem;
+        fill: $color-primary;
         transition: all 0.5s;
     }
 }

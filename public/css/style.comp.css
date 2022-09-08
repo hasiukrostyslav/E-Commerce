@@ -692,6 +692,9 @@ body {
   fill: #17696a;
   transition: all 0.5s;
 }
+.btn__icon--right {
+  width: 1.2rem;
+}
 .btn--sale {
   width: 100%;
   display: flex;
@@ -851,8 +854,8 @@ body {
   fill: #fff;
 }
 .instagram__icon {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   fill: #17696a;
   transition: all 0.5s;
 }
