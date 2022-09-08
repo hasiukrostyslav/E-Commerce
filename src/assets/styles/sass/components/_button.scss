@@ -112,6 +112,11 @@
         position: absolute;
         top: 0.8rem;
         right: 0;
+
+        &-cart {
+            top: 1.6rem;
+            right: 2.4rem;
+        }
     }
 }
 
@@ -119,6 +124,11 @@
     width: 2rem;
     height: 2rem;
     fill: $color-secondary;
+    &--sm {
+        width: 1.433rem;
+        height: 1.433rem;
+        fill: $color-gray-dark-3;
+    }
 }
 
 .close__icon {
@@ -361,5 +371,18 @@
         .catalog__icon--prime {
             fill: $color-white;
         }
+    }
+}
+
+.cart__wishlist {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+    color: $color-gray-dark-2;
+    border: none;
+    background-color: transparent;
+
+    &-btn {
+        @include icon-small($color: $color-gray-dark-2);
     }
 }

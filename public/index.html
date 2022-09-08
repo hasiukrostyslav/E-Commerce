@@ -25,7 +25,7 @@
                     </p>
                     <ul class="topbar__list">
                         <li class="topbar__item">
-                            <a href="#" class="topbar__link"
+                            <a href="checkout.html" class="topbar__link"
                                 >Delivery & returns</a
                             >
                         </li>
@@ -1306,7 +1306,7 @@
 
         </footer>
 
-        <section class="modal modal--small">
+        <section class="modal modal--small modal--sign-in">
             
             <button class="btn--close" type="button">
                 <svg class="close__icon">
@@ -1386,7 +1386,7 @@
             </div>
         </section>
 
-        <section class="modal modal--small">
+        <section class="modal modal--small modal--sign-up">
             
             <button class="btn--close" type="button">
                 <svg class="close__icon">
@@ -1478,6 +1478,311 @@
                     </li>
                 </ul>
             </div>
+        </section>
+
+        <section class="modal--cart">
+            <button class="btn--close" type="button">
+                <svg class="close__icon">
+                    <use
+                        xlink:href="../src/assets/svg/sprite.svg#cross"
+                    ></use>
+                </svg>
+            </button>
+            <h3 class="cart__heading">Your cart (4)</h3>
+           <ul class="cart__list">
+            <li class="cart__item">
+                <button class="btn--delete btn--delete-cart" type="button">
+                    <svg class="btn-delete__icon--sm">
+                        <use
+                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                        ></use>
+                    </svg>
+                </button>
+                <div class="cart__item-container">
+                    <img
+                        class="cart__img"
+                        src="../src/assets/images/order-item-1.png"
+                        alt="sweatshirt"
+                    />
+                    <div class="cart__info">
+                        <a
+                            href="product.html"
+                            class="order__name"
+                        >
+                            Basic hooded sweatshirt in pink
+                        </a>
+                        <p class="order__color">
+                            Color:
+                            <span class="order__color-value"
+                                >pink</span
+                            >
+                        </p>
+                        <p class="order__size">
+                            Size:
+                            <span class="order__size-value"
+                                >S</span
+                            >
+                        </p>
+                        <div class="cart__price">
+                            <div class="number__box">
+                                <input
+                                    class="input input--small input--number-sm"
+                                    type="number"
+                                    name="number"
+                                    id="number-1"
+                                    value="1"
+                                    min="1"
+                                />
+                                <button
+                                    type="button"
+                                    class="number__btn number__btn--top number__btn--sm"
+                                >
+                                    <svg
+                                        class="input__icon input__icon--medium"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p
+                                    class="card__price card__price--regular card__price--sale card__price--sm"
+                                >
+                                    &dollar;15.50<span class="card__price--old cart__price--old--sm"
+                                        >&dollar;31.00</span
+                                    >
+                                </p>
+                        </div>
+                        <button type="button" class="btn cart__wishlist">
+                            Move to 
+                            <svg class="cart__wishlist-btn">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li class="cart__item">
+                <button class="btn--delete btn--delete-cart" type="button">
+                    <svg class="btn-delete__icon--sm">
+                        <use
+                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                        ></use>
+                    </svg>
+                </button>
+                <div class="cart__item-container">
+                    <img
+                        class="cart__img"
+                        src="../src/assets/images/order-item-2.png"
+                        alt="sweatshirt"
+                    />
+                    <div class="cart__info">
+                        <a
+                            href="product.html"
+                            class="order__name"
+                        >
+                        Black and white sport cap
+                        </a>
+                        <div class="cart__price">
+                            <div class="number__box">
+                                <input
+                                    class="input input--small input--number-sm"
+                                    type="number"
+                                    name="number"
+                                    id="number-1"
+                                    value="1"
+                                    min="1"
+                                />
+                                <button
+                                    type="button"
+                                    class="number__btn number__btn--top number__btn--sm"
+                                >
+                                    <svg
+                                        class="input__icon input__icon--medium"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p
+                                    class="card__price card__price--regular card__price--sm"
+                                >
+                                    &dollar;18.15
+                                </p>
+                        </div>
+                        <button type="button" class="btn cart__wishlist">
+                            Move to 
+                            <svg class="cart__wishlist-btn">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li class="cart__item">
+                <button class="btn--delete btn--delete-cart" type="button">
+                    <svg class="btn-delete__icon--sm">
+                        <use
+                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                        ></use>
+                    </svg>
+                </button>
+                <div class="cart__item-container">
+                    <img
+                        class="cart__img"
+                        src="../src/assets/images/order-item-3.png"
+                        alt="sweatshirt"
+                    />
+                    <div class="cart__info">
+                        <a
+                            href="product.html"
+                            class="order__name"
+                        >
+                        Mid-rise slim cropped fit jeans
+                        </a>
+                        <p class="order__size">
+                            Size:
+                            <span class="order__size-value"
+                                >M</span
+                            >
+                        </p>
+                        <div class="cart__price">
+                            <div class="number__box">
+                                <input
+                                    class="input input--small input--number-sm"
+                                    type="number"
+                                    name="number"
+                                    id="number-1"
+                                    value="2"
+                                    min="1"
+                                />
+                                <button
+                                    type="button"
+                                    class="number__btn number__btn--top number__btn--sm"
+                                >
+                                    <svg
+                                        class="input__icon input__icon--medium"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p
+                                    class="card__price card__price--regular card__price--sm"
+                                >
+                                    &dollar;80.00
+                                </p>
+                        </div>
+                        <button type="button" class="btn cart__wishlist">
+                            Move to 
+                            <svg class="cart__wishlist-btn">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li class="cart__item">
+                <button class="btn--delete btn--delete-cart" type="button">
+                    <svg class="btn-delete__icon--sm">
+                        <use
+                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                        ></use>
+                    </svg>
+                </button>
+                <div class="cart__item-container">
+                    <img
+                        class="cart__img"
+                        src="../src/assets/images/order-item-4.png"
+                        alt="sweatshirt"
+                    />
+                    <div class="cart__info">
+                        <a
+                            href="product.html"
+                            class="order__name"
+                        >
+                        Men fashion gray shoes
+                        </a>
+                        <p class="order__color">
+                            Color:
+                            <span class="order__color-value"
+                                >gray</span
+                            >
+                        </p>
+                        <p class="order__size">
+                            Size:
+                            <span class="order__size-value"
+                                >44</span
+                            >
+                        </p>
+                        <div class="cart__price">
+                            <div class="number__box">
+                                <input
+                                    class="input input--small input--number-sm"
+                                    type="number"
+                                    name="number"
+                                    id="number-1"
+                                    value="1"
+                                    min="1"
+                                />
+                                <button
+                                    type="button"
+                                    class="number__btn number__btn--top number__btn--sm"
+                                >
+                                    <svg
+                                        class="input__icon input__icon--medium"
+                                    >
+                                        <use
+                                            xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                        ></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p
+                                    class="card__price card__price--regular card__price--sm"
+                                >
+                                    &dollar;15.50
+                                </p>
+                        </div>
+                        <button type="button" class="btn cart__wishlist">
+                            Move to 
+                            <svg class="cart__wishlist-btn">
+                                <use
+                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </li>
+           </ul>
+           
+           <div class="cart__checkout">
+            <div class="cart__wrapper">
+                <p class="cart__subtotal">Subtotal:</p>
+                <p class="cart__total">&dollar;198.65</p>
+            </div>
+            <a href="checkout.html" class="btn btn--solid cart__btn">
+                <svg class="cart__icon">
+                    <use
+                        xlink:href="../src/assets/svg/sprite.svg#card"
+                    ></use>
+                </svg>
+                Checkout
+            </a>
+           </div>
+           
         </section>
     </body>
 </html>
