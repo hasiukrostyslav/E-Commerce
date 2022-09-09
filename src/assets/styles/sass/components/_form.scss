@@ -391,6 +391,13 @@
                 margin-right: 3rem;
             }
         }
+        &--medium {
+            margin-bottom: 2.4rem;
+
+            &:nth-child(odd) {
+                margin-right: 2.5rem;
+            }
+        }
     }
 
     &--small {

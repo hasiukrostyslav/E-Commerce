@@ -488,7 +488,814 @@
 
         <main class="checkout container">
             <div class="checkout__wrapper">
-                <section class="checkout__section"></section>
+                <section class="checkout__section">
+                    <div class="checkout__flex">
+                        <h2 class="heading-secondary heading-secondary--zero">
+                            Checkout
+                        </h2>
+                        <a href="catalog.html" class="checkout__link"
+                            >Back to shopping</a
+                        >
+                    </div>
+                    <div class="checkout__sign-in">
+                        <svg class="checkout__sign-icon">
+                            <use
+                                xlink:href="../src/assets/svg/sprite.svg#profile"
+                            ></use>
+                        </svg>
+                        <p class="checkout__sign-text">
+                            Already have an account?
+                            <a href="#" class="checkout__link">Sign in</a>
+                            for faster checkout experience
+                        </p>
+                    </div>
+
+                    <form action="#" class="checkout__details">
+                        <ul class="details__list">
+                            <li class="details__item">
+                                <h4 class="checkout__heading details__heading">
+                                    1. Item Review
+                                </h4>
+                                <ul class="details__sublist">
+                                    <li class="details__subitem">
+                                        <img
+                                            class="cart__img details__img"
+                                            src="../src/assets/images/order-item-1.png"
+                                            alt="sweatshirt"
+                                        />
+                                        <div>
+                                            <a
+                                                href="product.html"
+                                                class="order__name details__name"
+                                            >
+                                                Basic hooded sweatshirt in pink
+                                            </a>
+                                            <p class="order__color">
+                                                Color:
+                                                <span class="order__color-value"
+                                                    >pink</span
+                                                >
+                                            </p>
+                                            <p class="order__size">
+                                                Size:
+                                                <span class="order__size-value"
+                                                    >S</span
+                                                >
+                                            </p>
+                                        </div>
+                                        <div class="number__box details__num">
+                                            <input
+                                                class="input input--small input--number-sm"
+                                                type="number"
+                                                name="number"
+                                                id="number-1"
+                                                value="1"
+                                                min="1"
+                                            />
+                                            <button
+                                                type="button"
+                                                class="number__btn number__btn--top number__btn--sm"
+                                            >
+                                                <svg
+                                                    class="input__icon input__icon--medium"
+                                                >
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p
+                                            class="card__price card__price--regular card__price--sale card__price--sm details__price"
+                                        >
+                                            &dollar;15.50<span
+                                                class="card__price--old cart__price--old--sm"
+                                                >&dollar;31.00</span
+                                            >
+                                        </p>
+                                        <div class="details__btns">
+                                            <button
+                                                type="button"
+                                                class="btn btn--outline btn--small"
+                                            >
+                                                Delete
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn cart__wishlist"
+                                            >
+                                                Move to
+                                                <svg class="cart__wishlist-btn">
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="details__subitem">
+                                        <img
+                                            class="cart__img details__img"
+                                            src="../src/assets/images/order-item-2.png"
+                                            alt="cap"
+                                        />
+                                        <div>
+                                            <a
+                                                href="product.html"
+                                                class="order__name details__name"
+                                            >
+                                                Black and white sport cap
+                                            </a>
+                                        </div>
+                                        <div class="number__box details__num">
+                                            <input
+                                                class="input input--small input--number-sm"
+                                                type="number"
+                                                name="number"
+                                                id="number-3"
+                                                value="1"
+                                                min="1"
+                                            />
+                                            <button
+                                                type="button"
+                                                class="number__btn number__btn--top number__btn--sm"
+                                            >
+                                                <svg
+                                                    class="input__icon input__icon--medium"
+                                                >
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p
+                                            class="card__price card__price--regular card__price--sm details__price"
+                                        >
+                                            &dollar;18.15
+                                        </p>
+                                        <div class="details__btns">
+                                            <button
+                                                type="button"
+                                                class="btn btn--outline btn--small"
+                                            >
+                                                Delete
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn cart__wishlist"
+                                            >
+                                                Move to
+                                                <svg class="cart__wishlist-btn">
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="details__subitem">
+                                        <img
+                                            class="cart__img details__img"
+                                            src="../src/assets/images/order-item-3.png"
+                                            alt="jeans"
+                                        />
+                                        <div>
+                                            <a
+                                                href="product.html"
+                                                class="order__name details__name"
+                                            >
+                                                Mid-rise slim cropped fit jeans
+                                            </a>
+                                            <p class="order__size">
+                                                Size:
+                                                <span class="order__size-value"
+                                                    >M</span
+                                                >
+                                            </p>
+                                        </div>
+                                        <div class="number__box details__num">
+                                            <input
+                                                class="input input--small input--number-sm"
+                                                type="number"
+                                                name="number"
+                                                id="number-3"
+                                                value="2"
+                                                min="1"
+                                            />
+                                            <button
+                                                type="button"
+                                                class="number__btn number__btn--top number__btn--sm"
+                                            >
+                                                <svg
+                                                    class="input__icon input__icon--medium"
+                                                >
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p
+                                            class="card__price card__price--regular card__price--sm details__price"
+                                        >
+                                            &dollar;80.00
+                                        </p>
+                                        <div class="details__btns">
+                                            <button
+                                                type="button"
+                                                class="btn btn--outline btn--small"
+                                            >
+                                                Delete
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn cart__wishlist"
+                                            >
+                                                Move to
+                                                <svg class="cart__wishlist-btn">
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="details__subitem">
+                                        <img
+                                            class="cart__img details__img"
+                                            src="../src/assets/images/order-item-4.png"
+                                            alt="shoes"
+                                        />
+                                        <div>
+                                            <a
+                                                href="product.html"
+                                                class="order__name details__name"
+                                            >
+                                                Men fashion gray shoes
+                                            </a>
+                                            <p class="order__color">
+                                                Color:
+                                                <span class="order__color-value"
+                                                    >gray</span
+                                                >
+                                            </p>
+                                            <p class="order__size">
+                                                Size:
+                                                <span class="order__size-value"
+                                                    >44</span
+                                                >
+                                            </p>
+                                        </div>
+                                        <div class="number__box details__num">
+                                            <input
+                                                class="input input--small input--number-sm"
+                                                type="number"
+                                                name="number"
+                                                id="number-3"
+                                                value="1"
+                                                min="1"
+                                            />
+                                            <button
+                                                type="button"
+                                                class="number__btn number__btn--top number__btn--sm"
+                                            >
+                                                <svg
+                                                    class="input__icon input__icon--medium"
+                                                >
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#up-down-select"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p
+                                            class="card__price card__price--regular card__price--sm details__price"
+                                        >
+                                            &dollar;85.00
+                                        </p>
+                                        <div class="details__btns">
+                                            <button
+                                                type="button"
+                                                class="btn btn--outline btn--small"
+                                            >
+                                                Delete
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn cart__wishlist"
+                                            >
+                                                Move to
+                                                <svg class="cart__wishlist-btn">
+                                                    <use
+                                                        xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                                    ></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="details__subitem">
+                                        <p class="details__total">
+                                            Subtotal: &dollar;198.65
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="details__item">
+                                <h4 class="checkout__heading details__heading">
+                                    2. Shipping & Billing Address
+                                </h4>
+
+                                <div class="details__form">
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="first-name"
+                                            >First name</label
+                                        >
+                                        <input
+                                            class="input input--large input--half"
+                                            type="text"
+                                            name="first-name"
+                                            id="first-name"
+                                            placeholder="Your first name"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="last-name"
+                                            >Last name</label
+                                        >
+                                        <input
+                                            class="input input--large"
+                                            type="text"
+                                            name="last-name"
+                                            id="last-name"
+                                            placeholder="Your last name"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="profile-email"
+                                            >Email</label
+                                        >
+                                        <input
+                                            class="input input--large"
+                                            type="email"
+                                            name="profile-email"
+                                            id="profile-email"
+                                            placeholder="Your working email"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="phone"
+                                            >Phone</label
+                                        >
+                                        <input
+                                            class="input input--large"
+                                            type="tel"
+                                            name="phone"
+                                            id="phone"
+                                            placeholder="Your phone number"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="country"
+                                            >Country</label
+                                        >
+                                        <select
+                                            class="input input--large select"
+                                            name="country"
+                                            id="country"
+                                            required
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                                hidden
+                                            >
+                                                Choose your country
+                                            </option>
+                                            <option value="Poland">
+                                                Poland
+                                            </option>
+                                            <option value="UK">UK</option>
+                                            <option value="Ukraine">
+                                                Ukraine
+                                            </option>
+                                            <option value="USA">USA</option>
+                                        </select>
+                                        <button
+                                            type="button"
+                                            class="input__btn input__btn--large select__btn"
+                                        >
+                                            <svg
+                                                class="input__icon input__icon--large"
+                                            >
+                                                <use
+                                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                                ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="city"
+                                            >City</label
+                                        >
+                                        <select
+                                            class="input input--large select"
+                                            name="city"
+                                            id="city"
+                                            required
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                                hidden
+                                            >
+                                                Choose your city
+                                            </option>
+                                            <option value="Chicago">
+                                                Chicago
+                                            </option>
+                                            <option value="Dallas">
+                                                Dallas
+                                            </option>
+                                            <option value="New Jersey">
+                                                New Jersey
+                                            </option>
+                                            <option value="San Francisco">
+                                                San Francisco
+                                            </option>
+                                        </select>
+                                        <button
+                                            type="button"
+                                            class="input__btn input__btn--large select__btn"
+                                        >
+                                            <svg
+                                                class="input__icon input__icon--large"
+                                            >
+                                                <use
+                                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                                ></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="address"
+                                            >Address</label
+                                        >
+                                        <input
+                                            class="input input--large"
+                                            type="text"
+                                            name="address"
+                                            id="address"
+                                            placeholder="Your address"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="input__box input__box--medium">
+                                        <label
+                                            class="label label--large"
+                                            for="code"
+                                            >ZIP Code</label
+                                        >
+                                        <input
+                                            class="input input--large"
+                                            type="text"
+                                            name="code"
+                                            id="code"
+                                            placeholder="Your ZIP code"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="modal__check">
+                                        <input
+                                            class="checkbox__input"
+                                            type="checkbox"
+                                            name="check-sign-up"
+                                            id="check-sign-up"
+                                            checked
+                                        />
+                                        <label
+                                            class="checkbox__label checkbox__label--small"
+                                            for="check-sign-up"
+                                            ><span class="checkbox__mark"
+                                                >&nbsp;</span
+                                            >Billing and Shipping details are
+                                            the same</label
+                                        >
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="details__item">
+                                <h4 class="checkout__heading details__heading">
+                                    3. Shipping Method
+                                </h4>
+                                <ul class="details__methods">
+                                    <li class="details__method">
+                                        <div>
+                                            <div class="details__radio">
+                                                <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    name="delivery"
+                                                    id="courier"
+                                                    checked
+                                                />
+
+                                                <label
+                                                    for="courier"
+                                                    class="radio__label"
+                                                    ><span class="radio__mark"
+                                                        >&nbsp;</span
+                                                    >
+                                                    Courier to your address
+                                                </label>
+                                            </div>
+                                            <p class="details__date">
+                                                Estimated date: September 9
+                                            </p>
+                                        </div>
+                                        <span class="details__delivery-price"
+                                            >$25.00</span
+                                        >
+                                    </li>
+                                    <li class="details__method">
+                                        <div>
+                                            <div class="details__radio">
+                                                <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    name="delivery"
+                                                    id="store"
+                                                />
+
+                                                <label
+                                                    for="store"
+                                                    class="radio__label"
+                                                    ><span class="radio__mark"
+                                                        >&nbsp;</span
+                                                    >
+                                                    Pick up from store
+                                                </label>
+                                            </div>
+                                            <p class="details__date">
+                                                Pick up on September 8 from
+                                                12:00
+                                            </p>
+                                        </div>
+                                        <span class="details__delivery-price"
+                                            >Free</span
+                                        >
+                                    </li>
+                                    <li class="details__method">
+                                        <div>
+                                            <div class="details__radio">
+                                                <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    name="delivery"
+                                                    id="ups"
+                                                />
+
+                                                <label
+                                                    for="ups"
+                                                    class="radio__label"
+                                                    ><span class="radio__mark"
+                                                        >&nbsp;</span
+                                                    >
+                                                    UPS Ground Shipping
+                                                </label>
+                                            </div>
+                                            <p class="details__date">
+                                                Up to one week
+                                            </p>
+                                        </div>
+                                        <span class="details__delivery-price"
+                                            >$10.00</span
+                                        >
+                                    </li>
+                                    <li class="details__method">
+                                        <div>
+                                            <div class="details__radio">
+                                                <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    name="delivery"
+                                                    id="createx-locker"
+                                                />
+
+                                                <label
+                                                    for="createx-locker"
+                                                    class="radio__label"
+                                                    ><span class="radio__mark"
+                                                        >&nbsp;</span
+                                                    >
+                                                    Pick up at Createx Locker
+                                                </label>
+                                            </div>
+                                            <p class="details__date">
+                                                Pick up on September 8 from
+                                                12:00
+                                            </p>
+                                        </div>
+                                        <span class="details__delivery-price"
+                                            >$8.50</span
+                                        >
+                                    </li>
+                                    <li class="details__method">
+                                        <div>
+                                            <div class="details__radio">
+                                                <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    name="delivery"
+                                                    id="createx-export"
+                                                />
+
+                                                <label
+                                                    for="createx-export"
+                                                    class="radio__label"
+                                                    ><span class="radio__mark"
+                                                        >&nbsp;</span
+                                                    >
+                                                    Createx Global Export
+                                                </label>
+                                            </div>
+                                            <p class="details__date">
+                                                3-4 days
+                                            </p>
+                                        </div>
+                                        <span class="details__delivery-price"
+                                            >$15.00</span
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="details__item">
+                                <h4 class="checkout__heading details__heading">
+                                    4. Payment Method
+                                </h4>
+
+                                <ul class="details__payments">
+                                    <li class="details__payment">
+                                        <div class="details__radio">
+                                            <input
+                                                class="radio__input"
+                                                type="radio"
+                                                name="payment"
+                                                id="card"
+                                                checked
+                                            />
+
+                                            <label
+                                                for="card"
+                                                class="radio__label details__label"
+                                                ><span class="radio__mark"
+                                                    >&nbsp;</span
+                                                >
+                                                Credit card
+                                            </label>
+                                            <img
+                                                class="details__logo"
+                                                src="../src/assets/images/visa.jpg"
+                                                alt="Visa"
+                                            />
+                                            <img
+                                                class="details__logo"
+                                                src="../src/assets/images/master-card.jpg"
+                                                alt="MasterCard"
+                                            />
+                                        </div>
+                                        <div class="details__card-num">
+                                            <label
+                                                class="label label--large"
+                                                for="card-num"
+                                                >Card number</label
+                                            >
+                                            <input
+                                                class="input input--large"
+                                                type="text"
+                                                name="card-num"
+                                                id="card-num"
+                                                placeholder="0000 0000 0000 0000"
+                                            />
+                                        </div>
+                                        <div class="details__card-wrapper">
+                                            <div class="details__card-detail-1">
+                                                <label
+                                                    class="label label--large"
+                                                    for="card-date"
+                                                    >Expiry date</label
+                                                >
+                                                <input
+                                                    class="input input--large"
+                                                    type="text"
+                                                    name="card-date"
+                                                    id="card-date"
+                                                    placeholder="mm/yy"
+                                                />
+                                            </div>
+                                            <div class="details__card-detail-2">
+                                                <label
+                                                    class="label label--large"
+                                                    for="card-cvc"
+                                                    >CVC</label
+                                                >
+                                                <input
+                                                    class="input input--large"
+                                                    type="text"
+                                                    name="card-cvc"
+                                                    id="card-cvc"
+                                                    placeholder="000"
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="details__payment">
+                                        <div class="details__radio">
+                                            <input
+                                                class="radio__input"
+                                                type="radio"
+                                                name="payment"
+                                                id="paypal"
+                                            />
+
+                                            <label
+                                                for="paypal"
+                                                class="radio__label details__label"
+                                                ><span class="radio__mark"
+                                                    >&nbsp;</span
+                                                >
+                                                PayPal
+                                            </label>
+                                            <img
+                                                class="details__logo"
+                                                src="../src/assets/images/pay-pal.jpg"
+                                                alt="Paypal"
+                                            />
+                                        </div>
+                                    </li>
+                                    <li class="details__payment">
+                                        <div class="details__radio">
+                                            <input
+                                                class="radio__input"
+                                                type="radio"
+                                                name="payment"
+                                                id="cash"
+                                            />
+
+                                            <label
+                                                for="cash"
+                                                class="radio__label"
+                                                ><span class="radio__mark"
+                                                    >&nbsp;</span
+                                                >
+                                                Cash on delivery
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="details__item">
+                                <h4 class="checkout__heading details__heading">
+                                    5. Additional Information (Optional)
+                                </h4>
+                                <div class="details__textarea-box">
+                                    <label
+                                        class="label label--large"
+                                        for="notes"
+                                        >Order notes</label
+                                    >
+                                    <textarea
+                                        class="form__textarea contacts__textarea input input--large"
+                                        name="notes"
+                                        id="notes"
+                                        placeholder="Notes about your order, e.g. special noted for delivery."
+                                    ></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+
                 <aside class="checkout__sidebar">
                     <form class="checkout__apply" action="#">
                         <label class="apply__label" for="apply"

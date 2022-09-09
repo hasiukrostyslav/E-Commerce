@@ -15,6 +15,10 @@
   width: 39rem;
 }
 
+.input__box--medium {
+  width: 35.5rem;
+}
+
 *,
 *::after,
 *::before {
@@ -1818,6 +1822,12 @@ body {
 .input__box--large:nth-child(odd) {
   margin-right: 3rem;
 }
+.input__box--medium {
+  margin-bottom: 2.4rem;
+}
+.input__box--medium:nth-child(odd) {
+  margin-right: 2.5rem;
+}
 .input--small {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -3430,6 +3440,172 @@ body {
 }
 .checkout__section {
   flex: 0 0 73.5rem;
+}
+.checkout__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3.2rem;
+}
+.checkout__link:link, .checkout__link:visited {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #17696a;
+  transition: all 0.5s;
+}
+.checkout__link:hover, .checkout__link:active {
+  color: rgba(23, 105, 106, 0.8);
+}
+.checkout__sign-in {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.6rem 2rem;
+  background-color: rgba(23, 105, 106, 0.06);
+  border-radius: 4px;
+  border: 1px solid rgba(23, 105, 106, 0.25);
+  margin-bottom: 4.8rem;
+}
+.checkout__sign-icon {
+  width: 1.667rem;
+  height: 1.792rem;
+  fill: #17696a;
+}
+.checkout__sign-text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #17696a;
+}
+.checkout__details .details__heading {
+  margin-bottom: 2.4rem;
+}
+.checkout__details .details__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.checkout__details .details__item {
+  padding: 3.2rem 0;
+  border-top: 1px solid #e5e8ed;
+}
+.checkout__details .details__item:last-child {
+  padding-bottom: 0;
+}
+.checkout__details .details__sublist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f5f6;
+  border-radius: 4px;
+}
+.checkout__details .details__subitem {
+  padding: 2rem 2.4rem;
+  display: flex;
+  align-items: flex-start;
+}
+.checkout__details .details__subitem:first-child {
+  padding-top: 2.4rem;
+}
+.checkout__details .details__subitem:last-child {
+  padding-bottom: 2.4rem;
+  justify-content: end;
+}
+.checkout__details .details__subitem:not(:last-child) {
+  border-bottom: 1px solid #e5e8ed;
+}
+.checkout__details .details__img {
+  margin-right: 2.2rem;
+}
+.checkout__details .details__name:link, .checkout__details .details__name:visited {
+  display: block;
+  margin-right: 4rem;
+  width: 21rem;
+}
+.checkout__details .details__num {
+  margin-right: 4rem;
+}
+.checkout__details .details__price {
+  margin-right: 4.4rem;
+  display: flex;
+  align-items: center;
+  width: 9.2rem;
+}
+.checkout__details .details__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: center;
+}
+.checkout__details .details__total {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.checkout__details .details__form {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.checkout__details .details__methods {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.checkout__details .details__method {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout__details .details__radio {
+  display: flex;
+}
+.checkout__details .details__date {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: #787a80;
+  padding-left: 2.8rem;
+}
+.checkout__details .details__delivery-price {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #424551;
+}
+.checkout__details .details__payments {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: flex-start;
+}
+.checkout__details .details__payment {
+  padding: 2.4rem;
+  border: 1px solid #e5e8ed;
+  border-radius: 4px;
+  box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08), 0px 30px 24px -10px rgba(154, 156, 165, 0.05), 0px 12px 10px -6px rgba(154, 156, 165, 0.04), 0px 4px 4px -4px rgba(30, 33, 44, 0.03);
+  width: 39rem;
+}
+.checkout__details .details__card-num {
+  margin-top: 1.6rem;
+}
+.checkout__details .details__label {
+  margin-right: 2rem;
+}
+.checkout__details .details__logo {
+  display: inline-block;
+  width: 4.8rem;
+  height: 2.6rem;
+  margin-right: 1.2rem;
+}
+.checkout__details .details__card-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.checkout__details .details__card-detail-1 {
+  flex: 0 0 55%;
 }
 .checkout__sidebar {
   flex: 0 0 39rem;
