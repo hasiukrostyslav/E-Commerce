@@ -783,17 +783,17 @@ body {
 
 .slider__btn {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
-.slider__btn:hover, .slider__btn:focus {
+.slider__btn:hover {
   outline: 1.6rem solid rgba(23, 105, 106, 0.12);
 }
 .slider__btn--left {
-  top: -19rem;
-  left: -31.3rem;
+  left: 3.2rem;
 }
 .slider__btn--right {
-  top: -19rem;
-  right: -31.3rem;
+  right: 3.2rem;
 }
 .slider__icon {
   width: 2.4rem;
@@ -2951,11 +2951,11 @@ body {
   background-size: cover;
   background-position: top;
   padding: 14rem 0 18rem;
+  position: relative;
 }
 
 .slider {
   width: 100%;
-  position: relative;
   margin-top: 18.1rem;
 }
 .slider__pages {
