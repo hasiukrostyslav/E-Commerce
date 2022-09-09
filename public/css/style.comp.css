@@ -2299,12 +2299,6 @@ body {
   left: 13.4rem;
   bottom: 2.4rem;
 }
-.modal--sign-in {
-  display: none;
-}
-.modal--sign-up {
-  display: none;
-}
 .modal--cart {
   position: relative;
   width: 35.2rem;
@@ -2384,6 +2378,9 @@ body {
   width: 2.15rem;
   height: 1.85rem;
   fill: #fff;
+}
+.modal--none {
+  display: none;
 }
 
 .order__accordion {
@@ -4447,6 +4444,9 @@ body {
 .product__viewed {
   margin-top: 10rem;
   margin-bottom: 18rem;
+}
+.product--none {
+  display: none;
 }
 
 .play-icon {

@@ -159,14 +159,6 @@
         }
     }
 
-    &--sign-in {
-        display: none;
-    }
-
-    &--sign-up {
-        display: none;
-    }
-
     &--cart {
         position: relative;
         width: 35.2rem;
@@ -261,5 +253,9 @@
                 fill: $color-white;
             }
         }
+    }
+
+    &--none {
+        display: none;
     }
 }
