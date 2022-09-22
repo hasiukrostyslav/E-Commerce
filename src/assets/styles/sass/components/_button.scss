@@ -136,9 +136,7 @@
 }
 
 .close__icon {
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: $color-gray-dark-3;
+    @include icon-medium($color: $color-gray-dark-3);
 }
 
 .btn-round {

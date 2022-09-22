@@ -1,12 +1,18 @@
 .modal {
-    position: relative;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    // position: relative;
     padding: 4.8rem;
-    margin: 0 auto;
+    // margin: 0 auto;
+    background-color: $color-white;
     border: 1px solid $color-gray-light-3;
     border-radius: 4px;
+    box-shadow: $shadow-modal;
 
     &--small {
-        position: relative;
+        // position: relative;
         width: 48.6rem;
         display: flex;
         flex-direction: column;
@@ -254,8 +260,8 @@
             }
         }
     }
+}
 
-    &--none {
-        display: none;
-    }
+.hidden {
+    display: none;
 }

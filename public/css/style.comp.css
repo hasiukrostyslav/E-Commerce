@@ -33,6 +33,7 @@ html {
 
 body {
   box-sizing: border-box;
+  position: relative;
 }
 
 body {
@@ -759,8 +760,8 @@ body {
 }
 
 .close__icon {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
   fill: #787a80;
 }
 
@@ -2167,14 +2168,17 @@ body {
 }
 
 .modal {
-  position: relative;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
   padding: 4.8rem;
-  margin: 0 auto;
+  background-color: #fff;
   border: 1px solid #e5e8ed;
   border-radius: 4px;
+  box-shadow: 0px 60px 80px -20px rgba(30, 33, 44, 0.16), 0px 26px 24px -10px rgba(30, 33, 44, 0.1), 0px 12px 10px -6px rgba(30, 33, 44, 0.08), 0px 4px 4px -4px rgba(30, 33, 44, 0.05);
 }
 .modal--small {
-  position: relative;
   width: 48.6rem;
   display: flex;
   flex-direction: column;
@@ -2379,7 +2383,8 @@ body {
   height: 1.85rem;
   fill: #fff;
 }
-.modal--none {
+
+.hidden {
   display: none;
 }
 
