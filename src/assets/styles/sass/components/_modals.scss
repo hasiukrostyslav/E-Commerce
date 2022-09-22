@@ -10,6 +10,7 @@
     border: 1px solid $color-gray-light-3;
     border-radius: 4px;
     box-shadow: $shadow-modal;
+    z-index: 200;
 
     &--small {
         // position: relative;
@@ -93,13 +94,18 @@
 
     // Modal Size chart
     &--size {
-        position: relative;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
         border-radius: 4px;
         margin: 0 auto;
         border: $border;
         width: 87rem;
         padding-top: 4.8rem;
         padding-bottom: 4.8rem;
+        background-color: $color-white;
+        box-shadow: $shadow-modal;
 
         .size {
             &__wrapper {
@@ -166,14 +172,18 @@
     }
 
     &--cart {
-        position: relative;
+        position: absolute;
+        top: 0;
+        right: 0;
         width: 35.2rem;
         // height: 100vh;
-        margin-left: auto;
         padding: 0;
+        background-color: $color-white;
         border: 1px solid $color-gray-light-3;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
+        box-shadow: $shadow-modal;
+        z-index: 200;
 
         .cart {
             &__heading {
@@ -264,4 +274,14 @@
 
 .hidden {
     display: none;
+}
+
+.overlay {
+    background-color: rgba($color-gray-dark-1, $alpha: 0.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
 }
