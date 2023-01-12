@@ -1,20 +1,22 @@
 # E-Commerce project "Createx"
 
-It's a training project to improve my front-end skills.
+Online website where you can buy new clothes
 
 ---
 
 ### Technologies
-* `HTML`;
-* `CSS/SASS preprocessor (SCSS)`;
-* `JavaScript` lintered with `airbnb/javascript` style guide
 
+- `HTML`;
+- `CSS/SASS preprocessor (SCSS)`;
+- `JavaScript` with Babel transpiler lintered with `airbnb/javascript` style guide
+- `Webpack module bundler`;
 
 ### Setup
 
 To run this project, install it locally using npm:
+
 ```
-$ git clone https://github.com/hasiukrostyslav/E-Commerce.git
+$ git https://github.com/hasiukrostyslav/Ecommerce.git
 $ npm install
-$ npm start
+$ npm run dev
 ```
