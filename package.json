@@ -1,20 +1,16 @@
 {
-  "name": "e-comemerce",
+  "name": "ecommerceapp",
   "version": "1.0.0",
-  "description": "E-Commerce project",
+  "description": "Ecommerce app",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "sass --watch src/assets/styles/sass/main.scss:public/css/style.comp.css",
-    "devserver": "live-server --browser=chrome",
-    "start": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "sass src/assets/styles/sass/main.scss:public/css/style.comp.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/css/style.comp.css -o public/css/style.css",
-    "compress:css": "css-minify -f public/css/style.css -o public/css",
-    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+    "build": "webpack",
+    "dev": "webpack server",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hasiukrostyslav/E-Commerce.git"
+    "url": "git+https://github.com/hasiukrostyslav/E-Commerce"
   },
   "author": "Rostyslav Hasiuk",
   "license": "ISC",
@@ -23,24 +19,21 @@
   },
   "homepage": "https://github.com/hasiukrostyslav/E-Commerce#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "css-minify": "^2.0.0",
-    "eslint": "^8.2.0",
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.31.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "npm-run-all": "^4.1.5",
-    "postcss-cli": "^10.0.0",
-    "prettier": "^2.7.1",
-    "sass": "^1.54.0"
-  },
-  "dependencies": {
-    "express": "^4.18.1"
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   }
 }

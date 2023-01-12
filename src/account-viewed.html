@@ -4,13 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="css/style.comp.css" />
         <title>Createx</title>
     </head>
     <body>
@@ -47,7 +40,7 @@
                         <div class="topbar__lang-container">
                             <svg class="flag-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#flag-usa"
+                                    xlink:href="assets/svg/sprite.svg#flag-usa"
                                 ></use>
                             </svg>
                             <p class="topbar__currancy">Eng / &dollar;</p>
@@ -55,7 +48,7 @@
                         <button class="btn-lang">
                             <svg class="down-chevron-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                    xlink:href="assets/svg/sprite.svg#down-chevron"
                                 ></use>
                             </svg>
                         </button>
@@ -63,7 +56,7 @@
                     <div class="topbar__account">
                         <svg class="profile-icon">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#profile"
+                                xlink:href="assets/svg/sprite.svg#profile"
                             ></use>
                         </svg>
                         <button type="button" class="btn-user topbar__login">
@@ -81,7 +74,7 @@
                     <a href="index.html" class="logo-link"
                         ><img
                             class="logo"
-                            src="../src/assets/images/logo.png"
+                            src="assets/images/logo.png"
                             alt="Createx logo"
                     /></a>
 
@@ -123,7 +116,7 @@
                         <button class="search__button">
                             <svg class="search__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#search"
+                                    xlink:href="assets/svg/sprite.svg#search"
                                 ></use>
                             </svg>
                         </button>
@@ -135,7 +128,7 @@
                         >
                             <svg class="navigation__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                             <span class="navigation__like-count">2</span>
@@ -143,7 +136,7 @@
                         <a href="#" class="navigation__cart-link">
                             <svg class="navigation__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#cart"
+                                    xlink:href="assets/svg/sprite.svg#cart"
                                 ></use>
                             </svg>
                             <span class="navigation__cart-count">4</span>
@@ -410,7 +403,7 @@
                     <div class="menu__offers">
                         <img
                             class="menu__img"
-                            src="../src/assets/images/schoolboy.jpg"
+                            src="assets/images/schoolboy.jpg"
                             alt="schoolboy"
                         />
                         <p class="menu__text">Back to school. Sale up to 50%</p>
@@ -420,7 +413,7 @@
                             >See offers
                             <svg class="menu__btn-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#right"
+                                    xlink:href="assets/svg/sprite.svg#right"
                                 ></use>
                             </svg>
                         </a>
@@ -433,7 +426,7 @@
             <button class="offers__btn">
                 <svg class="offers__icon">
                     <use
-                        xlink:href="../src/assets/svg/sprite.svg#left-chevron"
+                        xlink:href="assets/svg/sprite.svg#left-chevron"
                     ></use>
                 </svg>
             </button>
@@ -447,7 +440,7 @@
             <button class="offers__btn">
                 <svg class="offers__icon">
                     <use
-                        xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                        xlink:href="assets/svg/sprite.svg#right-chevron"
                     ></use>
                 </svg>
             </button>
@@ -463,7 +456,7 @@
                         >
                             <svg class="breadcrumb__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#home"
+                                    xlink:href="assets/svg/sprite.svg#home"
                                 ></use>
                             </svg>
                         </a>
@@ -471,17 +464,19 @@
                     <li class="breadcrumb__item">
                         <svg class="breadcrumb__icon breadcrumb__icon--light">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                                xlink:href="assets/svg/sprite.svg#right-chevron"
                             ></use>
                         </svg>
                     </li>
                     <li class="breadcrumb__item">
-                        <a href="#" class="breadcrumb__link">Account</a>
+                        <a href="account-profile.html" class="breadcrumb__link"
+                            >Account</a
+                        >
                     </li>
                     <li class="breadcrumb__item">
                         <svg class="breadcrumb__icon breadcrumb__icon--light">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                                xlink:href="assets/svg/sprite.svg#right-chevron"
                             ></use>
                         </svg>
                     </li>
@@ -489,7 +484,7 @@
                         <a
                             href="#"
                             class="breadcrumb__link breadcrumb__link--current"
-                            >My profile</a
+                            >Recently viewed</a
                         >
                     </li>
                 </ul>
@@ -501,11 +496,11 @@
                 <p class="account__user-name">Annette Black</p>
                 <p class="account__user-email">annetteb@example</p>
                 <ul class="account__list">
-                    <li class="account__item account__item--current">
-                        <a href="#" class="account__link">
+                    <li class="account__item">
+                        <a href="account-profile.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#profile"
+                                    xlink:href="assets/svg/sprite.svg#profile"
                                 ></use>
                             </svg>
                             My profile
@@ -515,7 +510,7 @@
                         <a href="account-orders.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#bag"
+                                    xlink:href="assets/svg/sprite.svg#bag"
                                 ></use>
                             </svg>
                             My orders
@@ -525,17 +520,17 @@
                         <a href="account-wishlist.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                             Wishlist
                         </a>
                     </li>
-                    <li class="account__item">
+                    <li class="account__item account__item--current">
                         <a href="account-viewed.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
+                                    xlink:href="assets/svg/sprite.svg#eye"
                                 ></use>
                             </svg>
                             Recently viewed
@@ -545,7 +540,7 @@
                         <a href="account-reviews.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#star-outline"
+                                    xlink:href="assets/svg/sprite.svg#star-outline"
                                 ></use>
                             </svg>
                             My reviews
@@ -555,7 +550,7 @@
                         <a href="index.html" class="account__link">
                             <svg class="account__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#logout"
+                                    xlink:href="assets/svg/sprite.svg#logout"
                                 ></use>
                             </svg>
                             Sign out
@@ -564,199 +559,173 @@
                 </ul>
             </aside>
             <section class="account__profile">
-                <h2 class="heading-tertiary--main">My profile</h2>
+                <h2 class="heading-tertiary--main">Recently viewed</h2>
                 <button type="button" class="btn btn--delete">
                     <svg class="btn-delete__icon">
                         <use
-                            xlink:href="../src/assets/svg/sprite.svg#delete"
+                            xlink:href="assets/svg/sprite.svg#delete"
                         ></use>
                     </svg>
-                    Delete account
+                    Delete all
                 </button>
-                <form action="#" class="account__form">
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="first-name"
-                            >First name</label
-                        >
-                        <input
-                            class="input input--large input--half"
-                            type="text"
-                            name="first-name"
-                            id="first-name"
-                            value="Annette"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="last-name"
-                            >Last name</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="last-name"
-                            id="last-name"
-                            value="Black"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-email"
-                            >Email</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="email"
-                            name="profile-email"
-                            id="profile-email"
-                            value="annetteb@example.com"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="phone"
-                            >Phone</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="tel"
-                            name="phone"
-                            id="phone"
-                            value="(629) 555-0129"
-                            required
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="profile-new-pass"
-                            >New Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-new-pass"
-                            id="profile-new-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
+
+                <div class="account__viewed">
+                    <div class="card card--margin-bt sale__card sale__card-1">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="assets/images/product-7.jpg"
+                                alt="Photo of shorts"
+                                class="card__img card__img--medium"
+                            />
+                        </a>
+                        <p class="sale__percent">-20%</p>
+                        <button class="card__wishlist card__wishlist--large">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
+                                ></use>
+                            </svg>
+                        </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Denim shorts</a
                             >
-                                <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label
-                            class="label label--large"
-                            for="profile-confirm-pass"
-                            >Confirm Password</label
-                        >
-                        <input
-                            class="input input--large input--padding-large"
-                            type="password"
-                            name="profile-confirm-pass"
-                            id="profile-confirm-pass"
-                        />
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large"
-                        >
-                            <svg
-                                class="input__icon input__icon--large input__icon--light"
+                            <p
+                                class="card__price card__price--regular card__price--sale"
                             >
+                                &dollar;20.00<span class="card__price--old"
+                                    >&dollar;24.00</span
+                                >
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card card--margin-bt">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="assets/images/trend-3.jpg"
+                                alt="Photo of coat"
+                                class="card__img card__img--medium"
+                            />
+                        </a>
+                        <button class="card__wishlist card__wishlist--medium">
+                            <svg class="card__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#eye"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                         </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Check coat with colour contrast</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;183.45
+                            </p>
+                        </div>
                     </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="country"
-                            >Country</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="country"
-                            id="country"
-                        >
-                            <option value="Poland">Poland</option>
-                            <option value="UK">UK</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="USA" selected>USA</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
+                    <div class="card card--margin-bt">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="assets/images/trend-1.jpg"
+                                alt="Photo of shirt"
+                                class="card__img card__img--medium"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--5">
+                            <svg class="star__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--medium">
+                            <svg class="card__icon card__icon--filled">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#heart-filled"
                                 ></use>
                             </svg>
                         </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Shirt with insertion lace trims</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;49.95
+                            </p>
+                        </div>
                     </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="city"
-                            >City</label
-                        >
-                        <select
-                            class="input input--large select"
-                            name="city"
-                            id="city"
-                        >
-                            <option value="Chicago">Chicago</option>
-                            <option value="Dallas">Dallas</option>
-                            <option value="New Jersey" selected>
-                                New Jersey
-                            </option>
-                            <option value="San Francisco">San Francisco</option>
-                        </select>
-                        <button
-                            type="button"
-                            class="input__btn input__btn--large select__btn"
-                        >
-                            <svg class="input__icon input__icon--large">
+                    <div class="card card--margin-bt">
+                        <a href="product.html" class="card__img-link">
+                            <img
+                                src="assets/images/trend-2.jpg"
+                                alt="Photo of watch"
+                                class="card__img card__img--medium"
+                            />
+                        </a>
+                        <div class="card__stars card__stars--4">
+                            <svg class="star__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-filled"
+                                ></use>
+                            </svg>
+                            <svg class="star__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#star-outline"
+                                ></use>
+                            </svg>
+                        </div>
+                        <button class="card__wishlist card__wishlist--medium">
+                            <svg class="card__icon">
+                                <use
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                         </button>
+                        <div class="card__bottom">
+                            <a href="product.html" class="card__heading"
+                                >Chrono watch with blue leather belt</a
+                            >
+                            <p class="card__price card__price--regular">
+                                &dollar;120.60
+                            </p>
+                        </div>
                     </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="address"
-                            >Address</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="address"
-                            id="address"
-                            value="2464 Royal Ln. Mesa, New Jersey"
-                        />
-                    </div>
-                    <div class="input__box input__box--large">
-                        <label class="label label--large" for="code"
-                            >ZIP Code</label
-                        >
-                        <input
-                            class="input input--large"
-                            type="text"
-                            name="code"
-                            id="code"
-                            value="45463"
-                        />
-                    </div>
-                    <button
-                        class="btn btn--solid btn--large u-margin-top-large"
-                        type="submit"
-                    >
-                        Save changes
-                    </button>
-                </form>
+                </div>
             </section>
         </main>
 
@@ -841,7 +810,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#facebook"
+                                            xlink:href="assets/svg/sprite.svg#facebook"
                                         ></use>
                                     </svg>
                                 </a>
@@ -854,7 +823,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#instagram"
+                                            xlink:href="assets/svg/sprite.svg#instagram"
                                         ></use>
                                     </svg>
                                 </a>
@@ -867,7 +836,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#twitter"
+                                            xlink:href="assets/svg/sprite.svg#twitter"
                                         ></use>
                                     </svg>
                                 </a>
@@ -880,7 +849,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#youtube"
+                                            xlink:href="assets/svg/sprite.svg#youtube"
                                         ></use>
                                     </svg>
                                 </a>
@@ -893,7 +862,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#pinterest"
+                                            xlink:href="assets/svg/sprite.svg#pinterest"
                                         ></use>
                                     </svg>
                                 </a>
@@ -911,7 +880,7 @@
                         >
                             <img
                                 class="store-img"
-                                src="../src/assets/images/app-store.png"
+                                src="assets/images/app-store.png"
                                 alt="App store"
                             />
                         </a>
@@ -922,7 +891,7 @@
                         >
                             <img
                                 class="store-img"
-                                src="../src/assets/images/google-play.png"
+                                src="assets/images/google-play.png"
                                 alt="google play"
                             />
                         </a>
@@ -936,7 +905,7 @@
                         <span class="footer__heart">
                             <svg class="footer__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                         </span>

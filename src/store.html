@@ -4,13 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="css/style.comp.css" />
         <title>Createx</title>
     </head>
     <body>
@@ -47,7 +40,7 @@
                         <div class="topbar__lang-container">
                             <svg class="flag-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#flag-usa"
+                                    xlink:href="assets/svg/sprite.svg#flag-usa"
                                 ></use>
                             </svg>
                             <p class="topbar__currancy">Eng / &dollar;</p>
@@ -55,7 +48,7 @@
                         <button class="btn-lang">
                             <svg class="down-chevron-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#down-chevron"
+                                    xlink:href="assets/svg/sprite.svg#down-chevron"
                                 ></use>
                             </svg>
                         </button>
@@ -63,7 +56,7 @@
                     <div class="topbar__account">
                         <svg class="profile-icon">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#profile"
+                                xlink:href="assets/svg/sprite.svg#profile"
                             ></use>
                         </svg>
                         <button type="button" class="btn-user topbar__login">
@@ -81,7 +74,7 @@
                     <a href="index.html" class="logo-link"
                         ><img
                             class="logo"
-                            src="../src/assets/images/logo.png"
+                            src="assets/images/logo.png"
                             alt="Createx logo"
                     /></a>
 
@@ -123,7 +116,7 @@
                         <button class="search__button">
                             <svg class="search__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#search"
+                                    xlink:href="assets/svg/sprite.svg#search"
                                 ></use>
                             </svg>
                         </button>
@@ -135,7 +128,7 @@
                         >
                             <svg class="navigation__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                             <span class="navigation__like-count">2</span>
@@ -143,7 +136,7 @@
                         <a href="#" class="navigation__cart-link">
                             <svg class="navigation__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#cart"
+                                    xlink:href="assets/svg/sprite.svg#cart"
                                 ></use>
                             </svg>
                             <span class="navigation__cart-count">4</span>
@@ -410,7 +403,7 @@
                     <div class="menu__offers">
                         <img
                             class="menu__img"
-                            src="../src/assets/images/schoolboy.jpg"
+                            src="assets/images/schoolboy.jpg"
                             alt="schoolboy"
                         />
                         <p class="menu__text">Back to school. Sale up to 50%</p>
@@ -420,7 +413,7 @@
                             >See offers
                             <svg class="menu__btn-icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#right"
+                                    xlink:href="assets/svg/sprite.svg#right"
                                 ></use>
                             </svg>
                         </a>
@@ -433,7 +426,7 @@
             <button class="offers__btn">
                 <svg class="offers__icon">
                     <use
-                        xlink:href="../src/assets/svg/sprite.svg#left-chevron"
+                        xlink:href="assets/svg/sprite.svg#left-chevron"
                     ></use>
                 </svg>
             </button>
@@ -447,7 +440,7 @@
             <button class="offers__btn">
                 <svg class="offers__icon">
                     <use
-                        xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                        xlink:href="assets/svg/sprite.svg#right-chevron"
                     ></use>
                 </svg>
             </button>
@@ -463,7 +456,7 @@
                         >
                             <svg class="breadcrumb__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#home"
+                                    xlink:href="assets/svg/sprite.svg#home"
                                 ></use>
                             </svg>
                         </a>
@@ -471,7 +464,7 @@
                     <li class="breadcrumb__item">
                         <svg class="breadcrumb__icon breadcrumb__icon--light">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#right-chevron"
+                                xlink:href="assets/svg/sprite.svg#right-chevron"
                             ></use>
                         </svg>
                     </li>
@@ -479,226 +472,400 @@
                         <a
                             href="#"
                             class="breadcrumb__link breadcrumb__link--current"
-                            >Track order</a
+                            >Contacts</a
                         >
                     </li>
                 </ul>
             </div>
         </section>
 
-        <main class="track container">
-            <aside class="track__sidebar">
-                <h2 class="heading-secondary u-margin-bottom-medium">
-                    Track your order
-                </h2>
-                <p class="track__text">
-                    This form allows you to search for tracking details from
-                    anywhere within Createx Tracking Service.
-                </p>
-                <form class="track__form">
-                    <label class="subscribe__email-label" for="order"
-                        >Order No</label
-                    >
-                    <div
-                        class="subscribe__input-container u-margin-bottom-large"
-                    >
-                        <input
-                            class="subscribe__email-input subscribe__email-input--md"
-                            type="text"
-                            name="order"
-                            id="order-sb"
-                            placeholder="Order number"
-                            required
-                            value="# 34BV66580K92"
+        <main class="main__contacts">
+            <section class="container contacts__container">
+                <ul class="contacts__navbar">
+                    <li class="contacts__item">
+                        <a href="contact.html" class="contacts__link"
+                            >Contact Us</a
+                        >
+                    </li>
+                    <li class="contacts__item">
+                        <a
+                            href="#"
+                            class="contacts__link contacts__link--current"
+                            >Outlet Stores</a
+                        >
+                    </li>
+                    <li class="contacts__item">
+                        <a href="faq.html" class="contacts__link">FAQ</a>
+                    </li>
+                </ul>
+                <ul class="store grid grid--col-2-fix">
+                    <li class="store__card">
+                        <img
+                            src="assets/images/store-1.jpg"
+                            alt="Store"
                         />
-                        <input
-                            type="submit"
-                            class="btn btn--solid btn--large"
-                            value="Search"
+                        <h4 class="store__city">New York, USA</h4>
+                        <ul
+                            class="contacts__list store__list u-margin-bottom-medium-2"
+                        >
+                            <li class="contacts__item">
+                                <a
+                                    href="tel:(405)555-0128"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#iphone"
+                                        ></use>
+                                    </svg>
+                                    (405) 555-0128
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="mailto:createx@mail"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#mail"
+                                        ></use>
+                                    </svg>
+                                    hello@createx.com
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#clock"
+                                        ></use>
+                                    </svg>
+                                    Daily from 9 am to 9 pm
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--location"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#pin-outline"
+                                        ></use>
+                                    </svg>
+                                    20 W 29th Street New York, NY 10001
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="store__card">
+                        <img
+                            src="assets/images/store-2.jpg"
+                            alt="Store"
                         />
-                    </div>
+                        <h4 class="store__city">Delaware, USA</h4>
+                        <ul
+                            class="contacts__list store__list u-margin-bottom-medium-2"
+                        >
+                            <li class="contacts__item">
+                                <a
+                                    href="tel:(405)555-0128"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#iphone"
+                                        ></use>
+                                    </svg>
+                                    (808) 555-0111
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="mailto:createx@mail"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#mail"
+                                        ></use>
+                                    </svg>
+                                    delaware@createx.com
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#clock"
+                                        ></use>
+                                    </svg>
+                                    Daily from 10 am to 9 pm
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--location"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#pin-outline"
+                                        ></use>
+                                    </svg>
+                                    6391 Elgin St. Celina, Delaware 10299
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="store__card">
+                        <img
+                            src="assets/images/store-3.jpg"
+                            alt="Store"
+                        />
+                        <h4 class="store__city">New Jersey, USA</h4>
+                        <ul
+                            class="contacts__list store__list u-margin-bottom-medium-2"
+                        >
+                            <li class="contacts__item">
+                                <a
+                                    href="tel:(405)555-0128"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#iphone"
+                                        ></use>
+                                    </svg>
+                                    (702) 555-0122
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="mailto:createx@mail"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#mail"
+                                        ></use>
+                                    </svg>
+                                    newjersey@createx.com
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#clock"
+                                        ></use>
+                                    </svg>
+                                    Daily from 9 am to 8 pm
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--location"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#pin-outline"
+                                        ></use>
+                                    </svg>
+                                    2464 Royal Ln. Mesa, New Jersey 45463
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="store__card">
+                        <img
+                            src="assets/images/store-4.jpg"
+                            alt="Store"
+                        />
+                        <h4 class="store__city">Maine, USA</h4>
+                        <ul
+                            class="contacts__list store__list u-margin-bottom-medium-2"
+                        >
+                            <li class="contacts__item">
+                                <a
+                                    href="tel:(405)555-0128"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#iphone"
+                                        ></use>
+                                    </svg>
+                                    (219) 555-0114
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="mailto:createx@mail"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#mail"
+                                        ></use>
+                                    </svg>
+                                    maine@createx.com
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--regular"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#clock"
+                                        ></use>
+                                    </svg>
+                                    Daily from 9 am to 9 pm
+                                </a>
+                            </li>
+                            <li class="contacts__item">
+                                <a
+                                    href="#"
+                                    class="contacts__type contacts__type--location"
+                                >
+                                    <svg class="contacts__icon">
+                                        <use
+                                            xlink:href="assets/svg/sprite.svg#pin-outline"
+                                        ></use>
+                                    </svg>
+                                    8502 Preston Rd. Inglewood, Maine 98380
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-                    <ul class="track__info-list">
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Order No:
-                            </p>
-                            <p class="track__info track__info--data">
-                                34BV66580K92
-                            </p>
-                        </li>
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Shiped via:
-                            </p>
-                            <p class="track__info track__info--data">
-                                UPS Ground
-                            </p>
-                        </li>
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Shipped on:
-                            </p>
-                            <p class="track__info track__info--data">
-                                August 29, 2020, 6:00 pm
-                            </p>
-                        </li>
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Destination:
-                            </p>
-                            <p class="track__info track__info--data">
-                                London, United Kingdom
-                            </p>
-                        </li>
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Expected date:
-                            </p>
-                            <p class="track__info track__info--data">
-                                September 4, 2020
-                            </p>
-                        </li>
-                        <li class="track__info-item">
-                            <p class="track__info track__info--title">
-                                Status:
-                            </p>
-                            <p class="track__info track__info--data">
-                                In Transit
-                            </p>
-                        </li>
-                    </ul>
+            <section class="subscribe">
+                <div class="container subscribe__flex-container">
+                    <div class="subscribe__updates">
+                        <h2 class="heading-secondary heading-secondary--margin">
+                            Subscribe for updates
+                        </h2>
+                        <p class="subscribe__text">
+                            Subscribe for exclusive early sale access and new
+                            arrivals.
+                        </p>
+                        <form class="subscribe__form">
+                            <div class="tag__checkbox-container">
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="women"
+                                        id="women"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="women"
+                                        >Women</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="men"
+                                        id="men"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="men"
+                                        >Men</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="girls"
+                                        id="girls"
+                                        checked
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="girls"
+                                        >Girls</label
+                                    >
+                                </div>
+                                <div class="tag__checkbox">
+                                    <input
+                                        class="tag__checkbox-btn"
+                                        type="checkbox"
+                                        name="boys"
+                                        id="boys"
+                                    />
+                                    <label
+                                        class="tag__checkbox-btn-label"
+                                        for="boys"
+                                        >Boys</label
+                                    >
+                                </div>
+                            </div>
 
-                    <div class="checkbox">
-                        <input
-                            class="checkbox__input"
-                            type="checkbox"
-                            name="mark"
-                            id="mark"
-                            checked
-                        />
-                        <label
-                            class="checkbox__label checkbox__label--large"
-                            for="mark"
-                        >
-                            <span class="checkbox__mark">&nbsp;</span>
-                            Notify me when order is delivered
-                        </label>
+                            <label class="subscribe__email-label" for="email-sb"
+                                >Email</label
+                            >
+                            <div class="subscribe__input-container">
+                                <input
+                                    class="subscribe__email-input"
+                                    type="email"
+                                    name="email"
+                                    id="email-sb"
+                                    placeholder="Your working email"
+                                    required
+                                />
+                                <input
+                                    type="submit"
+                                    class="btn btn--solid btn--large"
+                                    value="Subscribe"
+                                />
+                            </div>
+
+                            <div class="checkbox">
+                                <input
+                                    class="checkbox__input"
+                                    type="checkbox"
+                                    name="mark"
+                                    id="mark"
+                                    checked
+                                />
+                                <label
+                                    class="checkbox__label checkbox__label--large"
+                                    for="mark"
+                                >
+                                    <span class="checkbox__mark">&nbsp;</span>
+                                    I agree to receive communications from
+                                    Createx Store.
+                                </label>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </aside>
-            <table class="track__table table">
-                <thead class="table__head">
-                    <tr class="table__row table__row--head">
-                        <th class="table__heading table--width">Status</th>
-                        <th class="table__heading table--width">Location</th>
-                        <th class="table__heading">Date</th>
-                        <th class="table__heading">Time</th>
-                    </tr>
-                </thead>
-                <tbody class="table__body">
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
-                        >
-                            Order Placed
-                        </td>
-                        <td class="table__data table__data--done">
-                            New York, USA
-                        </td>
-                        <td class="table__data table__data--done">
-                            August 29, 2020
-                        </td>
-                        <td class="table__data table__data--done">2:00 pm</td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
-                        >
-                            Documentation Prepared
-                        </td>
-                        <td class="table__data table__data--done">
-                            New York, USA
-                        </td>
-                        <td class="table__data table__data--done">
-                            August 29, 2020
-                        </td>
-                        <td class="table__data table__data--done">3:30 pm</td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
-                        >
-                            Booking Arranged
-                        </td>
-                        <td class="table__data table__data--done">
-                            New York, USA
-                        </td>
-                        <td class="table__data table__data--done">
-                            August 29, 2020
-                        </td>
-                        <td class="table__data table__data--done">3:35 pm</td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--done table__circle table__circle--y table__line table__line--y"
-                        >
-                            Collected
-                        </td>
-                        <td class="table__data table__data--done">
-                            New York, USA
-                        </td>
-                        <td class="table__data table__data--done">
-                            August 29, 2020
-                        </td>
-                        <td class="table__data table__data--done">4:00 pm</td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--done table__circle table__circle--y table__line table__line--n"
-                        >
-                            In Transit to Destination
-                        </td>
-                        <td class="table__data table__data--done">
-                            New York, USA
-                        </td>
-                        <td class="table__data table__data--done">
-                            August 29, 2020
-                        </td>
-                        <td class="table__data table__data--done">6:00 pm</td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n"
-                        >
-                            Arrived at Destination
-                        </td>
-                        <td class="table__data table__data--no-done">
-                            London, United Kingdom
-                        </td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n"
-                        >
-                            Out for Delivery
-                        </td>
-                        <td class="table__data table__data--no-done">
-                            London, United Kingdom
-                        </td>
-                    </tr>
-                    <tr class="table__row">
-                        <td
-                            class="table__data table__data--no-done table__circle table__circle--n"
-                        >
-                            Delivered
-                        </td>
-                        <td class="table__data table__data--no-done">
-                            London, United Kingdom
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    <img
+                        class="subscribe__img"
+                        src="assets/images/messages.png"
+                        alt="Mailman"
+                    />
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
@@ -782,7 +949,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#facebook"
+                                            xlink:href="assets/svg/sprite.svg#facebook"
                                         ></use>
                                     </svg>
                                 </a>
@@ -795,7 +962,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#instagram"
+                                            xlink:href="assets/svg/sprite.svg#instagram"
                                         ></use>
                                     </svg>
                                 </a>
@@ -808,7 +975,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#twitter"
+                                            xlink:href="assets/svg/sprite.svg#twitter"
                                         ></use>
                                     </svg>
                                 </a>
@@ -821,7 +988,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#youtube"
+                                            xlink:href="assets/svg/sprite.svg#youtube"
                                         ></use>
                                     </svg>
                                 </a>
@@ -834,7 +1001,7 @@
                                 >
                                     <svg class="social__icon">
                                         <use
-                                            xlink:href="../src/assets/svg/sprite.svg#pinterest"
+                                            xlink:href="assets/svg/sprite.svg#pinterest"
                                         ></use>
                                     </svg>
                                 </a>
@@ -852,7 +1019,7 @@
                         >
                             <img
                                 class="store-img"
-                                src="../src/assets/images/app-store.png"
+                                src="assets/images/app-store.png"
                                 alt="App store"
                             />
                         </a>
@@ -863,7 +1030,7 @@
                         >
                             <img
                                 class="store-img"
-                                src="../src/assets/images/google-play.png"
+                                src="assets/images/google-play.png"
                                 alt="google play"
                             />
                         </a>
@@ -877,7 +1044,7 @@
                         <span class="footer__heart">
                             <svg class="footer__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#heart-outline"
+                                    xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
                             </svg>
                         </span>
@@ -891,7 +1058,7 @@
         <section class="modal modal--small hidden">
             <button class="btn--close" type="button">
                 <svg class="close__icon">
-                    <use xlink:href="../src/assets/svg/sprite.svg#cross"></use>
+                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
                 </svg>
             </button>
             <h3 class="modal__heading u-margin-bottom-medium">Sign in</h3>
@@ -928,7 +1095,7 @@
                     <button type="button" class="input__btn input__btn--medium">
                         <svg class="input__icon input__icon--medium">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#eye"
+                                xlink:href="assets/svg/sprite.svg#eye"
                             ></use>
                         </svg>
                     </button>
@@ -971,7 +1138,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#facebook"
+                                    xlink:href="assets/svg/sprite.svg#facebook"
                                 ></use>
                             </svg>
                         </a>
@@ -984,7 +1151,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#google"
+                                    xlink:href="assets/svg/sprite.svg#google"
                                 ></use>
                             </svg>
                         </a>
@@ -997,7 +1164,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#twitter"
+                                    xlink:href="assets/svg/sprite.svg#twitter"
                                 ></use>
                             </svg>
                         </a>
@@ -1010,7 +1177,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#linked-in"
+                                    xlink:href="assets/svg/sprite.svg#linked-in"
                                 ></use>
                             </svg>
                         </a>
@@ -1022,7 +1189,7 @@
         <section class="modal modal--small hidden">
             <button class="btn--close" type="button">
                 <svg class="close__icon">
-                    <use xlink:href="../src/assets/svg/sprite.svg#cross"></use>
+                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
                 </svg>
             </button>
             <h3 class="modal__heading u-margin-bottom-medium">Sign up</h3>
@@ -1072,7 +1239,7 @@
                     <button type="button" class="input__btn input__btn--medium">
                         <svg class="input__icon input__icon--medium">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#eye"
+                                xlink:href="assets/svg/sprite.svg#eye"
                             ></use>
                         </svg>
                     </button>
@@ -1094,7 +1261,7 @@
                     <button type="button" class="input__btn input__btn--medium">
                         <svg class="input__icon input__icon--medium">
                             <use
-                                xlink:href="../src/assets/svg/sprite.svg#eye"
+                                xlink:href="assets/svg/sprite.svg#eye"
                             ></use>
                         </svg>
                     </button>
@@ -1136,7 +1303,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#facebook"
+                                    xlink:href="assets/svg/sprite.svg#facebook"
                                 ></use>
                             </svg>
                         </a>
@@ -1149,7 +1316,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#google"
+                                    xlink:href="assets/svg/sprite.svg#google"
                                 ></use>
                             </svg>
                         </a>
@@ -1162,7 +1329,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#twitter"
+                                    xlink:href="assets/svg/sprite.svg#twitter"
                                 ></use>
                             </svg>
                         </a>
@@ -1175,7 +1342,7 @@
                         >
                             <svg class="social__icon">
                                 <use
-                                    xlink:href="../src/assets/svg/sprite.svg#linked-in"
+                                    xlink:href="assets/svg/sprite.svg#linked-in"
                                 ></use>
                             </svg>
                         </a>
