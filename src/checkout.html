@@ -1,1849 +1,1204 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Createx</title>
-    </head>
-    <body>
-        <section class="navbar">
-            <div class="navbar__cover--dark">
-                <nav class="topbar container">
-                    <p class="topbar__phone">
-                        Available 24/7 at
-                        <a class="topbar__phone-link" href="tel:(405)555-0128"
-                            >(405) 555-0128</a
-                        >
-                    </p>
-                    <ul class="topbar__list">
-                        <li class="topbar__item">
-                            <a href="#" class="topbar__link"
-                                >Delivery & returns</a
-                            >
-                        </li>
-                        <li class="topbar__item">
-                            <a href="track.html" class="topbar__link"
-                                >Track order</a
-                            >
-                        </li>
-                        <li class="topbar__item">
-                            <a href="blog.html" class="topbar__link">Blog</a>
-                        </li>
-                        <li class="topbar__item">
-                            <a href="contact.html" class="topbar__link"
-                                >Contacts</a
-                            >
-                        </li>
-                    </ul>
-                    <div class="topbar__lang">
-                        <div class="topbar__lang-container">
-                            <svg class="flag-icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#flag-usa"
-                                ></use>
-                            </svg>
-                            <p class="topbar__currancy">Eng / &dollar;</p>
-                        </div>
-                        <button class="btn-lang">
-                            <svg class="down-chevron-icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#down-chevron"
-                                ></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="topbar__account">
-                        <svg class="profile-icon">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#profile"
-                            ></use>
-                        </svg>
-                        <button type="button" class="btn-user topbar__login">
-                            Log in
-                        </button>
-                        <span>/</span>
-                        <button type="button" class="btn-user topbar__register">
-                            Register
-                        </button>
-                    </div>
-                </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Createx</title>
+  </head>
+  <body>
+    <section class="navbar">
+      <div class="navbar__cover--dark">
+        <nav class="topbar container">
+          <p class="topbar__phone">
+            Available 24/7 at
+            <a class="topbar__phone-link" href="tel:(405)555-0128"
+              >(405) 555-0128</a
+            >
+          </p>
+          <ul class="topbar__list">
+            <li class="topbar__item">
+              <a href="#" class="topbar__link">Delivery & returns</a>
+            </li>
+            <li class="topbar__item">
+              <a href="track.html" class="topbar__link">Track order</a>
+            </li>
+            <li class="topbar__item">
+              <a href="blog.html" class="topbar__link">Blog</a>
+            </li>
+            <li class="topbar__item">
+              <a href="contact.html" class="topbar__link">Contacts</a>
+            </li>
+          </ul>
+          <div class="topbar__lang">
+            <div class="topbar__lang-container">
+              <svg class="flag-icon">
+                <use xlink:href="assets/svg/sprite.svg#flag-usa"></use>
+              </svg>
+              <p class="topbar__currancy">Eng / &dollar;</p>
             </div>
-            <div class="navbar__cover--light">
-                <nav class="navigation container">
-                    <a href="index.html" class="logo-link"
-                        ><img
-                            class="logo"
-                            src="assets/images/logo.png"
-                            alt="Createx logo"
-                    /></a>
+            <button class="btn-lang">
+              <svg class="down-chevron-icon">
+                <use xlink:href="assets/svg/sprite.svg#down-chevron"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="topbar__account">
+            <svg class="profile-icon">
+              <use xlink:href="assets/svg/sprite.svg#profile"></use>
+            </svg>
+            <button type="button" class="btn-user topbar__login">Log in</button>
+            <span>/</span>
+            <button type="button" class="btn-user topbar__register">
+              Register
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div class="navbar__cover--light">
+        <nav class="navigation container">
+          <a href="index.html" class="logo-link"
+            ><img class="logo" src="assets/images/logo.png" alt="Createx logo"
+          /></a>
 
-                    <ul class="navigation__list">
-                        <li class="navigation__item">
-                            <a href="catalog.html" class="navigation__link"
-                                >Women</a
-                            >
-                        </li>
-                        <li class="navigation__item">
-                            <a href="catalog.html" class="navigation__link"
-                                >Men</a
-                            >
-                        </li>
-                        <li class="navigation__item">
-                            <a href="catalog.html" class="navigation__link"
-                                >Girls</a
-                            >
-                        </li>
-                        <li class="navigation__item">
-                            <a href="catalog.html" class="navigation__link"
-                                >Boys</a
-                            >
-                        </li>
-                        <li class="navigation__item">
-                            <a
-                                href="catalog.html"
-                                class="navigation__link navigation__link--red"
-                                >Sale</a
-                            >
-                        </li>
-                    </ul>
-                    <form action="#" class="search">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a href="catalog.html" class="navigation__link">Women</a>
+            </li>
+            <li class="navigation__item">
+              <a href="catalog.html" class="navigation__link">Men</a>
+            </li>
+            <li class="navigation__item">
+              <a href="catalog.html" class="navigation__link">Girls</a>
+            </li>
+            <li class="navigation__item">
+              <a href="catalog.html" class="navigation__link">Boys</a>
+            </li>
+            <li class="navigation__item">
+              <a
+                href="catalog.html"
+                class="navigation__link navigation__link--red"
+                >Sale</a
+              >
+            </li>
+          </ul>
+          <form action="#" class="search">
+            <input
+              type="text"
+              class="search__input"
+              placeholder="Search for products..."
+            />
+            <button class="search__button">
+              <svg class="search__icon">
+                <use xlink:href="assets/svg/sprite.svg#search"></use>
+              </svg>
+            </button>
+          </form>
+          <div class="navigation__toolbar">
+            <a href="account-wishlist.html" class="navigation__like-link">
+              <svg class="navigation__icon">
+                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
+              </svg>
+              <span class="navigation__like-count">2</span>
+            </a>
+            <a href="#" class="navigation__cart-link">
+              <svg class="navigation__icon">
+                <use xlink:href="assets/svg/sprite.svg#cart"></use>
+              </svg>
+              <span class="navigation__cart-count">4</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <nav class="menu hidden">
+        <div class="container menu__flex">
+          <div class="menu__navigation">
+            <ul class="menu__list u-width">
+              <li class="menu__item">
+                <a href="catalog.html" class="menu__link">New collection</a>
+              </li>
+              <li class="menu__item">
+                <a href="catalog.html" class="menu__link">Best Sellers</a>
+              </li>
+              <li class="menu__item">
+                <a href="catalog.html" class="menu__link">Plus Size</a>
+              </li>
+              <li class="menu__item">
+                <a href="catalog.html" class="menu__link menu__link--sale"
+                  >Sale up to 70%</a
+                >
+              </li>
+            </ul>
+            <div class="menu__block u-width">
+              <p class="menu__heading">Clothes</p>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Coats</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Jackets</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Suits</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Dresses</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Cardigans & sweaters</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sweatshirts & hoodies</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >T-shirt & tops</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link">Pants</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link">Jeans</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Shorts</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Skirts</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Lingerie & nightwear</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sportswear</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Swimwear</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="menu__block u-width">
+              <p class="menu__heading">Shoes</p>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Boots</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Flat shoes</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Heels</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sandals</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link">Mules</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sliders</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Slippers</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sneakers</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Leather</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="menu__block u-width">
+              <p class="menu__heading">Accessories</p>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Bags & bagpacks</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Hats & scarves</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link">Hair accessories</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link">Belts</a>
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Jewellery</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Watches</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Sunglasses</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Purses</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Gloves</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="catalog.html" class="menu__link menu__link"
+                    >Socks & tights</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="menu__offers">
+            <img
+              class="menu__img"
+              src="assets/images/schoolboy.jpg"
+              alt="schoolboy"
+            />
+            <p class="menu__text">Back to school. Sale up to 50%</p>
+            <a
+              href="catalog.html"
+              class="menu__btn-link btn btn--outline btn--small"
+              >See offers
+              <svg class="menu__btn-icon">
+                <use xlink:href="assets/svg/sprite.svg#right"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <section class="offers">
+      <button class="offers__btn">
+        <svg class="offers__icon">
+          <use xlink:href="assets/svg/sprite.svg#left-chevron"></use>
+        </svg>
+      </button>
+
+      <div class="offers__text">
+        <p class="offers__heading">Up to 70% Off.</p>
+        <a href="catalog.html" class="offers__link"
+          >Shop our latest sale styles</a
+        >
+      </div>
+      <button class="offers__btn">
+        <svg class="offers__icon">
+          <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
+        </svg>
+      </button>
+    </section>
+
+    <section class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a
+              href="index.html"
+              class="breadcrumb__link breadcrumb__link--icon"
+            >
+              <svg class="breadcrumb__icon">
+                <use xlink:href="assets/svg/sprite.svg#home"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb__item">
+            <svg class="breadcrumb__icon breadcrumb__icon--light">
+              <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
+            </svg>
+          </li>
+          <li class="breadcrumb__item">
+            <a href="#" class="breadcrumb__link breadcrumb__link--current"
+              >Checkout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <main class="checkout container">
+      <div class="checkout__wrapper">
+        <section class="checkout__section">
+          <div class="checkout__flex">
+            <h2 class="heading-secondary heading-secondary--zero">Checkout</h2>
+            <a href="catalog.html" class="checkout__link">Back to shopping</a>
+          </div>
+          <div class="checkout__sign-in">
+            <svg class="checkout__sign-icon">
+              <use xlink:href="assets/svg/sprite.svg#profile"></use>
+            </svg>
+            <p class="checkout__sign-text">
+              Already have an account?
+              <a href="#" class="checkout__link">Sign in</a>
+              for faster checkout experience
+            </p>
+          </div>
+
+          <form action="#" class="checkout__details">
+            <ul class="details__list">
+              <li class="details__item">
+                <h4 class="checkout__heading details__heading">
+                  1. Item Review
+                </h4>
+                <ul class="details__sublist">
+                  <li class="details__subitem">
+                    <img
+                      class="cart__img details__img"
+                      src="assets/images/order-item-1.png"
+                      alt="sweatshirt"
+                    />
+                    <div>
+                      <a href="product.html" class="order__name details__name">
+                        Basic hooded sweatshirt in pink
+                      </a>
+                      <p class="order__color">
+                        Color:
+                        <span class="order__color-value">pink</span>
+                      </p>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">S</span>
+                      </p>
+                    </div>
+                    <div class="number__box details__num">
+                      <input
+                        class="input input--small input--number-sm"
+                        type="number"
+                        name="number"
+                        id="number-1"
+                        value="1"
+                        min="1"
+                      />
+                      <button
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--medium">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#up-down-select"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      class="card__price card__price--regular card__price--sale card__price--sm details__price"
+                    >
+                      &dollar;15.50<span
+                        class="card__price--old cart__price--old--sm"
+                        >&dollar;31.00</span
+                      >
+                    </p>
+                    <div class="details__btns">
+                      <button type="button" class="btn btn--outline btn--small">
+                        Delete
+                      </button>
+                      <button type="button" class="btn cart__wishlist">
+                        Move to
+                        <svg class="cart__wishlist-btn">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="details__subitem">
+                    <img
+                      class="cart__img details__img"
+                      src="assets/images/order-item-2.png"
+                      alt="cap"
+                    />
+                    <div>
+                      <a href="product.html" class="order__name details__name">
+                        Black and white sport cap
+                      </a>
+                    </div>
+                    <div class="number__box details__num">
+                      <input
+                        class="input input--small input--number-sm"
+                        type="number"
+                        name="number"
+                        id="number-3"
+                        value="1"
+                        min="1"
+                      />
+                      <button
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--medium">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#up-down-select"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      class="card__price card__price--regular card__price--sm details__price"
+                    >
+                      &dollar;18.15
+                    </p>
+                    <div class="details__btns">
+                      <button type="button" class="btn btn--outline btn--small">
+                        Delete
+                      </button>
+                      <button type="button" class="btn cart__wishlist">
+                        Move to
+                        <svg class="cart__wishlist-btn">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="details__subitem">
+                    <img
+                      class="cart__img details__img"
+                      src="assets/images/order-item-3.png"
+                      alt="jeans"
+                    />
+                    <div>
+                      <a href="product.html" class="order__name details__name">
+                        Mid-rise slim cropped fit jeans
+                      </a>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">M</span>
+                      </p>
+                    </div>
+                    <div class="number__box details__num">
+                      <input
+                        class="input input--small input--number-sm"
+                        type="number"
+                        name="number"
+                        id="number-3"
+                        value="2"
+                        min="1"
+                      />
+                      <button
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--medium">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#up-down-select"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      class="card__price card__price--regular card__price--sm details__price"
+                    >
+                      &dollar;80.00
+                    </p>
+                    <div class="details__btns">
+                      <button type="button" class="btn btn--outline btn--small">
+                        Delete
+                      </button>
+                      <button type="button" class="btn cart__wishlist">
+                        Move to
+                        <svg class="cart__wishlist-btn">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="details__subitem">
+                    <img
+                      class="cart__img details__img"
+                      src="assets/images/order-item-4.png"
+                      alt="shoes"
+                    />
+                    <div>
+                      <a href="product.html" class="order__name details__name">
+                        Men fashion gray shoes
+                      </a>
+                      <p class="order__color">
+                        Color:
+                        <span class="order__color-value">gray</span>
+                      </p>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">44</span>
+                      </p>
+                    </div>
+                    <div class="number__box details__num">
+                      <input
+                        class="input input--small input--number-sm"
+                        type="number"
+                        name="number"
+                        id="number-3"
+                        value="1"
+                        min="1"
+                      />
+                      <button
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--medium">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#up-down-select"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      class="card__price card__price--regular card__price--sm details__price"
+                    >
+                      &dollar;85.00
+                    </p>
+                    <div class="details__btns">
+                      <button type="button" class="btn btn--outline btn--small">
+                        Delete
+                      </button>
+                      <button type="button" class="btn cart__wishlist">
+                        Move to
+                        <svg class="cart__wishlist-btn">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="details__subitem">
+                    <p class="details__total">Subtotal: &dollar;198.65</p>
+                  </li>
+                </ul>
+              </li>
+              <li class="details__item">
+                <h4 class="checkout__heading details__heading">
+                  2. Shipping & Billing Address
+                </h4>
+
+                <div class="details__form">
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="first-name"
+                      >First name</label
+                    >
+                    <input
+                      class="input input--large input--half"
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      placeholder="Your first name"
+                      required
+                    />
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="last-name"
+                      >Last name</label
+                    >
+                    <input
+                      class="input input--large"
+                      type="text"
+                      name="last-name"
+                      id="last-name"
+                      placeholder="Your last name"
+                      required
+                    />
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="profile-email"
+                      >Email</label
+                    >
+                    <input
+                      class="input input--large"
+                      type="email"
+                      name="profile-email"
+                      id="profile-email"
+                      placeholder="Your working email"
+                      required
+                    />
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="phone">Phone</label>
+                    <input
+                      class="input input--large"
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      placeholder="Your phone number"
+                      required
+                    />
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="country"
+                      >Country</label
+                    >
+                    <select
+                      class="input input--large select"
+                      name="country"
+                      id="country"
+                      required
+                    >
+                      <option value="" disabled selected hidden>
+                        Choose your country
+                      </option>
+                      <option value="Poland">Poland</option>
+                      <option value="UK">UK</option>
+                      <option value="Ukraine">Ukraine</option>
+                      <option value="USA">USA</option>
+                    </select>
+                    <button
+                      type="button"
+                      class="input__btn input__btn--large select__btn"
+                    >
+                      <svg class="input__icon input__icon--large">
+                        <use
+                          xlink:href="assets/svg/sprite.svg#down-chevron"
+                        ></use>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="city">City</label>
+                    <select
+                      class="input input--large select"
+                      name="city"
+                      id="city"
+                      required
+                    >
+                      <option value="" disabled selected hidden>
+                        Choose your city
+                      </option>
+                      <option value="Chicago">Chicago</option>
+                      <option value="Dallas">Dallas</option>
+                      <option value="New Jersey">New Jersey</option>
+                      <option value="San Francisco">San Francisco</option>
+                    </select>
+                    <button
+                      type="button"
+                      class="input__btn input__btn--large select__btn"
+                    >
+                      <svg class="input__icon input__icon--large">
+                        <use
+                          xlink:href="assets/svg/sprite.svg#down-chevron"
+                        ></use>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="address"
+                      >Address</label
+                    >
+                    <input
+                      class="input input--large"
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="Your address"
+                      required
+                    />
+                  </div>
+                  <div class="input__box input__box--medium">
+                    <label class="label label--large" for="code"
+                      >ZIP Code</label
+                    >
+                    <input
+                      class="input input--large"
+                      type="text"
+                      name="code"
+                      id="code"
+                      placeholder="Your ZIP code"
+                      required
+                    />
+                  </div>
+                  <div class="modal__check">
+                    <input
+                      class="checkbox__input"
+                      type="checkbox"
+                      name="check-sign-up"
+                      id="check-sign-up"
+                      checked
+                    />
+                    <label
+                      class="checkbox__label checkbox__label--small"
+                      for="check-sign-up"
+                      ><span class="checkbox__mark">&nbsp;</span>Billing and
+                      Shipping details are the same</label
+                    >
+                  </div>
+                </div>
+              </li>
+              <li class="details__item">
+                <h4 class="checkout__heading details__heading">
+                  3. Shipping Method
+                </h4>
+                <ul class="details__methods">
+                  <li class="details__method">
+                    <div>
+                      <div class="details__radio">
                         <input
-                            type="text"
-                            class="search__input"
-                            placeholder="Search for products..."
+                          class="radio__input"
+                          type="radio"
+                          name="delivery"
+                          id="courier"
+                          checked
                         />
-                        <button class="search__button">
-                            <svg class="search__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#search"
-                                ></use>
-                            </svg>
-                        </button>
-                    </form>
-                    <div class="navigation__toolbar">
-                        <a
-                            href="account-wishlist.html"
-                            class="navigation__like-link"
-                        >
-                            <svg class="navigation__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#heart-outline"
-                                ></use>
-                            </svg>
-                            <span class="navigation__like-count">2</span>
-                        </a>
-                        <a href="#" class="navigation__cart-link">
-                            <svg class="navigation__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#cart"
-                                ></use>
-                            </svg>
-                            <span class="navigation__cart-count">4</span>
-                        </a>
+
+                        <label for="courier" class="radio__label"
+                          ><span class="radio__mark">&nbsp;</span>
+                          Courier to your address
+                        </label>
+                      </div>
+                      <p class="details__date">Estimated date: September 9</p>
                     </div>
-                </nav>
-            </div>
-            <nav class="menu hidden">
-                <div class="container menu__flex">
-                    <div class="menu__navigation">
-                        <ul class="menu__list u-width">
-                            <li class="menu__item">
-                                <a href="catalog.html" class="menu__link"
-                                    >New collection</a
-                                >
-                            </li>
-                            <li class="menu__item">
-                                <a href="catalog.html" class="menu__link"
-                                    >Best Sellers</a
-                                >
-                            </li>
-                            <li class="menu__item">
-                                <a href="catalog.html" class="menu__link"
-                                    >Plus Size</a
-                                >
-                            </li>
-                            <li class="menu__item">
-                                <a
-                                    href="catalog.html"
-                                    class="menu__link menu__link--sale"
-                                    >Sale up to 70%</a
-                                >
-                            </li>
-                        </ul>
-                        <div class="menu__block u-width">
-                            <p class="menu__heading">Clothes</p>
-                            <ul class="menu__list">
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Coats</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Jackets</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Suits</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Dresses</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Cardigans & sweaters</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sweatshirts & hoodies</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >T-shirt & tops</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Pants</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Jeans</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Shorts</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Skirts</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Lingerie & nightwear</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sportswear</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Swimwear</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu__block u-width">
-                            <p class="menu__heading">Shoes</p>
-                            <ul class="menu__list">
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Boots</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Flat shoes</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Heels</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sandals</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Mules</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sliders</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Slippers</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sneakers</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Leather</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu__block u-width">
-                            <p class="menu__heading">Accessories</p>
-                            <ul class="menu__list">
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Bags & bagpacks</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Hats & scarves</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a href="catalog.html" class="menu__link"
-                                        >Hair accessories</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Belts</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Jewellery</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Watches</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Sunglasses</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Purses</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Gloves</a
-                                    >
-                                </li>
-                                <li class="menu__item">
-                                    <a
-                                        href="catalog.html"
-                                        class="menu__link menu__link"
-                                        >Socks & tights</a
-                                    >
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="menu__offers">
-                        <img
-                            class="menu__img"
-                            src="assets/images/schoolboy.jpg"
-                            alt="schoolboy"
+                    <span class="details__delivery-price">$25.00</span>
+                  </li>
+                  <li class="details__method">
+                    <div>
+                      <div class="details__radio">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="delivery"
+                          id="store"
                         />
-                        <p class="menu__text">Back to school. Sale up to 50%</p>
-                        <a
-                            href="catalog.html"
-                            class="menu__btn-link btn btn--outline btn--small"
-                            >See offers
-                            <svg class="menu__btn-icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#right"
-                                ></use>
-                            </svg>
-                        </a>
+
+                        <label for="store" class="radio__label"
+                          ><span class="radio__mark">&nbsp;</span>
+                          Pick up from store
+                        </label>
+                      </div>
+                      <p class="details__date">
+                        Pick up on September 8 from 12:00
+                      </p>
                     </div>
-                </div>
-            </nav>
-        </section>
+                    <span class="details__delivery-price">Free</span>
+                  </li>
+                  <li class="details__method">
+                    <div>
+                      <div class="details__radio">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="delivery"
+                          id="ups"
+                        />
 
-        <section class="offers">
-            <button class="offers__btn">
-                <svg class="offers__icon">
-                    <use
-                        xlink:href="assets/svg/sprite.svg#left-chevron"
-                    ></use>
-                </svg>
-            </button>
+                        <label for="ups" class="radio__label"
+                          ><span class="radio__mark">&nbsp;</span>
+                          UPS Ground Shipping
+                        </label>
+                      </div>
+                      <p class="details__date">Up to one week</p>
+                    </div>
+                    <span class="details__delivery-price">$10.00</span>
+                  </li>
+                  <li class="details__method">
+                    <div>
+                      <div class="details__radio">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="delivery"
+                          id="createx-locker"
+                        />
 
-            <div class="offers__text">
-                <p class="offers__heading">Up to 70% Off.</p>
-                <a href="catalog.html" class="offers__link"
-                    >Shop our latest sale styles</a
-                >
-            </div>
-            <button class="offers__btn">
-                <svg class="offers__icon">
-                    <use
-                        xlink:href="assets/svg/sprite.svg#right-chevron"
-                    ></use>
-                </svg>
-            </button>
-        </section>
+                        <label for="createx-locker" class="radio__label"
+                          ><span class="radio__mark">&nbsp;</span>
+                          Pick up at Createx Locker
+                        </label>
+                      </div>
+                      <p class="details__date">
+                        Pick up on September 8 from 12:00
+                      </p>
+                    </div>
+                    <span class="details__delivery-price">$8.50</span>
+                  </li>
+                  <li class="details__method">
+                    <div>
+                      <div class="details__radio">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          name="delivery"
+                          id="createx-export"
+                        />
 
-        <section class="breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb__list">
-                    <li class="breadcrumb__item">
-                        <a
-                            href="index.html"
-                            class="breadcrumb__link breadcrumb__link--icon"
-                        >
-                            <svg class="breadcrumb__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#home"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="breadcrumb__item">
-                        <svg class="breadcrumb__icon breadcrumb__icon--light">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#right-chevron"
-                            ></use>
-                        </svg>
-                    </li>
-                    <li class="breadcrumb__item">
-                        <a
-                            href="#"
-                            class="breadcrumb__link breadcrumb__link--current"
-                            >Checkout</a
-                        >
-                    </li>
+                        <label for="createx-export" class="radio__label"
+                          ><span class="radio__mark">&nbsp;</span>
+                          Createx Global Export
+                        </label>
+                      </div>
+                      <p class="details__date">3-4 days</p>
+                    </div>
+                    <span class="details__delivery-price">$15.00</span>
+                  </li>
                 </ul>
-            </div>
-        </section>
+              </li>
+              <li class="details__item">
+                <h4 class="checkout__heading details__heading">
+                  4. Payment Method
+                </h4>
 
-        <main class="checkout container">
-            <div class="checkout__wrapper">
-                <section class="checkout__section">
-                    <div class="checkout__flex">
-                        <h2 class="heading-secondary heading-secondary--zero">
-                            Checkout
-                        </h2>
-                        <a href="catalog.html" class="checkout__link"
-                            >Back to shopping</a
-                        >
-                    </div>
-                    <div class="checkout__sign-in">
-                        <svg class="checkout__sign-icon">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#profile"
-                            ></use>
-                        </svg>
-                        <p class="checkout__sign-text">
-                            Already have an account?
-                            <a href="#" class="checkout__link">Sign in</a>
-                            for faster checkout experience
-                        </p>
-                    </div>
-
-                    <form action="#" class="checkout__details">
-                        <ul class="details__list">
-                            <li class="details__item">
-                                <h4 class="checkout__heading details__heading">
-                                    1. Item Review
-                                </h4>
-                                <ul class="details__sublist">
-                                    <li class="details__subitem">
-                                        <img
-                                            class="cart__img details__img"
-                                            src="assets/images/order-item-1.png"
-                                            alt="sweatshirt"
-                                        />
-                                        <div>
-                                            <a
-                                                href="product.html"
-                                                class="order__name details__name"
-                                            >
-                                                Basic hooded sweatshirt in pink
-                                            </a>
-                                            <p class="order__color">
-                                                Color:
-                                                <span class="order__color-value"
-                                                    >pink</span
-                                                >
-                                            </p>
-                                            <p class="order__size">
-                                                Size:
-                                                <span class="order__size-value"
-                                                    >S</span
-                                                >
-                                            </p>
-                                        </div>
-                                        <div class="number__box details__num">
-                                            <input
-                                                class="input input--small input--number-sm"
-                                                type="number"
-                                                name="number"
-                                                id="number-1"
-                                                value="1"
-                                                min="1"
-                                            />
-                                            <button
-                                                type="button"
-                                                class="number__btn number__btn--top number__btn--sm"
-                                            >
-                                                <svg
-                                                    class="input__icon input__icon--medium"
-                                                >
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p
-                                            class="card__price card__price--regular card__price--sale card__price--sm details__price"
-                                        >
-                                            &dollar;15.50<span
-                                                class="card__price--old cart__price--old--sm"
-                                                >&dollar;31.00</span
-                                            >
-                                        </p>
-                                        <div class="details__btns">
-                                            <button
-                                                type="button"
-                                                class="btn btn--outline btn--small"
-                                            >
-                                                Delete
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn cart__wishlist"
-                                            >
-                                                Move to
-                                                <svg class="cart__wishlist-btn">
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#heart-outline"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li class="details__subitem">
-                                        <img
-                                            class="cart__img details__img"
-                                            src="assets/images/order-item-2.png"
-                                            alt="cap"
-                                        />
-                                        <div>
-                                            <a
-                                                href="product.html"
-                                                class="order__name details__name"
-                                            >
-                                                Black and white sport cap
-                                            </a>
-                                        </div>
-                                        <div class="number__box details__num">
-                                            <input
-                                                class="input input--small input--number-sm"
-                                                type="number"
-                                                name="number"
-                                                id="number-3"
-                                                value="1"
-                                                min="1"
-                                            />
-                                            <button
-                                                type="button"
-                                                class="number__btn number__btn--top number__btn--sm"
-                                            >
-                                                <svg
-                                                    class="input__icon input__icon--medium"
-                                                >
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p
-                                            class="card__price card__price--regular card__price--sm details__price"
-                                        >
-                                            &dollar;18.15
-                                        </p>
-                                        <div class="details__btns">
-                                            <button
-                                                type="button"
-                                                class="btn btn--outline btn--small"
-                                            >
-                                                Delete
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn cart__wishlist"
-                                            >
-                                                Move to
-                                                <svg class="cart__wishlist-btn">
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#heart-outline"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li class="details__subitem">
-                                        <img
-                                            class="cart__img details__img"
-                                            src="assets/images/order-item-3.png"
-                                            alt="jeans"
-                                        />
-                                        <div>
-                                            <a
-                                                href="product.html"
-                                                class="order__name details__name"
-                                            >
-                                                Mid-rise slim cropped fit jeans
-                                            </a>
-                                            <p class="order__size">
-                                                Size:
-                                                <span class="order__size-value"
-                                                    >M</span
-                                                >
-                                            </p>
-                                        </div>
-                                        <div class="number__box details__num">
-                                            <input
-                                                class="input input--small input--number-sm"
-                                                type="number"
-                                                name="number"
-                                                id="number-3"
-                                                value="2"
-                                                min="1"
-                                            />
-                                            <button
-                                                type="button"
-                                                class="number__btn number__btn--top number__btn--sm"
-                                            >
-                                                <svg
-                                                    class="input__icon input__icon--medium"
-                                                >
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p
-                                            class="card__price card__price--regular card__price--sm details__price"
-                                        >
-                                            &dollar;80.00
-                                        </p>
-                                        <div class="details__btns">
-                                            <button
-                                                type="button"
-                                                class="btn btn--outline btn--small"
-                                            >
-                                                Delete
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn cart__wishlist"
-                                            >
-                                                Move to
-                                                <svg class="cart__wishlist-btn">
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#heart-outline"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li class="details__subitem">
-                                        <img
-                                            class="cart__img details__img"
-                                            src="assets/images/order-item-4.png"
-                                            alt="shoes"
-                                        />
-                                        <div>
-                                            <a
-                                                href="product.html"
-                                                class="order__name details__name"
-                                            >
-                                                Men fashion gray shoes
-                                            </a>
-                                            <p class="order__color">
-                                                Color:
-                                                <span class="order__color-value"
-                                                    >gray</span
-                                                >
-                                            </p>
-                                            <p class="order__size">
-                                                Size:
-                                                <span class="order__size-value"
-                                                    >44</span
-                                                >
-                                            </p>
-                                        </div>
-                                        <div class="number__box details__num">
-                                            <input
-                                                class="input input--small input--number-sm"
-                                                type="number"
-                                                name="number"
-                                                id="number-3"
-                                                value="1"
-                                                min="1"
-                                            />
-                                            <button
-                                                type="button"
-                                                class="number__btn number__btn--top number__btn--sm"
-                                            >
-                                                <svg
-                                                    class="input__icon input__icon--medium"
-                                                >
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p
-                                            class="card__price card__price--regular card__price--sm details__price"
-                                        >
-                                            &dollar;85.00
-                                        </p>
-                                        <div class="details__btns">
-                                            <button
-                                                type="button"
-                                                class="btn btn--outline btn--small"
-                                            >
-                                                Delete
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn cart__wishlist"
-                                            >
-                                                Move to
-                                                <svg class="cart__wishlist-btn">
-                                                    <use
-                                                        xlink:href="assets/svg/sprite.svg#heart-outline"
-                                                    ></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li class="details__subitem">
-                                        <p class="details__total">
-                                            Subtotal: &dollar;198.65
-                                        </p>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="details__item">
-                                <h4 class="checkout__heading details__heading">
-                                    2. Shipping & Billing Address
-                                </h4>
-
-                                <div class="details__form">
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="first-name"
-                                            >First name</label
-                                        >
-                                        <input
-                                            class="input input--large input--half"
-                                            type="text"
-                                            name="first-name"
-                                            id="first-name"
-                                            placeholder="Your first name"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="last-name"
-                                            >Last name</label
-                                        >
-                                        <input
-                                            class="input input--large"
-                                            type="text"
-                                            name="last-name"
-                                            id="last-name"
-                                            placeholder="Your last name"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="profile-email"
-                                            >Email</label
-                                        >
-                                        <input
-                                            class="input input--large"
-                                            type="email"
-                                            name="profile-email"
-                                            id="profile-email"
-                                            placeholder="Your working email"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="phone"
-                                            >Phone</label
-                                        >
-                                        <input
-                                            class="input input--large"
-                                            type="tel"
-                                            name="phone"
-                                            id="phone"
-                                            placeholder="Your phone number"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="country"
-                                            >Country</label
-                                        >
-                                        <select
-                                            class="input input--large select"
-                                            name="country"
-                                            id="country"
-                                            required
-                                        >
-                                            <option
-                                                value=""
-                                                disabled
-                                                selected
-                                                hidden
-                                            >
-                                                Choose your country
-                                            </option>
-                                            <option value="Poland">
-                                                Poland
-                                            </option>
-                                            <option value="UK">UK</option>
-                                            <option value="Ukraine">
-                                                Ukraine
-                                            </option>
-                                            <option value="USA">USA</option>
-                                        </select>
-                                        <button
-                                            type="button"
-                                            class="input__btn input__btn--large select__btn"
-                                        >
-                                            <svg
-                                                class="input__icon input__icon--large"
-                                            >
-                                                <use
-                                                    xlink:href="assets/svg/sprite.svg#down-chevron"
-                                                ></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="city"
-                                            >City</label
-                                        >
-                                        <select
-                                            class="input input--large select"
-                                            name="city"
-                                            id="city"
-                                            required
-                                        >
-                                            <option
-                                                value=""
-                                                disabled
-                                                selected
-                                                hidden
-                                            >
-                                                Choose your city
-                                            </option>
-                                            <option value="Chicago">
-                                                Chicago
-                                            </option>
-                                            <option value="Dallas">
-                                                Dallas
-                                            </option>
-                                            <option value="New Jersey">
-                                                New Jersey
-                                            </option>
-                                            <option value="San Francisco">
-                                                San Francisco
-                                            </option>
-                                        </select>
-                                        <button
-                                            type="button"
-                                            class="input__btn input__btn--large select__btn"
-                                        >
-                                            <svg
-                                                class="input__icon input__icon--large"
-                                            >
-                                                <use
-                                                    xlink:href="assets/svg/sprite.svg#down-chevron"
-                                                ></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="address"
-                                            >Address</label
-                                        >
-                                        <input
-                                            class="input input--large"
-                                            type="text"
-                                            name="address"
-                                            id="address"
-                                            placeholder="Your address"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="input__box input__box--medium">
-                                        <label
-                                            class="label label--large"
-                                            for="code"
-                                            >ZIP Code</label
-                                        >
-                                        <input
-                                            class="input input--large"
-                                            type="text"
-                                            name="code"
-                                            id="code"
-                                            placeholder="Your ZIP code"
-                                            required
-                                        />
-                                    </div>
-                                    <div class="modal__check">
-                                        <input
-                                            class="checkbox__input"
-                                            type="checkbox"
-                                            name="check-sign-up"
-                                            id="check-sign-up"
-                                            checked
-                                        />
-                                        <label
-                                            class="checkbox__label checkbox__label--small"
-                                            for="check-sign-up"
-                                            ><span class="checkbox__mark"
-                                                >&nbsp;</span
-                                            >Billing and Shipping details are
-                                            the same</label
-                                        >
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="details__item">
-                                <h4 class="checkout__heading details__heading">
-                                    3. Shipping Method
-                                </h4>
-                                <ul class="details__methods">
-                                    <li class="details__method">
-                                        <div>
-                                            <div class="details__radio">
-                                                <input
-                                                    class="radio__input"
-                                                    type="radio"
-                                                    name="delivery"
-                                                    id="courier"
-                                                    checked
-                                                />
-
-                                                <label
-                                                    for="courier"
-                                                    class="radio__label"
-                                                    ><span class="radio__mark"
-                                                        >&nbsp;</span
-                                                    >
-                                                    Courier to your address
-                                                </label>
-                                            </div>
-                                            <p class="details__date">
-                                                Estimated date: September 9
-                                            </p>
-                                        </div>
-                                        <span class="details__delivery-price"
-                                            >$25.00</span
-                                        >
-                                    </li>
-                                    <li class="details__method">
-                                        <div>
-                                            <div class="details__radio">
-                                                <input
-                                                    class="radio__input"
-                                                    type="radio"
-                                                    name="delivery"
-                                                    id="store"
-                                                />
-
-                                                <label
-                                                    for="store"
-                                                    class="radio__label"
-                                                    ><span class="radio__mark"
-                                                        >&nbsp;</span
-                                                    >
-                                                    Pick up from store
-                                                </label>
-                                            </div>
-                                            <p class="details__date">
-                                                Pick up on September 8 from
-                                                12:00
-                                            </p>
-                                        </div>
-                                        <span class="details__delivery-price"
-                                            >Free</span
-                                        >
-                                    </li>
-                                    <li class="details__method">
-                                        <div>
-                                            <div class="details__radio">
-                                                <input
-                                                    class="radio__input"
-                                                    type="radio"
-                                                    name="delivery"
-                                                    id="ups"
-                                                />
-
-                                                <label
-                                                    for="ups"
-                                                    class="radio__label"
-                                                    ><span class="radio__mark"
-                                                        >&nbsp;</span
-                                                    >
-                                                    UPS Ground Shipping
-                                                </label>
-                                            </div>
-                                            <p class="details__date">
-                                                Up to one week
-                                            </p>
-                                        </div>
-                                        <span class="details__delivery-price"
-                                            >$10.00</span
-                                        >
-                                    </li>
-                                    <li class="details__method">
-                                        <div>
-                                            <div class="details__radio">
-                                                <input
-                                                    class="radio__input"
-                                                    type="radio"
-                                                    name="delivery"
-                                                    id="createx-locker"
-                                                />
-
-                                                <label
-                                                    for="createx-locker"
-                                                    class="radio__label"
-                                                    ><span class="radio__mark"
-                                                        >&nbsp;</span
-                                                    >
-                                                    Pick up at Createx Locker
-                                                </label>
-                                            </div>
-                                            <p class="details__date">
-                                                Pick up on September 8 from
-                                                12:00
-                                            </p>
-                                        </div>
-                                        <span class="details__delivery-price"
-                                            >$8.50</span
-                                        >
-                                    </li>
-                                    <li class="details__method">
-                                        <div>
-                                            <div class="details__radio">
-                                                <input
-                                                    class="radio__input"
-                                                    type="radio"
-                                                    name="delivery"
-                                                    id="createx-export"
-                                                />
-
-                                                <label
-                                                    for="createx-export"
-                                                    class="radio__label"
-                                                    ><span class="radio__mark"
-                                                        >&nbsp;</span
-                                                    >
-                                                    Createx Global Export
-                                                </label>
-                                            </div>
-                                            <p class="details__date">
-                                                3-4 days
-                                            </p>
-                                        </div>
-                                        <span class="details__delivery-price"
-                                            >$15.00</span
-                                        >
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="details__item">
-                                <h4 class="checkout__heading details__heading">
-                                    4. Payment Method
-                                </h4>
-
-                                <ul class="details__payments">
-                                    <li class="details__payment">
-                                        <div class="details__radio">
-                                            <input
-                                                class="radio__input"
-                                                type="radio"
-                                                name="payment"
-                                                id="card"
-                                                checked
-                                            />
-
-                                            <label
-                                                for="card"
-                                                class="radio__label details__label"
-                                                ><span class="radio__mark"
-                                                    >&nbsp;</span
-                                                >
-                                                Credit card
-                                            </label>
-                                            <img
-                                                class="details__logo"
-                                                src="assets/images/visa.jpg"
-                                                alt="Visa"
-                                            />
-                                            <img
-                                                class="details__logo"
-                                                src="assets/images/master-card.jpg"
-                                                alt="MasterCard"
-                                            />
-                                        </div>
-                                        <div class="details__card-num">
-                                            <label
-                                                class="label label--large"
-                                                for="card-num"
-                                                >Card number</label
-                                            >
-                                            <input
-                                                class="input input--large"
-                                                type="text"
-                                                name="card-num"
-                                                id="card-num"
-                                                placeholder="0000 0000 0000 0000"
-                                            />
-                                        </div>
-                                        <div class="details__card-wrapper">
-                                            <div class="details__card-detail-1">
-                                                <label
-                                                    class="label label--large"
-                                                    for="card-date"
-                                                    >Expiry date</label
-                                                >
-                                                <input
-                                                    class="input input--large"
-                                                    type="text"
-                                                    name="card-date"
-                                                    id="card-date"
-                                                    placeholder="mm/yy"
-                                                />
-                                            </div>
-                                            <div class="details__card-detail-2">
-                                                <label
-                                                    class="label label--large"
-                                                    for="card-cvc"
-                                                    >CVC</label
-                                                >
-                                                <input
-                                                    class="input input--large"
-                                                    type="text"
-                                                    name="card-cvc"
-                                                    id="card-cvc"
-                                                    placeholder="000"
-                                                />
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="details__payment">
-                                        <div class="details__radio">
-                                            <input
-                                                class="radio__input"
-                                                type="radio"
-                                                name="payment"
-                                                id="paypal"
-                                            />
-
-                                            <label
-                                                for="paypal"
-                                                class="radio__label details__label"
-                                                ><span class="radio__mark"
-                                                    >&nbsp;</span
-                                                >
-                                                PayPal
-                                            </label>
-                                            <img
-                                                class="details__logo"
-                                                src="assets/images/pay-pal.jpg"
-                                                alt="Paypal"
-                                            />
-                                        </div>
-                                    </li>
-                                    <li class="details__payment">
-                                        <div class="details__radio">
-                                            <input
-                                                class="radio__input"
-                                                type="radio"
-                                                name="payment"
-                                                id="cash"
-                                            />
-
-                                            <label
-                                                for="cash"
-                                                class="radio__label"
-                                                ><span class="radio__mark"
-                                                    >&nbsp;</span
-                                                >
-                                                Cash on delivery
-                                            </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="details__item">
-                                <h4 class="checkout__heading details__heading">
-                                    5. Additional Information (Optional)
-                                </h4>
-                                <div class="details__textarea-box">
-                                    <label
-                                        class="label label--large"
-                                        for="notes"
-                                        >Order notes</label
-                                    >
-                                    <textarea
-                                        class="form__textarea contacts__textarea input input--large"
-                                        name="notes"
-                                        id="notes"
-                                        placeholder="Notes about your order, e.g. special noted for delivery."
-                                    ></textarea>
-                                </div>
-                            </li>
-                        </ul>
-                    </form>
-                </section>
-
-                <aside class="checkout__sidebar">
-                    <form class="checkout__apply" action="#">
-                        <label class="apply__label" for="apply"
-                            >Apply a promo code</label
-                        >
-                        <div class="apply__container">
-                            <input
-                                class="apply__input"
-                                type="text"
-                                name="apply"
-                                id="apply"
-                                placeholder="Enter promo code"
-                                required
-                            />
-                            <input
-                                type="submit"
-                                class="btn btn--solid btn--large apply__btn"
-                                value="Apply"
-                            />
-                        </div>
-                    </form>
-                    <ul class="checkout__summary">
-                        <li class="checkout__summary-item">
-                            <h4 class="checkout__heading">Order totals</h4>
-                        </li>
-
-                        <li class="checkout__summary-item">
-                            <ul class="summary__list">
-                                <li class="summary__item">
-                                    <p
-                                        class="summary__total summary__total--bold"
-                                    >
-                                        Subtotal:
-                                    </p>
-                                    <span
-                                        class="summary__total summary__total--bold"
-                                        >&dollar;198.65</span
-                                    >
-                                </li>
-                                <li class="summary__item">
-                                    <p class="summary__total">
-                                        Shipping costs:
-                                    </p>
-                                    <span class="summary__total"
-                                        >&dollar;25.00</span
-                                    >
-                                </li>
-                                <li class="summary__item">
-                                    <p class="summary__total">Discount:</p>
-                                    <span class="summary__total">&dash;</span>
-                                </li>
-                                <li class="summary__item">
-                                    <p class="summary__total">
-                                        Estimated sales tax:
-                                    </p>
-                                    <span class="summary__total"
-                                        >&dollar;6.35</span
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="checkout__summary-item">
-                            <p class="checkout__total">Order total:</p>
-                            <span class="checkout__total">&dollar;230.00</span>
-                        </li>
-                    </ul>
-                    <button type="submit" class="btn btn--solid btn--large">
-                        Complete order
-                    </button>
-                </aside>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <div class="footer__navigation">
-                <div class="container footer__flex">
-                    <div class="footer__help">
-                        <h6 class="footer__heading">Help</h6>
-                        <ul class="footer__list">
-                            <li class="footer__help-item">
-                                <a href="#" class="footer__link"
-                                    >Delivery & returns</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="faq.html" class="footer__link">FAQ</a>
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="track.html" class="footer__link"
-                                    >Track order</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="contact.html" class="footer__link"
-                                    >Contacts</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="blog.html" class="footer__link"
-                                    >Blog</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__shop">
-                        <h6 class="footer__heading">Shop</h6>
-                        <ul class="footer__list">
-                            <li class="footer__help-item">
-                                <a href="catalog.html" class="footer__link"
-                                    >New arrivals</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="catalog.html" class="footer__link"
-                                    >Trending now</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="catalog.html" class="footer__link"
-                                    >Sales</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a href="catalog.html" class="footer__link"
-                                    >Brands</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__contact">
-                        <h6 class="footer__heading">Get in touch</h6>
-                        <ul class="footer__list">
-                            <li class="footer__help-item">
-                                <a href="tel:(405)555-0128" class="footer__link"
-                                    ><span>Call:</span> (405) 555-0128</a
-                                >
-                            </li>
-                            <li class="footer__help-item">
-                                <a
-                                    href="mailto: hello@createx.com"
-                                    class="footer__link"
-                                    ><span>Email:</span> hello@createx.com</a
-                                >
-                            </li>
-                        </ul>
-                        <ul class="social__list">
-                            <li class="social__item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    class="social__link social__link--dark"
-                                >
-                                    <svg class="social__icon">
-                                        <use
-                                            xlink:href="assets/svg/sprite.svg#facebook"
-                                        ></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    class="social__link social__link--dark"
-                                >
-                                    <svg class="social__icon">
-                                        <use
-                                            xlink:href="assets/svg/sprite.svg#instagram"
-                                        ></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    class="social__link social__link--dark"
-                                >
-                                    <svg class="social__icon">
-                                        <use
-                                            xlink:href="assets/svg/sprite.svg#twitter"
-                                        ></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    class="social__link social__link--dark"
-                                >
-                                    <svg class="social__icon">
-                                        <use
-                                            xlink:href="assets/svg/sprite.svg#youtube"
-                                        ></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    class="social__link social__link--dark"
-                                >
-                                    <svg class="social__icon">
-                                        <use
-                                            xlink:href="assets/svg/sprite.svg#pinterest"
-                                        ></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__apps">
-                        <h6 class="footer__heading u-margin-bottom-medium">
-                            Download our app
-                        </h6>
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="store-link store-apple"
-                        >
-                            <img
-                                class="store-img"
-                                src="assets/images/app-store.png"
-                                alt="App store"
-                            />
-                        </a>
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="store-link store-google"
-                        >
-                            <img
-                                class="store-img"
-                                src="assets/images/google-play.png"
-                                alt="google play"
-                            />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="footer__rights container">
-                    <p class="footer__text">
-                        &copy; All rights reserved. Made with
-                        <span class="footer__heart">
-                            <svg class="footer__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#heart-outline"
-                                ></use>
-                            </svg>
-                        </span>
-                        by Createx Studio
-                    </p>
-                    <a href="#" class="footer__btn-up">Go to top</a>
-                </div>
-            </div>
-        </footer>
-
-        <section class="modal modal--small modal--sign-in hidden">
-            <button class="btn--close" type="button">
-                <svg class="close__icon">
-                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
-            <h3 class="modal__heading u-margin-bottom-medium">Sign in</h3>
-            <p class="modal__text u-margin-bottom-medium">
-                Sign in to your account using email and password provided during
-                registration.
-            </p>
-            <form action="#" class="modal__form">
-                <div class="input__box">
-                    <label class="label label--medium" for="email-sign-in"
-                        >Email</label
-                    >
-                    <input
-                        class="input input--medium"
-                        type="email"
-                        name="email-sign-in"
-                        id="email-sign-in"
-                        placeholder="Your working email"
-                        required
-                    />
-                </div>
-                <div class="input__box">
-                    <label class="label label--medium" for="password-sign-in"
-                        >Password</label
-                    >
-                    <input
-                        class="input input--medium input--padding-medium"
-                        type="password"
-                        name="password-sign-in"
-                        id="password-sign-in"
-                        placeholder="Enter your password"
-                        required
-                    />
-                    <button type="button" class="input__btn input__btn--medium">
-                        <svg class="input__icon input__icon--medium">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#eye"
-                            ></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal__check">
-                    <input
-                        class="checkbox__input"
-                        type="checkbox"
-                        name="check-sign-in"
-                        id="check-sign-in"
+                <ul class="details__payments">
+                  <li class="details__payment">
+                    <div class="details__radio">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="payment"
+                        id="card"
                         checked
-                    />
-                    <label
-                        class="checkbox__label checkbox__label--small"
-                        for="check-sign-in"
-                        ><span class="checkbox__mark">&nbsp;</span>Keep me
-                        signed in</label
-                    >
-                    <a class="modal__link" href="#">Forgot password?</a>
-                </div>
-                <button
-                    class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium"
-                    type="submit"
-                >
-                    Sign in
-                </button>
-                <p class="modal__cta u-margin-bottom-medium">
-                    Don't have an account?
-                    <a class="modal__link" href="#">Sign up</a>
-                </p>
-            </form>
-            <div class="modal__social">
-                <p class="modal__social-text">Or sign in with</p>
-                <ul class="social__list social__list--center">
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#facebook"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#google"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#twitter"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#linked-in"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+                      />
 
-        <section class="modal modal--small modal--sign-up hidden">
-            <button class="btn--close" type="button">
-                <svg class="close__icon">
-                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
-            <h3 class="modal__heading u-margin-bottom-medium">Sign up</h3>
-            <p class="modal__text u-margin-bottom-medium">
-                Registration takes less than a minute but gives you full control
-                over your orders.
-            </p>
-            <form action="#" class="modal__form">
-                <div class="input__box">
-                    <label class="label label--medium" for="full-name"
-                        >Full Name</label
-                    >
-                    <input
-                        class="input input--medium"
+                      <label for="card" class="radio__label details__label"
+                        ><span class="radio__mark">&nbsp;</span>
+                        Credit card
+                      </label>
+                      <img
+                        class="details__logo"
+                        src="assets/images/visa.jpg"
+                        alt="Visa"
+                      />
+                      <img
+                        class="details__logo"
+                        src="assets/images/master-card.jpg"
+                        alt="MasterCard"
+                      />
+                    </div>
+                    <div class="details__card-num">
+                      <label class="label label--large" for="card-num"
+                        >Card number</label
+                      >
+                      <input
+                        class="input input--large"
                         type="text"
-                        name="full-name"
-                        id="full-name"
-                        placeholder="Your full name"
-                        required
-                    />
-                </div>
-                <div class="input__box">
-                    <label class="label label--medium" for="email-sign-up"
-                        >Email</label
-                    >
-                    <input
-                        class="input input--medium"
-                        type="email"
-                        name="email-sign-up"
-                        id="email-sign-up"
-                        placeholder="Your working email"
-                        required
-                    />
-                </div>
-                <div class="input__box">
-                    <label class="label label--medium" for="password-sign-up"
-                        >Password</label
-                    >
-                    <input
-                        class="input input--medium input--padding-medium"
-                        type="password"
-                        name="password-sign-up"
-                        id="password-sign-up"
-                        placeholder="Enter your password"
-                        required
-                    />
-                    <button type="button" class="input__btn input__btn--medium">
-                        <svg class="input__icon input__icon--medium">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#eye"
-                            ></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="input__box">
-                    <label
-                        class="label label--medium"
-                        for="password-sign-up-confirm"
-                        >Confirm Password</label
-                    >
-                    <input
-                        class="input input--medium input--padding-medium"
-                        type="password"
-                        name="password-sign-up-confirm"
-                        id="password-sign-up-confirm"
-                        placeholder="Confirm your password"
-                        required
-                    />
-                    <button type="button" class="input__btn input__btn--medium">
-                        <svg class="input__icon input__icon--medium">
-                            <use
-                                xlink:href="assets/svg/sprite.svg#eye"
-                            ></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal__check">
-                    <input
-                        class="checkbox__input"
-                        type="checkbox"
-                        name="check-sign-up"
-                        id="check-sign-up"
-                        checked
-                    />
-                    <label
-                        class="checkbox__label checkbox__label--small"
-                        for="check-sign-up"
-                        ><span class="checkbox__mark">&nbsp;</span>Remember
-                        me</label
-                    >
-                </div>
-                <button
-                    class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium"
-                    type="submit"
-                >
-                    Sign up
-                </button>
-                <p class="modal__cta u-margin-bottom-medium">
-                    Already have an account?
-                    <a class="modal__link" href="#">Sign in</a>
-                </p>
-            </form>
-            <div class="modal__social">
-                <p class="modal__social-text">Or sign in with</p>
-                <ul class="social__list social__list--center">
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
+                        name="card-num"
+                        id="card-num"
+                        placeholder="0000 0000 0000 0000"
+                      />
+                    </div>
+                    <div class="details__card-wrapper">
+                      <div class="details__card-detail-1">
+                        <label class="label label--large" for="card-date"
+                          >Expiry date</label
                         >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#facebook"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
+                        <input
+                          class="input input--large"
+                          type="text"
+                          name="card-date"
+                          id="card-date"
+                          placeholder="mm/yy"
+                        />
+                      </div>
+                      <div class="details__card-detail-2">
+                        <label class="label label--large" for="card-cvc"
+                          >CVC</label
                         >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#google"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#twitter"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a
-                            href="#"
-                            target="_blank"
-                            class="social__link social__link--light"
-                        >
-                            <svg class="social__icon">
-                                <use
-                                    xlink:href="assets/svg/sprite.svg#linked-in"
-                                ></use>
-                            </svg>
-                        </a>
-                    </li>
+                        <input
+                          class="input input--large"
+                          type="text"
+                          name="card-cvc"
+                          id="card-cvc"
+                          placeholder="000"
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li class="details__payment">
+                    <div class="details__radio">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="payment"
+                        id="paypal"
+                      />
+
+                      <label for="paypal" class="radio__label details__label"
+                        ><span class="radio__mark">&nbsp;</span>
+                        PayPal
+                      </label>
+                      <img
+                        class="details__logo"
+                        src="assets/images/pay-pal.jpg"
+                        alt="Paypal"
+                      />
+                    </div>
+                  </li>
+                  <li class="details__payment">
+                    <div class="details__radio">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="payment"
+                        id="cash"
+                      />
+
+                      <label for="cash" class="radio__label"
+                        ><span class="radio__mark">&nbsp;</span>
+                        Cash on delivery
+                      </label>
+                    </div>
+                  </li>
                 </ul>
-            </div>
+              </li>
+              <li class="details__item">
+                <h4 class="checkout__heading details__heading">
+                  5. Additional Information (Optional)
+                </h4>
+                <div class="details__textarea-box">
+                  <label class="label label--large" for="notes"
+                    >Order notes</label
+                  >
+                  <textarea
+                    class="form__textarea contacts__textarea input input--large"
+                    name="notes"
+                    id="notes"
+                    placeholder="Notes about your order, e.g. special noted for delivery."
+                  ></textarea>
+                </div>
+              </li>
+            </ul>
+          </form>
         </section>
-    </body>
+
+        <aside class="checkout__sidebar">
+          <form class="checkout__apply" action="#">
+            <label class="apply__label" for="apply">Apply a promo code</label>
+            <div class="apply__container">
+              <input
+                class="apply__input"
+                type="text"
+                name="apply"
+                id="apply"
+                placeholder="Enter promo code"
+                required
+              />
+              <input
+                type="submit"
+                class="btn btn--solid btn--large apply__btn"
+                value="Apply"
+              />
+            </div>
+          </form>
+          <ul class="checkout__summary">
+            <li class="checkout__summary-item">
+              <h4 class="checkout__heading">Order totals</h4>
+            </li>
+
+            <li class="checkout__summary-item">
+              <ul class="summary__list">
+                <li class="summary__item">
+                  <p class="summary__total summary__total--bold">Subtotal:</p>
+                  <span class="summary__total summary__total--bold"
+                    >&dollar;198.65</span
+                  >
+                </li>
+                <li class="summary__item">
+                  <p class="summary__total">Shipping costs:</p>
+                  <span class="summary__total">&dollar;25.00</span>
+                </li>
+                <li class="summary__item">
+                  <p class="summary__total">Discount:</p>
+                  <span class="summary__total">&dash;</span>
+                </li>
+                <li class="summary__item">
+                  <p class="summary__total">Estimated sales tax:</p>
+                  <span class="summary__total">&dollar;6.35</span>
+                </li>
+              </ul>
+            </li>
+
+            <li class="checkout__summary-item">
+              <p class="checkout__total">Order total:</p>
+              <span class="checkout__total">&dollar;230.00</span>
+            </li>
+          </ul>
+          <button type="submit" class="btn btn--solid btn--large">
+            Complete order
+          </button>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__navigation">
+        <div class="container footer__flex">
+          <div class="footer__help">
+            <h6 class="footer__heading">Help</h6>
+            <ul class="footer__list">
+              <li class="footer__help-item">
+                <a href="#" class="footer__link">Delivery & returns</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="faq.html" class="footer__link">FAQ</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="track.html" class="footer__link">Track order</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="contact.html" class="footer__link">Contacts</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="blog.html" class="footer__link">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__shop">
+            <h6 class="footer__heading">Shop</h6>
+            <ul class="footer__list">
+              <li class="footer__help-item">
+                <a href="catalog.html" class="footer__link">New arrivals</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="catalog.html" class="footer__link">Trending now</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="catalog.html" class="footer__link">Sales</a>
+              </li>
+              <li class="footer__help-item">
+                <a href="catalog.html" class="footer__link">Brands</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__contact">
+            <h6 class="footer__heading">Get in touch</h6>
+            <ul class="footer__list">
+              <li class="footer__help-item">
+                <a href="tel:(405)555-0128" class="footer__link"
+                  ><span>Call:</span> (405) 555-0128</a
+                >
+              </li>
+              <li class="footer__help-item">
+                <a href="mailto: hello@createx.com" class="footer__link"
+                  ><span>Email:</span> hello@createx.com</a
+                >
+              </li>
+            </ul>
+            <ul class="social__list">
+              <li class="social__item">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="social__link social__link--dark"
+                >
+                  <svg class="social__icon">
+                    <use xlink:href="assets/svg/sprite.svg#facebook"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social__item">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="social__link social__link--dark"
+                >
+                  <svg class="social__icon">
+                    <use xlink:href="assets/svg/sprite.svg#instagram"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social__item">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="social__link social__link--dark"
+                >
+                  <svg class="social__icon">
+                    <use xlink:href="assets/svg/sprite.svg#twitter"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social__item">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="social__link social__link--dark"
+                >
+                  <svg class="social__icon">
+                    <use xlink:href="assets/svg/sprite.svg#youtube"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social__item">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="social__link social__link--dark"
+                >
+                  <svg class="social__icon">
+                    <use xlink:href="assets/svg/sprite.svg#pinterest"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__apps">
+            <h6 class="footer__heading u-margin-bottom-medium">
+              Download our app
+            </h6>
+            <a href="#" target="_blank" class="store-link store-apple">
+              <img
+                class="store-img"
+                src="assets/images/app-store.png"
+                alt="App store"
+              />
+            </a>
+            <a href="#" target="_blank" class="store-link store-google">
+              <img
+                class="store-img"
+                src="assets/images/google-play.png"
+                alt="google play"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__rights container">
+          <p class="footer__text">
+            &copy; All rights reserved. Made with
+            <span class="footer__heart">
+              <svg class="footer__icon">
+                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
+              </svg>
+            </span>
+            by Createx Studio
+          </p>
+          <a href="#" class="footer__btn-up">Go to top</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

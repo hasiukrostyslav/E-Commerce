@@ -10,6 +10,15 @@
     "node": true,
     "browser": true
   },
-  "ignorePatterns": ["dist/*.js"],
-  "rules": { "no-underscore-dangle": "off", "no-console": "off" }
+  "ignorePatterns": ["dist/*.js", "webpack.config.js"],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "comma-dangle": "off",
+    "prefer-arrow-callback": "off",
+    "func-names": "off",
+    "lines-between-class-members": "off"
+  }
 }
