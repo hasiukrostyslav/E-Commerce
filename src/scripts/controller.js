@@ -1,13 +1,25 @@
 import '../styles/main.scss';
-import signInView from './views/SignInView';
-import signUpView from './views/SignUpView';
+import signInModalView from './views/SignInModalView';
+import signUpModalView from './views/SignUpModalView';
+import cartModalView from './views/CartModalView';
+import sizeModalView from './views/SIzeModalView';
+import reviewModalView from './views/ReviewModalView';
 
 function controlModal() {
-  signInView.render();
-  signInView.renderOverlay();
+  signInModalView.addHandlerOpenModal();
+  signInModalView.addHandlerCloseModal();
+
+  signUpModalView.addHandlerOpenModal();
+  signUpModalView.addHandlerCloseModal();
+
+  cartModalView.addHandlerOpenModal();
+  cartModalView.addHandlerCloseModal();
+
+  sizeModalView.addHandlerOpenModal();
+  sizeModalView.addHandlerCloseModal();
+
+  reviewModalView.addHandlerOpenModal();
+  reviewModalView.addHandlerCloseModal();
 }
 
-function init() {
-  signInView.addHandlerRender(controlModal);
-}
-init();
+controlModal();

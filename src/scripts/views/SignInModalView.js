@@ -1,10 +1,34 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
 
-class SignInView extends View {
+class SignInModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.topbar__login');
-  _btnCloseLogIn = document.querySelector('.btn--close');
+
+  constructor() {
+    super();
+    this._render();
+    if (!document.querySelector('.overlay')) this._renderOverlay();
+    this._modal = document.querySelector('.modal--sign-in');
+    this._overlay = document.querySelector('.overlay');
+    this._btnClose = this._modal.querySelector('.btn--close');
+  }
+
+  _openModal(e) {
+    const btn = e.target.closest('.topbar__login');
+    if (!btn) return;
+    this._addModal();
+  }
+
+  _closeModal(e) {
+    if (
+      e.target.closest('.btn--close') ||
+      e.target.closest('.overlay') ||
+      e.code === 'Escape'
+    ) {
+      this._removeModal();
+    }
+  }
 
   _generateMarkup() {
     return `
@@ -91,4 +115,4 @@ class SignInView extends View {
   }
 }
 
-export default new SignInView();
+export default new SignInModalView();

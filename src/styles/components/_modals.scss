@@ -106,6 +106,7 @@
     padding-bottom: 4.8rem;
     background-color: $color-white;
     box-shadow: $shadow-modal;
+    z-index: 200;
 
     .size {
       &__wrapper {

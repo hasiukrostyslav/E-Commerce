@@ -1,8 +1,34 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
 
-class SignUpView extends View {
+class SignUpModalView extends View {
   _parentElement = document.body;
+  _btnOpen = document.querySelector('.topbar__register');
+
+  constructor() {
+    super();
+    this._render();
+    if (!document.querySelector('.overlay')) this._renderOverlay();
+    this._modal = document.querySelector('.modal--sign-up');
+    this._overlay = document.querySelector('.overlay');
+    this._btnClose = this._modal.querySelector('.btn--close');
+  }
+
+  _openModal(e) {
+    const btn = e.target.closest('.topbar__register');
+    if (!btn) return;
+    this._addModal();
+  }
+
+  _closeModal(e) {
+    if (
+      e.target.closest('.btn--close') ||
+      e.target.closest('.overlay') ||
+      e.code === 'Escape'
+    ) {
+      this._removeModal();
+    }
+  }
 
   _generateMarkup() {
     return `
@@ -102,4 +128,4 @@ class SignUpView extends View {
   }
 }
 
-export default new SignUpView();
+export default new SignUpModalView();
