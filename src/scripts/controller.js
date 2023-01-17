@@ -4,6 +4,7 @@ import signUpModalView from './views/SignUpModalView';
 import cartModalView from './views/CartModalView';
 import sizeModalView from './views/SIzeModalView';
 import reviewModalView from './views/ReviewModalView';
+import menuModalView from './views/MenuModalView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -23,3 +24,5 @@ function controlModal() {
 }
 
 controlModal();
+
+menuModalView.showMenu();

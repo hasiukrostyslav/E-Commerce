@@ -97,7 +97,7 @@ class CartModalView extends View {
                                         class="input__icon input__icon--medium"
                                     >
                                         <use
-                                            xlink:href="assets/svg/sprite.svg#up-down-select"
+                                            xlink:href="${icons}#up-down-select"
                                         ></use>
                                     </svg>
                                 </button>

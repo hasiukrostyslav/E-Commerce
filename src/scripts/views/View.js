@@ -3,14 +3,14 @@ export default class View {
 
   _render() {
     const markup = this._generateMarkup();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
   _renderOverlay() {
     const markup = `
     <div class="overlay hidden"></div>
     `;
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
   _addModal() {
