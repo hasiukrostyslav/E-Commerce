@@ -14,22 +14,6 @@ class ReviewModalView extends View {
     this._btnClose = this._modal.querySelector('.btn--close');
   }
 
-  _openModal(e) {
-    const btn = e.target.closest('.reviews__btn');
-    if (!btn) return;
-    this._addModal();
-  }
-
-  _closeModal(e) {
-    if (
-      e.target.closest('.btn--close') ||
-      e.target.closest('.overlay') ||
-      e.code === 'Escape'
-    ) {
-      this._removeModal();
-    }
-  }
-
   _generateMarkup() {
     return `
     <section class="modal modal--small modal--review hidden">

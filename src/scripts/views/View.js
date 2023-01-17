@@ -13,13 +13,25 @@ export default class View {
     this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
-  _addModal() {
+  _openModal(e) {
+    const btn = e.target.closest(
+      `.${this._btnOpen.className.split(' ').at(-1)}`
+    );
+    if (!btn) return;
+
     this._modal.classList.remove('hidden');
     this._overlay.classList.remove('hidden');
   }
-  _removeModal() {
-    this._modal.classList.add('hidden');
-    this._overlay.classList.add('hidden');
+
+  _closeModal(e) {
+    if (
+      e.target.closest('.btn--close') ||
+      e.target.closest('.overlay') ||
+      e.code === 'Escape'
+    ) {
+      this._modal.classList.add('hidden');
+      this._overlay.classList.add('hidden');
+    }
   }
 
   addHandlerOpenModal() {

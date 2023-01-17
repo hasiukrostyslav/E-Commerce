@@ -12,22 +12,7 @@ class SignInModalView extends View {
     this._modal = document.querySelector('.modal--sign-in');
     this._overlay = document.querySelector('.overlay');
     this._btnClose = this._modal.querySelector('.btn--close');
-  }
-
-  _openModal(e) {
-    const btn = e.target.closest('.topbar__login');
-    if (!btn) return;
-    this._addModal();
-  }
-
-  _closeModal(e) {
-    if (
-      e.target.closest('.btn--close') ||
-      e.target.closest('.overlay') ||
-      e.code === 'Escape'
-    ) {
-      this._removeModal();
-    }
+    console.log(document.documentElement.clientHeight);
   }
 
   _generateMarkup() {

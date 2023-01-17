@@ -18,25 +18,10 @@ class CartModalView extends View {
     this._btnClose = this._modal.querySelector('.btn--close');
   }
 
-  _openModal(e) {
-    const btn = e.target.closest('.cart__btn');
-    if (!btn) return;
-    this._addModal();
-  }
-
-  _closeModal(e) {
-    if (
-      e.target.closest('.btn--close') ||
-      e.target.closest('.overlay') ||
-      e.code === 'Escape'
-    ) {
-      this._removeModal();
-    }
-  }
-
   _generateMarkup() {
     return `
     <section class="modal--cart hidden">
+          <div>
             <button class="btn--close" type="button">
                 <svg class="close__icon">
                     <use
@@ -323,7 +308,7 @@ class CartModalView extends View {
                 </div>
             </li>
            </ul>
-           
+           </div>
            <div class="cart__checkout">
             <div class="cart__wrapper">
                 <p class="cart__subtotal">Subtotal:</p>
