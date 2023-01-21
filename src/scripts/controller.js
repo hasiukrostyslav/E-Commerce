@@ -6,6 +6,8 @@ import sizeModalView from './views/SIzeModalView';
 import reviewModalView from './views/ReviewModalView';
 import menuModalView from './views/MenuModalView';
 import accountView from './views/AccountView';
+import productView from './views/ProductView';
+import contactView from './views/ContactView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -24,6 +26,16 @@ function controlModal() {
   reviewModalView.addHandlerCloseModal();
 }
 
-controlModal();
+function controlChangePages() {
+  accountView.changeSidebarItem();
+  productView.changeProductInfo();
+}
+
+function init() {
+  controlModal();
+  controlChangePages();
+}
+
+init();
 
 // menuModalView.showMenu();

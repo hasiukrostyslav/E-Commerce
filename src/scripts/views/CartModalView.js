@@ -7,7 +7,7 @@ import img4 from '../../assets/images/order-item-4.png';
 
 class CartModalView extends View {
   _parentElement = document.body;
-  _btnOpen = document.querySelector('.cart__btn');
+  _btnOpen = document.querySelector('.btn__cart');
   _markup;
 
   constructor() {
@@ -315,7 +315,7 @@ class CartModalView extends View {
                 <p class="cart__subtotal">Subtotal:</p>
                 <p class="cart__total">&dollar;198.65</p>
             </div>
-            <a href="checkout.html" class="btn btn--solid cart__btn">
+            <a href="checkout.html" class="btn btn--solid btn__purchase cart__btn">
                 <svg class="cart__icon">
                     <use
                         xlink:href="${icons}#card"

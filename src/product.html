@@ -191,6 +191,7 @@
               type="radio"
               name="tabs"
               id="info"
+              data-product="info"
               checked
             />
             <label class="tag__checkbox-radio" for="info">General info</label>
@@ -201,6 +202,7 @@
               type="radio"
               name="tabs"
               id="details"
+              data-product="details"
             />
             <label class="tag__checkbox-radio" for="details"
               >Product details</label
@@ -212,6 +214,7 @@
               type="radio"
               name="tabs"
               id="reviews"
+              data-product="reviews"
             />
             <label class="tag__checkbox-radio" for="reviews"
               >Reviews <sup>12</sup>
@@ -219,7 +222,7 @@
           </div>
         </div>
 
-        <div class="product__descript product__info">
+        <div class="product__descript product__info" data-product="info">
           <div class="product__gallery">
             <button
               class="btn-round btn-round--light product__slider-btn product__slider-btn--left"
@@ -429,7 +432,10 @@
                     </svg>
                   </button>
                 </div>
-                <button type="button" class="btn btn--solid cart__btn">
+                <button
+                  type="button"
+                  class="btn btn--solid btn__purchase btn__cart"
+                >
                   <svg class="catalog__icon">
                     <use xlink:href="assets/svg/sprite.svg#cart"></use>
                   </svg>
@@ -580,7 +586,10 @@
             </ul>
           </aside>
         </div>
-        <div class="product__descript product__details">
+        <div
+          class="product__descript product__details hidden"
+          data-product="details"
+        >
           <div class="details">
             <div class="details__wrapper">
               <h4 class="details__heading">Details</h4>
@@ -818,7 +827,7 @@
               </form>
               <button
                 type="button"
-                class="btn btn--solid btn--medium btn--sale"
+                class="btn btn--solid btn--medium btn--sale btn__cart"
               >
                 <svg class="sale__icon-cart">
                   <use xlink:href="assets/svg/sprite.svg#cart"></use>
@@ -828,7 +837,10 @@
             </div>
           </div>
         </div>
-        <div class="product__descript product__reviews">
+        <div
+          class="product__descript product__reviews hidden"
+          data-product="reviews"
+        >
           <div class="reviews">
             <div class="reviews__wrapper">
               <div class="reviews__info">
@@ -1359,7 +1371,7 @@
               </form>
               <button
                 type="button"
-                class="btn btn--solid btn--medium btn--sale"
+                class="btn btn--solid btn--medium btn--sale btn__cart"
               >
                 <svg class="sale__icon-cart">
                   <use xlink:href="assets/svg/sprite.svg#cart"></use>
