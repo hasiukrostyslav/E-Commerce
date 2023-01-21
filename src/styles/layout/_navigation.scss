@@ -1,336 +1,336 @@
 .navbar {
-    font-size: 1.4rem;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.5;
-    color: rgba($color-white, 0.6);
-    position: relative;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  color: rgba($color-white, 0.6);
+  position: relative;
 
-    &__cover--dark {
-        background-color: $color-gray-dark-1;
-        padding: 1.1rem 0;
-    }
+  &__cover--dark {
+    background-color: $color-gray-dark-1;
+    padding: 1.1rem 0;
+  }
 
-    &__cover--light {
-        background-color: $color-white;
-    }
-
-    .topbar {
-        display: flex;
-        align-items: center;
-
-        &__phone-link {
-            &:link,
-            &:visited {
-                display: inline-block;
-                color: inherit;
-                text-decoration: none;
-                font-weight: 900;
-                transition: all 0.5s;
-            }
-
-            &:hover,
-            &:active {
-                color: rgba($color-white, 1);
-            }
-        }
-
-        &__list {
-            list-style: none;
-            display: flex;
-            gap: 3.2rem;
-            margin: 0 19.5rem;
-        }
-
-        &__link {
-            &:link,
-            &:visited {
-                text-decoration: none;
-                color: rgba($color-white, 0.6);
-                transition: all 0.5s;
-
-                &:hover,
-                &:active {
-                    color: rgba($color-white, 1);
-                }
-            }
-        }
-
-        &__lang {
-            display: flex;
-            align-items: center;
-
-            &-container {
-                display: flex;
-                align-items: center;
-
-                .flag-icon {
-                    width: 2rem;
-                    height: 1.2rem;
-                    margin-right: 1.2rem;
-                }
-            }
-
-            .btn-lang {
-                background-color: $color-gray-dark-1;
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                margin-left: 0.4rem;
-            }
-
-            .down-chevron-icon {
-                width: 1.2rem;
-                height: 1.2rem;
-                fill: rgba($color-white, 0.6);
-                transition: all 0.5s;
-
-                &:hover,
-                &:active {
-                    fill: rgba($color-white, 1);
-                }
-            }
-        }
-
-        &__account {
-            display: flex;
-            align-items: center;
-            margin-left: 6rem;
-
-            .profile-icon {
-                width: 1.6rem;
-                height: 1.6rem;
-                fill: rgba($color-white, 0.6);
-                margin-right: 0.8rem;
-            }
-
-            .btn-user {
-                background-color: $color-gray-dark-1;
-                border: none;
-                color: rgba($color-white, 0.6);
-                cursor: pointer;
-                transition: all 0.5s;
-
-                &:hover,
-                &:active {
-                    color: rgba($color-white, 1);
-                }
-            }
-
-            span {
-                margin: 0 0.4rem;
-            }
-        }
-    }
-
-    .navigation {
-        display: flex;
-        align-items: center;
-        padding: 2rem 0;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.6;
-
-        .logo-link {
-            margin-right: 6rem;
-            display: flex;
-        }
-
-        .logo {
-            width: 13rem;
-            height: 2.2rem;
-        }
-
-        &__list {
-            list-style: none;
-            display: flex;
-            margin-right: 13.2rem;
-        }
-
-        &__item:not(:last-child) {
-            margin-right: 4rem;
-        }
-
-        &__link {
-            &:link,
-            &:visited {
-                text-decoration: none;
-                color: $color-gray-dark-2;
-                transition: all 0.5s;
-            }
-
-            &:hover,
-            &:active {
-                color: $color-primary;
-            }
-
-            &--red {
-                &:link,
-                &:visited {
-                    color: $color-secondary;
-                }
-            }
-        }
-
-        &__toolbar {
-            font-weight: 400;
-            width: 13.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-
-            &::after {
-                content: '';
-                width: 0.1rem;
-                height: 2.2rem;
-                position: absolute;
-                top: 0;
-                left: 45%;
-                background-image: $divider;
-            }
-        }
-
-        &__like-link {
-            @extend %flex-link;
-        }
-
-        &__like-count {
-            margin-left: 0.8rem;
-            color: $color-gray-dark-2;
-        }
-
-        &__cart-link {
-            @extend %flex-link;
-        }
-
-        &__cart-count {
-            margin-left: 0.8rem;
-            background-color: $color-third;
-            padding: 0.1rem 0.8rem;
-            border-radius: 4px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: $color-white;
-        }
-
-        &__icon {
-            width: 2rem;
-            height: 2rem;
-            fill: $color-gray-dark-2;
-        }
-    }
-}
-
-.menu {
-    position: absolute;
-    top: 12.6rem;
-    left: 0;
+  &__cover--light {
     background-color: $color-white;
-    padding: 2rem 34.5rem 4rem;
-    border-top: 1px solid $color-gray-light-3;
-    z-index: 200;
+  }
 
-    &__navigation {
-        display: flex;
-        gap: 3rem;
-    }
+  .topbar {
+    display: flex;
+    align-items: center;
 
-    &__heading {
-        font-style: 1.4rem;
-        font-weight: 700;
-        color: $color-gray-dark-1;
-        text-transform: uppercase;
-        line-height: 1.5;
-        letter-spacing: 1px;
-        margin-bottom: 0.8rem;
+    &__phone-link {
+      &:link,
+      &:visited {
+        display: inline-block;
+        color: inherit;
+        text-decoration: none;
+        font-weight: 900;
+        transition: all 0.5s;
+      }
+
+      &:hover,
+      &:active {
+        color: rgba($color-white, 1);
+      }
     }
 
     &__list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
+      list-style: none;
+      display: flex;
+      gap: 3.2rem;
+      margin: 0 19.5rem;
     }
 
     &__link {
-        &:link,
-        &:visited {
-            text-decoration: none;
-            color: $color-gray-dark-2;
-            font-size: 1.4rem;
-            line-height: 1.5;
-            transition: all 0.5s;
-        }
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: rgba($color-white, 0.6);
+        transition: all 0.5s;
 
         &:hover,
         &:active {
-            color: rgba($color-gray-dark-2, 0.8);
+          color: rgba($color-white, 1);
         }
-
-        &--sale {
-            &:link,
-            &:visited {
-                color: $color-secondary;
-            }
-
-            &:hover,
-            &:active {
-                color: rgba($color-secondary, 0.8);
-            }
-        }
+      }
     }
 
-    &__flex {
-        display: flex;
-        gap: 13.5rem;
-    }
+    &__lang {
+      display: flex;
+      align-items: center;
 
-    &__offers {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-
-        &::before {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: -6.8rem;
-            width: 1px;
-            height: 100%;
-            background-image: $divider;
-        }
-    }
-
-    &__img {
-        width: 28.5rem;
-        height: 28.5rem;
-        border-radius: 4px;
-    }
-
-    &__text {
-        font-size: 1.4rem;
-        line-height: 1.5;
-        font-weight: 700;
-        color: $color-gray-dark-2;
-    }
-
-    &__btn-link {
-        width: 13rem;
+      &-container {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-    }
-    &__btn-icon {
-        @include icon-small($color: $color-primary);
+
+        .flag-icon {
+          width: 2rem;
+          height: 1.2rem;
+          margin-right: 1.2rem;
+        }
+      }
+
+      .btn-lang {
+        background-color: $color-gray-dark-1;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-left: 0.4rem;
+      }
+
+      .down-chevron-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: rgba($color-white, 0.6);
         transition: all 0.5s;
+
+        &:hover,
+        &:active {
+          fill: rgba($color-white, 1);
+        }
+      }
     }
 
-    &__btn-link:hover &__btn-icon,
-    &__btn-link:active &__btn-icon {
-        fill: $color-white;
+    &__account {
+      display: flex;
+      align-items: center;
+      margin-left: 6rem;
+
+      .profile-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: rgba($color-white, 0.6);
+        margin-right: 0.8rem;
+      }
+
+      .btn-user {
+        background-color: $color-gray-dark-1;
+        border: none;
+        color: rgba($color-white, 0.6);
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover,
+        &:active {
+          color: rgba($color-white, 1);
+        }
+      }
+
+      span {
+        margin: 0 0.4rem;
+      }
     }
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.6;
+
+    .logo-link {
+      margin-right: 6rem;
+      display: flex;
+    }
+
+    .logo {
+      width: 13rem;
+      height: 2.2rem;
+    }
+
+    &__list {
+      list-style: none;
+      display: flex;
+      margin-right: 13.2rem;
+    }
+
+    &__item:not(:last-child) {
+      margin-right: 4rem;
+    }
+
+    &__link {
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: $color-gray-dark-2;
+        transition: all 0.5s;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-primary;
+      }
+
+      &--red {
+        &:link,
+        &:visited {
+          color: $color-secondary;
+        }
+      }
+    }
+
+    &__toolbar {
+      font-weight: 400;
+      width: 13.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 0.1rem;
+        height: 2.2rem;
+        position: absolute;
+        top: 0;
+        left: 45%;
+        background-image: $divider;
+      }
+    }
+
+    &__like-link {
+      @extend %flex-link;
+    }
+
+    &__like-count {
+      margin-left: 0.8rem;
+      color: $color-gray-dark-2;
+    }
+
+    &__cart-link {
+      @extend %flex-link;
+    }
+
+    &__cart-count {
+      margin-left: 0.8rem;
+      background-color: $color-third;
+      padding: 0.1rem 0.8rem;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: $color-white;
+    }
+
+    &__icon {
+      width: 2rem;
+      height: 2rem;
+      fill: $color-gray-dark-2;
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 12.6rem;
+  left: 0;
+  background-color: $color-white;
+  padding: 2rem 34.5rem 4rem;
+  border-top: 1px solid $color-gray-light-3;
+  z-index: 200;
+
+  &__navigation {
+    display: flex;
+    gap: 3rem;
+  }
+
+  &__heading {
+    font-style: 1.4rem;
+    font-weight: 700;
+    color: $color-gray-dark-1;
+    text-transform: uppercase;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: $color-gray-dark-2;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      transition: all 0.5s;
+    }
+
+    &:hover,
+    &:active {
+      color: rgba($color-gray-dark-2, 0.8);
+    }
+
+    &--sale {
+      &:link,
+      &:visited {
+        color: $color-secondary;
+      }
+
+      &:hover,
+      &:active {
+        color: rgba($color-secondary, 0.8);
+      }
+    }
+  }
+
+  &__flex {
+    display: flex;
+    gap: 13.5rem;
+  }
+
+  &__offers {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: -6.8rem;
+      width: 1px;
+      height: 100%;
+      background-image: $divider;
+    }
+  }
+
+  &__img {
+    width: 28.5rem;
+    height: 28.5rem;
+    border-radius: 4px;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-weight: 700;
+    color: $color-gray-dark-2;
+  }
+
+  &__btn-link {
+    width: 13rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  &__btn-icon {
+    @include icon-small($color: $color-primary);
+    transition: all 0.5s;
+  }
+
+  &__btn-link:hover &__btn-icon,
+  &__btn-link:active &__btn-icon {
+    fill: $color-white;
+  }
 }

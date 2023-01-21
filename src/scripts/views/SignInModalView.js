@@ -1,13 +1,41 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
 
-class SignInView extends View {
+class SignInModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.topbar__login');
-  _btnCloseLogIn = document.querySelector('.btn--close');
+  _btnCheckoutSignIn = document.querySelector('.checkout__sign-in-btn');
+  _markup;
+
+  constructor() {
+    super();
+    this._render();
+    if (!document.querySelector('.overlay')) this._renderOverlay();
+    this._modal = document.querySelector('.modal--sign-in');
+    this._overlay = document.querySelector('.overlay');
+    this._btnClose = this._modal.querySelector('.btn--close');
+    this._btnSignUp = this._modal.querySelector('.modal__link-sign-up');
+    this._addHandlerSignIn();
+    this._addHandlerSignUp();
+  }
+
+  _addHandlerSignUp() {
+    if (!this._btnSignUp) return;
+    this._btnSignUp.addEventListener('click', () => {
+      this._modal.classList.add('hidden');
+      document.querySelector('.modal--sign-up').classList.remove('hidden');
+    });
+  }
+
+  _addHandlerSignIn() {
+    if (!this._btnCheckoutSignIn) return;
+    this._btnCheckoutSignIn.addEventListener('click', () => {
+      this._removeHiddenClass();
+    });
+  }
 
   _generateMarkup() {
-    return `
+    this._markup = `
     <section class="modal modal--small modal--sign-in hidden">
             
             <button class="btn--close" type="button">
@@ -42,7 +70,7 @@ class SignInView extends View {
                 </div>
                 <button class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium" type="submit">Sign in</button>
                 <p class="modal__cta u-margin-bottom-medium">Don't have an account?
-                    <a class="modal__link" href="#">Sign up</a>
+                    <a class="modal__link modal__link-sign-up" href="#">Sign up</a>
                 </p>
             </form>
             <div class="modal__social">
@@ -88,7 +116,8 @@ class SignInView extends View {
             </div>
         </section>
     `;
+    return this._markup;
   }
 }
 
-export default new SignInView();
+export default new SignInModalView();
