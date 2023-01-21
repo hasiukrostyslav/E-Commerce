@@ -4,6 +4,7 @@ import icons from '../../assets/svg/sprite.svg';
 class SignUpModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.topbar__register');
+  _markup;
 
   constructor() {
     super();
@@ -12,10 +13,20 @@ class SignUpModalView extends View {
     this._modal = document.querySelector('.modal--sign-up');
     this._overlay = document.querySelector('.overlay');
     this._btnClose = this._modal.querySelector('.btn--close');
+    this._btnSignIn = this._modal.querySelector('.modal__link-sign-in');
+    this._addHandlerSignIn();
+  }
+
+  _addHandlerSignIn() {
+    if (!this._btnSignIn) return;
+    this._btnSignIn.addEventListener('click', () => {
+      this._modal.classList.add('hidden');
+      document.querySelector('.modal--sign-in').classList.remove('hidden');
+    });
   }
 
   _generateMarkup() {
-    return `
+    this._markup = `
     <section class="modal modal--small modal--sign-up hidden">
             <button class="btn--close" type="button">
                 <svg class="close__icon">
@@ -63,7 +74,7 @@ class SignUpModalView extends View {
                 </div>
                 <button class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium" type="submit">Sign up</button>
                 <p class="modal__cta u-margin-bottom-medium">Already have an account?
-                    <a class="modal__link" href="#">Sign in</a>
+                    <a class="modal__link modal__link-sign-in" href="#">Sign in</a>
                 </p>
             </form>
             <div class="modal__social">
@@ -109,6 +120,8 @@ class SignUpModalView extends View {
             </div>
         </section>
     `;
+
+    return this._markup;
   }
 }
 

@@ -4,6 +4,7 @@ import icons from '../../assets/svg/sprite.svg';
 class ReviewModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.reviews__btn');
+  _markup;
 
   constructor() {
     super();
@@ -15,7 +16,7 @@ class ReviewModalView extends View {
   }
 
   _generateMarkup() {
-    return `
+    this._markup = `
     <section class="modal modal--small modal--review hidden">
       <button class="btn--close" type="button">
         <svg class="close__icon">
@@ -47,11 +48,11 @@ class ReviewModalView extends View {
           />
         </div>
         <div class="input__box">
-          <label class="label label--medium" for="country">Rating</label>
+          <label class="label label--medium" for="rating">Rating</label>
           <select
             class="input input--medium select"
-            name="country"
-            id="country"
+            name="rating"
+            id="rating"
           >
             <option value="Choose rating" selected disabled>
               Choose rating
@@ -109,6 +110,7 @@ class ReviewModalView extends View {
       </form>
     </section>
     `;
+    return this._markup;
   }
 }
 

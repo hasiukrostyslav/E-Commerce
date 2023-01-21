@@ -4,6 +4,7 @@ import icons from '../../assets/svg/sprite.svg';
 class SizeModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.size-chart');
+  _markup;
 
   constructor() {
     super();
@@ -15,7 +16,7 @@ class SizeModalView extends View {
   }
 
   _generateMarkup() {
-    return `
+    this._markup = `
     <section class="modal--size hidden">
       <button class="btn--close" type="button">
         <svg class="close__icon">
@@ -191,6 +192,7 @@ class SizeModalView extends View {
       </div>
     </section>
     `;
+    return this._markup;
   }
 }
 

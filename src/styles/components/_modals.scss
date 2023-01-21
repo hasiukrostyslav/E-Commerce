@@ -94,7 +94,7 @@
 
   // Modal Size chart
   &--size {
-    position: absolute;
+    position: fixed;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
@@ -188,6 +188,7 @@
     border-bottom-left-radius: 4px;
     box-shadow: $shadow-modal;
     z-index: 200;
+    // overflow-y: scroll;
 
     .cart {
       &__heading {

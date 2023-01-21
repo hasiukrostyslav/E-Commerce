@@ -13,14 +13,24 @@ export default class View {
     this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
+  _removeHiddenClass() {
+    this._modal.classList.remove('hidden');
+    this._overlay.classList.remove('hidden');
+  }
+
+  _addHiddenClass() {
+    this._modal.classList.add('hidden');
+    this._overlay.classList.add('hidden');
+  }
+
   _openModal(e) {
+    if (!this._btnOpen) return;
     const btn = e.target.closest(
       `.${this._btnOpen.className.split(' ').at(-1)}`
     );
-    if (!btn) return;
 
-    this._modal.classList.remove('hidden');
-    this._overlay.classList.remove('hidden');
+    if (!btn) return;
+    this._removeHiddenClass();
   }
 
   _closeModal(e) {
@@ -29,8 +39,7 @@ export default class View {
       e.target.closest('.overlay') ||
       e.code === 'Escape'
     ) {
-      this._modal.classList.add('hidden');
-      this._overlay.classList.add('hidden');
+      this._addHiddenClass();
     }
   }
 

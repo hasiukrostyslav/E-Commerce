@@ -8,6 +8,7 @@ import img4 from '../../assets/images/order-item-4.png';
 class CartModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.cart__btn');
+  _markup;
 
   constructor() {
     super();
@@ -19,7 +20,7 @@ class CartModalView extends View {
   }
 
   _generateMarkup() {
-    return `
+    this._markup = `
     <section class="modal--cart hidden">
           <div>
             <button class="btn--close" type="button">
@@ -325,6 +326,7 @@ class CartModalView extends View {
            </div>
         </section> 
     `;
+    return this._markup;
   }
 }
 

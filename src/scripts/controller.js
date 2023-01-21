@@ -25,4 +25,4 @@ function controlModal() {
 
 controlModal();
 
-menuModalView.showMenu();
+// menuModalView.showMenu();

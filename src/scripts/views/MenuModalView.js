@@ -6,6 +6,7 @@ class MenuModalView extends View {
   _parentElement = document.querySelector('.navbar');
   _navigation = document.querySelector('.navigation');
   _links = document.querySelectorAll('.navigation__link');
+  _markup;
 
   constructor() {
     super();
@@ -40,7 +41,7 @@ class MenuModalView extends View {
   }
 
   _generateMarkup() {
-    return `
+    this._markup = `
               <nav class="menu hidden">
                 <div class="menu__flex">
                     <div class="menu__navigation">
@@ -187,6 +188,7 @@ class MenuModalView extends View {
                 </div>
               </nav>
 `;
+    return this._markup;
   }
 }
 

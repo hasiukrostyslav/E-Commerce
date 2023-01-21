@@ -1,391 +1,391 @@
 .btn {
-    display: inline-block;
-    font-family: inherit;
-    font-weight: 700;
-    border: 1px solid $color-primary;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0.5px;
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 700;
+  border: 1px solid $color-primary;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.5px;
 
-    &--large {
-        font-size: 1.6rem;
-        padding: 1.6rem 4rem;
+  &--large {
+    font-size: 1.6rem;
+    padding: 1.6rem 4rem;
+  }
+
+  &--medium {
+    font-size: 1.4rem;
+    padding: 1.3rem 3.2rem;
+  }
+
+  &--medium-right {
+    position: relative;
+    font-size: 1.4rem;
+    padding: 1.35rem 3.2rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    transform: translateX(-5px);
+  }
+
+  &--small {
+    font-size: 1.2rem;
+    padding: 1rem 2.4rem;
+  }
+
+  &--outline {
+    color: $color-primary;
+    background-color: transparent;
+    transition: all 0.5s;
+  }
+
+  &--solid {
+    color: $color-white;
+    background-color: $color-primary;
+    transition: all 0.5s;
+  }
+
+  &--outline:hover,
+  &--outline:active {
+    color: $color-white;
+    background-color: $color-primary;
+
+    & .btn__icon {
+      fill: $color-white;
     }
+  }
 
-    &--medium {
-        font-size: 1.4rem;
-        padding: 1.3rem 3.2rem;
+  &--solid:hover,
+  &--solid:active {
+    background-color: $color-primary-hover;
+  }
+
+  &--arrow {
+    @include btn-with-icon;
+    width: 15.5rem;
+  }
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: $color-primary;
+    transition: all 0.5s;
+
+    &--right {
+      width: 1.2rem;
     }
+  }
 
-    &--medium-right {
-        position: relative;
-        font-size: 1.4rem;
-        padding: 1.35rem 3.2rem;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        transform: translateX(-5px);
+  &--sale {
+    width: 100%;
+    @include btn-with-icon;
+
+    .sale__icon-cart {
+      @include icon-small($color: $color-white);
     }
+  }
 
-    &--small {
-        font-size: 1.2rem;
-        padding: 1rem 2.4rem;
-    }
+  &--modal {
+    width: 100%;
+  }
 
-    &--outline {
-        color: $color-primary;
-        background-color: transparent;
-        transition: all 0.5s;
-    }
-
-    &--solid {
-        color: $color-white;
-        background-color: $color-primary;
-        transition: all 0.5s;
-    }
-
-    &--outline:hover,
-    &--outline:active {
-        color: $color-white;
-        background-color: $color-primary;
-
-        & .btn__icon {
-            fill: $color-white;
-        }
-    }
-
-    &--solid:hover,
-    &--solid:active {
-        background-color: $color-primary-hover;
-    }
-
-    &--arrow {
-        @include btn-with-icon;
-        width: 15.5rem;
-    }
-
-    &__icon {
-        width: 1.6rem;
-        height: 1.6rem;
-        fill: $color-primary;
-        transition: all 0.5s;
-
-        &--right {
-            width: 1.2rem;
-        }
-    }
-
-    &--sale {
-        width: 100%;
-        @include btn-with-icon;
-
-        .sale__icon-cart {
-            @include icon-small($color: $color-white);
-        }
-    }
-
-    &--modal {
-        width: 100%;
-    }
-
-    &--close {
-        position: absolute;
-        top: 2.4rem;
-        right: 2.4rem;
-        width: 2.4rem;
-        height: 2.4rem;
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: none;
-    }
-
-    &--delete {
-        border: none;
-        background-color: transparent;
-        color: $color-secondary;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.6;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        cursor: pointer;
-        position: absolute;
-        top: 0.8rem;
-        right: 0;
-
-        &-cart {
-            top: 1.6rem;
-            right: 2.4rem;
-        }
-    }
-}
-
-.btn-delete__icon {
-    width: 2rem;
-    height: 2rem;
-    fill: $color-secondary;
-    &--sm {
-        width: 1.433rem;
-        height: 1.433rem;
-        fill: $color-gray-dark-3;
-    }
-}
-
-.close__icon {
-    @include icon-medium($color: $color-gray-dark-3);
-}
-
-.btn-round {
-    width: 4.8rem;
-    height: 4.8rem;
-    border: none;
-    border-radius: 50%;
+  &--close {
+    position: absolute;
+    top: 2.4rem;
+    right: 2.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: none;
+  }
 
-    &--light {
-        background-color: rgba($color-white, 0.5);
-    }
+  &--delete {
+    border: none;
+    background-color: transparent;
+    color: $color-secondary;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0.8rem;
+    right: 0;
 
-    &--dark {
-        background-color: $color-primary;
+    &-cart {
+      top: 1.6rem;
+      right: 2.4rem;
     }
+  }
+}
+
+.btn-delete__icon {
+  width: 2rem;
+  height: 2rem;
+  fill: $color-secondary;
+  &--sm {
+    width: 1.433rem;
+    height: 1.433rem;
+    fill: $color-gray-dark-3;
+  }
+}
+
+.close__icon {
+  @include icon-medium($color: $color-gray-dark-3);
+}
+
+.btn-round {
+  width: 4.8rem;
+  height: 4.8rem;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &--light {
+    background-color: rgba($color-white, 0.5);
+  }
+
+  &--dark {
+    background-color: $color-primary;
+  }
 }
 
 .slider {
-    &__btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
-        &:hover {
-            outline: 1.6rem solid rgba($color-primary, 0.12);
-        }
-
-        &--left {
-            left: 3.2rem;
-        }
-
-        &--right {
-            right: 3.2rem;
-        }
+    &:hover {
+      outline: 1.6rem solid rgba($color-primary, 0.12);
     }
 
-    &__icon {
-        width: 2.4rem;
-        height: 2.4rem;
-
-        &--white {
-            fill: $color-gray-dark-2;
-        }
-
-        &--green {
-            fill: $color-white;
-        }
+    &--left {
+      left: 3.2rem;
     }
+
+    &--right {
+      right: 3.2rem;
+    }
+  }
+
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    &--white {
+      fill: $color-gray-dark-2;
+    }
+
+    &--green {
+      fill: $color-white;
+    }
+  }
 }
 
 .btn-arr {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .trend__btns {
-    position: absolute;
-    top: 2.4rem;
-    right: -1.2rem;
+  position: absolute;
+  top: 2.4rem;
+  right: -1.2rem;
 
-    @include btn-flex;
+  @include btn-flex;
 }
 
 .sale__btns {
-    @include btn-flex;
+  @include btn-flex;
 }
 
 .store-link {
-    &:link,
-    &:visited {
-        display: inline-block;
-        text-decoration: none;
-        width: 16.2rem;
-        height: auto;
-    }
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-decoration: none;
+    width: 16.2rem;
+    height: auto;
+  }
 }
 
 .store-apple {
-    margin-right: 2.4rem;
+  margin-right: 2.4rem;
 }
 
 .store-img {
-    width: 16.2rem;
-    height: auto;
+  width: 16.2rem;
+  height: auto;
 }
 
 .instagram {
-    &__btn {
-        @include btn-with-icon;
-        width: 24.2rem;
+  &__btn {
+    @include btn-with-icon;
+    width: 24.2rem;
 
-        &:hover,
-        &:active {
-            & .instagram__icon {
-                fill: $color-white;
-            }
-        }
+    &:hover,
+    &:active {
+      & .instagram__icon {
+        fill: $color-white;
+      }
     }
-    &__icon {
-        width: 2rem;
-        height: 2rem;
-        fill: $color-primary;
-        transition: all 0.5s;
-    }
+  }
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    fill: $color-primary;
+    transition: all 0.5s;
+  }
 }
 
 .social {
-    &__list {
-        margin-top: 2.4rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1.2rem;
-        list-style: none;
+  &__list {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
 
-        &--center {
-            justify-content: center;
-        }
+    &--center {
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      text-decoration: none;
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s;
     }
 
-    &__link {
-        &:link,
-        &:visited {
-            display: inline-block;
-            text-decoration: none;
-            width: 3.2rem;
-            height: 3.2rem;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s;
-        }
-
-        &:hover .social__icon,
-        &:active .social__icon {
-            fill: $color-primary;
-        }
-
-        &--dark {
-            &:link,
-            &:visited {
-                background-color: rgba($color-white, 0.12);
-                transition: all 0.5s;
-            }
-
-            &:hover,
-            &:active {
-                background-color: $color-white;
-            }
-        }
-
-        &--light {
-            &:link,
-            &:visited {
-                background-color: rgba($color-gray-dark-3, 0.12);
-                transition: all 0.5s;
-            }
-
-            &:hover,
-            &:active {
-                background-color: rgba($color-primary, 0.12);
-            }
-        }
-
-        &--small {
-            &:link,
-            &:visited {
-                width: 2rem;
-                height: 2rem;
-                background-color: transparent;
-                flex-basis: 2rem;
-            }
-        }
+    &:hover .social__icon,
+    &:active .social__icon {
+      fill: $color-primary;
     }
 
-    &__icon {
-        width: 1.6rem;
-        height: 1.6rem;
+    &--dark {
+      &:link,
+      &:visited {
+        background-color: rgba($color-white, 0.12);
+        transition: all 0.5s;
+      }
 
-        &--lg {
-            width: 2rem;
-            height: 2rem;
-        }
+      &:hover,
+      &:active {
+        background-color: $color-white;
+      }
     }
 
-    &__link--dark &__icon {
-        fill: $color-white;
+    &--light {
+      &:link,
+      &:visited {
+        background-color: rgba($color-gray-dark-3, 0.12);
+        transition: all 0.5s;
+      }
+
+      &:hover,
+      &:active {
+        background-color: rgba($color-primary, 0.12);
+      }
     }
 
-    &__link--light &__icon {
-        fill: $color-gray-dark-3;
+    &--small {
+      &:link,
+      &:visited {
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        flex-basis: 2rem;
+      }
     }
+  }
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    &--lg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__link--dark &__icon {
+    fill: $color-white;
+  }
+
+  &__link--light &__icon {
+    fill: $color-gray-dark-3;
+  }
 }
 
 .btn-load {
-    margin: 6.3rem auto 0;
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-    border: none;
-    font-size: 1.6rem;
-    line-height: 1.6;
-    font-weight: 700;
-    color: $color-gray-dark-2;
-    cursor: pointer;
-    background-color: transparent;
+  margin: 6.3rem auto 0;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: 700;
+  color: $color-gray-dark-2;
+  cursor: pointer;
+  background-color: transparent;
 
-    &__icon {
-        @include icon-medium($color: $color-gray-dark-2);
-    }
+  &__icon {
+    @include icon-medium($color: $color-gray-dark-2);
+  }
 }
 
 .cart__btn {
-    font-size: 1.4rem;
-    line-height: 1.5;
-    padding: 1.1rem 6.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    flex-basis: 24.4rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  padding: 1.1rem 6.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-basis: 24.4rem;
 }
 
 .favourite__btn {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 
-    &:hover {
-        .catalog__icon--prime {
-            fill: $color-white;
-        }
+  &:hover {
+    .catalog__icon--prime {
+      fill: $color-white;
     }
+  }
 }
 
 .cart__wishlist {
-    display: flex;
-    gap: 0.8rem;
-    font-size: 1.2rem;
-    color: $color-gray-dark-2;
-    border: none;
-    background-color: transparent;
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  color: $color-gray-dark-2;
+  border: none;
+  background-color: transparent;
 
-    &-btn {
-        @include icon-small($color: $color-gray-dark-2);
-    }
+  &-btn {
+    @include icon-small($color: $color-gray-dark-2);
+  }
 }
