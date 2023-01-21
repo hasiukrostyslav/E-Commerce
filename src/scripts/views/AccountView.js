@@ -9,7 +9,7 @@ class AccountView extends View {
   _currentBreadcrumb = document.querySelector('.breadcrumb__wishlist');
   _breadcrumbItems = document.querySelectorAll('.breadcrumb__item');
 
-  changeSidebarItem() {
+  changeAccountTabs() {
     if (!this._parentElement) return;
 
     this._sidebar.addEventListener('click', (e) => {

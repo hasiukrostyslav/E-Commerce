@@ -27,8 +27,9 @@ function controlModal() {
 }
 
 function controlChangePages() {
-  accountView.changeSidebarItem();
-  productView.changeProductInfo();
+  accountView.changeAccountTabs();
+  productView.changeProductTabs();
+  contactView.changeContactTabs();
 }
 
 function init() {
@@ -37,5 +38,3 @@ function init() {
 }
 
 init();
-
-// menuModalView.showMenu();

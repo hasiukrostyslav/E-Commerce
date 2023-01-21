@@ -7,7 +7,7 @@ class ProductView extends View {
   _currentPage = document.querySelector('.product__info');
   _currentTab;
 
-  changeProductInfo() {
+  changeProductTabs() {
     if (!this._parentElement) return;
 
     this._tabs.addEventListener('click', (e) => {
