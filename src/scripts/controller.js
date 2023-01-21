@@ -5,6 +5,7 @@ import cartModalView from './views/CartModalView';
 import sizeModalView from './views/SIzeModalView';
 import reviewModalView from './views/ReviewModalView';
 import menuModalView from './views/MenuModalView';
+import accountView from './views/AccountView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();

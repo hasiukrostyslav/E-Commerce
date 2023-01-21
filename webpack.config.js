@@ -84,33 +84,9 @@ module.exports = {
       minify: false,
     }),
     new HtmlWebpackPlugin({
-      filename: 'account-orders.html',
+      filename: 'account.html',
       title: 'Createx',
-      template: 'src/account-orders.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'account-profile.html',
-      title: 'Createx',
-      template: 'src/account-profile.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'account-reviews.html',
-      title: 'Createx',
-      template: 'src/account-reviews.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'account-viewed.html',
-      title: 'Createx',
-      template: 'src/account-viewed.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'account-wishlist.html',
-      title: 'Createx',
-      template: 'src/account-wishlist.html',
+      template: 'src/account.html',
       minify: false,
     }),
     new HtmlWebpackPlugin({

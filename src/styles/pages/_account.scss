@@ -1,47 +1,42 @@
 .account {
-    &-main {
-        padding: 4rem 0 18rem;
-        display: flex;
-        gap: 13.5rem;
+  padding: 4rem 0 0;
+  display: flex;
+  gap: 13.5rem;
 
-        &--pad-sm {
-            padding-bottom: 7.2rem;
-        }
-    }
+  &__main {
+    width: 81rem;
+    position: relative;
+    padding-bottom: 18rem;
+  }
 
-    &__profile {
-        width: 81rem;
-        position: relative;
-    }
+  &__wishlist {
+    padding-bottom: 7.2rem;
+  }
 
-    &__form {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-    }
+  &__form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    &__orders {
-        width: 81rem;
-    }
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 
-    &__top {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
+  &__wishlist-container {
+    display: flex;
+    gap: 3rem;
+  }
 
-    &__wishlist {
-        display: flex;
-        gap: 3rem;
-    }
+  &__viewed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
 
-    &__viewed {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-    }
-
-    &__reviews {
-        margin-bottom: 6rem;
-    }
+  &__reviews {
+    margin-bottom: 6rem;
+  }
 }
