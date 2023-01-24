@@ -114,21 +114,9 @@ module.exports = {
       minify: false,
     }),
     new HtmlWebpackPlugin({
-      filename: 'faq.html',
-      title: 'Createx',
-      template: 'src/faq.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
       filename: 'product.html',
       title: 'Createx',
       template: 'src/product.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'store.html',
-      title: 'Createx',
-      template: 'src/store.html',
       minify: false,
     }),
     new HtmlWebpackPlugin({

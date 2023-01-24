@@ -13,7 +13,6 @@
   "ignorePatterns": ["dist/*.js", "webpack.config.js"],
   "rules": {
     "no-underscore-dangle": "off",
-    "no-console": "off",
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
     "comma-dangle": "off",

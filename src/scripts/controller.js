@@ -8,6 +8,7 @@ import menuModalView from './views/MenuModalView';
 import accountView from './views/AccountView';
 import productView from './views/ProductView';
 import contactView from './views/ContactView';
+import listVIew from './views/ListVIew';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -24,12 +25,15 @@ function controlModal() {
 
   reviewModalView.addHandlerOpenModal();
   reviewModalView.addHandlerCloseModal();
+
+  // menuModalView.hideMenu();
 }
 
 function controlChangePages() {
   accountView.changeAccountTabs();
   productView.changeProductTabs();
   contactView.changeContactTabs();
+  listVIew.toggleQuestion();
 }
 
 function init() {

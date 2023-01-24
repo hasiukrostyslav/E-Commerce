@@ -37,7 +37,10 @@ class MenuModalView extends View {
   }
 
   hideMenu() {
-    this._navigation.addEventListener('mouseout', this._outLink.bind(this));
+    this._navigation.addEventListener('mouseleave', (e) => {
+      console.log(e.target);
+      console.log(e.relatedTarget);
+    });
   }
 
   _generateMarkup() {
