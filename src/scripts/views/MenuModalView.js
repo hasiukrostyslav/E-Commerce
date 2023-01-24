@@ -4,8 +4,8 @@ import image from '../../assets/images/schoolboy.jpg';
 
 class MenuModalView extends View {
   _parentElement = document.querySelector('.navbar');
-  _navigation = document.querySelector('.navigation');
-  _links = document.querySelectorAll('.navigation__link');
+  _navigation = document.querySelector('.navigation__list');
+  _nav = document.querySelector('.navbar__cover--light');
   _markup;
 
   constructor() {
@@ -17,18 +17,23 @@ class MenuModalView extends View {
   }
 
   _hoverLink(e) {
-    const target = e.target.closest('.navigation__link');
+    const target = e.target.closest('.navigation__item');
     if (!target) return;
-    this._parentElement.style.zIndex = 500;
+    this._parentElement.style.zIndex = 200;
     this._menu.classList.remove('hidden');
     this._overlay.classList.remove('hidden');
   }
 
   _outLink(e) {
-    const target = e.target.closest('.navigation__link');
-    if (!target) {
-      this._menu.classList.remove('hidden');
-      this._overlay.classList.remove('hidden');
+    // console.log(`TARGET`, e.target);
+    // console.log(`RELATED TARGET`, e.relatedTarget);
+    if (
+      (e.target === this._navigation && e.relatedTarget !== this._menu) ||
+      (e.target === this._menu && e.relatedTarget !== this._navigation)
+    ) {
+      this._parentElement.style.zIndex = '';
+      this._menu.classList.add('hidden');
+      this._overlay.classList.add('hidden');
     }
   }
 
@@ -37,10 +42,8 @@ class MenuModalView extends View {
   }
 
   hideMenu() {
-    this._navigation.addEventListener('mouseleave', (e) => {
-      console.log(e.target);
-      console.log(e.relatedTarget);
-    });
+    this._navigation.addEventListener('mouseleave', this._outLink.bind(this));
+    this._menu.addEventListener('mouseleave', this._outLink.bind(this));
   }
 
   _generateMarkup() {

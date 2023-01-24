@@ -127,15 +127,17 @@
 
   .navigation {
     display: flex;
-    align-items: center;
-    padding: 2rem 0;
+    align-items: flex-start;
+    // padding: 2rem 0;
+    padding-top: 2rem;
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1.6;
 
     .logo-link {
-      margin-right: 6rem;
+      margin-right: 4rem;
       display: flex;
+      padding-top: 1.1rem;
     }
 
     .logo {
@@ -146,11 +148,11 @@
     &__list {
       list-style: none;
       display: flex;
-      margin-right: 13.2rem;
+      margin-right: 11.2rem;
     }
 
-    &__item:not(:last-child) {
-      margin-right: 4rem;
+    &__item {
+      padding: 0.9rem 2rem 2.9rem;
     }
 
     &__link {
@@ -181,6 +183,7 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+      padding-top: 0.9rem;
 
       &::after {
         content: '';

@@ -26,7 +26,8 @@ function controlModal() {
   reviewModalView.addHandlerOpenModal();
   reviewModalView.addHandlerCloseModal();
 
-  // menuModalView.hideMenu();
+  menuModalView.showMenu();
+  menuModalView.hideMenu();
 }
 
 function controlChangePages() {
