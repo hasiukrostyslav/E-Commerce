@@ -19,21 +19,26 @@ class ListView extends View {
       <use xlink:href="${icons}#minus"></use>
     </svg>`;
 
-  toggleQuestion() {
+  _toggleQuestion(e) {
+    const btn = e.target.closest('.faq__btn');
+    if (!btn) return;
+    if (btn.firstElementChild.classList.contains('order__btn-plus')) {
+      btn.insertAdjacentHTML('beforebegin', this._textElement);
+      btn.innerHTML = this._iconMinus;
+    } else {
+      const pEl = btn.previousElementSibling;
+      pEl.textContent = '';
+      btn.innerHTML = this._iconPlus;
+    }
+  }
+
+  addHandlertoggleQuestion() {
     if (!this._parentElement) return;
 
-    this._parentElement.addEventListener('click', (e) => {
-      const btn = e.target.closest('.faq__btn');
-      if (!btn) return;
-      if (btn.firstElementChild.classList.contains('order__btn-plus')) {
-        btn.insertAdjacentHTML('beforebegin', this._textElement);
-        btn.innerHTML = this._iconMinus;
-      } else {
-        const pEl = btn.previousElementSibling;
-        pEl.textContent = '';
-        btn.innerHTML = this._iconPlus;
-      }
-    });
+    this._parentElement.addEventListener(
+      'click',
+      this._toggleQuestion.bind(this)
+    );
   }
 }
 

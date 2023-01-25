@@ -1,73 +1,77 @@
 .breadcrumb {
-    background-color: $color-gray-light-6;
-    padding: 1.6rem 0;
+  background-color: $color-gray-light-6;
+  padding: 1.6rem 0;
 
-    &__list {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: $color-gray-dark-2;
+      font-size: 1.4rem;
+      line-height: 1.5;
     }
 
-    &__item {
-        display: flex;
-        align-items: center;
+    &--current {
+      &:link,
+      &:visited {
+        color: $color-gray-dark-4;
+      }
     }
 
-    &__link {
-        &:link,
-        &:visited {
-            text-decoration: none;
-            color: $color-gray-dark-2;
-            font-size: 1.4rem;
-            line-height: 1.5;
-        }
-
-        &--current {
-            &:link,
-            &:visited {
-                color: $color-gray-dark-4;
-            }
-        }
-
-        &--icon {
-            display: flex;
-            align-items: center;
-        }
+    &--icon {
+      display: flex;
+      align-items: center;
     }
+  }
 
-    &__icon {
-        @include icon-small($color: $color-gray-dark-2);
+  &__icon {
+    @include icon-small($color: $color-gray-dark-2);
 
-        &--light {
-            fill: $color-gray-dark-4;
-        }
+    &--light {
+      fill: $color-gray-dark-4;
     }
+  }
 
-    &__catalog {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  &__catalog {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    &__catalog-list {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-    }
+  &__catalog-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
 
-    &__catalog-item {
-        display: flex;
-        gap: 0.8rem;
-        align-items: center;
-    }
+  &__catalog-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
 
-    &__catalog-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: none;
-        background-color: transparent;
+    a {
+      cursor: default;
     }
+  }
+
+  &__catalog-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
 }

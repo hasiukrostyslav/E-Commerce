@@ -16,7 +16,7 @@ Online website where you can buy new clothes
 To run this project, install it locally using npm:
 
 ```
-$ git https://github.com/hasiukrostyslav/Ecommerce.git
+$ git clone https://github.com/hasiukrostyslav/Ecommerce.git
 $ npm install
 $ npm run dev
 ```

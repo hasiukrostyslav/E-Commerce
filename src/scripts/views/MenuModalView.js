@@ -25,8 +25,6 @@ class MenuModalView extends View {
   }
 
   _outLink(e) {
-    // console.log(`TARGET`, e.target);
-    // console.log(`RELATED TARGET`, e.relatedTarget);
     if (
       (e.target === this._navigation && e.relatedTarget !== this._menu) ||
       (e.target === this._menu && e.relatedTarget !== this._navigation)

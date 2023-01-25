@@ -9,6 +9,7 @@ import accountView from './views/AccountView';
 import productView from './views/ProductView';
 import contactView from './views/ContactView';
 import listVIew from './views/ListVIew';
+import catalogView from './views/CatalogView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -34,7 +35,12 @@ function controlChangePages() {
   accountView.changeAccountTabs();
   productView.changeProductTabs();
   contactView.changeContactTabs();
-  listVIew.toggleQuestion();
+
+  listVIew.addHandlertoggleQuestion();
+
+  catalogView.addHandlerToggleFilterContainer();
+  catalogView.addHandlerDeleteFilter();
+  catalogView.addHandlerToggleFilter();
 }
 
 function init() {

@@ -216,7 +216,7 @@
                     <li class="breadcrumb__catalog-item">
                         <button class="breadcrumb__catalog-btn">
                             <svg
-                                class="breadcrumb__icon breadcrumb__icon--light"
+                                class="breadcrumb__icon breadcrumb__icon--light clear-one"
                             >
                                 <use
                                     xlink:href="assets/svg/sprite.svg#cross"
@@ -232,7 +232,7 @@
                     <li class="breadcrumb__catalog-item">
                         <button class="breadcrumb__catalog-btn">
                             <svg
-                                class="breadcrumb__icon breadcrumb__icon--light"
+                                class="breadcrumb__icon breadcrumb__icon--light clear-one"
                             >
                                 <use
                                     xlink:href="assets/svg/sprite.svg#cross"
@@ -248,7 +248,7 @@
                     <li class="breadcrumb__catalog-item">
                         <button class="breadcrumb__catalog-btn">
                             <svg
-                                class="breadcrumb__icon breadcrumb__icon--light"
+                                class="breadcrumb__icon breadcrumb__icon--light clear-one"
                             >
                                 <use
                                     xlink:href="assets/svg/sprite.svg#cross"
@@ -263,7 +263,7 @@
                     </li>
                     <li class="breadcrumb__catalog-item">
                         <button class="breadcrumb__catalog-btn">
-                            <svg class="breadcrumb__icon">
+                            <svg class="breadcrumb__icon clear-all">
                                 <use
                                     xlink:href="assets/svg/sprite.svg#cross"
                                 ></use>
@@ -276,7 +276,7 @@
         </section>
 
         <main class="main__catalog">
-            <section class="catalog container">
+            <section class="catalog container grid">
                 <section class="catalog__toolbar catalog__toolbar--top">
                     <button type="button" class="btn btn--solid catalog__btn">
                         <svg class="catalog__icon">
@@ -382,7 +382,8 @@
                                     ></use>
                                 </svg>
                             </button>
-                            <form action="#" class="search search--filter">
+                            <div class="catalog__form-container">
+                              <form action="#" class="search search--filter">
                                 <input
                                     type="text"
                                     class="search__input"
@@ -397,8 +398,8 @@
                                         ></use>
                                     </svg>
                                 </button>
-                            </form>
-                            <form
+                              </form>
+                              <form
                                 class="catalog__form--check catalog__scroll catalog__scroll--sm"
                                 action="#"
                             >
@@ -513,7 +514,8 @@
                                         </label>
                                     </li>
                                 </ul>
-                            </form>
+                              </form>    
+                            </div>                                                
                         </li>
                         <li
                             class="catalog__filter-item catalog__filter-item--open"
@@ -640,7 +642,7 @@
                                         </label>
                                     </li>
                                 </ul>
-                            </form>
+                            </form>                        
                         </li>
                         <li
                             class="catalog__filter-item catalog__filter-item--open"
@@ -867,7 +869,8 @@
                                     ></use>
                                 </svg>
                             </button>
-                            <form action="#" class="search search--filter">
+                            <div class="catalog__form-container">
+                              <form action="#" class="search search--filter">
                                 <input
                                     type="text"
                                     class="search__input"
@@ -882,8 +885,8 @@
                                         ></use>
                                     </svg>
                                 </button>
-                            </form>
-                            <form
+                              </form>
+                              <form
                                 class="catalog__form--check catalog__scroll catalog__scroll--sm"
                                 action="#"
                             >
@@ -998,7 +1001,10 @@
                                         </label>
                                     </li>
                                 </ul>
-                            </form>
+                              </form>
+                            </div>
+                            
+                            
                         </li>
                         <li
                             class="catalog__filter-item catalog__filter-item--open"
@@ -1013,7 +1019,8 @@
                                     ></use>
                                 </svg>
                             </button>
-                            <form action="#" class="search search--filter">
+                            <div class="catalog__form-container">
+                              <form action="#" class="search search--filter">
                                 <input
                                     type="text"
                                     class="search__input"
@@ -1028,8 +1035,8 @@
                                         ></use>
                                     </svg>
                                 </button>
-                            </form>
-                            <form
+                              </form>
+                              <form
                                 class="catalog__form--check catalog__scroll catalog__scroll--sm"
                                 action="#"
                             >
@@ -1144,7 +1151,8 @@
                                         </label>
                                     </li>
                                 </ul>
-                            </form>
+                              </form>   
+                            </div> 
                         </li>
                         <li
                             class="catalog__filter-item catalog__filter-item--open"
