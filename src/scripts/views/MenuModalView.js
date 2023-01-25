@@ -35,11 +35,11 @@ class MenuModalView extends View {
     }
   }
 
-  showMenu() {
+  addHandlerShowMenu() {
     this._navigation.addEventListener('mouseover', this._hoverLink.bind(this));
   }
 
-  hideMenu() {
+  addHandlerHideMenu() {
     this._navigation.addEventListener('mouseleave', this._outLink.bind(this));
     this._menu.addEventListener('mouseleave', this._outLink.bind(this));
   }

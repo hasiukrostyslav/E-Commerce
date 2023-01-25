@@ -54,4 +54,10 @@ export default class View {
       this._closeModal.bind(this)
     );
   }
+
+  addHandlerChangeTabs() {
+    if (!this._parentElement) return;
+
+    this._tabs.addEventListener('click', this._changeTabs.bind(this));
+  }
 }

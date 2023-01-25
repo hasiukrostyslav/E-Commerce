@@ -27,14 +27,14 @@ function controlModal() {
   reviewModalView.addHandlerOpenModal();
   reviewModalView.addHandlerCloseModal();
 
-  menuModalView.showMenu();
-  menuModalView.hideMenu();
+  menuModalView.addHandlerShowMenu();
+  menuModalView.addHandlerHideMenu();
 }
 
 function controlChangePages() {
-  accountView.changeAccountTabs();
-  productView.changeProductTabs();
-  contactView.changeContactTabs();
+  accountView.addHandlerChangeTabs();
+  productView.addHandlerChangeTabs();
+  contactView.addHandlerChangeTabs();
 
   listVIew.addHandlertoggleQuestion();
 

@@ -18,6 +18,7 @@
     "comma-dangle": "off",
     "prefer-arrow-callback": "off",
     "func-names": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "operator-linebreak": ["error", "after"]
   }
 }
