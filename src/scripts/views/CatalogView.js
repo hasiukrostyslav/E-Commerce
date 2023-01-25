@@ -14,6 +14,7 @@ class CatalogView extends View {
       xlink:href="${icons}#plus">
     </use>
   </svg>`;
+
   _iconMinus = `
   <svg class="catalog__filter-btn-minus">
     <use

@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 8,
@@ -12,13 +12,18 @@
   },
   "ignorePatterns": ["dist/*.js", "webpack.config.js"],
   "rules": {
-    "no-underscore-dangle": "off",
-    "implicit-arrow-linebreak": "off",
-    "function-paren-newline": "off",
-    "comma-dangle": "off",
-    "prefer-arrow-callback": "off",
-    "func-names": "off",
-    "lines-between-class-members": "off",
-    "operator-linebreak": ["error", "after"]
+    "no-underscore-dangle": [
+      "error",
+      {
+        "enforceInMethodNames": false,
+        "enforceInClassFields": false,
+        "allowAfterThis": true
+      }
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ]
   }
 }

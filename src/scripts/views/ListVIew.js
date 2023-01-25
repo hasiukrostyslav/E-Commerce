@@ -10,10 +10,12 @@ class ListView extends View {
       elementum faucibus dignissim purus. Fusce parturient diam magna
       ullamcorper morbi semper massa ac facilisis.
     </p>`;
+
   _iconPlus = `
     <svg class="order__btn-plus">
       <use xlink:href="${icons}#plus"></use>
     </svg>`;
+
   _iconMinus = `
     <svg class="order__btn-minus">
       <use xlink:href="${icons}#minus"></use>
