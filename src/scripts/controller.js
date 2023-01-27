@@ -46,6 +46,7 @@ function controlChangeView() {
   catalogView.addHandlerToggleFilter();
 
   scrollView.addHandlerScrollToTop();
+  sliderView.addHandlerChangeSlide();
 }
 
 function init() {

@@ -24,6 +24,8 @@
       "error",
       "always",
       { "exceptAfterSingleLine": true }
-    ]
+    ],
+    "no-return-assign": "off",
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
