@@ -10,6 +10,9 @@ import productView from './views/ProductView';
 import contactView from './views/ContactView';
 import listVIew from './views/ListVIew';
 import catalogView from './views/CatalogView';
+import sliderView from './views/SliderView';
+import paginationView from './views/PaginationView';
+import scrollView from './views/ScrollView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -31,7 +34,7 @@ function controlModal() {
   menuModalView.addHandlerHideMenu();
 }
 
-function controlChangePages() {
+function controlChangeView() {
   accountView.addHandlerChangeTabs();
   productView.addHandlerChangeTabs();
   contactView.addHandlerChangeTabs();
@@ -41,11 +44,13 @@ function controlChangePages() {
   catalogView.addHandlerToggleFilterContainer();
   catalogView.addHandlerDeleteFilter();
   catalogView.addHandlerToggleFilter();
+
+  scrollView.addHandlerScrollToTop();
 }
 
 function init() {
   controlModal();
-  controlChangePages();
+  controlChangeView();
 }
 
 init();
