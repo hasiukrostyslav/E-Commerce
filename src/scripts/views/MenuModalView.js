@@ -47,7 +47,7 @@ class MenuModalView extends View {
   _generateMarkup() {
     this._markup = `
               <nav class="menu hidden">
-                <div class="menu__flex">
+                <div class="menu__flex container">
                     <div class="menu__navigation">
                         <ul class="menu__list u-width">
                             <li class="menu__item">

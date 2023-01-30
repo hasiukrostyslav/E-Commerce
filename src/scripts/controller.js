@@ -13,6 +13,7 @@ import catalogView from './views/CatalogView';
 import sliderView from './views/SliderView';
 import paginationView from './views/PaginationView';
 import scrollView from './views/ScrollView';
+import offersView from './views/OffersView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -47,6 +48,7 @@ function controlChangeView() {
 
   scrollView.addHandlerScrollToTop();
   sliderView.addHandlerChangeSlide();
+  offersView.addHandlerChangeSlide();
 }
 
 function init() {

@@ -3,17 +3,20 @@ import View from './View';
 class SliderView extends View {
   _parentElement = document.querySelector('.header');
   _slides = document.querySelectorAll('.hero__slide');
-  _btnLeft = this._parentElement.querySelector('.slider__btn--left');
-  _btnRight = this._parentElement.querySelector('.slider__btn--right');
-  _pageContainer = this._parentElement.querySelector('.slider__pages');
+  _btnLeft = document.querySelector('.slider__btn--left');
+  _btnRight = document.querySelector('.slider__btn--right');
+  _pageContainer = document.querySelector('.slider__pages');
   _curSlide = 0;
   _maxSlide = this._slides.length;
+  _interval;
 
   constructor() {
     super();
+
     this._createSlideTabs();
     this._goToSlide();
     this._activateSlideTab();
+    this._setSlideInterval();
   }
 
   _createSlideTabs() {
@@ -26,6 +29,7 @@ class SliderView extends View {
   }
 
   _activateSlideTab(slide = 0) {
+    if (!this._parentElement) return;
     this._parentElement
       .querySelectorAll('.slider__page-btn')
       .forEach((page) => page.classList.remove('slider__page-btn--active'));
@@ -33,12 +37,6 @@ class SliderView extends View {
     this._parentElement
       .querySelector(`.slider__page-btn[data-slide="${slide}"]`)
       .classList.add('slider__page-btn--active');
-  }
-
-  _goToSlide(slide = 0) {
-    this._slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-    );
   }
 
   _nextSlide() {
@@ -63,7 +61,23 @@ class SliderView extends View {
     }
   }
 
+  _setSlideInterval() {
+    this._interval = setInterval(() => {
+      this._nextSlide();
+    }, 4000);
+  }
+
+  _changeSlideInterval() {
+    clearInterval(this._interval);
+    this._setSlideInterval();
+  }
+
   addHandlerChangeSlide() {
+    if (!this._parentElement) return;
+    this._parentElement.addEventListener(
+      'click',
+      this._changeSlideInterval.bind(this)
+    );
     this._btnRight.addEventListener('click', this._nextSlide.bind(this));
     this._btnLeft.addEventListener('click', this._prevSlide.bind(this));
     this._pageContainer.addEventListener('click', this._clickTabs.bind(this));

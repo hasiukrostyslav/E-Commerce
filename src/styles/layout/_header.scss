@@ -2,6 +2,12 @@
   position: relative;
   height: 80rem;
   overflow: hidden;
+
+  &:hover {
+    .slider__btn {
+      opacity: 1;
+    }
+  }
 }
 
 .hero {
@@ -36,9 +42,8 @@
 
 .slider {
   &__pages {
-    position: absolute;
-    bottom: 18rem;
-    left: 34.5rem;
+    position: relative;
+    transform: translateY(56.6rem);
     display: flex;
     justify-content: flex-start;
     gap: 0.4rem;

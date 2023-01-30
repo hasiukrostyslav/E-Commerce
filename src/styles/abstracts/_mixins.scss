@@ -1,47 +1,94 @@
 @mixin btn-flex {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    grid-column: 3 / -1;
-    justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  grid-column: 3 / -1;
+  justify-self: end;
 }
 
 @mixin card-grid {
-    &__card-1 {
-        grid-row: 2 / 3;
-        grid-column: 1 / 2;
-    }
-    &__card-2 {
-        grid-row: 2 / 3;
-        grid-column: 2 / 3;
-    }
-    &__card-3 {
-        grid-row: 2 / 3;
-        grid-column: 3 / -1;
-    }
+  &__card-1 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  &__card-2 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  &__card-3 {
+    grid-row: 2 / 3;
+    grid-column: 3 / -1;
+  }
 }
 
 @mixin icon-small($color: $color-gray-dark-2) {
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: $color;
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: $color;
 }
 
 @mixin icon-medium($color: $color-gray-dark-2) {
-    width: 2.4rem;
-    height: 2.4rem;
-    fill: $color;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: $color;
 }
 
 @mixin icon-large($color: $color-primary) {
-    width: 4.8rem;
-    height: 4.8rem;
-    fill: $color;
+  width: 4.8rem;
+  height: 4.8rem;
+  fill: $color;
 }
 
 @mixin btn-with-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+// MEDIA QUERY MANAGER
+/* 
+0 - 600px:     Phone
+600 - 900px:   Tablet portrait
+900 - 1200px:  Tablet landscape
+[1200 - 1550]: Laptop
+1550: Big desktop
+
+*/
+
+/* 
+$breakpoint argument choices:
+-phone
+-tab-port
+-tab-land
+-laptop
+-big desktop
+
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == big-desktop {
+    @media only screen and (max-width: 118.75em) {
+      //1900px
+      @content;
+    }
+  }
+
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 106.25em) {
+      //1700px
+      @content;
+    }
+  }
+
+  @if $breakpoint == sm-laptop {
+    @media only screen and (max-width: 93.75em) {
+      //1500px
+      @content;
+    }
+  }
 }

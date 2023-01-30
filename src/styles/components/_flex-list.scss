@@ -1,66 +1,68 @@
 .categories {
-    &__types {
-        display: flex;
-        flex-direction: row;
-        gap: 3rem;
-        margin-bottom: 18rem;
-        text-align: center;
+  &__types {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin-bottom: 18rem;
+    text-align: center;
+  }
+
+  &__img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    margin-bottom: 2.4rem;
+  }
+
+  &__link {
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $color-gray-dark-1;
+      transition: all 0.5s;
     }
 
-    &__img {
-        border-radius: 50%;
-        margin-bottom: 2.4rem;
+    &:hover,
+    &:active {
+      color: rgba($color-gray-dark-1, 0.5);
     }
-
-    &__link {
-        font-size: 2rem;
-        line-height: 1.5;
-        font-weight: 700;
-        text-decoration: none;
-
-        &:link,
-        &:visited {
-            color: $color-gray-dark-1;
-            transition: all 0.5s;
-        }
-
-        &:hover,
-        &:active {
-            color: rgba($color-gray-dark-1, 0.5);
-        }
-    }
+  }
 }
 
 .instagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &__imgs {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    gap: 1.5rem;
+  }
 
-    &__imgs {
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    &__img {
-        height: 26rem;
-    }
+  &__img {
+    height: 26rem;
+  }
 }
 
 .brands {
-    margin-bottom: 12rem;
+  margin-bottom: 12rem;
 
-    &__list {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 17.4rem;
+
+    &:hover {
+      filter: contrast(50%);
     }
-
-    &__img {
-        width: 17.4rem;
-
-        &:hover {
-            filter: contrast(50%);
-        }
-    }
+  }
 }

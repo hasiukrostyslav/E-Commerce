@@ -43,6 +43,12 @@ export default class View {
     }
   }
 
+  _goToSlide(slide = 0) {
+    this._slides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  }
+
   addHandlerOpenModal() {
     this._parentElement.addEventListener('click', this._openModal.bind(this));
   }

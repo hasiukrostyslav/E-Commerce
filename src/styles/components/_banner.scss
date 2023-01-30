@@ -1,46 +1,69 @@
 .offers {
-    background-color: $color-primary;
-    padding: 0.8rem 0;
+  background-color: $color-primary;
+  padding: 0.8rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__slider {
+    position: relative;
+    margin: 0 1.2rem;
+    width: 21.8rem;
+    height: 1.8rem;
+    display: block;
+    overflow: hidden;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    color: $color-white;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    transition: transform 0.5s;
 
-    &__text {
-        display: flex;
-        color: $color-white;
-        line-height: 1.5;
-        font-size: 1.2rem;
-        margin: 0 1.2rem;
+    &--1 {
+      transform: translateX(0%);
+    }
+    &--2 {
+      transform: translateX(100%);
+    }
+    &--3 {
+      transform: translateX(200%);
+    }
+  }
+
+  &__heading {
+    font-weight: 900;
+    margin-right: 0.4rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: inherit;
+      transition: all 0.5s;
     }
 
-    &__heading {
-        font-weight: 900;
-        margin-right: 0.4rem;
+    &:hover,
+    &:active {
+      color: rgba($color-white, 0.7);
     }
+  }
 
-    &__link {
-        &:link,
-        &:visited {
-            color: inherit;
-            transition: all 0.5s;
-        }
+  &__btn {
+    border: none;
+    background-color: $color-primary;
+    cursor: pointer;
+    display: flex;
+  }
 
-        &:hover,
-        &:active {
-            color: rgba($color-white, 0.7);
-        }
-    }
-
-    &__btn {
-        border: none;
-        background-color: $color-primary;
-        cursor: pointer;
-        display: flex;
-    }
-
-    &__icon {
-        width: 1.6rem;
-        height: 1.6rem;
-        fill: $color-white;
-    }
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: $color-white;
+  }
 }
