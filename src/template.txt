@@ -240,7 +240,7 @@
                                 </button>
                             </div>
                             <p
-                                    class="card__price card__price--regular card__price--sale card__price--sm"
+                                    class="card__price card__price--regular card__price--new card__price--sm"
                                 >
                                     &dollar;15.50<span class="card__price--old cart__price--old--sm"
                                         >&dollar;31.00</span
@@ -945,3 +945,253 @@
           </div>
         </div>
       </nav>
+
+----------------------------------------------------------------------------CARD-------------------------------------------------------------------------------------
+  <div class="card">
+          <img src="assets/images/product-1.jpg" alt="Photo of cap" class="card__img card__img--small">
+          </img>
+
+          <div class="card__details card__details--current">
+              <a href="product.html" class="card__heading">Black and white sport cap</a>
+              <p class="card__price card__price--small">&dollar;120.60</p>
+              <p class="card__price card__price--small card__price--new">&dollar;119.16<span class="card__price--old card__price--old-sm">&dollar;148.95</span></p> 
+            
+               <form action="#" class="card__form">
+                <ul class="card__radio-list">
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="37" checked>
+                        <label class="size__label" for="37">37</label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="38">
+                        <label class="size__label" for="38">38</label>
+                    </li>
+                    <li class="card__radio-item"> 
+                        <input class="size__radio" type="radio" name="size" id="39">
+                        <label class="size__label" for="39">39</label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="40">
+                        <label class="size__label" for="40">40</label>
+                    </li>
+         
+                </ul>
+                <ul class="card__radio-list">
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="black" checked>
+                        <label class="color__label color__label--sm" for="black">&nbsp;
+                            <span class="color__type color__type--sm color__type--black">&nbsp;</span>
+                        </label>
+                        
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="brown">
+                        <label class="color__label color__label--sm" for="brown">&nbsp;
+                            <span class="color__type color__type--sm color__type--brown">&nbsp;</span>
+                        </label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="blue-gray">
+                        <label class="color__label color__label--sm" for="blue-gray">&nbsp;
+                            <span class="color__type color__type--sm color__type--blue-gray">&nbsp;</span>
+                        </label>
+                    </li>
+                </ul>
+              </form>
+
+              <button type="button" class="btn btn--solid btn--small btn--sale btn__cart">
+                <svg class="sale__icon-cart">
+                    <use xlink:href="assets/svg/sprite.svg#cart"></use>
+                </svg>
+              Add to cart</button>
+          </div>
+
+          <div class="card__btns-container">
+            <p class="sale__percent">-50%</p>
+
+            <div class="rating rating--card">
+              <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+              <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+              <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+              <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+              <svg class="rating__icon rating__icon--outline">
+                <use
+                    xlink:href="assets/svg/sprite.svg#star-outline"
+                ></use>
+              </svg>
+            </div>
+
+            <button class="card__wishlist card__wishlist--small">
+              <svg class="wishlist__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#heart-outline"
+                  ></use>
+              </svg>
+            </button>
+            <!-- <button class="card__wishlist card__wishlist--small">
+              <svg class="wishlist__icon wishlist__icon--filled">
+                <use xlink:href="assets/svg/sprite.svg#heart-filled"></use>
+              </svg>
+            </button> -->
+
+            <button type="button" class="card__btn card__btn--prev card__btn--small">
+              <svg class="card__icon-arr sale__icon--prev">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#left-chevron"
+                  ></use>
+              </svg>
+            </button>
+            <button type="button" class="card__btn card__btn--next card__btn--small">
+                <svg class="card__icon-arr card__icon--next">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#right-chevron"
+                    ></use>
+                </svg>
+            </button>
+          </div>
+          
+        </div>
+   
+
+
+
+
+   
+        <div class="card">
+          <img src="assets/images/sale-3.jpg" alt="Photo of boots" class="card__img card__img--large">
+
+          <div class="card__details card__details--current">
+            <a href="product.html" class="card__heading">Wide heel suede ankle boots</a>
+            <p class="card__price card__price--regular">&dollar;120.60</p>
+            <p class="card__price card__price--regular card__price--new">&dollar;119.16<span class="card__price--old card__price--old-lg">&dollar;148.95</span></p>
+
+            <form action="#" class="card__form">
+                <ul class="card__radio-list">
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="36">
+                        <label class="size__label" for="36">36</label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="37" checked>
+                        <label class="size__label" for="37">37</label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="38">
+                        <label class="size__label" for="38">38</label>
+                    </li>
+                    <li class="card__radio-item"> 
+                        <input class="size__radio" type="radio" name="size" id="39">
+                        <label class="size__label" for="39">39</label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="size__radio" type="radio" name="size" id="40">
+                        <label class="size__label" for="40">40</label>
+                    </li>
+         
+                </ul>
+                <ul class="card__radio-list">
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="black" checked>
+                        <label class="color__label color__label--sm" for="black">&nbsp;
+                            <span class="color__type color__type--sm color__type--black">&nbsp;</span>
+                        </label>
+                        
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="brown">
+                        <label class="color__label color__label--sm" for="brown">&nbsp;
+                            <span class="color__type color__type--sm color__type--brown">&nbsp;</span>
+                        </label>
+                    </li>
+                    <li class="card__radio-item">
+                        <input class="color__radio" type="radio" name="color" id="blue-gray">
+                        <label class="color__label color__label--sm" for="blue-gray">&nbsp;
+                            <span class="color__type color__type--sm color__type--blue-gray">&nbsp;</span>
+                        </label>
+                    </li>
+                </ul>
+            </form>
+
+            <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart">
+                <svg class="sale__icon-cart">
+                    <use xlink:href="assets/svg/sprite.svg#cart"></use>
+                </svg>
+            Add to cart</button>
+          </div>
+
+          <div class="card__btns-container">
+                <p class="sale__percent">-20%</p>
+
+                <div class="rating rating--card">
+                  <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+                  <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+                  <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+                  <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+                  <svg class="rating__icon">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-filled"
+                  ></use>
+              </svg>
+                </div>
+
+              <button class="card__wishlist card__wishlist--large">
+                  <svg class="wishlist__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#heart-outline"
+                      ></use>
+                  </svg>
+              </button>
+              <!-- <button class="card__wishlist card__wishlist--large">
+                <svg class="wishlist__icon wishlist__icon--filled">
+                  <use xlink:href="assets/svg/sprite.svg#heart-filled"></use>
+                </svg>
+              </button> -->
+
+              <button type="button" class="card__btn card__btn--prev card__btn--large">
+                <svg class="card__icon-arr card__icon--prev">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#left-chevron"
+                    ></use>
+                </svg>
+              </button>
+              <button type="button" class="card__btn card__btn--next card__btn--large">
+                <svg class="card__icon-arr card__icon--next">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#right-chevron"
+                    ></use>
+                </svg>
+              </button> 
+          </div>   
+        </div>

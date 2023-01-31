@@ -1,8 +1,6 @@
 .card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: inline-block;
 
   &--margin-bt {
     &:not(:nth-last-child(-n + 2)) {
@@ -19,33 +17,15 @@
       height: 32rem;
     }
 
-    &--medium {
+    &--large {
       width: 39rem;
       height: 44rem;
     }
   }
 
-  &__stars {
-    position: absolute;
-    top: 1.6rem;
-    right: 1.6rem;
-    display: flex;
-    gap: 0.2rem;
-    cursor: pointer;
-
-    .star__icon {
-      width: 1.4rem;
-      height: 1.4rem;
-      fill: $color-gold;
-
-      &--4 {
-        fill: $color-gray-dark-5;
-      }
-    }
-  }
-
   &__wishlist {
     position: absolute;
+    right: 1.6rem;
     background-color: $color-white;
     width: 3.2rem;
     height: 3.2rem;
@@ -63,24 +43,15 @@
 
     &--small {
       top: 27.2rem;
-      right: 1.6rem;
-    }
-
-    &--medium {
-      top: 39.2rem;
-      right: 1.6rem;
     }
 
     &--large {
       top: 39.2rem;
-      right: 1.6rem;
     }
   }
 
-  &__icon {
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: $color-gray-dark-2;
+  .wishlist__icon {
+    @include icon-small;
 
     &--filled {
       fill: $color-primary;
@@ -118,7 +89,7 @@
       font-size: 2.4rem;
     }
 
-    &--sale {
+    &--new {
       color: $color-secondary;
     }
 
@@ -126,14 +97,21 @@
       display: inline-block;
       margin-left: 1.2rem;
       color: $color-gray-dark-3;
-      font-size: 1.8rem;
+
       line-height: 1.5;
       font-weight: 400;
       text-decoration: line-through;
     }
+
+    &--old-sm {
+      font-size: 1.6rem;
+    }
+    &--old-lg {
+      font-size: 1.8rem;
+    }
   }
 
-  &__bottom {
+  &__details {
     width: 100%;
     padding: 1.6rem;
 
@@ -165,19 +143,25 @@
     position: absolute;
     top: 21.2rem;
 
-    &--left {
+    &--prev {
       left: 1.6rem;
     }
 
-    &--right {
+    &--next {
       right: 1.6rem;
+    }
+
+    &--small {
+      top: 15.2rem;
+    }
+
+    &--large {
+      top: 21.1rem;
     }
   }
 
-  .sale {
-    &__icon {
-      @include icon-medium;
-    }
+  &__icon-arr {
+    @include icon-medium;
   }
 }
 
@@ -188,4 +172,32 @@
 
 .card__price--sm {
   font-size: 1.6rem;
+}
+
+.tesst {
+  padding: 5rem 10rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.rating {
+  display: flex;
+  gap: 0.2rem;
+  cursor: pointer;
+
+  &--card {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+  }
+
+  &__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: $color-gold;
+
+    &--outline {
+      fill: $color-gray-dark-5;
+    }
+  }
 }

@@ -281,7 +281,7 @@
           <aside class="product__sidebar">
             <div class="product__flex-container">
               <div class="product__price">
-                <p class="card__price card__price--regular card__price--sale">
+                <p class="card__price card__price--regular card__price--new">
                   &dollar;15.50<span class="card__price--old"
                     >&dollar;31.00</span
                   >
@@ -289,21 +289,21 @@
                 <p class="product__sale-badge">-50%</p>
               </div>
               <div class="product__rating">
-                <div class="comment__rating">
-                  <svg class="comment__rating-icon">
+                <div class="rating">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="comment__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="comment__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="comment__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
                   <svg
-                    class="comment__rating-icon comment__rating-icon--outline"
+                    class="rating__icon rating__icon--outline"
                   >
                     <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
                   </svg>
@@ -655,54 +655,14 @@
               </ul>
             </div>
           </div>
-          <div class="card sale__card sale__card-3 card__current">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/gallery-6.jpg"
-                alt="Photo of boots"
-                class="card__img card__img--medium"
-              />
-            </a>
-            <p class="sale__percent">-50%</p>
-            <button type="button" class="card__btn card__btn--left">
-              <svg class="sale__icon sale__icon--left">
-                <use xlink:href="assets/svg/sprite.svg#left-chevron"></use>
-              </svg>
-            </button>
-            <button type="button" class="card__btn card__btn--right">
-              <svg class="sale__icon sale__icon--right">
-                <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
-              </svg>
-            </button>
-            <div class="card__stars card__stars--4">
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon star__icon--4">
-                <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
-              </svg>
-            </div>
-            <button class="card__wishlist card__wishlist--large">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom card__bottom--current">
-              <a href="product.html" class="card__heading"
-                >Basic hooded sweatshirt in pink</a
-              >
-              <p class="card__price card__price--regular card__price--sale">
-                &dollar;15.50<span class="card__price--old">&dollar;31.00</span>
-              </p>
+
+          <div class="card">
+            <img src="assets/images/gallery-6.jpg" alt="Photo of boots" class="card__img card__img--large">
+  
+            <div class="card__details card__details--current">
+              <a href="product.html" class="card__heading">Basic hooded sweatshirt in pink</a>
+              <p class="card__price card__price--regular card__price--new">&dollar;15.50<span class="card__price--old card__price--old-lg">&dollar;31.00</span></p>
+  
               <form action="#" class="card__form">
                 <ul class="card__radio-list">
                   <li class="card__radio-item">
@@ -805,16 +765,68 @@
                   </li>
                 </ul>
               </form>
-              <button
-                type="button"
-                class="btn btn--solid btn--medium btn--sale btn__cart"
-              >
-                <svg class="sale__icon-cart">
-                  <use xlink:href="assets/svg/sprite.svg#cart"></use>
-                </svg>
-                Add to cart
-              </button>
+  
+              <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart">
+                  <svg class="sale__icon-cart">
+                      <use xlink:href="assets/svg/sprite.svg#cart"></use>
+                  </svg>
+              Add to cart</button>
             </div>
+  
+            <div class="card__btns-container">
+                  <p class="sale__percent">-50%</p>
+  
+                  <div class="rating rating--card">
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                   </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon rating__icon--outline">
+                    <use
+                      xlink:href="assets/svg/sprite.svg#star-outline"
+                    ></use>
+                    </svg>
+                  </div>
+  
+                <button class="card__wishlist card__wishlist--large">
+                    <svg class="wishlist__icon">
+                        <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                        ></use>
+                    </svg>
+                </button>
+  
+                <button type="button" class="card__btn card__btn--prev card__btn--large">
+                  <svg class="card__icon-arr card__icon--prev">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#left-chevron"
+                      ></use>
+                  </svg>
+                </button>
+                <button type="button" class="card__btn card__btn--next card__btn--large">
+                  <svg class="card__icon-arr card__icon--next">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#right-chevron"
+                      ></use>
+                  </svg>
+                </button> 
+            </div>   
           </div>
         </div>
         <div
@@ -825,20 +837,20 @@
             <div class="reviews__wrapper">
               <div class="reviews__info">
                 <h2 class="reviews__heading">12 reviews</h2>
-                <div class="reviews__rating">
-                  <svg class="reviews__rating-icon">
+                <div class="rating">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="reviews__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="reviews__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="reviews__rating-icon">
+                  <svg class="rating__icon">
                     <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                   </svg>
-                  <svg class="reviews__rating-icon reviews__rating-icon--4">
+                  <svg class="rating__icon rating__icon--outline">
                     <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
                   </svg>
                 </div>
@@ -851,7 +863,7 @@
                 <li class="reviews__progress">
                   <span class="reviews__score">
                     5
-                    <svg class="reviews__rating-icon reviews__rating-icon--4">
+                    <svg class="rating__icon rating__icon--outline">
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
@@ -867,7 +879,7 @@
                 <li class="reviews__progress">
                   <span class="reviews__score">
                     4
-                    <svg class="reviews__rating-icon reviews__rating-icon--4">
+                    <svg class="rating__icon rating__icon--outline">
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
@@ -883,7 +895,7 @@
                 <li class="reviews__progress">
                   <span class="reviews__score">
                     3
-                    <svg class="reviews__rating-icon reviews__rating-icon--4">
+                    <svg class="rating__icon rating__icon--outline">
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
@@ -899,7 +911,7 @@
                 <li class="reviews__progress">
                   <span class="reviews__score">
                     2
-                    <svg class="reviews__rating-icon reviews__rating-icon--4">
+                    <svg class="rating__icon rating__icon--outline">
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
@@ -915,7 +927,7 @@
                 <li class="reviews__progress">
                   <span class="reviews__score">
                     1
-                    <svg class="reviews__rating-icon reviews__rating-icon--4">
+                    <svg class="rating__icon rating__icon--outline">
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
@@ -947,27 +959,27 @@
                 </button>
               </form>
             </div>
-            <ul class="account__reviews comment">
+            <ul class="comment">
               <li
                 class="comment__block comment__block--md grid grid--col-3-fix-2 grid--row-3"
               >
                 <div class="comment__info">
                   <p class="comment__user">Devon Lane</p>
                   <p class="comment__day">July 15, 2020</p>
-                  <div class="comment__rating">
-                    <svg class="comment__rating-icon">
+                  <div class="rating">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
                   </div>
@@ -1006,21 +1018,21 @@
                 <div class="comment__info">
                   <p class="comment__user">Annette Black</p>
                   <p class="comment__day">1 day ago</p>
-                  <div class="comment__rating">
-                    <svg class="comment__rating-icon">
+                  <div class="rating">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
                     <svg
-                      class="comment__rating-icon comment__rating-icon--outline"
+                      class="rating__icon rating__icon--outline"
                     >
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
@@ -1061,33 +1073,33 @@
                 <div class="comment__info">
                   <p class="comment__user">Albert Flores</p>
                   <p class="comment__day">July 7, 2020</p>
-                  <div class="comment__rating">
-                    <svg class="comment__rating-icon">
+                  <div class="rating">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
                     <svg
-                      class="comment__rating-icon comment__rating-icon--outline"
+                      class="rating__icon rating__icon--outline"
                     >
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
                     </svg>
                     <svg
-                      class="comment__rating-icon comment__rating-icon--outline"
+                      class="rating__icon rating__icon--outline"
                     >
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
                     </svg>
                     <svg
-                      class="comment__rating-icon comment__rating-icon--outline"
+                      class="rating__icon rating__icon--outline"
                     >
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
                       ></use>
                     </svg>
                     <svg
-                      class="comment__rating-icon comment__rating-icon--outline"
+                      class="rating__icon rating__icon--outline"
                     >
                       <use
                         xlink:href="assets/svg/sprite.svg#star-outline"
@@ -1126,20 +1138,20 @@
                 <div class="comment__info">
                   <p class="comment__user">Marvin McKinney</p>
                   <p class="comment__day">June 28, 2020</p>
-                  <div class="comment__rating">
-                    <svg class="comment__rating-icon">
+                  <div class="rating">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
-                    <svg class="comment__rating-icon">
+                    <svg class="rating__icon">
                       <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
                     </svg>
                   </div>
@@ -1199,54 +1211,13 @@
               </li>
             </ul>
           </div>
-          <div class="card sale__card sale__card-3 card__current">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/gallery-6.jpg"
-                alt="Photo of boots"
-                class="card__img card__img--medium"
-              />
-            </a>
-            <p class="sale__percent">-50%</p>
-            <button type="button" class="card__btn card__btn--left">
-              <svg class="sale__icon sale__icon--left">
-                <use xlink:href="assets/svg/sprite.svg#left-chevron"></use>
-              </svg>
-            </button>
-            <button type="button" class="card__btn card__btn--right">
-              <svg class="sale__icon sale__icon--right">
-                <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
-              </svg>
-            </button>
-            <div class="card__stars card__stars--4">
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon star__icon--4">
-                <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
-              </svg>
-            </div>
-            <button class="card__wishlist card__wishlist--large">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom card__bottom--current">
-              <a href="product.html" class="card__heading"
-                >Basic hooded sweatshirt in pink</a
-              >
-              <p class="card__price card__price--regular card__price--sale">
-                &dollar;15.50<span class="card__price--old">&dollar;31.00</span>
-              </p>
+          <div class="card">
+            <img src="assets/images/gallery-6.jpg" alt="Photo of boots" class="card__img card__img--large">
+  
+            <div class="card__details card__details--current">
+              <a href="product.html" class="card__heading">Basic hooded sweatshirt in pink</a>
+              <p class="card__price card__price--regular card__price--new">&dollar;15.50<span class="card__price--old card__price--old-lg">&dollar;31.00</span></p>
+  
               <form action="#" class="card__form">
                 <ul class="card__radio-list">
                   <li class="card__radio-item">
@@ -1254,46 +1225,46 @@
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="xs-1"
+                      id="xs"
                     />
-                    <label class="size__label" for="xs-1">XS</label>
+                    <label class="size__label" for="xs">XS</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="s-1"
+                      id="s"
                       checked
                     />
-                    <label class="size__label" for="s-1">S</label>
+                    <label class="size__label" for="s">S</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="m-1"
+                      id="m"
                     />
-                    <label class="size__label" for="m-1">M</label>
+                    <label class="size__label" for="m">M</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="l-1"
+                      id="l"
                     />
-                    <label class="size__label" for="l-1">L</label>
+                    <label class="size__label" for="l">L</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="xl-1"
+                      id="xl"
                     />
-                    <label class="size__label" for="xl-1">XL</label>
+                    <label class="size__label" for="xl">XL</label>
                   </li>
                 </ul>
                 <ul class="card__radio-list">
@@ -1302,10 +1273,10 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="pink-2"
+                      id="pink-1"
                       checked
                     />
-                    <label class="color__label color__label--sm" for="pink-2"
+                    <label class="color__label color__label--sm" for="pink-1"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--pink"
@@ -1318,11 +1289,11 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="blue-gray-2"
+                      id="blue-gray-1"
                     />
                     <label
                       class="color__label color__label--sm"
-                      for="blue-gray-2"
+                      for="blue-gray-1"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--blue-gray"
@@ -1335,11 +1306,11 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="yellow-light-2"
+                      id="yellow-light-1"
                     />
                     <label
                       class="color__label color__label--sm"
-                      for="yellow-light-2"
+                      for="yellow-light-1"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--yellow-light"
@@ -1349,378 +1320,478 @@
                   </li>
                 </ul>
               </form>
-              <button
-                type="button"
-                class="btn btn--solid btn--medium btn--sale btn__cart"
-              >
-                <svg class="sale__icon-cart">
-                  <use xlink:href="assets/svg/sprite.svg#cart"></use>
-                </svg>
-                Add to cart
-              </button>
+  
+              <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart">
+                  <svg class="sale__icon-cart">
+                      <use xlink:href="assets/svg/sprite.svg#cart"></use>
+                  </svg>
+              Add to cart</button>
             </div>
+  
+            <div class="card__btns-container">
+                  <p class="sale__percent">-50%</p>
+  
+                  <div class="rating rating--card">
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                   </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                    </svg>
+                    <svg class="rating__icon rating__icon--outline">
+                    <use
+                      xlink:href="assets/svg/sprite.svg#star-outline"
+                    ></use>
+                    </svg>
+                  </div>
+  
+                <button class="card__wishlist card__wishlist--large">
+                    <svg class="wishlist__icon">
+                        <use
+                            xlink:href="assets/svg/sprite.svg#heart-outline"
+                        ></use>
+                    </svg>
+                </button>
+  
+                <button type="button" class="card__btn card__btn--prev card__btn--large">
+                  <svg class="card__icon-arr card__icon--prev">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#left-chevron"
+                      ></use>
+                  </svg>
+                </button>
+                <button type="button" class="card__btn card__btn--next card__btn--large">
+                  <svg class="card__icon-arr card__icon--next">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#right-chevron"
+                      ></use>
+                  </svg>
+                </button> 
+            </div>   
           </div>
         </div>
       </section>
 
       <section class="product__look container">
-        <div class="product__wrapper">
+        <div class="carousel__top">
           <h2 class="heading-secondary heading-secondary--zero">
             Complete your look
           </h2>
-          <div class="sale__btns">
-            <button class="btn-arr btn-arr--left">
-              <svg class="slider__icon">
+          <div class="carousel__btns">
+            <button class="carousel__btn carousel__btn--prev">
+              <svg class="carousel__btn-icon">
                 <use xlink:href="assets/svg/sprite.svg#left"></use>
               </svg>
             </button>
-            <button class="btn-arr btn-arr--right">
-              <svg class="slider__icon">
+            <button class="carousel__btn carousel__btn--next">
+              <svg class="carousel__btn-icon">
                 <use xlink:href="assets/svg/sprite.svg#right"></use>
               </svg>
             </button>
           </div>
         </div>
-        <div class="product__look-container">
-          <img
-            class="product__look-img"
-            src="assets/images/man.jpg"
-            alt="Man"
-          />
-          <div class="product__list">
-            <div class="card sale__card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-13.jpg"
-                  alt="Photo of shorts"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <p class="sale__percent">-20%</p>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-                </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading">Denim shorts</a>
-                <p class="card__price card__price--regular card__price--sale">
-                  &dollar;20.00<span class="card__price--old"
-                    >&dollar;24.00</span
-                  >
-                </p>
+
+        
+          <div class="carousel__cards">
+            <img
+              class="product__look-img"
+              src="assets/images/man.jpg"
+              alt="Man"
+            />
+
+            <div class="carousel__container">
+              <div class="carousel__cards carousel__cards--gap">
+                <div class="card">
+                  <img src="assets/images/catalog-13.jpg" alt="Photo of shorts" class="card__img card__img--small">
+                  </img>
+        
+                  <div class="card__details">
+                      <a href="product.html" class="card__heading">Denim shorts</a>
+                      <p class="card__price card__price--small card__price--new">&dollar;20.00<span class="card__price--old card__price--old-sm">&dollar;24.00</span></p> 
+                  </div>
+        
+                  <div class="card__btns-container">
+                    <p class="sale__percent">-20%</p>
+        
+                    <button class="card__wishlist card__wishlist--small">
+                      <svg class="wishlist__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+    
+                <div class="card">
+                  <img src="assets/images/catalog-14.jpg" alt="Photo of trenchcoat" class="card__img card__img--small">
+                  </img>
+        
+                  <div class="card__details">
+                      <a href="product.html" class="card__heading">Modal-blend trenchcoat</a>
+                      <p class="card__price card__price--small">&dollar;45.20</p>
+                  </div>
+        
+                  <div class="card__btns-container">
+                    <div class="rating rating--card">
+                      <svg class="rating__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#star-filled"
+                          ></use>
+                      </svg>
+                      <svg class="rating__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#star-filled"
+                          ></use>
+                      </svg>
+                      <svg class="rating__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#star-filled"
+                          ></use>
+                      </svg>
+                      <svg class="rating__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#star-filled"
+                          ></use>
+                      </svg>
+                      <svg class="rating__icon">
+                        <use
+                            xlink:href="assets/svg/sprite.svg#star-filled"
+                        ></use>
+                      </svg>
+                    </div>
+        
+                    <button class="card__wishlist card__wishlist--small">
+                      <svg class="wishlist__icon">
+                          <use
+                              xlink:href="assets/svg/sprite.svg#heart-outline"
+                          ></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-14.jpg"
-                  alt="Photo of trenchcoat"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <div class="card__stars card__stars--5">
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
+
+              <div class="carousel__bottom">
+                <div class="carousel__btns">
+                  <button class="carousel__btn carousel__btn--tab carousel__btn--current">&nbsp;</button>
+                  <button class="carousel__btn carousel__btn--tab">&nbsp;</button>
+                </div>
               </div>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-                </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading"
-                  >Modal-blend trenchcoat</a
-                >
-                <p class="card__price card__price--regular">&dollar;45.20</p>
-              </div>
-            </div>
-            <div class="product__slider">
-              <button
-                class="btn product__btn-slide product__btn-slide--current"
-                type="button"
-              >
-                &nbsp;
-              </button>
-              <button class="btn product__btn-slide" type="button">
-                &nbsp;
-              </button>
             </div>
           </div>
-        </div>
+  
+         
+        
+        
       </section>
 
       <section class="product__interest">
-        <div class="container">
-          <div class="product__wrapper">
+        <div class="carousel container">
+          <div class="carousel__top">
             <h2 class="heading-secondary heading-secondary--zero">
               You may be interested in
             </h2>
-            <div class="product__btns">
-              <button class="btn-arr btn-arr--left">
-                <svg class="slider__icon">
+
+            <div class="carousel__btns carousel__btns--down">
+              <button class="carousel__btn carousel__btn--prev">
+                <svg class="carousel__btn-icon">
                   <use xlink:href="assets/svg/sprite.svg#left"></use>
                 </svg>
               </button>
-              <button class="btn-round btn-round--dark">
-                <svg class="slider__icon slider__icon--green">
+              <button class="carousel__btn-round carousel__btn-round--dark carousel__btn--next">
+                <svg class="carousel__btn-icon carousel__btn-icon--white">
                   <use xlink:href="assets/svg/sprite.svg#right"></use>
                 </svg>
               </button>
             </div>
+
           </div>
-          <div class="product__list">
+
+          <div class="carousel__cards">
             <div class="card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-15.jpg"
-                  alt="Photo of sunglasses"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-                </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading"
-                  >Metal bridge sunglasses</a
-                >
-                <p class="card__price card__price--regular">&dollar;89.95</p>
+              <img src="assets/images/product-2.jpg" alt="Photo of sunglasses" class="card__img card__img--small">
+              </img>
+    
+              <div class="card__details">
+                  <a href="product.html" class="card__heading">Metal bridge sunglasses</a>
+                  <p class="card__price card__price--small">&dollar;89.95</p>
+              </div>
+    
+              <div class="card__btns-container">
+                <button class="card__wishlist card__wishlist--small">
+                  <svg class="wishlist__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#heart-outline"
+                      ></use>
+                  </svg>
+                </button>
               </div>
             </div>
+
             <div class="card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-2.jpg"
-                  alt="Photo of jeans"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-                </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading"
-                  >Mid-rise slim cropped fit jeans</a
-                >
-                <p class="card__price card__price--regular">&dollar;40.00</p>
+              <img src="assets/images/catalog-2.jpg" alt="Photo of jeans" class="card__img card__img--small">
+              </img>
+    
+              <div class="card__details">
+                  <a href="product.html" class="card__heading">Mid-rise slim cropped fit jeans</a>
+                  <p class="card__price card__price--small">&dollar;40.00</p>
+              </div>
+    
+              <div class="card__btns-container">
+                <button class="card__wishlist card__wishlist--small">
+                  <svg class="wishlist__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#heart-outline"
+                      ></use>
+                  </svg>
+                </button>
               </div>
             </div>
-            <div class="card sale__card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-11.jpg"
-                  alt="Photo of bag"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <div class="card__stars card__stars--5">
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
+
+            <div class="card">
+              <img src="assets/images/catalog-11.jpg" alt="Photo of crossbody" class="card__img card__img--small">
+              </img>
+    
+              <div class="card__details">
+                  <a href="product.html" class="card__heading">Leather crossbody bag with...</a>
+                  <p class="card__price card__price--small card__price--new">&dollar;89.50<span class="card__price--old card__price--old-sm">&dollar;179.00</span></p> 
               </div>
-              <p class="sale__percent">-50%</p>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
+    
+              <div class="card__btns-container">
+                <p class="sale__percent">-50%</p>
+    
+                <div class="rating rating--card">
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
                 </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading"
-                  >Leather crossbody bag with...</a
-                >
-                <p class="card__price card__price--regular card__price--sale">
-                  &dollar;89.50<span class="card__price--old"
-                    >&dollar;179.00</span
-                  >
-                </p>
+                </div>
+    
+                <button class="card__wishlist card__wishlist--small">
+                  <svg class="wishlist__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#heart-outline"
+                      ></use>
+                  </svg>
+                </button>
               </div>
             </div>
+
             <div class="card">
-              <a href="product.html" class="card__img-link">
-                <img
-                  src="assets/images/catalog-1.jpg"
-                  alt="Photo of shirt"
-                  class="card__img card__img--small"
-                />
-              </a>
-              <div class="card__stars card__stars--5">
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="star__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
+              <img src="assets/images/catalog-1.jpg" alt="Photo of trim" class="card__img card__img--small">
+              </img>
+    
+              <div class="card__details">
+                  <a href="product.html" class="card__heading">Shirt with insertion lace trims</a>
+                  <p class="card__price card__price--small">&dollar;49.95</p>
               </div>
-              <button class="card__wishlist card__wishlist--small">
-                <svg class="card__icon">
-                  <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-                </svg>
-              </button>
-              <div class="card__bottom">
-                <a href="product.html" class="card__heading"
-                  >Shirt with insertion lace trims</a
-                >
-                <p class="card__price card__price--regular">&dollar;49.95</p>
+    
+              <div class="card__btns-container">
+                <div class="rating rating--card">
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#star-filled"
+                      ></use>
+                  </svg>
+                  <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                  </svg>
+                </div>
+    
+                <button class="card__wishlist card__wishlist--small">
+                  <svg class="wishlist__icon">
+                      <use
+                          xlink:href="assets/svg/sprite.svg#heart-outline"
+                      ></use>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="product__viewed container">
-        <div class="product__wrapper">
+      <section class="product__viewed carousel container">
+        <div class="carousel__top">
           <h2 class="heading-secondary heading-secondary--zero">
             Recently viewed
           </h2>
-          <div class="sale__btns">
-            <button class="btn-arr btn-arr--left">
-              <svg class="slider__icon">
+
+          <div class="carousel__btns">
+            <button class="carousel__btn carousel__btn--prev">
+              <svg class="carousel__btn-icon">
                 <use xlink:href="assets/svg/sprite.svg#left"></use>
               </svg>
             </button>
-            <button class="btn-arr btn-arr--right">
-              <svg class="slider__icon">
+            <button class="carousel__btn carousel__btn--next">
+              <svg class="carousel__btn-icon">
                 <use xlink:href="assets/svg/sprite.svg#right"></use>
               </svg>
             </button>
           </div>
         </div>
-        <div class="product__list">
+
+        <div class="carousel__cards">
           <div class="card">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/catalog-8.jpg"
-                alt="Photo of shoes"
-                class="card__img card__img--small"
-              />
-            </a>
-            <button class="card__wishlist card__wishlist--small">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom">
-              <a href="product.html" class="card__heading"
-                >Baby shoes with laces</a
-              >
-              <p class="card__price card__price--regular">&dollar;30.60</p>
+            <img src="assets/images/catalog-8.jpg" alt="Photo of shoes" class="card__img card__img--small">
+            </img>
+  
+            <div class="card__details">
+                <a href="product.html" class="card__heading">Baby shoes with laces</a>
+                <p class="card__price card__price--small">&dollar;30.60</p>
+            </div>
+  
+            <div class="card__btns-container">
+              <button class="card__wishlist card__wishlist--small">
+                <svg class="wishlist__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#heart-outline"
+                    ></use>
+                </svg>
+              </button>
             </div>
           </div>
+
           <div class="card">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/catalog-4.jpg"
-                alt="Photo of romper"
-                class="card__img card__img--small"
-              />
-            </a>
-            <div class="card__stars card__stars--4">
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon">
-                <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-              </svg>
-              <svg class="star__icon star__icon--4">
-                <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
-              </svg>
+            <img src="assets/images/catalog-4.jpg" alt="Photo of romper" class="card__img card__img--small">
+            </img>
+  
+            <div class="card__details">
+                <a href="product.html" class="card__heading">Green baby romper</a>
+                <p class="card__price card__price--small">&dollar;20.40</p>
             </div>
-            <button class="card__wishlist card__wishlist--small">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom">
-              <a href="product.html" class="card__heading">Green baby romper</a>
-              <p class="card__price card__price--regular">&dollar;20.40</p>
+  
+            <div class="card__btns-container">
+              <div class="rating rating--card">
+                <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                </svg>
+                <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                </svg>
+                <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                </svg>
+                <svg class="rating__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#star-filled"
+                    ></use>
+                </svg>
+                <svg class="rating__icon rating__icon--outline">
+                  <use
+                      xlink:href="assets/svg/sprite.svg#star-outline"
+                  ></use>
+                </svg>
+              </div>
+  
+              <button class="card__wishlist card__wishlist--small">
+                <svg class="wishlist__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#heart-outline"
+                    ></use>
+                </svg>
+              </button>
             </div>
           </div>
+
           <div class="card">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/catalog-12.jpg"
-                alt="Photo of shoes"
-                class="card__img card__img--small"
-              />
-            </a>
-            <button class="card__wishlist card__wishlist--small">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom">
-              <a href="product.html" class="card__heading"
-                >Men fashion gray shoes</a
-              >
-              <p class="card__price card__price--regular">&dollar;85.50</p>
+            <img src="assets/images/catalog-12.jpg" alt="Photo of shoes" class="card__img card__img--small">
+            </img>
+  
+            <div class="card__details">
+                <a href="product.html" class="card__heading">Men fashion gray shoes</a>
+                <p class="card__price card__price--small">&dollar;85.50</p>
+            </div>
+  
+            <div class="card__btns-container">
+              <button class="card__wishlist card__wishlist--small">
+                <svg class="wishlist__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#heart-outline"
+                    ></use>
+                </svg>
+              </button>
             </div>
           </div>
-          <div class="card sale__card">
-            <a href="product.html" class="card__img-link">
-              <img
-                src="assets/images/catalog-10.jpg"
-                alt="Photo of jeans"
-                class="card__img card__img--small"
-              />
-            </a>
-            <p class="sale__percent">-50%</p>
-            <button class="card__wishlist card__wishlist--small">
-              <svg class="card__icon">
-                <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
-              </svg>
-            </button>
-            <div class="card__bottom">
-              <a href="product.html" class="card__heading"
-                >Skinny push-up jeans</a
-              >
-              <p class="card__price card__price--regular card__price--sale">
-                &dollar;40.00<span class="card__price--old">&dollar;80.00</span>
-              </p>
+
+          <div class="card">
+            <img src="assets/images/catalog-10.jpg" alt="Photo of jeans" class="card__img card__img--small">
+            </img>
+  
+            <div class="card__details">
+                <a href="product.html" class="card__heading">Skinny push-up jeans</a>
+                <p class="card__price card__price--small card__price--new">&dollar;40.00<span class="card__price--old card__price--old-sm">&dollar;80.00</span></p> 
+            </div>
+  
+            <div class="card__btns-container">
+              <p class="sale__percent">-50%</p>
+  
+              <button class="card__wishlist card__wishlist--small">
+                <svg class="wishlist__icon">
+                    <use
+                        xlink:href="assets/svg/sprite.svg#heart-outline"
+                    ></use>
+                </svg>
+              </button>
             </div>
           </div>
         </div>

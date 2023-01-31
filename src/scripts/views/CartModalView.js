@@ -89,7 +89,7 @@ class CartModalView extends View {
                                 </button>
                             </div>
                             <p
-                                    class="card__price card__price--regular card__price--sale card__price--sm"
+                                    class="card__price card__price--regular card__price--new card__price--sm"
                                 >
                                     &dollar;15.50<span class="card__price--old cart__price--old--sm"
                                         >&dollar;31.00</span
