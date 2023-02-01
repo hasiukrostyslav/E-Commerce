@@ -5,7 +5,9 @@ class ProductView extends View {
   _parentElement = document.querySelector('.product__card');
   _tabs = document.querySelector('.product__tabs');
   _productPages = document.querySelectorAll('.product__descript');
+  _subPages = document.querySelectorAll('.product__data');
   _currentPage = document.querySelector('.product__info');
+  _currentSubPage = document.querySelector('.details');
   _accordion = document.querySelector('.product__accordion');
   _currentTab;
   _iconPlus = `
@@ -33,6 +35,14 @@ class ProductView extends View {
       (page) => page.dataset.product === this._currentTab.dataset.product
     );
     this._currentPage.classList.remove('hidden');
+
+    if (this._currentTab.dataset.product === 'other-info') {
+      this._currentSubPage.classList.add('hidden');
+      this._currentSubPage = [...this._subPages].find(
+        (sub) => sub.dataset.info === this._currentTab.dataset.info
+      );
+      this._currentSubPage.classList.remove('hidden');
+    }
   }
 
   _toggleProductInfo(e) {

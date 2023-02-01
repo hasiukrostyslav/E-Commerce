@@ -96,9 +96,9 @@ class CartModalView extends View {
                                     >
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="${icons}#heart-outline"
                                 ></use>
@@ -157,9 +157,9 @@ class CartModalView extends View {
                                     &dollar;18.15
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="${icons}#heart-outline"
                                 ></use>
@@ -224,9 +224,9 @@ class CartModalView extends View {
                                     &dollar;80.00
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="${icons}#heart-outline"
                                 ></use>
@@ -297,9 +297,9 @@ class CartModalView extends View {
                                     &dollar;15.50
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="${icons}#heart-outline"
                                 ></use>

@@ -247,9 +247,9 @@
                                     >
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
@@ -308,9 +308,9 @@
                                     &dollar;18.15
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
@@ -375,9 +375,9 @@
                                     &dollar;80.00
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
@@ -448,9 +448,9 @@
                                     &dollar;15.50
                                 </p>
                         </div>
-                        <button type="button" class="btn cart__wishlist">
+                        <button type="button" class="btn cart__wishlist btn-wishlist-add">
                             Move to 
-                            <svg class="cart__wishlist-btn">
+                            <svg class="wishlist__icon">
                                 <use
                                     xlink:href="assets/svg/sprite.svg#heart-outline"
                                 ></use>
@@ -1037,14 +1037,14 @@
               </svg>
             </div>
 
-            <button class="card__wishlist card__wishlist--small">
+            <button class="card__btn-wishlist card__btn-wishlist--small">
               <svg class="wishlist__icon">
                   <use
                       xlink:href="assets/svg/sprite.svg#heart-outline"
                   ></use>
               </svg>
             </button>
-            <!-- <button class="card__wishlist card__wishlist--small">
+            <!-- <button class="card__btn-wishlist card__btn-wishlist--small">
               <svg class="wishlist__icon wishlist__icon--filled">
                 <use xlink:href="assets/svg/sprite.svg#heart-filled"></use>
               </svg>
@@ -1166,14 +1166,14 @@
               </svg>
                 </div>
 
-              <button class="card__wishlist card__wishlist--large">
+              <button class="card__btn-wishlist card__btn-wishlist--large">
                   <svg class="wishlist__icon">
                       <use
                           xlink:href="assets/svg/sprite.svg#heart-outline"
                       ></use>
                   </svg>
               </button>
-              <!-- <button class="card__wishlist card__wishlist--large">
+              <!-- <button class="card__btn-wishlist card__btn-wishlist--large">
                 <svg class="wishlist__icon wishlist__icon--filled">
                   <use xlink:href="assets/svg/sprite.svg#heart-filled"></use>
                 </svg>

@@ -353,10 +353,6 @@
   color: $color-gray-dark-2;
   border: none;
   background-color: transparent;
-
-  &-btn {
-    @include icon-small($color: $color-gray-dark-2);
-  }
 }
 
 .btn__accordion {

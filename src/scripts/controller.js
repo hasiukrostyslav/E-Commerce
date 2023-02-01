@@ -11,10 +11,11 @@ import contactView from './views/ContactView';
 import listVIew from './views/ListVIew';
 import catalogView from './views/CatalogView';
 import sliderView from './views/SliderView';
-import paginationView from './views/PaginationView';
 import scrollView from './views/ScrollView';
 import offersView from './views/OffersView';
 import orderView from './views/OrderView';
+import wishlistView from './views/WishlistView';
+import paginationView from './views/PaginationView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -53,9 +54,14 @@ function controlChangeView() {
   offersView.addHandlerChangeSlide();
 }
 
+function controlOrderView() {
+  wishlistView.addHandlerMoveToWishlist();
+}
+
 function init() {
   controlModal();
   controlChangeView();
+  controlOrderView();
 }
 
 init();

@@ -21,14 +21,19 @@ class OrderView extends View {
     const btn = e.target.closest('.btn__accordion');
     if (!btn) return;
 
+    const orderId = btn
+      .closest('.order__panel-list')
+      .querySelector('.order__id');
     const orderCart = btn.closest('.order__panel-list').nextElementSibling;
 
     if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
       btn.innerHTML = this._iconPlus;
       orderCart.classList.add('hidden');
+      orderId.classList.remove('order__id--open');
     } else {
       btn.innerHTML = this._iconMinus;
       orderCart.classList.remove('hidden');
+      orderId.classList.add('order__id--open');
     }
   }
 

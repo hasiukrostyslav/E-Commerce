@@ -23,41 +23,6 @@
     }
   }
 
-  &__wishlist {
-    position: absolute;
-    right: 1.6rem;
-    background-color: $color-white;
-    width: 3.2rem;
-    height: 3.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-    transition: all 0.5s;
-
-    &:hover {
-      background-color: $color-gray-light-1;
-    }
-
-    &--small {
-      top: 27.2rem;
-    }
-
-    &--large {
-      top: 39.2rem;
-    }
-  }
-
-  .wishlist__icon {
-    @include icon-small;
-
-    &--filled {
-      fill: $color-primary;
-    }
-  }
-
   &__heading {
     &:link,
     &:visited {
@@ -163,6 +128,41 @@
   &__icon-arr {
     @include icon-medium;
   }
+
+  &__btn-wishlist {
+    position: absolute;
+    right: 1.6rem;
+    background-color: $color-white;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: $color-gray-light-1;
+    }
+
+    &--small {
+      top: 27.2rem;
+    }
+
+    &--large {
+      top: 39.2rem;
+    }
+  }
+}
+
+.wishlist__icon {
+  @include icon-small;
+
+  &--filled {
+    fill: $color-primary;
+  }
 }
 
 .cart__price--old--sm {
@@ -172,12 +172,6 @@
 
 .card__price--sm {
   font-size: 1.6rem;
-}
-
-.tesst {
-  padding: 5rem 10rem;
-  display: flex;
-  justify-content: space-around;
 }
 
 .rating {
