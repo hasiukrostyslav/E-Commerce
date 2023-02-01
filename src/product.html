@@ -205,14 +205,14 @@
         <div class="product__descript product__info" data-product="info">
           <div class="product__gallery">
             <button
-              class="btn-round btn-round--light product__slider-btn product__slider-btn--left"
+              class="carousel__btn-round carousel__btn-round--light product__slider-btn product__slider-btn--left"
             >
               <svg class="slider__icon slider__icon--white">
                 <use xlink:href="assets/svg/sprite.svg#left"></use>
               </svg>
             </button>
             <button
-              class="btn-round btn-round--light product__slider-btn product__slider-btn--right"
+              class="carousel__btn-round carousel__btn-round--light product__slider-btn product__slider-btn--right"
             >
               <svg class="slider__icon slider__icon--white">
                 <use xlink:href="assets/svg/sprite.svg#right"></use>
@@ -435,66 +435,70 @@
             <ul class="product__accordion">
               <li class="accordion__item accordion__item--open">
                 <p class="accordion__category">Delivery</p>
-                <button class="accordion__btn accordion__btn--first">
-                  <svg class="catalog__filter-btn-minus">
+                <button class="btn__accordion btn__accordion--sm accordion__btn">
+                  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
                     <use xlink:href="assets/svg/sprite.svg#minus"></use>
                   </svg>
                 </button>
-                <p class="accordion__text">
-                  Free standard shipping on orders
-                  <span class="accordion__text--bold">over $35</span>
-                  before tax, plus free returns.
-                </p>
-
-                <table class="accordion__table">
-                  <thead class="accordion__thead">
-                    <tr class="accordion__trow accordion__trow--head">
-                      <th class="accordion__theading">TYPE</th>
-                      <th class="accordion__theading">HOW LONG</th>
-                      <th class="accordion__theading">HOW MUCH</th>
-                    </tr>
-                  </thead>
-                  <tbody class="accordion__tbody">
-                    <tr class="accordion__trow accordion__trow--body">
-                      <td class="accordion__tdata">Standard delivery</td>
-                      <td class="accordion__tdata">1-4 business days</td>
-                      <td class="accordion__tdata">&dollar;4.50</td>
-                    </tr>
-                    <tr class="accordion__trow accordion__trow--body">
-                      <td class="accordion__tdata">Express delivery</td>
-                      <td class="accordion__tdata">1 business day</td>
-                      <td class="accordion__tdata">&dollar;10.00</td>
-                    </tr>
-                    <tr class="accordion__trow accordion__trow--body">
-                      <td class="accordion__tdata">Pick up in store</td>
-                      <td class="accordion__tdata">1-3 business days</td>
-                      <td class="accordion__tdata">Free</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="accordion__text-container">
+                  <p class="accordion__text">
+                    Free standard shipping on orders
+                    <span class="accordion__text--bold">over $35</span>
+                    before tax, plus free returns.
+                  </p>
+  
+                  <table class="accordion__table">
+                    <thead class="accordion__thead">
+                      <tr class="accordion__trow accordion__trow--head">
+                        <th class="accordion__theading">TYPE</th>
+                        <th class="accordion__theading">HOW LONG</th>
+                        <th class="accordion__theading">HOW MUCH</th>
+                      </tr>
+                    </thead>
+                    <tbody class="accordion__tbody">
+                      <tr class="accordion__trow accordion__trow--body">
+                        <td class="accordion__tdata">Standard delivery</td>
+                        <td class="accordion__tdata">1-4 business days</td>
+                        <td class="accordion__tdata">&dollar;4.50</td>
+                      </tr>
+                      <tr class="accordion__trow accordion__trow--body">
+                        <td class="accordion__tdata">Express delivery</td>
+                        <td class="accordion__tdata">1 business day</td>
+                        <td class="accordion__tdata">&dollar;10.00</td>
+                      </tr>
+                      <tr class="accordion__trow accordion__trow--body">
+                        <td class="accordion__tdata">Pick up in store</td>
+                        <td class="accordion__tdata">1-3 business days</td>
+                        <td class="accordion__tdata">Free</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </li>
               <li class="accordion__item accordion__item--open">
                 <p class="accordion__category">Return</p>
-                <button class="accordion__btn">
-                  <svg class="catalog__filter-btn-minus">
+                <button class="btn__accordion btn__accordion--sm accordion__btn accordion__btn--mg">
+                  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
                     <use xlink:href="assets/svg/sprite.svg#minus"></use>
                   </svg>
                 </button>
-                <p class="accordion__text">
-                  You have
-                  <span class="accordion__text--bold">60 days</span>
-                  to return the item(s) using any of the following methods:
-                </p>
-                <ul class="accordion__text-list">
-                  <li class="accordion__text-item">
-                    <p class="accordion__text">Free store return</p>
-                  </li>
-                  <li class="accordion__text-item">
-                    <p class="accordion__text">
-                      Free returns via USPS Dropoff Service
-                    </p>
-                  </li>
-                </ul>
+                <div class="accordion__text-container">
+                  <p class="accordion__text">
+                    You have
+                    <span class="accordion__text--bold">60 days</span>
+                    to return the item(s) using any of the following methods:
+                  </p>
+                  <ul class="accordion__text-list">
+                    <li class="accordion__text-item">
+                      <p class="accordion__text">Free store return</p>
+                    </li>
+                    <li class="accordion__text-item">
+                      <p class="accordion__text">
+                        Free returns via USPS Dropoff Service
+                      </p>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
             <ul class="product__sharing">
@@ -1225,46 +1229,46 @@
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="xs"
+                      id="xs-1"
                     />
-                    <label class="size__label" for="xs">XS</label>
+                    <label class="size__label" for="xs-1">XS</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="s"
+                      id="s-1"
                       checked
                     />
-                    <label class="size__label" for="s">S</label>
+                    <label class="size__label" for="s-1">S</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="m"
+                      id="m-1"
                     />
-                    <label class="size__label" for="m">M</label>
+                    <label class="size__label" for="m-1">M</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="l"
+                      id="l-1"
                     />
-                    <label class="size__label" for="l">L</label>
+                    <label class="size__label" for="l-1">L</label>
                   </li>
                   <li class="card__radio-item">
                     <input
                       class="size__radio"
                       type="radio"
                       name="size"
-                      id="xl"
+                      id="xl-1"
                     />
-                    <label class="size__label" for="xl">XL</label>
+                    <label class="size__label" for="xl-1">XL</label>
                   </li>
                 </ul>
                 <ul class="card__radio-list">
@@ -1273,10 +1277,10 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="pink-1"
+                      id="pink-2"
                       checked
                     />
-                    <label class="color__label color__label--sm" for="pink-1"
+                    <label class="color__label color__label--sm" for="pink-2"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--pink"
@@ -1289,11 +1293,11 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="blue-gray-1"
+                      id="blue-gray-2"
                     />
                     <label
                       class="color__label color__label--sm"
-                      for="blue-gray-1"
+                      for="blue-gray-2"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--blue-gray"
@@ -1306,11 +1310,11 @@
                       class="color__radio"
                       type="radio"
                       name="color"
-                      id="yellow-light-1"
+                      id="yellow-light-2"
                     />
                     <label
                       class="color__label color__label--sm"
-                      for="yellow-light-1"
+                      for="yellow-light-2"
                       >&nbsp;
                       <span
                         class="color__type color__type--sm color__type--yellow-light"

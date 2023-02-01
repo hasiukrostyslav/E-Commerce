@@ -420,15 +420,18 @@
                 <p class="order__price">&dollar;750.00</p>
               </li>
               <li class="order__item">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--plus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#plus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
+            <div class="order__container hidden"></div>
           </li>
-          <li class="order__panel order__panel--open">
+          <li class="order__panel">
             <ul class="order__panel-list">
               <li class="order__item">
                 <p class="order__id order__id--open"># 50HV46580V84</p>
@@ -446,184 +449,186 @@
                 <p class="order__price">&dollar;230.00</p>
               </li>
               <li class="order__item">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--minus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#minus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
-            <ul
-              class="order__accordion u-margin-top-medium order__accordion--inner"
-            >
-              <li class="order__inner-items">
-                <ul
-                  class="order__details order__details--top order__details--item"
+            <div class="order__container">
+              <ul class="order__accordion order__accordion--inner">
+                <li class="order__inner-items">
+                  <ul
+                    class="order__details order__details--top order__details--item"
+                  >
+                    <li class="order__inner-item">
+                      <img
+                        class="order__img"
+                        src="assets/images/order-item-1.png"
+                        alt="sweatshirt"
+                      />
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <a href="product.html" class="order__name">
+                        Basic hooded sweatshirt in pink
+                      </a>
+                      <p class="order__color">
+                        Color:
+                        <span class="order__color-value">pink</span>
+                      </p>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">S</span>
+                      </p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__price-head">Price:</p>
+                      <p class="order__price-value">&dollar;15.50</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__quantity-head">Quantity:</p>
+                      <p class="order__quantity-value">1</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__subtotal-head">Subtotal:</p>
+                      <p class="order__subtotal-value">&dollar;15.50</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="order__inner-items">
+                  <ul class="order__details order__details--item">
+                    <li class="order__inner-item">
+                      <img
+                        class="order__img"
+                        src="assets/images/order-item-2.png"
+                        alt="Cap"
+                      />
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <a href="product.html" class="order__name">
+                        Black and white sport cap
+                      </a>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__price-head">Price:</p>
+                      <p class="order__price-value">&dollar;18.15</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__quantity-head">Quantity:</p>
+                      <p class="order__quantity-value">1</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__subtotal-head">Subtotal:</p>
+                      <p class="order__subtotal-value">&dollar;18.15</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="order__inner-items">
+                  <ul class="order__details order__details--item">
+                    <li class="order__inner-item">
+                      <img
+                        class="order__img"
+                        src="assets/images/order-item-3.png"
+                        alt="Jeans"
+                      />
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <a href="product.html" class="order__name">
+                        Mid-rise slim cropped fit jeans
+                      </a>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">M</span>
+                      </p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__price-head">Price:</p>
+                      <p class="order__price-value">&dollar;40.00</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__quantity-head">Quantity:</p>
+                      <p class="order__quantity-value">2</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__subtotal-head">Subtotal:</p>
+                      <p class="order__subtotal-value">&dollar;80.00</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="order__inner-items">
+                  <ul class="order__details order__details--item">
+                    <li class="order__inner-item">
+                      <img
+                        class="order__img"
+                        src="assets/images/order-item-4.png"
+                        alt="shoes"
+                      />
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <a href="product.html" class="order__name">
+                        Men fashion gray shoes
+                      </a>
+                      <p class="order__color">
+                        Color:
+                        <span class="order__color-value">gray</span>
+                      </p>
+                      <p class="order__size">
+                        Size:
+                        <span class="order__size-value">44</span>
+                      </p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__price-head">Price:</p>
+                      <p class="order__price-value">&dollar;85.00</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__quantity-head">Quantity:</p>
+                      <p class="order__quantity-value">1</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex">
+                      <p class="order__subtotal-head">Subtotal:</p>
+                      <p class="order__subtotal-value">&dollar;85.00</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="order__inner-items">
+                  <ul class="order__details order__details--bottom">
+                    <li class="order__inner-item order__inner-item--flex-row">
+                      <p class="order__value-name order__stotal">Subtotal:</p>
+                      <p class="order__value order__stotal-value">
+                        &dollar;85.00
+                      </p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex-row">
+                      <p class="order__value-name order__shipping">Shipping:</p>
+                      <p class="order__value order__shipping-value">
+                        &dollar;25.00
+                      </p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex-row">
+                      <p class="order__value-name order__tax">Tax:</p>
+                      <p class="order__value order__tax-value">&dollar;6.35</p>
+                    </li>
+                    <li class="order__inner-item order__inner-item--flex-row">
+                      <p class="order__value-name order__total">Total:</p>
+                      <p class="order__value order__total-value">
+                        &dollar;230.00
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="order__track-box">
+                <p class="order__track-cta">You can track your order here</p>
+                <a
+                  href="track.html"
+                  class="order__track-link btn btn--small btn--outline"
+                  >Order tracking</a
                 >
-                  <li class="order__inner-item">
-                    <img
-                      class="order__img"
-                      src="assets/images/order-item-1.png"
-                      alt="sweatshirt"
-                    />
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <a href="product.html" class="order__name">
-                      Basic hooded sweatshirt in pink
-                    </a>
-                    <p class="order__color">
-                      Color:
-                      <span class="order__color-value">pink</span>
-                    </p>
-                    <p class="order__size">
-                      Size:
-                      <span class="order__size-value">S</span>
-                    </p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__price-head">Price:</p>
-                    <p class="order__price-value">&dollar;15.50</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__quantity-head">Quantity:</p>
-                    <p class="order__quantity-value">1</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__subtotal-head">Subtotal:</p>
-                    <p class="order__subtotal-value">&dollar;15.50</p>
-                  </li>
-                </ul>
-              </li>
-              <li class="order__inner-items">
-                <ul class="order__details order__details--item">
-                  <li class="order__inner-item">
-                    <img
-                      class="order__img"
-                      src="assets/images/order-item-2.png"
-                      alt="Cap"
-                    />
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <a href="product.html" class="order__name">
-                      Black and white sport cap
-                    </a>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__price-head">Price:</p>
-                    <p class="order__price-value">&dollar;18.15</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__quantity-head">Quantity:</p>
-                    <p class="order__quantity-value">1</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__subtotal-head">Subtotal:</p>
-                    <p class="order__subtotal-value">&dollar;18.15</p>
-                  </li>
-                </ul>
-              </li>
-              <li class="order__inner-items">
-                <ul class="order__details order__details--item">
-                  <li class="order__inner-item">
-                    <img
-                      class="order__img"
-                      src="assets/images/order-item-3.png"
-                      alt="Jeans"
-                    />
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <a href="product.html" class="order__name">
-                      Mid-rise slim cropped fit jeans
-                    </a>
-                    <p class="order__size">
-                      Size:
-                      <span class="order__size-value">M</span>
-                    </p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__price-head">Price:</p>
-                    <p class="order__price-value">&dollar;40.00</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__quantity-head">Quantity:</p>
-                    <p class="order__quantity-value">2</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__subtotal-head">Subtotal:</p>
-                    <p class="order__subtotal-value">&dollar;80.00</p>
-                  </li>
-                </ul>
-              </li>
-              <li class="order__inner-items">
-                <ul class="order__details order__details--item">
-                  <li class="order__inner-item">
-                    <img
-                      class="order__img"
-                      src="assets/images/order-item-4.png"
-                      alt="shoes"
-                    />
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <a href="product.html" class="order__name">
-                      Men fashion gray shoes
-                    </a>
-                    <p class="order__color">
-                      Color:
-                      <span class="order__color-value">gray</span>
-                    </p>
-                    <p class="order__size">
-                      Size:
-                      <span class="order__size-value">44</span>
-                    </p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__price-head">Price:</p>
-                    <p class="order__price-value">&dollar;85.00</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__quantity-head">Quantity:</p>
-                    <p class="order__quantity-value">1</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex">
-                    <p class="order__subtotal-head">Subtotal:</p>
-                    <p class="order__subtotal-value">&dollar;85.00</p>
-                  </li>
-                </ul>
-              </li>
-              <li class="order__inner-items">
-                <ul class="order__details order__details--bottom">
-                  <li class="order__inner-item order__inner-item--flex-row">
-                    <p class="order__value-name order__stotal">Subtotal:</p>
-                    <p class="order__value order__stotal-value">
-                      &dollar;85.00
-                    </p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex-row">
-                    <p class="order__value-name order__shipping">Shipping:</p>
-                    <p class="order__value order__shipping-value">
-                      &dollar;25.00
-                    </p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex-row">
-                    <p class="order__value-name order__tax">Tax:</p>
-                    <p class="order__value order__tax-value">&dollar;6.35</p>
-                  </li>
-                  <li class="order__inner-item order__inner-item--flex-row">
-                    <p class="order__value-name order__total">Total:</p>
-                    <p class="order__value order__total-value">
-                      &dollar;230.00
-                    </p>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div class="order__track-box">
-              <p class="order__track-cta">You can track your order here</p>
-              <a
-                href="track.html"
-                class="order__track-link btn btn--small btn--outline"
-                >Order tracking</a
-              >
+              </div>
             </div>
           </li>
           <li class="order__panel">
@@ -644,13 +649,16 @@
                 <p class="order__price">&dollar;92.40</p>
               </li>
               <li class="order__item">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--plus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#plus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
+            <div class="order__container hidden"></div>
           </li>
           <li class="order__panel">
             <ul class="order__panel-list">
@@ -670,13 +678,16 @@
                 <p class="order__price">&dollar;102.95</p>
               </li>
               <li class="order__item">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--plus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#plus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
+            <div class="order__container hidden"></div>
           </li>
           <li class="order__panel">
             <ul class="order__panel-list">
@@ -696,13 +707,16 @@
                 <p class="order__price">&dollar;267.00</p>
               </li>
               <li class="order__item order__item--btn">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--plus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#plus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
+            <div class="order__container hidden"></div>
           </li>
           <li class="order__panel">
             <ul class="order__panel-list">
@@ -722,13 +736,16 @@
                 <p class="order__price">&dollar;19.50</p>
               </li>
               <li class="order__item">
-                <button class="order__btn">
-                  <svg class="order__btn-plus">
+                <button class="btn__accordion btn__accordion--lg">
+                  <svg
+                    class="icon__accordion icon__accordion--lg icon__accordion--plus"
+                  >
                     <use xlink:href="assets/svg/sprite.svg#plus"></use>
                   </svg>
                 </button>
               </li>
             </ul>
+            <div class="order__container hidden"></div>
           </li>
         </ul>
         <button type="button" class="btn-load">

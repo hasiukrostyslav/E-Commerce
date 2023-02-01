@@ -14,6 +14,7 @@ import sliderView from './views/SliderView';
 import paginationView from './views/PaginationView';
 import scrollView from './views/ScrollView';
 import offersView from './views/OffersView';
+import orderView from './views/OrderView';
 
 function controlModal() {
   signInModalView.addHandlerOpenModal();
@@ -41,7 +42,8 @@ function controlChangeView() {
   contactView.addHandlerChangeTabs();
 
   listVIew.addHandlertoggleQuestion();
-
+  productView.addHandlerToggleProductInfo();
+  orderView.addHandlerToggleOrders();
   catalogView.addHandlerToggleFilterContainer();
   catalogView.addHandlerDeleteFilter();
   catalogView.addHandlerToggleFilter();

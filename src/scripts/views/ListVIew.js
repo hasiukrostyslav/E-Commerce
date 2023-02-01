@@ -12,24 +12,24 @@ class ListView extends View {
     </p>`;
 
   _iconPlus = `
-    <svg class="order__btn-plus">
+    <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
       <use xlink:href="${icons}#plus"></use>
     </svg>`;
 
   _iconMinus = `
-    <svg class="order__btn-minus">
+    <svg class="icon__accordion icon__accordion--lg icon__accordion--minus">
       <use xlink:href="${icons}#minus"></use>
     </svg>`;
 
   _toggleQuestion(e) {
     const btn = e.target.closest('.faq__btn');
     if (!btn) return;
-    if (btn.firstElementChild.classList.contains('order__btn-plus')) {
+    if (btn.firstElementChild.classList.contains('icon__accordion--plus')) {
       btn.insertAdjacentHTML('beforebegin', this._textElement);
       btn.innerHTML = this._iconMinus;
     } else {
       const pEl = btn.previousElementSibling;
-      pEl.textContent = '';
+      pEl.remove();
       btn.innerHTML = this._iconPlus;
     }
   }

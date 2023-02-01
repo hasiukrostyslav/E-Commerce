@@ -9,14 +9,14 @@ class CatalogView extends View {
   _btnDeleteContainer = document.querySelector('.breadcrumb__catalog-list');
   _btnClearList = document.querySelectorAll('.clear-one');
   _iconPlus = `
-  <svg class="catalog__filter-btn-plus">
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--plus">
     <use
       xlink:href="${icons}#plus">
     </use>
   </svg>`;
 
   _iconMinus = `
-  <svg class="catalog__filter-btn-minus">
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
     <use
       xlink:href="${icons}#minus">
     </use>
@@ -38,7 +38,7 @@ class CatalogView extends View {
   _toggleFilter(e) {
     const btn = e.target.closest('.catalog__filter-btn');
     if (!btn) return;
-    if (btn.firstElementChild.classList.contains('catalog__filter-btn-minus')) {
+    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
       btn.nextElementSibling.classList.add('hidden');
       btn.innerHTML = this._iconPlus;
     } else {

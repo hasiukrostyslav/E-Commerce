@@ -71,28 +71,11 @@
 
     &-btn {
       position: absolute;
-
       right: 0;
-      width: 1.6rem;
-      height: 1.6rem;
-      border: none;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      top: 2.45rem;
 
       &--first {
         top: 4.5px;
-      }
-
-      &--other {
-        top: 2.45rem;
-      }
-
-      &-plus,
-      &-minus {
-        @include icon-small($color: $color-primary);
       }
     }
   }

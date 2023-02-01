@@ -358,3 +358,34 @@
     @include icon-small($color: $color-gray-dark-2);
   }
 }
+
+.btn__accordion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  &--sm {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  &--lg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .icon__accordion {
+    fill: $color-primary;
+    &--sm {
+      width: 14.67px;
+      height: 14.67px;
+    }
+    &--lg {
+      width: 18.33px;
+      height: 18.33px;
+    }
+  }
+}
