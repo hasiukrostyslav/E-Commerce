@@ -26,7 +26,11 @@ class OrderView extends View {
       .querySelector('.order__id');
     const orderCart = btn.closest('.order__panel-list').nextElementSibling;
 
-    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
+    if (
+      btn
+        .querySelector('.icon__accordion')
+        .classList.contains('icon__accordion--minus')
+    ) {
       btn.innerHTML = this._iconPlus;
       orderCart.classList.add('hidden');
       orderId.classList.remove('order__id--open');

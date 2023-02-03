@@ -15,6 +15,7 @@ import scrollView from './views/ScrollView';
 import offersView from './views/OffersView';
 import orderView from './views/OrderView';
 import wishlistView from './views/WishlistView';
+import timerView from './views/TimerView';
 import paginationView from './views/PaginationView';
 
 function controlModal() {
@@ -52,6 +53,8 @@ function controlChangeView() {
   scrollView.addHandlerScrollToTop();
   sliderView.addHandlerChangeSlide();
   offersView.addHandlerChangeSlide();
+
+  timerView.startCountDownTimer();
 }
 
 function controlOrderView() {
