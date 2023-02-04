@@ -61,10 +61,16 @@ function controlOrderView() {
   wishlistView.addHandlerMoveToWishlist();
 }
 
+function controlValidationInput() {
+  signInModalView.addHandlerSubmitInput();
+  signUpModalView.addHandlerSubmitInput();
+}
+
 function init() {
   controlModal();
   controlChangeView();
   controlOrderView();
+  controlValidationInput();
 }
 
 init();

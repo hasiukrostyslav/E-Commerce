@@ -3,9 +3,7 @@
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
-  // position: relative;
   padding: 4.8rem;
-  // margin: 0 auto;
   background-color: $color-white;
   border: 1px solid $color-gray-light-3;
   border-radius: 4px;
@@ -13,7 +11,6 @@
   z-index: 200;
 
   &--small {
-    // position: relative;
     width: 48.6rem;
     display: flex;
     flex-direction: column;

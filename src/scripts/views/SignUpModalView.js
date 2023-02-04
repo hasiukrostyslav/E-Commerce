@@ -14,6 +14,16 @@ class SignUpModalView extends View {
     this._overlay = document.querySelector('.overlay');
     this._btnClose = this._modal.querySelector('.btn--close');
     this._btnSignIn = this._modal.querySelector('.modal__link-sign-in');
+    this._btnSubmit = this._modal.querySelector('.btn--modal');
+    this._inputElements = this._modal.querySelectorAll('.input');
+    this._inputFullName = this._modal.querySelector('[name="full-name"]');
+    this._inputEmail = this._modal.querySelector('[name="email-sign-up"]');
+    this._inputPassword = this._modal.querySelector(
+      '[name="password-sign-up"]'
+    );
+    this._inputPasswordConfirm = this._modal.querySelector(
+      '[name="password-sign-up-confirm"]'
+    );
     this._addHandlerSignIn();
   }
 
@@ -40,7 +50,7 @@ class SignUpModalView extends View {
             <form action="#" class="modal__form">
                 <div class="input__box">
                     <label class="label label--medium" for="full-name">Full Name</label>
-                    <input class="input input--medium" type="text" name="full-name" id="full-name" placeholder="Your full name" required>
+                    <input class="input input--medium" type="text" name="full-name" id="full-name" placeholder="Your full name" required> 
                 </div>
                 <div class="input__box">
                     <label class="label label--medium" for="email-sign-up">Email</label>
@@ -72,7 +82,7 @@ class SignUpModalView extends View {
                     <input class="checkbox__input" type="checkbox" name="check-sign-up" id="check-sign-up" checked>
                     <label class="checkbox__label checkbox__label--small" for="check-sign-up"><span class="checkbox__mark">&nbsp;</span>Remember me</label>
                 </div>
-                <button class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium" type="submit">Sign up</button>
+                <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign up</button>
                 <p class="modal__cta u-margin-bottom-medium">Already have an account?
                     <a class="modal__link modal__link-sign-in" href="#">Sign in</a>
                 </p>

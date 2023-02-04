@@ -114,6 +114,21 @@
         margin-right: 0.8rem;
       }
 
+      .profile-name {
+        &:link,
+        &:visited {
+          font-size: inherit;
+          color: rgba($color-white, 0.6);
+          text-decoration: none;
+          transition: all 0.5s;
+        }
+
+        &:hover,
+        &:active {
+          color: rgba($color-white, 1);
+        }
+      }
+
       .btn-user {
         font-family: inherit;
         font-size: inherit;

@@ -15,6 +15,12 @@ class SignInModalView extends View {
     this._overlay = document.querySelector('.overlay');
     this._btnClose = this._modal.querySelector('.btn--close');
     this._btnSignUp = this._modal.querySelector('.modal__link-sign-up');
+    this._btnSubmit = this._modal.querySelector('.btn--modal');
+    this._inputElements = this._modal.querySelectorAll('.input');
+    this._inputEmail = this._modal.querySelector('[name="email-sign-in"]');
+    this._inputPassword = this._modal.querySelector(
+      '[name="password-sign-in"]'
+    );
     this._addHandlerSignIn();
     this._addHandlerSignUp();
   }
@@ -68,7 +74,7 @@ class SignInModalView extends View {
                     <label class="checkbox__label checkbox__label--small" for="check-sign-in"><span class="checkbox__mark">&nbsp;</span>Keep me signed in</label>
                         <a class="modal__link" href="#">Forgot password?</a>
                 </div>
-                <button class="btn btn--solid btn--medium btn--modal u-margin-bottom-medium u-margin-bottom-medium" type="submit">Sign in</button>
+                <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign in</button>
                 <p class="modal__cta u-margin-bottom-medium">Don't have an account?
                     <a class="modal__link modal__link-sign-up" href="#">Sign up</a>
                 </p>

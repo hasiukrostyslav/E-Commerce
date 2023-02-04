@@ -471,6 +471,11 @@
     box-shadow: none;
   }
 
+  &--invalid {
+    border: 1px solid $color-secondary;
+    box-shadow: none;
+  }
+
   &__btn {
     position: absolute;
     top: 0;
@@ -511,6 +516,14 @@
     &--light {
       fill: $color-gray-dark-4;
     }
+  }
+
+  &__warning {
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: $color-secondary;
+    margin-top: 0.4rem;
   }
 }
 
@@ -812,4 +825,9 @@
     height: 0.1rem;
     background-color: $color-gray-dark-2;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
