@@ -186,12 +186,6 @@
     }
   }
 
-  .size__btns {
-    display: flex;
-    gap: 2.4rem;
-    margin-top: 3.2rem;
-  }
-
   .select__arrow {
     position: absolute;
     top: 1.4rem;
@@ -219,6 +213,12 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
+  }
+
+  .size__btns {
+    display: flex;
+    gap: 2.4rem;
+    margin-top: 3.2rem;
   }
 
   &__accordion {

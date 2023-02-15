@@ -5,6 +5,7 @@ class SignInModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.topbar__login');
   _btnCheckoutSignIn = document.querySelector('.checkout__sign-in-btn');
+  _navigation = document.querySelector('.navigation');
   _markup;
 
   constructor() {
@@ -30,6 +31,8 @@ class SignInModalView extends View {
     this._btnSignUp.addEventListener('click', () => {
       this._modal.classList.add('hidden');
       document.querySelector('.modal--sign-up').classList.remove('hidden');
+      document.querySelectorAll('.input__warning').forEach((el) => el.remove());
+      document.querySelector('.modal--sign-up').querySelector('.input').focus();
     });
   }
 
@@ -37,6 +40,8 @@ class SignInModalView extends View {
     if (!this._btnCheckoutSignIn) return;
     this._btnCheckoutSignIn.addEventListener('click', () => {
       this._removeHiddenClass();
+      document.querySelectorAll('.input__warning').forEach((el) => el.remove());
+      [...this._inputElements][0].focus();
     });
   }
 

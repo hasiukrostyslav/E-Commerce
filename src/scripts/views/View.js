@@ -74,15 +74,10 @@ export default class View {
   }
 
   _renderInputWarning(input) {
-    // this._inputElements.forEach((input) =>
-    //   input.insertAdjacentHTML('afterend', this._generateWarningMarkup(input))
-    // );
     input.insertAdjacentHTML('afterend', this._generateWarningMarkup(input));
   }
 
   _showInputWarning(inputEl) {
-    // this._renderInputWarning();
-
     const inputWarnings = Array.from(
       this._modal.querySelectorAll('.input__warning')
     );
@@ -121,7 +116,7 @@ export default class View {
         this._showInputWarning(this._inputFullName);
         return;
       }
-      const fullName = this._inputFullName.value;
+      this._fullName = this._inputFullName.value;
       this._inputFullName.classList.remove('input--invalid');
     }
 
@@ -135,7 +130,7 @@ export default class View {
       this._showInputWarning(this._inputEmail);
       return;
     }
-    const email = this._inputEmail.value;
+    this._email = this._inputEmail.value;
     this._inputEmail.classList.remove('input--invalid');
 
     if (this._inputPassword.value.length < 6) {
@@ -143,16 +138,16 @@ export default class View {
       this._showInputWarning(this._inputPassword);
       return;
     }
-    const pass = this._inputPassword.value;
+    this._pass = this._inputPassword.value;
     this._inputPassword.classList.remove('input--invalid');
 
     if (this._inputPasswordConfirm) {
-      if (this._inputPasswordConfirm.value !== pass) {
+      if (this._inputPasswordConfirm.value !== this._pass) {
         this._renderInputWarning(this._inputPasswordConfirm);
         this._showInputWarning(this._inputPasswordConfirm);
         return;
       }
-      const passConf = this._inputPasswordConfirm.value;
+      this._passConf = this._inputPasswordConfirm.value;
       this._inputPasswordConfirm.classList.remove('input--invalid');
     }
   }

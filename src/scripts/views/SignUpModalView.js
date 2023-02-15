@@ -4,6 +4,7 @@ import icons from '../../assets/svg/sprite.svg';
 class SignUpModalView extends View {
   _parentElement = document.body;
   _btnOpen = document.querySelector('.topbar__register');
+  _navigation = document.querySelector('.navigation');
   _markup;
 
   constructor() {
@@ -32,6 +33,8 @@ class SignUpModalView extends View {
     this._btnSignIn.addEventListener('click', () => {
       this._modal.classList.add('hidden');
       document.querySelector('.modal--sign-in').classList.remove('hidden');
+      document.querySelectorAll('.input__warning').forEach((el) => el.remove());
+      document.querySelector('.modal--sign-in').querySelector('.input').focus();
     });
   }
 
