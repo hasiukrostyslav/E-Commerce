@@ -77,53 +77,5 @@ module.exports = {
       template: 'src/index.html',
       minify: false,
     }),
-    new HtmlWebpackPlugin({
-      filename: 'catalog.html',
-      title: 'Createx',
-      template: 'src/catalog.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'account.html',
-      title: 'Createx',
-      template: 'src/account.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'blog-post.html',
-      title: 'Createx',
-      template: 'src/blog-post.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'blog.html',
-      title: 'Createx',
-      template: 'src/blog.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'checkout.html',
-      title: 'Createx',
-      template: 'src/checkout.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'contact.html',
-      title: 'Createx',
-      template: 'src/contact.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'product.html',
-      title: 'Createx',
-      template: 'src/product.html',
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'track.html',
-      title: 'Createx',
-      template: 'src/track.html',
-      minify: false,
-    }),
   ],
 };

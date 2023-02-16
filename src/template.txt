@@ -1077,7 +1077,7 @@
           <img src="assets/images/sale-3.jpg" alt="Photo of boots" class="card__img card__img--large">
 
           <div class="card__details card__details--current">
-            <a href="product.html" class="card__heading">Wide heel suede ankle boots</a>
+            <a href="#" class="card__heading" data-link="product">Wide heel suede ankle boots</a>
             <p class="card__price card__price--regular">&dollar;120.60</p>
             <p class="card__price card__price--regular card__price--new">&dollar;119.16<span class="card__price--old card__price--old-lg">&dollar;148.95</span></p>
 
