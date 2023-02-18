@@ -1,8 +1,7 @@
 import View from './View';
 import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS } from '../config';
 
-class TimerView extends View {
-  _parentElement = document.querySelector('.banner__week');
+class HomeView extends View {
   _daysElement = document.querySelector('.digit--days');
   _hoursElement = document.querySelector('.digit--hours');
   _minutesElement = document.querySelector('.digit--mins');
@@ -11,6 +10,7 @@ class TimerView extends View {
   constructor() {
     super();
     this._getCurrentDay();
+    this._startCountDownTimer();
   }
 
   _getCurrentDay() {
@@ -50,8 +50,7 @@ class TimerView extends View {
     if (distance === 0) clearInterval(timer);
   }
 
-  startCountDownTimer() {
-    if (!this._parentElement) return;
+  _startCountDownTimer() {
     const countDownDate =
       this._currentDay + DAYS * HOURS * MINUTES * SECONDS * MILISECONDS;
 
@@ -62,4 +61,4 @@ class TimerView extends View {
   }
 }
 
-export default new TimerView();
+export default new HomeView();

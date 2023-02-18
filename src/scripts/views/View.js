@@ -1,176 +1,71 @@
+import icons from '../../assets/svg/sprite.svg';
+
 export default class View {
-  _data;
+  _parentElement = document.querySelector('body');
+  _navigationEl = document.querySelector('.navbar');
+  _headerEl = document.getElementById('header');
+  _footerEl = document.querySelector('.footer');
+  _mainEl = document.querySelector('.main');
+  _homePageEl = document.getElementById('main__home');
 
-  _render() {
-    const markup = this._generateMarkup();
-    this._parentElement.insertAdjacentHTML('beforeend', markup);
+  _checkoutPageEl = document.getElementById('main__checkout');
+  _trackPageEl = document.getElementById('main__track');
+  _blogsPageEl = document.getElementById('main__blogs');
+  _blogPageEl = document.getElementById('main__blog');
+  _subscribePageEl = document.querySelector('.subscribe');
+  _breadcrumbEl = document.querySelector('.breadcrumb');
+
+  constructor() {
+    this._addHandlerInit();
+    this._addHandlerScrollToTop();
   }
 
-  _renderOverlay() {
-    const markup = `
-    <div class="overlay hidden"></div>
-    `;
-    this._parentElement.insertAdjacentHTML('beforeend', markup);
-  }
+  _init(e) {
+    const link = e.target.closest('a');
 
-  _removeHiddenClass() {
-    this._modal.classList.remove('hidden');
-    this._overlay.classList.remove('hidden');
-  }
+    if (!link || !link.dataset.link) return;
 
-  _addHiddenClass() {
-    this._modal.classList.add('hidden');
-    this._overlay.classList.add('hidden');
-  }
+    const pages = [...this._mainEl.children];
 
-  _deleteWarningLabel() {
-    const warningElement = this._modal.querySelector('.input__warning');
-    if (warningElement) warningElement.remove();
-  }
+    pages.forEach((page) => page.classList.add('hidden'));
 
-  _clearInputs() {
-    if (!this._inputElements) return;
-    this._inputElements.forEach((input) => {
-      input.value = '';
-      input.classList.remove('input--invalid');
-    });
-  }
-
-  _openModal(e) {
-    if (!this._btnOpen) return;
-    const btn = e.target.closest(
-      `.${this._btnOpen.className.split(' ').at(-1)}`
+    const curPage = pages.find(
+      (page) => page.id === `main__${link.dataset.link}`
     );
+    curPage.classList.remove('hidden');
 
-    if (!btn) return;
-    this._removeHiddenClass();
+    this._parentElement.scrollIntoView();
 
-    if (!this._inputElements) return;
-    [...this._inputElements][0].focus();
+    if (curPage.classList.contains('sb-hide'))
+      this._subscribePageEl.classList.add('hidden');
+    else this._subscribePageEl.classList.remove('hidden');
+
+    if (this._homePageEl.classList.contains('hidden'))
+      this._headerEl.classList.add('hidden');
+    else this._headerEl.classList.remove('hidden');
+
+    if (curPage !== this._homePageEl) {
+      this._breadcrumbEl.classList.remove('hidden');
+    } else this._breadcrumbEl.classList.add('hidden');
   }
 
-  _closeModal(e) {
-    if (
-      e.target.closest('.btn--close') ||
-      e.target.closest('.overlay') ||
-      e.code === 'Escape'
-    ) {
-      this._deleteWarningLabel();
-      this._addHiddenClass();
-      this._clearInputs();
-    }
+  _addHandlerInit() {
+    this._parentElement.addEventListener('click', this._init.bind(this));
   }
 
-  _goToSlide(slide = 0) {
-    this._slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-    );
-  }
-
-  _generateWarningMarkup(el) {
-    this._warning = `<span class="input__warning hidden" data-name="${el.name}"></span>`;
-
-    return this._warning;
-  }
-
-  _renderInputWarning(input) {
-    input.insertAdjacentHTML('afterend', this._generateWarningMarkup(input));
-  }
-
-  _showInputWarning(inputEl) {
-    const inputWarnings = Array.from(
-      this._modal.querySelectorAll('.input__warning')
-    );
-
-    const warning = inputWarnings.find(
-      (el) => el.dataset.name === inputEl.name
-    );
-    warning.classList.remove('hidden');
-    inputEl.classList.add('input--invalid');
-
-    if (inputEl.type === 'email') {
-      warning.textContent = 'Please provide a valid email.';
-    }
-
-    if (inputEl.type === 'password') {
-      warning.textContent = 'Password should contain at least 6 character.';
-    }
-
-    if (inputEl.name === 'password-sign-up-confirm') {
-      warning.textContent = 'Password and confirm password should be equal.';
-    }
-
-    if (inputEl.type === 'text') {
-      warning.textContent = 'Please provide a valid full name.';
-    }
-  }
-
-  _validationData(e) {
+  _scrollToTop(e) {
     e.preventDefault();
+    const btn = e.target.closest('.footer__btn-up');
+    if (!btn) return;
 
-    document.querySelectorAll('.input__warning').forEach((el) => el.remove());
-
-    if (this._inputFullName) {
-      if (this._inputFullName.value.split(' ').length < 2) {
-        this._renderInputWarning(this._inputFullName);
-        this._showInputWarning(this._inputFullName);
-        return;
-      }
-      this._fullName = this._inputFullName.value;
-      this._inputFullName.classList.remove('input--invalid');
-    }
-
-    if (
-      !this._inputEmail.value.includes('@') ||
-      !this._inputEmail.value.includes('.') ||
-      this._inputEmail.value.includes('@.') ||
-      this._inputEmail.value.at(-1) === '.'
-    ) {
-      this._renderInputWarning(this._inputEmail);
-      this._showInputWarning(this._inputEmail);
-      return;
-    }
-    this._email = this._inputEmail.value;
-    this._inputEmail.classList.remove('input--invalid');
-
-    if (this._inputPassword.value.length < 6) {
-      this._renderInputWarning(this._inputPassword);
-      this._showInputWarning(this._inputPassword);
-      return;
-    }
-    this._pass = this._inputPassword.value;
-    this._inputPassword.classList.remove('input--invalid');
-
-    if (this._inputPasswordConfirm) {
-      if (this._inputPasswordConfirm.value !== this._pass) {
-        this._renderInputWarning(this._inputPasswordConfirm);
-        this._showInputWarning(this._inputPasswordConfirm);
-        return;
-      }
-      this._passConf = this._inputPasswordConfirm.value;
-      this._inputPasswordConfirm.classList.remove('input--invalid');
-    }
+    this._parentElement.scrollIntoView({ behavior: 'smooth' });
   }
 
-  addHandlerOpenModal() {
-    this._parentElement.addEventListener('click', this._openModal.bind(this));
+  _addHandlerScrollToTop() {
+    this._footerEl.addEventListener('click', this._scrollToTop.bind(this));
   }
 
-  addHandlerCloseModal() {
-    this._parentElement.addEventListener('click', this._closeModal.bind(this));
-    this._parentElement.addEventListener(
-      'keydown',
-      this._closeModal.bind(this)
-    );
-  }
-
-  addHandlerSubmitInput() {
-    this._btnSubmit.addEventListener('click', this._validationData.bind(this));
-  }
-
-  addHandlerChangeTabs() {
-    if (!this._parentElement) return;
-
+  _addHandlerChangeTabs() {
     this._tabs.addEventListener('click', this._changeTabs.bind(this));
   }
 }
