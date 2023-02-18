@@ -27,7 +27,7 @@
               <a href="#" class="topbar__link" data-link="blogs">Blog</a>
             </li>
             <li class="topbar__item">
-              <a href="#" class="topbar__link" data-link="contact">Contacts</a>
+              <a href="#" class="topbar__link" data-link="contacts">Contacts</a>
             </li>
           </ul>
           <div class="topbar__lang">
@@ -57,7 +57,7 @@
       </div>
       <div class="navbar__cover--light">
         <nav class="navigation container">
-          <a href="#" class="logo-link"
+          <a href="#" class="logo-link" data-link="home"
             ><img class="logo" src="assets/images/logo.png" alt="Createx logo"
           /></a>
 
@@ -142,7 +142,7 @@
       </button>
       </section>
 
-      <section class="breadcrumb">
+      <section class="breadcrumb hidden">
         <div class="container breadcrumb__catalog">
             <ul class="breadcrumb__list">
                 <li class="breadcrumb__item">
@@ -1325,7 +1325,7 @@
         
       </section>
 
-      <section class="account container" id="main__account">
+      <section class="account container hidden sb-hide" id="main__account">
         <aside class="account__aside">
           <p class="account__user-name">Annette Black</p>
           <p class="account__user-email">annetteb@example</p>
@@ -1384,7 +1384,7 @@
           </ul>
         </aside>
   
-        <section class="account__main hidden" data-account="profile">
+        <section class="account__block hidden" data-account="profile">
           <h2 class="heading-tertiary--main">My profile</h2>
           <button type="button" class="btn btn--delete">
             <svg class="btn-delete__icon">
@@ -1538,7 +1538,7 @@
           </form>
         </section>
   
-        <section class="account__main hidden" data-account="orders">
+        <section class="account__block hidden" data-account="orders">
           <div class="account__top">
             <h2 class="heading-tertiary--main">My orders</h2>
             <form action="#" class="sort__form">
@@ -1911,7 +1911,7 @@
           </button>
         </section>
   
-        <section class="account__main account__wishlist" data-account="wishlist">
+        <section class="account__block account__wishlist" data-account="wishlist">
           <h2 class="heading-tertiary--main">Wishlist</h2>
           <button type="button" class="btn btn--delete">
             <svg class="btn-delete__icon">
@@ -2095,7 +2095,7 @@
           </div>
         </section>
   
-        <section class="account__main hidden" data-account="view">
+        <section class="account__block hidden" data-account="view">
           <h2 class="heading-tertiary--main">Recently viewed</h2>
           <button type="button" class="btn btn--delete">
             <svg class="btn-delete__icon">
@@ -2247,7 +2247,7 @@
           </div>
         </section>
   
-        <section class="account__main hidden" data-account="rewiew">
+        <section class="account__block hidden" data-account="rewiew">
           <div class="account__top">
             <h2 class="heading-tertiary--main">My reviews</h2>
             <form action="#" class="sort__form">
@@ -2476,7 +2476,7 @@
         </section>
       </section>
 
-      <section class="main__catalog" id="main__catalog">
+      <section class="main__catalog hidden" id="main__catalog">
         <section class="catalog container grid">
             <section class="catalog__toolbar catalog__toolbar--top">
                 <button type="button" class="btn btn--solid catalog__btn">
@@ -3914,7 +3914,7 @@
         </section>
       </section>
 
-      <section class="product" id="main__product">
+      <section class="product hidden" id="main__product">
         <section class="product__card container">
           <h2 class="heading-secondary heading-secondary--margin-md">
             Basic hooded sweatshirt in pink
@@ -3953,11 +3953,11 @@
                 class="tag__checkbox-btn"
                 type="radio"
                 name="tabs"
-                id="reviews"
+                id="review"
                 data-product="other-info"
                 data-info="reviews"
               />
-              <label class="tag__checkbox-radio" for="reviews"
+              <label class="tag__checkbox-radio" for="review"
                 >Reviews <sup>12</sup>
               </label>
             </div>
@@ -5372,7 +5372,7 @@
         </section>
       </section>
 
-      <section class="checkout container" id="main__checkout">
+      <section class="checkout container hidden sb-hide" id="main__checkout">
         <div class="checkout__wrapper">
           <section class="checkout__section">
             <div class="checkout__flex">
@@ -6094,7 +6094,7 @@
         </div>
       </section>
 
-      <section class="track container" id="main__track">
+      <section class="track container hidden sb-hide" id="main__track">
         <aside class="track__sidebar">
           <h2 class="heading-secondary u-margin-bottom-medium">
             Track your order
@@ -6262,7 +6262,7 @@
         </table>
       </section>
 
-      <section class="blog-pg container" id="main__blogs">
+      <section class="blog-pg container hidden sb-hide" id="main__blogs">
         <article class="blog-pg__article">
           <h2 class="heading-secondary heading-secondary--margin-md">
             Fashion blog
@@ -6623,7 +6623,7 @@
         </aside>
       </section>
 
-      <section class="main__blog" id="main__blog">
+      <section class="main__blog hidden" id="main__blog">
         <article class="post__article">
           <div class="post__header post__container">
             <h2 class="heading-secondary heading-secondary--margin-md">
@@ -7144,7 +7144,7 @@
         </form>
       </section>
 
-      <section class="main__contacts" id="main__contacts">
+      <section class="main__contacts hidden" id="main__contacts">
         <section class="container contacts__container">
           <ul class="contacts__navbar">
             <li class="contacts__item">
@@ -7603,7 +7603,7 @@
         </section>
       </section>
 
-      <section class="subscribe" id="main__subscribe">
+      <section class="subscribe">
         <div class="container subscribe__flex-container">
           <div class="subscribe__updates">
             <h2 class="heading-secondary heading-secondary--margin">
@@ -7711,13 +7711,13 @@
                 <a href="#" class="footer__link">Delivery & returns</a>
               </li>
               <li class="footer__help-item">
-                <a href="#" class="footer__link" data-link="contact-faq">FAQ</a>
+                <a href="#" class="footer__link" data-link="contacts">FAQ</a>
               </li>
               <li class="footer__help-item">
                 <a href="#" class="footer__link" data-link="track">Track order</a>
               </li>
               <li class="footer__help-item">
-                <a href="#" class="footer__link" data-link="contact">Contacts</a>
+                <a href="#" class="footer__link" data-link="contacts">Contacts</a>
               </li>
               <li class="footer__help-item">
                 <a href="#" class="footer__link" data-link="blogs">Blog</a>
