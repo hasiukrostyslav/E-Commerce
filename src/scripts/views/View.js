@@ -1,5 +1,3 @@
-import icons from '../../assets/svg/sprite.svg';
-
 export default class View {
   _parentElement = document.querySelector('body');
   _navigationEl = document.querySelector('.navbar');
@@ -15,11 +13,14 @@ export default class View {
   _subscribePageEl = document.querySelector('.subscribe');
   _breadcrumbEl = document.querySelector('.breadcrumb');
 
+  _overlay = document.querySelector('.overlay');
+
   constructor() {
     this._addHandlerInit();
     this._addHandlerScrollToTop();
   }
 
+  // Change page components
   _init(e) {
     const link = e.target.closest('a');
 
@@ -53,6 +54,7 @@ export default class View {
     this._parentElement.addEventListener('click', this._init.bind(this));
   }
 
+  // Scroll to top
   _scrollToTop(e) {
     e.preventDefault();
     const btn = e.target.closest('.footer__btn-up');
@@ -65,7 +67,23 @@ export default class View {
     this._footerEl.addEventListener('click', this._scrollToTop.bind(this));
   }
 
+  // Change tabs in Account/Contact/Product pages
   _addHandlerChangeTabs() {
     this._tabs.addEventListener('click', this._changeTabs.bind(this));
+  }
+
+  // Slider functionality
+  _goToSlide(slide = 0) {
+    this._slides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  }
+
+  // Accordion functionality
+  _addHandlerAccordion() {
+    this._accordionBox.addEventListener(
+      'click',
+      this._toggleAccordion.bind(this)
+    );
   }
 }

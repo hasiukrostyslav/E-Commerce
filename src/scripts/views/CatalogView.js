@@ -1,77 +1,69 @@
 import View from './View';
+import icons from '../../assets/svg/sprite.svg';
 
 class CatalogView extends View {
   _catalogPageEl = document.getElementById('main__catalog');
+  _catalogContainer = document.querySelector('.catalog');
+  _btnFilter = document.querySelector('.catalog__btn');
+  _accordionBox = document.querySelector('.catalog__filter');
+  _catalog = document.querySelector('.catalog__product');
 
-  _generateBreadcrumbLinks() {
-    return `
-      <li class="breadcrumb__item">
-        <a href="#" class="breadcrumb__link breadcrumb__link--icon" data-link="home">
-          <svg class="breadcrumb__icon">
-            <use xlink:href="assets/svg/sprite.svg#home"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="breadcrumb__item">
-        <svg class="breadcrumb__icon breadcrumb__icon--light">
-          <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
-        </svg>
-      </li>
-      <li class="breadcrumb__item">
-        <a href="#" class="breadcrumb__link" data-link="catalog">Women</a>
-      </li>
-      <li class="breadcrumb__item">
-        <svg class="breadcrumb__icon breadcrumb__icon--light">
-          <use xlink:href="assets/svg/sprite.svg#right-chevron"></use>
-        </svg>
-      </li>
-      <li class="breadcrumb__item">
-        <a href="#" class="breadcrumb__link breadcrumb__link--current" data-link="catalog">Clothes</a>
-      </li>
-    `;
+  _iconPlus = `
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--plus">
+    <use
+      xlink:href="${icons}#plus">
+    </use>
+  </svg>`;
+
+  _iconMinus = `
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
+    <use
+      xlink:href="${icons}#minus">
+    </use>
+  </svg>`;
+
+  constructor() {
+    super();
+    this._addHandlerAccordion();
+    this._addHandlerToggleFilterContainer();
   }
 
-  // _generateBreadcrumbFilters() {
-  //   return `
-  //   <ul class="breadcrumb__catalog-list">
-  //     <li class="breadcrumb__catalog-item">
-  //       <button class="breadcrumb__catalog-btn">
-  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
-  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
-  //         </svg>
-  //       </button>
-  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
-  //           >Dresses</a>
-  //     </li>
-  //     <li class="breadcrumb__catalog-item">
-  //       <button class="breadcrumb__catalog-btn">
-  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
-  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
-  //         </svg>
-  //       </button>
-  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
-  //           >Yellow</a>
-  //     </li>
-  //     <li class="breadcrumb__catalog-item">
-  //       <button class="breadcrumb__catalog-btn">
-  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
-  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
-  //         </svg>
-  //       </button>
-  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
-  //           >Cotton</a>
-  //     </li>
-  //     <li class="breadcrumb__catalog-item">
-  //         <button class="breadcrumb__catalog-btn">
-  //             <svg class="breadcrumb__icon clear-all">
-  //                 <use xlink:href="assets/svg/sprite.svg#cross"></use>
-  //             </svg>
-  //         </button>
-  //         <a href="#" class="breadcrumb__link">Clear all</a>
-  //     </li>
-  //   </ul>
-  //   `;
-  // }
+  _toggleAccordion(e) {
+    const btn = e.target.closest('.catalog__filter-btn');
+    if (!btn) return;
+
+    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
+      btn.nextElementSibling.classList.add('hidden');
+      btn.innerHTML = this._iconPlus;
+    } else {
+      btn.nextElementSibling.classList.remove('hidden');
+      btn.innerHTML = this._iconMinus;
+    }
+  }
+
+  _toggleFilterContainer() {
+    this._accordionBox.classList.toggle('hidden');
+    const btnText = this._btnFilter.lastChild;
+
+    if (this._accordionBox.classList.contains('hidden')) {
+      btnText.textContent = 'Show filters';
+      this._catalogContainer.classList.remove('grid');
+      this._catalogContainer.classList.add('block');
+    }
+
+    if (!this._accordionBox.classList.contains('hidden')) {
+      btnText.textContent = 'Hide filters';
+      this._catalogContainer.classList.remove('block');
+      this._catalogContainer.classList.add('grid');
+    }
+  }
+
+  _addHandlerToggleFilterContainer() {
+    this._btnFilter.addEventListener(
+      'click',
+      this._toggleFilterContainer.bind(this)
+    );
+  }
 }
 
 export default new CatalogView();

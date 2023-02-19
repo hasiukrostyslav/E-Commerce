@@ -1195,3 +1195,43 @@
               </button> 
           </div>   
         </div>
+
+
+---------------------------------
+<ul class="breadcrumb__catalog-list">
+  //     <li class="breadcrumb__catalog-item">
+  //       <button class="breadcrumb__catalog-btn">
+  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
+  //         </svg>
+  //       </button>
+  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
+  //           >Dresses</a>
+  //     </li>
+  //     <li class="breadcrumb__catalog-item">
+  //       <button class="breadcrumb__catalog-btn">
+  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
+  //         </svg>
+  //       </button>
+  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
+  //           >Yellow</a>
+  //     </li>
+  //     <li class="breadcrumb__catalog-item">
+  //       <button class="breadcrumb__catalog-btn">
+  //         <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+  //           <use xlink:href="assets/svg/sprite.svg#cross"></use>
+  //         </svg>
+  //       </button>
+  //       <a href="#" class="breadcrumb__link breadcrumb__link--current"
+  //           >Cotton</a>
+  //     </li>
+  //     <li class="breadcrumb__catalog-item">
+  //         <button class="breadcrumb__catalog-btn">
+  //             <svg class="breadcrumb__icon clear-all">
+  //                 <use xlink:href="assets/svg/sprite.svg#cross"></use>
+  //             </svg>
+  //         </button>
+  //         <a href="#" class="breadcrumb__link">Clear all</a>
+  //     </li>
+  //   </ul>

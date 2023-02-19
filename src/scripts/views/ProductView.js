@@ -1,4 +1,5 @@
 import View from './View';
+import icons from '../../assets/svg/sprite.svg';
 
 class ProductView extends View {
   _productPageEl = document.getElementById('main__product');
@@ -8,11 +9,27 @@ class ProductView extends View {
   _subPages = document.querySelectorAll('.product__data');
   _currentPage = document.querySelector('.product__info');
   _currentSubPage = document.querySelector('.details');
+  _accordionBox = document.querySelector('.product__accordion');
   _currentTab;
+
+  _iconPlus = `
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--plus">
+    <use
+      xlink:href="${icons}#plus">
+    </use>
+  </svg>`;
+
+  _iconMinus = `
+  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
+    <use
+      xlink:href="${icons}#minus">
+    </use>
+  </svg>`;
 
   constructor() {
     super();
     this._addHandlerChangeTabs();
+    this._addHandlerAccordion();
   }
 
   _changeTabs(e) {
@@ -32,6 +49,19 @@ class ProductView extends View {
         (sub) => sub.dataset.info === this._currentTab.dataset.info
       );
       this._currentSubPage.classList.remove('hidden');
+    }
+  }
+
+  _toggleAccordion(e) {
+    const btn = e.target.closest('.accordion__btn');
+    if (!btn) return;
+
+    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
+      btn.nextElementSibling.classList.add('hidden');
+      btn.innerHTML = this._iconPlus;
+    } else {
+      btn.nextElementSibling.classList.remove('hidden');
+      btn.innerHTML = this._iconMinus;
     }
   }
 }
