@@ -16,6 +16,16 @@ class NavigationView extends View {
     this._addHandlerChangeSlide();
     this._addHandlerShowMenu();
     this._addHandlerHideMenu();
+    this._setObserver(this._reset.bind(this));
+  }
+
+  _reset(records) {
+    const target = records.find(
+      (record) => record.target === document.getElementById('main__catalog')
+    );
+    if (!target) return;
+    this._menu.classList.add('hidden');
+    this._overlay.classList.add('hidden');
   }
 
   // Show menu

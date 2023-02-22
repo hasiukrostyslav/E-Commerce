@@ -1,27 +1,33 @@
+import icons from '../../assets/svg/sprite.svg';
+
 export default class View {
   _parentElement = document.querySelector('body');
-  _navigationEl = document.querySelector('.navbar');
   _headerEl = document.getElementById('header');
-  _footerEl = document.querySelector('.footer');
-  _mainEl = document.querySelector('.main');
   _homePageEl = document.getElementById('main__home');
-
-  _checkoutPageEl = document.getElementById('main__checkout');
-  _trackPageEl = document.getElementById('main__track');
-  _blogsPageEl = document.getElementById('main__blogs');
-  _blogPageEl = document.getElementById('main__blog');
+  _mainEl = document.querySelector('.main');
+  _contactsEl = document.getElementById('main__contacts');
+  _footerEl = document.querySelector('.footer');
   _subscribePageEl = document.querySelector('.subscribe');
   _breadcrumbEl = document.querySelector('.breadcrumb');
-
   _overlay = document.querySelector('.overlay');
 
-  constructor() {
-    this._addHandlerInit();
+  init() {
+    this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
   }
 
+  _setObserver(callback) {
+    const observer = new MutationObserver(callback);
+
+    observer.observe(this._mainEl, {
+      subtree: true,
+      attributes: true,
+      attributeOldValue: true,
+    });
+  }
+
   // Change page components
-  _init(e) {
+  _initLinks(e) {
     const link = e.target.closest('a');
 
     if (!link || !link.dataset.link) return;
@@ -41,17 +47,69 @@ export default class View {
       this._subscribePageEl.classList.add('hidden');
     else this._subscribePageEl.classList.remove('hidden');
 
-    if (this._homePageEl.classList.contains('hidden'))
+    if (this._homePageEl.classList.contains('hidden')) {
       this._headerEl.classList.add('hidden');
-    else this._headerEl.classList.remove('hidden');
-
-    if (curPage !== this._homePageEl) {
       this._breadcrumbEl.classList.remove('hidden');
-    } else this._breadcrumbEl.classList.add('hidden');
+    }
+
+    if (!this._homePageEl.classList.contains('hidden')) {
+      this._headerEl.classList.remove('hidden');
+      this._breadcrumbEl.classList.add('hidden');
+    }
+
+    this._initContactLinks(link);
   }
 
-  _addHandlerInit() {
-    this._parentElement.addEventListener('click', this._init.bind(this));
+  _initContactLinks(link) {
+    this._contactsEl
+      .querySelectorAll('.contacts__link')
+      .forEach((a) => a.classList.remove('contacts__link--current'));
+
+    const pages = document.querySelectorAll('.contacts__page');
+    pages.forEach((page) => page.classList.add('hidden'));
+
+    if (link.dataset.contacts) {
+      this._contactsEl
+        .querySelector('a[data-contact="faq"]')
+        .classList.add('contacts__link--current');
+      [...pages]
+        .find((page) => page.dataset.contact === 'faq')
+        .classList.remove('hidden');
+    } else {
+      this._contactsEl
+        .querySelector('a[data-contact="form"]')
+        .classList.add('contacts__link--current');
+      [...pages]
+        .find((page) => page.dataset.contact === 'form')
+        .classList.remove('hidden');
+    }
+  }
+
+  _addHandlerInitLinks() {
+    this._parentElement.addEventListener('click', this._initLinks.bind(this));
+  }
+
+  // Change tabs in Account/Contact/Product pages
+  _addHandlerChangeTabs() {
+    this._tabs.addEventListener('click', this._changeTabs.bind(this));
+  }
+
+  // Accordion functionality
+  _generateAccordionBtnIcon(size, type) {
+    return `
+    <svg class="icon__accordion icon__accordion--${size} icon__accordion--${type}">
+      <use
+        xlink:href="${icons}#${type}">
+      </use>
+    </svg>
+    `;
+  }
+
+  _addHandlerAccordion() {
+    this._accordionContainer.addEventListener(
+      'click',
+      this._toggleAccordion.bind(this)
+    );
   }
 
   // Scroll to top
@@ -67,23 +125,10 @@ export default class View {
     this._footerEl.addEventListener('click', this._scrollToTop.bind(this));
   }
 
-  // Change tabs in Account/Contact/Product pages
-  _addHandlerChangeTabs() {
-    this._tabs.addEventListener('click', this._changeTabs.bind(this));
-  }
-
   // Slider functionality
   _goToSlide(slide = 0) {
     this._slides.forEach(
       (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-    );
-  }
-
-  // Accordion functionality
-  _addHandlerAccordion() {
-    this._accordionBox.addEventListener(
-      'click',
-      this._toggleAccordion.bind(this)
     );
   }
 }

@@ -1,27 +1,11 @@
 import View from './View';
-import icons from '../../assets/svg/sprite.svg';
 
 class CatalogView extends View {
   _catalogPageEl = document.getElementById('main__catalog');
+  _accordionContainer = document.querySelector('.catalog__filter');
   _catalogContainer = document.querySelector('.catalog');
   _btnFilter = document.querySelector('.catalog__btn');
-  _accordionBox = document.querySelector('.catalog__filter');
   _catalog = document.querySelector('.catalog__product');
-
-  _iconPlus = `
-  <svg class="icon__accordion icon__accordion--sm icon__accordion--plus">
-    <use
-      xlink:href="${icons}#plus">
-    </use>
-  </svg>`;
-
-  _iconMinus = `
-  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
-    <use
-      xlink:href="${icons}#minus">
-    </use>
-  </svg>`;
-
   constructor() {
     super();
     this._addHandlerAccordion();
@@ -29,29 +13,29 @@ class CatalogView extends View {
   }
 
   _toggleAccordion(e) {
-    const btn = e.target.closest('.catalog__filter-btn');
+    const btn = e.target.closest('.btn__accordion');
     if (!btn) return;
 
-    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
+    if (btn.querySelector('svg').classList.contains('icon__accordion--minus')) {
       btn.nextElementSibling.classList.add('hidden');
-      btn.innerHTML = this._iconPlus;
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'plus');
     } else {
       btn.nextElementSibling.classList.remove('hidden');
-      btn.innerHTML = this._iconMinus;
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
     }
   }
 
   _toggleFilterContainer() {
-    this._accordionBox.classList.toggle('hidden');
+    this._accordionContainer.classList.toggle('hidden');
     const btnText = this._btnFilter.lastChild;
 
-    if (this._accordionBox.classList.contains('hidden')) {
+    if (this._accordionContainer.classList.contains('hidden')) {
       btnText.textContent = 'Show filters';
       this._catalogContainer.classList.remove('grid');
       this._catalogContainer.classList.add('block');
     }
 
-    if (!this._accordionBox.classList.contains('hidden')) {
+    if (!this._accordionContainer.classList.contains('hidden')) {
       btnText.textContent = 'Hide filters';
       this._catalogContainer.classList.remove('block');
       this._catalogContainer.classList.add('grid');

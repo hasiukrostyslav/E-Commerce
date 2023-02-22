@@ -1,30 +1,13 @@
 import View from './View';
-import icons from '../../assets/svg/sprite.svg';
 
 class ProductView extends View {
-  _productPageEl = document.getElementById('main__product');
-
   _tabs = document.querySelector('.product__tabs');
   _pages = document.querySelectorAll('.product__descript');
   _subPages = document.querySelectorAll('.product__data');
   _currentPage = document.querySelector('.product__info');
   _currentSubPage = document.querySelector('.details');
-  _accordionBox = document.querySelector('.product__accordion');
+  _accordionContainer = document.querySelector('.product__accordion');
   _currentTab;
-
-  _iconPlus = `
-  <svg class="icon__accordion icon__accordion--sm icon__accordion--plus">
-    <use
-      xlink:href="${icons}#plus">
-    </use>
-  </svg>`;
-
-  _iconMinus = `
-  <svg class="icon__accordion icon__accordion--sm icon__accordion--minus">
-    <use
-      xlink:href="${icons}#minus">
-    </use>
-  </svg>`;
 
   constructor() {
     super();
@@ -53,15 +36,15 @@ class ProductView extends View {
   }
 
   _toggleAccordion(e) {
-    const btn = e.target.closest('.accordion__btn');
+    const btn = e.target.closest('.btn__accordion');
     if (!btn) return;
 
-    if (btn.firstElementChild.classList.contains('icon__accordion--minus')) {
+    if (btn.querySelector('svg').classList.contains('icon__accordion--minus')) {
       btn.nextElementSibling.classList.add('hidden');
-      btn.innerHTML = this._iconPlus;
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'plus');
     } else {
       btn.nextElementSibling.classList.remove('hidden');
-      btn.innerHTML = this._iconMinus;
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
     }
   }
 }
