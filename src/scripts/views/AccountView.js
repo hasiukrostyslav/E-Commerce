@@ -7,13 +7,49 @@ class AccountView extends View {
   _pages = document.querySelectorAll('.account__block');
   _currentPage = document.querySelector('.account__wishlist');
   _accordionContainer = document.querySelector('.order__accordion');
-  // _currentBreadcrumb = document.querySelector('.breadcrumb__wishlist');
-  // _breadcrumbItems = document.querySelectorAll('.breadcrumb__item');
 
   constructor() {
     super();
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
+    this._setObserver(this._renderBreadcrumb.bind(this));
+  }
+
+  _renderBreadcrumb() {
+    if (!this._accountPageEl.classList.contains('hidden')) {
+      const link = this._accountPageEl
+        .querySelector('.account__item--current')
+        .textContent.trim();
+
+      if (this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
+        this._breadcrumbList.querySelector(
+          '.breadcrumb__link--subpage'
+        ).textContent = link;
+        this._breadcrumbList.querySelector(
+          '.breadcrumb__link--subpage'
+        ).dataset.link = 'account';
+      } else {
+        this._breadcrumbList.insertAdjacentHTML(
+          'beforeend',
+          this._renderBreadcrumbLink(
+            this._accountPageEl.id.split('__').at(-1),
+            link
+          )
+        );
+      }
+    }
+
+    if (
+      this._accountPageEl.classList.contains('hidden') &&
+      this._breadcrumbList.querySelector('.breadcrumb__link--subpage') &&
+      this._breadcrumbList.querySelector('.breadcrumb__link--subpage').dataset
+        .link === this._accountPageEl.id.split('__').at(-1)
+    ) {
+      this._breadcrumbList
+        .querySelector('.breadcrumb__link--subpage')
+        .closest('li')
+        .remove();
+    }
   }
 
   _changeTabs(e) {
@@ -31,12 +67,6 @@ class AccountView extends View {
       (page) => page.dataset.account === this._currentTab.dataset.account
     );
     this._currentPage.classList.remove('hidden');
-
-    // this._currentBreadcrumb.classList.add('hidden');
-    // this._currentBreadcrumb = [...this._breadcrumbItems].find(
-    //   (item) => item.dataset.account === this._currentTab.dataset.account
-    // );
-    // this._currentBreadcrumb.classList.remove('hidden');
   }
 
   _toggleAccordion(e) {

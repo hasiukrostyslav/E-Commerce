@@ -1,15 +1,55 @@
 import View from './View';
 
 class CatalogView extends View {
-  _catalogPageEl = document.getElementById('main__catalog');
   _accordionContainer = document.querySelector('.catalog__filter');
   _catalogContainer = document.querySelector('.catalog');
   _btnFilter = document.querySelector('.catalog__btn');
   _catalog = document.querySelector('.catalog__product');
+  _breadcrumbBTNs = this._breadcrumbEl.querySelector(
+    '.breadcrumb__catalog-list'
+  );
+
   constructor() {
     super();
     this._addHandlerAccordion();
     this._addHandlerToggleFilterContainer();
+    this._setObserver(this._renderBreadcrumb.bind(this));
+  }
+
+  _renderBreadcrumb() {
+    if (!this._catalogPageEl.classList.contains('hidden')) {
+      const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
+      link.textContent = 'Women';
+      link.dataset.link = this._catalogPageEl.id.split('__').at(-1);
+
+      if (!this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
+        this._breadcrumbList.insertAdjacentHTML(
+          'beforeend',
+          this._renderBreadcrumbLink(
+            this._catalogPageEl.id.split('__').at(-1),
+            'Clothes'
+          )
+        );
+      }
+
+      this._breadcrumbBTNs.classList.remove('hidden');
+    }
+
+    if (this._catalogPageEl.classList.contains('hidden')) {
+      this._breadcrumbBTNs.classList.add('hidden');
+    }
+
+    if (
+      this._catalogPageEl.classList.contains('hidden') &&
+      this._breadcrumbList.querySelector('.breadcrumb__link--subpage') &&
+      this._breadcrumbList.querySelector('.breadcrumb__link--subpage').dataset
+        .link === this._catalogPageEl.id.split('__').at(-1)
+    ) {
+      this._breadcrumbList
+        .querySelector('.breadcrumb__link--subpage')
+        .closest('li')
+        .remove();
+    }
   }
 
   _toggleAccordion(e) {

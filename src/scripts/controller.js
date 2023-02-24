@@ -7,6 +7,7 @@ import productView from './views/ProductView';
 import catalogView from './views/CatalogView';
 import headerView from './views/HeaderView';
 import navigationView from './views/NavigationView';
+import postView from './views/PostView';
 
 const view = new View();
 view.init();

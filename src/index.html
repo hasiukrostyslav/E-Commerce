@@ -24,7 +24,7 @@
               <a href="#" class="topbar__link" data-link="track">Track order</a>
             </li>
             <li class="topbar__item">
-              <a href="#" class="topbar__link" data-link="blogs">Blog</a>
+              <a href="#" class="topbar__link" data-link="blog">Blog</a>
             </li>
             <li class="topbar__item">
               <a href="#" class="topbar__link" data-link="contacts">Contacts</a>
@@ -292,21 +292,54 @@
         <div class="container breadcrumb__flex">
             <ul class="breadcrumb__list">
               <li class="breadcrumb__item">
-                <a href="#" class="breadcrumb__link breadcrumb__link--icon" data-link="home">
+                <a href="#" class="breadcrumb__link breadcrumb__link--home" data-link="home">
                   <svg class="breadcrumb__icon">
                     <use xlink:href="assets/svg/sprite.svg#home"></use>
                   </svg>
                 </a>
               </li>
               <li class="breadcrumb__item">
-                <a href="#" class="breadcrumb__link" data-link="catalog">Women</a>
-              </li>
-              <li class="breadcrumb__item">
-                <a href="#" class="breadcrumb__link" data-link="catalog">Clothes</a>
+                <a href="#" class="breadcrumb__link breadcrumb__link--page" data-link=""></a>
               </li>
             </ul>
 
-
+            <ul class="breadcrumb__catalog-list hidden">
+              <li class="breadcrumb__catalog-item">
+                 <button class="breadcrumb__catalog-btn">
+                   <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
+                   </svg>
+                </button>
+                 <a href="#" class="breadcrumb__link breadcrumb__link--current"
+                     >Dresses</a>
+              </li>
+              <li class="breadcrumb__catalog-item">
+                <button class="breadcrumb__catalog-btn">
+                 <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+                   <use xlink:href="assets/svg/sprite.svg#cross"></use>
+                 </svg>
+               </button>
+               <a href="#" class="breadcrumb__link breadcrumb__link--current"
+                   >Yellow</a>
+             </li>
+             <li class="breadcrumb__catalog-item">
+               <button class="breadcrumb__catalog-btn">
+                 <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+                   <use xlink:href="assets/svg/sprite.svg#cross"></use>
+                 </svg>
+               </button>
+               <a href="#" class="breadcrumb__link breadcrumb__link--current"
+                   >Cotton</a>
+             </li>
+             <li class="breadcrumb__catalog-item">
+                 <button class="breadcrumb__catalog-btn clear-all">
+                     <svg class="breadcrumb__icon">
+                         <use xlink:href="assets/svg/sprite.svg#cross"></use>
+                     </svg>
+                 </button>
+                 <a href="#" class="breadcrumb__link">Clear all</a>
+             </li>
+           </ul>
         </div>
     </section>
     </nav>
@@ -1271,9 +1304,9 @@
           </div>
         </section>
 
-        <section class="blog container grid grid--col-2 grid--row-2">
+        <section class="blog-home container grid grid--col-2 grid--row-2">
           <h2 class="heading-secondary heading-secondary--margin-lg">Fashion blog</h2>
-          <a href="#" class="btn btn--outline btn--medium blog__btn" data-link="blogs"
+          <a href="#" class="btn btn--outline btn--medium blog__btn" data-link="blog"
             >View blog</a
           >
 
@@ -1282,7 +1315,7 @@
             <figcaption class="blog__description">
               <a
                 href="#"
-                class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="blog"
+                class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="post"
                 >Bag Trends for Summer 2020</a
               >
               <ul class="blog__list u-margin-bottom-small-2">
@@ -1312,7 +1345,7 @@
             <figcaption class="blog__description">
               <a
                 href="#"
-                class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="blog"
+                class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="post"
                 >Top 10 of This Season’s Hottest Sneakers</a
               >
               <ul class="blog__list u-margin-bottom-small-2">
@@ -1388,7 +1421,7 @@
         
       </section>
 
-      <section title="Account" class="account container hidden sb-hide" id="main__account">
+      <section data-title="Account" class="account container hidden sb-hide" id="main__account">
         <aside class="account__aside">
           <p class="account__user-name">Annette Black</p>
           <p class="account__user-email">annetteb@example</p>
@@ -5435,7 +5468,7 @@
         </section>
       </section>
 
-      <section title="Checkout" class="checkout container hidden sb-hide" id="main__checkout">
+      <section data-title="Checkout" class="checkout container hidden sb-hide" id="main__checkout">
         <div class="checkout__wrapper">
           <section class="checkout__section">
             <div class="checkout__flex">
@@ -6157,7 +6190,7 @@
         </div>
       </section>
 
-      <section title="Track order" class="track container hidden sb-hide" id="main__track">
+      <section data-title="Track order" class="track container hidden sb-hide" id="main__track">
         <aside class="track__sidebar">
           <h2 class="heading-secondary u-margin-bottom-medium">
             Track your order
@@ -6325,13 +6358,13 @@
         </table>
       </section>
 
-      <section title="Fashion blog" class="blog-pg container hidden sb-hide" id="main__blogs">
-        <article class="blog-pg__article">
+      <section data-title="Fashion blog" class="blog container hidden sb-hide" id="main__blog">
+        <article class="blog__article">
           <h2 class="heading-secondary heading-secondary--margin-md">
             Fashion blog
           </h2>
-          <ul class="blog-pg__list">
-            <li class="blog-pg__item">
+          <ul class="blog__list-main">
+            <li class="blog__item-main">
               <figure class="blog__card--large">
                 <img
                   class="blog__img blog__img--large"
@@ -6341,7 +6374,7 @@
                 <figcaption class="blog__description--large">
                   <a
                     href="#"
-                    class="heading-quaternary--heading-link" data-link="blog"
+                    class="heading-quaternary--heading-link" data-link="post"
                     >Bag Trends for Summer 2020</a
                   >
                   <ul class="blog__list">
@@ -6367,7 +6400,7 @@
                 </figcaption>
               </figure>
             </li>
-            <li class="blog-pg__item">
+            <li class="blog__item-main">
               <figure class="blog__card--large">
                 <img
                   class="blog__img blog__img--large"
@@ -6377,7 +6410,7 @@
                 <figcaption class="blog__description--large">
                   <a
                     href="#"
-                    class="heading-quaternary--heading-link" data-link="blog"
+                    class="heading-quaternary--heading-link" data-link="post"
                     >Wardrobe Essentials Everyone Should Own Today</a
                   >
                   <ul class="blog__list">
@@ -6403,7 +6436,7 @@
                 </figcaption>
               </figure>
             </li>
-            <li class="blog-pg__item">
+            <li class="blog__item-main">
               <figure class="blog__card--large">
                 <img
                   class="blog__img blog__img--large"
@@ -6413,7 +6446,7 @@
                 <figcaption class="blog__description--large">
                   <a
                     href="#"
-                    class="heading-quaternary--heading-link" data-link="blog"
+                    class="heading-quaternary--heading-link" data-link="post"
                     >Top 10 of This Season’s Hottest Sneakers</a
                   >
                   <ul class="blog__list">
@@ -6439,7 +6472,7 @@
                 </figcaption>
               </figure>
             </li>
-            <li class="blog-pg__item">
+            <li class="blog__item-main">
               <figure class="blog__card--large">
                 <img
                   class="blog__img blog__img--large"
@@ -6449,7 +6482,7 @@
                 <figcaption class="blog__description--large">
                   <a
                     href="#"
-                    class="heading-quaternary--heading-link" data-link="blog"
+                    class="heading-quaternary--heading-link" data-link="post"
                     >Modern Accessories 2020: Why Simple Isn't Easy</a
                   >
                   <ul class="blog__list">
@@ -6504,7 +6537,7 @@
           </ul>
         </article>
 
-        <aside class="blog-pg__sidebar">
+        <aside class="blog__sidebar">
           <form action="#" class="search search--sidebar">
             <input
               type="text"
@@ -6523,24 +6556,24 @@
               <h4 class="heading-sidebar">Blog categories</h4>
               <ul class="sidebar__list sidebar__list--col sidebar__list--gap-sm">
                 <li class="sidebar__item sidebar__item--horizontal">
-                  <a class="sidebar__link" href="#" data-link="blogs">All</a>
-                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blogs">23</a>
+                  <a class="sidebar__link" href="#" data-link="blog">All</a>
+                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blog">23</a>
                 </li>
                 <li class="sidebar__item sidebar__item--horizontal">
-                  <a class="sidebar__link" href="#" data-link="blogs">Fashion</a>
-                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blogs">3</a>
+                  <a class="sidebar__link" href="#" data-link="blog">Fashion</a>
+                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blog">3</a>
                 </li>
                 <li class="sidebar__item sidebar__item--horizontal">
-                  <a class="sidebar__link" href="#" data-link="blogs">Designers</a>
-                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blogs">7</a>
+                  <a class="sidebar__link" href="#" data-link="blog">Designers</a>
+                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blog">7</a>
                 </li>
                 <li class="sidebar__item sidebar__item--horizontal">
-                  <a class="sidebar__link" href="#" data-link="blogs">Lifestyle</a>
-                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blogs">4</a>
+                  <a class="sidebar__link" href="#" data-link="blog">Lifestyle</a>
+                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blog">4</a>
                 </li>
                 <li class="sidebar__item sidebar__item--horizontal">
-                  <a class="sidebar__link" href="#" data-link="blogs">Celebrity style</a>
-                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blogs">9</a>
+                  <a class="sidebar__link" href="#" data-link="blog">Celebrity style</a>
+                  <a class="sidebar__link sidebar__link--regular" href="#" data-link="blog">9</a>
                 </li>
               </ul>
             </div>
@@ -6548,7 +6581,7 @@
               <h4 class="heading-sidebar">Featured Posts</h4>
               <ul class="sidebar__list sidebar__list--col sidebar__list--gap-lg">
                 <li class="sidebar__item">
-                  <a href="#" data-link="blog">
+                  <a href="#" data-link="post">
                     <img
                       class="sidebar__img"
                       src="assets/images/post-1.jpg"
@@ -6562,13 +6595,13 @@
                       </svg>
                       July 5, 2020
                     </p>
-                    <a class="sidebar__link" href="#" data-link="blog"
+                    <a class="sidebar__link" href="#" data-link="post"
                       >14 Items From End-of-Spring Sales Are Sure to Spark Joy</a
                     >
                   </div>
                 </li>
                 <li class="sidebar__item">
-                  <a href="#" data-link="blog">
+                  <a href="#" data-link="post">
                     <img
                       class="sidebar__img"
                       src="assets/images/post-2.jpg"
@@ -6582,13 +6615,13 @@
                       </svg>
                       April 9, 2020
                     </p>
-                    <a class="sidebar__link" href="#" data-link="blog"
+                    <a class="sidebar__link" href="#" data-link="post"
                       >Best Fashion Instagrams of the Week</a
                     >
                   </div>
                 </li>
                 <li class="sidebar__item">
-                  <a href="#" data-link="blog">
+                  <a href="#" data-link="post">
                     <img
                       class="sidebar__img"
                       src="assets/images/post-3.jpg"
@@ -6602,7 +6635,7 @@
                       </svg>
                       March 12, 2020
                     </p>
-                    <a class="sidebar__link" href="#" data-link="blog"
+                    <a class="sidebar__link" href="#" data-link="post"
                       >Top 10 Looks from the Venice Film Festival</a
                     >
                   </div>
@@ -6686,7 +6719,7 @@
         </aside>
       </section>
 
-      <section class="main__blog hidden" id="main__blog">
+      <section  class="post hidden" id="main__post">
         <article class="post__article">
           <div class="post__header post__container">
             <h2 class="heading-secondary heading-secondary--margin-md">
@@ -6950,7 +6983,7 @@
               </button>
               <ul class="sidebar__list sidebar__list--row">
                 <li class="sidebar__item">
-                  <a href="#" data-link="blog">
+                  <a href="#" data-link="post">
                     <img
                       class="sidebar__img"
                       src="assets/images/post-2.jpg"
@@ -6964,7 +6997,7 @@
                       </svg>
                       April 9, 2020
                     </p>
-                    <a class="sidebar__link" href="#" data-link="blog"
+                    <a class="sidebar__link" href="#" data-link="post"
                       >Best Fashion Instagrams of the Week</a
                     >
                   </div>
@@ -6980,7 +7013,7 @@
               </button>
               <ul class="sidebar__list sidebar__list--row">
                 <li class="sidebar__item">
-                  <a href="#" data-link="blog">
+                  <a href="#" data-link="post">
                     <img
                       class="sidebar__img post__img-right u-no-margin"
                       src="assets/images/post-3.jpg"
@@ -6994,7 +7027,7 @@
                       </svg>
                       March 12, 2020
                     </p>
-                    <a class="sidebar__link" href="#" data-link="blog"
+                    <a class="sidebar__link" href="#" data-link="post"
                       >Top 10 Looks from the Venice Film Festival</a
                     >
                   </div>
@@ -7009,7 +7042,7 @@
             <h2 class="heading-secondary heading-secondary--margin-lg">
               Related posts
             </h2>
-            <a href="#" class="btn btn--outline btn--medium blog__btn" data-link="blogs"
+            <a href="#" class="btn btn--outline btn--medium blog__btn" data-link="blog"
               >View all posts</a
             >
             <figure class="blog__card">
@@ -7017,7 +7050,7 @@
               <figcaption class="blog__description">
                 <a
                   href="#"
-                  class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="blog"
+                  class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="post"
                   >Bag Trends for Summer 2020</a
                 >
                 <ul class="blog__list u-margin-bottom-small-2">
@@ -7050,7 +7083,7 @@
               <figcaption class="blog__description">
                 <a
                   href="#"
-                  class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="blog"
+                  class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="post"
                   >Wardrobe Essentials Everyone Should Own Today</a
                 >
                 <ul class="blog__list u-margin-bottom-small-2">
@@ -7207,7 +7240,7 @@
         </form>
       </section>
 
-      <section title="Contacts" class="main__contacts hidden" id="main__contacts">
+      <section data-title="Contacts" class="main__contacts hidden" id="main__contacts">
         <section class="container contacts__container">
           <ul class="contacts__navbar">
             <li class="contacts__item">
@@ -7783,7 +7816,7 @@
                 <a href="#" class="footer__link" data-link="contacts">Contacts</a>
               </li>
               <li class="footer__help-item">
-                <a href="#" class="footer__link" data-link="blogs">Blog</a>
+                <a href="#" class="footer__link" data-link="blog">Blog</a>
               </li>
             </ul>
           </div>

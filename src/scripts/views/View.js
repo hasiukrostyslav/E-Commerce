@@ -6,14 +6,19 @@ export default class View {
   _homePageEl = document.getElementById('main__home');
   _mainEl = document.querySelector('.main');
   _contactsEl = document.getElementById('main__contacts');
+  _postPageEl = document.getElementById('main__post');
+  _catalogPageEl = document.getElementById('main__catalog');
+  _productPageEl = document.getElementById('main__product');
   _footerEl = document.querySelector('.footer');
   _subscribePageEl = document.querySelector('.subscribe');
   _breadcrumbEl = document.querySelector('.breadcrumb');
+  _breadcrumbList = this._breadcrumbEl.querySelector('.breadcrumb__list');
   _overlay = document.querySelector('.overlay');
 
   init() {
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
+    this._setObserver(this._setBreadcrumbLinks.bind(this));
   }
 
   _setObserver(callback) {
@@ -24,6 +29,33 @@ export default class View {
       attributes: true,
       attributeOldValue: true,
     });
+  }
+
+  _setBreadcrumbLinks() {
+    const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
+    const pages = [...this._mainEl.querySelectorAll('section[data-title]')];
+
+    if (
+      pages.every((el) => el.classList.contains('hidden')) &&
+      !this._homePageEl.classList.contains('hidden')
+    ) {
+      link.textContent = '';
+      link.dataset.link = '';
+    }
+
+    const page = pages.find((el) => !el.classList.contains('hidden'));
+
+    if (!page) return;
+    link.textContent = page.dataset.title;
+    link.dataset.link = page.id.split('__').at(-1);
+  }
+
+  _renderBreadcrumbLink(title, link) {
+    return `
+      <li class="breadcrumb__item">
+        <a href="#" class="breadcrumb__link breadcrumb__link--subpage" data-link="${title}">${link}</a>
+      </li>
+    `;
   }
 
   // Change page components
