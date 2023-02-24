@@ -12,6 +12,7 @@ class AccountView extends View {
     super();
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
+    this._addHandlerOpenWhishlist();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
@@ -67,6 +68,31 @@ class AccountView extends View {
       (page) => page.dataset.account === this._currentTab.dataset.account
     );
     this._currentPage.classList.remove('hidden');
+  }
+
+  _openWhishlist(e) {
+    if (!e.target.closest('a[data-link="account"]')) return;
+
+    if (this._currentTab.dataset.account !== 'whishlist') {
+      this._currentTab.classList.remove('account__item--current');
+      this._currentTab = this._accountPageEl.querySelector(
+        'li[data-account="wishlist"]'
+      );
+      this._currentTab.classList.add('account__item--current');
+
+      this._currentPage.classList.add('hidden');
+      this._currentPage = [...this._pages].find(
+        (page) => page.dataset.account === this._currentTab.dataset.account
+      );
+      this._currentPage.classList.remove('hidden');
+    }
+  }
+
+  _addHandlerOpenWhishlist() {
+    this._toolbarContainer.addEventListener(
+      'click',
+      this._openWhishlist.bind(this)
+    );
   }
 
   _toggleAccordion(e) {

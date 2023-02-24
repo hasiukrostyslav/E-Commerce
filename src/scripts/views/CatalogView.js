@@ -22,7 +22,14 @@ class CatalogView extends View {
       link.textContent = 'Women';
       link.dataset.link = this._catalogPageEl.id.split('__').at(-1);
 
-      if (!this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
+      if (this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
+        this._breadcrumbList.querySelector(
+          '.breadcrumb__link--subpage'
+        ).textContent = 'Clothes';
+        this._breadcrumbList.querySelector(
+          '.breadcrumb__link--subpage'
+        ).dataset.link = 'catalog';
+      } else {
         this._breadcrumbList.insertAdjacentHTML(
           'beforeend',
           this._renderBreadcrumbLink(
@@ -31,6 +38,16 @@ class CatalogView extends View {
           )
         );
       }
+
+      // if (!this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
+      //   this._breadcrumbList.insertAdjacentHTML(
+      //     'beforeend',
+      //     this._renderBreadcrumbLink(
+      //       this._catalogPageEl.id.split('__').at(-1),
+      //       'Clothes'
+      //     )
+      //   );
+      // }
 
       this._breadcrumbBTNs.classList.remove('hidden');
     }

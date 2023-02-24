@@ -26,16 +26,13 @@ class PostView extends View {
       );
     }
 
-    if (
-      this._postPageEl.classList.contains('hidden') &&
-      this._breadcrumbList.querySelector('.breadcrumb__link--subpage') &&
-      this._breadcrumbList.querySelector('.breadcrumb__link--subpage').dataset
-        .link === this._postPageEl.id.split('__').at(-1)
-    ) {
-      this._breadcrumbList
-        .querySelector('.breadcrumb__link--subpage')
-        .closest('li')
-        .remove();
+    const subPage = [
+      ...this._breadcrumbList.querySelectorAll('.breadcrumb__link--subpage'),
+    ].find((el) => el.dataset.link === 'post');
+    if (!subPage) return;
+
+    if (this._postPageEl.classList.contains('hidden') && subPage) {
+      subPage.closest('li').remove();
     }
   }
 }

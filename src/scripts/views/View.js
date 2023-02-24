@@ -13,6 +13,7 @@ export default class View {
   _subscribePageEl = document.querySelector('.subscribe');
   _breadcrumbEl = document.querySelector('.breadcrumb');
   _breadcrumbList = this._breadcrumbEl.querySelector('.breadcrumb__list');
+  _toolbarContainer = document.querySelector('.navigation__toolbar');
   _overlay = document.querySelector('.overlay');
 
   init() {
