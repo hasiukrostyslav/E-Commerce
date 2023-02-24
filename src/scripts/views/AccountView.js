@@ -1,7 +1,6 @@
 import View from './View';
 
 class AccountView extends View {
-  _accountPageEl = document.getElementById('main__account');
   _tabs = document.querySelector('.account__list');
   _currentTab = document.querySelector('.account__item--current');
   _pages = document.querySelectorAll('.account__block');

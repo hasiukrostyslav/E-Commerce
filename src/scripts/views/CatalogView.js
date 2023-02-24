@@ -5,7 +5,8 @@ class CatalogView extends View {
   _catalogContainer = document.querySelector('.catalog');
   _btnFilter = document.querySelector('.catalog__btn');
   _catalog = document.querySelector('.catalog__product');
-  _breadcrumbBTNs = this._breadcrumbEl.querySelector(
+  _btnClearList = document.querySelectorAll('.clear-one');
+  _breadcrumbFilters = this._breadcrumbEl.querySelector(
     '.breadcrumb__catalog-list'
   );
 
@@ -13,7 +14,29 @@ class CatalogView extends View {
     super();
     this._addHandlerAccordion();
     this._addHandlerToggleFilterContainer();
+    this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
+  }
+
+  // Remove breadcrumb filters
+  _removeFilter(e) {
+    const btn = e.target.closest('.breadcrumb__catalog-btn');
+    if (!btn) return;
+
+    if (btn.classList.contains('clear-all'))
+      [...this._btnClearList]
+        .filter((el) => el.classList.contains('clear-one'))
+        .forEach((el) => el.closest('li').remove());
+
+    if (btn.classList.contains('clear-one')) btn.closest('li').remove();
+  }
+
+  _addHandlerRemoveFilter() {
+    if (!this._breadcrumbFilters) return;
+    this._breadcrumbFilters.addEventListener(
+      'click',
+      this._removeFilter.bind(this)
+    );
   }
 
   _renderBreadcrumb() {
@@ -39,21 +62,11 @@ class CatalogView extends View {
         );
       }
 
-      // if (!this._breadcrumbList.querySelector('.breadcrumb__link--subpage')) {
-      //   this._breadcrumbList.insertAdjacentHTML(
-      //     'beforeend',
-      //     this._renderBreadcrumbLink(
-      //       this._catalogPageEl.id.split('__').at(-1),
-      //       'Clothes'
-      //     )
-      //   );
-      // }
-
-      this._breadcrumbBTNs.classList.remove('hidden');
+      this._breadcrumbFilters.classList.remove('hidden');
     }
 
     if (this._catalogPageEl.classList.contains('hidden')) {
-      this._breadcrumbBTNs.classList.add('hidden');
+      this._breadcrumbFilters.classList.add('hidden');
     }
 
     if (

@@ -47,9 +47,9 @@
             <svg class="profile-icon">
               <use xlink:href="assets/svg/sprite.svg#profile"></use>
             </svg>
-            <button type="button" class="btn-user topbar__login">Log in</button>
+            <button type="button" class="btn-user topbar__login modal-open" data-modal="sign-in">Log in</button>
             <span>/</span>
-            <button type="button" class="btn-user topbar__register">
+            <button type="button" class="btn-user topbar__register modal-open" data-modal="sign-up">
               Register
             </button>
           </div>
@@ -305,8 +305,8 @@
 
             <ul class="breadcrumb__catalog-list hidden">
               <li class="breadcrumb__catalog-item">
-                 <button class="breadcrumb__catalog-btn">
-                   <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+                 <button class="breadcrumb__catalog-btn clear-one">
+                   <svg class="breadcrumb__icon breadcrumb__icon--light">
                     <use xlink:href="assets/svg/sprite.svg#cross"></use>
                    </svg>
                 </button>
@@ -314,8 +314,8 @@
                      >Dresses</a>
               </li>
               <li class="breadcrumb__catalog-item">
-                <button class="breadcrumb__catalog-btn">
-                 <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+                <button class="breadcrumb__catalog-btn clear-one">
+                 <svg class="breadcrumb__icon breadcrumb__icon--light">
                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
                  </svg>
                </button>
@@ -323,8 +323,8 @@
                    >Yellow</a>
              </li>
              <li class="breadcrumb__catalog-item">
-               <button class="breadcrumb__catalog-btn">
-                 <svg class="breadcrumb__icon breadcrumb__icon--light clear-one">
+               <button class="breadcrumb__catalog-btn clear-one">
+                 <svg class="breadcrumb__icon breadcrumb__icon--light">
                    <use xlink:href="assets/svg/sprite.svg#cross"></use>
                  </svg>
                </button>
@@ -1125,7 +1125,7 @@
                       </ul>
                   </form>
       
-                  <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart">
+                  <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
                       <svg class="sale__icon-cart">
                           <use xlink:href="assets/svg/sprite.svg#cart"></use>
                       </svg>
@@ -2132,7 +2132,7 @@
   
                 <button
                   type="button"
-                  class="btn btn--solid btn--medium btn--sale btn__cart"
+                  class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart"
                 >
                   <svg class="sale__icon-cart">
                     <use xlink:href="assets/svg/sprite.svg#cart"></use>
@@ -4233,7 +4233,7 @@
                       <use xlink:href="assets/svg/sprite.svg#down-chevron"></use>
                     </svg>
                   </button>
-                  <button class="size-chart" type="button">
+                  <button class="size-chart modal-open" type="button" data-modal="size">
                     <svg class="input__icon input__icon--small">
                       <use xlink:href="assets/svg/sprite.svg#hanger"></use>
                     </svg>
@@ -4255,7 +4255,7 @@
                   </div>
                   <button
                     type="button"
-                    class="btn btn--solid btn__purchase btn__cart"
+                    class="btn btn--solid btn__purchase btn__cart modal-open" data-modal="cart"
                   >
                     <svg class="catalog__icon">
                       <use xlink:href="assets/svg/sprite.svg#cart"></use>
@@ -4612,7 +4612,7 @@
                 </ul>
               </div>
               <div class="reviews__toolbar">
-                <button type="button" class="btn btn--solid reviews__btn">
+                <button type="button" class="btn btn--solid reviews__btn modal-open" data-modal="review">
                   Leave a review
                 </button>
                 <form action="#" class="sort__form">
@@ -4991,7 +4991,7 @@
                   </ul>
                 </form>
     
-                <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart">
+                <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
                     <svg class="sale__icon-cart">
                         <use xlink:href="assets/svg/sprite.svg#cart"></use>
                     </svg>
@@ -5483,8 +5483,9 @@
                 Already have an account?
                 <input
                   type="button"
-                  class="checkout__sign-in-btn"
+                  class="checkout__sign-in-btn modal-open"
                   value="Sign in"
+                  data-modal="sign-in"
                 />
                 for faster checkout experience
               </p>
@@ -7948,7 +7949,7 @@
 
     <div class="overlay hidden"></div>
 
-    <section class="modal--size hidden">
+    <section class="modal--size hidden" data-modal="size">
       <button class="btn--close" type="button">
         <svg class="close__icon">
           <use xlink:href="assets/svg/sprite.svg#cross"></use>
@@ -8123,7 +8124,7 @@
       </div>
     </section>
 
-    <section class="modal--cart hidden">
+    <section class="modal--cart hidden" data-modal="cart">
       <div>
         <button class="btn--close" type="button">
             <svg class="close__icon">
@@ -8432,7 +8433,7 @@
        </div>
     </section> 
 
-    <section class="modal modal--small modal--review hidden">
+    <section class="modal modal--small modal--review hidden" data-modal="review">
       <button class="btn--close" type="button">
         <svg class="close__icon">
           <use xlink:href="assets/svg/sprite.svg#cross"></use>
@@ -8525,7 +8526,7 @@
       </form>
     </section>
 
-    <section class="modal modal--small modal--sign-in hidden">
+    <section class="modal modal--small modal--sign-in hidden" data-modal="sign-in">
             
       <button class="btn--close" type="button">
           <svg class="close__icon">
@@ -8559,7 +8560,7 @@
           </div>
           <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign in</button>
           <p class="modal__cta u-margin-bottom-medium">Don't have an account?
-              <a class="modal__link modal__link-sign-up" href="#">Sign up</a>
+              <a class="modal__link modal__link-sign-up modal-open" href="#" data-modal="sign-up">Sign up</a>
           </p>
       </form>
       <div class="modal__social">
@@ -8605,7 +8606,7 @@
       </div>
     </section>
 
-  <section class="modal modal--small modal--sign-up hidden">
+  <section class="modal modal--small modal--sign-up hidden" data-modal="sign-up">
     <button class="btn--close" type="button">
         <svg class="close__icon">
             <use
@@ -8652,7 +8653,7 @@
         </div>
         <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign up</button>
         <p class="modal__cta u-margin-bottom-medium">Already have an account?
-            <a class="modal__link modal__link-sign-in" href="#">Sign in</a>
+            <a class="modal__link modal__link-sign-in modal-open" href="#" data-modal="sign-in">Sign in</a>
         </p>
     </form>
     <div class="modal__social">

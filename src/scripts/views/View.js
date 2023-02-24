@@ -3,8 +3,9 @@ import icons from '../../assets/svg/sprite.svg';
 export default class View {
   _parentElement = document.querySelector('body');
   _headerEl = document.getElementById('header');
-  _homePageEl = document.getElementById('main__home');
   _mainEl = document.querySelector('.main');
+  _homePageEl = document.getElementById('main__home');
+  _accountPageEl = document.getElementById('main__account');
   _contactsEl = document.getElementById('main__contacts');
   _postPageEl = document.getElementById('main__post');
   _catalogPageEl = document.getElementById('main__catalog');
