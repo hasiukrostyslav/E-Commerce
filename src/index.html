@@ -16,6 +16,7 @@
               >(405) 555-0128</a
             >
           </p>
+
           <ul class="topbar__list">
             <li class="topbar__item">
               <a href="#" class="topbar__link">Delivery & returns</a>
@@ -30,6 +31,7 @@
               <a href="#" class="topbar__link" data-link="contacts">Contacts</a>
             </li>
           </ul>
+
           <div class="topbar__lang">
             <div class="topbar__lang-container">
               <svg class="flag-icon">
@@ -43,18 +45,36 @@
               </svg>
             </button>
           </div>
+
           <div class="topbar__account">
-            <svg class="profile-icon">
-              <use xlink:href="assets/svg/sprite.svg#profile"></use>
-            </svg>
-            <button type="button" class="btn-user topbar__login modal-open" data-modal="sign-in">Log in</button>
-            <span>/</span>
-            <button type="button" class="btn-user topbar__register modal-open" data-modal="sign-up">
-              Register
-            </button>
+            <div class="user-btns">
+              <svg class="profile-icon">
+                <use xlink:href="assets/svg/sprite.svg#profile"></use>
+              </svg>
+              <button type="button" class="btn-user topbar__login modal-open" data-modal="sign-in">Log in</button>
+              <span>/</span>
+              <button type="button" class="btn-user topbar__register modal-open" data-modal="sign-up">
+                Register
+              </button>
+            </div>
+
+            <div class="user-profile">
+              <svg class="profile-icon">
+                <use xlink:href="assets/svg/sprite.svg#profile"></use>
+              </svg>
+             
+              <a href="#" data-link="account" class="btn-user">Rostyslav</a>
+
+              <button type="button" class="btn-user btn-user--exit">
+                <svg>
+                  <use xlink:href="assets/svg/sprite.svg#logout"></use>
+              </svg>
+              </button>
+            </div>
           </div>
         </nav>
       </div>
+
       <div class="navbar__cover--light">
         <nav class="navigation container">
           <a href="#" class="logo-link" data-link="home"
@@ -82,6 +102,7 @@
               >
             </li>
           </ul>
+
           <form action="#" class="search">
             <input
               type="text"
@@ -94,6 +115,7 @@
               </svg>
             </button>
           </form>
+
           <div class="navigation__toolbar">
             <a href="#" class="navigation__like-link" data-link="account">
               <svg class="navigation__icon">
@@ -1545,7 +1567,7 @@
                 name="profile-new-pass"
                 id="profile-new-pass"
               />
-              <button type="button" class="input__btn input__btn--large">
+              <button type="button" class="input__btn input__btn--large pass-show">
                 <svg class="input__icon input__icon--large input__icon--light">
                   <use xlink:href="assets/svg/sprite.svg#eye"></use>
                 </svg>
@@ -1561,7 +1583,7 @@
                 name="profile-confirm-pass"
                 id="profile-confirm-pass"
               />
-              <button type="button" class="input__btn input__btn--large">
+              <button type="button" class="input__btn input__btn--large pass-show">
                 <svg class="input__icon input__icon--large input__icon--light">
                   <use xlink:href="assets/svg/sprite.svg#eye"></use>
                 </svg>
@@ -7209,7 +7231,7 @@
             <input
               class="input input--large"
               type="text"
-              name="name"
+              data-input="name"
               id="name"
               placeholder="Your name"
               required
@@ -7220,7 +7242,7 @@
             <input
               class="input input--large"
               type="email"
-              name="email-sign-up"
+              data-input="email"
               id="email-sign-up-blog"
               placeholder="Your working email"
               required
@@ -7230,7 +7252,7 @@
             <label class="label label--large" for="textarea-comment">Your comment*</label>
             <textarea
               class="form__textarea input input--large"
-              name="textarea"
+              data-input="text"
               id="textarea-comment"
               placeholder="Type comment here"
             ></textarea>
@@ -8422,14 +8444,14 @@
             <p class="cart__subtotal">Subtotal:</p>
             <p class="cart__total">&dollar;198.65</p>
         </div>
-        <a href="#" class="btn btn--solid btn__purchase cart__btn" data-link="checkout">
+        <button href="#" class="btn btn--solid btn__purchase cart__btn" type="submit" data-link="checkout" data-submit="checkout">
             <svg class="cart__icon">
                 <use
                     xlink:href="assets/svg/sprite.svg#card"
                 ></use>
             </svg>
             Checkout
-        </a>
+        </button>
        </div>
     </section> 
 
@@ -8446,7 +8468,7 @@
           <input
             class="input input--medium"
             type="text"
-            name="name-review"
+            data-input="name"
             id="name-review"
             placeholder="Your name"
             required
@@ -8457,7 +8479,7 @@
           <input
             class="input input--medium"
             type="email"
-            name="email-review"
+            data-input="email"
             id="email-review"
             placeholder="Your working email"
             required
@@ -8467,7 +8489,7 @@
           <label class="label label--medium" for="rating">Rating</label>
           <select
             class="input input--medium select"
-            name="rating"
+            data-input="rating"
             id="rating"
           >
             <option value="Choose rating" selected disabled>
@@ -8520,7 +8542,7 @@
           ></textarea>
         </div>
 
-        <button class="btn btn--solid btn--medium btn--modal-rv" type="submit">
+        <button class="btn btn--solid btn--medium btn--modal-rv" type="submit" data-submit="review">
           Submit a review
         </button>
       </form>
@@ -8540,12 +8562,12 @@
       <form action="#" class="modal__form">
           <div class="input__box">
               <label class="label label--medium" for="email-sign-in">Email</label>
-              <input class="input input--medium" type="email" name="email-sign-in" id="email-sign-in" placeholder="Your working email" required>
+              <input class="input input--medium" type="email" data-input="email" id="email-sign-in" placeholder="Your working email" required>
           </div>
           <div class="input__box">
               <label class="label label--medium" for="password-sign-in">Password</label>
-              <input class="input input--medium input--padding-medium" type="password" name="password-sign-in" id="password-sign-in" placeholder="Enter your password" required>
-              <button type="button" class="input__btn input__btn--medium">
+              <input class="input input--medium input--padding-medium" type="password" data-input="pass" id="password-sign-in" placeholder="Enter your password" required>
+              <button type="button" class="input__btn input__btn--medium pass-show">
                   <svg class="input__icon input__icon--medium">
                       <use
                           xlink:href="assets/svg/sprite.svg#eye"
@@ -8558,7 +8580,7 @@
               <label class="checkbox__label checkbox__label--small" for="check-sign-in"><span class="checkbox__mark">&nbsp;</span>Keep me signed in</label>
                   <a class="modal__link" href="#">Forgot password?</a>
           </div>
-          <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign in</button>
+          <button class="btn btn--solid btn--medium btn--modal" type="submit" data-submit="sign-in">Sign in</button>
           <p class="modal__cta u-margin-bottom-medium">Don't have an account?
               <a class="modal__link modal__link-sign-up modal-open" href="#" data-modal="sign-up">Sign up</a>
           </p>
@@ -8619,16 +8641,16 @@
     <form action="#" class="modal__form">
         <div class="input__box">
             <label class="label label--medium" for="full-name">Full Name</label>
-            <input class="input input--medium" type="text" name="full-name" id="full-name" placeholder="Your full name" required> 
+            <input class="input input--medium" type="text" data-input="full-name" id="full-name" placeholder="Your full name" required> 
         </div>
         <div class="input__box">
             <label class="label label--medium" for="email-sign-up">Email</label>
-            <input class="input input--medium" type="email" name="email-sign-up" id="email-sign-up" placeholder="Your working email" required>
+            <input class="input input--medium" type="email" data-input="email" id="email-sign-up" placeholder="Your working email" required>
         </div>
         <div class="input__box">
             <label class="label label--medium" for="password-sign-up">Password</label>
-            <input class="input input--medium input--padding-medium" type="password" name="password-sign-up" id="password-sign-up" placeholder="Enter your password" required>
-            <button type="button" class="input__btn input__btn--medium">
+            <input class="input input--medium input--padding-medium" type="password" data-input="pass" id="password-sign-up" placeholder="Enter your password" required>
+            <button type="button" class="input__btn input__btn--medium pass-show">
                 <svg class="input__icon input__icon--medium">
                     <use
                         xlink:href="assets/svg/sprite.svg#eye"
@@ -8638,8 +8660,8 @@
         </div>
         <div class="input__box">
             <label class="label label--medium" for="password-sign-up-confirm">Confirm Password</label>
-            <input class="input input--medium input--padding-medium" type="password" name="password-sign-up-confirm" id="password-sign-up-confirm" placeholder="Confirm your password" required>
-            <button type="button" class="input__btn input__btn--medium">
+            <input class="input input--medium input--padding-medium" type="password" data-input="pass-confirm" id="password-sign-up-confirm" placeholder="Confirm your password" required>
+            <button type="button" class="input__btn input__btn--medium pass-show">
                 <svg class="input__icon input__icon--medium">
                     <use
                         xlink:href="assets/svg/sprite.svg#eye"
@@ -8651,7 +8673,7 @@
             <input class="checkbox__input" type="checkbox" name="check-sign-up" id="check-sign-up" checked>
             <label class="checkbox__label checkbox__label--small" for="check-sign-up"><span class="checkbox__mark">&nbsp;</span>Remember me</label>
         </div>
-        <button class="btn btn--solid btn--medium btn--modal" type="submit">Sign up</button>
+        <button class="btn btn--solid btn--medium btn--modal" type="submit" data-submit="sign-up">Sign up</button>
         <p class="modal__cta u-margin-bottom-medium">Already have an account?
             <a class="modal__link modal__link-sign-in modal-open" href="#" data-modal="sign-in">Sign in</a>
         </p>

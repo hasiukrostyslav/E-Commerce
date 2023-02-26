@@ -20,6 +20,7 @@ export default class View {
   init() {
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
+    this._addHandlerTogglePassword();
     this._setObserver(this._setBreadcrumbLinks.bind(this));
   }
 
@@ -163,6 +164,27 @@ export default class View {
   _goToSlide(slide = 0) {
     this._slides.forEach(
       (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  }
+
+  // Show / hide password
+  _togglePassword(e) {
+    const btn = e.target.closest('.pass-show');
+    if (!btn) return;
+
+    const input = btn.closest('div').querySelector('.input');
+
+    const type = input.type === 'password' ? 'text' : 'password';
+    input.type = type;
+    btn.querySelector('svg').innerHTML = `<use xlink:href="${icons}#${
+      type === 'text' ? 'closed-eye' : 'eye'
+    }"></use>`;
+  }
+
+  _addHandlerTogglePassword() {
+    this._parentElement.addEventListener(
+      'click',
+      this._togglePassword.bind(this)
     );
   }
 }

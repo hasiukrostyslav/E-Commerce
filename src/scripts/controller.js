@@ -25,3 +25,22 @@ function controlSignIn() {}
 function init() {}
 
 init();
+modalView.addHandlerLogIn();
+
+// const search = document.querySelector('.search');
+// const text = document.querySelector('.topbar__phone');
+// const nav = document.querySelector('.navigation__toolbar');
+// const btns = document.querySelector('.user-btns');
+// const profile = document.querySelector('.user-profile');
+
+// text.addEventListener('click', () => {
+//   search.classList.add('search__shrink');
+//   nav.style.display = 'flex';
+//   btns.style.display = 'none';
+//   profile.style.display = 'flex';
+// });
+// search.classList.add('search__shrink');
+// nav.style.display = 'flex';
+
+document.querySelector('.modal--sign-in').classList.remove('hidden');
+// console.log(modalView);

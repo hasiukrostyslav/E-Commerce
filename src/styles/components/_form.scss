@@ -535,7 +535,6 @@
 
 .search {
   flex: 0 0 38rem;
-  margin-right: 4.8rem;
   width: 100%;
 
   display: flex;
@@ -544,10 +543,9 @@
   position: relative;
   transition: all 1s;
 
-  // &__shrink {
-  //   flex: 0 0 38rem;
-  //   margin-right: 4.8rem;
-  // }
+  &__shrink {
+    flex: 0 0 38rem;
+  }
 
   &--sidebar {
     padding-bottom: 3.2rem;
