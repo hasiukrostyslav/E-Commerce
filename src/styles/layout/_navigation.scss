@@ -242,6 +242,10 @@
 
     &__like-link {
       @extend %flex-link;
+
+      &--idle {
+        pointer-events: none;
+      }
     }
 
     &__like-count {
@@ -267,6 +271,10 @@
       width: 2rem;
       height: 2rem;
       fill: $color-gray-dark-2;
+
+      &--idle {
+        fill: $color-gray-dark-5;
+      }
     }
   }
 }

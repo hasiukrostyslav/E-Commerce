@@ -19,6 +19,19 @@ class NavigationView extends View {
     this._setObserver(this._reset.bind(this));
   }
 
+  changeAccountToolbar(user) {
+    const btns = this._navigationEl.querySelector('.user-btns');
+    const account = this._navigationEl.querySelector('.user-profile');
+    btns.style.display = 'none';
+    account.style.display = 'flex';
+    account.querySelector('a').textContent = user;
+
+    const link = this._navigationEl.querySelector('.navigation__like-link');
+    link.classList.remove('navigation__like-link--idle');
+    link.querySelector('svg').classList.remove('navigation__icon--idle');
+    link.querySelector('span').textContent = 2;
+  }
+
   _reset(records) {
     const target = records.find(
       (record) => record.target === document.getElementById('main__catalog')

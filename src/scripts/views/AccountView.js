@@ -15,6 +15,22 @@ class AccountView extends View {
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
+  renderProfileData(data) {
+    document.querySelector(
+      '.account__user-name'
+    ).textContent = `${data.firstName} ${data.lastName}`;
+
+    document.querySelector('.account__user-email').textContent = data.email;
+    document.getElementById('first-name').value = data.firstName;
+    document.getElementById('last-name').value = data.lastName;
+    document.getElementById('profile-email').value = data.email;
+    document.getElementById('phone-profile').value = data.phone || '';
+    document.getElementById('country').value = data.country || '';
+    document.getElementById('city').value = data.city || '';
+    document.getElementById('address').value = data.address || '';
+    document.getElementById('code').value = data.zipCode || '';
+  }
+
   _renderBreadcrumb() {
     if (!this._accountPageEl.classList.contains('hidden')) {
       const link = this._accountPageEl

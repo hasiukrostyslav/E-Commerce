@@ -2,6 +2,7 @@ import icons from '../../assets/svg/sprite.svg';
 
 export default class View {
   _parentElement = document.querySelector('body');
+  _navigationEl = document.querySelector('.navbar');
   _headerEl = document.getElementById('header');
   _mainEl = document.querySelector('.main');
   _homePageEl = document.getElementById('main__home');

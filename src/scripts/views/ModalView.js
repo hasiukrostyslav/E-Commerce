@@ -2,6 +2,9 @@ import View from './View';
 import { ERROR } from '../config';
 
 class ModalView extends View {
+  _btnLogIn = document.querySelector('.btn[data-submit="sign-in"]');
+  _btnRegister;
+
   constructor() {
     super();
     this._getOpenModalButtons();
@@ -43,6 +46,12 @@ class ModalView extends View {
     this._overlay.classList.add('hidden');
   }
 
+  _clearInputs(modal) {
+    [...modal.querySelectorAll('input')]
+      .filter((input) => input.dataset.input)
+      .forEach((input) => (input.value = ''));
+  }
+
   _openModal(e) {
     const btn = e.target.closest('.modal-open');
 
@@ -74,7 +83,7 @@ class ModalView extends View {
       e.target.closest('.overlay') ||
       e.code === 'Escape'
     ) {
-      // this._clearInputs(modal);
+      this._clearInputs(modal);
       this._addHiddenClass(modal);
     }
   }
@@ -92,83 +101,120 @@ class ModalView extends View {
   }
 
   // Validation / submit data
-  _generateWarningMarkup(data) {
-    return `<span class="input__warning" data-warning="${data}"></span>`;
-  }
-
   _renderWarning(input, data) {
-    input.insertAdjacentHTML('afterend', this._generateWarningMarkup(data));
+    input.insertAdjacentHTML(
+      'afterend',
+      `<span class="input__warning" data-warning="${data}"></span>`
+    );
   }
 
   _showWarning(inputEl) {
     const warning = this._modal.querySelector('.input__warning');
     inputEl.classList.add('input--invalid');
 
-    if (inputEl.type === 'email') {
+    if (
+      (inputEl.type === 'email' && !inputEl.id === 'email-sign-in') ||
+      (inputEl.type === 'email' && !inputEl.value)
+    ) {
       warning.textContent = ERROR.email;
     }
 
-    if (inputEl.type === 'password') {
-      warning.textContent = ERROR.passLenght;
+    if (inputEl.id === 'email-sign-in' && inputEl.value) {
+      warning.textContent = ERROR.emailWrong;
+    }
+
+    if (inputEl.type === 'password' && inputEl.value.length < 6) {
+      warning.textContent = ERROR.passLength;
+    }
+
+    if (inputEl.id === 'password-sign-in' && inputEl.value.length >= 6) {
+      warning.textContent = ERROR.passWrong;
     }
   }
 
-  _validationData(e) {
-    e.preventDefault();
+  // validationData(e) {
+  //   this._modal = e.target.closest('section[data-modal]');
+  //   this._modal
+  //     .querySelectorAll('.input__warning')
+  //     .forEach((el) => el.remove());
 
-    const btn = e.target;
-    this._modal = btn.closest('section[data-modal]');
+  //   const inputs = [...this._modal.querySelectorAll('input')].filter(
+  //     (input) => input.dataset.input
+  //   );
+
+  //   if (inputs.find((el) => el.dataset.input === 'email')) {
+  //     this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
+  //     if (
+  //       !this._inputEmail.value.includes('@') ||
+  //       !this._inputEmail.value.includes('.') ||
+  //       this._inputEmail.value.includes('@.') ||
+  //       this._inputEmail.value.at(-1) === '.'
+  //     ) {
+  //       this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
+  //       this._showWarning(this._inputEmail);
+  //       return;
+  //     }
+
+  //     this._email = this._inputEmail.value;
+  //     this._inputEmail.classList.remove('input--invalid');
+  //   }
+
+  //   if (inputs.find((el) => el.dataset.input === 'pass')) {
+  //     this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
+  //     if (this._inputPass.value.length < 6) {
+  //       this._renderWarning(this._inputPass, this._inputPass.dataset.input);
+  //       this._showWarning(this._inputPass);
+  //       return;
+  //     }
+  //     this._pass = this._inputPass.value;
+  //     this._inputPass.classList.remove('input--invalid');
+  //   }
+  //   console.log('Correct');
+  // }
+
+  validationLogIn(data) {
+    this._modal = document.querySelector('.modal--sign-in');
+    const inputs = [...this._modal.querySelectorAll('input')].filter(
+      (input) => input.dataset.input
+    );
+    this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
+    this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
+    let email;
+    let pass;
+
     this._modal
       .querySelectorAll('.input__warning')
       .forEach((el) => el.remove());
 
-    const inputs = [...this._modal.querySelectorAll('input')].filter(
-      (input) => input.dataset.input
-    );
+    const user = data.find((el) => el.email === this._inputEmail.value);
 
-    if (inputs.find((el) => el.dataset.input === 'email')) {
-      this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
-
-      if (
-        !this._inputEmail.value.includes('@') ||
-        !this._inputEmail.value.includes('.') ||
-        this._inputEmail.value.includes('@.') ||
-        this._inputEmail.value.at(-1) === '.'
-      ) {
-        this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
-        this._showWarning(this._inputEmail);
-        return;
-      }
-
-      this._email = this._inputEmail.value;
+    if (!user) {
+      this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
+      this._showWarning(this._inputEmail);
+      return;
+    }
+    if (user) {
+      email = this._inputEmail.value;
       this._inputEmail.classList.remove('input--invalid');
     }
 
-    if (inputs.find((el) => el.dataset.input === 'pass')) {
-      this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
-      if (this._inputPass.value.length < 6) {
-        this._renderWarning(this._inputPass, this._inputPass.dataset.input);
-        this._showWarning(this._inputPass);
-        return;
-      }
-      this._pass = this._inputPass.value;
+    if (+this._inputPass.value === user.password) {
+      pass = this._inputPass.value;
       this._inputPass.classList.remove('input--invalid');
+    } else {
+      this._renderWarning(this._inputPass, this._inputPass.dataset.input);
+      this._showWarning(this._inputPass);
     }
-    console.log('Correct');
+
+    if (email && pass) {
+      this._clearInputs(this._modal);
+      this._addHiddenClass(this._modal);
+      return user;
+    }
   }
 
-  _submitLogIn(e) {
-    if (
-      e.target !==
-      this._btnsSubmit.find((btn) => btn.closest('.modal--sign-in'))
-    )
-      return;
-
-    this._validationData(e);
-  }
-
-  addHandlerLogIn() {
-    this._parentElement.addEventListener('click', this._submitLogIn.bind(this));
+  addHandlerLogIn(handler) {
+    this._btnLogIn.addEventListener('click', handler);
   }
 }
 export default new ModalView();
