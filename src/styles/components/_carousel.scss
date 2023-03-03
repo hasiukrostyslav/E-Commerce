@@ -16,9 +16,24 @@
   &__cards {
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
+    gap: 3rem;
 
-    &--gap {
-      gap: 3rem;
+    &--gap-sm {
+      gap: 2.65rem;
+    }
+
+    &--wrapper {
+      overflow: hidden;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    &--gap-lg {
+      gap: 13.5rem;
     }
   }
 

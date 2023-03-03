@@ -1,3 +1,4 @@
+import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS } from '../config';
 import icons from '../../assets/svg/sprite.svg';
 
 export default class View {
@@ -19,10 +20,13 @@ export default class View {
   _overlay = document.querySelector('.overlay');
 
   init() {
+    this._getCurrentDay();
+    this._startCountDownTimer();
+    this._setObserver(this._setBreadcrumbLinks.bind(this));
+
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
-    this._setObserver(this._setBreadcrumbLinks.bind(this));
   }
 
   _setObserver(callback) {
@@ -186,6 +190,54 @@ export default class View {
     this._parentElement.addEventListener(
       'click',
       this._togglePassword.bind(this)
+    );
+  }
+
+  // TIMER
+  _getCurrentDay() {
+    this._currentDay = new Date().getTime();
+  }
+
+  _countDown(timer, countDownDate) {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    const day = String(
+      Math.trunc(distance / (MILISECONDS * SECONDS * MINUTES * HOURS))
+    ).padStart(2, 0);
+
+    const hour = String(
+      Math.trunc(
+        Math.trunc(distance % (MILISECONDS * SECONDS * MINUTES * HOURS)) /
+          (MILISECONDS * SECONDS * MINUTES)
+      )
+    ).padStart(2, 0);
+
+    const minute = String(
+      Math.trunc(
+        (distance % (MILISECONDS * SECONDS * MINUTES)) / (MILISECONDS * SECONDS)
+      )
+    ).padStart(2, 0);
+
+    const second = String(
+      Math.trunc((distance % (MILISECONDS * SECONDS)) / MILISECONDS)
+    ).padStart(2, 0);
+
+    document.querySelector('.digit--days').textContent = day;
+    document.querySelector('.digit--hours').textContent = hour;
+    document.querySelector('.digit--mins').textContent = minute;
+    document.querySelector('.digit--sec').textContent = second;
+
+    if (distance === 0) clearInterval(timer);
+  }
+
+  _startCountDownTimer() {
+    const countDownDate =
+      this._currentDay + DAYS * HOURS * MINUTES * SECONDS * MILISECONDS;
+
+    const timer = setInterval(
+      () => this._countDown(timer, countDownDate),
+      1000
     );
   }
 }

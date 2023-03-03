@@ -71,7 +71,6 @@ class HeaderView extends View {
   }
 
   _addHandlerChangeSlide() {
-    // if (!this._headerEl) return;
     this._headerEl.addEventListener(
       'click',
       this._changeSlideInterval.bind(this)

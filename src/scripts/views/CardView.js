@@ -8,6 +8,7 @@ class CardView extends View {
     super();
 
     this.addHandlerMoveToWishlist();
+    // this._render();
   }
 
   _moveToWishlist(e) {
@@ -29,6 +30,129 @@ class CardView extends View {
       'click',
       this._moveToWishlist.bind(this)
     );
+  }
+
+  _render() {
+    const div = document
+      .querySelector('.sale')
+      .querySelector('.carousel__cards');
+    div.innerHTML = '';
+    div.insertAdjacentHTML('afterbegin', this._generateCardMarkup());
+  }
+
+  _generateCardMarkup() {
+    return `
+      <div class="card">
+        <img src="assets/images/sale-3.jpg" alt="Photo of boots" class="card__img card__img--large">
+      
+        <div class="card__details card__details--current">
+          <a href="#" class="card__heading" data-link="product">Wide heel suede ankle boots</a>
+          <p class="card__price card__price--large">&dollar;120.60</p>
+          <p class="card__price card__price--regular card__price--new">&dollar;119.16<span class="card__price--old card__price--old-lg">&dollar;148.95</span></p>
+        
+          <form action="#" class="card__form">
+            <ul class="card__radio-list">
+              <li class="card__radio-item">
+                <input class="size__radio" type="radio" name="size" id="36">
+                <label class="size__label" for="36">36</label>
+              </li>
+              <li class="card__radio-item">
+                <input class="size__radio" type="radio" name="size" id="37" checked>
+                  <label class="size__label" for="37">37</label>
+              </li>
+              <li class="card__radio-item">
+                <input class="size__radio" type="radio" name="size" id="38">
+                  <label class="size__label" for="38">38</label>
+              </li>
+              <li class="card__radio-item"> 
+                <input class="size__radio" type="radio" name="size" id="39">
+                <label class="size__label" for="39">39</label>
+              </li>
+              <li class="card__radio-item">
+                <input class="size__radio" type="radio" name="size" id="40">
+                <label class="size__label" for="40">40</label>
+              </li>
+            </ul>
+
+            <ul class="card__radio-list">
+              <li class="card__radio-item">
+                <input class="color__radio" type="radio" name="color" id="black-1" checked>
+                <label class="color__label color__label--sm" for="black-1">&nbsp;
+                  <span class="color__type color__type--sm color__type--black">&nbsp;</span>
+                </label>
+              </li>
+              <li class="card__radio-item">
+                <input class="color__radio" type="radio" name="color" id="brown-2">
+                <label class="color__label color__label--sm" for="brown-2">&nbsp;
+                  <span class="color__type color__type--sm color__type--brown">&nbsp;</span>
+                </label>
+              </li>
+              <li class="card__radio-item">
+                <input class="color__radio" type="radio" name="color" id="blue-gray-2">
+                <label class="color__label color__label--sm" for="blue-gray-2">&nbsp;
+                  <span class="color__type color__type--sm color__type--blue-gray">&nbsp;</span>
+                </label>
+              </li>
+            </ul>
+          </form>
+        
+          <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
+            <svg class="sale__icon-cart">
+              <use xlink:href="${icons}#cart"></use>
+            </svg>
+            Add to cart
+          </button>
+        </div>
+        
+        <div class="card__btns-container">
+          <p class="sale__percent">-20%</p>
+        
+          <div class="rating rating--card">
+            <svg class="rating__icon">
+              <use xlink:href="${icons}#star-filled">
+              </use>
+            </svg>
+            <svg class="rating__icon">
+              <use xlink:href="${icons}#star-filled">
+              </use>
+            </svg>
+            <svg class="rating__icon">
+              <use xlink:href="${icons}#star-filled">
+              </use>
+            </svg>
+            <svg class="rating__icon">
+              <use xlink:href="${icons}#star-filled">
+              </use>
+            </svg>
+            <svg class="rating__icon">
+              <use xlink:href="${icons}#star-filled">
+              </use>
+            </svg>              
+          </div>
+        
+          <button class="card__btn-wishlist card__btn-wishlist--large btn-wishlist-add">
+            <svg class="wishlist__icon">
+              <use xlink:href="${icons}#heart-outline">
+              </use>
+            </svg>
+          </button>
+        
+          <button type="button" class="card__btn card__btn--prev card__btn--large">
+            <svg class="card__icon-arr card__icon--prev">
+              <use xlink:href="${icons}#left-chevron">
+              </use>
+            </svg>
+          </button>
+
+          <button type="button" class="card__btn card__btn--next card__btn--large">
+            <svg class="card__icon-arr card__icon--next">
+              <use xlink:href="${icons}#right-chevron">
+              </use>
+            </svg>
+          </button> 
+        </div>   
+      </div>
+    `;
   }
 }
 export default new CardView();
