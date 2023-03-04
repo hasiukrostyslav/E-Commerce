@@ -1,5 +1,9 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
+import data from '../data';
+
+const img = data.catalog.at(13);
+console.log(img);
 
 class CardView extends View {
   _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
@@ -38,17 +42,26 @@ class CardView extends View {
       .querySelector('.carousel__cards');
     div.innerHTML = '';
     div.insertAdjacentHTML('afterbegin', this._generateCardMarkup());
+    div.insertAdjacentHTML('afterbegin', this._generateCardMarkup());
   }
 
   _generateCardMarkup() {
     return `
       <div class="card">
-        <img src="assets/images/sale-3.jpg" alt="Photo of boots" class="card__img card__img--large">
+        <img src="${img.images}" alt="Photo of ${
+      img.title
+    }" class="card__img card__img--large">
       
         <div class="card__details card__details--current">
-          <a href="#" class="card__heading" data-link="product">Wide heel suede ankle boots</a>
+          <a href="#" class="card__heading" data-link="product">${
+            img.description
+          }</a>
           <p class="card__price card__price--large">&dollar;120.60</p>
-          <p class="card__price card__price--regular card__price--new">&dollar;119.16<span class="card__price--old card__price--old-lg">&dollar;148.95</span></p>
+          <p class="card__price card__price--regular card__price--new">&dollar;${
+            img.price - Math.round(img.price / img.discountPercentage[0])
+          }<span class="card__price--old card__price--old-lg">&dollar;${
+      img.price
+    }</span></p>
         
           <form action="#" class="card__form">
             <ul class="card__radio-list">

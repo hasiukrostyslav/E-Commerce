@@ -1,4 +1,4 @@
-// import * as img from '../assets/images';
+import images from './helper';
 
 const data = {
   users: [
@@ -31,7 +31,7 @@ const data = {
       color: ['blue-gray', 'red', 'yellow'],
       brand: 'Ann Taylor',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-1.jpg`],
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ const data = {
       color: ['blue-dark', 'black', 'gray'],
       brand: 'Ann Taylor',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-2.jpg`],
     },
     {
       id: 3,
@@ -59,7 +59,7 @@ const data = {
       color: [],
       brand: 'NewCap',
       category: 'accessories',
-      images: [],
+      images: images[`catalog-3.jpg`],
     },
     {
       id: 4,
@@ -73,7 +73,7 @@ const data = {
       color: ['green', 'pink', 'purple'],
       brand: 'Banana Republic',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-4.jpg`],
     },
     {
       id: 5,
@@ -87,7 +87,7 @@ const data = {
       color: ['black'],
       brand: 'Jhon Smith',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-5.jpg`],
     },
     {
       id: 6,
@@ -101,7 +101,7 @@ const data = {
       color: [],
       brand: 'DolcheVita',
       category: 'accessories',
-      images: [],
+      images: images[`catalog-6.jpg`],
     },
     {
       id: 7,
@@ -115,7 +115,7 @@ const data = {
       color: [],
       brand: 'Luxer',
       category: 'accessories',
-      images: [],
+      images: images[`catalog-7.jpg`],
     },
     {
       id: 8,
@@ -129,7 +129,7 @@ const data = {
       color: [],
       brand: 'NewCap',
       category: 'shoes',
-      images: [],
+      images: images[`catalog-8.jpg`],
     },
     {
       id: 9,
@@ -143,7 +143,7 @@ const data = {
       color: ['pink', 'blue-gray', 'yellow-light'],
       brand: 'Columbus',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-9.jpg`],
     },
     {
       id: 10,
@@ -157,7 +157,7 @@ const data = {
       color: ['blue-dark', 'black', 'gray'],
       brand: 'Columbus',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-10.jpg`],
     },
     {
       id: 11,
@@ -171,7 +171,7 @@ const data = {
       color: ['red-dark', 'beige', 'brown'],
       brand: 'Luxur',
       category: 'accessories',
-      images: [],
+      images: images[`catalog-11.jpg`],
     },
     {
       id: 12,
@@ -185,38 +185,10 @@ const data = {
       color: ['gray', 'white', 'black'],
       brand: 'Conversion',
       category: 'shoes',
-      images: [],
+      images: images[`catalog-12.jpg`],
     },
     {
       id: 13,
-      title: 'Sunglasses',
-      description: 'Metal bridge sunglasses',
-      price: 89.95,
-      sale: false,
-      discountPercentage: [20, 30, 50, 70],
-      rating: '',
-      size: [],
-      color: ['orange', 'black', 'brown-light'],
-      brand: 'Ann Taylor',
-      category: 'accessories',
-      images: [],
-    },
-    {
-      id: 14,
-      title: 'Sandals',
-      description: 'Leather sandals',
-      price: 48,
-      sale: false,
-      discountPercentage: [20, 30, 50, 70],
-      rating: 5,
-      size: [35, 36, 37, 38, 39, 40, 41, 42],
-      color: ['black'],
-      brand: 'Conversion',
-      category: 'shoes',
-      images: [],
-    },
-    {
-      id: 15,
       title: 'Shorts',
       description: 'Denim shorts',
       price: 24,
@@ -227,10 +199,10 @@ const data = {
       color: ['blue-dark'],
       brand: 'Jhon Smith',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-13.jpg`],
     },
     {
-      id: 16,
+      id: 14,
       title: 'Trenchcoat',
       description: 'Modal-blend trenchcoat',
       price: 18.15,
@@ -241,7 +213,35 @@ const data = {
       color: ['black', 'white', 'red-dark'],
       brand: 'Jhon Smith',
       category: 'clothes',
-      images: [],
+      images: images[`catalog-14.jpg`],
+    },
+    {
+      id: 15,
+      title: 'Sandals',
+      description: 'Leather sandals',
+      price: 48,
+      sale: false,
+      discountPercentage: [20, 30, 50, 70],
+      rating: 5,
+      size: [35, 36, 37, 38, 39, 40, 41, 42],
+      color: ['black'],
+      brand: 'Conversion',
+      category: 'shoes',
+      images: images[`catalog-15.jpg`],
+    },
+    {
+      id: 16,
+      title: 'Sunglasses',
+      description: 'Metal bridge sunglasses',
+      price: 89.95,
+      sale: false,
+      discountPercentage: [20, 30, 50, 70],
+      rating: '',
+      size: [],
+      color: ['orange', 'black', 'brown-light'],
+      brand: 'Ann Taylor',
+      category: 'accessories',
+      images: images[`catalog-16.jpg`],
     },
     {
       id: 17,
@@ -255,7 +255,7 @@ const data = {
       color: ['black', 'brown', 'blue-gray'],
       brand: 'Fred Berry',
       category: 'shoes',
-      images: [],
+      images: images[`catalog-17.jpg`],
     },
   ],
   posts: [
@@ -310,4 +310,5 @@ const data = {
     },
   ],
 };
+
 export default data;
