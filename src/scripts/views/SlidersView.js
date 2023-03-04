@@ -24,14 +24,14 @@ class SlidersView extends View {
     });
   }
 
-  _activateSlideTab(slide = 1) {
-    this._sectionsTabs.forEach((el) => {
+  _activateSlideTab(slide = 1, slider = this._sectionsTabs) {
+    slider.forEach((el) => {
       el.querySelectorAll('.carousel__btn--tab').forEach((tab) =>
         tab.classList.remove('carousel__btn--current')
       );
     });
 
-    this._sectionsTabs.forEach((el) => {
+    slider.forEach((el) => {
       const tab = el.querySelector(`.carousel__btn[data-slide="${slide}"]`);
       if (!tab) return;
       tab.classList.add('carousel__btn--current');
@@ -46,11 +46,9 @@ class SlidersView extends View {
       .querySelector('.carousel__btn--current');
     const cards = [...e.target.closest('section').querySelectorAll('.card')];
 
-    cards.forEach((s, i, arr) => {
+    cards.forEach((s, _, arr) => {
       if (slide > curSlide.dataset.slide) {
-        if (slide - curSlide.dataset.slide === 1)
-          s.style.order =
-            s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+        if (slide - curSlide.dataset.slide === 1) this._minusOrder(s, arr);
 
         if (slide - curSlide.dataset.slide > 1)
           s.style.order =
@@ -61,10 +59,7 @@ class SlidersView extends View {
 
       if (slide < curSlide.dataset.slide) {
         if (curSlide.dataset.slide - slide === 1) {
-          s.style.order =
-            +s.style.order === arr.length
-              ? 1
-              : (s.style.order = +s.style.order + 1);
+          this._plusOrder(s, arr);
         }
 
         if (curSlide.dataset.slide - slide > 1)
@@ -91,25 +86,41 @@ class SlidersView extends View {
       .forEach((card, i) => (card.style.order = i + 1));
   }
 
-  _nextSlide(e) {
-    const btnNext = e.target.closest('.carousel__btn--next');
-    if (!btnNext) return;
+  _combineTabsAndButtons(btn) {
+    if (btn.closest('.product__look')) {
+      const firstSlide = [
+        ...btn.closest('.product__look').querySelectorAll('.card'),
+      ].find((el) => +el.style.order === 1);
 
-    if (btnNext.closest('section').querySelectorAll('.card')) {
-      const slides = btnNext.closest('section').querySelectorAll('.card');
-      slides.forEach(
-        (s, _, arr) =>
-          (s.style.order =
-            s.style.order <= 1 ? arr.length : (s.style.order -= 1))
-      );
+      const tabs = [
+        ...btn
+          .closest('.product__look')
+          .querySelectorAll('.carousel__btn--tab'),
+      ];
+      tabs.forEach((el) => el.classList.remove('carousel__btn--current'));
+      if (+firstSlide.dataset.slide === 1)
+        tabs[0].classList.add('carousel__btn--current');
+      if (+firstSlide.dataset.slide === 2)
+        tabs[1].classList.add('carousel__btn--current');
     }
+  }
 
-    if (btnNext.closest('section').querySelectorAll('.post__carousel-item')) {
+  _minusOrder(s, arr) {
+    s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+  }
+
+  _plusOrder(s, arr) {
+    s.style.order =
+      +s.style.order === arr.length ? 1 : (s.style.order = +s.style.order + 1);
+  }
+
+  _changePostSlide(btn, func) {
+    if (btn.closest('section').querySelectorAll('.post__carousel-item')) {
       const slides = [
-        ...btnNext.closest('section').querySelectorAll('.post__carousel-item'),
+        ...btn.closest('section').querySelectorAll('.post__carousel-item'),
       ];
       slides.forEach((s, _, arr) => {
-        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+        func(s, arr);
         s.querySelector('.sidebar__feature-info').classList.add(
           'u-order-first'
         );
@@ -125,6 +136,19 @@ class SlidersView extends View {
       firstSlide.querySelector('.sidebar__date').classList.remove('u-right');
       firstSlide.querySelector('img').classList.remove('sidebar__img-right');
     }
+  }
+
+  _nextSlide(e) {
+    const btnNext = e.target.closest('.carousel__btn--next');
+    if (!btnNext) return;
+
+    if (btnNext.closest('section').querySelectorAll('.card')) {
+      const slides = btnNext.closest('section').querySelectorAll('.card');
+      slides.forEach((s, _, arr) => this._minusOrder(s, arr));
+    }
+
+    this._combineTabsAndButtons(btnNext);
+    this._changePostSlide(btnNext, this._minusOrder.bind(this));
   }
 
   _prevSlide(e) {
@@ -133,40 +157,25 @@ class SlidersView extends View {
 
     if (btnPrev.closest('section').querySelectorAll('.card')) {
       const slides = btnPrev.closest('section').querySelectorAll('.card');
-
-      slides.forEach((s, _, arr) => {
-        s.style.order =
-          +s.style.order === arr.length
-            ? 1
-            : (s.style.order = +s.style.order + 1);
-      });
+      slides.forEach((s, _, arr) => this._plusOrder(s, arr));
     }
 
-    if (btnPrev.closest('section').querySelectorAll('.post__carousel-item')) {
-      const slides = [
-        ...btnPrev.closest('section').querySelectorAll('.post__carousel-item'),
-      ];
-      slides.forEach((s, _, arr) => {
-        s.style.order =
-          +s.style.order === arr.length
-            ? 1
-            : (s.style.order = +s.style.order + 1);
+    this._combineTabsAndButtons(btnPrev);
+    this._changePostSlide(btnPrev, this._plusOrder.bind(this));
+  }
 
-        s.querySelector('.sidebar__feature-info').classList.add(
-          'u-order-first'
-        );
-        s.querySelector('.sidebar__date').classList.add('u-right');
-        s.querySelector('img').classList.add('sidebar__img-right');
-      });
-
-      const firstSlide = slides.find((el) => +el.style.order === 1);
-      if (!firstSlide) return;
-      firstSlide
-        .querySelector('.sidebar__feature-info')
-        .classList.remove('u-order-first');
-      firstSlide.querySelector('.sidebar__date').classList.remove('u-right');
-      firstSlide.querySelector('img').classList.remove('sidebar__img-right');
-    }
+  // NEED to fix
+  _changeTabWIthInterval(section, tabs) {
+    section.querySelectorAll('.card').forEach((s, i, arr) => {
+      this._minusOrder(s, arr);
+      if (+s.style.order === 1 && +s.dataset.slide <= tabs)
+        this._activateSlideTab(i + 1, [section.closest('section')]);
+      if (+s.style.order === 1 && +s.dataset.slide > tabs) {
+        this._activateSlideTab(+s.dataset.slide - tabs, [
+          section.closest('section'),
+        ]);
+      }
+    });
   }
 
   _sliderInterval() {
@@ -174,27 +183,24 @@ class SlidersView extends View {
     const sliderButtons = slider.filter(
       (el) => !el.closest('section').dataset.carousel
     );
-    // NEED TO BE FIXED
     const sliderTabs = slider.filter(
       (el) => el.closest('section').dataset.carousel
     );
 
     sliderButtons.forEach((div) => {
-      div.querySelectorAll('.card').forEach((s, _, arr) => {
-        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
-      });
+      div
+        .querySelectorAll('.card')
+        .forEach((s, _, arr) => this._minusOrder(s, arr));
     });
-    // NEED TO BE FIXED
-    sliderTabs.forEach((div) => {
-      div.querySelectorAll('.card').forEach((s, i, arr) => {
-        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
-        if (+s.style.order === 1 && +s.dataset.slide <= 6)
-          this._activateSlideTab(+s.dataset.slide);
-        if (+s.style.order === 1 && +s.dataset.slide > 6) {
-          this._activateSlideTab(+s.dataset.slide - 6);
-        }
-      });
-    });
+
+    const [lgSlider, smSlider] = sliderTabs;
+    const [lgTabsLength, smTabsLength] = sliderTabs.map(
+      (el) =>
+        el.closest('section').querySelectorAll('.carousel__btn--tab').length
+    );
+
+    this._changeTabWIthInterval(lgSlider, lgTabsLength);
+    this._changeTabWIthInterval(smSlider, smTabsLength);
   }
 
   _setSlideInterval() {
@@ -212,6 +218,7 @@ class SlidersView extends View {
   }
 
   _addHandlerChangeSlide() {
+    // this._mainEl.addEventListener('click', this._sliderInterval.bind(this));
     this._mainEl.addEventListener(
       'click',
       this._changeSlideInterval.bind(this)
