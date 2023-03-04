@@ -8,7 +8,7 @@ class SlidersView extends View {
     this._setOrders();
     this._setDataAttribute();
     this._activateSlideTab();
-    // this._setSlideInterval();
+    this._setSlideInterval();
     this._addHandlerChangeSlide();
   }
 
@@ -118,6 +118,7 @@ class SlidersView extends View {
       });
 
       const firstSlide = slides.find((el) => +el.style.order === 1);
+      if (!firstSlide) return;
       firstSlide
         .querySelector('.sidebar__feature-info')
         .classList.remove('u-order-first');
@@ -159,6 +160,7 @@ class SlidersView extends View {
       });
 
       const firstSlide = slides.find((el) => +el.style.order === 1);
+      if (!firstSlide) return;
       firstSlide
         .querySelector('.sidebar__feature-info')
         .classList.remove('u-order-first');
@@ -172,26 +174,27 @@ class SlidersView extends View {
     const sliderButtons = slider.filter(
       (el) => !el.closest('section').dataset.carousel
     );
-    // const sliderTabs = slider.filter(
-    //   (el) => el.closest('section').dataset.carousel
-    // );
+    // NEED TO BE FIXED
+    const sliderTabs = slider.filter(
+      (el) => el.closest('section').dataset.carousel
+    );
 
     sliderButtons.forEach((div) => {
       div.querySelectorAll('.card').forEach((s, _, arr) => {
         s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
       });
     });
-
-    // sliderTabs.forEach((div) => {
-    //   div.querySelectorAll('.card').forEach((s, i, arr) => {
-    //     s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
-    //     if (+s.style.order === 1 && +s.dataset.slide <= 6)
-    //       this._activateSlideTab(+s.dataset.slide);
-    //     if (+s.style.order === 1 && +s.dataset.slide > 6) {
-    //       this._activateSlideTab(+s.dataset.slide - 6);
-    //     }
-    //   });
-    // });
+    // NEED TO BE FIXED
+    sliderTabs.forEach((div) => {
+      div.querySelectorAll('.card').forEach((s, i, arr) => {
+        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+        if (+s.style.order === 1 && +s.dataset.slide <= 6)
+          this._activateSlideTab(+s.dataset.slide);
+        if (+s.style.order === 1 && +s.dataset.slide > 6) {
+          this._activateSlideTab(+s.dataset.slide - 6);
+        }
+      });
+    });
   }
 
   _setSlideInterval() {
@@ -209,10 +212,10 @@ class SlidersView extends View {
   }
 
   _addHandlerChangeSlide() {
-    // this._mainEl.addEventListener(
-    //   'click',
-    //   this._changeSlideInterval.bind(this)
-    // );
+    this._mainEl.addEventListener(
+      'click',
+      this._changeSlideInterval.bind(this)
+    );
     this._mainEl.addEventListener('click', this._nextSlide.bind(this));
     this._mainEl.addEventListener('click', this._prevSlide.bind(this));
     this._mainEl.addEventListener('click', this._clickTabs.bind(this));

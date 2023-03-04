@@ -10,8 +10,9 @@ class PostView extends View {
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
-  _renderBreadcrumb() {
+  _renderBreadcrumb(e) {
     if (!this._postPageEl.classList.contains('hidden')) {
+      if (!e.find((ev) => ev.target.id === 'main__post')) return;
       const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
       link.textContent = this._blog.dataset.title;
       link.dataset.link = this._blog.id.split('__').at(-1);
@@ -25,7 +26,6 @@ class PostView extends View {
         )
       );
     }
-
     const subPage = [
       ...this._breadcrumbList.querySelectorAll('.breadcrumb__link--subpage'),
     ].find((el) => el.dataset.link === 'post');
