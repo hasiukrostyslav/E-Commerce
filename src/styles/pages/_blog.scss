@@ -133,11 +133,25 @@
   &__carousel {
     margin-top: 4.8rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
-    &-left,
-    &-right {
-      flex-basis: 34rem;
+    &-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      gap: 13rem;
+    }
+
+    &-item {
+      flex: 1 0 34rem;
     }
   }
 
@@ -152,7 +166,6 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    margin-bottom: 2rem;
 
     &-icon {
       @include icon-medium($color: $color-gray-dark-2);
@@ -161,10 +174,6 @@
         order: 1;
       }
     }
-  }
-
-  &__btn-next {
-    margin-left: auto;
   }
 
   &__comments {

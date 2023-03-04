@@ -7156,14 +7156,22 @@
             </div>
           </div>
           <div class="post__carousel post__container">
-            <div class="post__carousel-left">
-              <button type="button" class="btn post__btn post__btn-prev">
+            <div class="post__carousel-btns">
+              <button type="button" class="btn post__btn carousel__btn--prev">
                 <svg class="post__btn-icon">
                   <use xlink:href="assets/svg/sprite.svg#left"></use>
                 </svg>
                 Prev Post
               </button>
-              <ul class="sidebar__list sidebar__list--row">
+              <button type="button" class="btn post__btn carousel__btn--next">
+                <svg class="post__btn-icon post__btn-icon--right">
+                  <use xlink:href="assets/svg/sprite.svg#right"></use>
+                </svg>
+                Next Post
+              </button>
+            </div>
+            <div class="post__carousel-container">
+              <ul class="sidebar__list post__carousel-item">
                 <li class="sidebar__item">
                   <a href="#" data-link="post">
                     <img
@@ -7185,19 +7193,12 @@
                   </div>
                 </li>
               </ul>
-            </div>
-            <div class="post__carousel-right">
-              <button type="button" class="btn post__btn post__btn-next">
-                <svg class="post__btn-icon post__btn-icon--right">
-                  <use xlink:href="assets/svg/sprite.svg#right"></use>
-                </svg>
-                Next Post
-              </button>
-              <ul class="sidebar__list sidebar__list--row">
+
+              <ul class="sidebar__list post__carousel-item">
                 <li class="sidebar__item">
                   <a href="#" data-link="post">
                     <img
-                      class="sidebar__img post__img-right u-no-margin"
+                      class="sidebar__img sidebar__img-right"
                       src="assets/images/post-3.jpg"
                       alt="Woman"
                     />
@@ -7215,7 +7216,31 @@
                   </div>
                 </li>
               </ul>
+
+              <ul class="sidebar__list post__carousel-item">
+                <li class="sidebar__item">
+                  <a href="#" data-link="post">
+                    <img
+                      class="sidebar__img sidebar__img-right"
+                      src="assets/images/post-1.jpg"
+                      alt="Shoes"
+                    />
+                  </a>
+                  <div class="sidebar__feature-info u-order-first">
+                    <p class="sidebar__date u-right">
+                      <svg class="blog__icon">
+                        <use xlink:href="assets/svg/sprite.svg#clock"></use>
+                      </svg>
+                      July 5, 2020
+                    </p>
+                    <a class="sidebar__link" href="#" data-link="post"
+                      >14 Items From End-of-Spring Sales Are Sure to Spark Joy</a
+                    >
+                  </div>
+                </li>
+              </ul>
             </div>
+            
           </div>
         </article>
   

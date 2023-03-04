@@ -8,6 +8,7 @@ class SlidersView extends View {
     this._setOrders();
     this._setDataAttribute();
     this._activateSlideTab();
+    // this._setSlideInterval();
     this._addHandlerChangeSlide();
   }
 
@@ -54,8 +55,7 @@ class SlidersView extends View {
         if (slide - curSlide.dataset.slide > 1)
           s.style.order =
             +s.dataset.slide < +slide
-              ? // Need to be fixed
-                arr.length - slide + +s.dataset.slide + 1
+              ? arr.length - slide + +s.dataset.slide + 1
               : (s.style.order = s.dataset.slide - slide + 1);
       }
 
@@ -80,39 +80,139 @@ class SlidersView extends View {
 
   _setOrders() {
     const cards = this._mainEl.querySelectorAll('.carousel__cards');
-    cards.forEach((div) =>
+    cards.forEach((div) => {
       div
         .querySelectorAll('.card')
-        .forEach((card, i) => (card.style.order = i + 1))
-    );
+        .forEach((card, i) => (card.style.order = i + 1));
+    });
+
+    this._mainEl
+      .querySelectorAll('.post__carousel-item')
+      .forEach((card, i) => (card.style.order = i + 1));
   }
 
   _nextSlide(e) {
     const btnNext = e.target.closest('.carousel__btn--next');
     if (!btnNext) return;
 
-    const slides = btnNext.closest('section').querySelectorAll('.card');
-    slides.forEach(
-      (s, _, arr) =>
-        (s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1))
-    );
+    if (btnNext.closest('section').querySelectorAll('.card')) {
+      const slides = btnNext.closest('section').querySelectorAll('.card');
+      slides.forEach(
+        (s, _, arr) =>
+          (s.style.order =
+            s.style.order <= 1 ? arr.length : (s.style.order -= 1))
+      );
+    }
+
+    if (btnNext.closest('section').querySelectorAll('.post__carousel-item')) {
+      const slides = [
+        ...btnNext.closest('section').querySelectorAll('.post__carousel-item'),
+      ];
+      slides.forEach((s, _, arr) => {
+        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+        s.querySelector('.sidebar__feature-info').classList.add(
+          'u-order-first'
+        );
+        s.querySelector('.sidebar__date').classList.add('u-right');
+        s.querySelector('img').classList.add('sidebar__img-right');
+      });
+
+      const firstSlide = slides.find((el) => +el.style.order === 1);
+      firstSlide
+        .querySelector('.sidebar__feature-info')
+        .classList.remove('u-order-first');
+      firstSlide.querySelector('.sidebar__date').classList.remove('u-right');
+      firstSlide.querySelector('img').classList.remove('sidebar__img-right');
+    }
   }
 
   _prevSlide(e) {
     const btnPrev = e.target.closest('.carousel__btn--prev');
     if (!btnPrev) return;
 
-    const slides = btnPrev.closest('section').querySelectorAll('.card');
+    if (btnPrev.closest('section').querySelectorAll('.card')) {
+      const slides = btnPrev.closest('section').querySelectorAll('.card');
 
-    slides.forEach((s, _, arr) => {
-      s.style.order =
-        +s.style.order === arr.length
-          ? 1
-          : (s.style.order = +s.style.order + 1);
+      slides.forEach((s, _, arr) => {
+        s.style.order =
+          +s.style.order === arr.length
+            ? 1
+            : (s.style.order = +s.style.order + 1);
+      });
+    }
+
+    if (btnPrev.closest('section').querySelectorAll('.post__carousel-item')) {
+      const slides = [
+        ...btnPrev.closest('section').querySelectorAll('.post__carousel-item'),
+      ];
+      slides.forEach((s, _, arr) => {
+        s.style.order =
+          +s.style.order === arr.length
+            ? 1
+            : (s.style.order = +s.style.order + 1);
+
+        s.querySelector('.sidebar__feature-info').classList.add(
+          'u-order-first'
+        );
+        s.querySelector('.sidebar__date').classList.add('u-right');
+        s.querySelector('img').classList.add('sidebar__img-right');
+      });
+
+      const firstSlide = slides.find((el) => +el.style.order === 1);
+      firstSlide
+        .querySelector('.sidebar__feature-info')
+        .classList.remove('u-order-first');
+      firstSlide.querySelector('.sidebar__date').classList.remove('u-right');
+      firstSlide.querySelector('img').classList.remove('sidebar__img-right');
+    }
+  }
+
+  _sliderInterval() {
+    const slider = [...document.querySelectorAll('.carousel__cards')];
+    const sliderButtons = slider.filter(
+      (el) => !el.closest('section').dataset.carousel
+    );
+    // const sliderTabs = slider.filter(
+    //   (el) => el.closest('section').dataset.carousel
+    // );
+
+    sliderButtons.forEach((div) => {
+      div.querySelectorAll('.card').forEach((s, _, arr) => {
+        s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+      });
     });
+
+    // sliderTabs.forEach((div) => {
+    //   div.querySelectorAll('.card').forEach((s, i, arr) => {
+    //     s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+    //     if (+s.style.order === 1 && +s.dataset.slide <= 6)
+    //       this._activateSlideTab(+s.dataset.slide);
+    //     if (+s.style.order === 1 && +s.dataset.slide > 6) {
+    //       this._activateSlideTab(+s.dataset.slide - 6);
+    //     }
+    //   });
+    // });
+  }
+
+  _setSlideInterval() {
+    this._interval = setInterval(() => {
+      this._sliderInterval();
+    }, 5000);
+  }
+
+  _changeSlideInterval(e) {
+    const btns = e.target.closest('.carousel__btns');
+    if (!btns) return;
+
+    clearInterval(this._interval);
+    this._setSlideInterval();
   }
 
   _addHandlerChangeSlide() {
+    // this._mainEl.addEventListener(
+    //   'click',
+    //   this._changeSlideInterval.bind(this)
+    // );
     this._mainEl.addEventListener('click', this._nextSlide.bind(this));
     this._mainEl.addEventListener('click', this._prevSlide.bind(this));
     this._mainEl.addEventListener('click', this._clickTabs.bind(this));
