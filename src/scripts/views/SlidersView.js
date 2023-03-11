@@ -8,7 +8,7 @@ class SlidersView extends View {
     this._setOrders();
     this._setDataAttribute();
     this._activateSlideTab();
-    this._setSlideInterval();
+    // this._setSlideInterval();
     this._addHandlerChangeSlide();
   }
 
@@ -218,11 +218,10 @@ class SlidersView extends View {
   }
 
   _addHandlerChangeSlide() {
-    // this._mainEl.addEventListener('click', this._sliderInterval.bind(this));
-    this._mainEl.addEventListener(
-      'click',
-      this._changeSlideInterval.bind(this)
-    );
+    // this._mainEl.addEventListener(
+    //   'click',
+    //   this._changeSlideInterval.bind(this)
+    // );
     this._mainEl.addEventListener('click', this._nextSlide.bind(this));
     this._mainEl.addEventListener('click', this._prevSlide.bind(this));
     this._mainEl.addEventListener('click', this._clickTabs.bind(this));

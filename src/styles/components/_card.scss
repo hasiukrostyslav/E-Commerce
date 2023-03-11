@@ -51,7 +51,7 @@
       font-size: 2rem;
     }
 
-    &--regular {
+    &--large {
       font-size: 2.4rem;
     }
 
@@ -69,30 +69,37 @@
       text-decoration: line-through;
     }
 
-    &--old-sm {
+    &--old-small {
       font-size: 1.6rem;
     }
-    &--old-lg {
+    &--old-large {
       font-size: 1.8rem;
     }
   }
 
   &__details {
     width: 100%;
-    padding: 1.6rem;
+    padding: 1.6rem 1.6rem;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
 
-    &--current {
+    &--shadow {
       box-shadow: $shadow;
-      border-bottom-right-radius: 4px;
-      border-bottom-left-radius: 4px;
     }
   }
 
+  &__hover-box {
+    padding-top: 2rem;
+    background-color: $color-white;
+  }
+
   &__form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2rem 0;
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
   }
 
   &__radio-list {

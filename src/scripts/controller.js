@@ -18,6 +18,10 @@ import * as model from './model';
 const view = new View();
 view.init();
 
+function controlRenderData() {
+  cardView.render(model.state.catalog);
+}
+
 function controlSignIn(e) {
   e.preventDefault();
 
@@ -32,6 +36,7 @@ function controlSignIn(e) {
 
 function init() {
   modalView.addHandlerLogIn(controlSignIn);
+  controlRenderData();
 }
 
 init();
