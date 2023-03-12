@@ -9,10 +9,6 @@
     padding-bottom: 18rem;
   }
 
-  &__wishlist {
-    padding-bottom: 7.2rem;
-  }
-
   &__form {
     position: relative;
     display: flex;
@@ -31,8 +27,9 @@
   }
 
   &__viewed {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
+    display: grid;
+    row-gap: 6rem;
+    column-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, 39rem);
   }
 }

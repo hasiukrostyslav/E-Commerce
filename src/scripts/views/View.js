@@ -29,6 +29,10 @@ export default class View {
     this._addHandlerTogglePassword();
   }
 
+  addHandlerRender(handler) {
+    window.addEventListener('load', handler);
+  }
+
   _setObserver(callback) {
     const observer = new MutationObserver(callback);
 

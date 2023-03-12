@@ -3,13 +3,25 @@ import View from './View';
 class SlidersView extends View {
   _sectionsTabs = document.querySelectorAll('section[data-carousel="tabs"]');
 
-  constructor() {
-    super();
+  initSlider() {
     this._setOrders();
     this._setDataAttribute();
     this._activateSlideTab();
-    // this._setSlideInterval();
+    this._setSlideInterval();
     this._addHandlerChangeSlide();
+  }
+
+  _setOrders() {
+    const cards = this._mainEl.querySelectorAll('.carousel__cards');
+    cards.forEach((div) => {
+      div
+        .querySelectorAll('.card')
+        .forEach((card, i) => (card.style.order = i + 1));
+    });
+
+    this._mainEl
+      .querySelectorAll('.post__carousel-item')
+      .forEach((card, i) => (card.style.order = i + 1));
   }
 
   _setDataAttribute() {
@@ -71,19 +83,6 @@ class SlidersView extends View {
     });
 
     this._activateSlideTab(slide);
-  }
-
-  _setOrders() {
-    const cards = this._mainEl.querySelectorAll('.carousel__cards');
-    cards.forEach((div) => {
-      div
-        .querySelectorAll('.card')
-        .forEach((card, i) => (card.style.order = i + 1));
-    });
-
-    this._mainEl
-      .querySelectorAll('.post__carousel-item')
-      .forEach((card, i) => (card.style.order = i + 1));
   }
 
   _combineTabsAndButtons(btn) {
@@ -218,10 +217,10 @@ class SlidersView extends View {
   }
 
   _addHandlerChangeSlide() {
-    // this._mainEl.addEventListener(
-    //   'click',
-    //   this._changeSlideInterval.bind(this)
-    // );
+    this._mainEl.addEventListener(
+      'click',
+      this._changeSlideInterval.bind(this)
+    );
     this._mainEl.addEventListener('click', this._nextSlide.bind(this));
     this._mainEl.addEventListener('click', this._prevSlide.bind(this));
     this._mainEl.addEventListener('click', this._clickTabs.bind(this));

@@ -26,6 +26,7 @@
       { "exceptAfterSingleLine": true }
     ],
     "no-return-assign": "off",
+    "class-methods-use-this": "off",
     "no-param-reassign": ["error", { "props": false }],
     "func-names": ["error", "as-needed"]
   }

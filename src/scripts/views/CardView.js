@@ -4,12 +4,13 @@ import icons from '../../assets/svg/sprite.svg';
 class CardView extends View {
   _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
   _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
+
   constructor() {
     super();
 
     this.addHandlerAddToWishlist();
-    this.addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
-    this.addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
+    this._addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
+    this._addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
   }
 
   _addToWishlist(e) {
@@ -53,11 +54,11 @@ class CardView extends View {
     }
   }
 
-  addHandlerShowCardBottom(handler) {
+  _addHandlerShowCardBottom(handler) {
     this._parentElement.addEventListener('mouseover', handler);
   }
 
-  addHandlerHideCardBottom(handler) {
+  _addHandlerHideCardBottom(handler) {
     this._parentElement.addEventListener('mouseout', handler);
   }
 

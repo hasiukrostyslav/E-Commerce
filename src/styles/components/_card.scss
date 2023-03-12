@@ -2,12 +2,6 @@
   position: relative;
   display: inline-block;
 
-  &--margin-bt {
-    &:not(:nth-last-child(-n + 2)) {
-      margin-bottom: 3rem;
-    }
-  }
-
   &__img {
     border-radius: 4px;
     position: relative;
@@ -91,6 +85,7 @@
     width: 100%;
     padding: 2rem 1.6rem 1.6rem;
     box-shadow: $shadow;
+    z-index: 100;
 
     &-wrapper {
       display: flex;

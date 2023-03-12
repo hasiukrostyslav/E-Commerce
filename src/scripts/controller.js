@@ -16,10 +16,16 @@ import View from './views/View';
 import * as model from './model';
 
 const view = new View();
-view.init();
 
-function controlRenderData() {
+function controlInitPage() {
+  // Init page config
+  view.init();
+
+  // Render product cards
   cardView.render(model.state.catalog);
+
+  // Init sliders config
+  slidersView.initSlider();
 }
 
 function controlSignIn(e) {
@@ -35,8 +41,8 @@ function controlSignIn(e) {
 }
 
 function init() {
+  view.addHandlerRender(controlInitPage);
   modalView.addHandlerLogIn(controlSignIn);
-  controlRenderData();
 }
 
 init();
