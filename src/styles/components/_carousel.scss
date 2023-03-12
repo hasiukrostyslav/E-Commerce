@@ -17,7 +17,8 @@
   &__cards {
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     gap: 3rem;
 
     &--gap-sm {

@@ -8,8 +8,8 @@ class CardView extends View {
     super();
 
     this.addHandlerAddToWishlist();
-    this.addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
-    this.addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
+    // this.addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
+    // this.addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
   }
 
   _addToWishlist(e) {
@@ -40,7 +40,6 @@ class CardView extends View {
     const info = card.querySelector('.card__details');
     if (info.style.backgroundColor === 'white') info.style.backgroundColor = '';
     else info.style.backgroundColor = 'white';
-    info.classList.toggle('card__details--shadow');
     card.querySelector('.card__hover-box').classList.toggle('hidden');
   }
 
@@ -74,7 +73,40 @@ class CardView extends View {
         <img src="${data.images}" alt="Photo of ${
       data.title
     }" class="card__img card__img--${size}">
-      
+
+        <div class="card__labels">
+          ${
+            (data.discountPercentage !== 0 && this._generateSaleLabel(data)) ||
+            ''
+          }
+
+          ${data.rating ? this._generateRating(data) : ''}
+        
+          <button class="card__btn-wishlist card__btn-wishlist--${size} btn-wishlist-add">
+            <svg class="wishlist__icon">
+              <use xlink:href="${icons}#heart-outline">
+              </use>
+            </svg>
+          </button>
+
+          <div class="card__slider-buttons hidden">
+            <button type="button" class="card__btn card__btn--prev card__btn--${size}">
+              <svg class="card__icon-arr card__icon--prev">
+                <use xlink:href="${icons}#left-chevron">
+                </use>
+              </svg>
+            </button>
+
+            <button type="button" class="card__btn card__btn--next card__btn--${size}">
+              <svg class="card__icon-arr card__icon--next">
+                <use xlink:href="${icons}#right-chevron">
+                </use>
+              </svg>
+            </button> 
+          </div>
+          
+        </div>
+
         <div class="card__details">
           <a href="#" class="card__heading" data-link="product">${
             data.description
@@ -92,59 +124,28 @@ class CardView extends View {
             : ''
         }
           </p>
-
-          ${
-            (data.discountPercentage !== 0 && this._generateSaleLabel(data)) ||
-            ''
-          }
-
-          ${data.rating ? this._generateRating(data) : ''}
-        
-          <button class="card__btn-wishlist card__btn-wishlist--${size} btn-wishlist-add">
-            <svg class="wishlist__icon">
-              <use xlink:href="${icons}#heart-outline">
-              </use>
-            </svg>
-          </button>
-
-          <div class="card__hover-box hidden">
-
-            <button type="button" class="card__btn card__btn--prev card__btn--${size}">
-              <svg class="card__icon-arr card__icon--prev">
-                <use xlink:href="${icons}#left-chevron">
-                </use>
-              </svg>
-            </button>
-
-            <button type="button" class="card__btn card__btn--next card__btn--${size}">
-              <svg class="card__icon-arr card__icon--next">
-                <use xlink:href="${icons}#right-chevron">
-                </use>
-              </svg>
-            </button> 
-
-            <form action="#" class="card__form">
-              <div class="card__form-wrapper">
-                <ul class="card__radio-list">
+          <form action="#" class="card__form hidden">
+            <div class="card__form-wrapper">
+              <ul class="card__radio-list">
                   ${data.size
                     .map((el) => this._generateSizeButton(data, el, category))
                     .join('')}
-                </ul>
-                <ul class="card__radio-list">
+              </ul>
+              <ul class="card__radio-list">
                   ${data.color
                     .map((el) => this._generateColorButton(data, el, category))
                     .join('')}
-                </ul>
-              </div>
+              </ul>
+            </div>
                         
-              <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
-                <svg class="sale__icon-cart">
-                  <use xlink:href="${icons}#cart"></use>
-                </svg>
+            <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
+              <svg class="sale__icon-cart">
+                <use xlink:href="${icons}#cart"></use>
+              </svg>
                 Add to cart
-              </button>
-            </form>
-          </div>  
+            </button>
+          </form>
+ 
         </div>
         
          
