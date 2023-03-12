@@ -8,8 +8,8 @@ class CardView extends View {
     super();
 
     this.addHandlerAddToWishlist();
-    // this.addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
-    // this.addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
+    this.addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
+    this.addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
   }
 
   _addToWishlist(e) {
@@ -37,10 +37,20 @@ class CardView extends View {
     const card = e.target.closest('.card');
     if (!card) return;
 
-    const info = card.querySelector('.card__details');
-    if (info.style.backgroundColor === 'white') info.style.backgroundColor = '';
-    else info.style.backgroundColor = 'white';
-    card.querySelector('.card__hover-box').classList.toggle('hidden');
+    const form = card.querySelector('.card__form');
+    const btns = card.querySelector('.card__slider-buttons');
+    const computedStyle = getComputedStyle(card.closest('section'));
+
+    form.style.backgroundColor = computedStyle.backgroundColor;
+
+    if (e.type === 'mouseover') {
+      form.classList.remove('hidden');
+      btns.classList.remove('hidden');
+    }
+    if (e.type === 'mouseout') {
+      form.classList.add('hidden');
+      btns.classList.add('hidden');
+    }
   }
 
   addHandlerShowCardBottom(handler) {
