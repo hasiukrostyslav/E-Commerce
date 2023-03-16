@@ -85,8 +85,11 @@ class SlidersView extends View {
     this._activateSlideTab(slide);
   }
 
+  // NEED to be fixed
   _combineTabsAndButtons(btn) {
-    if (btn.closest('.product__look')) {
+    if (
+      btn.closest('section').querySelectorAll('.carousel__btns').length === 2
+    ) {
       const firstSlide = [
         ...btn.closest('.product__look').querySelectorAll('.card'),
       ].find((el) => +el.style.order === 1);
@@ -163,17 +166,27 @@ class SlidersView extends View {
     this._changePostSlide(btnPrev, this._plusOrder.bind(this));
   }
 
-  // NEED to fix
-  _changeTabWIthInterval(section, tabs) {
-    section.querySelectorAll('.card').forEach((s, i, arr) => {
+  _changeTabWithInterval(section, tabs) {
+    const slider = [...section.querySelectorAll('.card')];
+
+    slider.forEach((s, i, arr) => {
       this._minusOrder(s, arr);
+
       if (+s.style.order === 1 && +s.dataset.slide <= tabs)
         this._activateSlideTab(i + 1, [section.closest('section')]);
+
       if (+s.style.order === 1 && +s.dataset.slide > tabs) {
         this._activateSlideTab(+s.dataset.slide - tabs, [
           section.closest('section'),
         ]);
       }
+
+      const borderSlide = arr.find(
+        (el) => +el.style.order === 1 && +el.dataset.slide > tabs
+      );
+
+      if (borderSlide)
+        slider.forEach((sl, index) => (sl.style.order = index + 1));
     });
   }
 
@@ -198,8 +211,8 @@ class SlidersView extends View {
         el.closest('section').querySelectorAll('.carousel__btn--tab').length
     );
 
-    this._changeTabWIthInterval(lgSlider, lgTabsLength);
-    this._changeTabWIthInterval(smSlider, smTabsLength);
+    this._changeTabWithInterval(lgSlider, lgTabsLength);
+    this._changeTabWithInterval(smSlider, smTabsLength);
   }
 
   _setSlideInterval() {
