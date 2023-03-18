@@ -160,6 +160,7 @@
 
 .wishlist__icon {
   @include icon-small;
+  transition: all 0.5s;
 
   &--filled {
     fill: $color-primary;

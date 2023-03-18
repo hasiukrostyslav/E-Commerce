@@ -20,6 +20,8 @@
     overflow-x: clip;
     overflow-y: visible;
     gap: 3rem;
+    margin: -3rem;
+    padding: 3rem;
 
     &--gap-sm {
       gap: 2.65rem;
@@ -27,6 +29,8 @@
 
     &--wrapper {
       overflow: hidden;
+      margin: -3rem;
+      padding: 3rem;
     }
   }
 
