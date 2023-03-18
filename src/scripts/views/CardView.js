@@ -63,7 +63,7 @@ class CardView extends View {
   }
 
   render(data) {
-    const containers = document.querySelectorAll('[data-cards]');
+    const containers = [...document.querySelectorAll('[data-cards]')];
     containers.forEach((el) => {
       el.innerHTML = '';
       const arr = data.filter((item) =>
@@ -75,6 +75,8 @@ class CardView extends View {
           this._generateCardMarkup(prod, el.dataset.cards, el.dataset.cardsSize)
         )
       );
+
+      if (el.dataset.cards === 'all') this._showNumbresOfCards();
     });
   }
 

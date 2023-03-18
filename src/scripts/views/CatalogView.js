@@ -16,6 +16,21 @@ class CatalogView extends View {
     this._addHandlerToggleFilterContainer();
     this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
+    // this._addHandlerShowNumbersOfProduct(this._showNumbersOfProduct.bind(this));
+  }
+
+  _showNumbersOfProduct(e) {
+    const btn = e.target.closest('.number__btn');
+
+    if (!btn || !btn.closest('.catalog')) return;
+
+    const amount =
+      +this._catalogContainer.querySelector('.input--number').value;
+    console.log(amount);
+  }
+
+  _addHandlerShowNumbersOfProduct(handler) {
+    this._parentElement.addEventListener('click', handler);
   }
 
   // Remove breadcrumb filters

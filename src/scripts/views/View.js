@@ -27,7 +27,8 @@ export default class View {
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
-    this._addHandlerInputNumber(this._changeInputNumber.bind(this));
+    // this._addHandlerInputNumber(this._changeInputNumber.bind(this));
+    this._addHandlerInputNumber();
   }
 
   addHandlerRender(handler) {
@@ -246,6 +247,16 @@ export default class View {
     );
   }
 
+  _stepUp(input) {
+    input.value =
+      +input.value < +input.max ? +input.value + +input.step : input.max;
+  }
+
+  _stepDown(input) {
+    input.value =
+      +input.value > +input.min ? input.value - input.step : input.min;
+  }
+
   _changeInputNumber(e) {
     const btn = e.target.closest('.number__btn');
     if (!btn) return;
@@ -253,18 +264,40 @@ export default class View {
     if (e.target.closest('.caret-up')) {
       const input = btn.closest('.number__box').querySelector('input');
 
-      input.value =
-        +input.value < +input.max ? +input.value + +input.step : input.max;
+      if (input.closest('.catalog')) {
+        input
+          .closest('.catalog')
+          .querySelectorAll('.input--number')
+          .forEach((num) => this._stepUp(num));
+        this._showNumbresOfCards();
+      } else this._stepUp(input);
     }
 
     if (e.target.closest('.caret-down')) {
       const input = btn.closest('.number__box').querySelector('input');
-      input.value =
-        +input.value > +input.min ? input.value - input.step : input.min;
+
+      if (input.closest('.catalog')) {
+        input
+          .closest('.catalog')
+          .querySelectorAll('.input--number')
+          .forEach((num) => this._stepDown(num));
+        this._showNumbresOfCards();
+      } else this._stepDown(input);
     }
   }
 
-  _addHandlerInputNumber(handler) {
-    this._parentElement.addEventListener('click', handler);
+  _showNumbresOfCards() {
+    const amount = +this._catalogPageEl.querySelector('.input--number').value;
+    const cards = [...this._catalogPageEl.querySelectorAll('.card')];
+    cards.forEach((el) => el.classList.add('hidden'));
+    const cardsShow = cards.filter((_, i) => i + 1 <= amount);
+    cardsShow.forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _addHandlerInputNumber() {
+    this._parentElement.addEventListener(
+      'click',
+      this._changeInputNumber.bind(this)
+    );
   }
 }

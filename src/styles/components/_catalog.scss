@@ -4,6 +4,7 @@
   grid-template-columns: 25.5rem 1fr;
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 6rem;
+  align-items: start;
 
   &__toolbar {
     display: flex;
