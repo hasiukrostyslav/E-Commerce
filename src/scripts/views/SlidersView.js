@@ -85,28 +85,6 @@ class SlidersView extends View {
     this._activateSlideTab(slide);
   }
 
-  // NEED to be fixed
-  _combineTabsAndButtons(btn) {
-    if (
-      btn.closest('section').querySelectorAll('.carousel__btns').length === 2
-    ) {
-      const firstSlide = [
-        ...btn.closest('.product__look').querySelectorAll('.card'),
-      ].find((el) => +el.style.order === 1);
-
-      const tabs = [
-        ...btn
-          .closest('.product__look')
-          .querySelectorAll('.carousel__btn--tab'),
-      ];
-      tabs.forEach((el) => el.classList.remove('carousel__btn--current'));
-      if (+firstSlide.dataset.slide === 1)
-        tabs[0].classList.add('carousel__btn--current');
-      if (+firstSlide.dataset.slide === 2)
-        tabs[1].classList.add('carousel__btn--current');
-    }
-  }
-
   _minusOrder(s, arr) {
     s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
   }
@@ -149,7 +127,7 @@ class SlidersView extends View {
       slides.forEach((s, _, arr) => this._minusOrder(s, arr));
     }
 
-    this._combineTabsAndButtons(btnNext);
+    this._resetSmallSlider(btnNext);
     this._changePostSlide(btnNext, this._minusOrder.bind(this));
   }
 
@@ -162,8 +140,44 @@ class SlidersView extends View {
       slides.forEach((s, _, arr) => this._plusOrder(s, arr));
     }
 
-    this._combineTabsAndButtons(btnPrev);
+    this._resetSmallSlider(btnPrev);
     this._changePostSlide(btnPrev, this._plusOrder.bind(this));
+  }
+
+  _resetSmallSlider(btn) {
+    const container = btn.closest('section');
+    if (container.querySelectorAll('.carousel__btns').length !== 2) return;
+    const slider = [...container.querySelectorAll('.card')];
+    const tabLength = container.querySelectorAll('.carousel__btn--tab').length;
+
+    if (btn.classList.contains('carousel__btn--next')) {
+      this._resetSliderOrderNext(slider, tabLength);
+      const firstSlide = slider.find((el) => +el.style.order === 1);
+      this._activateSlideTab(firstSlide.dataset.slide, [container]);
+    }
+
+    if (btn.classList.contains('carousel__btn--prev')) {
+      this._resetSliderOrderPrev(slider, tabLength);
+      const firstSlide = slider.find((el) => +el.style.order === 1);
+      this._activateSlideTab(firstSlide.dataset.slide, [container]);
+    }
+  }
+
+  _resetSliderOrderPrev(slider) {
+    const borderSlide = slider.find(
+      (el) => +el.style.order === 1 && +el.dataset.slide === slider.length
+    );
+
+    if (borderSlide)
+      slider.forEach((slide, _, arr) => this._plusOrder(slide, arr));
+  }
+
+  _resetSliderOrderNext(slider, length) {
+    const borderSlide = slider.find(
+      (el) => +el.style.order === 1 && +el.dataset.slide > length
+    );
+
+    if (borderSlide) slider.forEach((slide, i) => (slide.style.order = i + 1));
   }
 
   _changeTabWithInterval(section, tabs) {
@@ -181,12 +195,7 @@ class SlidersView extends View {
         ]);
       }
 
-      const borderSlide = arr.find(
-        (el) => +el.style.order === 1 && +el.dataset.slide > tabs
-      );
-
-      if (borderSlide)
-        slider.forEach((sl, index) => (sl.style.order = index + 1));
+      this._resetSliderOrderNext(arr, tabs);
     });
   }
 
