@@ -308,6 +308,10 @@
 </symbol>
 <symbol id="up-down-select" viewBox="0 0 24 24"><path d="M12 1l6.928 9H5.072L12 1zm0 22l-6.928-9.75h13.856L12 23z"/>
 </symbol>
+<symbol id="select-up" viewBox="0 0 1024 1024"><path d="M512 0L0 614.4h1024L512 0z"/>
+</symbol>
+<symbol id="select-down" viewBox="0 0 1024 1024"><path d="M0 0l512 614.4L1024 0H0z"/>
+</symbol>
 <symbol id="up" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.793 9.207a1 1 0 0 1 0-1.414l4.5-4.5a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1-1.414 1.414L13 6.414V20a1 1 0 1 1-2 0V6.414L8.207 9.207a1 1 0 0 1-1.414 0z" clip-rule="evenodd"/>
 </symbol>
 <symbol id="upload" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.293 1.543a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1-1.414 1.414L13 4.664V17.25a1 1 0 1 1-2 0V4.664L8.207 7.457a1 1 0 0 1-1.414-1.414l4.5-4.5zM2.25 14a1 1 0 0 1 1 1v3.75a2 2 0 0 0 2 2h13.5a2 2 0 0 0 2-2V15a1 1 0 1 1 2 0v3.75a4 4 0 0 1-4 4H5.25a4 4 0 0 1-4-4V15a1 1 0 0 1 1-1z" clip-rule="evenodd"/>

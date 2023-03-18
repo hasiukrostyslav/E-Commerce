@@ -57,7 +57,7 @@ class ProductView extends View {
   }
 
   _changeTabs(e) {
-    const btn = e.target.closest('.tag__checkbox-btn');
+    const btn = e.target.closest('.checkbox__btn');
     if (!btn) return;
 
     this._currentTab = btn;

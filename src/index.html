@@ -1803,12 +1803,12 @@
                     </button>
                 </form>
                 <form action="#" class="number__form">
-                    <div class="number__box">
-                        <label class="number__label" for="number-1-show"
+                  <div class="number__box">
+                    <label class="number__label" for="number-1-show"
                             >Show</label
-                        >
-                        <span class="number__wrapper">
-                          <input
+                    >
+                      <div class="number__box">
+                        <input
                           class="input input--medium input--number"
                           type="number"
                           name="number"
@@ -1818,9 +1818,24 @@
                           max="24"
                           step="6"
                           />
-                        </span>
+                        <button
+                          type="button"
+                          class="number__btn number__btn--sm"
+                        >
+                          <svg class="input__icon input__icon--little caret-up">
+                            <use
+                                xlink:href="assets/svg/sprite.svg#select-up"
+                            ></use>
+                          </svg>
+                          <svg class="input__icon input__icon--little caret-down">
+                            <use
+                                xlink:href="assets/svg/sprite.svg#select-down"
+                            ></use>
+                          </svg>
+                        </button>
+                      </div>
                         <p class="number__text">products per page</p>
-                    </div>
+                  </div>
                 </form>
                 <ul class="pagination catalog__pagination">
                     <li class="pagination__item">
@@ -2710,21 +2725,36 @@
                 </form>
                 <form action="#" class="number__form">
                     <div class="number__box">
-                        <label class="number__label" for="number-01"
+                        <label class="number__label" for="number-2-show"
                             >Show</label
                         >
-                        <span class="number__wrapper">
-                        <input
+                        <div class="number__box">
+                          <input
                             class="input input--medium input--number"
                             type="number"
                             name="number"
-                            id="number-01"
+                            id="number-2-show"
                             value="12"
                             min="6"
                             max="24"
                             step="6"
-                        />
-                        </span>
+                            />
+                          <button
+                            type="button"
+                            class="number__btn number__btn--sm"
+                          >
+                            <svg class="input__icon input__icon--little caret-up">
+                              <use
+                                  xlink:href="assets/svg/sprite.svg#select-up"
+                              ></use>
+                            </svg>
+                            <svg class="input__icon input__icon--little caret-down">
+                              <use
+                                  xlink:href="assets/svg/sprite.svg#select-down"
+                              ></use>
+                            </svg>
+                          </button>
+                        </div>
                         <p class="number__text">products per page</p>
                     </div>
                 </form>
@@ -3003,16 +3033,30 @@
                 </div>
                 <div class="size__btns">
                   <div class="number__box">
-                    <span class="number__wrapper">
-                      <input
-                        class="input input--medium input--number"
+                    <input
+                        class="input input--medium input--number-sm"
                         type="number"
                         name="number"
-                        id="number-1-size"
                         value="1"
                         min="1"
-                      />
-                    </span>
+                        max="10"
+                        step="1"
+                    />
+                    <button
+                      type="button"
+                      class="number__btn number__btn--sm"
+                    >
+                      <svg class="input__icon input__icon--little caret-up">
+                        <use
+                          xlink:href="assets/svg/sprite.svg#select-up"
+                        ></use>
+                      </svg>
+                      <svg class="input__icon input__icon--little caret-down">
+                        <use
+                          xlink:href="assets/svg/sprite.svg#select-down"
+                        ></use>
+                      </svg>
+                    </button>
                   </div>
                   <button
                     type="button"
@@ -4077,22 +4121,27 @@
                           class="input input--small input--number-sm"
                           type="number"
                           name="number"
-                          id="number-1"
                           value="1"
                           min="1"
                           max="10"
+                          step="1"
                         />
-
+                       
                         <button
-                          type="button"
-                          class="number__btn number__btn--top number__btn--sm"
-                        >
-                          <svg class="input__icon input__icon--medium">
-                            <use
-                              xlink:href="assets/svg/sprite.svg#up-down-select"
-                            ></use>
-                          </svg>
-                        </button>
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--little caret-up">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-up"
+                          ></use>
+                        </svg>
+                        <svg class="input__icon input__icon--little caret-down">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-down"
+                          ></use>
+                        </svg>
+                      </button>
                       </div>
                       <p
                         class="card__price card__price--regular card__price--new card__price--sm details__price"
@@ -4135,21 +4184,26 @@
                           class="input input--small input--number-sm"
                           type="number"
                           name="number"
-                          id="number-2"
                           value="1"
                           min="1"
                           max="10"
+                          step="1"
                         />
                         <button
-                          type="button"
-                          class="number__btn number__btn--top number__btn--sm"
-                        >
-                          <svg class="input__icon input__icon--medium">
-                            <use
-                              xlink:href="assets/svg/sprite.svg#up-down-select"
-                            ></use>
-                          </svg>
-                        </button>
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--little caret-up">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-up"
+                          ></use>
+                        </svg>
+                        <svg class="input__icon input__icon--little caret-down">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-down"
+                          ></use>
+                        </svg>
+                      </button>
                       </div>
                       <p
                         class="card__price card__price--regular card__price--sm details__price"
@@ -4193,21 +4247,26 @@
                           class="input input--small input--number-sm"
                           type="number"
                           name="number"
-                          id="number-3"
                           value="2"
                           min="1"
                           max="10"
+                          step="1"
                         />
                         <button
-                          type="button"
-                          class="number__btn number__btn--top number__btn--sm"
-                        >
-                          <svg class="input__icon input__icon--medium">
-                            <use
-                              xlink:href="assets/svg/sprite.svg#up-down-select"
-                            ></use>
-                          </svg>
-                        </button>
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--little caret-up">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-up"
+                          ></use>
+                        </svg>
+                        <svg class="input__icon input__icon--little caret-down">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-down"
+                          ></use>
+                        </svg>
+                      </button>
                       </div>
                       <p
                         class="card__price card__price--regular card__price--sm details__price"
@@ -4255,21 +4314,26 @@
                           class="input input--small input--number-sm"
                           type="number"
                           name="number"
-                          id="number-4"
                           value="1"
                           min="1"
                           max="10"
+                          step="1"
                         />
                         <button
-                          type="button"
-                          class="number__btn number__btn--top number__btn--sm"
-                        >
-                          <svg class="input__icon input__icon--medium">
-                            <use
-                              xlink:href="assets/svg/sprite.svg#up-down-select"
-                            ></use>
-                          </svg>
-                        </button>
+                        type="button"
+                        class="number__btn number__btn--top number__btn--sm"
+                      >
+                        <svg class="input__icon input__icon--little caret-up">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-up"
+                          ></use>
+                        </svg>
+                        <svg class="input__icon input__icon--little caret-down">
+                          <use
+                            xlink:href="assets/svg/sprite.svg#select-down"
+                          ></use>
+                        </svg>
+                      </button>
                       </div>
                       <p
                         class="card__price card__price--regular card__price--sm details__price"
@@ -6751,26 +6815,31 @@
                     </p>
                     <div class="cart__price">
                         <div class="number__box">
-                            <input
-                                class="input input--small input--number-sm"
-                                type="number"
-                                name="number"
-                                id="number-1"
-                                value="1"
-                                min="1"
-                            />
-                            <button
-                                type="button"
-                                class="number__btn number__btn--top number__btn--sm"
-                            >
-                                <svg
-                                    class="input__icon input__icon--medium"
-                                >
-                                    <use
-                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                    ></use>
-                                </svg>
-                            </button>
+                          <input
+                              class="input input--small input--number-sm"
+                              type="number"
+                              name="number"
+                              id="number-1"
+                              value="1"
+                              min="1"
+                              max="10"
+                              step="1"
+                          />
+                          <button
+                            type="button"
+                            class="number__btn number__btn--top number__btn--sm"
+                          >
+                            <svg class="input__icon input__icon--little caret-up">
+                              <use
+                                xlink:href="assets/svg/sprite.svg#select-up"
+                              ></use>
+                            </svg>
+                            <svg class="input__icon input__icon--little caret-down">
+                              <use
+                                xlink:href="assets/svg/sprite.svg#select-down"
+                              ></use>
+                            </svg>
+                          </button>
                         </div>
                         <p
                                 class="card__price card__price--regular card__price--new card__price--sm"
@@ -6814,28 +6883,33 @@
                     Black and white sport cap
                     </a>
                     <div class="cart__price">
-                        <div class="number__box">
-                            <input
-                                class="input input--small input--number-sm"
-                                type="number"
-                                name="number"
-                                id="number-1"
-                                value="1"
-                                min="1"
-                            />
-                            <button
-                                type="button"
-                                class="number__btn number__btn--top number__btn--sm"
-                            >
-                                <svg
-                                    class="input__icon input__icon--medium"
-                                >
-                                    <use
-                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                    ></use>
-                                </svg>
-                            </button>
-                        </div>
+                      <div class="number__box">
+                        <input
+                            class="input input--small input--number-sm"
+                            type="number"
+                            name="number"
+                            id="number-1"
+                            value="2"
+                            min="1"
+                            max="10"
+                            step="1"
+                        />
+                        <button
+                          type="button"
+                          class="number__btn number__btn--top number__btn--sm"
+                        >
+                          <svg class="input__icon input__icon--little caret-up">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-up"
+                            ></use>
+                          </svg>
+                          <svg class="input__icon input__icon--little caret-down">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-down"
+                            ></use>
+                          </svg>
+                        </button>
+                      </div>
                         <p
                                 class="card__price card__price--regular card__price--sm"
                             >
@@ -6882,28 +6956,33 @@
                         >
                     </p>
                     <div class="cart__price">
-                        <div class="number__box">
-                            <input
-                                class="input input--small input--number-sm"
-                                type="number"
-                                name="number"
-                                id="number-1"
-                                value="2"
-                                min="1"
-                            />
-                            <button
-                                type="button"
-                                class="number__btn number__btn--top number__btn--sm"
-                            >
-                                <svg
-                                    class="input__icon input__icon--medium"
-                                >
-                                    <use
-                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                    ></use>
-                                </svg>
-                            </button>
-                        </div>
+                      <div class="number__box">
+                        <input
+                            class="input input--small input--number-sm"
+                            type="number"
+                            name="number"
+                            id="number-1"
+                            value="1"
+                            min="1"
+                            max="10"
+                            step="1"
+                        />
+                        <button
+                          type="button"
+                          class="number__btn number__btn--top number__btn--sm"
+                        >
+                          <svg class="input__icon input__icon--little caret-up">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-up"
+                            ></use>
+                          </svg>
+                          <svg class="input__icon input__icon--little caret-down">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-down"
+                            ></use>
+                          </svg>
+                        </button>
+                      </div>
                         <p
                                 class="card__price card__price--regular card__price--sm"
                             >
@@ -6956,28 +7035,33 @@
                         >
                     </p>
                     <div class="cart__price">
-                        <div class="number__box">
-                            <input
-                                class="input input--small input--number-sm"
-                                type="number"
-                                name="number"
-                                id="number-1"
-                                value="1"
-                                min="1"
-                            />
-                            <button
-                                type="button"
-                                class="number__btn number__btn--top number__btn--sm"
-                            >
-                                <svg
-                                    class="input__icon input__icon--medium"
-                                >
-                                    <use
-                                        xlink:href="assets/svg/sprite.svg#up-down-select"
-                                    ></use>
-                                </svg>
-                            </button>
-                        </div>
+                      <div class="number__box">
+                        <input
+                            class="input input--small input--number-sm"
+                            type="number"
+                            name="number"
+                            id="number-1"
+                            value="1"
+                            min="1"
+                            max="10"
+                            step="1"
+                        />
+                        <button
+                          type="button"
+                          class="number__btn number__btn--top number__btn--sm"
+                        >
+                          <svg class="input__icon input__icon--little caret-up">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-up"
+                            ></use>
+                          </svg>
+                          <svg class="input__icon input__icon--little caret-down">
+                            <use
+                              xlink:href="assets/svg/sprite.svg#select-down"
+                            ></use>
+                          </svg>
+                        </button>
+                      </div>
                         <p
                                 class="card__price card__price--regular card__price--sm"
                             >

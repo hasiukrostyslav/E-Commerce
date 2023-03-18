@@ -27,6 +27,7 @@ export default class View {
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
+    this._addHandlerInputNumber(this._changeInputNumber.bind(this));
   }
 
   addHandlerRender(handler) {
@@ -243,5 +244,27 @@ export default class View {
       () => this._countDown(timer, countDownDate),
       1000
     );
+  }
+
+  _changeInputNumber(e) {
+    const btn = e.target.closest('.number__btn');
+    if (!btn) return;
+
+    if (e.target.closest('.caret-up')) {
+      const input = btn.closest('.number__box').querySelector('input');
+
+      input.value =
+        +input.value < +input.max ? +input.value + +input.step : input.max;
+    }
+
+    if (e.target.closest('.caret-down')) {
+      const input = btn.closest('.number__box').querySelector('input');
+      input.value =
+        +input.value > +input.min ? input.value - input.step : input.min;
+    }
+  }
+
+  _addHandlerInputNumber(handler) {
+    this._parentElement.addEventListener('click', handler);
   }
 }
