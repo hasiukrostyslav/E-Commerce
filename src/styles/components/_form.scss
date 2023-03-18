@@ -71,23 +71,20 @@
   &__input:disabled ~ &__label &__mark {
     background-color: $color-gray-light-1;
   }
-}
 
-// Checkbox button
-.tag {
-  &__checkbox-container {
+  &__flex-container {
     display: flex;
     gap: 1.2rem;
     margin-bottom: 3.2rem;
   }
 
-  &__checkbox-btn {
+  &__btn {
     position: absolute;
     visibility: hidden;
     opacity: 0;
   }
 
-  &__checkbox-btn-label {
+  &__btn-label {
     display: inline-block;
     font-size: 1.4rem;
     line-height: 1.5;
@@ -99,7 +96,14 @@
     cursor: pointer;
   }
 
-  &__checkbox-radio {
+  &__btn-add {
+    display: flex;
+    gap: 0.8rem;
+    color: $color-primary;
+    background-color: transparent;
+  }
+
+  &__radio {
     display: inline-block;
     font-size: 1.6rem;
     font-weight: 700;
@@ -116,17 +120,28 @@
     }
   }
 
-  &__checkbox-btn:checked + &__checkbox-btn-label {
+  &__btn:checked + &__btn-label {
     color: $color-white;
     background-color: $color-primary;
     border: 1px solid $color-primary;
   }
 
-  &__checkbox-btn:checked + &__checkbox-radio {
+  &__btn:checked + &__radio {
     color: $color-primary;
     outline: 1px solid $color-primary;
   }
+
+  &__btn:checked + &__btn-add {
+    color: $color-white;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+  }
+
+  &__btn:checked + &__btn-add > svg {
+    fill: $color-white;
+  }
 }
+
 // RADIO BUTTON
 // Size
 .size {
