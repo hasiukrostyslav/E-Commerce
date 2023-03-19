@@ -4,6 +4,7 @@ import icons from '../../assets/svg/sprite.svg';
 class CardView extends View {
   _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
   _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
+  _curSlide = 0;
 
   constructor() {
     super();
@@ -11,6 +12,7 @@ class CardView extends View {
     this.addHandlerAddToWishlist();
     this._addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
     this._addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
+    this._addHandlerChangeSlide();
   }
 
   _addToWishlist(e) {
@@ -54,6 +56,33 @@ class CardView extends View {
     }
   }
 
+  _prevSlide(e) {
+    const btnPrev = e.target.closest('.card__btn--prev');
+    if (!btnPrev) return;
+
+    this._slides = btnPrev.closest('.card').querySelectorAll('.card__img');
+    const maxSlide = this._slides.length;
+
+    this._curSlide = this._curSlide === 0 ? maxSlide - 1 : this._curSlide - 1;
+    this._goToSlide(this._curSlide);
+  }
+
+  _nextSlide(e) {
+    const btnNext = e.target.closest('.card__btn--next');
+    if (!btnNext) return;
+
+    this._slides = btnNext.closest('.card').querySelectorAll('.card__img');
+    const maxSlide = this._slides.length;
+
+    this._curSlide = this._curSlide === maxSlide - 1 ? 0 : this._curSlide + 1;
+    this._goToSlide(this._curSlide);
+  }
+
+  _addHandlerChangeSlide() {
+    this._mainEl.addEventListener('click', this._prevSlide.bind(this));
+    this._mainEl.addEventListener('click', this._nextSlide.bind(this));
+  }
+
   _addHandlerShowCardBottom(handler) {
     this._parentElement.addEventListener('mouseover', handler);
   }
@@ -83,9 +112,18 @@ class CardView extends View {
   _generateCardMarkup(data, category, size = 'small') {
     return `
       <div class="card">
+        <div class="card__gallery card__gallery--${size}">
         <img src="${data.images}" alt="Photo of ${
       data.title
-    }" class="card__img card__img--${size}">
+    }" class="card__img card__img--${size} card__img--1">
+            <img src="${data.images}" alt="Photo of ${
+      data.title
+    }" class="card__img card__img--${size} card__img--2">
+            <img src="${data.images}" alt="Photo of ${
+      data.title
+    }" class="card__img card__img--${size} card__img--3">
+        </div>
+       
 
         <div class="card__labels">
           ${

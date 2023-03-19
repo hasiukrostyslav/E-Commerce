@@ -187,7 +187,7 @@ const data = {
       brand: 'NewCap',
       type: 'shoes',
       images: images[`catalog-8.jpg`],
-      category: ['new', 'all'],
+      category: ['new', 'all', 'viewed'],
     },
     {
       id: 7,
@@ -201,7 +201,7 @@ const data = {
       brand: 'Ann Taylor',
       type: 'clothes',
       images: images[`catalog-1.jpg`],
-      category: ['new', 'trend', 'interest', 'all'],
+      category: ['new', 'trend', 'interest', 'all', 'viewed'],
     },
     {
       id: 8,
@@ -229,7 +229,7 @@ const data = {
       brand: 'Jhon Smith',
       type: 'clothes',
       images: images[`catalog-5.jpg`],
-      category: ['new', 'trend', 'all'],
+      category: ['new', 'trend', 'all', 'viewed'],
     },
     {
       id: 10,
@@ -257,7 +257,7 @@ const data = {
       brand: 'Columbus',
       type: 'clothes',
       images: images[`catalog-10.jpg`],
-      category: ['sale', 'all'],
+      category: ['sale', 'all', 'viewed'],
     },
     {
       id: 12,
@@ -300,7 +300,7 @@ const data = {
       brand: 'Conversion',
       type: 'shoes',
       images: images[`catalog-12.jpg`],
-      category: ['trend', 'all'],
+      category: ['trend', 'all', 'viewed'],
     },
     {
       id: 15,

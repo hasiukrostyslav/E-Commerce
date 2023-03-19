@@ -232,7 +232,8 @@ class SlidersView extends View {
 
   _changeSlideInterval(e) {
     const btns = e.target.closest('.carousel__btns');
-    if (!btns) return;
+    const card = e.target.closest('.card');
+    if (!btns && !card) return;
 
     clearInterval(this._interval);
     this._setSlideInterval();

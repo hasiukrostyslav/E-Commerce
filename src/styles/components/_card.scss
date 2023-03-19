@@ -2,10 +2,10 @@
   position: relative;
   display: inline-block;
 
-  &__img {
-    border-radius: 4px;
+  &__gallery {
     position: relative;
-    display: block;
+    display: flex;
+    overflow: hidden;
 
     &--small {
       width: 28.5rem;
@@ -15,6 +15,35 @@
     &--large {
       width: 39rem;
       height: 44rem;
+    }
+  }
+
+  &__img {
+    border-radius: 4px;
+    // position: relative;
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: all 1s;
+
+    &--small {
+      width: 28.5rem;
+      height: 32rem;
+    }
+
+    &--large {
+      width: 39rem;
+      height: 44rem;
+    }
+
+    &--1 {
+      transform: translateX(0%);
+    }
+    &--2 {
+      transform: translateX(100%);
+    }
+    &--3 {
+      transform: translateX(200%);
     }
   }
 

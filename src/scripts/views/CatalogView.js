@@ -16,7 +16,6 @@ class CatalogView extends View {
     this._addHandlerToggleFilterContainer();
     this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
-    // this._addHandlerShowNumbersOfProduct(this._showNumbersOfProduct.bind(this));
   }
 
   _showNumbersOfProduct(e) {
