@@ -15,6 +15,22 @@ class CardView extends View {
     this._addHandlerChangeSlide();
   }
 
+  clickToCardLink(e) {
+    const link = e.target.closest('.card__heading');
+    if (!link) return;
+
+    const card = link.closest('.card');
+
+    const article = +card.dataset.article;
+
+    console.log(article, card);
+    return article;
+  }
+
+  addHandlerRenderProductPage(handler) {
+    this._mainEl.addEventListener('click', handler);
+  }
+
   _addToWishlist(e) {
     const btn = e.target.closest('.btn-wishlist-add');
     if (!btn) return;
@@ -38,7 +54,7 @@ class CardView extends View {
 
   _toggleCardBottom(e) {
     const card = e.target.closest('.card');
-    if (!card) return;
+    if (!card || card.closest('.product__details')) return;
 
     const form = card.querySelector('.card__form');
     const btns = card.querySelector('.card__slider-buttons');
@@ -101,7 +117,7 @@ class CardView extends View {
       arr.forEach((prod) =>
         el.insertAdjacentHTML(
           'beforeend',
-          this._generateCardMarkup(prod, el.dataset.cards, el.dataset.cardsSize)
+          this.generateCardMarkup(prod, el.dataset.cards, el.dataset.cardsSize)
         )
       );
 
@@ -109,19 +125,11 @@ class CardView extends View {
     });
   }
 
-  _generateCardMarkup(data, category, size = 'small') {
+  generateCardMarkup(data, category, size = 'large') {
     return `
-      <div class="card">
+      <div class="card" data-article="${data.article}">
         <div class="card__gallery card__gallery--${size}">
-        <img src="${data.images}" alt="Photo of ${
-      data.title
-    }" class="card__img card__img--${size} card__img--1">
-            <img src="${data.images}" alt="Photo of ${
-      data.title
-    }" class="card__img card__img--${size} card__img--2">
-            <img src="${data.images}" alt="Photo of ${
-      data.title
-    }" class="card__img card__img--${size} card__img--3">
+        ${this._generateImages(data, size)}
         </div>
        
 
@@ -206,6 +214,17 @@ class CardView extends View {
 
   _generateSaleLabel(data) {
     return `<p class="sale__percent">-${data.discountPercentage}%</p>`;
+  }
+
+  _generateImages(data, size) {
+    return data.images
+      .map(
+        (img, i) =>
+          `<img src="${img}" alt="Photo of ${
+            data.title
+          }" class="card__img card__img--${size} card__img--${i + 1}"></img>`
+      )
+      .join(' ');
   }
 
   _generateOldPrice(data, size) {

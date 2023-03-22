@@ -17,7 +17,7 @@ import * as model from './model';
 
 const view = new View();
 
-function controlInitPage() {
+const controlInitPage = function () {
   // Init page config
   view.init();
 
@@ -26,9 +26,9 @@ function controlInitPage() {
 
   // Init sliders config
   slidersView.initSlider();
-}
+};
 
-function controlSignIn(e) {
+const controlSignIn = function (e) {
   e.preventDefault();
 
   const user = modalView.validationLogIn(model.state.users);
@@ -38,11 +38,22 @@ function controlSignIn(e) {
 
   navigationView.changeAccountToolbar(user.firstName);
   accountView.renderProfileData(user);
-}
+};
+
+const controlOpenProductPage = function (e) {
+  const article = cardView.clickToCardLink(e);
+  if (!article) return;
+
+  const product = model.findItemByArticle(article);
+  console.log(product);
+
+  productView.renderProductPage(product, cardView.generateCardMarkup(product));
+};
 
 function init() {
   view.addHandlerRender(controlInitPage);
   modalView.addHandlerLogIn(controlSignIn);
+  cardView.addHandlerRenderProductPage(controlOpenProductPage);
 }
 
 init();

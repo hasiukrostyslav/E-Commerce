@@ -13,3 +13,6 @@ export const filterCategory = (category) =>
   state.catalog.filter((item) =>
     item.category.find((type) => type === category)
   );
+
+export const findItemByArticle = (article) =>
+  state.catalog.find((card) => card.article === article);

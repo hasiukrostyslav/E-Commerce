@@ -18,10 +18,11 @@
     right: 0;
     font-size: 1.6rem;
     line-height: 1.6;
+    font-weight: 700;
     color: $color-gray-dark-3;
 
     span {
-      font-weight: 700;
+      font-weight: 400;
     }
   }
 
@@ -61,6 +62,7 @@
     list-style: none;
     display: flex;
     gap: 2rem;
+    cursor: pointer;
   }
 
   &__img-video {

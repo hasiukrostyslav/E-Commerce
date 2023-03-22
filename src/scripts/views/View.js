@@ -27,7 +27,6 @@ export default class View {
     this._addHandlerInitLinks();
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
-    // this._addHandlerInputNumber(this._changeInputNumber.bind(this));
     this._addHandlerInputNumber();
   }
 

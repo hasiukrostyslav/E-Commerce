@@ -1,4 +1,5 @@
 import View from './View';
+import icons from '../../assets/svg/sprite.svg';
 
 class ProductView extends View {
   _tabs = document.querySelector('.product__tabs');
@@ -7,6 +8,7 @@ class ProductView extends View {
   _currentPage = document.querySelector('.product__info');
   _currentSubPage = document.querySelector('.details');
   _accordionContainer = document.querySelector('.product__accordion');
+  _detailsPage = document.querySelector('.product__details');
   _currentTab;
 
   constructor() {
@@ -14,6 +16,63 @@ class ProductView extends View {
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
     this._setObserver(this._renderBreadcrumb.bind(this));
+  }
+
+  renderProductPage(data, markup) {
+    this._productPageEl.querySelector('h2').textContent = data.description;
+    this._productPageEl.querySelector('.product__article-num').textContent =
+      data.article;
+    this._renderCard(markup);
+    this._renderProductInfo(data);
+  }
+
+  _renderCard(markup) {
+    if (this._detailsPage.querySelector('.card'))
+      this._detailsPage.querySelector('.card').remove();
+
+    this._detailsPage.insertAdjacentHTML('beforeend', markup);
+
+    const card = this._detailsPage.querySelector('.card');
+    card.querySelector('.card__slider-buttons').classList.remove('hidden');
+    card.querySelector('.card__form').classList.remove('hidden');
+  }
+
+  _renderProductInfo(data) {
+    const img = this._currentPage.querySelector('img');
+    img.src = data.images.at(0);
+    img.alt = data.title;
+    this._currentPage
+      .querySelector('.product__img-list')
+      .insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
+  }
+
+  _generateGalleryList(data) {
+    return data.images
+      .map(
+        (img, i, arr) => `
+      <li class="product__img-item ${
+        i === arr.length - 1 ? 'product__img-video' : ''
+      }">
+        <img
+          class="product__img product__img--sm ${
+            i === 0 ? 'product__img--current' : ''
+          }"
+          src="${img}"
+          alt="${data.title}"
+          data-gallary-slide="${i + 1}"
+        />
+        ${
+          i === arr.length - 1
+            ? `<span class="product__play-btn">
+                <svg class="play-icon">
+                  <use xlink:href="${icons}#play"></use>
+                </svg>
+              </span>`
+            : ''
+        }
+      </li>`
+      )
+      .join(' ');
   }
 
   _renderBreadcrumb() {
