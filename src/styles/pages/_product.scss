@@ -136,15 +136,8 @@
     color: $color-gray-dark-3;
   }
 
-  &__sale-badge {
-    display: inline-block;
-    color: $color-white;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.6;
-    background-color: $color-secondary;
-    padding: 0.1rem 0.8rem;
-    border-radius: 4px;
+  &__color {
+    margin-bottom: 2.4rem;
   }
 
   &__heading {
@@ -171,10 +164,6 @@
     font-size: 1.4rem;
     line-height: 1.5;
     color: $color-gray-dark-4;
-  }
-
-  &__form {
-    margin-top: 2.4rem;
   }
 
   .size__select {

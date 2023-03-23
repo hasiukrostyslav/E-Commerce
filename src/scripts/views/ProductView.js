@@ -16,6 +16,7 @@ class ProductView extends View {
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
     this._setObserver(this._renderBreadcrumb.bind(this));
+    this._addHandlerSwitchColor(this._switchColor.bind(this));
   }
 
   renderProductPage(data, markup) {
@@ -38,12 +39,34 @@ class ProductView extends View {
   }
 
   _renderProductInfo(data) {
+    const gallery = this._currentPage.querySelector('.product__img-list');
+    const priceInfo = this._currentPage.querySelector(
+      '.product__flex-container'
+    );
+    const formColor = this._currentPage.querySelector('.product__color');
+    const formSize = this._currentPage.querySelector('#size');
     const img = this._currentPage.querySelector('img');
+    const brand = this._currentSubPage.querySelector('.details__text--brand');
+    const colors = this._currentSubPage.querySelector('.details__text--color');
+
+    brand.textContent = data.brand;
+    colors.textContent = data.color
+      .map((el) => el.split('-').join(' '))
+      .join(' / ');
     img.src = data.images.at(0);
     img.alt = data.title;
-    this._currentPage
-      .querySelector('.product__img-list')
-      .insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
+    gallery.innerHTML = ''; // Some bug, need to be fixed
+    priceInfo.innerHTML = '';
+    formColor.innerHTML = '';
+    formSize.innerHTML = '';
+
+    gallery.insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
+    priceInfo.insertAdjacentHTML(
+      'afterbegin',
+      this._generatePriceDetails(data)
+    );
+    formColor.insertAdjacentHTML('afterbegin', this._generateColorMenu(data));
+    formSize.insertAdjacentHTML('afterbegin', this._generateSizeMenu(data));
   }
 
   _generateGalleryList(data) {
@@ -73,6 +96,137 @@ class ProductView extends View {
       </li>`
       )
       .join(' ');
+  }
+
+  _generatePriceDetails(data) {
+    return `
+    <div class="product__price">
+        <p class="card__price card__price--large ${
+          data.discountPercentage === 0 ? '' : 'card__price--new'
+        }">&dollar;${
+      data.discountPercentage === 0
+        ? data.price.toFixed(2)
+        : (data.price - (data.price * data.discountPercentage) / 100).toFixed(2)
+    }
+        ${data.discountPercentage !== 0 ? this._generateOldPrice(data) : ''}
+        </p>
+        ${
+          (data.discountPercentage !== 0 && this._generateSaleLabel(data)) || ''
+        }
+      </div>
+
+      ${data.rating ? this._generateRating(data) : ''}
+    </div>
+    `;
+  }
+
+  _generateSizeMenu(data) {
+    return `
+            <option value="" class="placeholder" disabled selected>
+              Please select
+            </option>
+            ${this._generateSizeOption(data)} 
+                  
+    `;
+  }
+
+  _generateSizeOption(data) {
+    return data.size.length > 0
+      ? data.size
+          .map(
+            (sz) =>
+              `<option value="${sz}">${
+                Number.isFinite(sz) ? sz : sz.toUpperCase()
+              }</option>`
+          )
+          .join('')
+      : '';
+  }
+
+  _generateColorMenu(data) {
+    return `
+        <p class="product__heading">Color</p>
+        <ul class="product__color-switcher">
+          ${data.color
+            .map((el, i) => this._generateColorButton(data, el, i))
+            .join('')}
+          <li class="product__radio-item">
+            <span class="product__color-type">${
+              data.color[0][0].toUpperCase() +
+              data.color[0].split('-').join(' ').slice(1)
+            }</span>
+          </li>
+        </ul>
+    `;
+  }
+
+  _switchColor(e) {
+    const btn = e.target.closest('.color__radio');
+    if (!btn) return;
+
+    const color = btn.id.split('-').slice(1).join(' ');
+
+    this._currentPage.querySelector('.product__color-type').textContent =
+      color[0].toUpperCase() + color.slice(1);
+  }
+
+  _addHandlerSwitchColor(handler) {
+    this._currentPage.addEventListener('click', handler);
+  }
+
+  _generateColorButton(data, color, i) {
+    return `
+          <li class="product__radio-item">
+            <input
+              class="color__radio"
+              type="radio"
+              name="color"
+              id="${data.article}-${color}"
+            ${i === 0 ? 'checked' : ''}  
+            />
+            <label class="color__label color__label--sm" for="${
+              data.article
+            }-${color}">&nbsp;
+              <span class="color__type color__type--sm color__type--${color}"
+              >&nbsp;</span>
+            </label>
+          </li>
+    `;
+  }
+
+  _generateSaleLabel(data) {
+    return `<p class="sale__badge">-${data.discountPercentage}%</p>`;
+  }
+
+  _generateOldPrice(data) {
+    return `<span class="card__price--old">&dollar;${data.price.toFixed(
+      2
+    )}</span>`;
+  }
+
+  _generateRating(data, maxScore = 5) {
+    return `
+    <div class="product__rating">
+      <div class="rating">
+      ${new Array(data.rating)
+        .fill(1)
+        .map(() => this._generateRatingStar(true))
+        .join('')}
+        ${new Array(maxScore - data.rating)
+          .fill(1)
+          .map(() => this._generateRatingStar())
+          .join('')}
+      </div>
+      <span class="product__rating-amount">12 reviews</span>
+    </div>`;
+  }
+
+  _generateRatingStar(pos = false) {
+    return `
+      <svg class="rating__icon ${pos ? '' : 'rating__icon--outline'}">
+        <use xlink:href="${icons}#star-${pos ? 'filled' : 'outline'}"></use>
+      </svg>  
+    `;
   }
 
   _renderBreadcrumb() {

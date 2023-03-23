@@ -23,7 +23,6 @@ class CardView extends View {
 
     const article = +card.dataset.article;
 
-    console.log(article, card);
     return article;
   }
 
@@ -125,7 +124,7 @@ class CardView extends View {
     });
   }
 
-  generateCardMarkup(data, category, size = 'large') {
+  generateCardMarkup(data, category = 'item', size = 'large') {
     return `
       <div class="card" data-article="${data.article}">
         <div class="card__gallery card__gallery--${size}">
@@ -213,7 +212,7 @@ class CardView extends View {
   }
 
   _generateSaleLabel(data) {
-    return `<p class="sale__percent">-${data.discountPercentage}%</p>`;
+    return `<p class="sale__badge sale__badge--card">-${data.discountPercentage}%</p>`;
   }
 
   _generateImages(data, size) {
@@ -258,10 +257,10 @@ class CardView extends View {
   _generateSizeButton(data, size, category) {
     return `
       <li class="card__radio-item">
-        <input class="size__radio" type="radio" value="${size}" name="size" id="${category}00${
-      data.id
-    }${size}" ${size === data.size.at(0) ? 'checked' : ''}>
-        <label class="size__label" for="${category}00${data.id}${size}">${
+        <input class="size__radio" type="radio" value="${size}" name="size" id="${
+      data.article
+    }-${size}-${category}" ${size === data.size.at(0) ? 'checked' : ''}>
+        <label class="size__label" for="${data.article}-${size}-${category}">${
       typeof size === 'string' ? size.toUpperCase() : size
     }</label>
       </li>
@@ -271,12 +270,12 @@ class CardView extends View {
   _generateColorButton(data, color, category) {
     return `
       <li class="card__radio-item">
-        <input class="color__radio" type="radio" name="color" id="${category}00${
-      data.id
-    }${color}" ${color === data.color.at(0) ? 'checked' : ''}>
-        <label class="color__label color__label--sm" for="${category}00${
-      data.id
-    }${color}">
+        <input class="color__radio" type="radio" name="color" id="${
+          data.article
+        }-${color}-${category}" ${color === data.color.at(0) ? 'checked' : ''}>
+        <label class="color__label color__label--sm" for="${
+          data.article
+        }-${color}-${category}">
           <span class="color__type color__type--sm color__type--${color}"></span>
         </label> 
       </li>
