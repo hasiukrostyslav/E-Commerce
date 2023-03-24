@@ -45,7 +45,7 @@ const controlOpenProductPage = function (e) {
   if (!article) return;
 
   const product = model.findItemByArticle(article);
-  console.log(product);
+  // console.log(product);
 
   productView.renderProductPage(product, cardView.generateCardMarkup(product));
 };

@@ -21,6 +21,7 @@ class ProductView extends View {
 
   renderProductPage(data, markup) {
     this._productPageEl.querySelector('h2').textContent = data.description;
+    this._productPageEl.querySelector('h2').dataset.title = data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
       data.article;
     this._renderCard(markup);
@@ -48,7 +49,7 @@ class ProductView extends View {
     const img = this._currentPage.querySelector('img');
     const brand = this._currentSubPage.querySelector('.details__text--brand');
     const colors = this._currentSubPage.querySelector('.details__text--color');
-
+    // console.log(brand, colors);
     brand.textContent = data.brand;
     colors.textContent = data.color
       .map((el) => el.split('-').join(' '))
@@ -229,7 +230,7 @@ class ProductView extends View {
     `;
   }
 
-  _renderBreadcrumb() {
+  _renderBreadcrumb(entries) {
     if (!this._productPageEl.classList.contains('hidden')) {
       const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
       link.textContent = 'Women';
@@ -252,6 +253,12 @@ class ProductView extends View {
           )
         );
       }
+
+      const h2 = entries.find((el) => el.target.nodeName === 'H2');
+      if (!h2) return;
+      [
+        ...this._breadcrumbList.querySelectorAll('.breadcrumb__link--subpage'),
+      ].at(-1).textContent = h2.target.innerText;
     }
 
     const [subLinkOne, subLinkTwo] = [
