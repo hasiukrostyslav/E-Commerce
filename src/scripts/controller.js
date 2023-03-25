@@ -21,6 +21,9 @@ const controlInitPage = function () {
   // Init page config
   view.init();
 
+  // Calculate item rating
+  model.calculateItemRating(model.state);
+
   // Render product cards
   cardView.render(model.state.catalog);
 

@@ -1,5 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
+import { MAXSCORE } from '../config';
 
 class ProductView extends View {
   _tabs = document.querySelector('.product__tabs');
@@ -24,8 +25,12 @@ class ProductView extends View {
     this._productPageEl.querySelector('h2').dataset.title = data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
       data.article;
+
     this._renderCard(markup);
-    this._renderProductInfo(data);
+    this._renderProductGallery(data);
+    this._renderProductOptions(data);
+    this._renderProductDetails(data);
+    this._renderProductReview(data);
   }
 
   _renderCard(markup) {
@@ -39,35 +44,148 @@ class ProductView extends View {
     card.querySelector('.card__form').classList.remove('hidden');
   }
 
-  _renderProductInfo(data) {
-    const gallery = this._currentPage.querySelector('.product__img-list');
-    const priceInfo = this._currentPage.querySelector(
-      '.product__flex-container'
-    );
-    const formColor = this._currentPage.querySelector('.product__color');
-    const formSize = this._currentPage.querySelector('#size');
-    const img = this._currentPage.querySelector('img');
-    const brand = this._currentSubPage.querySelector('.details__text--brand');
-    const colors = this._currentSubPage.querySelector('.details__text--color');
-    // console.log(brand, colors);
-    brand.textContent = data.brand;
-    colors.textContent = data.color
-      .map((el) => el.split('-').join(' '))
-      .join(' / ');
+  _renderProductGallery(data) {
+    const gallery = this._productPageEl.querySelector('.product__img-list');
+    const img = this._productPageEl.querySelector('img');
+
     img.src = data.images.at(0);
     img.alt = data.title;
-    gallery.innerHTML = ''; // Some bug, need to be fixed
+    gallery.innerHTML = '';
+
+    gallery.insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
+  }
+
+  _renderProductOptions(data) {
+    const priceInfo = this._productPageEl.querySelector(
+      '.product__flex-container'
+    );
+    const formColor = this._productPageEl.querySelector('.product__color');
+    const formSize = this._productPageEl.querySelector('#size');
+
+    this._productPageEl.querySelector('.input--number-sm').value = 1;
     priceInfo.innerHTML = '';
     formColor.innerHTML = '';
     formSize.innerHTML = '';
 
-    gallery.insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
     priceInfo.insertAdjacentHTML(
       'afterbegin',
       this._generatePriceDetails(data)
     );
     formColor.insertAdjacentHTML('afterbegin', this._generateColorMenu(data));
     formSize.insertAdjacentHTML('afterbegin', this._generateSizeMenu(data));
+  }
+
+  _renderProductDetails(data) {
+    const brandName = this._productPageEl.querySelector(
+      '.details__text--brand'
+    );
+    const colorsName = this._productPageEl.querySelector(
+      '.details__text--color'
+    );
+
+    brandName.textContent = data.brand;
+    colorsName.textContent = data.color
+      .map((el) => el.split('-').join(' '))
+      .join(' / ');
+  }
+
+  _renderProductReview(data) {
+    const reviewsInfo = this._productPageEl.querySelector('.reviews__wrapper');
+
+    this._productPageEl.querySelector('.checkbox__radio>sup').textContent =
+      data.reviews.length;
+
+    reviewsInfo.innerHTML = '';
+
+    reviewsInfo.insertAdjacentHTML(
+      'afterbegin',
+      this._generateReviewsInfo(data)
+    );
+
+    this._calculateReviewsBarWidth(reviewsInfo, data);
+  }
+
+  _calculateReviewsBarWidth(parentEl, data) {
+    const bar = parentEl.querySelector('.reviews__progres-bg');
+    const barProgres = [...parentEl.querySelectorAll('.reviews__progres-bar')];
+    const barWidth = Number.parseInt(getComputedStyle(bar).width, 10);
+
+    const percentage = Array.from({ length: MAXSCORE }, (_, i) => {
+      if (data.reviews.length === 0) return 0;
+      return (
+        (data.reviews.filter((score) => score === i + 1).length * 100) /
+        data.reviews.length
+      );
+    }).reverse();
+
+    barProgres.forEach(
+      (el, i) => (el.style.width = `${(percentage[i] * barWidth) / 100}px`)
+    );
+  }
+
+  _generateReviewsInfo(data) {
+    return `
+          <div class="reviews__info">
+            <h2 class="reviews__heading">${data.reviews.length} review${
+      data.reviews.length === 1 ? '' : 's'
+    }</h2>
+            ${
+              data.rating
+                ? this._generateRating(data.rating)
+                : this._generateRating()
+            }
+            ${
+              data.rating
+                ? this._generateReviewStat(data)
+                : `<p class="reviews__text">There aren't any reviews <br> for this product yet!</p>`
+            }
+
+          </div>
+
+          <ul class="reviews__breakdown">
+            ${new Array(MAXSCORE)
+              .fill(1)
+              .map((_, i) => this._generateReviewBreakdown(data, i))
+              .join('')}
+          </ul>
+
+          
+    `;
+  }
+
+  _generateReviewBreakdown(data, i) {
+    return `
+            <li class="reviews__progress">
+              <span class="reviews__score">${MAXSCORE - i}
+                <svg class="rating__icon rating__icon--outline">
+                  <use xlink:href="${icons}#star-outline"
+                  ></use>
+                </svg>
+              </span>
+              <div class="reviews__progres-bg">
+                <span class="reviews__progres-bar reviews__progres-bar--${
+                  MAXSCORE - i
+                }"
+                >&nbsp;</span>
+              </div>
+              <span class="reviews__count">${
+                data.reviews.filter((score) => score === MAXSCORE - i).length
+              }</span>
+            </li>
+    `;
+  }
+
+  _generateReviewStat(data) {
+    return `
+          <p class="reviews__text">
+            ${data.reviews.filter((el) => el > 3).length} out of ${
+      data.reviews.length
+    } (${Math.trunc(
+      (data.reviews.filter((el) => el > 3).length * 100) / data.reviews.length
+    )}%) <br />
+            Customers recommended this product
+          </p>
+    `;
   }
 
   _generateGalleryList(data) {
@@ -116,7 +234,7 @@ class ProductView extends View {
         }
       </div>
 
-      ${data.rating ? this._generateRating(data) : ''}
+      ${data.rating ? this._generateRatingContainer(data) : ''}
     </div>
     `;
   }
@@ -205,21 +323,28 @@ class ProductView extends View {
     )}</span>`;
   }
 
-  _generateRating(data, maxScore = 5) {
+  _generateRatingContainer(data) {
     return `
     <div class="product__rating">
+    ${this._generateRating(data.rating)}
+    <span class="product__rating-amount">${data.reviews.length} review${
+      data.reviews.length > 1 ? 's' : ''
+    }</span>
+    </div>`;
+  }
+
+  _generateRating(data = 0, maxScore = MAXSCORE) {
+    return `
       <div class="rating">
-      ${new Array(data.rating)
+      ${new Array(data)
         .fill(1)
         .map(() => this._generateRatingStar(true))
         .join('')}
-        ${new Array(maxScore - data.rating)
+        ${new Array(maxScore - data)
           .fill(1)
           .map(() => this._generateRatingStar())
           .join('')}
-      </div>
-      <span class="product__rating-amount">12 reviews</span>
-    </div>`;
+      </div>`;
   }
 
   _generateRatingStar(pos = false) {

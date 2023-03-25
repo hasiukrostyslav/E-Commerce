@@ -3,6 +3,7 @@ export const HOURS = 24;
 export const MINUTES = 60;
 export const SECONDS = 60;
 export const MILISECONDS = 1000;
+export const MAXSCORE = 5;
 
 export const ERROR = {
   fullName: 'Please provide a valid full name.',

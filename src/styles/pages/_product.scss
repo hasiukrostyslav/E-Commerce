@@ -386,6 +386,7 @@
       &__wrapper {
         display: flex;
         justify-content: space-between;
+        gap: 8rem;
         margin-bottom: 8rem;
       }
 
@@ -446,27 +447,27 @@
 
         &--5 {
           background-color: $color-third;
-          width: 31.2rem;
+          // width: 31.2rem;
         }
 
         &--4 {
           background-color: $color-green;
-          width: 17rem;
+          // width: 17rem;
         }
 
         &--3 {
           background-color: $color-yellow;
-          width: 8.6rem;
+          // width: 8.6rem;
         }
 
         &--2 {
           background-color: $color-gold;
-          width: 8.6rem;
+          // width: 8.6rem;
         }
 
         &--1 {
           background-color: $color-secondary;
-          width: 8.6rem;
+          // width: 8.6rem;
         }
       }
 
