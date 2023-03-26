@@ -416,7 +416,7 @@ const data = {
     {
       article: 183260098,
       user: 'Devon Lane',
-      date: '15 December, 2022',
+      date: '2022-12-15T13:26:17.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -425,16 +425,17 @@ const data = {
     {
       article: 183260098,
       user: 'Annette Black',
-      date: '24 March, 2023',
+      date: '2023-03-24T09:13:10.000Z',
       rating: 4,
       likes: 2,
       dislikes: 1,
-      text: '@Devon Lane Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+      text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+      tag: '@Devon Lane',
     },
     {
       article: 183260098,
       user: 'Albert Flores',
-      date: '7 February, 2023',
+      date: '2023-02-07T09:13:10.000Z',
       rating: 1,
       likes: 0,
       dislikes: 3,
@@ -443,7 +444,7 @@ const data = {
     {
       article: 183260098,
       user: 'Marvin McKinney',
-      date: '28 July, 2022',
+      date: '2022-07-28T08:13:10.000Z',
       rating: 5,
       likes: 3,
       dislikes: 0,
@@ -452,7 +453,7 @@ const data = {
     {
       article: 183260098,
       user: 'Iryna Smith',
-      date: '5 January, 2023',
+      date: '2023-01-05T09:13:10.000Z',
       rating: 3,
       likes: 0,
       dislikes: 3,
@@ -461,7 +462,7 @@ const data = {
     {
       article: 183260098,
       user: 'Adam Nedved',
-      date: '17 August, 2022',
+      date: '2022-08-17T08:13:10.000Z',
       rating: 2,
       likes: 0,
       dislikes: 0,
@@ -470,7 +471,7 @@ const data = {
     {
       article: 183260098,
       user: 'May Simpson',
-      date: '1 March, 2023',
+      date: '2023-03-01T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -479,7 +480,7 @@ const data = {
     {
       article: 183260098,
       user: 'Hanna Flowers',
-      date: '28 December, 2022',
+      date: '2022-12-28T09:13:10.000Z',
       rating: 4,
       likes: 0,
       dislikes: 0,
@@ -488,7 +489,7 @@ const data = {
     {
       article: 183260098,
       user: 'Alex Moon',
-      date: '10 April, 2022',
+      date: '2022-04-10T08:13:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 2,
@@ -497,7 +498,7 @@ const data = {
     {
       article: 183260098,
       user: 'Kateryna James',
-      date: '24 April, 2022',
+      date: '2022-04-24T08:13:10.000Z',
       rating: 5,
       likes: 5,
       dislikes: 0,
@@ -505,8 +506,8 @@ const data = {
     },
     {
       article: 183260098,
-      user: 'Andriy Koval',
-      date: '1 September, 2022',
+      user: 'Rostyslav Hasiuk',
+      date: '2022-09-01T08:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 1,
@@ -515,7 +516,7 @@ const data = {
     {
       article: 183260098,
       user: 'Maria Shevchenko',
-      date: '14 February, 2023',
+      date: '2023-02-14T09:13:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 0,
@@ -523,8 +524,8 @@ const data = {
     },
     {
       article: 146175048,
-      user: 'Andriy Koval',
-      date: '24 February, 2022',
+      user: 'Rostyslav Hasiuk',
+      date: '2022-02-24T09:13:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 0,
@@ -532,8 +533,8 @@ const data = {
     },
     {
       article: 146175048,
-      user: 'Andriy Koval',
-      date: '24 February, 2022',
+      user: 'Alex Moon',
+      date: '2022-02-24T19:18:13.000Z',
       rating: 5,
       likes: 1,
       dislikes: 0,
@@ -541,8 +542,8 @@ const data = {
     },
     {
       article: 106254276,
-      user: 'Andriy Koval',
-      date: '24 February, 2022',
+      user: 'Rostyslav Hasiuk',
+      date: '2022-03-04T07:38:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 0,
@@ -551,7 +552,7 @@ const data = {
     {
       article: 113164046,
       user: 'Alex Moon',
-      date: '2 December, 2022',
+      date: '2023-01-11T15:48:27.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -560,7 +561,7 @@ const data = {
     {
       article: 147140718,
       user: 'May Simpson',
-      date: '1 March, 2023',
+      date: '2023-03-01T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -569,7 +570,7 @@ const data = {
     {
       article: 147140718,
       user: 'Hanna Flowers',
-      date: '28 December, 2022',
+      date: '2022-12-28T09:13:10.000Z',
       rating: 5,
       likes: 0,
       dislikes: 0,
@@ -578,7 +579,7 @@ const data = {
     {
       article: 147140718,
       user: 'Alex Moon',
-      date: '10 April, 2022',
+      date: '2022-04-10T08:13:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 2,
@@ -587,7 +588,7 @@ const data = {
     {
       article: 147140718,
       user: 'Kateryna James',
-      date: '24 April, 2022',
+      date: '2022-04-24T08:13:10.000Z',
       rating: 5,
       likes: 5,
       dislikes: 0,
@@ -596,7 +597,7 @@ const data = {
     {
       article: 113002379,
       user: 'Iryna Smith',
-      date: '5 January, 2023',
+      date: '2023-01-05T09:13:10.000Z',
       rating: 5,
       likes: 0,
       dislikes: 3,
@@ -605,7 +606,7 @@ const data = {
     {
       article: 113002379,
       user: 'Adam Nedved',
-      date: '17 August, 2022',
+      date: '2022-08-17T08:13:10.000Z',
       rating: 3,
       likes: 0,
       dislikes: 0,
@@ -614,7 +615,7 @@ const data = {
     {
       article: 113002379,
       user: 'May Simpson',
-      date: '1 March, 2023',
+      date: '2023-03-01T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -623,7 +624,7 @@ const data = {
     {
       article: 113002379,
       user: 'Hanna Flowers',
-      date: '28 December, 2022',
+      date: '2022-12-28T09:13:10.000Z',
       rating: 3,
       likes: 0,
       dislikes: 0,
@@ -632,7 +633,7 @@ const data = {
     {
       article: 113002379,
       user: 'Alex Moon',
-      date: '10 April, 2022',
+      date: '2022-04-10T08:13:10.000Z',
       rating: 4,
       likes: 1,
       dislikes: 2,
@@ -641,7 +642,7 @@ const data = {
     {
       article: 113002379,
       user: 'Kateryna James',
-      date: '24 April, 2022',
+      date: '2022-04-24T08:13:10.000Z',
       rating: 5,
       likes: 5,
       dislikes: 0,
@@ -650,16 +651,17 @@ const data = {
     {
       article: 166411108,
       user: 'Annette Black',
-      date: '24 March, 2023',
+      date: '2023-03-24T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 1,
-      text: '@Devon Lane Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+      text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+      tag: '@Devon Lane',
     },
     {
       article: 166411108,
       user: 'Albert Flores',
-      date: '7 February, 2023',
+      date: '2023-02-07T09:13:10.000Z',
       rating: 1,
       likes: 0,
       dislikes: 3,
@@ -668,7 +670,7 @@ const data = {
     {
       article: 166411108,
       user: 'Marvin McKinney',
-      date: '28 July, 2022',
+      date: '2022-07-28T08:13:10.000Z',
       rating: 5,
       likes: 3,
       dislikes: 0,
@@ -677,7 +679,7 @@ const data = {
     {
       article: 166411108,
       user: 'Iryna Smith',
-      date: '5 January, 2023',
+      date: '2023-01-05T09:13:10.000Z',
       rating: 3,
       likes: 0,
       dislikes: 3,
@@ -686,7 +688,7 @@ const data = {
     {
       article: 166411108,
       user: 'Adam Nedved',
-      date: '17 August, 2022',
+      date: '2022-08-17T08:13:10.000Z',
       rating: 5,
       likes: 0,
       dislikes: 0,
@@ -695,7 +697,7 @@ const data = {
     {
       article: 166411108,
       user: 'May Simpson',
-      date: '1 March, 2023',
+      date: '2023-03-01T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -704,7 +706,7 @@ const data = {
     {
       article: 166411108,
       user: 'Hanna Flowers',
-      date: '28 December, 2022',
+      date: '2022-12-28T09:13:10.000Z',
       rating: 4,
       likes: 0,
       dislikes: 0,
@@ -713,7 +715,7 @@ const data = {
     {
       article: 166411108,
       user: 'Alex Moon',
-      date: '10 April, 2022',
+      date: '2022-07-18T12:27:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 2,
@@ -722,7 +724,7 @@ const data = {
     {
       article: 103758821,
       user: 'May Simpson',
-      date: '1 March, 2023',
+      date: '2023-03-01T09:13:10.000Z',
       rating: 5,
       likes: 2,
       dislikes: 0,
@@ -731,7 +733,7 @@ const data = {
     {
       article: 164169335,
       user: 'Hanna Flowers',
-      date: '28 December, 2022',
+      date: '2022-12-28T09:13:10.000Z',
       rating: 4,
       likes: 0,
       dislikes: 0,
@@ -740,7 +742,7 @@ const data = {
     {
       article: 164169335,
       user: 'Alex Moon',
-      date: '10 April, 2022',
+      date: '2022-04-10T08:13:10.000Z',
       rating: 4,
       likes: 1,
       dislikes: 2,
@@ -748,8 +750,8 @@ const data = {
     },
     {
       article: 151253984,
-      user: 'Andriy Koval',
-      date: '24 February, 2022',
+      user: 'Rostyslav Hasiuk',
+      date: '2022-02-24T09:13:10.000Z',
       rating: 5,
       likes: 1,
       dislikes: 0,

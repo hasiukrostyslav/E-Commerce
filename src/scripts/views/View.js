@@ -299,4 +299,13 @@ export default class View {
       this._changeInputNumber.bind(this)
     );
   }
+
+  _priceFormatter(data) {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+
+    return formatter.format(data);
+  }
 }

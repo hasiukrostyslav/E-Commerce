@@ -20,7 +20,7 @@ class ProductView extends View {
     this._addHandlerSwitchColor(this._switchColor.bind(this));
   }
 
-  renderProductPage(data, markup) {
+  renderProductPage(data, reviews, markup) {
     this._productPageEl.querySelector('h2').textContent = data.description;
     this._productPageEl.querySelector('h2').dataset.title = data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
@@ -30,8 +30,10 @@ class ProductView extends View {
     this._renderProductGallery(data);
     this._renderProductOptions(data);
     this._renderProductDetails(data);
-    this._renderProductReview(data);
+    this._renderProductReview(data, reviews);
   }
+
+  // Render PRODUCT CARD
 
   _renderCard(markup) {
     if (this._detailsPage.querySelector('.card'))
@@ -44,6 +46,8 @@ class ProductView extends View {
     card.querySelector('.card__form').classList.remove('hidden');
   }
 
+  // RENDER PRODUCT GALLERY
+
   _renderProductGallery(data) {
     const gallery = this._productPageEl.querySelector('.product__img-list');
     const img = this._productPageEl.querySelector('img');
@@ -53,139 +57,6 @@ class ProductView extends View {
     gallery.innerHTML = '';
 
     gallery.insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
-  }
-
-  _renderProductOptions(data) {
-    const priceInfo = this._productPageEl.querySelector(
-      '.product__flex-container'
-    );
-    const formColor = this._productPageEl.querySelector('.product__color');
-    const formSize = this._productPageEl.querySelector('#size');
-
-    this._productPageEl.querySelector('.input--number-sm').value = 1;
-    priceInfo.innerHTML = '';
-    formColor.innerHTML = '';
-    formSize.innerHTML = '';
-
-    priceInfo.insertAdjacentHTML(
-      'afterbegin',
-      this._generatePriceDetails(data)
-    );
-    formColor.insertAdjacentHTML('afterbegin', this._generateColorMenu(data));
-    formSize.insertAdjacentHTML('afterbegin', this._generateSizeMenu(data));
-  }
-
-  _renderProductDetails(data) {
-    const brandName = this._productPageEl.querySelector(
-      '.details__text--brand'
-    );
-    const colorsName = this._productPageEl.querySelector(
-      '.details__text--color'
-    );
-
-    brandName.textContent = data.brand;
-    colorsName.textContent = data.color
-      .map((el) => el.split('-').join(' '))
-      .join(' / ');
-  }
-
-  _renderProductReview(data) {
-    const reviewsInfo = this._productPageEl.querySelector('.reviews__wrapper');
-
-    this._productPageEl.querySelector('.checkbox__radio>sup').textContent =
-      data.reviews.length;
-
-    reviewsInfo.innerHTML = '';
-
-    reviewsInfo.insertAdjacentHTML(
-      'afterbegin',
-      this._generateReviewsInfo(data)
-    );
-
-    this._calculateReviewsBarWidth(reviewsInfo, data);
-  }
-
-  _calculateReviewsBarWidth(parentEl, data) {
-    const bar = parentEl.querySelector('.reviews__progres-bg');
-    const barProgres = [...parentEl.querySelectorAll('.reviews__progres-bar')];
-    const barWidth = Number.parseInt(getComputedStyle(bar).width, 10);
-
-    const percentage = Array.from({ length: MAXSCORE }, (_, i) => {
-      if (data.reviews.length === 0) return 0;
-      return (
-        (data.reviews.filter((score) => score === i + 1).length * 100) /
-        data.reviews.length
-      );
-    }).reverse();
-
-    barProgres.forEach(
-      (el, i) => (el.style.width = `${(percentage[i] * barWidth) / 100}px`)
-    );
-  }
-
-  _generateReviewsInfo(data) {
-    return `
-          <div class="reviews__info">
-            <h2 class="reviews__heading">${data.reviews.length} review${
-      data.reviews.length === 1 ? '' : 's'
-    }</h2>
-            ${
-              data.rating
-                ? this._generateRating(data.rating)
-                : this._generateRating()
-            }
-            ${
-              data.rating
-                ? this._generateReviewStat(data)
-                : `<p class="reviews__text">There aren't any reviews <br> for this product yet!</p>`
-            }
-
-          </div>
-
-          <ul class="reviews__breakdown">
-            ${new Array(MAXSCORE)
-              .fill(1)
-              .map((_, i) => this._generateReviewBreakdown(data, i))
-              .join('')}
-          </ul>
-
-          
-    `;
-  }
-
-  _generateReviewBreakdown(data, i) {
-    return `
-            <li class="reviews__progress">
-              <span class="reviews__score">${MAXSCORE - i}
-                <svg class="rating__icon rating__icon--outline">
-                  <use xlink:href="${icons}#star-outline"
-                  ></use>
-                </svg>
-              </span>
-              <div class="reviews__progres-bg">
-                <span class="reviews__progres-bar reviews__progres-bar--${
-                  MAXSCORE - i
-                }"
-                >&nbsp;</span>
-              </div>
-              <span class="reviews__count">${
-                data.reviews.filter((score) => score === MAXSCORE - i).length
-              }</span>
-            </li>
-    `;
-  }
-
-  _generateReviewStat(data) {
-    return `
-          <p class="reviews__text">
-            ${data.reviews.filter((el) => el > 3).length} out of ${
-      data.reviews.length
-    } (${Math.trunc(
-      (data.reviews.filter((el) => el > 3).length * 100) / data.reviews.length
-    )}%) <br />
-            Customers recommended this product
-          </p>
-    `;
   }
 
   _generateGalleryList(data) {
@@ -217,15 +88,39 @@ class ProductView extends View {
       .join(' ');
   }
 
+  // Render PRODUCT OPTIONS
+
+  _renderProductOptions(data) {
+    const priceInfo = this._productPageEl.querySelector(
+      '.product__flex-container'
+    );
+    const formColor = this._productPageEl.querySelector('.product__color');
+    const formSize = this._productPageEl.querySelector('#size');
+
+    this._productPageEl.querySelector('.input--number-sm').value = 1;
+    priceInfo.innerHTML = '';
+    formColor.innerHTML = '';
+    formSize.innerHTML = '';
+
+    priceInfo.insertAdjacentHTML(
+      'afterbegin',
+      this._generatePriceDetails(data)
+    );
+    formColor.insertAdjacentHTML('afterbegin', this._generateColorMenu(data));
+    formSize.insertAdjacentHTML('afterbegin', this._generateSizeMenu(data));
+  }
+
   _generatePriceDetails(data) {
     return `
     <div class="product__price">
         <p class="card__price card__price--large ${
           data.discountPercentage === 0 ? '' : 'card__price--new'
-        }">&dollar;${
+        }">${
       data.discountPercentage === 0
-        ? data.price.toFixed(2)
-        : (data.price - (data.price * data.discountPercentage) / 100).toFixed(2)
+        ? this._priceFormatter(data.price)
+        : this._priceFormatter(
+            data.price - (data.price * data.discountPercentage) / 100
+          )
     }
         ${data.discountPercentage !== 0 ? this._generateOldPrice(data) : ''}
         </p>
@@ -237,6 +132,77 @@ class ProductView extends View {
       ${data.rating ? this._generateRatingContainer(data) : ''}
     </div>
     `;
+  }
+
+  _generateOldPrice(data) {
+    return `<span class="card__price card__price--old">${this._priceFormatter(
+      data.price
+    )}</span>`;
+  }
+
+  _generateSaleLabel(data) {
+    return `<p class="sale__badge">-${data.discountPercentage}%</p>`;
+  }
+
+  _generateRatingContainer(data) {
+    return `
+    <div class="product__rating">
+    ${this._generateRating(data.rating)}
+    <span class="product__rating-amount">${data.reviews.length} review${
+      data.reviews.length > 1 ? 's' : ''
+    }</span>
+    </div>`;
+  }
+
+  _generateColorMenu(data) {
+    return `
+        <p class="product__heading">Color</p>
+        <ul class="product__color-switcher">
+          ${data.color
+            .map((el, i) => this._generateColorButton(data, el, i))
+            .join('')}
+          <li class="product__radio-item">
+            <span class="product__color-type">${
+              data.color[0][0].toUpperCase() +
+              data.color[0].split('-').join(' ').slice(1)
+            }</span>
+          </li>
+        </ul>
+    `;
+  }
+
+  _generateColorButton(data, color, i) {
+    return `
+          <li class="product__radio-item">
+            <input
+              class="color__radio"
+              type="radio"
+              name="color"
+              id="${data.article}-${color}"
+            ${i === 0 ? 'checked' : ''}  
+            />
+            <label class="color__label color__label--sm" for="${
+              data.article
+            }-${color}">&nbsp;
+              <span class="color__type color__type--sm color__type--${color}"
+              >&nbsp;</span>
+            </label>
+          </li>
+    `;
+  }
+
+  _switchColor(e) {
+    const btn = e.target.closest('.color__radio');
+    if (!btn) return;
+
+    const color = btn.id.split('-').slice(1).join(' ');
+
+    this._currentPage.querySelector('.product__color-type').textContent =
+      color[0].toUpperCase() + color.slice(1);
+  }
+
+  _addHandlerSwitchColor(handler) {
+    this._currentPage.addEventListener('click', handler);
   }
 
   _generateSizeMenu(data) {
@@ -262,75 +228,76 @@ class ProductView extends View {
       : '';
   }
 
-  _generateColorMenu(data) {
+  // Render PRODUCT DETAILS
+
+  _renderProductDetails(data) {
+    const brandName = this._productPageEl.querySelector(
+      '.details__text--brand'
+    );
+    const colorsName = this._productPageEl.querySelector(
+      '.details__text--color'
+    );
+
+    brandName.textContent = data.brand;
+    colorsName.textContent = data.color
+      .map((el) => el.split('-').join(' '))
+      .join(' / ');
+  }
+
+  // Render PRODUCT REVIEWS
+
+  _renderProductReview(data, reviews) {
+    const reviewsInfo = this._productPageEl.querySelector('.reviews__wrapper');
+    const reviewList = this._productPageEl.querySelector('.comment');
+
+    this._productPageEl.querySelector('.checkbox__radio>sup').textContent =
+      data.reviews.length;
+
+    reviewsInfo.innerHTML = '';
+    reviewList.innerHTML = '';
+
+    reviewsInfo.insertAdjacentHTML(
+      'afterbegin',
+      this._generateReviewsInfo(data)
+    );
+
+    this._calculateReviewsBarWidth(reviewsInfo, data);
+
+    reviewList.insertAdjacentHTML(
+      'afterbegin',
+      reviews
+        .filter((el) => el.article === data.article)
+        .map((review) => this._generateReviewsComment(review))
+        .join('')
+    );
+  }
+
+  _generateReviewsInfo(data) {
     return `
-        <p class="product__heading">Color</p>
-        <ul class="product__color-switcher">
-          ${data.color
-            .map((el, i) => this._generateColorButton(data, el, i))
-            .join('')}
-          <li class="product__radio-item">
-            <span class="product__color-type">${
-              data.color[0][0].toUpperCase() +
-              data.color[0].split('-').join(' ').slice(1)
-            }</span>
-          </li>
-        </ul>
+          <div class="reviews__info">
+            <h2 class="reviews__heading">${data.reviews.length} review${
+      data.reviews.length === 1 ? '' : 's'
+    }</h2>
+            ${
+              data.rating
+                ? this._generateRating(data.rating)
+                : this._generateRating()
+            }
+            ${
+              data.rating
+                ? this._generateReviewStat(data)
+                : `<p class="reviews__text">There aren't any reviews <br> for this product yet!</p>`
+            }
+
+          </div>
+
+          <ul class="reviews__breakdown">
+            ${new Array(MAXSCORE)
+              .fill(1)
+              .map((_, i) => this._generateReviewBreakdown(data, i))
+              .join('')}
+          </ul>  
     `;
-  }
-
-  _switchColor(e) {
-    const btn = e.target.closest('.color__radio');
-    if (!btn) return;
-
-    const color = btn.id.split('-').slice(1).join(' ');
-
-    this._currentPage.querySelector('.product__color-type').textContent =
-      color[0].toUpperCase() + color.slice(1);
-  }
-
-  _addHandlerSwitchColor(handler) {
-    this._currentPage.addEventListener('click', handler);
-  }
-
-  _generateColorButton(data, color, i) {
-    return `
-          <li class="product__radio-item">
-            <input
-              class="color__radio"
-              type="radio"
-              name="color"
-              id="${data.article}-${color}"
-            ${i === 0 ? 'checked' : ''}  
-            />
-            <label class="color__label color__label--sm" for="${
-              data.article
-            }-${color}">&nbsp;
-              <span class="color__type color__type--sm color__type--${color}"
-              >&nbsp;</span>
-            </label>
-          </li>
-    `;
-  }
-
-  _generateSaleLabel(data) {
-    return `<p class="sale__badge">-${data.discountPercentage}%</p>`;
-  }
-
-  _generateOldPrice(data) {
-    return `<span class="card__price--old">&dollar;${data.price.toFixed(
-      2
-    )}</span>`;
-  }
-
-  _generateRatingContainer(data) {
-    return `
-    <div class="product__rating">
-    ${this._generateRating(data.rating)}
-    <span class="product__rating-amount">${data.reviews.length} review${
-      data.reviews.length > 1 ? 's' : ''
-    }</span>
-    </div>`;
   }
 
   _generateRating(data = 0, maxScore = MAXSCORE) {
@@ -354,6 +321,112 @@ class ProductView extends View {
       </svg>  
     `;
   }
+
+  _generateReviewStat(data) {
+    return `
+          <p class="reviews__text">
+            ${data.reviews.filter((el) => el > 3).length} out of ${
+      data.reviews.length
+    } (${Math.trunc(
+      (data.reviews.filter((el) => el > 3).length * 100) / data.reviews.length
+    )}%) <br />
+            Customers recommended this product
+          </p>
+    `;
+  }
+
+  _generateReviewBreakdown(data, i) {
+    return `
+            <li class="reviews__progress">
+              <span class="reviews__score">${MAXSCORE - i}
+                <svg class="rating__icon rating__icon--outline">
+                  <use xlink:href="${icons}#star-outline"
+                  ></use>
+                </svg>
+              </span>
+              <div class="reviews__progres-bg">
+                <span class="reviews__progres-bar reviews__progres-bar--${
+                  MAXSCORE - i
+                }"
+                >&nbsp;</span>
+              </div>
+              <span class="reviews__count">${
+                data.reviews.filter((score) => score === MAXSCORE - i).length
+              }</span>
+            </li>
+    `;
+  }
+
+  _calculateReviewsBarWidth(parentEl, data) {
+    const bar = parentEl.querySelector('.reviews__progres-bg');
+    const barProgres = [...parentEl.querySelectorAll('.reviews__progres-bar')];
+    const barWidth = Number.parseInt(getComputedStyle(bar).width, 10);
+
+    const percentage = Array.from({ length: MAXSCORE }, (_, i) => {
+      if (data.reviews.length === 0) return 0;
+      return (
+        (data.reviews.filter((score) => score === i + 1).length * 100) /
+        data.reviews.length
+      );
+    }).reverse();
+
+    barProgres.forEach(
+      (el, i) => (el.style.width = `${(percentage[i] * barWidth) / 100}px`)
+    );
+  }
+
+  _generateReviewsComment(reviews) {
+    return `
+          <li class="comment__block--md grid grid--col-3-fix-2 grid--row-3">
+            <div class="comment__info">
+              <p class="comment__user">${reviews.user}</p>
+              <p class="comment__day">${this._getFormatDate(reviews.date)}</p>
+                ${this._generateRating(reviews.rating)}
+            </div>
+            <p class="comment__text comment__text--sm">
+            ${
+              reviews.tag
+                ? `<span class="comment__text--tag">${reviews.tag}</span>`
+                : ''
+            }
+              ${reviews.text}
+            </p>
+            <button type="button" class="comment__reply-btn">
+              <svg class="comment__reply-icon">
+                <use xlink:href="${icons}#share-arrow"></use>
+              </svg>
+              Reply
+            </button>
+            <div class="comment__vote">
+              <button class="comment__vote-btn" type="button">
+                <svg class="comment__vote-icon comment__vote-icon--like">
+                  <use xlink:href="${icons}#like"></use>
+                </svg>
+                  ${reviews.likes}
+              </button>
+              <button class="comment__vote-btn" type="button">
+                <svg class="comment__vote-icon comment__vote-icon--dislike">
+                  <use xlink:href="${icons}#dislike"></use>
+                </svg>
+                ${reviews.dislikes}
+              </button>
+            </div>
+          </li>
+    `;
+  }
+
+  _getFormatDate(data) {
+    const date = new Date(data);
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    return formatter.format(date);
+  }
+
+  // Render BREADCRUMB
 
   _renderBreadcrumb(entries) {
     if (!this._productPageEl.classList.contains('hidden')) {
@@ -400,6 +473,8 @@ class ProductView extends View {
       if (subLinkOne.dataset.link === '') subLinkOne.closest('li').remove();
     }
   }
+
+  // Others
 
   _changeTabs(e) {
     const btn = e.target.closest('.checkbox__btn');

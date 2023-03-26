@@ -171,10 +171,12 @@ class CardView extends View {
           }</a>
           <p class="card__price card__price--${size} ${
       data.discountPercentage === 0 ? '' : 'card__price--new'
-    }">&dollar;${
+    }">${
       data.discountPercentage === 0
-        ? data.price.toFixed(2)
-        : (data.price - (data.price * data.discountPercentage) / 100).toFixed(2)
+        ? this._priceFormatter(data.price)
+        : this._priceFormatter(
+            data.price - (data.price * data.discountPercentage) / 100
+          )
     }
         ${
           data.discountPercentage !== 0
@@ -227,8 +229,8 @@ class CardView extends View {
   }
 
   _generateOldPrice(data, size) {
-    return `<span class="card__price--old card__price--old-${size}">&dollar;${data.price.toFixed(
-      2
+    return `<span class="card__price card__price--old card__price--old-${size}">${this._priceFormatter(
+      data.price
     )}</span>`;
   }
 

@@ -48,9 +48,12 @@ const controlOpenProductPage = function (e) {
   if (!article) return;
 
   const product = model.findItemByArticle(article);
-  // console.log(product);
 
-  productView.renderProductPage(product, cardView.generateCardMarkup(product));
+  productView.renderProductPage(
+    product,
+    model.state.reviews,
+    cardView.generateCardMarkup(product)
+  );
 };
 
 function init() {
