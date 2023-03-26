@@ -16,12 +16,21 @@
     }
     &--md {
       &:not(:last-child) {
-        border-bottom: 1px solid $color-gray-light-3;
+        // border-bottom: 1px solid $color-gray-light-3;
         padding-bottom: 2.8rem;
       }
 
       &:not(:first-child) {
         padding-top: 2.8rem;
+      }
+
+      &:not(:nth-child(4n)) {
+        border-bottom: 1px solid $color-gray-light-3;
+      }
+
+      &:only-child,
+      &:last-child {
+        border-bottom: none;
       }
     }
     &--lg {

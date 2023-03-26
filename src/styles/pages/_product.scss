@@ -447,27 +447,22 @@
 
         &--5 {
           background-color: $color-third;
-          // width: 31.2rem;
         }
 
         &--4 {
           background-color: $color-green;
-          // width: 17rem;
         }
 
         &--3 {
           background-color: $color-yellow;
-          // width: 8.6rem;
         }
 
         &--2 {
           background-color: $color-gold;
-          // width: 8.6rem;
         }
 
         &--1 {
           background-color: $color-secondary;
-          // width: 8.6rem;
         }
       }
 
@@ -475,6 +470,10 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 6rem;
+      }
+
+      .comment {
+        // height: 65rem;
       }
 
       &__btn {

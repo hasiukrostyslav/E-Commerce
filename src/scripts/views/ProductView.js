@@ -1,6 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import { MAXSCORE } from '../config';
+import { MAXSCORE, NUMBER_OF_ITEMS } from '../config';
 
 class ProductView extends View {
   _tabs = document.querySelector('.product__tabs');
@@ -18,6 +18,7 @@ class ProductView extends View {
     this._addHandlerAccordion();
     this._setObserver(this._renderBreadcrumb.bind(this));
     this._addHandlerSwitchColor(this._switchColor.bind(this));
+    // this._addHandlerSortReviews(this._sortReviews.bind(this));
   }
 
   renderProductPage(data, reviews, markup) {
@@ -249,12 +250,14 @@ class ProductView extends View {
   _renderProductReview(data, reviews) {
     const reviewsInfo = this._productPageEl.querySelector('.reviews__wrapper');
     const reviewList = this._productPageEl.querySelector('.comment');
+    const pagination = this._productPageEl.querySelector('.pagination');
 
     this._productPageEl.querySelector('.checkbox__radio>sup').textContent =
       data.reviews.length;
 
     reviewsInfo.innerHTML = '';
     reviewList.innerHTML = '';
+    pagination.innerHTML = '';
 
     reviewsInfo.insertAdjacentHTML(
       'afterbegin',
@@ -263,13 +266,56 @@ class ProductView extends View {
 
     this._calculateReviewsBarWidth(reviewsInfo, data);
 
-    reviewList.insertAdjacentHTML(
+    this._renderReviewsList(data, reviewList, reviews);
+
+    pagination.insertAdjacentHTML(
       'afterbegin',
-      reviews
-        .filter((el) => el.article === data.article)
-        .map((review) => this._generateReviewsComment(review))
+      this._renderPagination(data, reviews) || ''
+    );
+
+    this._showPaginationPage();
+
+    this._addHandlerSortReviews(
+      this._sortReviews.bind(this, data, reviewList, reviews)
+    );
+
+    this._addHandlerChangePaginationPage(this._changePaginationPage.bind(this));
+  }
+
+  _renderReviewsList(data, list, reviews, sort = 'new') {
+    list.innerHTML = '';
+    const filteredList = reviews.filter((el) => el.article === data.article);
+    const sortedList =
+      sort === 'old'
+        ? filteredList.sort((a, b) => new Date(a.date) - new Date(b.date))
+        : filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    list.insertAdjacentHTML(
+      'afterbegin',
+      sortedList
+        .map((review, i) => this._generateReviewsComment(review, i))
         .join('')
     );
+
+    this._setDataAttribute(list);
+  }
+
+  _addHandlerSortReviews(handler) {
+    this._productPageEl
+      .querySelector('.sort__select')
+      .addEventListener('change', handler);
+  }
+
+  _sortReviews(data, reviewList, reviews, e) {
+    if (e.target.value === 'newest') {
+      this._renderReviewsList(data, reviewList, reviews);
+      this._showPaginationPage();
+    }
+
+    if (e.target.value === 'oldest') {
+      this._renderReviewsList(data, reviewList, reviews, 'old');
+      this._showPaginationPage();
+    }
   }
 
   _generateReviewsInfo(data) {
@@ -380,7 +426,7 @@ class ProductView extends View {
           <li class="comment__block--md grid grid--col-3-fix-2 grid--row-3">
             <div class="comment__info">
               <p class="comment__user">${reviews.user}</p>
-              <p class="comment__day">${this._getFormatDate(reviews.date)}</p>
+              <p class="comment__day">${this._dateFormatter(reviews.date)}</p>
                 ${this._generateRating(reviews.rating)}
             </div>
             <p class="comment__text comment__text--sm">
@@ -415,15 +461,102 @@ class ProductView extends View {
     `;
   }
 
-  _getFormatDate(data) {
-    const date = new Date(data);
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+  _renderPagination(data, reviews) {
+    const list = reviews.filter((el) => el.article === data.article);
+    if (list.length === 0) return;
 
-    return formatter.format(date);
+    const numOfPages = Math.ceil(list.length / NUMBER_OF_ITEMS);
+
+    const itemArr = Array.from(
+      { length: numOfPages },
+      (_, i) => ` <li class="pagination__item" data-pagination="${i + 1}">
+                    <button class="btn pagination__btn ${
+                      i === 0 ? 'pagination__btn--current' : ''
+                    }">
+                      ${i + 1}
+                    </button>
+                  </li>`
+    );
+
+    const btnNext = `
+                <li class="pagination__item">
+                  <button class="btn pagination__btn">
+                    <svg class="pagination__icon">
+                      <use xlink:href="${icons}#right"></use>
+                    </svg>
+                  </button>
+                </li>
+    `;
+
+    if (itemArr.length > 1) itemArr.push(btnNext);
+    return itemArr.join('');
+  }
+
+  _setDataAttribute(container) {
+    [...container.children].forEach(
+      (li, i) =>
+        (li.dataset.pagination =
+          i < NUMBER_OF_ITEMS ? 1 : Math.trunc(i / NUMBER_OF_ITEMS + 1))
+    );
+  }
+
+  _showPaginationPage() {
+    const reviews = this._productPageEl.querySelectorAll('.comment>li');
+    reviews.forEach((review) => review.classList.remove('hidden'));
+
+    if (reviews.length === 0) return;
+    const pages = [
+      ...this._productPageEl.querySelectorAll('.pagination>[data-pagination]'),
+    ];
+
+    const currentPage = pages.find((page) =>
+      page.firstElementChild.classList.contains('pagination__btn--current')
+    ).dataset.pagination;
+
+    reviews.forEach(
+      (review) =>
+        review.dataset.pagination !== currentPage &&
+        review.classList.add('hidden')
+    );
+  }
+
+  _changePaginationPage(e) {
+    const btn = e.target.closest('.pagination__item');
+    if (!btn) return;
+
+    const list = [...e.target.closest('ul').querySelectorAll('li')];
+    const currentPage = list.find((li) =>
+      li.firstElementChild.classList.contains('pagination__btn--current')
+    );
+
+    if (btn.dataset.pagination) {
+      list.forEach((li) =>
+        li.firstElementChild.classList.remove('pagination__btn--current')
+      );
+      btn.firstElementChild.classList.add('pagination__btn--current');
+      this._showPaginationPage();
+    }
+    // console.log(list, currentPage);
+    // console.log(+currentPage.dataset.pagination + 1);
+    if (!btn.dataset.pagination) {
+      const nextPage = list.find(
+        (li) => +li.dataset.pagination === +currentPage.dataset.pagination + 1
+      );
+      if (!nextPage) return;
+
+      list.forEach((li) =>
+        li.firstElementChild.classList.remove('pagination__btn--current')
+      );
+
+      nextPage.firstElementChild.classList.add('pagination__btn--current');
+      this._showPaginationPage();
+    }
+  }
+
+  _addHandlerChangePaginationPage(handler) {
+    this._productPageEl
+      .querySelector('.pagination')
+      .addEventListener('click', handler);
   }
 
   // Render BREADCRUMB

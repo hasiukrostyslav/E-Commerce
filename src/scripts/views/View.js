@@ -300,6 +300,8 @@ export default class View {
     );
   }
 
+  // FORMATTERS
+
   _priceFormatter(data) {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -307,5 +309,16 @@ export default class View {
     });
 
     return formatter.format(data);
+  }
+
+  _dateFormatter(data) {
+    const date = new Date(data);
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    return formatter.format(date);
   }
 }
