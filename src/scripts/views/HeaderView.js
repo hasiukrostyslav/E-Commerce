@@ -37,28 +37,6 @@ class HeaderView extends View {
       .classList.add('slider__page-btn--active');
   }
 
-  _nextSlide() {
-    this._curSlide =
-      this._curSlide === this._maxSlide - 1 ? 0 : this._curSlide + 1;
-    this._goToSlide(this._curSlide);
-    this._activateSlideTab(this._curSlide);
-  }
-
-  _prevSlide() {
-    this._curSlide =
-      this._curSlide === 0 ? this._maxSlide - 1 : this._curSlide - 1;
-    this._goToSlide(this._curSlide);
-    this._activateSlideTab(this._curSlide);
-  }
-
-  _clickTabs(e) {
-    if (e.target.classList.contains('slider__page-btn')) {
-      const { slide } = e.target.dataset;
-      this._goToSlide(slide);
-      this._activateSlideTab(slide);
-    }
-  }
-
   _setSlideInterval() {
     this._interval = setInterval(() => {
       this._nextSlide();
@@ -77,7 +55,10 @@ class HeaderView extends View {
     );
     this._btnRight.addEventListener('click', this._nextSlide.bind(this));
     this._btnLeft.addEventListener('click', this._prevSlide.bind(this));
-    this._pageContainer.addEventListener('click', this._clickTabs.bind(this));
+    this._pageContainer.addEventListener(
+      'click',
+      this._clickTabs.bind(this, '.slider__page-btn')
+    );
   }
 }
 

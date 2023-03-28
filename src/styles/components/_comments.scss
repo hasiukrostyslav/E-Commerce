@@ -7,6 +7,19 @@
   &__block {
     &--sm {
       &:not(:last-child) {
+        padding-bottom: 2.8rem;
+      }
+
+      &:not(:first-child) {
+        padding-top: 2.8rem;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $color-gray-light-3;
+      }
+    }
+    &--md {
+      &:not(:last-child) {
         padding-bottom: 3rem;
       }
 
@@ -14,14 +27,11 @@
         padding-top: 3rem;
       }
     }
-    &--md {
-      &:not(:last-child) {
-        // border-bottom: 1px solid $color-gray-light-3;
-        padding-bottom: 2.8rem;
-      }
+    &--lg {
+      padding-top: 3.2rem;
 
-      &:not(:first-child) {
-        padding-top: 2.8rem;
+      &:not(:last-child) {
+        padding-bottom: 3.2rem;
       }
 
       &:not(:nth-child(4n)) {
@@ -31,16 +41,6 @@
       &:only-child,
       &:last-child {
         border-bottom: none;
-      }
-    }
-    &--lg {
-      &:not(:last-child) {
-        border-bottom: 1px solid $color-gray-light-3;
-        padding-bottom: 3.2rem;
-      }
-
-      &:not(:first-child) {
-        padding-top: 3.2rem;
       }
     }
   }

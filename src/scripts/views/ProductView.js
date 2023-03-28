@@ -10,6 +10,7 @@ class ProductView extends View {
   _currentSubPage = document.querySelector('.details');
   _accordionContainer = document.querySelector('.product__accordion');
   _detailsPage = document.querySelector('.product__details');
+  _curSlide = 0;
   _currentTab;
 
   constructor() {
@@ -18,7 +19,7 @@ class ProductView extends View {
     this._addHandlerAccordion();
     this._setObserver(this._renderBreadcrumb.bind(this));
     this._addHandlerSwitchColor(this._switchColor.bind(this));
-    // this._addHandlerSortReviews(this._sortReviews.bind(this));
+    this._addHandlerChangePaginationPage(this._changePaginationPage.bind(this));
   }
 
   renderProductPage(data, reviews, markup) {
@@ -50,30 +51,51 @@ class ProductView extends View {
   // RENDER PRODUCT GALLERY
 
   _renderProductGallery(data) {
-    const gallery = this._productPageEl.querySelector('.product__img-list');
-    const img = this._productPageEl.querySelector('img');
+    const sliderLarge = this._productPageEl.querySelector(
+      '.product__img-slider'
+    );
+    const sliderSmall = this._productPageEl.querySelector('.product__img-list');
 
-    img.src = data.images.at(0);
-    img.alt = data.title;
-    gallery.innerHTML = '';
+    sliderLarge.innerHTML = '';
+    sliderSmall.innerHTML = '';
 
-    gallery.insertAdjacentHTML('afterbegin', this._generateGalleryList(data));
+    sliderLarge.insertAdjacentHTML(
+      'afterbegin',
+      this._generateGallerySliderLarge(data)
+    );
+    sliderSmall.insertAdjacentHTML(
+      'afterbegin',
+      this._generateGalleryListSmall(data)
+    );
+
+    this._activateSlideTab();
+    this._addHandlerChangeSlide();
   }
 
-  _generateGalleryList(data) {
+  _generateGallerySliderLarge(data) {
+    return data.images
+      .map(
+        (img, i) => `
+      <img class="product__img product__img--lg" data-slide="${i + 1}"
+        src="${img}"
+        alt="${data.title}"
+    />`
+      )
+      .join('');
+  }
+
+  _generateGalleryListSmall(data) {
     return data.images
       .map(
         (img, i, arr) => `
       <li class="product__img-item ${
         i === arr.length - 1 ? 'product__img-video' : ''
-      }">
+      }"
+      data-slide="${i}">
         <img
-          class="product__img product__img--sm ${
-            i === 0 ? 'product__img--current' : ''
-          }"
+          class="product__img product__img--sm"
           src="${img}"
           alt="${data.title}"
-          data-gallary-slide="${i + 1}"
         />
         ${
           i === arr.length - 1
@@ -87,6 +109,36 @@ class ProductView extends View {
       </li>`
       )
       .join(' ');
+  }
+
+  _activateSlideTab(slide = 0) {
+    this._slides = this._productPageEl.querySelectorAll('.product__img--lg');
+    this._btnNext = this._productPageEl.querySelector(
+      '.product__slider-btn--right'
+    );
+    this._btnPrev = this._productPageEl.querySelector(
+      '.product__slider-btn--left'
+    );
+    this._slideContainer =
+      this._productPageEl.querySelector('.product__img-list');
+    this._maxSlide = this._slides.length;
+
+    this._productPageEl
+      .querySelectorAll('.product__img--sm')
+      .forEach((img) => img.classList.remove('product__img--current'));
+
+    this._slideContainer
+      .querySelector(`.product__img-item[data-slide="${slide}"]`)
+      .firstElementChild.classList.add('product__img--current');
+  }
+
+  _addHandlerChangeSlide() {
+    this._btnNext.addEventListener('click', this._nextSlide.bind(this));
+    this._btnPrev.addEventListener('click', this._prevSlide.bind(this));
+    this._slideContainer.addEventListener(
+      'click',
+      this._clickTabs.bind(this, '.product__img-item')
+    );
   }
 
   // Render PRODUCT OPTIONS
@@ -278,8 +330,6 @@ class ProductView extends View {
     this._addHandlerSortReviews(
       this._sortReviews.bind(this, data, reviewList, reviews)
     );
-
-    this._addHandlerChangePaginationPage(this._changePaginationPage.bind(this));
   }
 
   _renderReviewsList(data, list, reviews, sort = 'new') {
@@ -423,7 +473,7 @@ class ProductView extends View {
 
   _generateReviewsComment(reviews) {
     return `
-          <li class="comment__block--md grid grid--col-3-fix-2 grid--row-3">
+          <li class="comment__block--lg grid grid--col-3-fix-2 grid--row-3">
             <div class="comment__info">
               <p class="comment__user">${reviews.user}</p>
               <p class="comment__day">${this._dateFormatter(reviews.date)}</p>
@@ -521,7 +571,7 @@ class ProductView extends View {
   }
 
   _changePaginationPage(e) {
-    const btn = e.target.closest('.pagination__item');
+    const btn = e.target.closest('.pagination__btn');
     if (!btn) return;
 
     const list = [...e.target.closest('ul').querySelectorAll('li')];
@@ -529,16 +579,15 @@ class ProductView extends View {
       li.firstElementChild.classList.contains('pagination__btn--current')
     );
 
-    if (btn.dataset.pagination) {
+    if (btn.closest('li').dataset.pagination) {
       list.forEach((li) =>
         li.firstElementChild.classList.remove('pagination__btn--current')
       );
-      btn.firstElementChild.classList.add('pagination__btn--current');
+      btn.classList.add('pagination__btn--current');
       this._showPaginationPage();
     }
-    // console.log(list, currentPage);
-    // console.log(+currentPage.dataset.pagination + 1);
-    if (!btn.dataset.pagination) {
+
+    if (!btn.closest('li').dataset.pagination) {
       const nextPage = list.find(
         (li) => +li.dataset.pagination === +currentPage.dataset.pagination + 1
       );

@@ -38,6 +38,15 @@
     position: relative;
   }
 
+  &__img-slider {
+    position: relative;
+    height: 60rem;
+    width: 60rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    z-index: -1;
+  }
+
   &__img {
     display: block;
     border-radius: 4px;
@@ -52,9 +61,27 @@
     }
 
     &--lg {
-      width: 60rem;
-      height: 60rem;
-      margin-bottom: 2rem;
+      position: absolute;
+      top: 0;
+      transition: transform 1s;
+      width: 100%;
+      height: 100%;
+
+      &[data-slide='1'] {
+        transform: translateX(0%);
+      }
+      &[data-slide='2'] {
+        transform: translateX(100%);
+      }
+      &[data-slide='3'] {
+        transform: translateX(200%);
+      }
+      &[data-slide='4'] {
+        transform: translateX(300%);
+      }
+      &[data-slide='5'] {
+        transform: translateX(400%);
+      }
     }
   }
 
@@ -469,7 +496,7 @@
       &__toolbar {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 6rem;
+        margin-bottom: 2.8rem;
       }
 
       .comment {

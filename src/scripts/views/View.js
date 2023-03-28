@@ -177,6 +177,29 @@ export default class View {
     );
   }
 
+  _nextSlide() {
+    this._curSlide =
+      this._curSlide === this._maxSlide - 1 ? 0 : this._curSlide + 1;
+    this._goToSlide(this._curSlide);
+    this._activateSlideTab(this._curSlide);
+  }
+
+  _prevSlide() {
+    this._curSlide =
+      this._curSlide === 0 ? this._maxSlide - 1 : this._curSlide - 1;
+    this._goToSlide(this._curSlide);
+    this._activateSlideTab(this._curSlide);
+  }
+
+  _clickTabs(cssClass, e) {
+    const tab = e.target.closest(cssClass);
+    if (!tab) return;
+
+    const { slide } = tab.dataset;
+    this._goToSlide(slide);
+    this._activateSlideTab(slide);
+  }
+
   // Show / hide password
   _togglePassword(e) {
     const btn = e.target.closest('.pass-show');
