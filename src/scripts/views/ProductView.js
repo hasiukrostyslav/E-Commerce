@@ -23,6 +23,7 @@ class ProductView extends View {
   }
 
   renderProductPage(data, reviews, markup) {
+    this._resetProductPage();
     this._productPageEl.querySelector('h2').textContent = data.description;
     this._productPageEl.querySelector('h2').dataset.title = data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
@@ -33,6 +34,27 @@ class ProductView extends View {
     this._renderProductOptions(data);
     this._renderProductDetails(data);
     this._renderProductReview(data, reviews);
+  }
+
+  _resetProductPage() {
+    this._tabs
+      .querySelectorAll('.checkbox__btn')
+      .forEach((el, i) => (el.checked = i === 0 ? true : false));
+    this._combineTabsWithPages(this._tabs.querySelector('.checkbox__btn'));
+
+    this._priceInfo = this._productPageEl.querySelector(
+      '.product__flex-container'
+    );
+    this._formColor = this._productPageEl.querySelector('.product__color');
+    this._formSize = this._productPageEl.querySelector('#size');
+
+    this._productPageEl.querySelector('.input--number-sm').value = 1;
+    this._productPageEl
+      .querySelectorAll('.accordion__text-container')
+      .forEach((el) => el.classList.remove('hidden'));
+    this._priceInfo.innerHTML = '';
+    this._formColor.innerHTML = '';
+    this._formSize.innerHTML = '';
   }
 
   // Render PRODUCT CARD
@@ -144,23 +166,18 @@ class ProductView extends View {
   // Render PRODUCT OPTIONS
 
   _renderProductOptions(data) {
-    const priceInfo = this._productPageEl.querySelector(
-      '.product__flex-container'
-    );
-    const formColor = this._productPageEl.querySelector('.product__color');
-    const formSize = this._productPageEl.querySelector('#size');
-
-    this._productPageEl.querySelector('.input--number-sm').value = 1;
-    priceInfo.innerHTML = '';
-    formColor.innerHTML = '';
-    formSize.innerHTML = '';
-
-    priceInfo.insertAdjacentHTML(
+    this._priceInfo.insertAdjacentHTML(
       'afterbegin',
       this._generatePriceDetails(data)
     );
-    formColor.insertAdjacentHTML('afterbegin', this._generateColorMenu(data));
-    formSize.insertAdjacentHTML('afterbegin', this._generateSizeMenu(data));
+    this._formColor.insertAdjacentHTML(
+      'afterbegin',
+      this._generateColorMenu(data)
+    );
+    this._formSize.insertAdjacentHTML(
+      'afterbegin',
+      this._generateSizeMenu(data)
+    );
   }
 
   _generatePriceDetails(data) {
@@ -319,6 +336,8 @@ class ProductView extends View {
     this._calculateReviewsBarWidth(reviewsInfo, data);
 
     this._renderReviewsList(data, reviewList, reviews);
+
+    this._productPageEl.querySelector('.sort__select').value = 'newest';
 
     pagination.insertAdjacentHTML(
       'afterbegin',
@@ -661,8 +680,25 @@ class ProductView extends View {
   _changeTabs(e) {
     const btn = e.target.closest('.checkbox__btn');
     if (!btn) return;
+    this._combineTabsWithPages(btn);
+    // this._currentTab = btn;
+    // this._currentPage.classList.add('hidden');
+    // this._currentPage = [...this._pages].find(
+    //   (page) => page.dataset.product === this._currentTab.dataset.product
+    // );
+    // this._currentPage.classList.remove('hidden');
 
-    this._currentTab = btn;
+    // if (this._currentTab.dataset.product === 'other-info') {
+    //   this._currentSubPage.classList.add('hidden');
+    //   this._currentSubPage = [...this._subPages].find(
+    //     (sub) => sub.dataset.info === this._currentTab.dataset.info
+    //   );
+    //   this._currentSubPage.classList.remove('hidden');
+    // }
+  }
+
+  _combineTabsWithPages(tab) {
+    this._currentTab = tab;
     this._currentPage.classList.add('hidden');
     this._currentPage = [...this._pages].find(
       (page) => page.dataset.product === this._currentTab.dataset.product
@@ -678,17 +714,23 @@ class ProductView extends View {
     }
   }
 
+  _openAccordion(el) {
+    el.nextElementSibling.classList.remove('hidden');
+    el.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
+  }
+
+  _closeAccordion(el) {
+    el.nextElementSibling.classList.add('hidden');
+    el.innerHTML = this._generateAccordionBtnIcon('sm', 'plus');
+  }
+
   _toggleAccordion(e) {
     const btn = e.target.closest('.btn__accordion');
     if (!btn) return;
 
-    if (btn.querySelector('svg').classList.contains('icon__accordion--minus')) {
-      btn.nextElementSibling.classList.add('hidden');
-      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'plus');
-    } else {
-      btn.nextElementSibling.classList.remove('hidden');
-      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
-    }
+    if (btn.querySelector('svg').classList.contains('icon__accordion--minus'))
+      this._closeAccordion(btn);
+    else this._openAccordion(btn);
   }
 }
 
