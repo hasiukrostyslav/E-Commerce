@@ -43,7 +43,7 @@ const controlSignIn = function (e) {
   accountView.renderProfileData(user);
 };
 
-const controlOpenProductPage = function (e) {
+const controlRenderProductPage = function (e) {
   const article = cardView.clickToCardLink(e);
   if (!article) return;
 
@@ -59,7 +59,7 @@ const controlOpenProductPage = function (e) {
 function init() {
   view.addHandlerRender(controlInitPage);
   modalView.addHandlerLogIn(controlSignIn);
-  cardView.addHandlerRenderProductPage(controlOpenProductPage);
+  cardView.addHandlerRenderProductPage(controlRenderProductPage);
 }
 
 init();

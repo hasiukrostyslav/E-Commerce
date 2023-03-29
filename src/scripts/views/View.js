@@ -335,13 +335,29 @@ export default class View {
   }
 
   _dateFormatter(data) {
+    const today = new Date();
     const date = new Date(data);
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+    const difference = Math.trunc(
+      (today - date) / MILISECONDS / SECONDS / MINUTES / HOURS
+    );
 
-    return formatter.format(date);
+    if (difference > 3) {
+      const formatDate = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      return formatDate.format(date);
+    }
+
+    if (difference <= 3) {
+      const formatRelativeDate = new Intl.RelativeTimeFormat('en-US', {
+        style: 'long',
+        numeric: 'auto',
+      });
+
+      return formatRelativeDate.format(-difference, 'day');
+    }
   }
 }

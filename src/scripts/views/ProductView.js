@@ -10,6 +10,9 @@ class ProductView extends View {
   _currentSubPage = document.querySelector('.details');
   _accordionContainer = document.querySelector('.product__accordion');
   _detailsPage = document.querySelector('.product__details');
+  _btnNext = this._productPageEl.querySelector('.product__slider-btn--right');
+  _btnPrev = this._productPageEl.querySelector('.product__slider-btn--left');
+  _slideContainer = this._productPageEl.querySelector('.product__img-list');
   _curSlide = 0;
   _currentTab;
 
@@ -20,6 +23,7 @@ class ProductView extends View {
     this._setObserver(this._renderBreadcrumb.bind(this));
     this._addHandlerSwitchColor(this._switchColor.bind(this));
     this._addHandlerChangePaginationPage(this._changePaginationPage.bind(this));
+    this._addHandlerChangeSlide();
   }
 
   renderProductPage(data, reviews, markup) {
@@ -55,6 +59,7 @@ class ProductView extends View {
     this._priceInfo.innerHTML = '';
     this._formColor.innerHTML = '';
     this._formSize.innerHTML = '';
+    this._curSlide = 0;
   }
 
   // Render PRODUCT CARD
@@ -91,7 +96,6 @@ class ProductView extends View {
     );
 
     this._activateSlideTab();
-    this._addHandlerChangeSlide();
   }
 
   _generateGallerySliderLarge(data) {
@@ -135,14 +139,6 @@ class ProductView extends View {
 
   _activateSlideTab(slide = 0) {
     this._slides = this._productPageEl.querySelectorAll('.product__img--lg');
-    this._btnNext = this._productPageEl.querySelector(
-      '.product__slider-btn--right'
-    );
-    this._btnPrev = this._productPageEl.querySelector(
-      '.product__slider-btn--left'
-    );
-    this._slideContainer =
-      this._productPageEl.querySelector('.product__img-list');
     this._maxSlide = this._slides.length;
 
     this._productPageEl
