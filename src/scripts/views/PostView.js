@@ -1,9 +1,6 @@
 import View from './View';
 
 class PostView extends View {
-  _blog = document.getElementById('main__blog');
-  _postPageEl = document.getElementById('main__post');
-
   constructor() {
     super();
 
@@ -14,8 +11,8 @@ class PostView extends View {
     if (!this._postPageEl.classList.contains('hidden')) {
       if (!e.find((ev) => ev.target.id === 'main__post')) return;
       const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
-      link.textContent = this._blog.dataset.title;
-      link.dataset.link = this._blog.id.split('__').at(-1);
+      link.textContent = this._blogPageEl.dataset.title;
+      link.dataset.link = this._blogPageEl.id.split('__').at(-1);
       const postTitle = this._postPageEl.querySelector('h2');
 
       this._breadcrumbList.insertAdjacentHTML(

@@ -9,6 +9,7 @@ export default class View {
   _homePageEl = document.getElementById('main__home');
   _accountPageEl = document.getElementById('main__account');
   _contactsEl = document.getElementById('main__contacts');
+  _blogPageEl = document.getElementById('main__blog');
   _postPageEl = document.getElementById('main__post');
   _catalogPageEl = document.getElementById('main__catalog');
   _productPageEl = document.getElementById('main__product');
