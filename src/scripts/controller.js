@@ -1,6 +1,6 @@
 import '../styles/main.scss';
 import accountView from './views/AccountView';
-import blogVIew from './views/BlogVIew';
+import blogView from './views/BlogVIew';
 import cardView from './views/CardView';
 import catalogView from './views/CatalogView';
 import checkoutView from './views/CheckoutView';
@@ -44,7 +44,7 @@ const controlSignIn = function (e) {
 };
 
 const controlRenderProductPage = function (e) {
-  const article = cardView.clickToCardLink(e);
+  const article = cardView.clickOnCardLink(e);
   if (!article) return;
 
   const product = model.findItemByArticle(article);
@@ -56,10 +56,16 @@ const controlRenderProductPage = function (e) {
   );
 };
 
+const controlRenderBlogPage = function (e) {
+  const { posts } = model.state;
+  blogView.renderBlogPage(e, posts);
+};
+
 function init() {
   view.addHandlerRender(controlInitPage);
   modalView.addHandlerLogIn(controlSignIn);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
+  blogView.addHandlerRanderBlogPage(controlRenderBlogPage);
 }
 
 init();

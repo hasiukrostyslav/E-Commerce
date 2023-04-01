@@ -60,7 +60,7 @@
       content: '';
       top: 0.8rem;
       right: -1.2rem;
-      width: 1px;
+      width: 0.1rem;
       height: 1.2rem;
       background-color: $color-gray-dark-3;
       border-radius: 4px;
@@ -74,7 +74,7 @@
 
     &--top {
       &:not(:last-child)::after {
-        top: 0.3rem;
+        top: 0.5rem;
       }
     }
   }

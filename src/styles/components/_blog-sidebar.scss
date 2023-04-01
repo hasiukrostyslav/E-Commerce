@@ -38,20 +38,22 @@
     display: flex;
   }
 
-  &__link {
-    &:link,
-    &:visited {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      text-decoration: none;
-      font-size: 1.6rem;
-      line-height: 1.6;
-      font-weight: 700;
-      color: $color-gray-dark-2;
-      transition: all 0.5s;
-    }
+  &__radio {
+    display: none;
+  }
 
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: $color-gray-dark-2;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--current,
     &:hover,
     &:active {
       color: $color-primary;
@@ -59,6 +61,31 @@
 
     &--count {
       font-weight: 400;
+    }
+  }
+
+  // &__radio:checked ~ &__label {
+  //   color: $color-primary;
+  // }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      font-weight: 700;
+      text-decoration: none;
+      color: $color-gray-dark-2;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
     }
   }
 

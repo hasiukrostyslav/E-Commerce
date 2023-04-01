@@ -15,7 +15,7 @@ class CardView extends View {
     this._addHandlerChangeSlide();
   }
 
-  clickToCardLink(e) {
+  clickOnCardLink(e) {
     const link = e.target.closest('.card__heading');
     if (!link) return;
 
