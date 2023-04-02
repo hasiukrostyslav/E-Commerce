@@ -3,12 +3,14 @@ import icons from '../../assets/svg/sprite.svg';
 import { NUMBER_OF_ITEMS, SEARCH_EXCLUSION } from '../config';
 
 class BlogView extends View {
-  _blogList = this._blogPageEl.querySelector('.blog__list-main');
-  _pagination = this._blogPageEl.querySelector('.pagination');
-  _categories = this._blogPageEl.querySelector('.sidebar__categories');
-  _featured = this._blogPageEl.querySelector('.sidebar__featured');
-  _searchForm = this._blogPageEl.querySelector('.search');
-  _searchInput = this._blogPageEl.querySelector('.search__input');
+  _blogListEl = this._blogPageEl.querySelector('.blog__list-main');
+  _paginationEl = this._blogPageEl.querySelector('.pagination');
+  _searchFormEl = this._blogPageEl.querySelector('.search');
+  _searchInputEl = this._blogPageEl.querySelector('.search__input');
+  _searchBtnEl = this._searchFormEl.querySelector('.search__button');
+  _categoriesEl = this._blogPageEl.querySelector('.sidebar__categories');
+  _categoriesLabelEl = this._categoriesEl.querySelectorAll('label');
+  _featuredEl = this._blogPageEl.querySelector('.sidebar__featured');
 
   constructor() {
     super();
@@ -26,23 +28,24 @@ class BlogView extends View {
     this._addHandlerSearchBlog(this._searchBlog.bind(this, data));
   }
 
+  // Blog list
   _renderBlogList(data) {
-    this._blogList.innerHTML = '';
-    this._pagination.innerHTML = '';
+    this._blogListEl.innerHTML = '';
+    this._paginationEl.innerHTML = '';
 
     const markup = data
       .map((post) => this._generateBlogList(post))
       .reverse()
       .join('');
 
-    this._blogList.insertAdjacentHTML('afterbegin', markup);
+    this._blogListEl.insertAdjacentHTML('afterbegin', markup);
 
-    this._pagination.insertAdjacentHTML(
+    this._paginationEl.insertAdjacentHTML(
       'afterbegin',
       this._renderPagination(data)
     );
 
-    this._setDataAttribute(this._blogList);
+    this._setDataAttribute();
     this._showPaginationPage();
   }
 
@@ -116,8 +119,8 @@ class BlogView extends View {
     return pages.join('');
   }
 
-  _setDataAttribute(container) {
-    [...container.children].forEach(
+  _setDataAttribute() {
+    [...this._blogListEl.children].forEach(
       (li, i) =>
         (li.dataset.pagination =
           i < NUMBER_OF_ITEMS ? 1 : Math.trunc(i / NUMBER_OF_ITEMS + 1))
@@ -125,12 +128,12 @@ class BlogView extends View {
   }
 
   _showPaginationPage() {
-    const blogs = this._blogList.querySelectorAll('.blog__item-main');
+    const blogs = this._blogListEl.querySelectorAll('.blog__item-main');
 
     blogs.forEach((blog) => blog.classList.remove('hidden'));
 
     if (blogs.length === 0) return;
-    const pages = [...this._pagination.querySelectorAll('[data-pagination]')];
+    const pages = [...this._paginationEl.querySelectorAll('[data-pagination]')];
 
     const currentPage = pages.find((page) =>
       page.firstElementChild.classList.contains('pagination__btn--current')
@@ -175,15 +178,16 @@ class BlogView extends View {
   }
 
   _addHandlerChangePaginationPage(handler) {
-    this._pagination.addEventListener('click', handler);
+    this._paginationEl.addEventListener('click', handler);
   }
 
+  // Search
   _searchBlog(data, e) {
     e.preventDefault();
     const btn = e.target.closest('.search__button');
     if (!btn) return;
 
-    const inputValue = this._searchInput.value.toLowerCase();
+    const inputValue = this._searchInputEl.value.toLowerCase();
     if (
       !inputValue ||
       inputValue.length === 1 ||
@@ -198,82 +202,21 @@ class BlogView extends View {
 
     this._renderBlogList(blogs);
 
-    this._searchInput.value = '';
+    this._searchInputEl.value = '';
   }
 
   _addHandlerSearchBlog(handler) {
-    this._searchForm
-      .querySelector('.search__button')
-      .addEventListener('click', handler);
+    this._searchBtnEl.addEventListener('click', handler);
   }
 
-  _showCategoryBlog(data, e) {
-    e.preventDefault();
-    this._categories
-      .querySelectorAll('label')
-      .forEach((el) => el.classList.remove('sidebar__label--current'));
-
-    const label = e.target.closest('label');
-    label.classList.add('sidebar__label--current');
-
-    if (!label) return;
-
-    const category = label.querySelector('.sidebar__link--title').textContent;
-
-    const blogs =
-      category === 'All'
-        ? data
-        : data.filter((blog) => blog.categories === category);
-
-    this._renderBlogList(blogs);
-  }
-
-  _addHandlerShowCategory(handler) {
-    this._categories.addEventListener('click', handler);
-  }
-
-  _renderBlogFeatured(data) {
-    this._featured.innerHTML = '';
-    const markup = data
-      .filter((post) => post.featuredPost)
-      .map((post) => this._generateBlogFeatured(post))
-      .join('');
-
-    this._featured.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  _generateBlogFeatured(data) {
-    return `
-      <li class="sidebar__item">
-        <a href="#" data-link="post">
-          <img
-            class="sidebar__img"
-            src="${data.images.find((img) => img.includes('-sm'))}"
-            alt="${data.title}"
-          />
-        </a>
-        <div class="sidebar__feature-info">
-          <p class="sidebar__date">
-            <svg class="blog__icon">
-              <use xlink:href="${icons}#clock"></use>
-            </svg>
-            ${this._dateFormatter(data.date)}
-          </p>
-          <a class="sidebar__link" href="#" data-link="post"
-            >${data.title}</a
-          >
-        </div>
-      </li>
-    `;
-  }
-
+  // Categories
   _renderBlogCategories(data) {
-    this._categories.innerHTML = '';
+    this._categoriesEl.innerHTML = '';
     const markup = data
       .map((categ) => this._generateBlogCategories(categ))
       .join('');
 
-    this._categories.insertAdjacentHTML('afterbegin', markup);
+    this._categoriesEl.insertAdjacentHTML('afterbegin', markup);
   }
 
   _generateBlogCategories(data) {
@@ -302,6 +245,67 @@ class BlogView extends View {
     entries.unshift(['All', data.length]);
 
     return entries;
+  }
+
+  _showCategoryBlog(data, e) {
+    e.preventDefault();
+    this._categoriesLabelEl.forEach((el) =>
+      el.classList.remove('sidebar__label--current')
+    );
+
+    const label = e.target.closest('label');
+    label.classList.add('sidebar__label--current');
+
+    if (!label) return;
+
+    const category = label.querySelector('.sidebar__link--title').textContent;
+
+    const blogs =
+      category === 'All'
+        ? data
+        : data.filter((blog) => blog.categories === category);
+
+    this._renderBlogList(blogs);
+  }
+
+  _addHandlerShowCategory(handler) {
+    this._categoriesEl.addEventListener('click', handler);
+  }
+
+  // Featured posts
+  _renderBlogFeatured(data) {
+    this._featuredEl.innerHTML = '';
+    const markup = data
+      .filter((post) => post.featuredPost)
+      .map((post) => this._generateBlogFeatured(post))
+      .join('');
+
+    this._featuredEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  _generateBlogFeatured(data) {
+    return `
+      <li class="sidebar__item">
+        <a href="#" data-link="post">
+          <img
+            class="sidebar__img"
+            src="${data.images.find((img) => img.includes('-sm'))}"
+            alt="${data.title}"
+          />
+        </a>
+        <div class="sidebar__feature-info">
+          <p class="sidebar__date">
+            <svg class="blog__icon">
+              <use xlink:href="${icons}#clock"></use>
+            </svg>
+            ${this._dateFormatter(data.date)}
+          </p>
+          <a class="sidebar__link" href="#" data-link="post"
+            >${data.title}</a
+          >
+        </div>
+      </li>
+    `;
   }
 
   addHandlerRanderBlogPage(handler) {

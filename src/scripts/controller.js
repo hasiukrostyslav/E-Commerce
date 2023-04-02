@@ -19,7 +19,7 @@ const view = new View();
 
 const controlInitPage = function () {
   // Init page config
-  view.init();
+  view.init(model.state.posts);
 
   // Calculate item rating
   model.calculateItemRating(model.state);
@@ -61,11 +61,17 @@ const controlRenderBlogPage = function (e) {
   blogView.renderBlogPage(e, posts);
 };
 
+const controlRenderPostPage = function (e) {
+  const { posts } = model.state;
+  postView.renderPostPage(e, posts);
+};
+
 function init() {
   view.addHandlerRender(controlInitPage);
   modalView.addHandlerLogIn(controlSignIn);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
   blogView.addHandlerRanderBlogPage(controlRenderBlogPage);
+  postView.addHandlerRenderPostPage(controlRenderPostPage);
 }
 
 init();

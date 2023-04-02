@@ -20,7 +20,7 @@ export default class View {
   _toolbarContainer = document.querySelector('.navigation__toolbar');
   _overlay = document.querySelector('.overlay');
 
-  init() {
+  init(data) {
     this._getCurrentDay();
     this._startCountDownTimer();
     this._setObserver(this._setBreadcrumbLinks.bind(this));
@@ -29,6 +29,7 @@ export default class View {
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
     this._addHandlerInputNumber();
+    this._renderBlogCards(data);
   }
 
   addHandlerRender(handler) {
@@ -192,6 +193,15 @@ export default class View {
     this._activateSlideTab(this._curSlide);
   }
 
+  _minusOrder(s, arr) {
+    s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
+  }
+
+  _plusOrder(s, arr) {
+    s.style.order =
+      +s.style.order === arr.length ? 1 : (s.style.order = +s.style.order + 1);
+  }
+
   _clickTabs(cssClass, e) {
     const tab = e.target.closest(cssClass);
     if (!tab) return;
@@ -322,6 +332,55 @@ export default class View {
       'click',
       this._changeInputNumber.bind(this)
     );
+  }
+
+  _renderBlogCards(data) {
+    const newest = data.slice(-2).reverse();
+    const markup = newest.map((post) => this._generateBlogCards(post)).join('');
+
+    this._mainEl
+      .querySelector('.blog-home')
+      .insertAdjacentHTML('beforeend', markup);
+  }
+
+  _generateBlogCards(data) {
+    return `
+          <figure class="blog__card">
+            <img class="blog__img" src="${data.images.at(0)}" alt="${
+      data.title
+    }" />
+            <figcaption class="blog__description">
+              <a
+                href="#"
+                class="heading-quaternary--heading-link u-margin-bottom-small-1" data-link="post"
+                >${data.title}</a
+              >
+              <ul class="blog__list u-margin-bottom-small-2">
+                <li class="blog__item">
+                  <p class="heading-quaternary--description">${
+                    data.categories
+                  }</p>
+                </li>
+                <li class="blog__item">
+                  <p class="heading-quaternary--description">${this._dateFormatter(
+                    data.date
+                  )}</p>
+                </li>
+                <li class="blog__item">
+                  <svg class="blog__icon">
+                    <use xlink:href="${icons}#chat"></use>
+                  </svg>
+                  <p class="heading-quaternary--description">${
+                    data.comments.length > 0 ? data.comments.length : 'No'
+                  } comment${data.comments.length === 1 ? '' : 's'}</p>
+                </li>
+              </ul>
+              <p class="blog__text">
+                ${data.text.slice(0, 140)}...
+              </p>
+            </figcaption>
+          </figure>
+    `;
   }
 
   // FORMATTERS

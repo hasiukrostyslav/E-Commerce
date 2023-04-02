@@ -612,7 +612,13 @@ const data = {
       categories: 'Lifestyle',
       date: '2023-03-09T13:26:17.000Z',
       images: [images[`blog-3.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: false,
       text: 'Mauris tincidunt sollicitudin tristique odio eget volutpat. Fringilla viverra amet, mi interdum blandit. Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac...',
     },

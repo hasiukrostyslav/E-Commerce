@@ -18,10 +18,6 @@ class SlidersView extends View {
         .querySelectorAll('.card')
         .forEach((card, i) => (card.style.order = i + 1));
     });
-
-    this._mainEl
-      .querySelectorAll('.post__carousel-item')
-      .forEach((card, i) => (card.style.order = i + 1));
   }
 
   _setDataAttribute() {
@@ -85,39 +81,6 @@ class SlidersView extends View {
     this._activateSlideTab(slide);
   }
 
-  _minusOrder(s, arr) {
-    s.style.order = s.style.order <= 1 ? arr.length : (s.style.order -= 1);
-  }
-
-  _plusOrder(s, arr) {
-    s.style.order =
-      +s.style.order === arr.length ? 1 : (s.style.order = +s.style.order + 1);
-  }
-
-  _changePostSlide(btn, func) {
-    if (btn.closest('section').querySelectorAll('.post__carousel-item')) {
-      const slides = [
-        ...btn.closest('section').querySelectorAll('.post__carousel-item'),
-      ];
-      slides.forEach((s, _, arr) => {
-        func(s, arr);
-        s.querySelector('.sidebar__feature-info').classList.add(
-          'u-order-first'
-        );
-        s.querySelector('.sidebar__date').classList.add('u-right');
-        s.querySelector('img').classList.add('sidebar__img-right');
-      });
-
-      const firstSlide = slides.find((el) => +el.style.order === 1);
-      if (!firstSlide) return;
-      firstSlide
-        .querySelector('.sidebar__feature-info')
-        .classList.remove('u-order-first');
-      firstSlide.querySelector('.sidebar__date').classList.remove('u-right');
-      firstSlide.querySelector('img').classList.remove('sidebar__img-right');
-    }
-  }
-
   _nextSlide(e) {
     const btnNext = e.target.closest('.carousel__btn--next');
     if (!btnNext) return;
@@ -128,7 +91,6 @@ class SlidersView extends View {
     }
 
     this._resetSmallSlider(btnNext);
-    this._changePostSlide(btnNext, this._minusOrder.bind(this));
   }
 
   _prevSlide(e) {
@@ -141,7 +103,6 @@ class SlidersView extends View {
     }
 
     this._resetSmallSlider(btnPrev);
-    this._changePostSlide(btnPrev, this._plusOrder.bind(this));
   }
 
   _resetSmallSlider(btn) {
