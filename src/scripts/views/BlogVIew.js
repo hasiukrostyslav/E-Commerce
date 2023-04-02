@@ -1,6 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import { NUMBER_OF_ITEMS } from '../config';
+import { NUMBER_OF_ITEMS, SEARCH_EXCLUSION } from '../config';
 
 class BlogView extends View {
   _blogList = this._blogPageEl.querySelector('.blog__list-main');
@@ -184,12 +184,19 @@ class BlogView extends View {
     if (!btn) return;
 
     const inputValue = this._searchInput.value.toLowerCase();
-    if (!inputValue) return;
-    console.log(inputValue);
+    if (
+      !inputValue ||
+      inputValue.length === 1 ||
+      SEARCH_EXCLUSION.find((word) => word === inputValue)
+    )
+      return;
+
     const blogs = data.filter((blog) =>
       blog.title.toLowerCase().includes(inputValue)
     );
-    console.log(blogs);
+    if (blogs.length === 0) return;
+
+    this._renderBlogList(blogs);
 
     this._searchInput.value = '';
   }

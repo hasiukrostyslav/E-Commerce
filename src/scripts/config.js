@@ -6,6 +6,9 @@ export const MILISECONDS = 1000;
 export const MAXSCORE = 5;
 export const NUMBER_OF_ITEMS = 4;
 
+// prettier-ignore
+export const SEARCH_EXCLUSION = ['a', 'am', 'is', 'are', 'at', 'of', 'in', 'the', 'out', 'with', 'if', 'else', 'then', 'to'];
+
 export const ERROR = {
   fullName: 'Please provide a valid full name.',
   name: 'Please provide a valid name.',
