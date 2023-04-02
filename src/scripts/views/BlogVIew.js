@@ -7,6 +7,8 @@ class BlogView extends View {
   _pagination = this._blogPageEl.querySelector('.pagination');
   _categories = this._blogPageEl.querySelector('.sidebar__categories');
   _featured = this._blogPageEl.querySelector('.sidebar__featured');
+  _searchForm = this._blogPageEl.querySelector('.search');
+  _searchInput = this._blogPageEl.querySelector('.search__input');
 
   constructor() {
     super();
@@ -21,6 +23,7 @@ class BlogView extends View {
     this._renderBlogCategories(this._getCategoriesType(data));
     this._renderBlogFeatured(data);
     this._addHandlerShowCategory(this._showCategoryBlog.bind(this, data));
+    this._addHandlerSearchBlog(this._searchBlog.bind(this, data));
   }
 
   _renderBlogList(data) {
@@ -173,6 +176,28 @@ class BlogView extends View {
 
   _addHandlerChangePaginationPage(handler) {
     this._pagination.addEventListener('click', handler);
+  }
+
+  _searchBlog(data, e) {
+    e.preventDefault();
+    const btn = e.target.closest('.search__button');
+    if (!btn) return;
+
+    const inputValue = this._searchInput.value.toLowerCase();
+    if (!inputValue) return;
+    console.log(inputValue);
+    const blogs = data.filter((blog) =>
+      blog.title.toLowerCase().includes(inputValue)
+    );
+    console.log(blogs);
+
+    this._searchInput.value = '';
+  }
+
+  _addHandlerSearchBlog(handler) {
+    this._searchForm
+      .querySelector('.search__button')
+      .addEventListener('click', handler);
   }
 
   _showCategoryBlog(data, e) {

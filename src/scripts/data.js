@@ -367,7 +367,24 @@ const data = {
       categories: 'Designers',
       date: '2022-07-05T13:26:17.000Z',
       images: [images[`blog-5.jpg`], images[`blog-5-sm.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+
+        {
+          user: 'Albert Flores',
+          date: '2023-03-07T09:13:10.000Z',
+          text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
+        },
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: true,
       text: 'Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est hendrerit ac euismod...',
     },
@@ -385,7 +402,24 @@ const data = {
       categories: 'Celebrity style',
       date: '2022-03-12T13:26:17.000Z',
       images: [images[`blog-7.jpg`], images[`blog-7-sm.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Annette Black',
+          date: '2023-03-13T09:13:10.000Z',
+          text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+          tag: '@Devon Lane',
+        },
+        {
+          user: 'Albert Flores',
+          date: '2023-03-17T09:13:10.000Z',
+          text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
+        },
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: true,
       text: 'Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est hendrerit ac euismod...',
     },
@@ -394,12 +428,34 @@ const data = {
       categories: 'Lifestyle',
       date: '2022-02-27T13:26:17.000Z',
       images: [images[`blog-8.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+        {
+          user: 'Annette Black',
+          date: '2023-03-01T09:13:10.000Z',
+          text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+          tag: '@Devon Lane',
+        },
+        {
+          user: 'Albert Flores',
+          date: '2023-03-07T09:13:10.000Z',
+          text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
+        },
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: false,
       text: 'Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac. Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim...',
     },
     {
-      title: "What men's shoes will be in fashion in the spring-summer of 2023",
+      title: "What Men's Shoes will be in Fashion in the Spring-Summer of 2023",
       categories: 'Designers',
       date: '2022-10-19T13:26:17.000Z',
       images: [images[`blog-9.jpg`]],
@@ -412,7 +468,19 @@ const data = {
       categories: 'Lifestyle',
       date: '2022-12-01T13:26:17.000Z',
       images: [images[`blog-10.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+        {
+          user: 'Annette Black',
+          date: '2023-03-01T09:13:10.000Z',
+          text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+          tag: '@Devon Lane',
+        },
+      ],
       featuredPost: false,
       text: 'Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est hendrerit ac euismod...',
     },
@@ -421,7 +489,19 @@ const data = {
       categories: 'Lifestyle',
       date: '2022-06-10T13:26:17.000Z',
       images: [images[`blog-11.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: false,
       text: 'Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim. Turpis viverra mattis semper pellentesque facilisis. Ut id eget sagittis lectus...',
     },
@@ -439,7 +519,13 @@ const data = {
       categories: 'Lifestyle',
       date: '2023-01-15T13:26:17.000Z',
       images: [images[`blog-13.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+      ],
       featuredPost: false,
       text: 'Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est hendrerit ac euismod...',
     },
@@ -475,7 +561,18 @@ const data = {
       categories: 'Fashion',
       date: '2023-01-12T13:26:17.000Z',
       images: [images[`blog-4.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Albert Flores',
+          date: '2023-03-07T09:13:10.000Z',
+          text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
+        },
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: false,
       text: 'Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac. Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim...',
     },
@@ -484,7 +581,29 @@ const data = {
       categories: 'Lifestyle',
       date: '2023-02-20T13:26:17.000Z',
       images: [images[`blog-2.jpg`]],
-      comments: [],
+      comments: [
+        {
+          user: 'Devon Lane',
+          date: '2023-02-20T13:26:17.000Z',
+          text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
+        },
+        {
+          user: 'Annette Black',
+          date: '2023-03-01T09:13:10.000Z',
+          text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
+          tag: '@Devon Lane',
+        },
+        {
+          user: 'Albert Flores',
+          date: '2023-03-07T09:13:10.000Z',
+          text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
+        },
+        {
+          user: 'Marvin McKinney',
+          date: '2023-03-28T08:13:10.000Z',
+          text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
+        },
+      ],
       featuredPost: false,
       text: 'Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim. Turpis viverra mattis semper pellentesque facilisis. Ut id eget sagittis lectus...',
     },
