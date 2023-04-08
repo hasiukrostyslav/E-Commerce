@@ -677,20 +677,6 @@ class ProductView extends View {
     const btn = e.target.closest('.checkbox__btn');
     if (!btn) return;
     this._combineTabsWithPages(btn);
-    // this._currentTab = btn;
-    // this._currentPage.classList.add('hidden');
-    // this._currentPage = [...this._pages].find(
-    //   (page) => page.dataset.product === this._currentTab.dataset.product
-    // );
-    // this._currentPage.classList.remove('hidden');
-
-    // if (this._currentTab.dataset.product === 'other-info') {
-    //   this._currentSubPage.classList.add('hidden');
-    //   this._currentSubPage = [...this._subPages].find(
-    //     (sub) => sub.dataset.info === this._currentTab.dataset.info
-    //   );
-    //   this._currentSubPage.classList.remove('hidden');
-    // }
   }
 
   _combineTabsWithPages(tab) {

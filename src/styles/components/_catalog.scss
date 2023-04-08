@@ -62,12 +62,17 @@
       &:not(:first-child) {
         padding-top: 2rem;
       }
+
+      &:last-child > p {
+        margin-bottom: 5.2rem;
+      }
     }
 
     &-category {
       font-size: 1.6rem;
       line-height: 1.6;
       font-weight: 700;
+      margin-bottom: 1.6rem;
     }
 
     &-btn {
@@ -135,14 +140,6 @@
       height: 5.2rem;
       justify-self: center;
     }
-  }
-
-  &__filter-item--open &__filter-category {
-    margin-bottom: 1.6rem;
-  }
-
-  &__filter-item--open &__filter-category--bottom {
-    margin-bottom: 5.2rem;
   }
 
   &__product {

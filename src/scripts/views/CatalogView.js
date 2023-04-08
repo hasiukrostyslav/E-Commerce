@@ -1,9 +1,12 @@
 import View from './View';
+import { MIN_PRICE, MAX_PRICE } from '../config';
 
 class CatalogView extends View {
   _accordionContainer = document.querySelector('.catalog__filter');
   _catalogContainer = document.querySelector('.catalog');
   _btnFilter = document.querySelector('.catalog__btn');
+  _filterItemEl = document.querySelectorAll('.catalog__filter-item');
+  _filterColorList = document.querySelector('.catalog__color-list');
   _catalog = document.querySelector('.catalog__product');
   _btnClearList = document.querySelectorAll('.clear-one');
   _breadcrumbFilters = this._breadcrumbEl.querySelector(
@@ -18,17 +21,127 @@ class CatalogView extends View {
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
-  _showNumbersOfProduct(e) {
-    const btn = e.target.closest('.number__btn');
+  // Render filters
+  init(e, data) {
+    if (!e.target.closest('a[data-link="catalog"]')) return;
 
-    if (!btn || !btn.closest('.catalog')) return;
-
-    const amount =
-      +this._catalogContainer.querySelector('.input--number').value;
-    console.log(amount);
+    this._setFiltersDataAttribute();
+    this._renderFiltersCheckList(data);
+    this._renderFiltersColor(data);
+    // this._addHandlerSearchBlog(this._searchFilter.bind(this, data));
   }
 
-  _addHandlerShowNumbersOfProduct(handler) {
+  _setFiltersDataAttribute() {
+    this._filterItemEl.forEach(
+      (item) =>
+        (item.dataset.filter = item
+          .querySelector('p')
+          .textContent.toLowerCase())
+    );
+  }
+
+  _renderFiltersColor(data) {
+    const colors = [...new Set(data.map((item) => item.color).flat())].sort();
+    const markup = colors
+      .map((color) => this._generateFilterColor(color))
+      .join('');
+
+    this._filterColorList.innerHTML = '';
+    this._filterColorList.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  _generateFilterColor(data) {
+    return `
+          <li class="catalog__color-item">
+            <input
+              class="color__radio"
+              type="checkbox"
+              name="color"
+              id="${data}"
+              checked
+            />
+            <label class="color__label color__label--lg" for="${data}"
+            >&nbsp;
+              <span
+                class="color__type color__type--lg color__type--${data}"
+              >&nbsp;</span>
+              <span class="color__name">${
+                data[0].toUpperCase() + data.slice(1).replace('-', ' ')
+              }</span>
+            </label>
+          </li>
+    `;
+  }
+
+  _renderFiltersCheckList(data) {
+    const filters = [
+      ...this._catalogContainer.querySelectorAll('.catalog__check-list'),
+    ].map((el) => el.closest('.catalog__filter-item'));
+
+    filters.forEach((filter) => {
+      const list = filter.querySelector('.catalog__check-list');
+      list.innerHTML = '';
+      list.insertAdjacentHTML(
+        'beforeend',
+        this._getFiltersMarkup(data, filter.dataset.filter)
+      );
+    });
+  }
+
+  _getFiltersMarkup(data, type) {
+    const filters = data.map((item) => item[type]).flat();
+    const unique = [...new Set(filters)];
+
+    if (type !== 'size') unique.sort();
+
+    const markup = unique
+      .map((checkItem) =>
+        this._generateFilterCheckList(
+          checkItem,
+          type,
+          filters.filter((el) => el === checkItem).length
+        )
+      )
+      .join('');
+
+    return markup;
+  }
+
+  _generateFilterCheckList(data, type, quantity) {
+    return `
+          <li class="catalog__check-item">
+            <input
+              class="checkbox__input"
+              type="checkbox"
+              name="${type}"
+              id="${data}"
+              checked
+            />
+            <label
+              class="checkbox__label checkbox__label--small"
+              for="${data}">
+              <span class="checkbox__mark">&nbsp;
+              </span>${
+                type === 'size'
+                  ? String(data).toUpperCase()
+                  : data[0].toUpperCase() + data.slice(1)
+              }
+              <span class="catalog__amount">(${quantity})</span>
+            </label>
+          </li>
+    `;
+  }
+
+  // Search
+  _searchFilter(data, e) {
+    e.preventDefault();
+  }
+
+  _addHandlerSearchBlog(handler) {
+    this._accordionContainer.addEventListener('click', handler);
+  }
+
+  addHandlerInitPage(handler) {
     this._parentElement.addEventListener('click', handler);
   }
 
@@ -114,16 +227,24 @@ class CatalogView extends View {
     const btnText = this._btnFilter.lastChild;
 
     if (this._accordionContainer.classList.contains('hidden')) {
-      btnText.textContent = 'Show filters';
-      this._catalogContainer.classList.remove('grid');
-      this._catalogContainer.classList.add('block');
+      this._showFilterContainer(btnText);
     }
 
     if (!this._accordionContainer.classList.contains('hidden')) {
-      btnText.textContent = 'Hide filters';
-      this._catalogContainer.classList.remove('block');
-      this._catalogContainer.classList.add('grid');
+      this._hideFilterContainer(btnText);
     }
+  }
+
+  _showFilterContainer(btnText) {
+    btnText.textContent = 'Show filters';
+    this._catalogContainer.classList.remove('grid');
+    this._catalogContainer.classList.add('block');
+  }
+
+  _hideFilterContainer(btnText) {
+    btnText.textContent = 'Hide filters';
+    this._catalogContainer.classList.remove('block');
+    this._catalogContainer.classList.add('grid');
   }
 
   _addHandlerToggleFilterContainer() {

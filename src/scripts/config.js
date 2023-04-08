@@ -5,6 +5,8 @@ export const SECONDS = 60;
 export const MILISECONDS = 1000;
 export const MAXSCORE = 5;
 export const NUMBER_OF_ITEMS = 4;
+export const MIN_PRICE = 0;
+export const MAX_PRICE = 1000;
 
 // prettier-ignore
 export const SEARCH_EXCLUSION = ['a', 'am', 'is', 'are', 'at', 'of', 'in', 'the', 'out', 'with', 'if', 'else', 'then', 'to'];

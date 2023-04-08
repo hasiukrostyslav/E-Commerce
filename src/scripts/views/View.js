@@ -280,6 +280,7 @@ export default class View {
     );
   }
 
+  // Number input
   _stepUp(input) {
     input.value =
       +input.value < +input.max ? +input.value + +input.step : input.max;

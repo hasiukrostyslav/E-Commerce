@@ -31,16 +31,8 @@ const controlInitPage = function () {
   slidersView.initSlider();
 };
 
-const controlSignIn = function (e) {
-  e.preventDefault();
-
-  const user = modalView.validationLogIn(model.state.users);
-  if (!user) return;
-
-  console.log(user);
-
-  navigationView.changeAccountToolbar(user.firstName);
-  accountView.renderProfileData(user);
+const controlInitCatalogPage = function (e) {
+  catalogView.init(e, model.state.catalog);
 };
 
 const controlRenderProductPage = function (e) {
@@ -66,12 +58,23 @@ const controlRenderPostPage = function (e) {
   postView.renderPostPage(e, posts);
 };
 
+const controlSignIn = function (e) {
+  e.preventDefault();
+
+  const user = modalView.validationLogIn(model.state.users);
+  if (!user) return;
+
+  navigationView.changeAccountToolbar(user.firstName);
+  accountView.renderProfileData(user);
+};
+
 function init() {
   view.addHandlerRender(controlInitPage);
-  modalView.addHandlerLogIn(controlSignIn);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
+  catalogView.addHandlerInitPage(controlInitCatalogPage);
   blogView.addHandlerRanderBlogPage(controlRenderBlogPage);
   postView.addHandlerRenderPostPage(controlRenderPostPage);
+  modalView.addHandlerLogIn(controlSignIn);
 }
 
 init();

@@ -1738,13 +1738,12 @@
                     Hide filters
                 </button>
                 <form action="#" class="sort__form">
-                    <label class="sort__label" for="orders-1">Sort by</label>
-                    <select class="sort__select" name="orders-1" id="orders-1">
-                        <option value="All">oldest</option>
-                        <option value="All">newest</option>
-                        <option value="Canceled" selected>
-                            popularity
-                        </option>
+                    <label class="sort__label" for="sort-by-1">Sort by</label>
+                    <select class="sort__select" name="sort-by-1" id="sort-by-1">
+                        <option value="newest" selected>newest</option>
+                        <option value="oldest">oldest</option>
+                        <option value="low">price: low-high</option>
+                        <option value="high">price: high-low</option>
                     </select>
                     <button type="button" class="sort__btn">
                         <svg class="input__icon input__icon--medium">
@@ -1833,7 +1832,7 @@
             <aside class="catalog__filter">
                 <ul class="catalog__filter-list">
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
                         <p class="catalog__filter-category">Clothes</p>
                         <button
@@ -1863,7 +1862,7 @@
                             </button>
                           </form>
                           <form
-                            class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                            class="catalog__check-form catalog__scroll catalog__scroll--sm"
                             action="#"
                         >
                             <ul class="catalog__check-list">
@@ -1981,7 +1980,7 @@
                         </div>                                                
                     </li>
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
                         <p class="catalog__filter-category">Size</p>
                         <button
@@ -1993,7 +1992,7 @@
                                 ></use>
                             </svg>
                         </button>
-                        <form class="catalog__check-form" action="#">
+                        <form class="catalog__check-form catalog__scroll catalog__scroll--sm" action="#">
                             <ul class="catalog__check-list">
                                 <li class="catalog__check-item">
                                     <input
@@ -2108,7 +2107,7 @@
                         </form>                        
                     </li>
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
                         <p class="catalog__filter-category">Color</p>
                         <button
@@ -2320,7 +2319,7 @@
                         </form>
                     </li>
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
                         <p class="catalog__filter-category">Material</p>
                         <button
@@ -2337,7 +2336,7 @@
                             <input
                                 type="text"
                                 class="search__input"
-                                placeholder="Search the clothes type"
+                                placeholder="Search the material type"
                             />
                             <button class="search__button">
                                 <svg
@@ -2350,7 +2349,7 @@
                             </button>
                           </form>
                           <form
-                            class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                            class="catalog__check-form catalog__scroll catalog__scroll--sm"
                             action="#"
                         >
                             <ul class="catalog__check-list">
@@ -2470,7 +2469,7 @@
                         
                     </li>
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
                         <p class="catalog__filter-category">Brand</p>
                         <button
@@ -2487,7 +2486,7 @@
                             <input
                                 type="text"
                                 class="search__input"
-                                placeholder="Search the clothes type"
+                                placeholder="Search the brands type"
                             />
                             <button class="search__button">
                                 <svg
@@ -2500,7 +2499,7 @@
                             </button>
                           </form>
                           <form
-                            class="catalog__form--check catalog__scroll catalog__scroll--sm"
+                            class="catalog__check-form catalog__scroll catalog__scroll--sm"
                             action="#"
                         >
                             <ul class="catalog__check-list">
@@ -2618,9 +2617,9 @@
                         </div> 
                     </li>
                     <li
-                        class="catalog__filter-item catalog__filter-item--open"
+                        class="catalog__filter-item"
                     >
-                        <p class="catalog__filter-category catalog__filter-category--bottom">Price</p>
+                        <p class="catalog__filter-category">Price</p>
                         <button
                             class="btn__accordion btn__accordion--sm catalog__filter-btn"
                         >
@@ -2659,14 +2658,13 @@
 
             <section class="catalog__toolbar catalog__toolbar--bottom">
                 <form action="#" class="sort__form">
-                    <label class="sort__label" for="orders-sort">Sort by</label>
-                    <select class="sort__select" name="orders" id="orders-sort">
-                        <option value="All">oldest</option>
-                        <option value="All">newest</option>
-                        <option value="Canceled" selected>
-                            popularity
-                        </option>
-                    </select>
+                  <label class="sort__label" for="sort-by-2">Sort by</label>
+                  <select class="sort__select" name="sort-by-2" id="sort-by-2">
+                      <option value="newest" selected>newest</option>
+                      <option value="oldest">oldest</option>
+                      <option value="low">price: low-high</option>
+                      <option value="high">price: high-low</option>
+                  </select>
                     <button type="button" class="sort__btn">
                         <svg class="input__icon input__icon--medium">
                             <use
