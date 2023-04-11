@@ -259,10 +259,10 @@ class CardView extends View {
   _generateSizeButton(data, size, category) {
     return `
       <li class="card__radio-item">
-        <input class="size__radio" type="radio" value="${size}" name="size" id="${
+        <input class="size__radio" type="radio" value="${size}" name="size" id="${size}--${
       data.article
-    }-${size}-${category}" ${size === data.size.at(0) ? 'checked' : ''}>
-        <label class="size__label" for="${data.article}-${size}-${category}">${
+    }${category}" ${size === data.size.at(0) ? 'checked' : ''}>
+        <label class="size__label" for="${size}--${data.article}${category}">${
       typeof size === 'string' ? size.toUpperCase() : size
     }</label>
       </li>
@@ -272,12 +272,12 @@ class CardView extends View {
   _generateColorButton(data, color, category) {
     return `
       <li class="card__radio-item">
-        <input class="color__radio" type="radio" name="color" id="${
-          data.article
-        }-${color}-${category}" ${color === data.color.at(0) ? 'checked' : ''}>
-        <label class="color__label color__label--sm" for="${
-          data.article
-        }-${color}-${category}">
+        <input class="color__radio" type="radio" name="color" id="${color}--${
+      data.article
+    }${category}" ${color === data.color.at(0) ? 'checked' : ''}>
+        <label class="color__label color__label--sm" for="${color}--${
+      data.article
+    }${category}">
           <span class="color__type color__type--sm color__type--${color}"></span>
         </label> 
       </li>

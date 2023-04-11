@@ -32,6 +32,8 @@ class ProductView extends View {
     this._productPageEl.querySelector('h2').dataset.title = data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
       data.article;
+    this._productPageEl.querySelector('.product__card').dataset.article =
+      data.article;
 
     this._renderCard(markup);
     this._renderProductGallery(data);
@@ -244,12 +246,12 @@ class ProductView extends View {
               class="color__radio"
               type="radio"
               name="color"
-              id="${data.article}-${color}"
+              id="${color}--${data.article}"
             ${i === 0 ? 'checked' : ''}  
             />
-            <label class="color__label color__label--sm" for="${
-              data.article
-            }-${color}">&nbsp;
+            <label class="color__label color__label--sm" for="${color}--${
+      data.article
+    }">&nbsp;
               <span class="color__type color__type--sm color__type--${color}"
               >&nbsp;</span>
             </label>
@@ -261,7 +263,7 @@ class ProductView extends View {
     const btn = e.target.closest('.color__radio');
     if (!btn) return;
 
-    const color = btn.id.split('-').slice(1).join(' ');
+    const color = btn.id.split('--').slice(0, 1).join(' ').split('-').join(' ');
 
     this._currentPage.querySelector('.product__color-type').textContent =
       color[0].toUpperCase() + color.slice(1);
@@ -273,7 +275,7 @@ class ProductView extends View {
 
   _generateSizeMenu(data) {
     return `
-            <option value="" class="placeholder" disabled selected>
+            <option class="placeholder" disabled selected>
               Please select
             </option>
             ${this._generateSizeOption(data)} 
@@ -286,7 +288,7 @@ class ProductView extends View {
       ? data.size
           .map(
             (sz) =>
-              `<option value="${sz}">${
+              `<option class="size__option" value="${sz}">${
                 Number.isFinite(sz) ? sz : sz.toUpperCase()
               }</option>`
           )

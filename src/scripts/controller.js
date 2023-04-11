@@ -3,6 +3,7 @@ import accountView from './views/AccountView';
 import blogView from './views/BlogVIew';
 import cardView from './views/CardView';
 import catalogView from './views/CatalogView';
+import cartModalView from './views/CartModalView';
 import checkoutView from './views/CheckoutView';
 import contactView from './views/ContactView';
 import headerView from './views/HeaderView';
@@ -17,7 +18,7 @@ import * as model from './model';
 
 const view = new View();
 
-const controlInitPage = function () {
+function controlInitPage() {
   // Init page config
   view.init(model.state.posts);
 
@@ -29,13 +30,13 @@ const controlInitPage = function () {
 
   // Init sliders config
   slidersView.initSlider();
-};
+}
 
-const controlInitCatalogPage = function (e) {
+function controlInitCatalogPage(e) {
   catalogView.init(e, model.state.catalog);
-};
+}
 
-const controlRenderProductPage = function (e) {
+function controlRenderProductPage(e) {
   const article = cardView.clickOnCardLink(e);
   if (!article) return;
 
@@ -46,19 +47,26 @@ const controlRenderProductPage = function (e) {
     model.state.reviews,
     cardView.generateCardMarkup(product)
   );
-};
+}
 
-const controlRenderBlogPage = function (e) {
+function controlRenderBlogPage(e) {
   const { posts } = model.state;
   blogView.renderBlogPage(e, posts);
-};
+}
 
-const controlRenderPostPage = function (e) {
+function controlRenderPostPage(e) {
   const { posts } = model.state;
   postView.renderPostPage(e, posts);
-};
+}
 
-const controlSignIn = function (e) {
+function controlModalCart(e) {
+  cartModalView.addToCart(model.state.catalog, e);
+  cartModalView.addhandlerChangeAmount(
+    cartModalView.changeAmount(model.state.catalog, e)
+  );
+}
+
+function controlSignIn(e) {
   e.preventDefault();
 
   const user = modalView.validationLogIn(model.state.users);
@@ -66,7 +74,7 @@ const controlSignIn = function (e) {
 
   navigationView.changeAccountToolbar(user.firstName);
   accountView.renderProfileData(user);
-};
+}
 
 function init() {
   view.addHandlerRender(controlInitPage);
@@ -75,6 +83,7 @@ function init() {
   blogView.addHandlerRanderBlogPage(controlRenderBlogPage);
   postView.addHandlerRenderPostPage(controlRenderPostPage);
   modalView.addHandlerLogIn(controlSignIn);
+  cartModalView.addHandlerAddToCart(controlModalCart);
 }
 
 init();

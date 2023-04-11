@@ -35,3 +35,21 @@ export const calculateItemRating = function (info) {
       );
   });
 };
+
+// const getCountry = async function () {
+//   try {
+//     const response = await fetch(
+//       'https://countriesnow.space/api/v0.1/countries/population/cities'
+//     );
+//     console.log(response);
+//     const data = await response.json();
+
+//     console.log(data.data);
+
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+// getCountry();
+
+// 'https://countriesnow.space/api/v0.1/countries/population/cities'
