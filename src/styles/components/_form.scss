@@ -236,7 +236,6 @@
   }
 
   &__label {
-    width: 100;
     position: relative;
     display: block;
     border: 1px solid $color-gray-light-4;
@@ -738,7 +737,6 @@
 
   &__label {
     font-size: 1.2rem;
-    line-gap-override: 1.5;
     color: $color-white;
     padding: 0.2rem 1rem;
     background-color: $color-gray-dark-2;

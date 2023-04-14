@@ -86,7 +86,7 @@ class PostView extends View {
               class="sidebar__img ${i === 0 ? '' : 'sidebar__img-right'}"
               src="${data.images.find((img) => img.includes('-sm'))}"
               alt="${data.title}"
-            />
+            >
             <div class="sidebar__feature-info ${
               i === 0 ? '' : 'u-order-first'
             } ">

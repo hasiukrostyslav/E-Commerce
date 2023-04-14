@@ -57,7 +57,7 @@ class BlogView extends View {
             class="blog__img blog__img--large"
             src="${data.images.at(0)}"
             alt="${data.title}"
-          />
+          >
           <figcaption class="blog__description--large">
             <a
               href="#"
@@ -291,7 +291,7 @@ class BlogView extends View {
             class="sidebar__img"
             src="${data.images.find((img) => img.includes('-sm'))}"
             alt="${data.title}"
-          />
+          >
         </a>
         <div class="sidebar__feature-info">
           <p class="sidebar__date">

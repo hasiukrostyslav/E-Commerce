@@ -349,7 +349,7 @@ export default class View {
           <figure class="blog__card">
             <img class="blog__img" src="${data.images.at(0)}" alt="${
       data.title
-    }" />
+    }">
             <figcaption class="blog__description">
               <a
                 href="#"

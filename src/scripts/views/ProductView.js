@@ -107,7 +107,7 @@ class ProductView extends View {
       <img class="product__img product__img--lg" data-slide="${i + 1}"
         src="${img}"
         alt="${data.title}"
-    />`
+    >`
       )
       .join('');
   }
@@ -124,7 +124,7 @@ class ProductView extends View {
           class="product__img product__img--sm"
           src="${img}"
           alt="${data.title}"
-        />
+        >
         ${
           i === arr.length - 1
             ? `<span class="product__play-btn">
@@ -248,7 +248,7 @@ class ProductView extends View {
               name="color"
               id="${color}--${data.article}"
             ${i === 0 ? 'checked' : ''}  
-            />
+            >
             <label class="color__label color__label--sm" for="${color}--${
       data.article
     }">&nbsp;

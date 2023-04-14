@@ -112,7 +112,7 @@ class CartMovalView extends View {
                     class="cart__img"
                     src="${data.images.at(0)}"
                     alt="sweatshirt"
-                />
+                >
                 <div class="cart__info">
                     <a
                         href="#"
@@ -136,8 +136,7 @@ class CartMovalView extends View {
                         >
                       `
                           : ''
-                      }  
-                        
+                      }    
                     </p>
                     <div class="cart__price">
                         <div class="number__box">
@@ -150,7 +149,7 @@ class CartMovalView extends View {
                               min="1"
                               max="10"
                               step="1"
-                          />
+                          >
                           <button
                             type="button"
                             class="number__btn number__btn--top number__btn--sm"

@@ -204,10 +204,7 @@ class CardView extends View {
                 Add to cart
             </button>
           </form>
- 
         </div>
-        
-         
       </div>
     `;
   }

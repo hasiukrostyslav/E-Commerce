@@ -59,7 +59,7 @@ class CatalogView extends View {
               name="color"
               id="${data}"
               checked
-            />
+            >
             <label class="color__label color__label--lg" for="${data}"
             >&nbsp;
               <span
@@ -116,7 +116,7 @@ class CatalogView extends View {
               name="${type}"
               id="${data}"
               checked
-            />
+            >
             <label
               class="checkbox__label checkbox__label--small"
               for="${data}">
