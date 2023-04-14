@@ -1,9 +1,12 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import { COLOR_SELECTED } from '../config';
+import { COLOR_SELECTED, ERROR } from '../config';
 
 class CartMovalView extends View {
   _modalEl = this._parentElement.querySelector('.modal--cart');
+  _headingContainerEl = this._modalEl.querySelector('.cart__heading');
+  _cartInfoEl = this._modalEl.querySelector('.cart__info');
+  _bottomEl = this._modalEl.querySelector('.cart__checkout');
   _itemsAmountEl = this._modalEl.querySelector('.cart__heading-amount');
   _cartListEl = this._modalEl.querySelector('.cart__list');
   _totalPriceEl = this._modalEl.querySelector('.cart__total');
@@ -14,46 +17,84 @@ class CartMovalView extends View {
     super();
 
     this._addHandlerOpenCart(this._openCart.bind(this));
+    this._addHandlerHoverCartLink(this._hoverCartLink.bind(this));
+    this._addHandlerLeaveCartLink(this._leaveCartLink.bind(this));
+    this._addHandlerDeleteItem(this._deleteItem.bind(this));
   }
 
   _openCart(e) {
-    const btnCart = e.target.closest('.navigation__cart-link');
+    const btnCart = e.target.closest('[data-modal="cart"]');
     if (!btnCart) return;
 
     this._modalEl.classList.remove('hidden');
     this._overlay.classList.remove('hidden');
+    this._addScrollBar();
   }
 
   _addHandlerOpenCart(handler) {
     this._navigationEl.addEventListener('click', handler);
   }
 
+  _hoverCartLink(e) {
+    const cart = e.target;
+
+    const badge = cart.querySelector('span');
+    if (badge) return;
+
+    this._cartIconEl.dataset.modal = '';
+    this._cartIconEl.style.cursor = 'default';
+    const text = document.createElement('div');
+    text.textContent = ERROR.emptyCart;
+    text.classList.add('cart__empty');
+    cart.append(text);
+  }
+
+  _leaveCartLink() {
+    if (this._cartIconEl.querySelector('.cart__empty'))
+      this._cartIconEl.querySelector('.cart__empty').remove();
+    this._cartIconEl.style.cursor = '';
+    this._cartIconEl.dataset.modal = 'cart';
+  }
+
+  _addHandlerHoverCartLink(handler) {
+    this._cartIconEl.addEventListener('mouseenter', handler);
+  }
+
+  _addHandlerLeaveCartLink(handler) {
+    this._cartIconEl.addEventListener('mouseleave', handler);
+  }
+
   addToCart(data, e) {
-    const btn = e.target.closest('button[data-modal="cart"]');
-    if (!btn) return;
+    try {
+      const btn = e.target.closest('button[data-cart="add"]');
+      if (!btn) return;
 
-    const card = e.target.closest('[data-article]');
-    const { article } = card.dataset;
-    const product = data.find((item) => item.article === +article);
+      const card = e.target.closest('[data-article]');
+      const { article } = card.dataset;
+      const product = data.find((item) => item.article === +article);
 
-    this._cartListEl.insertAdjacentHTML(
-      'afterbegin',
-      this._generateItemMarkup(
-        product,
-        card,
-        this._getColor(card),
-        this._getSize(card)
-      )
-    );
+      if (this._productPageEl.querySelector('.select__warning'))
+        this._productPageEl.querySelector('.select__warning').remove();
 
-    this._addHandlerDeleteItem(this._deleteItem.bind(this));
+      this._cartListEl.insertAdjacentHTML(
+        'afterbegin',
+        this._generateItemMarkup(
+          product,
+          card,
+          this._getColor(card),
+          this._getSize(card)
+        )
+      );
 
-    const itemsAmount = this._cartListEl.querySelectorAll('.cart__item').length;
-
-    this._itemsAmountEl.textContent = itemsAmount;
-    this._createCartBadge(itemsAmount);
-
-    this._calculateTotalPrice();
+      this._countItems();
+      this._calculateTotalPrice();
+    } catch (err) {
+      const errorEl = document.createElement('span');
+      errorEl.classList.add('select__warning');
+      errorEl.dataset.warning = 'size';
+      errorEl.textContent = new Error(ERROR.size).message;
+      this._productPageEl.querySelector('.size__select').append(errorEl);
+    }
   }
 
   _generateItemMarkup(data, card, color, size) {
@@ -162,6 +203,36 @@ class CartMovalView extends View {
     `;
   }
 
+  _addScrollBar() {
+    const modalHeight = Number.parseInt(
+      window.getComputedStyle(this._modalEl).height,
+      10
+    );
+    const topHeight = Number.parseInt(
+      window.getComputedStyle(this._headingContainerEl).height,
+      10
+    );
+    const bottomHeight = Number.parseInt(
+      window.getComputedStyle(this._bottomEl).height,
+      10
+    );
+
+    this._cartListEl.style.height = `${
+      modalHeight - topHeight - bottomHeight
+    }px`;
+
+    const cartItemsHeight = [...this._modalEl.querySelectorAll('.cart__item')]
+      .map((el) => Number.parseInt(window.getComputedStyle(el).height, 10))
+      .reduce((acc, height) => acc + +height, 0);
+
+    if (
+      cartItemsHeight >
+      Number.parseInt(window.getComputedStyle(this._cartListEl).height, 10)
+    )
+      this._cartListEl.style.overflowY = 'scroll';
+    else this._cartListEl.style.overflowY = '';
+  }
+
   _getQuantity(data) {
     return data.querySelector('.input--number-sm')
       ? data.querySelector('.input--number-sm').value
@@ -181,12 +252,17 @@ class CartMovalView extends View {
   }
 
   _getSize(data) {
-    let size;
-    if (data.querySelector('.select')) size = this._getSizeSelect();
-    else size = this._getSizeCheckBox(data);
+    try {
+      let size;
+      if (data.querySelector('.select')) size = this._getSizeSelect();
+      else size = this._getSizeCheckBox(data);
 
-    if (!size) return;
-    return size;
+      return size;
+    } catch (err) {
+      this._modalEl.classList.add('hidden');
+      this._overlay.classList.add('hidden');
+      throw err;
+    }
   }
 
   _getSizeCheckBox(data) {
@@ -201,16 +277,14 @@ class CartMovalView extends View {
       .at(0);
   }
 
-  // RENDER ERROR
   _getSizeSelect() {
     try {
       const sizes = [...this._priceSelectEl.querySelectorAll('option[value]')];
       if (sizes.length === 0) return;
       const size = sizes.find((el) => el.selected === true);
-      if (!size) throw new Error('Pease select a size!');
       return size.value.toUpperCase();
     } catch (err) {
-      console.error(err);
+      throw new Error(ERROR.size);
     }
   }
 
@@ -250,6 +324,8 @@ class CartMovalView extends View {
             ? item.price * 10
             : +priceOldEl.textContent.slice(1).split(',').join('') + item.price
         );
+      // NEED TO BE FIXED
+      this._countItems();
     }
     if (e.target.closest('.caret-down')) {
       priceEl.textContent = this._priceFormatter(
@@ -263,6 +339,8 @@ class CartMovalView extends View {
             ? item.price
             : +priceOldEl.textContent.slice(1).split(',').join('') - item.price
         );
+      // NEED TO BE FIXED
+      this._countItems();
     }
 
     this._calculateTotalPrice();
@@ -283,24 +361,45 @@ class CartMovalView extends View {
     const item = e.target.closest('li');
     item.remove();
 
-    this._itemsAmountEl.textContent =
-      this._cartListEl.querySelectorAll('.cart__item').length;
+    const { length } = this._cartListEl.querySelectorAll('.cart__item');
+
+    this._itemsAmountEl.textContent = length;
     this._calculateTotalPrice();
+    this._createCartBadge(length);
+    this._addScrollBar();
+    // this._countItems();
   }
 
-  _createCartBadge(cartItems) {
-    const badgeEl = document.createElement('span');
-    badgeEl.classList.add('navigation__cart-count');
-    badgeEl.textContent = cartItems;
-    // <span class="navigation__cart-count">4</span>
-    this._cartIconEl.append(badgeEl);
+  _createCartBadge(itemsAmount) {
+    const badge = this._cartIconEl.querySelector('.navigation__cart-count');
+    if (badge && itemsAmount !== 0) badge.textContent = itemsAmount;
+
+    if (!badge) {
+      const badgeEl = document.createElement('span');
+      badgeEl.classList.add('navigation__cart-count');
+      badgeEl.textContent = itemsAmount;
+      this._cartIconEl.append(badgeEl);
+    }
+
+    if (badge && itemsAmount === 0) badge.remove();
+  }
+
+  _countItems() {
+    const itemsAmount = [
+      ...this._cartListEl.querySelectorAll('.input--number-sm'),
+    ]
+      .map((num) => num.value)
+      .reduce((acc, amount) => acc + +amount, 0);
+
+    this._itemsAmountEl.textContent = itemsAmount;
+    this._createCartBadge(itemsAmount);
   }
 
   _addHandlerDeleteItem(handler) {
     this._modalEl.addEventListener('click', handler);
   }
 
-  addhandlerChangeAmount(handler) {
+  addHandlerChangeAmount(handler) {
     this._modalEl.addEventListener('click', handler);
   }
 

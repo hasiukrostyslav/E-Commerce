@@ -29,7 +29,7 @@ export default class View {
     this._addHandlerScrollToTop();
     this._addHandlerTogglePassword();
     this._addHandlerInputNumber();
-    this._renderBlogCards(data);
+    this._renderBlogCards(data.posts);
   }
 
   addHandlerRender(handler) {

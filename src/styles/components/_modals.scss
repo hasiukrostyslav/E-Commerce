@@ -185,7 +185,6 @@
     border-bottom-left-radius: 4px;
     box-shadow: $shadow-modal;
     z-index: 200;
-    // overflow-y: scroll;
 
     .cart {
       &__heading {
@@ -205,10 +204,6 @@
         position: relative;
         border-top: $border;
         padding: 1.6rem 2.4rem;
-
-        // &:last-child {
-        //   margin-bottom: 25.9rem;
-        // }
       }
 
       &__item-container {

@@ -20,7 +20,7 @@ const view = new View();
 
 function controlInitPage() {
   // Init page config
-  view.init(model.state.posts);
+  view.init(model.state);
 
   // Calculate item rating
   model.calculateItemRating(model.state);
@@ -61,9 +61,13 @@ function controlRenderPostPage(e) {
 
 function controlModalCart(e) {
   cartModalView.addToCart(model.state.catalog, e);
-  cartModalView.addhandlerChangeAmount(
+  cartModalView.addHandlerChangeAmount(
     cartModalView.changeAmount(model.state.catalog, e)
   );
+}
+
+function controlCheckoutPage() {
+  checkoutView.renderCheckoutPage();
 }
 
 function controlSignIn(e) {
@@ -84,6 +88,7 @@ function init() {
   postView.addHandlerRenderPostPage(controlRenderPostPage);
   modalView.addHandlerLogIn(controlSignIn);
   cartModalView.addHandlerAddToCart(controlModalCart);
+  checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
 }
 
 init();

@@ -23,4 +23,6 @@ export const ERROR = {
   passConfirm: 'The password and confirm password should be equal.',
   passNew: 'New password cannot be the same as old',
   rating: 'Please select score.',
+  size: 'Please select a size.',
+  emptyCart: 'Your cart is empty',
 };

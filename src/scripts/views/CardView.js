@@ -16,18 +16,17 @@ class CardView extends View {
   }
 
   clickOnCardLink(e) {
-    const link = e.target.closest('.card__heading');
+    const link = e.target.closest('a[data-link="product"]');
     if (!link) return;
 
-    const card = link.closest('.card');
+    this._parentElement.querySelector('.modal--cart').classList.add('hidden');
+    this._overlay.classList.add('hidden');
 
-    const article = +card.dataset.article;
-
-    return article;
+    return +link.closest('[data-article]').dataset.article;
   }
 
   addHandlerRenderProductPage(handler) {
-    this._mainEl.addEventListener('click', handler);
+    this._parentElement.addEventListener('click', handler);
   }
 
   _addToWishlist(e) {
@@ -198,7 +197,7 @@ class CardView extends View {
               </ul>
             </div>
                         
-            <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart modal-open" data-modal="cart">
+            <button type="button" class="btn btn--solid btn--medium btn--sale btn__cart" data-cart="add">
               <svg class="sale__icon-cart">
                 <use xlink:href="${icons}#cart"></use>
               </svg>
