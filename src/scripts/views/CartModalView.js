@@ -11,7 +11,6 @@ class CartMovalView extends View {
   _cartListEl = this._modalEl.querySelector('.cart__list');
   _totalPriceEl = this._modalEl.querySelector('.cart__total');
   _priceSelectEl = document.getElementById('size');
-  _cartIconEl = this._parentElement.querySelector('.navigation__cart-link');
 
   constructor() {
     super();
@@ -111,7 +110,7 @@ class CartMovalView extends View {
                 <img
                     class="cart__img"
                     src="${data.images.at(0)}"
-                    alt="sweatshirt"
+                    alt="${data.description}"
                 >
                 <div class="cart__info">
                     <a
@@ -295,18 +294,16 @@ class CartMovalView extends View {
 
   changeAmount(data, e) {
     if (!e.target.closest('.number__btn--top')) return;
-
     const item = data.find(
       (el) =>
         el.article === +e.target.closest('li[data-article]').dataset.article
     );
-
     const price =
       item.discountPercentage === 0
         ? item.price
         : item.price - (item.price * item.discountPercentage) / 100;
 
-    const priceBox = e.target.closest('.cart__price');
+    const priceBox = e.target.closest('li');
     const priceEl = priceBox.querySelector('.card__price').firstChild;
     const priceOldEl = priceBox.querySelector('.card__price--old');
 
@@ -324,7 +321,7 @@ class CartMovalView extends View {
             : +priceOldEl.textContent.slice(1).split(',').join('') + item.price
         );
       // NEED TO BE FIXED
-      this._countItems();
+      // this._countItems();
     }
     if (e.target.closest('.caret-down')) {
       priceEl.textContent = this._priceFormatter(
@@ -339,18 +336,9 @@ class CartMovalView extends View {
             : +priceOldEl.textContent.slice(1).split(',').join('') - item.price
         );
       // NEED TO BE FIXED
-      this._countItems();
+      // this._countItems();
     }
-
     this._calculateTotalPrice();
-  }
-
-  _calculateTotalPrice() {
-    this._totalPriceEl.textContent = this._priceFormatter(
-      [...this._cartListEl.querySelectorAll('.card__price')]
-        .map((price) => price.firstChild.textContent.slice(1))
-        .reduce((acc, value) => acc + +value.split(',').join(''), 0)
-    );
   }
 
   _deleteItem(e) {
@@ -366,29 +354,14 @@ class CartMovalView extends View {
     this._calculateTotalPrice();
     this._createCartBadge(length);
     this._addScrollBar();
-    // this._countItems();
-  }
-
-  _createCartBadge(itemsAmount) {
-    const badge = this._cartIconEl.querySelector('.navigation__cart-count');
-    if (badge && itemsAmount !== 0) badge.textContent = itemsAmount;
-
-    if (!badge) {
-      const badgeEl = document.createElement('span');
-      badgeEl.classList.add('navigation__cart-count');
-      badgeEl.textContent = itemsAmount;
-      this._cartIconEl.append(badgeEl);
-    }
-
-    if (badge && itemsAmount === 0) badge.remove();
   }
 
   _countItems() {
     const itemsAmount = [
       ...this._cartListEl.querySelectorAll('.input--number-sm'),
     ]
-      .map((num) => num.value)
-      .reduce((acc, amount) => acc + +amount, 0);
+      .map((num) => +num.value)
+      .reduce((acc, amount) => acc + amount, 0);
 
     this._itemsAmountEl.textContent = itemsAmount;
     this._createCartBadge(itemsAmount);

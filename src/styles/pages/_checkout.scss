@@ -114,6 +114,8 @@
       }
 
       &__img {
+        width: 8rem;
+        height: 8rem;
         margin-right: 2.2rem;
       }
 
@@ -237,11 +239,11 @@
     flex-direction: column;
   }
 
-  &__apply {
+  &__promocode {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    .apply {
+    .promocode {
       &__label {
         font-size: 1.6rem;
         line-height: 1.6;

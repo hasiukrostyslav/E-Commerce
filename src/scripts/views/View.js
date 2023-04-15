@@ -13,12 +13,15 @@ export default class View {
   _postPageEl = document.getElementById('main__post');
   _catalogPageEl = document.getElementById('main__catalog');
   _productPageEl = document.getElementById('main__product');
+  _checkoutPageEl = document.querySelector('.checkout');
+  _cartIconEl = this._parentElement.querySelector('.navigation__cart-link');
   _footerEl = document.querySelector('.footer');
   _subscribePageEl = document.querySelector('.subscribe');
   _breadcrumbEl = document.querySelector('.breadcrumb');
   _breadcrumbList = this._breadcrumbEl.querySelector('.breadcrumb__list');
   _toolbarContainer = document.querySelector('.navigation__toolbar');
   _overlay = document.querySelector('.overlay');
+  _subtotalPriceEl = document.querySelectorAll('[data-price="subtotal"]');
 
   init(data) {
     this._getCurrentDay();
@@ -420,5 +423,30 @@ export default class View {
 
       return formatRelativeDate.format(-difference, 'day');
     }
+  }
+
+  _createCartBadge(itemsAmount) {
+    const badge = this._cartIconEl.querySelector('.navigation__cart-count');
+    if (badge && itemsAmount !== 0) badge.textContent = itemsAmount;
+
+    if (!badge) {
+      const badgeEl = document.createElement('span');
+      badgeEl.classList.add('navigation__cart-count');
+      badgeEl.textContent = itemsAmount;
+      this._cartIconEl.append(badgeEl);
+    }
+
+    if (badge && itemsAmount === 0) badge.remove();
+  }
+
+  _calculateTotalPrice() {
+    this._subtotalPriceEl.forEach(
+      (total) =>
+        (total.textContent = this._priceFormatter(
+          [...total.closest('section').querySelectorAll('.card__price--sm')]
+            .map((price) => price.firstChild.textContent.slice(1))
+            .reduce((acc, value) => acc + +value.split(',').join(''), 0)
+        ))
+    );
   }
 }
