@@ -53,3 +53,19 @@ export const calculateItemRating = function (info) {
 // getCountry();
 
 // 'https://countriesnow.space/api/v0.1/countries/population/cities'
+
+// const persistBookmarks = function () {
+//   localStorage.setItem('state', JSON.stringify(state));
+// };
+
+// persistBookmarks();
+// const init = function () {
+//   const storage = localStorage.getItem('state');
+//   if (storage) state.bookmarks = JSON.parse(storage);
+// };
+// init();
+
+// const clearBookmarks = function () {
+//   localStorage.clear('state');
+// };
+// clearBookmarks();

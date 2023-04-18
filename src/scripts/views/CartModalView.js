@@ -367,6 +367,17 @@ class CartMovalView extends View {
     this._createCartBadge(itemsAmount);
   }
 
+  _calculateTotalPrice() {
+    this._subtotalPriceEl.forEach(
+      (total) =>
+        (total.textContent = this._priceFormatter(
+          [...total.closest('section').querySelectorAll('.card__price--sm')]
+            .map((price) => price.firstChild.textContent.slice(1))
+            .reduce((acc, value) => acc + +value.split(',').join(''), 0)
+        ))
+    );
+  }
+
   _addHandlerDeleteItem(handler) {
     this._modalEl.addEventListener('click', handler);
   }

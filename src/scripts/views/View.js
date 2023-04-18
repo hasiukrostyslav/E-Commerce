@@ -1,4 +1,11 @@
-import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS } from '../config';
+import {
+  DAYS,
+  HOURS,
+  MINUTES,
+  SECONDS,
+  MILISECONDS,
+  DISCOUNT,
+} from '../config';
 import icons from '../../assets/svg/sprite.svg';
 
 export default class View {
@@ -21,7 +28,10 @@ export default class View {
   _breadcrumbList = this._breadcrumbEl.querySelector('.breadcrumb__list');
   _toolbarContainer = document.querySelector('.navigation__toolbar');
   _overlay = document.querySelector('.overlay');
-  _subtotalPriceEl = document.querySelectorAll('[data-price="subtotal"]');
+  _shippingPriceEl = document.querySelector('[data-price="shipping"]');
+  _discounPricetEl = document.querySelector('[data-price="discount"]');
+  _totalPriceEl = document.querySelector('[data-price="total"]');
+  _subtotalPriceEl = [...document.querySelectorAll('[data-price="subtotal"]')];
 
   init(data) {
     this._getCurrentDay();
@@ -307,7 +317,10 @@ export default class View {
           .querySelectorAll('.input--number')
           .forEach((num) => this._stepUp(num));
         this._showNumbresOfCards();
-      } else this._stepUp(input);
+      } else {
+        this._stepUp(input);
+        this._calculateTotalPrice();
+      }
     }
 
     if (e.target.closest('.caret-down')) {
@@ -319,7 +332,10 @@ export default class View {
           .querySelectorAll('.input--number')
           .forEach((num) => this._stepDown(num));
         this._showNumbresOfCards();
-      } else this._stepDown(input);
+      } else {
+        this._stepDown(input);
+        this._calculateTotalPrice();
+      }
     }
   }
 
@@ -335,6 +351,29 @@ export default class View {
     this._parentElement.addEventListener(
       'click',
       this._changeInputNumber.bind(this)
+    );
+  }
+
+  _calculateTotalPrice() {
+    const discount = Number.parseInt(
+      this._discounPricetEl.textContent.slice(1),
+      10
+    )
+      ? +this._discounPricetEl.textContent.slice(1)
+      : 0;
+
+    this._totalPriceEl.textContent = this._priceFormatter(
+      +this._subtotalPriceEl.at(1).textContent.slice(1).split(',').join('') +
+        +this._shippingPriceEl.textContent.slice(1) -
+        discount
+    );
+    if (discount) this._calculateDiscount();
+  }
+
+  _calculateDiscount() {
+    this._discounPricetEl.textContent = this._priceFormatter(
+      +this._subtotalPriceEl.at(1).textContent.slice(1).split(',').join('') *
+        DISCOUNT.discount
     );
   }
 
@@ -437,16 +476,5 @@ export default class View {
     }
 
     if (badge && itemsAmount === 0) badge.remove();
-  }
-
-  _calculateTotalPrice() {
-    this._subtotalPriceEl.forEach(
-      (total) =>
-        (total.textContent = this._priceFormatter(
-          [...total.closest('section').querySelectorAll('.card__price--sm')]
-            .map((price) => price.firstChild.textContent.slice(1))
-            .reduce((acc, value) => acc + +value.split(',').join(''), 0)
-        ))
-    );
   }
 }

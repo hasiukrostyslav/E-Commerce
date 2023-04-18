@@ -26,3 +26,33 @@ export const ERROR = {
   size: 'Please select a size.',
   emptyCart: 'Your cart is empty',
 };
+
+export const SHIPPING = [
+  {
+    type: 'Courier to your address',
+    price: 25,
+    text: 'Estimated date:',
+    day: 2,
+  },
+  {
+    type: 'Pick up from store',
+    price: 0,
+    text: 'Pick up on',
+    day: 1,
+    time: 'from 12:00',
+  },
+  { type: 'UPS Ground Shipping', price: 10, text: 'Up to one week' },
+  {
+    type: 'Pick up at Createx Locker',
+    price: 8.5,
+    text: ' Pick up on',
+    day: 1,
+    time: 'from 12:00',
+  },
+  { type: 'Createx Global Export', price: 15, text: '3-4 days' },
+];
+
+export const DISCOUNT = {
+  promoCode: 'NEWSEASON2023',
+  discount: 0.1,
+};

@@ -2267,80 +2267,11 @@
                   </div>
                 </div>
               </li>
-              <li class="details__item" data-checkout="shipping">
+              <li class="details__item">
                 <h4 class="checkout__heading details__heading">
                   3. Shipping Method
                 </h4>
-                <ul class="details__methods">
-                  <li class="details__method">
-                    <div>
-                      <div class="details__radio">
-                        <input class="radio__input" type="radio" name="delivery" id="courier" checked>
-
-                        <label for="courier" class="radio__label"><span class="radio__mark">&nbsp;</span>
-                          Courier to your address
-                        </label>
-                      </div>
-                      <p class="details__date">Estimated date: September 9</p>
-                    </div>
-                    <span class="details__delivery-price">$25.00</span>
-                  </li>
-                  <li class="details__method">
-                    <div>
-                      <div class="details__radio">
-                        <input class="radio__input" type="radio" name="delivery" id="store">
-
-                        <label for="store" class="radio__label"><span class="radio__mark">&nbsp;</span>
-                          Pick up from store
-                        </label>
-                      </div>
-                      <p class="details__date">
-                        Pick up on September 8 from 12:00
-                      </p>
-                    </div>
-                    <span class="details__delivery-price">Free</span>
-                  </li>
-                  <li class="details__method">
-                    <div>
-                      <div class="details__radio">
-                        <input class="radio__input" type="radio" name="delivery" id="ups">
-
-                        <label for="ups" class="radio__label"><span class="radio__mark">&nbsp;</span>
-                          UPS Ground Shipping
-                        </label>
-                      </div>
-                      <p class="details__date">Up to one week</p>
-                    </div>
-                    <span class="details__delivery-price">$10.00</span>
-                  </li>
-                  <li class="details__method">
-                    <div>
-                      <div class="details__radio">
-                        <input class="radio__input" type="radio" name="delivery" id="createx-locker">
-
-                        <label for="createx-locker" class="radio__label"><span class="radio__mark">&nbsp;</span>
-                          Pick up at Createx Locker
-                        </label>
-                      </div>
-                      <p class="details__date">
-                        Pick up on September 8 from 12:00
-                      </p>
-                    </div>
-                    <span class="details__delivery-price">$8.50</span>
-                  </li>
-                  <li class="details__method">
-                    <div>
-                      <div class="details__radio">
-                        <input class="radio__input" type="radio" name="delivery" id="createx-export">
-
-                        <label for="createx-export" class="radio__label"><span class="radio__mark">&nbsp;</span>
-                          Createx Global Export
-                        </label>
-                      </div>
-                      <p class="details__date">3-4 days</p>
-                    </div>
-                    <span class="details__delivery-price">$15.00</span>
-                  </li>
+                <ul class="details__methods" data-checkout="shipping">
                 </ul>
               </li>
               <li class="details__item" data-checkout="payment">
@@ -2361,8 +2292,8 @@
                     </div>
                     <div class="details__card-num">
                       <label class="label label--large" for="card-num">Card number</label>
-                      <input class="input input--large" type="text" name="card-num" id="card-num"
-                        placeholder="0000 0000 0000 0000">
+                      <input class="input input--large" type="text" name="card-num" id="card-num" maxlength="16"
+                        minlength="16" placeholder="0000 0000 0000 0000">
                     </div>
                     <div class="details__card-wrapper">
                       <div class="details__card-detail-1">
@@ -2372,7 +2303,8 @@
                       </div>
                       <div class="details__card-detail-2">
                         <label class="label label--large" for="card-cvc">CVC</label>
-                        <input class="input input--large" type="text" name="card-cvc" id="card-cvc" placeholder="000">
+                        <input class="input input--large" type="text" name="card-cvc" id="card-cvc" maxlength="3"
+                          minlength="3" placeholder="000">
                       </div>
                     </div>
                   </li>
@@ -2425,15 +2357,15 @@
               <h4 class="checkout__heading">Order totals</h4>
             </li>
 
-            <li class="checkout__summary-item">
+            <li class="checkout__summary-item summary__costs">
               <ul class="summary__list">
                 <li class="summary__item summary__total summary__total--bold">
                   <p>Subtotal:</p>
-                  <span data-price="subtotal">&dollar;198.65</span>
+                  <span data-price="subtotal"></span>
                 </li>
                 <li class="summary__item summary__total">
                   <p>Shipping costs:</p>
-                  <span data-price="shipping">&dollar;25.00</span>
+                  <span data-price="shipping"></span>
                 </li>
                 <li class="summary__item summary__total">
                   <p>Discount:</p>
@@ -2444,7 +2376,7 @@
 
             <li class="checkout__summary-item checkout__total">
               <p>Order total:</p>
-              <span data-price="total">&dollar;230.00</span>
+              <span data-price="total"></span>
             </li>
           </ul>
           <button type="submit" class="btn btn--solid btn--large">

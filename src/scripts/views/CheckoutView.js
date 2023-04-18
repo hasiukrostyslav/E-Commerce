@@ -1,5 +1,13 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
+import {
+  SHIPPING,
+  DISCOUNT,
+  HOURS,
+  MINUTES,
+  SECONDS,
+  MILISECONDS,
+} from '../config';
 
 class CheckoutView extends View {
   _modalEl = this._parentElement.querySelector('.modal--cart');
@@ -12,6 +20,7 @@ class CheckoutView extends View {
   _inputCodeEl = this._checkoutPageEl.querySelector('.promocode__input');
   _btnApplyCodeEl = this._checkoutPageEl.querySelector('.promocode__btn');
   _summaryEl = this._checkoutPageEl.querySelector('.checkout__summary');
+  _summaryCostsEl = this._checkoutPageEl.querySelector('.summary__costs');
   _shippingPriceEl = this._summaryEl.querySelector('[data-price="shipping"]');
   _discounPricetEl = this._summaryEl.querySelector('[data-price="discount"]');
   _totalPriceEl = this._summaryEl.querySelector('[data-price="total"]');
@@ -20,14 +29,26 @@ class CheckoutView extends View {
   constructor() {
     super();
     this._addHandlerDeleteItem(this._deleteItem.bind(this));
+    this._addHandlerSelectShipping(this._selectShipping.bind(this));
+    this._addHandlerApplyDiscount(this._applyDiscount.bind(this));
   }
 
   renderCheckoutPage(data) {
     this._modalEl.classList.add('hidden');
     this._overlay.classList.add('hidden');
+    this._inputCodeEl.value = '';
+    this._discounPricetEl.textContent = '';
+    this._renderShippingMethod();
     this._renderItemsFromCart();
   }
 
+  addHandlerRenderCheckoutPage(handler) {
+    document
+      .querySelector('[data-link="checkout"]')
+      .addEventListener('click', handler);
+  }
+
+  // 1. Item Review
   _renderItemsFromCart() {
     const orderItems = [...this._modalEl.querySelectorAll('.cart__item')];
     if (this._itemslistEl.querySelector('[data-article]'))
@@ -43,11 +64,13 @@ class CheckoutView extends View {
     this._itemslistEl
       .querySelectorAll('.card__price')
       .forEach((price) => price.classList.add('details__price'));
+    this._calculateSubtotalPrice();
     this._calculateTotalPrice();
   }
 
   _changeAmount(e) {
     if (!e.target.closest('.number__btn--top')) return;
+    this._calculateSubtotalPrice();
     this._calculateTotalPrice();
   }
 
@@ -55,7 +78,7 @@ class CheckoutView extends View {
     this._itemslistEl.addEventListener('click', handler);
   }
 
-  _calculateTotalPrice() {
+  _calculateSubtotalPrice() {
     this._subtotalPriceEl.forEach(
       (total) =>
         (total.textContent = this._priceFormatter(
@@ -78,7 +101,13 @@ class CheckoutView extends View {
     this._createCartBadge(this._modalEl.querySelectorAll('.cart__item').length);
     this._modalEl.querySelector('.cart__heading-amount').textContent =
       this._modalEl.querySelectorAll('.cart__item').length;
+    this._calculateSubtotalPrice();
     this._calculateTotalPrice();
+    if (Number.parseInt(this._discounPricetEl.textContent.slice(1), 10))
+      this._calculateDiscount();
+
+    if (!this._itemslistEl.querySelector('[data-article]'))
+      this._totalPriceEl.textContent = this._priceFormatter(0);
   }
 
   _addHandlerDeleteItem(handler) {
@@ -146,10 +175,102 @@ class CheckoutView extends View {
     `;
   }
 
-  addHandlerRenderCheckoutPage(handler) {
-    document
-      .querySelector('[data-link="checkout"]')
-      .addEventListener('click', handler);
+  // 2.Shipping  and Billing Address
+
+  _renderShippingMethod() {
+    // 3.Shipping Method
+    this._shippingListEl.innerHTML = '';
+    const markup = SHIPPING.map((type, i) =>
+      this._generateShippingMarkup(type, i)
+    ).join('');
+    this._shippingListEl.insertAdjacentHTML('afterbegin', markup);
+    this._shippingPriceEl.textContent = this._getShippingPrice();
+  }
+
+  _getShippingPrice() {
+    const input = [...this._shippingListEl.querySelectorAll('input')].find(
+      (el) => el.checked === true
+    );
+
+    return input.closest('li').querySelector('.details__delivery-price')
+      .textContent;
+  }
+
+  _getEstimatedDay(day) {
+    const today = Date.now();
+    const days = day * HOURS * MINUTES * SECONDS * MILISECONDS;
+    const estimatedDay = new Date(today + days);
+
+    const formatDate = new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+    });
+
+    return formatDate.format(estimatedDay);
+  }
+
+  _generateShippingMarkup(data, i) {
+    return `
+            <li class="details__method">
+              <div>
+                <div class="details__radio">
+                  <input class="radio__input" type="radio" name="delivery" id="shipping-${
+                    i + 1
+                  }" ${i === 0 ? 'checked' : ''}>
+
+                  <label for="shipping-${
+                    i + 1
+                  }" class="radio__label"><span class="radio__mark">&nbsp;</span>
+                    ${data.type}
+                  </label>
+                </div>
+                <p class="details__date">${data.text} ${
+      data.day ? this._getEstimatedDay(data.day) : ''
+    } ${data?.time || ''}</p>
+              </div>
+              <span class="details__delivery-price">${
+                data.price === 0 ? 'Free' : this._priceFormatter(data.price)
+              }</span>
+            </li>
+    `;
+  }
+
+  _selectShipping(e) {
+    const label = e.target.closest('label');
+    if (!label) return;
+
+    const price = label
+      .closest('li')
+      .querySelector('.details__delivery-price').textContent;
+
+    this._shippingPriceEl.textContent =
+      price === 'Free' ? this._priceFormatter(0) : price;
+
+    this._calculateTotalPrice();
+  }
+
+  _addHandlerSelectShipping(handler) {
+    this._shippingListEl.addEventListener('click', handler);
+  }
+
+  _applyDiscount(e) {
+    e.preventDefault();
+    if (this._inputCodeEl.value !== DISCOUNT.promoCode) return;
+
+    this._calculateDiscount();
+    this._calculateTotalPrice();
+    this._inputCodeEl.value = '';
+  }
+
+  _calculateDiscount() {
+    this._discounPricetEl.textContent = this._priceFormatter(
+      +this._subtotalPriceEl.at(1).textContent.slice(1).split(',').join('') *
+        DISCOUNT.discount
+    );
+  }
+
+  _addHandlerApplyDiscount(handler) {
+    this._btnApplyCodeEl.addEventListener('click', handler);
   }
 }
 export default new CheckoutView();
