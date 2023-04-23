@@ -1,3 +1,4 @@
+import icons from '../../assets/svg/sprite.svg';
 import {
   DAYS,
   HOURS,
@@ -5,8 +6,8 @@ import {
   SECONDS,
   MILISECONDS,
   DISCOUNT,
+  MAXSCORE,
 } from '../config';
-import icons from '../../assets/svg/sprite.svg';
 
 export default class View {
   _parentElement = document.querySelector('body');
@@ -476,5 +477,83 @@ export default class View {
     }
 
     if (badge && itemsAmount === 0) badge.remove();
+  }
+
+  // Reviews
+  _generateReviewsComment(reviews, size = 'lg') {
+    return `
+          <li class="comment__block--${size} grid grid--col-3-fix grid--row-3">
+    ${
+      size === 'sm'
+        ? `
+        <p class="comment__for-product" data-article="${reviews.article}">
+          For:
+          <a href="#" class="comment__link" data-link="product">${reviews.product}</a>
+        </p>`
+        : ''
+    }
+            <div class="comment__info">
+              <p class="comment__user">${reviews.user}</p>
+              <p class="comment__day">${this._dateFormatter(reviews.date)}</p>
+                ${this._generateRating(reviews.rating)}
+            </div>
+            <p class="comment__text">
+            ${
+              reviews.tag
+                ? `<span class="comment__text--tag">${reviews.tag}</span>`
+                : ''
+            }
+              ${reviews.text}
+            </p>
+            ${
+              size === 'lg'
+                ? `
+            <button type="button" class="comment__reply-btn">
+              <svg class="comment__reply-icon">
+                <use xlink:href="${icons}#share-arrow"></use>
+              </svg>
+              Reply
+            </button>
+            `
+                : ''
+            }
+            <div class="comment__vote">
+              <button class="comment__vote-btn" type="button">
+                <svg class="comment__vote-icon comment__vote-icon--like">
+                  <use xlink:href="${icons}#like"></use>
+                </svg>
+                  ${reviews.likes}
+              </button>
+              <button class="comment__vote-btn" type="button">
+                <svg class="comment__vote-icon comment__vote-icon--dislike">
+                  <use xlink:href="${icons}#dislike"></use>
+                </svg>
+                ${reviews.dislikes}
+              </button>
+            </div>
+          </li>
+    `;
+  }
+
+  _generateRating(data = 0, maxScore = MAXSCORE) {
+    return `
+      <div class="rating">
+      ${new Array(data)
+        .fill(1)
+        .map(() => this._generateRatingStar(true))
+        .join('')}
+        ${new Array(maxScore - data)
+          .fill(1)
+          .map(() => this._generateRatingStar())
+          .join('')}
+      </div>`;
+  }
+
+  _generateRatingStar(pos = false) {
+    return `
+      <svg class="rating__icon ${pos ? '' : 'rating__icon--outline'}">
+        <use xlink:href="${icons}#star-${pos ? 'filled' : 'outline'}"></use>
+      </svg>  
+    `;
   }
 }

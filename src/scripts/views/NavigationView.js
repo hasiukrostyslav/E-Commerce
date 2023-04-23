@@ -24,12 +24,12 @@ class NavigationView extends View {
     const account = this._navigationEl.querySelector('.user-profile');
     btns.style.display = 'none';
     account.style.display = 'flex';
-    account.querySelector('a').textContent = user;
+    account.querySelector('a').textContent = user.firstName;
 
     const link = this._navigationEl.querySelector('.navigation__like-link');
     link.classList.remove('navigation__like-link--idle');
     link.querySelector('svg').classList.remove('navigation__icon--idle');
-    link.querySelector('span').textContent = 2;
+    link.querySelector('span').textContent = user.wishlist.length;
   }
 
   _reset(records) {

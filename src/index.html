@@ -117,11 +117,11 @@
         </form>
 
         <div class="navigation__toolbar">
-          <a href="#" class="navigation__like-link" data-link="account">
-            <svg class="navigation__icon">
+          <a href="#" class="navigation__like-link navigation__like-link--idle" data-link="account">
+            <svg class="navigation__icon navigation__icon--idle">
               <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
             </svg>
-            <span class="navigation__like-count">2</span>
+            <span class="navigation__like-count"></span>
           </a>
           <a href="#" class="navigation__cart-link" data-modal="cart">
             <svg class="navigation__icon">
@@ -770,13 +770,14 @@
               My orders
             </a>
           </li>
-          <li class="account__item account__item--message account__item--current" data-account="wishlist">
+          <li class="account__item account__item--current" data-account="wishlist">
             <a href="#" class="account__link">
               <svg class="account__icon">
                 <use xlink:href="assets/svg/sprite.svg#heart-outline"></use>
               </svg>
               Wishlist
             </a>
+            <span class="account__wishlist-badge"></span>
           </li>
           <li class="account__item" data-account="view">
             <a href="#" class="account__link">
@@ -786,7 +787,7 @@
               Recently viewed
             </a>
           </li>
-          <li class="account__item" data-account="rewiew">
+          <li class="account__item" data-account="review">
             <a href="#" class="account__link">
               <svg class="account__icon">
                 <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
@@ -911,338 +912,8 @@
           </form>
         </div>
         <ul class="order__accordion">
-          <li class="order__panel u-padding-top">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id"># 34BV66580K92</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">September 9, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--progress">
-                  In progress
-                </p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;750.00</p>
-              </li>
-              <li class="order__item">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
-                    <use xlink:href="assets/svg/sprite.svg#plus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container hidden"></div>
-          </li>
-          <li class="order__panel">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id order__id--open"># 50HV46580V84</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">August 29, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--progress">
-                  In progress
-                </p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;230.00</p>
-              </li>
-              <li class="order__item">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--minus">
-                    <use xlink:href="assets/svg/sprite.svg#minus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container">
-              <ul class="order__accordion order__accordion--inner">
-                <li class="order__inner-items">
-                  <ul class="order__details order__details--top order__details--item">
-                    <li class="order__inner-item">
-                      <img class="order__img" src="assets/images/order-item-1.png" alt="sweatshirt">
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <a href="#" class="order__name" data-link="product">
-                        Basic hooded sweatshirt in pink
-                      </a>
-                      <p class="order__color">
-                        Color:
-                        <span class="order__color-value">pink</span>
-                      </p>
-                      <p class="order__size">
-                        Size:
-                        <span class="order__size-value">S</span>
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__price-head">Price:</p>
-                      <p class="order__price-value">&dollar;15.50</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__quantity-head">Quantity:</p>
-                      <p class="order__quantity-value">1</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__subtotal-head">Subtotal:</p>
-                      <p class="order__subtotal-value">&dollar;15.50</p>
-                    </li>
-                  </ul>
-                </li>
-                <li class="order__inner-items">
-                  <ul class="order__details order__details--item">
-                    <li class="order__inner-item">
-                      <img class="order__img" src="assets/images/order-item-2.png" alt="Cap">
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <a href="#" class="order__name" data-link="product">
-                        Black and white sport cap
-                      </a>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__price-head">Price:</p>
-                      <p class="order__price-value">&dollar;18.15</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__quantity-head">Quantity:</p>
-                      <p class="order__quantity-value">1</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__subtotal-head">Subtotal:</p>
-                      <p class="order__subtotal-value">&dollar;18.15</p>
-                    </li>
-                  </ul>
-                </li>
-                <li class="order__inner-items">
-                  <ul class="order__details order__details--item">
-                    <li class="order__inner-item">
-                      <img class="order__img" src="assets/images/order-item-3.png" alt="Jeans">
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <a href="#" class="order__name" data-link="product">
-                        Mid-rise slim cropped fit jeans
-                      </a>
-                      <p class="order__size">
-                        Size:
-                        <span class="order__size-value">M</span>
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__price-head">Price:</p>
-                      <p class="order__price-value">&dollar;40.00</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__quantity-head">Quantity:</p>
-                      <p class="order__quantity-value">2</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__subtotal-head">Subtotal:</p>
-                      <p class="order__subtotal-value">&dollar;80.00</p>
-                    </li>
-                  </ul>
-                </li>
-                <li class="order__inner-items">
-                  <ul class="order__details order__details--item">
-                    <li class="order__inner-item">
-                      <img class="order__img" src="assets/images/order-item-4.png" alt="shoes">
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <a href="#" class="order__name" data-link="product">
-                        Men fashion gray shoes
-                      </a>
-                      <p class="order__color">
-                        Color:
-                        <span class="order__color-value">gray</span>
-                      </p>
-                      <p class="order__size">
-                        Size:
-                        <span class="order__size-value">44</span>
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__price-head">Price:</p>
-                      <p class="order__price-value">&dollar;85.00</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__quantity-head">Quantity:</p>
-                      <p class="order__quantity-value">1</p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex">
-                      <p class="order__subtotal-head">Subtotal:</p>
-                      <p class="order__subtotal-value">&dollar;85.00</p>
-                    </li>
-                  </ul>
-                </li>
-                <li class="order__inner-items">
-                  <ul class="order__details order__details--bottom">
-                    <li class="order__inner-item order__inner-item--flex-row">
-                      <p class="order__value-name order__stotal">Subtotal:</p>
-                      <p class="order__value order__stotal-value">
-                        &dollar;85.00
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex-row">
-                      <p class="order__value-name order__shipping">
-                        Shipping:
-                      </p>
-                      <p class="order__value order__shipping-value">
-                        &dollar;25.00
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex-row">
-                      <p class="order__value-name order__tax">Tax:</p>
-                      <p class="order__value order__tax-value">
-                        &dollar;6.35
-                      </p>
-                    </li>
-                    <li class="order__inner-item order__inner-item--flex-row">
-                      <p class="order__value-name order__total">Total:</p>
-                      <p class="order__value order__total-value">
-                        &dollar;230.00
-                      </p>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <div class="order__track-box">
-                <p class="order__track-cta">You can track your order here</p>
-                <a href="#" class="order__track-link btn btn--small btn--outline" data-link="track">Order tracking</a>
-              </div>
-            </div>
-          </li>
-          <li class="order__panel">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id"># 93BR64523J71</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">August 4, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--delivered">
-                  Delivered
-                </p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;92.40</p>
-              </li>
-              <li class="order__item">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
-                    <use xlink:href="assets/svg/sprite.svg#plus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container hidden"></div>
-          </li>
-          <li class="order__panel">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id"># 66TU12580L11</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">July 27, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--canceled">Canceled</p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;102.95</p>
-              </li>
-              <li class="order__item">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
-                    <use xlink:href="assets/svg/sprite.svg#plus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container hidden"></div>
-          </li>
-          <li class="order__panel">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id"># 12WE95534P90</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">July 12, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--delivered">
-                  Delivered
-                </p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;267.00</p>
-              </li>
-              <li class="order__item order__item--btn">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
-                    <use xlink:href="assets/svg/sprite.svg#plus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container hidden"></div>
-          </li>
-          <li class="order__panel">
-            <ul class="order__panel-list">
-              <li class="order__item">
-                <p class="order__id"># 47IK678871Y45</p>
-              </li>
-              <li class="order__item order__item--date">
-                <svg class="order__icon-clock">
-                  <use xlink:href="assets/svg/sprite.svg#clock"></use>
-                </svg>
-                <p class="order__date">June 5, 2020</p>
-              </li>
-              <li class="order__item">
-                <p class="order__status order__status--delivered">
-                  Delivered
-                </p>
-              </li>
-              <li class="order__item">
-                <p class="order__price">&dollar;19.50</p>
-              </li>
-              <li class="order__item">
-                <button class="btn__accordion btn__accordion--lg">
-                  <svg class="icon__accordion icon__accordion--lg icon__accordion--plus">
-                    <use xlink:href="assets/svg/sprite.svg#plus"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="order__container hidden"></div>
-          </li>
         </ul>
-        <button type="button" class="btn-load">
-          <svg class="btn-load__icon">
-            <use xlink:href="assets/svg/sprite.svg#convert"></use>
-          </svg>
-          Load more
-        </button>
+
       </section>
 
       <section class="account__block account__wishlist" data-account="wishlist">
@@ -1269,14 +940,14 @@
         <div class="account__viewed" data-cards-size="large"></div>
       </section>
 
-      <section class="account__block hidden" data-account="rewiew">
+      <section class="account__block hidden" data-account="review">
         <div class="account__top">
           <h2 class="heading-tertiary--main">My reviews</h2>
           <form action="#" class="sort__form">
             <label class="sort__label" for="reviews">Sort by</label>
             <select class="sort__select" name="reviews" id="reviews">
-              <option value="All">oldest</option>
-              <option value="Canceled" selected>newest</option>
+              <option value="newest" selected>newest</option>
+              <option value="oldest">oldest</option>
             </select>
             <button type="button" class="sort__btn">
               <svg class="input__icon input__icon--medium">
@@ -1286,201 +957,10 @@
           </form>
         </div>
 
-        <ul class="comment">
-          <li class="comment__block comment__block--sm grid grid--col-3-fix grid--row-3">
-            <p class="comment__for-product">
-              For:
-              <a href="#" class="comment__link" data-link="product">Chrono watch with blue leather belt</a>
-            </p>
-            <div class="comment__info">
-              <p class="comment__user">Annette Black</p>
-              <p class="comment__day">3 day ago</p>
-              <div class="rating">
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-              </div>
-            </div>
-            <p class="comment__text">
-              Vel velit pulvinar montes, sit rhoncus odio molestie. Venenatis
-              nunc fames ut proin adipiscing sit. Etiam egestas elit varius a,
-              vestibulum bibendum nibh sociis in. Ut facilisis sit eget cum
-              fringilla. Dapibus mauris viverra est sed risus quam lacinia
-              aliquam.
-            </p>
-            <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--like">
-                  <use xlink:href="assets/svg/sprite.svg#like"></use>
-                </svg>
-                2
-              </button>
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--dislike">
-                  <use xlink:href="assets/svg/sprite.svg#dislike"></use>
-                </svg>
-                0
-              </button>
-            </div>
-          </li>
-          <li class="comment__block comment__block--sm grid grid--col-3-fix grid--row-3">
-            <p class="comment__for-product">
-              For:
-              <a href="#" class="comment__link" data-link="product">Modal-blend trenchcoat</a>
-            </p>
-            <div class="comment__info">
-              <p class="comment__user">Annette Black</p>
-              <p class="comment__day">August 29, 2020</p>
-              <div class="rating">
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-              </div>
-            </div>
-            <p class="comment__text">
-              Amet ut augue dignissim lorem. Diam volutpat porttitor vel,
-              pulvinar semper. Faucibus vel accumsan mi diam magna. Nunc diam
-              lorem semper rhoncus in ut. Quis risus viverra bibendum eu.
-            </p>
-            <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--like">
-                  <use xlink:href="assets/svg/sprite.svg#like"></use>
-                </svg>
-                3
-              </button>
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--dislike">
-                  <use xlink:href="assets/svg/sprite.svg#dislike"></use>
-                </svg>
-                0
-              </button>
-            </div>
-          </li>
-          <li class="comment__block comment__block--sm grid grid--col-3-fix grid--row-3">
-            <p class="comment__for-product">
-              For:
-              <a href="#" class="comment__link" data-link="product">Denim shorts</a>
-            </p>
-            <div class="comment__info">
-              <p class="comment__user">Annette Black</p>
-              <p class="comment__day">August 5, 2020</p>
-              <div class="rating">
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon rating__icon--outline">
-                  <use xlink:href="assets/svg/sprite.svg#star-outline"></use>
-                </svg>
-              </div>
-            </div>
-            <p class="comment__text">
-              Et, enim pellentesque ut malesuada interdum. Id odio proin
-              molestie ac tellus ornare lectus amet semper. Bibendum non nulla
-              leo pharetra, mi ultrices proin rhoncus diam.
-            </p>
-            <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--like">
-                  <use xlink:href="assets/svg/sprite.svg#like"></use>
-                </svg>
-                0
-              </button>
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--dislike">
-                  <use xlink:href="assets/svg/sprite.svg#dislike"></use>
-                </svg>
-                0
-              </button>
-            </div>
-          </li>
-          <li class="comment__block comment__block--sm grid grid--col-3-fix grid--row-3">
-            <p class="comment__for-product">
-              For:
-              <a href="#" class="comment__link" data-link="product">Modal-blend trenchcoat</a>
-            </p>
-            <div class="comment__info">
-              <p class="comment__user">Annette Black</p>
-              <p class="comment__day">July 12, 2020</p>
-              <div class="rating">
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-                <svg class="rating__icon">
-                  <use xlink:href="assets/svg/sprite.svg#star-filled"></use>
-                </svg>
-              </div>
-            </div>
-            <p class="comment__text">
-              Eu duis ac, faucibus et egestas morbi elementum urna in. Feugiat
-              natoque vestibulum, augue nisi. Vulputate vitae felis quis
-              mauris morbi massa ut. Dolor in amet volutpat facilisi luctus
-              duis mauris.
-            </p>
-            <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--like">
-                  <use xlink:href="assets/svg/sprite.svg#like"></use>
-                </svg>
-                3
-              </button>
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--dislike">
-                  <use xlink:href="assets/svg/sprite.svg#dislike"></use>
-                </svg>
-                1
-              </button>
-            </div>
-          </li>
+        <ul class="comment u-no-margin">
+
         </ul>
-        <button type="button" class="btn-load">
-          <svg class="btn-load__icon">
-            <use xlink:href="assets/svg/sprite.svg#convert"></use>
-          </svg>
-          Load more
-        </button>
+
       </section>
     </section>
 
@@ -1742,7 +1222,7 @@
     <section class="product hidden" id="main__product">
       <h2 class="hidden">Product</h2>
       <section class="product__card container">
-        <h2 class="heading-secondary">Basic hooded sweatshirt in pink</h2>
+        <h2 class="heading-secondary"></h2>
         <p class="product__article">
           Art. No.<span class="product__article-num"></span>
         </p>

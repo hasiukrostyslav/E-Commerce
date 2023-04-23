@@ -2,14 +2,14 @@ import View from './View';
 import { ERROR } from '../config';
 
 class ModalView extends View {
+  _modalSignIn = document.querySelector('.modal--sign-in');
   _btnLogIn = document.querySelector('.btn[data-submit="sign-in"]');
-  _btnRegister;
+  _btnRegister = document.querySelector('.btn[data-submit="sign-up"]');
 
   constructor() {
     super();
-    this._getOpenModalButtons();
     this._getModalWindows();
-    this._getSubmitButtons();
+    this._getOpenModalButtons();
     this._addHandlerOpenModal();
     this._addHandlerCloseModal();
   }
@@ -27,12 +27,6 @@ class ModalView extends View {
     const links = this._parentElement.querySelectorAll('a[data-modal]');
 
     this._btnsOpenModal = [...btns, ...input, ...links];
-  }
-
-  _getSubmitButtons() {
-    this._btnsSubmit = [
-      ...document.querySelectorAll('button[type="submit"]'),
-    ].filter((btn) => btn.dataset.submit);
   }
 
   // Open / close modals
@@ -100,38 +94,6 @@ class ModalView extends View {
     );
   }
 
-  // Validation / submit data
-  _renderWarning(input, data) {
-    input.insertAdjacentHTML(
-      'afterend',
-      `<span class="input__warning" data-warning="${data}"></span>`
-    );
-  }
-
-  _showWarning(inputEl) {
-    const warning = this._modal.querySelector('.input__warning');
-    inputEl.classList.add('input--invalid');
-
-    if (
-      (inputEl.type === 'email' && !inputEl.id === 'email-sign-in') ||
-      (inputEl.type === 'email' && !inputEl.value)
-    ) {
-      warning.textContent = ERROR.email;
-    }
-
-    if (inputEl.id === 'email-sign-in' && inputEl.value) {
-      warning.textContent = ERROR.emailWrong;
-    }
-
-    if (inputEl.type === 'password' && inputEl.value.length < 6) {
-      warning.textContent = ERROR.passLength;
-    }
-
-    if (inputEl.id === 'password-sign-in' && inputEl.value.length >= 6) {
-      warning.textContent = ERROR.passWrong;
-    }
-  }
-
   // validationData(e) {
   //   this._modal = e.target.closest('section[data-modal]');
   //   this._modal
@@ -172,9 +134,9 @@ class ModalView extends View {
   //   console.log('Correct');
   // }
 
+  // Validation / submit data
   validationLogIn(data) {
-    this._modal = document.querySelector('.modal--sign-in');
-    const inputs = [...this._modal.querySelectorAll('input')].filter(
+    const inputs = [...this._modalSignIn.querySelectorAll('input')].filter(
       (input) => input.dataset.input
     );
     this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
@@ -182,7 +144,7 @@ class ModalView extends View {
     let email;
     let pass;
 
-    this._modal
+    this._modalSignIn
       .querySelectorAll('.input__warning')
       .forEach((el) => el.remove());
 
@@ -190,7 +152,7 @@ class ModalView extends View {
 
     if (!user) {
       this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
-      this._showWarning(this._inputEmail);
+      this._showWarning(this._modalSignIn, this._inputEmail);
       return;
     }
     if (user) {
@@ -203,13 +165,44 @@ class ModalView extends View {
       this._inputPass.classList.remove('input--invalid');
     } else {
       this._renderWarning(this._inputPass, this._inputPass.dataset.input);
-      this._showWarning(this._inputPass);
+      this._showWarning(this._modalSignIn, this._inputPass);
     }
 
     if (email && pass) {
-      this._clearInputs(this._modal);
-      this._addHiddenClass(this._modal);
+      this._clearInputs(this._modalSignIn);
+      this._addHiddenClass(this._modalSignIn);
       return user;
+    }
+  }
+
+  _renderWarning(input, data) {
+    input.insertAdjacentHTML(
+      'afterend',
+      `<span class="input__warning" data-warning="${data}"></span>`
+    );
+  }
+
+  _showWarning(modal, inputEl) {
+    const warning = modal.querySelector('.input__warning');
+    inputEl.classList.add('input--invalid');
+
+    if (
+      (inputEl.type === 'email' && !inputEl.id === 'email-sign-in') ||
+      (inputEl.type === 'email' && !inputEl.value)
+    ) {
+      warning.textContent = ERROR.email;
+    }
+
+    if (inputEl.id === 'email-sign-in' && inputEl.value) {
+      warning.textContent = ERROR.emailWrong;
+    }
+
+    if (inputEl.type === 'password' && inputEl.value.length < 6) {
+      warning.textContent = ERROR.passLength;
+    }
+
+    if (inputEl.id === 'password-sign-in' && inputEl.value.length >= 6) {
+      warning.textContent = ERROR.passWrong;
     }
   }
 

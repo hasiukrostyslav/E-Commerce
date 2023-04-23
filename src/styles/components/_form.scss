@@ -866,6 +866,10 @@ select {
     font-weight: 700;
     line-height: 1.6;
     color: $color-gray-dark-2;
+
+    &--disable {
+      color: $color-gray-dark-4;
+    }
   }
 
   &__select {
@@ -882,6 +886,10 @@ select {
     &:focus {
       outline: none;
       border: 1px solid $color-primary;
+    }
+
+    &--disable {
+      cursor: default;
     }
   }
 

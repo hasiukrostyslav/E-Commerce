@@ -15,6 +15,21 @@ class CardView extends View {
     this._addHandlerChangeSlide();
   }
 
+  renderProfileCards(data) {
+    const wishlistEl = document.querySelector('.account__wishlist-container');
+    const viewedListEl = document.querySelector('.account__viewed');
+    wishlistEl.innerHTML = '';
+    viewedListEl.innerHTML = '';
+    const wishlisMarkup = data.wishlist
+      .map((item) => this.generateCardMarkup(item))
+      .join('');
+    wishlistEl.insertAdjacentHTML('afterbegin', wishlisMarkup);
+    const viewedMarkup = data.view
+      .map((item) => this.generateCardMarkup(item))
+      .join('');
+    viewedListEl.insertAdjacentHTML('afterbegin', viewedMarkup);
+  }
+
   clickOnCardLink(e) {
     const link = e.target.closest('a[data-link="product"]');
     if (!link) return;

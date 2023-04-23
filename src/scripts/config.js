@@ -5,6 +5,7 @@ export const SECONDS = 60;
 export const MILISECONDS = 1000;
 export const MAXSCORE = 5;
 export const NUMBER_OF_ITEMS = 4;
+export const NUMBER_OF_ORDERS = 6;
 export const MIN_PRICE = 0;
 export const MAX_PRICE = 1000;
 export const COLOR_SELECTED = 'rgb(23, 105, 106)';
@@ -25,6 +26,13 @@ export const ERROR = {
   rating: 'Please select score.',
   size: 'Please select a size.',
   emptyCart: 'Your cart is empty',
+};
+
+export const ACCOUNT_TEXT = {
+  orders: 'You have not done orders yet',
+  wishlist: 'You have not added items to the wishlist yet',
+  view: 'You have not viewed items yet',
+  review: 'You have not added comments to the products yet',
 };
 
 export const SHIPPING = [

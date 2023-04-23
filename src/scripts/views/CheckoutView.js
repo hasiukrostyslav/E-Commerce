@@ -33,7 +33,7 @@ class CheckoutView extends View {
     this._addHandlerApplyDiscount(this._applyDiscount.bind(this));
   }
 
-  renderCheckoutPage(data) {
+  renderCheckoutPage() {
     this._modalEl.classList.add('hidden');
     this._overlay.classList.add('hidden');
     this._inputCodeEl.value = '';

@@ -28,8 +28,10 @@ class ProductView extends View {
 
   renderProductPage(data, reviews, markup) {
     this._resetProductPage();
-    this._productPageEl.querySelector('h2').textContent = data.description;
-    this._productPageEl.querySelector('h2').dataset.title = data.description;
+    this._productPageEl.querySelector('.heading-secondary').textContent =
+      data.description;
+    this._productPageEl.querySelector('.heading-secondary').dataset.title =
+      data.description;
     this._productPageEl.querySelector('.product__article-num').textContent =
       data.article;
     this._productPageEl.querySelector('.product__card').dataset.article =
@@ -359,9 +361,7 @@ class ProductView extends View {
 
     list.insertAdjacentHTML(
       'afterbegin',
-      sortedList
-        .map((review, i) => this._generateReviewsComment(review, i))
-        .join('')
+      sortedList.map((review) => this._generateReviewsComment(review)).join('')
     );
 
     this._setDataAttribute(list);
@@ -413,27 +413,27 @@ class ProductView extends View {
     `;
   }
 
-  _generateRating(data = 0, maxScore = MAXSCORE) {
-    return `
-      <div class="rating">
-      ${new Array(data)
-        .fill(1)
-        .map(() => this._generateRatingStar(true))
-        .join('')}
-        ${new Array(maxScore - data)
-          .fill(1)
-          .map(() => this._generateRatingStar())
-          .join('')}
-      </div>`;
-  }
+  // _generateRating(data = 0, maxScore = MAXSCORE) {
+  //   return `
+  //     <div class="rating">
+  //     ${new Array(data)
+  //       .fill(1)
+  //       .map(() => this._generateRatingStar(true))
+  //       .join('')}
+  //       ${new Array(maxScore - data)
+  //         .fill(1)
+  //         .map(() => this._generateRatingStar())
+  //         .join('')}
+  //     </div>`;
+  // }
 
-  _generateRatingStar(pos = false) {
-    return `
-      <svg class="rating__icon ${pos ? '' : 'rating__icon--outline'}">
-        <use xlink:href="${icons}#star-${pos ? 'filled' : 'outline'}"></use>
-      </svg>  
-    `;
-  }
+  // _generateRatingStar(pos = false) {
+  //   return `
+  //     <svg class="rating__icon ${pos ? '' : 'rating__icon--outline'}">
+  //       <use xlink:href="${icons}#star-${pos ? 'filled' : 'outline'}"></use>
+  //     </svg>
+  //   `;
+  // }
 
   _generateReviewStat(data) {
     return `
@@ -488,45 +488,45 @@ class ProductView extends View {
     );
   }
 
-  _generateReviewsComment(reviews) {
-    return `
-          <li class="comment__block--lg grid grid--col-3-fix-2 grid--row-3">
-            <div class="comment__info">
-              <p class="comment__user">${reviews.user}</p>
-              <p class="comment__day">${this._dateFormatter(reviews.date)}</p>
-                ${this._generateRating(reviews.rating)}
-            </div>
-            <p class="comment__text comment__text--sm">
-            ${
-              reviews.tag
-                ? `<span class="comment__text--tag">${reviews.tag}</span>`
-                : ''
-            }
-              ${reviews.text}
-            </p>
-            <button type="button" class="comment__reply-btn">
-              <svg class="comment__reply-icon">
-                <use xlink:href="${icons}#share-arrow"></use>
-              </svg>
-              Reply
-            </button>
-            <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--like">
-                  <use xlink:href="${icons}#like"></use>
-                </svg>
-                  ${reviews.likes}
-              </button>
-              <button class="comment__vote-btn" type="button">
-                <svg class="comment__vote-icon comment__vote-icon--dislike">
-                  <use xlink:href="${icons}#dislike"></use>
-                </svg>
-                ${reviews.dislikes}
-              </button>
-            </div>
-          </li>
-    `;
-  }
+  // _generateReviewsComment(reviews) {
+  //   return `
+  //         <li class="comment__block--lg grid grid--col-3-fix-2 grid--row-3">
+  //           <div class="comment__info">
+  //             <p class="comment__user">${reviews.user}</p>
+  //             <p class="comment__day">${this._dateFormatter(reviews.date)}</p>
+  //               ${this._generateRating(reviews.rating)}
+  //           </div>
+  //           <p class="comment__text comment__text--sm">
+  //           ${
+  //             reviews.tag
+  //               ? `<span class="comment__text--tag">${reviews.tag}</span>`
+  //               : ''
+  //           }
+  //             ${reviews.text}
+  //           </p>
+  //           <button type="button" class="comment__reply-btn">
+  //             <svg class="comment__reply-icon">
+  //               <use xlink:href="${icons}#share-arrow"></use>
+  //             </svg>
+  //             Reply
+  //           </button>
+  //           <div class="comment__vote">
+  //             <button class="comment__vote-btn" type="button">
+  //               <svg class="comment__vote-icon comment__vote-icon--like">
+  //                 <use xlink:href="${icons}#like"></use>
+  //               </svg>
+  //                 ${reviews.likes}
+  //             </button>
+  //             <button class="comment__vote-btn" type="button">
+  //               <svg class="comment__vote-icon comment__vote-icon--dislike">
+  //                 <use xlink:href="${icons}#dislike"></use>
+  //               </svg>
+  //               ${reviews.dislikes}
+  //             </button>
+  //           </div>
+  //         </li>
+  //   `;
+  // }
 
   _renderPagination(data, reviews) {
     const list = reviews.filter((el) => el.article === data.article);
@@ -646,7 +646,7 @@ class ProductView extends View {
           'beforeend',
           this._renderBreadcrumbLink(
             this._productPageEl.id.split('__').at(-1),
-            this._productPageEl.querySelector('h2').textContent
+            this._productPageEl.querySelector('.heading-secondary').textContent
           )
         );
       }

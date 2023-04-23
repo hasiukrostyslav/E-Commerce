@@ -36,6 +36,12 @@ export const calculateItemRating = function (info) {
   });
 };
 
+export const findUsersComments = function (user) {
+  return state.reviews.filter(
+    (review) => review.user === `${user.firstName} ${user.lastName}`
+  );
+};
+
 // const getCountry = async function () {
 //   try {
 //     const response = await fetch(

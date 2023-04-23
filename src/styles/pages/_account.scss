@@ -6,7 +6,7 @@
   &__block {
     width: 81rem;
     position: relative;
-    padding-bottom: 18rem;
+    margin-bottom: 18rem;
   }
 
   &__form {
@@ -21,15 +21,17 @@
     justify-content: space-between;
   }
 
+  &__viewed,
   &__wishlist-container {
-    display: flex;
-    gap: 3rem;
-  }
-
-  &__viewed {
     display: grid;
     row-gap: 6rem;
     column-gap: 3rem;
     grid-template-columns: repeat(auto-fill, 39rem);
+  }
+
+  &__heading-empty {
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 15rem;
   }
 }

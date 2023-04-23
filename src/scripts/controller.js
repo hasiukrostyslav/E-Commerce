@@ -1,6 +1,6 @@
 import '../styles/main.scss';
 import accountView from './views/AccountView';
-import blogView from './views/BlogVIew';
+import blogView from './views/BlogView';
 import cardView from './views/CardView';
 import catalogView from './views/CatalogView';
 import cartModalView from './views/CartModalView';
@@ -74,10 +74,12 @@ function controlSignIn(e) {
   e.preventDefault();
 
   const user = modalView.validationLogIn(model.state.users);
+  const comments = model.findUsersComments(user);
   if (!user) return;
-
-  navigationView.changeAccountToolbar(user.firstName);
-  accountView.renderProfileData(user);
+  navigationView.changeAccountToolbar(user);
+  cardView.renderProfileCards(user);
+  accountView.renderAccountData(user, comments);
+  console.log(user);
 }
 
 function init() {
