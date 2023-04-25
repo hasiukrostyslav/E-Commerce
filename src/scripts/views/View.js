@@ -46,6 +46,11 @@ export default class View {
     this._renderBlogCards(data.posts);
   }
 
+  asyncInit(countries, cities) {
+    this._renderSelectCountry(countries);
+    this._addHandlerChangeCountry(cities);
+  }
+
   addHandlerRender(handler) {
     window.addEventListener('load', handler);
   }
@@ -555,5 +560,61 @@ export default class View {
         <use xlink:href="${icons}#star-${pos ? 'filled' : 'outline'}"></use>
       </svg>  
     `;
+  }
+
+  // RENDER SELECT COUNTRY AND CITY
+  _renderSelectCountry(countries) {
+    const selectCountryEl = this._parentElement.querySelectorAll(
+      '[data-select="country"]'
+    );
+    countries.forEach((country) =>
+      selectCountryEl.forEach((select) =>
+        select.insertAdjacentHTML(
+          'beforeend',
+          this._generateSelectOption('country', country)
+        )
+      )
+    );
+  }
+
+  _renderSelectCity(select, country, cities) {
+    select.innerHTML = '';
+    select.insertAdjacentHTML(
+      'afterbegin',
+      this._generateSelectOption('city', 'city', true)
+    );
+    const citiesArray = cities.find((el) => el[country]);
+    Object.values(citiesArray)[0].forEach((city) =>
+      select.insertAdjacentHTML(
+        'beforeend',
+        this._generateSelectOption('city', city)
+      )
+    );
+  }
+
+  _generateSelectOption(type, data, disable = false) {
+    return `<option ${
+      disable === false
+        ? `value="${data}"`
+        : 'value="" disabled selected hidden'
+    }>${disable === false ? data : `Choose your ${type}`}</option>`;
+  }
+
+  _changeCountry(cities, e) {
+    const selectCountry = e.target.closest('select[name="country"]');
+    if (!selectCountry) return;
+
+    const selectCity = selectCountry
+      .closest('form')
+      .querySelector('select[name="city"]');
+
+    this._renderSelectCity(selectCity, selectCountry.value, cities);
+  }
+
+  _addHandlerChangeCountry(cities) {
+    this._parentElement.addEventListener(
+      'change',
+      this._changeCountry.bind(this, cities)
+    );
   }
 }

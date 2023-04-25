@@ -853,11 +853,11 @@
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="country">Country</label>
-            <select class="input input--large select" name="country" id="country">
-              <option value="Poland">Poland</option>
-              <option value="UK">UK</option>
-              <option value="Ukraine">Ukraine</option>
-              <option value="USA">USA</option>
+            <select class="input input--large select" data-select="country" name="country" id="country">
+              <option value="" disabled selected hidden>
+                Choose your country
+              </option>
+
             </select>
             <button type="button" class="input__btn input__btn--large select__btn">
               <svg class="input__icon input__icon--large">
@@ -868,10 +868,9 @@
           <div class="input__box input__box--large">
             <label class="label label--large" for="city">City</label>
             <select class="input input--large select" name="city" id="city">
-              <option value="Chicago">Chicago</option>
-              <option value="Dallas">Dallas</option>
-              <option value="New Jersey">New Jersey</option>
-              <option value="San Francisco">San Francisco</option>
+              <option value="" disabled selected hidden>
+                Choose your city
+              </option>
             </select>
             <button type="button" class="input__btn input__btn--large select__btn">
               <svg class="input__icon input__icon--large">
@@ -1697,14 +1696,12 @@
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="country-delivery">Country</label>
-                    <select class="input input--large select" name="country" id="country-delivery" required>
+                    <select class="input input--large select" data-select="country" name="country" id="country-delivery"
+                      required>
                       <option value="" disabled selected hidden>
                         Choose your country
                       </option>
-                      <option value="Poland">Poland</option>
-                      <option value="UK">UK</option>
-                      <option value="Ukraine">Ukraine</option>
-                      <option value="USA">USA</option>
+
                     </select>
                     <button type="button" class="input__btn input__btn--large select__btn">
                       <svg class="input__icon input__icon--large">
@@ -1718,10 +1715,6 @@
                       <option value="" disabled selected hidden>
                         Choose your city
                       </option>
-                      <option value="Chicago">Chicago</option>
-                      <option value="Dallas">Dallas</option>
-                      <option value="New Jersey">New Jersey</option>
-                      <option value="San Francisco">San Francisco</option>
                     </select>
                     <button type="button" class="input__btn input__btn--large select__btn">
                       <svg class="input__icon input__icon--large">

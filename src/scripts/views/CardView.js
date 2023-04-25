@@ -21,11 +21,11 @@ class CardView extends View {
     wishlistEl.innerHTML = '';
     viewedListEl.innerHTML = '';
     const wishlisMarkup = data.wishlist
-      .map((item) => this.generateCardMarkup(item))
+      .map((item) => this.generateCardMarkup(item, 'acc-wishlist'))
       .join('');
     wishlistEl.insertAdjacentHTML('afterbegin', wishlisMarkup);
     const viewedMarkup = data.view
-      .map((item) => this.generateCardMarkup(item))
+      .map((item) => this.generateCardMarkup(item, 'acc-view'))
       .join('');
     viewedListEl.insertAdjacentHTML('afterbegin', viewedMarkup);
   }

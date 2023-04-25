@@ -27,8 +27,8 @@ class AccountView extends View {
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
-  renderAccountData(data, reviews) {
-    this._renderProfileData(data);
+  renderAccountData(data, reviews, cities) {
+    this._renderProfileData(data, cities);
     this._renderOrders(data);
     this._renderWishlist(data);
     this._renderViewedList(data);
@@ -36,7 +36,7 @@ class AccountView extends View {
   }
 
   // RENDER PROFILE
-  _renderProfileData(data) {
+  _renderProfileData(data, cities) {
     document.querySelector(
       '.account__user-name'
     ).textContent = `${data.firstName} ${data.lastName}`;
@@ -46,10 +46,17 @@ class AccountView extends View {
     document.getElementById('last-name').value = data.lastName;
     document.getElementById('profile-email').value = data.email;
     document.getElementById('phone-profile').value = data.phone || '';
-    document.getElementById('country').value = data.country || '';
-    document.getElementById('city').value = data.city || '';
     document.getElementById('address').value = data.address || '';
     document.getElementById('code').value = data.zipCode || '';
+    document.getElementById('country').value = data.country || '';
+
+    this._renderSelectCity(
+      document.getElementById('city'),
+      document.getElementById('country').value,
+      cities
+    );
+
+    document.getElementById('city').value = data.city || '';
   }
 
   // RENDER ORDERS
@@ -332,6 +339,7 @@ class AccountView extends View {
   }
 
   _insertReviewMarkup(reviews, sort = 'newest') {
+    this._reviewsListEl.innerHTML = '';
     const markup = reviews
       .sort((a, b) =>
         sort === 'newest'
@@ -347,15 +355,9 @@ class AccountView extends View {
   _sortReviews(reviews, e) {
     const { value } = e.target;
 
-    if (value === 'newest') {
-      this._reviewsListEl.innerHTML = '';
-      this._insertReviewMarkup(reviews);
-    }
+    if (value === 'newest') this._insertReviewMarkup(reviews);
 
-    if (value === 'oldest') {
-      this._reviewsListEl.innerHTML = '';
-      this._insertReviewMarkup(reviews, 'oldest');
-    }
+    if (value === 'oldest') this._insertReviewMarkup(reviews, 'oldest');
   }
 
   _addHandlerSortReviews(handler) {

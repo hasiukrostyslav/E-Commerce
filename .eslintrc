@@ -30,6 +30,7 @@
     "no-param-reassign": ["error", { "props": false }],
     "func-names": ["error", "as-needed"],
     "consistent-return": "off",
-    "no-unneeded-ternary": "off"
+    "no-unneeded-ternary": "off",
+    "no-useless-catch": "off"
   }
 }

@@ -17,19 +17,30 @@ import View from './views/View';
 import * as model from './model';
 
 const view = new View();
+let citiesList;
 
-function controlInitPage() {
-  // Init page config
-  view.init(model.state);
+async function controlInitPage() {
+  try {
+    // Init page config
+    view.init(model.state);
 
-  // Calculate item rating
-  model.calculateItemRating(model.state);
+    // Calculate item rating
+    model.calculateItemRating(model.state);
 
-  // Render product cards
-  cardView.render(model.state.catalog);
+    // Render product cards
+    cardView.render(model.state.catalog);
 
-  // Init sliders config
-  slidersView.initSlider();
+    // Init sliders config
+    slidersView.initSlider();
+
+    // Get Countries and Cities List
+    const countriesList = await model.getCountry();
+
+    citiesList = await model.getCity(countriesList);
+    view.asyncInit(countriesList, citiesList);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function controlInitCatalogPage(e) {
@@ -78,7 +89,7 @@ function controlSignIn(e) {
   if (!user) return;
   navigationView.changeAccountToolbar(user);
   cardView.renderProfileCards(user);
-  accountView.renderAccountData(user, comments);
+  accountView.renderAccountData(user, comments, citiesList);
   console.log(user);
 }
 

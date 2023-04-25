@@ -64,3 +64,25 @@ export const DISCOUNT = {
   promoCode: 'NEWSEASON2023',
   discount: 0.1,
 };
+
+// Fake country API
+// prettier-ignore
+export const EXCLUSION_COUNTRIES = ['Cyprus', 'Belarus', 'Moldova', 'North Macedonia', 'Russia', 'Vatican City',];
+
+export const DOUBLE_COUNTRIES = ['Czechia', 'Ukraine', 'United Kingdom'];
+// prettier-ignore
+export const CITIES = [
+  {
+    Czechia: ['Brno', 'Liberec', 'Olmouc', 'Ostrava', 'Plzen', 'Prague'],
+  },
+  {
+    Ukraine: [
+      'Bila Tserkva', 'Cherkasy', 'Chernihiv', 'Chernivtsi', 'Dnipro', 'Ivano-Frankivsk', 'Kamianske', 'Kharkiv', 'Kherson', 'Khmelnytskyi', 'Kiyv', 'Kramatorsk', 'Kremenchuk', 'Kropyvnytskyi', 'Kryvyi Rih', 'Lutsk', 'Lviv', 'Mykolaiv', 'Odesa', 'Poltava', 'Rivne', 'Sumy', 'Ternopil', 'Uzhhorod', 'Vinnytsia', 'Zaporizhzhia', 'Zhytomyr',
+    ],
+  },
+  {
+    'United Kingdom': [
+      'Belfast', 'Birmingham', 'Bournemouth', 'Bristol', 'Cardiff', 'Coventry', 'Edinburgh', 'Glasgow', 'Leeds', 'Leicester', 'Liverpool', 'London', 'Manchester', 'Middlesbrough', 'Newcastle', 'Nottingham', 'Sheffield', 'Southampton', 'Stoke',
+    ],
+  },
+];
