@@ -487,7 +487,9 @@ export default class View {
   // Reviews
   _generateReviewsComment(reviews, size = 'lg') {
     return `
-          <li class="comment__block--${size} grid grid--col-3-fix grid--row-3">
+          <li class="comment__block--${size} grid grid--col-3-fix grid--row-3" data-timestamp="${Date.parse(
+      reviews.date
+    )}">
     ${
       size === 'sm'
         ? `

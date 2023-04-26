@@ -10,6 +10,11 @@ class NavigationView extends View {
   _btnRight = document.querySelector('.offers__btn--right');
   _maxSlide = this._slides.length;
   _curSlide = 0;
+  _userBtns = this._navigationEl.querySelector('.user-btns');
+  _userProfileBadge = this._navigationEl.querySelector('.user-profile');
+  _wishlistBtn = this._navigationEl.querySelector('.navigation__like-link');
+  _wishlistIcon = this._wishlistBtn.querySelector('svg');
+  _wishlistQuantity = this._wishlistBtn.querySelector('span');
 
   constructor() {
     super();
@@ -19,17 +24,24 @@ class NavigationView extends View {
     this._setObserver(this._reset.bind(this));
   }
 
-  changeAccountToolbar(user) {
-    const btns = this._navigationEl.querySelector('.user-btns');
-    const account = this._navigationEl.querySelector('.user-profile');
-    btns.style.display = 'none';
-    account.style.display = 'flex';
-    account.querySelector('a').textContent = user.firstName;
+  logInAccount(user) {
+    this._userBtns.style.display = 'none';
+    this._userProfileBadge.style.display = 'flex';
+    this._userProfileBadge.dataset.id = user.id;
+    this._userProfileBadge.querySelector('a').textContent = user.firstName;
+    this._wishlistBtn.classList.remove('navigation__like-link--idle');
+    this._wishlistIcon.classList.remove('navigation__icon--idle');
+    this._wishlistQuantity.textContent = user.wishlist.length;
+  }
 
-    const link = this._navigationEl.querySelector('.navigation__like-link');
-    link.classList.remove('navigation__like-link--idle');
-    link.querySelector('svg').classList.remove('navigation__icon--idle');
-    link.querySelector('span').textContent = user.wishlist.length;
+  logOutAccount() {
+    this._userBtns.style.display = 'flex';
+    this._userProfileBadge.style.display = 'none';
+    this._userProfileBadge.removeAttribute('data-id');
+    this._userProfileBadge.querySelector('a').textContent = '';
+    this._wishlistBtn.classList.add('navigation__like-link--idle');
+    this._wishlistIcon.classList.add('navigation__icon--idle');
+    this._wishlistQuantity.textContent = '';
   }
 
   _reset(records) {

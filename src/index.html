@@ -74,7 +74,7 @@
 
             <a href="#" data-link="account" class="btn-user"></a>
 
-            <button type="button" class="btn-user btn-user--exit">
+            <button type="button" class="btn-user btn__sign-out btn-user--exit">
               <svg>
                 <use xlink:href="assets/svg/sprite.svg#logout"></use>
               </svg>
@@ -795,7 +795,7 @@
               My reviews
             </a>
           </li>
-          <li class="account__item--exit">
+          <li class="account__item--exit btn__sign-out">
             <a href="#" class="account__link">
               <svg class="account__icon">
                 <use xlink:href="assets/svg/sprite.svg#logout"></use>
@@ -857,7 +857,6 @@
               <option value="" disabled selected hidden>
                 Choose your country
               </option>
-
             </select>
             <button type="button" class="input__btn input__btn--large select__btn">
               <svg class="input__icon input__icon--large">
@@ -886,7 +885,7 @@
             <label class="label label--large" for="code">ZIP Code</label>
             <input class="input input--large" type="text" name="code" id="code">
           </div>
-          <button class="btn btn--solid btn--large u-margin-top-large" type="submit">
+          <button class="btn btn--solid btn--large btn--idle u-margin-top-large" type="submit">
             Save changes
           </button>
         </form>

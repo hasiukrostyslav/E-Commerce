@@ -25,6 +25,7 @@ class CheckoutView extends View {
   _discounPricetEl = this._summaryEl.querySelector('[data-price="discount"]');
   _totalPriceEl = this._summaryEl.querySelector('[data-price="total"]');
   _btnOrder = this._summaryEl.querySelector('.btn');
+  _signInBlockEl = this._checkoutPageEl.querySelector('.checkout__sign-in');
 
   constructor() {
     super();
@@ -46,6 +47,11 @@ class CheckoutView extends View {
     document
       .querySelector('[data-link="checkout"]')
       .addEventListener('click', handler);
+  }
+
+  toggleSignInBlock(display = 'block') {
+    if (display === 'hidden') this._signInBlockEl.classList.add('hidden');
+    else this._signInBlockEl.classList.remove('hidden');
   }
 
   // 1. Item Review

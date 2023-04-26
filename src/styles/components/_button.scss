@@ -60,6 +60,12 @@
     background-color: $color-primary-hover;
   }
 
+  &--idle {
+    background-color: $color-gray-dark-4;
+    border-color: $color-gray-dark-4;
+    pointer-events: none;
+  }
+
   &--arrow {
     @include btn-with-icon;
     width: 15.5rem;

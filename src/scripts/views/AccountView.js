@@ -23,7 +23,8 @@ class AccountView extends View {
     super();
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
-    this._addHandlerOpenWhishlist();
+    this._addHandlerDeleteItemList();
+    this._addHandlerOpenAccountPages();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
@@ -35,7 +36,7 @@ class AccountView extends View {
     this._renderReviews(reviews);
   }
 
-  // RENDER PROFILE
+  // PROFILE
   _renderProfileData(data, cities) {
     document.querySelector(
       '.account__user-name'
@@ -59,9 +60,25 @@ class AccountView extends View {
     document.getElementById('city').value = data.city || '';
   }
 
-  // RENDER ORDERS
+  _clearProfilePage() {
+    document.querySelector('.account__user-name').textContent = 'User name';
+    document.querySelector('.account__user-email').textContent = 'User email';
+    document.getElementById('first-name').value = '';
+    document.getElementById('last-name').value = '';
+    document.getElementById('profile-email').value = '';
+    document.getElementById('phone-profile').value = '';
+    document.getElementById('address').value = '';
+    document.getElementById('code').value = '';
+    document.getElementById('country').value = '';
+    document.getElementById('city').value = '';
+  }
+
+  _saveChanges() {}
+  _deleteAccount() {}
+
+  // ORDERS
   _renderOrders(data, type = 'orders') {
-    this._accordionContainer.innerHTML = '';
+    this._clearOrderPage();
     this._activateSelect(type);
     const markup = data.orders
       .map((order, i, arr) => this._generateOrderMarkup(order, i, arr))
@@ -251,6 +268,23 @@ class AccountView extends View {
     });
   }
 
+  _resetOrderPage() {
+    const options = [
+      ...document.getElementById('orders').querySelectorAll('option'),
+    ];
+    options.forEach((el) => (el.selected = false));
+    options.find((el) => el.value === 'All').selected = true;
+    this._resetAccordions();
+
+    this._accordionContainer
+      .querySelectorAll('.order__panel')
+      .forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _clearOrderPage() {
+    this._accordionContainer.innerHTML = '';
+  }
+
   _sortOrders(e) {
     const { value } = e.target;
     const orderList = [
@@ -290,18 +324,16 @@ class AccountView extends View {
 
   // RENDER WISHLIST
   _renderWishlist(data, type = 'wishlist') {
+    this._removeEmptyHeading(this._wishlistEl);
     this._renderWishlistBadges();
     this._activateDeleteButton(type);
 
-    if (data.wishlist.length === 0) {
-      this._wishlistEl.append(this._createHeading(type));
-      this._disableDeleteButton(type);
-    }
+    if (data.wishlist.length === 0)
+      this._addEmptyHeading(this._wishlistEl, type);
   }
 
   _renderWishlistBadges() {
-    this._wishlistBadge.classList.remove('account__wishlist-badge--fill');
-    this._wishlistBadge.textContent = '';
+    this._removeWishlistBadges();
 
     if (this._wishlistBoxEl.querySelectorAll('.card').length > 0) {
       this._wishlistBadge.classList.add('account__wishlist-badge--fill');
@@ -310,21 +342,35 @@ class AccountView extends View {
     }
   }
 
-  // RENDER VIEWED
-  _renderViewedList(data, type = 'view') {
-    this._activateDeleteButton(type);
-
-    if (data.view.length === 0) {
-      this._viewedPageEl.append(this._createHeading(type));
-      this._disableDeleteButton(type);
-    }
+  _removeWishlistBadges() {
+    this._wishlistBadge.classList.remove('account__wishlist-badge--fill');
+    this._wishlistBadge.textContent = '';
   }
 
-  // RENDER REVIEWS
+  _clearWhishlistPage() {
+    this._wishlistBoxEl.innerHTML = '';
+    this._removeWishlistBadges();
+    this._removeEmptyHeading(this._wishlistEl);
+  }
+
+  // VIEWED
+  _renderViewedList(data, type = 'view') {
+    this._activateDeleteButton(type);
+    this._removeEmptyHeading(this._viewedPageEl);
+
+    if (data.view.length === 0) this._addEmptyHeading(this._viewedPageEl, type);
+  }
+
+  _clearViewedPage() {
+    this._viewedListEl.innerHTML = '';
+  }
+
+  // REVIEWS
   _renderReviews(reviews, type = 'review') {
     this._insertReviewMarkup(reviews);
     this._addHandlerSortReviews(this._sortReviews.bind(this, reviews));
     this._activateSelect(type);
+    this._removeEmptyHeading(this._reviewPageEl);
 
     if (reviews.length === 0) {
       this._reviewPageEl.append(this._createHeading(type));
@@ -364,7 +410,29 @@ class AccountView extends View {
     document.getElementById('reviews').addEventListener('change', handler);
   }
 
-  // GENERAL FUNCTIONS
+  _resetReviewPage() {
+    const options = [
+      ...document.getElementById('reviews').querySelectorAll('option'),
+    ];
+    const selectedEl = options.find((el) => el.value === 'newest');
+    if (selectedEl.selected === true) return;
+
+    options.forEach((el) => (el.selected = false));
+    selectedEl.selected = true;
+    const markup = [...this._reviewsListEl.querySelectorAll('li')]
+      .sort((a, b) => b.dataset.timestamp - a.dataset.timestamp)
+      .map((el) => el.outerHTML)
+      .join('');
+
+    this._reviewsListEl.innerHTML = '';
+    this._reviewsListEl.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  _clearReviewPage() {
+    this._reviewsListEl.innerHTML = '';
+  }
+
+  // FUNCTIONS
   _disableDeleteButton(type) {
     const btn = this._btnsDeleteAll.find((el) =>
       el.closest(`[data-account=${type}]`)
@@ -377,6 +445,29 @@ class AccountView extends View {
       el.closest(`[data-account=${type}]`)
     );
     btn.classList.remove('btn--disable');
+  }
+
+  _deleteItemList(e) {
+    const btn = e.target.closest('.btn--delete');
+    if (!btn) return;
+    const section = btn.closest('section');
+
+    section.querySelectorAll('.card').forEach((card) => card.remove());
+    this._addEmptyHeading(section, section.dataset.account);
+
+    if (section.dataset.account === 'wishlist') {
+      this._removeWishlistBadges();
+      this._navigationEl.querySelector(
+        '.navigation__like-count'
+      ).textContent = 0;
+    }
+  }
+
+  _addHandlerDeleteItemList() {
+    this._accountPageEl.addEventListener(
+      'click',
+      this._deleteItemList.bind(this)
+    );
   }
 
   _disableSelect(type) {
@@ -404,6 +495,16 @@ class AccountView extends View {
     return heading;
   }
 
+  _addEmptyHeading(container, type) {
+    container.append(this._createHeading(type));
+    this._disableDeleteButton(type);
+  }
+
+  _removeEmptyHeading(container) {
+    const heading = container.querySelector('.account__heading-empty');
+    if (heading) heading.remove();
+  }
+
   _generateLoadSpinnerMarkup() {
     return `
         <button type="button" class="btn-load">
@@ -413,6 +514,62 @@ class AccountView extends View {
           Load more
         </button>
     `;
+  }
+
+  _changeTabs(e) {
+    e.preventDefault();
+
+    const btn = e.target.closest('.account__item');
+    if (!btn) return;
+
+    if (!btn.classList.contains('account__item--current')) {
+      this._resetOrderPage();
+      this._resetReviewPage();
+    }
+
+    this._currentTab.classList.remove('account__item--current');
+    this._currentTab = btn;
+    this._currentTab.classList.add('account__item--current');
+
+    this._currentPage.classList.add('hidden');
+    this._currentPage = [...this._pages].find(
+      (page) => page.dataset.account === this._currentTab.dataset.account
+    );
+    this._currentPage.classList.remove('hidden');
+  }
+
+  _openAccountPages(page) {
+    this._currentTab.classList.remove('account__item--current');
+    this._currentTab = this._accountPageEl.querySelector(
+      `li[data-account="${page}"]`
+    );
+    this._currentTab.classList.add('account__item--current');
+
+    this._currentPage.classList.add('hidden');
+    this._currentPage = [...this._pages].find(
+      (tab) => tab.dataset.account === this._currentTab.dataset.account
+    );
+    this._currentPage.classList.remove('hidden');
+  }
+
+  _resetAccountPages(e) {
+    const link = e.target.closest('[data-link="account"]');
+    if (!link) return;
+    this._resetOrderPage();
+    this._resetReviewPage();
+  }
+
+  _addHandlerOpenAccountPages() {
+    this._navigationEl
+      .querySelector('a.btn-user')
+      .addEventListener('click', this._openAccountPages.bind(this, 'profile'));
+    this._navigationEl
+      .querySelector('.navigation__like-link')
+      .addEventListener('click', this._openAccountPages.bind(this, 'wishlist'));
+    this._navigationEl.addEventListener(
+      'click',
+      this._resetAccountPages.bind(this)
+    );
   }
 
   _renderBreadcrumb() {
@@ -453,46 +610,22 @@ class AccountView extends View {
     }
   }
 
-  _changeTabs(e) {
-    e.preventDefault();
-
-    const btn = e.target.closest('.account__item');
-    if (!btn) return;
-
-    this._currentTab.classList.remove('account__item--current');
-    this._currentTab = btn;
-    this._currentTab.classList.add('account__item--current');
-
-    this._currentPage.classList.add('hidden');
-    this._currentPage = [...this._pages].find(
-      (page) => page.dataset.account === this._currentTab.dataset.account
-    );
-    this._currentPage.classList.remove('hidden');
+  signOut() {
+    this._clearProfilePage();
+    this._clearOrderPage();
+    this._clearWhishlistPage();
+    this._clearViewedPage();
+    this._clearReviewPage();
+    this._headerEl.classList.remove('hidden');
+    this._homePageEl.classList.remove('hidden');
+    this._accountPageEl.classList.add('hidden');
+    this._breadcrumbEl.classList.add('hidden');
   }
 
-  _openWhishlist(e) {
-    if (!e.target.closest('a[data-link="account"]')) return;
-
-    if (this._currentTab.dataset.account !== 'whishlist') {
-      this._currentTab.classList.remove('account__item--current');
-      this._currentTab = this._accountPageEl.querySelector(
-        'li[data-account="wishlist"]'
-      );
-      this._currentTab.classList.add('account__item--current');
-
-      this._currentPage.classList.add('hidden');
-      this._currentPage = [...this._pages].find(
-        (page) => page.dataset.account === this._currentTab.dataset.account
-      );
-      this._currentPage.classList.remove('hidden');
-    }
-  }
-
-  _addHandlerOpenWhishlist() {
-    this._toolbarContainer.addEventListener(
-      'click',
-      this._openWhishlist.bind(this)
-    );
+  addHandlerSignOut(handler) {
+    this._parentElement
+      .querySelectorAll('.btn__sign-out')
+      .forEach((btn) => btn.addEventListener('click', handler));
   }
 }
 

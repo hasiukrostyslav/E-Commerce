@@ -87,10 +87,18 @@ function controlSignIn(e) {
   const user = modalView.validationLogIn(model.state.users);
   const comments = model.findUsersComments(user);
   if (!user) return;
-  navigationView.changeAccountToolbar(user);
+  navigationView.logInAccount(user);
   cardView.renderProfileCards(user);
   accountView.renderAccountData(user, comments, citiesList);
+  checkoutView.toggleSignInBlock('hidden');
   console.log(user);
+}
+
+function controlSignOut(e) {
+  e.preventDefault();
+  accountView.signOut();
+  navigationView.logOutAccount();
+  checkoutView.toggleSignInBlock();
 }
 
 function init() {
@@ -99,9 +107,10 @@ function init() {
   catalogView.addHandlerInitPage(controlInitCatalogPage);
   blogView.addHandlerRanderBlogPage(controlRenderBlogPage);
   postView.addHandlerRenderPostPage(controlRenderPostPage);
-  modalView.addHandlerLogIn(controlSignIn);
   cartModalView.addHandlerAddToCart(controlModalCart);
   checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
+  modalView.addHandlerLogIn(controlSignIn);
+  accountView.addHandlerSignOut(controlSignOut);
 }
 
 init();
