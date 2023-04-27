@@ -11,6 +11,33 @@ function downloadData() {
 }
 downloadData();
 
+// LOCAL STORAGE
+const persistState = function () {
+  localStorage.setItem('users', JSON.stringify(state.users));
+  localStorage.setItem('posts', JSON.stringify(state.posts));
+  localStorage.setItem('reviews', JSON.stringify(state.reviews));
+};
+
+const init = function () {
+  const usersStorage = localStorage.getItem('users');
+  const postsStorage = localStorage.getItem('posts');
+  const reviewsStorage = localStorage.getItem('reviews');
+
+  if (usersStorage) state.users = JSON.parse(usersStorage);
+  if (postsStorage) state.posts = JSON.parse(postsStorage);
+  if (reviewsStorage) state.reviews = JSON.parse(reviewsStorage);
+};
+init();
+
+const clearState = function () {
+  localStorage.clear('users');
+  localStorage.clear('posts');
+  localStorage.clear('reviews');
+};
+
+// clearState();
+
+// DIFFERENT FUNCTIONS
 export const filterCategory = (category) =>
   state.catalog.filter((item) =>
     item.category.find((type) => type === category)
@@ -43,6 +70,7 @@ export const findUsersComments = function (user) {
   );
 };
 
+// GET COUNTRY/CITY TO SELECT ELEMENTS
 export const getCountry = async function () {
   try {
     const response = await fetch('https://restcountries.com/v3.1/all');
@@ -109,28 +137,23 @@ export const getCity = async function (countries) {
   }
 };
 
-const persistState = function () {
-  localStorage.setItem('users', JSON.stringify(state.users));
-  localStorage.setItem('posts', JSON.stringify(state.posts));
-  localStorage.setItem('reviews', JSON.stringify(state.reviews));
+// DELETE WISHLIST/VIEW FROM USER PROFILE
+export const deleteWishlist = function (id) {
+  const currentUser = state.users.find((user) => user.id === +id);
+  currentUser.wishlist.splice(0);
+  persistState();
 };
 
-// persistState();
-const init = function () {
-  const usersStorage = localStorage.getItem('users');
-  const postsStorage = localStorage.getItem('posts');
-  const reviewsStorage = localStorage.getItem('reviews');
-
-  if (usersStorage) state.users = JSON.parse(usersStorage);
-  if (postsStorage) state.posts = JSON.parse(postsStorage);
-  if (reviewsStorage) state.reviews = JSON.parse(reviewsStorage);
-};
-// init();
-
-const clearState = function () {
-  localStorage.clear('users');
-  localStorage.clear('posts');
-  localStorage.clear('reviews');
+export const deleteViewlist = function (id) {
+  const currentUser = state.users.find((user) => user.id === +id);
+  currentUser.view.splice(0);
+  persistState();
 };
 
-// clearState();
+// DELETE ACCOUNT
+export const deleteUser = function (id) {
+  const currentUser = state.users.find((user) => user.id === id);
+  const index = state.users.indexOf(currentUser);
+  state.users.splice(index, 1);
+  persistState();
+};

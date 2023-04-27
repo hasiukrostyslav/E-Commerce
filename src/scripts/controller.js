@@ -93,8 +93,32 @@ function controlSignIn(e) {
   checkoutView.toggleSignInBlock(model.state.users, citiesList, 'hidden');
 }
 
+function controlAddToWishlist(e) {
+  cardView.addToWishlist(e);
+}
+
+function controlDeleteWishlist(e) {
+  const id = accountView.deleteWishlistItems(e);
+  if (!id) return;
+  model.deleteWishlist(id);
+}
+
+function controlDeleteViewlist(e) {
+  const id = accountView.deleteViewlistItems(e);
+  if (!id) return;
+  model.deleteViewlist(id);
+}
+
 function controlSignOut(e) {
   e.preventDefault();
+  accountView.signOut();
+  navigationView.logOutAccount();
+  checkoutView.toggleSignInBlock();
+}
+
+function controlDeleteAccount(e) {
+  e.preventDefault();
+  model.deleteUser(accountView.getUserId());
   accountView.signOut();
   navigationView.logOutAccount();
   checkoutView.toggleSignInBlock();
@@ -109,7 +133,11 @@ function init() {
   cartModalView.addHandlerAddToCart(controlModalCart);
   checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
   modalView.addHandlerLogIn(controlSignIn);
+  cardView.addHandlerAddToWishlist(controlAddToWishlist);
+  accountView.addHandlerDeleteWishlistItems(controlDeleteWishlist);
+  accountView.addHandlerDeleteViewlistItems(controlDeleteViewlist);
   accountView.addHandlerSignOut(controlSignOut);
+  accountView.addHandlerDeleteAccount(controlDeleteAccount);
 }
 
 init();

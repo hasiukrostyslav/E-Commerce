@@ -11,19 +11,21 @@ class AccountView extends View {
   _wishlistEl = document.querySelector('.account__wishlist');
   _wishlistBoxEl = document.querySelector('.account__wishlist-container');
   _wishlistBadge = document.querySelector('.account__wishlist-badge');
+  _profilePageEl = document.querySelector('section[data-account="profile"]');
   _ordersPageEl = document.querySelector('section[data-account="orders"]');
   _viewedPageEl = document.querySelector('section[data-account="view"]');
   _reviewPageEl = document.querySelector('section[data-account="review"]');
   _viewedListEl = document.querySelector('.account__viewed');
   _reviewsListEl = document.querySelector('.comment');
+  _userProfileIcon = document.querySelector('.user-profile');
   _btnsDeleteAll = [...this._accountPageEl.querySelectorAll('.btn--delete')];
   _selectFormsEl = [...this._accountPageEl.querySelectorAll('.sort__form')];
+  _btnDeleteAccount = this._profilePageEl.querySelector('.btn--delete');
 
   constructor() {
     super();
     this._addHandlerChangeTabs();
     this._addHandlerAccordion();
-    this._addHandlerDeleteItemList();
     this._addHandlerOpenAccountPages();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
@@ -73,8 +75,11 @@ class AccountView extends View {
     document.getElementById('city').value = '';
   }
 
+  getUserId() {
+    return +this._userProfileIcon.dataset.id;
+  }
+
   _saveChanges() {}
-  _deleteAccount() {}
 
   // ORDERS
   _renderOrders(data, type = 'orders') {
@@ -447,27 +452,39 @@ class AccountView extends View {
     btn.classList.remove('btn--disable');
   }
 
-  _deleteItemList(e) {
+  deleteWishlistItems(e) {
     const btn = e.target.closest('.btn--delete');
     if (!btn) return;
     const section = btn.closest('section');
+    if (section.dataset.account !== 'wishlist') return;
 
     section.querySelectorAll('.card').forEach((card) => card.remove());
     this._addEmptyHeading(section, section.dataset.account);
 
-    if (section.dataset.account === 'wishlist') {
-      this._removeWishlistBadges();
-      this._navigationEl.querySelector(
-        '.navigation__like-count'
-      ).textContent = 0;
-    }
+    this._removeWishlistBadges();
+    this._navigationEl.querySelector('.navigation__like-count').textContent = 0;
+
+    return this._userProfileIcon.dataset.id;
   }
 
-  _addHandlerDeleteItemList() {
-    this._accountPageEl.addEventListener(
-      'click',
-      this._deleteItemList.bind(this)
-    );
+  deleteViewlistItems(e) {
+    const btn = e.target.closest('.btn--delete');
+    if (!btn) return;
+    const section = btn.closest('section');
+    if (section.dataset.account !== 'view') return;
+
+    section.querySelectorAll('.card').forEach((card) => card.remove());
+    this._addEmptyHeading(section, section.dataset.account);
+
+    return this._userProfileIcon.dataset.id;
+  }
+
+  addHandlerDeleteWishlistItems(handler) {
+    this._wishlistEl.addEventListener('click', handler);
+  }
+
+  addHandlerDeleteViewlistItems(handler) {
+    this._viewedPageEl.addEventListener('click', handler);
   }
 
   _disableSelect(type) {
@@ -628,6 +645,10 @@ class AccountView extends View {
     this._parentElement
       .querySelectorAll('.btn__sign-out')
       .forEach((btn) => btn.addEventListener('click', handler));
+  }
+
+  addHandlerDeleteAccount(handler) {
+    this._btnDeleteAccount.addEventListener('click', handler);
   }
 }
 

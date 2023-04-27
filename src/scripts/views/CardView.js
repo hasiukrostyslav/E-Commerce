@@ -8,8 +8,6 @@ class CardView extends View {
 
   constructor() {
     super();
-
-    this.addHandlerAddToWishlist();
     this._addHandlerShowCardBottom(this._toggleCardBottom.bind(this));
     this._addHandlerHideCardBottom(this._toggleCardBottom.bind(this));
     this._addHandlerChangeSlide();
@@ -44,25 +42,32 @@ class CardView extends View {
     this._parentElement.addEventListener('click', handler);
   }
 
-  _addToWishlist(e) {
+  addToWishlist(e) {
     const btn = e.target.closest('.btn-wishlist-add');
-    if (!btn) return;
-    const icon = btn.querySelector('.wishlist__icon');
+    const checkbox = e.target.closest('.checkbox-wishlist-add');
+    if (!btn && !checkbox) return;
 
-    if (icon.classList.contains('wishlist__icon--filled')) {
-      icon.classList.remove('wishlist__icon--filled');
-      icon.innerHTML = this._iconRemove;
-    } else {
-      icon.classList.add('wishlist__icon--filled');
-      icon.innerHTML = this._iconAdd;
+    if (btn) {
+      const { article } = btn.closest('[data-article]').dataset;
+      const cards = [
+        ...this._parentElement.querySelectorAll('[data-article]'),
+      ].find((card) => card.dataset.article === article);
+      console.log(article);
+      console.log(cards);
+      const icon = btn.querySelector('.wishlist__icon');
+
+      if (icon.classList.contains('wishlist__icon--filled')) {
+        icon.classList.remove('wishlist__icon--filled');
+        icon.innerHTML = this._iconRemove;
+      } else {
+        icon.classList.add('wishlist__icon--filled');
+        icon.innerHTML = this._iconAdd;
+      }
     }
   }
 
-  addHandlerAddToWishlist() {
-    this._parentElement.addEventListener(
-      'click',
-      this._addToWishlist.bind(this)
-    );
+  addHandlerAddToWishlist(handler) {
+    this._parentElement.addEventListener('click', handler);
   }
 
   _toggleCardBottom(e) {
