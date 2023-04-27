@@ -34,13 +34,14 @@ class CheckoutView extends View {
     this._addHandlerApplyDiscount(this._applyDiscount.bind(this));
   }
 
-  renderCheckoutPage() {
+  renderCheckoutPage(users, cities) {
     this._modalEl.classList.add('hidden');
     this._overlay.classList.add('hidden');
     this._inputCodeEl.value = '';
     this._discounPricetEl.textContent = '';
     this._renderShippingMethod();
     this._renderItemsFromCart();
+    this._fillInputData(users, cities);
   }
 
   addHandlerRenderCheckoutPage(handler) {
@@ -49,9 +50,12 @@ class CheckoutView extends View {
       .addEventListener('click', handler);
   }
 
-  toggleSignInBlock(display = 'block') {
+  toggleSignInBlock(users, cities, display = 'block') {
     if (display === 'hidden') this._signInBlockEl.classList.add('hidden');
     else this._signInBlockEl.classList.remove('hidden');
+
+    if (!this._checkoutPageEl.classList.contains('hidden'))
+      this._fillInputData(users, cities);
   }
 
   // 1. Item Review
@@ -181,10 +185,31 @@ class CheckoutView extends View {
     `;
   }
 
-  // 2.Shipping  and Billing Address
+  // 2.Shipping and Billing Address
+  _fillInputData(users, cities) {
+    const userEl = this._navigationEl.querySelector('.user-profile');
+    if (!userEl.dataset.id) return;
 
+    const { id } = userEl.dataset;
+    const user = users.find((el) => el.id === +id);
+
+    document.getElementById('first-name-delivery').value = user.firstName;
+    document.getElementById('last-name-delivery').value = user.lastName;
+    document.getElementById('profile-email-delivery').value = user.email;
+    document.getElementById('phone-delivery').value = user.phone || '';
+    document.getElementById('address-delivery').value = user.address || '';
+    document.getElementById('code-delivery').value = user.zipCode || '';
+    document.getElementById('country-delivery').value = user.country || '';
+    this._renderSelectCity(
+      document.getElementById('city-delivery'),
+      document.getElementById('country-delivery').value,
+      cities
+    );
+    document.getElementById('city-delivery').value = user.city || '';
+  }
+
+  // 3.Shipping Method
   _renderShippingMethod() {
-    // 3.Shipping Method
     this._shippingListEl.innerHTML = '';
     const markup = SHIPPING.map((type, i) =>
       this._generateShippingMarkup(type, i)

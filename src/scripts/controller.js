@@ -78,7 +78,7 @@ function controlModalCart(e) {
 }
 
 function controlCheckoutPage() {
-  checkoutView.renderCheckoutPage();
+  checkoutView.renderCheckoutPage(model.state.users, citiesList);
 }
 
 function controlSignIn(e) {
@@ -90,8 +90,7 @@ function controlSignIn(e) {
   navigationView.logInAccount(user);
   cardView.renderProfileCards(user);
   accountView.renderAccountData(user, comments, citiesList);
-  checkoutView.toggleSignInBlock('hidden');
-  console.log(user);
+  checkoutView.toggleSignInBlock(model.state.users, citiesList, 'hidden');
 }
 
 function controlSignOut(e) {

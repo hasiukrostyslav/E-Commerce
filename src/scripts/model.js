@@ -109,18 +109,28 @@ export const getCity = async function (countries) {
   }
 };
 
-// const persistBookmarks = function () {
-//   localStorage.setItem('state', JSON.stringify(state));
-// };
+const persistState = function () {
+  localStorage.setItem('users', JSON.stringify(state.users));
+  localStorage.setItem('posts', JSON.stringify(state.posts));
+  localStorage.setItem('reviews', JSON.stringify(state.reviews));
+};
 
-// persistBookmarks();
-// const init = function () {
-//   const storage = localStorage.getItem('state');
-//   if (storage) state.bookmarks = JSON.parse(storage);
-// };
+// persistState();
+const init = function () {
+  const usersStorage = localStorage.getItem('users');
+  const postsStorage = localStorage.getItem('posts');
+  const reviewsStorage = localStorage.getItem('reviews');
+
+  if (usersStorage) state.users = JSON.parse(usersStorage);
+  if (postsStorage) state.posts = JSON.parse(postsStorage);
+  if (reviewsStorage) state.reviews = JSON.parse(reviewsStorage);
+};
 // init();
 
-// const clearBookmarks = function () {
-//   localStorage.clear('state');
-// };
-// clearBookmarks();
+const clearState = function () {
+  localStorage.clear('users');
+  localStorage.clear('posts');
+  localStorage.clear('reviews');
+};
+
+// clearState();

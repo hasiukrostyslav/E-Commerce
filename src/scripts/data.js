@@ -290,6 +290,21 @@ const data = {
         },
       ],
     },
+    {
+      id: 174922,
+      firstName: 'Kateryna',
+      lastName: 'Koval',
+      email: 'katia@gmail.com',
+      phone: '+380974352522',
+      password: 11110000,
+      country: 'Ukraine',
+      city: 'Rivne',
+      address: 'Franko st. 7, Lviv',
+      zipCode: 45383,
+      orders: [],
+      wishlist: [],
+      view: [],
+    },
   ],
   catalog: [
     {

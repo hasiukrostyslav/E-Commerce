@@ -616,6 +616,8 @@ class AccountView extends View {
     this._clearWhishlistPage();
     this._clearViewedPage();
     this._clearReviewPage();
+
+    if (this._accountPageEl.classList.contains('hidden')) return;
     this._headerEl.classList.remove('hidden');
     this._homePageEl.classList.remove('hidden');
     this._accountPageEl.classList.add('hidden');
