@@ -485,11 +485,6 @@
     color: $color-gray-dark-4;
   }
 
-  &:invalid:focus {
-    border: 1px solid $color-secondary;
-    box-shadow: none;
-  }
-
   &--invalid {
     border: 1px solid $color-secondary;
     box-shadow: none;

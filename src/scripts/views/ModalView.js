@@ -3,6 +3,7 @@ import { ERROR } from '../config';
 
 class ModalView extends View {
   _modalSignIn = document.querySelector('.modal--sign-in');
+  _modalRegister = document.querySelector('.modal--sign-up');
   _btnLogIn = document.querySelector('.btn[data-submit="sign-in"]');
   _btnRegister = document.querySelector('.btn[data-submit="sign-up"]');
 
@@ -60,6 +61,10 @@ class ModalView extends View {
       (el) => el.dataset.modal === btn.dataset.modal
     );
     this._removeHiddenClass(modal);
+    modal
+      .querySelectorAll('[data-input]')
+      .forEach((el) => el.classList.remove('input--invalid'));
+    modal.querySelectorAll('.input__warning').forEach((el) => el.remove());
 
     if (
       modal.querySelector('input[type="text"]') ||
@@ -94,79 +99,21 @@ class ModalView extends View {
     );
   }
 
-  // validationData(e) {
-  //   this._modal = e.target.closest('section[data-modal]');
-  //   this._modal
-  //     .querySelectorAll('.input__warning')
-  //     .forEach((el) => el.remove());
-
-  //   const inputs = [...this._modal.querySelectorAll('input')].filter(
-  //     (input) => input.dataset.input
-  //   );
-
-  //   if (inputs.find((el) => el.dataset.input === 'email')) {
-  //     this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
-  //     if (
-  //       !this._inputEmail.value.includes('@') ||
-  //       !this._inputEmail.value.includes('.') ||
-  //       this._inputEmail.value.includes('@.') ||
-  //       this._inputEmail.value.at(-1) === '.'
-  //     ) {
-  //       this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
-  //       this._showWarning(this._inputEmail);
-  //       return;
-  //     }
-
-  //     this._email = this._inputEmail.value;
-  //     this._inputEmail.classList.remove('input--invalid');
-  //   }
-
-  //   if (inputs.find((el) => el.dataset.input === 'pass')) {
-  //     this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
-  //     if (this._inputPass.value.length < 6) {
-  //       this._renderWarning(this._inputPass, this._inputPass.dataset.input);
-  //       this._showWarning(this._inputPass);
-  //       return;
-  //     }
-  //     this._pass = this._inputPass.value;
-  //     this._inputPass.classList.remove('input--invalid');
-  //   }
-  //   console.log('Correct');
-  // }
-
-  // Validation / submit data
-  validationLogIn(data) {
+  // SIGN IN
+  signIn(data) {
     const inputs = [...this._modalSignIn.querySelectorAll('input')].filter(
       (input) => input.dataset.input
     );
     this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
     this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
-    let email;
-    let pass;
-
     this._modalSignIn
       .querySelectorAll('.input__warning')
       .forEach((el) => el.remove());
 
     const user = data.find((el) => el.email === this._inputEmail.value);
-
-    if (!user) {
-      this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
-      this._showWarning(this._modalSignIn, this._inputEmail);
-      return;
-    }
-    if (user) {
-      email = this._inputEmail.value;
-      this._inputEmail.classList.remove('input--invalid');
-    }
-
-    if (+this._inputPass.value === user.password) {
-      pass = this._inputPass.value;
-      this._inputPass.classList.remove('input--invalid');
-    } else {
-      this._renderWarning(this._inputPass, this._inputPass.dataset.input);
-      this._showWarning(this._modalSignIn, this._inputPass);
-    }
+    const email = this._emailValidationSignIn(user);
+    if (!email) return;
+    const pass = this._passValidationSignIn(user);
 
     if (email && pass) {
       this._clearInputs(this._modalSignIn);
@@ -175,39 +122,140 @@ class ModalView extends View {
     }
   }
 
-  _renderWarning(input, data) {
-    input.insertAdjacentHTML(
-      'afterend',
-      `<span class="input__warning" data-warning="${data}"></span>`
-    );
-  }
-
-  _showWarning(modal, inputEl) {
-    const warning = modal.querySelector('.input__warning');
-    inputEl.classList.add('input--invalid');
-
-    if (
-      (inputEl.type === 'email' && !inputEl.id === 'email-sign-in') ||
-      (inputEl.type === 'email' && !inputEl.value)
-    ) {
-      warning.textContent = ERROR.email;
+  _emailValidationSignIn(user) {
+    if (!user) {
+      this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
+      this._showWarning(this._modalSignIn, this._inputEmail);
+      return;
     }
-
-    if (inputEl.id === 'email-sign-in' && inputEl.value) {
-      warning.textContent = ERROR.emailWrong;
-    }
-
-    if (inputEl.type === 'password' && inputEl.value.length < 6) {
-      warning.textContent = ERROR.passLength;
-    }
-
-    if (inputEl.id === 'password-sign-in' && inputEl.value.length >= 6) {
-      warning.textContent = ERROR.passWrong;
+    if (user) {
+      this._inputEmail.classList.remove('input--invalid');
+      return this._inputEmail.value;
     }
   }
 
-  addHandlerLogIn(handler) {
+  _passValidationSignIn(user) {
+    if (this._inputPass.value !== user.password) {
+      this._renderWarning(this._inputPass, this._inputPass.dataset.input);
+      this._showWarning(this._modalSignIn, this._inputPass);
+    } else {
+      this._inputPass.classList.remove('input--invalid');
+      return this._inputPass.value;
+    }
+  }
+
+  addHandlerSignIn(handler) {
     this._btnLogIn.addEventListener('click', handler);
+  }
+
+  // REGISTER
+
+  registerUser(data) {
+    const inputs = [...this._modalRegister.querySelectorAll('input')].filter(
+      (input) => input.dataset.input
+    );
+
+    this._inputFullName = inputs.find((el) => el.dataset.input === 'full-name');
+    this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
+    this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
+    this._inputPassConfirm = inputs.find(
+      (el) => el.dataset.input === 'pass-confirm'
+    );
+
+    this._modalRegister
+      .querySelectorAll('.input__warning')
+      .forEach((el) => el.remove());
+
+    const fullName = this._nameValidationSignUp();
+    if (!fullName) return;
+
+    const oldUser = data.find((user) => user.email === this._inputEmail.value);
+    const email = this._emailValidationSignUp(oldUser);
+    if (!email) return;
+
+    const pass = this._passValidationSignUp();
+    if (!pass) return;
+
+    const passConfirm = this._passConfirmValidation(pass);
+    if (pass !== passConfirm) return;
+
+    this._clearInputs(this._modalRegister);
+    this._addHiddenClass(this._modalRegister);
+    return [fullName, email, pass];
+  }
+
+  _nameValidationSignUp() {
+    if (
+      this._inputFullName.value.split(' ').length <= 1 ||
+      this._inputFullName.value
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/[a-z]/i)) === false
+    ) {
+      this._renderWarning(
+        this._inputFullName,
+        this._inputFullName.dataset.input
+      );
+      this._showWarning(this._modalRegister, this._inputFullName);
+    } else {
+      this._inputFullName.classList.remove('input--invalid');
+      return this._inputFullName.value;
+    }
+  }
+
+  _emailValidationSignUp(user) {
+    if (user) {
+      this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
+      this._modalRegister.querySelector('.input__warning').textContent =
+        ERROR.emailDuplicate;
+    }
+
+    if (!user) {
+      const { value } = this._inputEmail;
+      if (
+        !value ||
+        !value.includes('.') ||
+        !value.includes('@') ||
+        value.startsWith('.') ||
+        value.endsWith('.') ||
+        value.startsWith('@') ||
+        value.endsWith('@')
+      ) {
+        this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
+        this._showWarning(this._modalRegister, this._inputEmail);
+      } else {
+        this._inputEmail.classList.remove('input--invalid');
+        return this._inputEmail.value;
+      }
+    }
+  }
+
+  _passValidationSignUp() {
+    if (this._inputPass.value.length < 6) {
+      this._renderWarning(this._inputPass, this._inputPass.dataset.input);
+      this._showWarning(this._modalRegister, this._inputPass);
+    } else {
+      this._inputPass.classList.remove('input--invalid');
+      return this._inputPass.value;
+    }
+  }
+
+  _passConfirmValidation(pass) {
+    if (this._inputPassConfirm.value !== pass) {
+      this._renderWarning(
+        this._inputPassConfirm,
+        this._inputPassConfirm.dataset.input
+      );
+      this._showWarning(this._modalRegister, this._inputPassConfirm);
+    } else {
+      this._inputPassConfirm.classList.remove('input--invalid');
+      return this._inputPassConfirm.value;
+    }
+  }
+
+  addHandlerRegister(handler) {
+    this._btnRegister.addEventListener('click', handler);
   }
 }
 export default new ModalView();

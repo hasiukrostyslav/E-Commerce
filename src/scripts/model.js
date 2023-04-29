@@ -35,7 +35,19 @@ const clearState = function () {
   localStorage.clear('reviews');
 };
 
-// clearState();
+// CLEAR LOCAL STORAGE HOTKEY
+const clearStorage = function (e) {
+  if (e.code === 'KeyM' && e.ctrlKey) {
+    e.preventDefault();
+    clearState();
+  }
+};
+
+const addHandlerClearStorage = function (handler) {
+  document.addEventListener('keydown', handler);
+};
+
+addHandlerClearStorage(clearStorage);
 
 // DIFFERENT FUNCTIONS
 export const filterCategory = (category) =>
@@ -155,5 +167,28 @@ export const deleteUser = function (id) {
   const currentUser = state.users.find((user) => user.id === id);
   const index = state.users.indexOf(currentUser);
   state.users.splice(index, 1);
+  persistState();
+};
+
+// CREATE ACCOUNT
+export const createAccount = function (newUser) {
+  const [fullName, email, pass] = newUser;
+
+  const account = {};
+  account.id = Number.parseInt((Math.random() + 1) * 10 ** 5, 10);
+  account.firstName = fullName.split(' ').at(0);
+  account.lastName = fullName.split(' ').slice(1).join(' ');
+  account.phone = '';
+  account.email = email;
+  account.password = pass;
+  account.country = '';
+  account.city = '';
+  account.address = '';
+  account.zipCode = '';
+  account.orders = [];
+  account.wishlist = [];
+  account.view = [];
+
+  state.users.push(account);
   persistState();
 };

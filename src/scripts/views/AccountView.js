@@ -53,11 +53,12 @@ class AccountView extends View {
     document.getElementById('code').value = data.zipCode || '';
     document.getElementById('country').value = data.country || '';
 
-    this._renderSelectCity(
-      document.getElementById('city'),
-      document.getElementById('country').value,
-      cities
-    );
+    if (data.country)
+      this._renderSelectCity(
+        document.getElementById('city'),
+        document.getElementById('country').value,
+        cities
+      );
 
     document.getElementById('city').value = data.city || '';
   }

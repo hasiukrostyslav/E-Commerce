@@ -1,13 +1,6 @@
 import icons from '../../assets/svg/sprite.svg';
-import {
-  DAYS,
-  HOURS,
-  MINUTES,
-  SECONDS,
-  MILISECONDS,
-  DISCOUNT,
-  MAXSCORE,
-} from '../config';
+// prettier-ignore
+import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS, DISCOUNT, MAXSCORE, ERROR, } from '../config';
 
 export default class View {
   _parentElement = document.querySelector('body');
@@ -618,5 +611,87 @@ export default class View {
       'change',
       this._changeCountry.bind(this, cities)
     );
+  }
+
+  // INPUT VALIDATION
+
+  _renderWarning(input, data) {
+    input.insertAdjacentHTML(
+      'afterend',
+      `<span class="input__warning" data-warning="${data}"></span>`
+    );
+  }
+
+  _showWarning(form, inputEl) {
+    const warning = form.querySelector('.input__warning');
+    inputEl.classList.add('input--invalid');
+
+    if (inputEl.type === 'email') this._showEmailWarning(inputEl, warning);
+    if (inputEl.dataset.input === 'full-name')
+      this._showFullNameWarning(inputEl, warning);
+
+    if (inputEl.dataset.input.startsWith('pass'))
+      this._showPasswordWarning(inputEl, warning);
+  }
+
+  _showFullNameWarning(inputEl, warning) {
+    if (
+      inputEl.value
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/[a-z]/i)) === false
+    )
+      warning.textContent = ERROR.fullNameChar;
+
+    if (inputEl.value.split(' ').length <= 1)
+      warning.textContent = ERROR.fullName;
+  }
+
+  _textValidation(text, warning, error) {
+    if (
+      !text
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/[a-z]/i))
+    )
+      warning.textContent = error;
+  }
+
+  _showEmailWarning(inputEl, warning) {
+    if (inputEl.id === 'email-sign-in' && inputEl.value)
+      warning.textContent = ERROR.emailNew;
+
+    if (!inputEl.value.includes('.')) warning.textContent = ERROR.emailDot;
+    if (inputEl.value.endsWith('.')) warning.textContent = ERROR.emailDotLast;
+    if (inputEl.value.startsWith('.'))
+      warning.textContent = ERROR.emailDotFirst;
+    if (!inputEl.value.includes('@')) warning.textContent = ERROR.emailSign;
+    if (inputEl.value.endsWith('@')) warning.textContent = ERROR.emailSignLast;
+    if (inputEl.value.startsWith('@'))
+      warning.textContent = ERROR.emailSignFirst;
+    if (!inputEl.value) warning.textContent = ERROR.emailEmpty;
+  }
+
+  _showPasswordWarning(inputEl, warning) {
+    if (inputEl.dataset.input === 'pass-confirm') {
+      warning.textContent = ERROR.passConfirm;
+    }
+
+    if (inputEl.value.length === 0) {
+      warning.textContent = ERROR.passEmpty;
+    }
+
+    if (inputEl.value.length > 0 && inputEl.value.length < 6) {
+      warning.textContent = ERROR.passLength;
+    }
+
+    if (inputEl.id === 'password-sign-in' && inputEl.value.length >= 6) {
+      warning.textContent = ERROR.passWrong;
+    }
+
+    if (inputEl.id === 'profile-new-pass') {
+    }
   }
 }

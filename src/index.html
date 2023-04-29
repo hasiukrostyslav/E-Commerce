@@ -817,24 +817,27 @@
         <form action="#" class="account__form">
           <div class="input__box input__box--large">
             <label class="label label--large" for="first-name">First name</label>
-            <input class="input input--large input--half" type="text" name="first-name" id="first-name" required>
+            <input class="input input--large input--half" type="text" name="first-name" id="first-name" required
+              data-input="first-name">
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="last-name">Last name</label>
-            <input class="input input--large" type="text" name="last-name" id="last-name" required>
+            <input class="input input--large" type="text" name="last-name" id="last-name" required
+              data-input="last-name">
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="profile-email">Email</label>
-            <input class="input input--large" type="email" name="profile-email" id="profile-email" required>
+            <input class="input input--large" type="email" name="profile-email" id="profile-email" required
+              data-input="email">
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="phone-profile">Phone</label>
-            <input class="input input--large" type="tel" name="phone" id="phone-profile" required>
+            <input class="input input--large" type="tel" name="phone" id="phone-profile" required data-input="phone">
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="profile-new-pass">New Password</label>
             <input class="input input--large input--padding-large" type="password" name="profile-new-pass"
-              id="profile-new-pass">
+              id="profile-new-pass" data-input="pass">
             <button type="button" class="input__btn input__btn--large pass-show">
               <svg class="input__icon input__icon--large input__icon--light">
                 <use xlink:href="assets/svg/sprite.svg#eye"></use>
@@ -844,7 +847,7 @@
           <div class="input__box input__box--large">
             <label class="label label--large" for="profile-confirm-pass">Confirm Password</label>
             <input class="input input--large input--padding-large" type="password" name="profile-confirm-pass"
-              id="profile-confirm-pass">
+              id="profile-confirm-pass" data-input="confirm-pass">
             <button type="button" class="input__btn input__btn--large pass-show">
               <svg class="input__icon input__icon--large input__icon--light">
                 <use xlink:href="assets/svg/sprite.svg#eye"></use>
@@ -879,11 +882,11 @@
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="address">Address</label>
-            <input class="input input--large" type="text" name="address" id="address">
+            <input class="input input--large" type="text" name="address" id="address" data-input="address">
           </div>
           <div class="input__box input__box--large">
             <label class="label label--large" for="code">ZIP Code</label>
-            <input class="input input--large" type="text" name="code" id="code">
+            <input class="input input--large" type="text" name="code" id="code" data-input="code">
           </div>
           <button class="btn btn--solid btn--large btn--idle u-margin-top-large" type="submit">
             Save changes
@@ -1676,22 +1679,22 @@
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="first-name-delivery">First name</label>
                     <input class="input input--large input--half" type="text" name="first-name" id="first-name-delivery"
-                      placeholder="Your first name" required>
+                      placeholder="Your first name" required data-input="first-name">
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="last-name-delivery">Last name</label>
                     <input class="input input--large" type="text" name="last-name" id="last-name-delivery"
-                      placeholder="Your last name" required>
+                      placeholder="Your last name" required data-input="last-name">
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="profile-email-delivery">Email</label>
                     <input class="input input--large" type="email" name="profile-email" id="profile-email-delivery"
-                      placeholder="Your working email" required>
+                      placeholder="Your working email" required data-input="email">
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="phone-delivery">Phone</label>
                     <input class="input input--large" type="tel" name="phone" id="phone-delivery"
-                      placeholder="Your phone number" required>
+                      placeholder="Your phone number" required data-input="phone">
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="country-delivery">Country</label>
@@ -1724,12 +1727,12 @@
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="address-delivery">Address</label>
                     <input class="input input--large" type="text" name="address-delivery" id="address-delivery"
-                      placeholder="Your address" required>
+                      placeholder="Your address" required data-input="address">
                   </div>
                   <div class="input__box input__box--medium">
                     <label class="label label--large" for="code-delivery">ZIP Code</label>
                     <input class="input input--large" type="text" name="code" id="code-delivery"
-                      placeholder="Your ZIP code" required>
+                      placeholder="Your ZIP code" required data-input="code">
                   </div>
                   <div class="modal__check">
                     <input class="checkbox__input" type="checkbox" name="check-details" id="check-details" checked>
@@ -1765,18 +1768,18 @@
                     <div class="details__card-num">
                       <label class="label label--large" for="card-num">Card number</label>
                       <input class="input input--large" type="text" name="card-num" id="card-num" maxlength="16"
-                        minlength="16" placeholder="0000 0000 0000 0000">
+                        minlength="16" placeholder="0000 0000 0000 0000" data-input="number">
                     </div>
                     <div class="details__card-wrapper">
                       <div class="details__card-detail-1">
                         <label class="label label--large" for="card-date">Expiry date</label>
                         <input class="input input--large" type="text" name="card-date" id="card-date"
-                          placeholder="mm/yy">
+                          placeholder="mm/yy" data-input="number">
                       </div>
                       <div class="details__card-detail-2">
                         <label class="label label--large" for="card-cvc">CVC</label>
                         <input class="input input--large" type="text" name="card-cvc" id="card-cvc" maxlength="3"
-                          minlength="3" placeholder="000">
+                          minlength="3" placeholder="000" data-input="number">
                       </div>
                     </div>
                   </li>
@@ -2066,7 +2069,7 @@
       <article class="post__article">
         <div class="post__header post__container">
           <h2 class="heading-secondary heading-secondary--margin-md">
-            Top 10 of This Season’s Hottest Sneakers
+
           </h2>
           <div class="post__lists">
             <ul class="blog__list"></ul>
@@ -2104,7 +2107,7 @@
         </div>
         <div class="post__main">
           <div class="post__container">
-            <img class="post__img" src="assets/images/blog-2.jpg" alt="Sneakers">
+            <img class="post__img" src="#" alt="">
             <p class="post__text-bold u-margin-bottom-medium">
               Vulputate vitae pellentesque scelerisque luctus consequat mattis
               pellentesque dui odio. Interdum aenean sit malesuada ornare sed
@@ -2284,12 +2287,13 @@
 
         <div class="input__box u-margin-bottom-medium">
           <label class="label label--large" for="name">Name*</label>
-          <input class="input input--large" type="text" data-input="name" id="name" placeholder="Your name" required>
+          <input class="input input--large" type="text" data-input="name" id="name" placeholder="Your name" required
+            data-input="name">
         </div>
         <div class="input__box u-margin-bottom-medium">
           <label class="label label--large" for="email-sign-up-blog">Email*</label>
           <input class="input input--large" type="email" data-input="email" id="email-sign-up-blog"
-            placeholder="Your working email" required>
+            placeholder="Your working email" required data-input="email">
         </div>
         <div class="form__textarea-box">
           <label class="label label--large" for="textarea-comment">Your comment*</label>
@@ -2365,20 +2369,22 @@
           <div class="input__box u-margin-bottom-medium">
             <label class="label label--large" for="contact-full-name">Full Name*</label>
             <input class="input input--large" type="text" name="full-name" id="contact-full-name"
-              placeholder="Your full name" required>
+              placeholder="Your full name" required data-input="name">
           </div>
           <div class="input__box u-margin-bottom-medium">
             <label class="label label--large" for="email">Email*</label>
             <input class="input input--large" type="email" name="email" id="email" placeholder="Your working email"
-              required>
+              required data-input="email">
           </div>
           <div class="input__box u-margin-bottom-medium">
             <label class="label label--large" for="phone">Phone</label>
-            <input class="input input--large" type="tel" name="phone" id="phone" placeholder="Your phone number">
+            <input class="input input--large" type="tel" name="phone" id="phone" placeholder="Your phone number"
+              data-input="phone">
           </div>
           <div class="input__box u-margin-bottom-medium">
             <label class="label label--large" for="subject">Subject</label>
-            <input class="input input--large" type="text" name="subject" id="subject" placeholder="Title your message">
+            <input class="input input--large" type="text" name="subject" id="subject" placeholder="Title your message"
+              data-input="message">
           </div>
           <div class="form__textarea-box">
             <label class="label label--large" for="textarea-message">Message*</label>
@@ -2989,12 +2995,12 @@
       <div class="input__box">
         <label class="label label--medium" for="name-review">Name</label>
         <input class="input input--medium" type="text" data-input="name" id="name-review" placeholder="Your name"
-          required>
+          required data-input="name">
       </div>
       <div class="input__box">
         <label class="label label--medium" for="email-review">Email</label>
         <input class="input input--medium" type="email" data-input="email" id="email-review"
-          placeholder="Your working email" required>
+          placeholder="Your working email" required data-input="email">
       </div>
       <div class="input__box">
         <label class="label label--medium" for="rating">Rating</label>

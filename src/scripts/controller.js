@@ -84,9 +84,9 @@ function controlCheckoutPage() {
 function controlSignIn(e) {
   e.preventDefault();
 
-  const user = modalView.validationLogIn(model.state.users);
-  const comments = model.findUsersComments(user);
+  const user = modalView.signIn(model.state.users);
   if (!user) return;
+  const comments = model.findUsersComments(user);
   navigationView.logInAccount(user);
   cardView.renderProfileCards(user);
   accountView.renderAccountData(user, comments, citiesList);
@@ -124,6 +124,13 @@ function controlDeleteAccount(e) {
   checkoutView.toggleSignInBlock();
 }
 
+function controlRegister(e) {
+  e.preventDefault();
+  const newUser = modalView.registerUser(model.state.users);
+  if (!newUser) return;
+  model.createAccount(newUser);
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -132,12 +139,13 @@ function init() {
   postView.addHandlerRenderPostPage(controlRenderPostPage);
   cartModalView.addHandlerAddToCart(controlModalCart);
   checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
-  modalView.addHandlerLogIn(controlSignIn);
+  modalView.addHandlerSignIn(controlSignIn);
   cardView.addHandlerAddToWishlist(controlAddToWishlist);
   accountView.addHandlerDeleteWishlistItems(controlDeleteWishlist);
   accountView.addHandlerDeleteViewlistItems(controlDeleteViewlist);
   accountView.addHandlerSignOut(controlSignOut);
   accountView.addHandlerDeleteAccount(controlDeleteAccount);
+  modalView.addHandlerRegister(controlRegister);
 }
 
 init();
