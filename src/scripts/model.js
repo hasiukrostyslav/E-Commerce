@@ -149,22 +149,26 @@ export const getCity = async function (countries) {
   }
 };
 
+// FIND CURRENT USER
+export const findCurrentUser = (id) =>
+  state.users.find((user) => user.id === +id);
+
 // DELETE WISHLIST/VIEW FROM USER PROFILE
 export const deleteWishlist = function (id) {
-  const currentUser = state.users.find((user) => user.id === +id);
+  const currentUser = findCurrentUser(id);
   currentUser.wishlist.splice(0);
   persistState();
 };
 
 export const deleteViewlist = function (id) {
-  const currentUser = state.users.find((user) => user.id === +id);
+  const currentUser = findCurrentUser(id);
   currentUser.view.splice(0);
   persistState();
 };
 
 // DELETE ACCOUNT
 export const deleteUser = function (id) {
-  const currentUser = state.users.find((user) => user.id === id);
+  const currentUser = findCurrentUser(id);
   const index = state.users.indexOf(currentUser);
   state.users.splice(index, 1);
   persistState();
@@ -194,12 +198,21 @@ export const createAccount = function (newUser) {
 };
 
 // ADD TO VIEW LIST
-export const addToViewList = function (article, userId) {
+export const addToViewList = function (article, id) {
   const item = findItemByArticle(article);
-  const user = state.users.find((el) => el.id === userId);
+  const user = findCurrentUser(id);
   if (!user) return;
 
   if (user.view.some((el) => el.article === item.article)) return;
   user.view.push(item);
+  persistState();
+};
+
+// UPDATE ACCOUNT DATA
+export const updateAccountData = function (user, newData) {
+  const map = new Map(Object.entries(newData));
+  map.forEach((value, key) => {
+    user[key] = user[key] === value ? user[key] : value;
+  });
   persistState();
 };

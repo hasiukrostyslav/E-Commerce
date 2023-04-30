@@ -622,7 +622,7 @@ export default class View {
     );
   }
 
-  _showWarning(form, inputEl) {
+  _showWarning(form, inputEl, pass) {
     const warning = form.querySelector('.input__warning');
     inputEl.classList.add('input--invalid');
 
@@ -630,8 +630,23 @@ export default class View {
     if (inputEl.dataset.input === 'full-name')
       this._showFullNameWarning(inputEl, warning);
 
+    if (inputEl.dataset.input === 'first-name')
+      this._showNameWarning(inputEl, warning);
+
+    if (inputEl.dataset.input === 'last-name')
+      this._showNameWarning(inputEl, warning, 'last-name');
+
     if (inputEl.dataset.input.startsWith('pass'))
-      this._showPasswordWarning(inputEl, warning);
+      this._showPasswordWarning(inputEl, warning, pass);
+
+    if (inputEl.dataset.input === 'code')
+      this._showZipCodeWarning(inputEl, warning);
+
+    if (inputEl.dataset.input === 'phone')
+      this._showPhoneWarning(inputEl, warning);
+
+    if (inputEl.dataset.input === 'address')
+      warning.textContent = ERROR.address;
   }
 
   _showFullNameWarning(inputEl, warning) {
@@ -648,15 +663,36 @@ export default class View {
       warning.textContent = ERROR.fullName;
   }
 
-  _textValidation(text, warning, error) {
+  _showNameWarning(inputEl, warning, type = 'name') {
+    if (inputEl.value === '')
+      warning.textContent = type === 'name' ? ERROR.name : ERROR.lastName;
+
     if (
-      !text
+      inputEl.value
         .split(' ')
         .join('')
         .split('')
-        .every((el) => el.match(/[a-z]/i))
+        .every((el) => el.match(/[a-z]/i)) === false
     )
-      warning.textContent = error;
+      warning.textContent =
+        type === 'name' ? ERROR.nameChar : ERROR.lastNameChar;
+  }
+
+  _namesValidation(inputEl, form) {
+    if (
+      !inputEl.value ||
+      inputEl.value
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/[a-z]/i)) === false
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
   }
 
   _showEmailWarning(inputEl, warning) {
@@ -674,9 +710,32 @@ export default class View {
     if (!inputEl.value) warning.textContent = ERROR.emailEmpty;
   }
 
-  _showPasswordWarning(inputEl, warning) {
+  _globalEmailValidation(inputEl, form) {
+    const { value } = inputEl;
+    if (
+      !value ||
+      !value.includes('.') ||
+      !value.includes('@') ||
+      value.startsWith('.') ||
+      value.endsWith('.') ||
+      value.startsWith('@') ||
+      value.endsWith('@')
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _showPasswordWarning(inputEl, warning, pass) {
     if (inputEl.dataset.input === 'pass-confirm') {
       warning.textContent = ERROR.passConfirm;
+    }
+
+    if (inputEl.dataset.input === 'pass-confirm' && !pass) {
+      warning.textContent = ERROR.passNewEmpty;
     }
 
     if (inputEl.value.length === 0) {
@@ -691,7 +750,96 @@ export default class View {
       warning.textContent = ERROR.passWrong;
     }
 
-    if (inputEl.id === 'profile-new-pass') {
+    if (inputEl.id === 'profile-new-pass' && inputEl.value.length >= 6) {
+      warning.textContent = ERROR.passNew;
     }
+  }
+
+  _passConfirmValidation(inputEl, pass, form) {
+    if (inputEl.value !== pass) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl, pass);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _addressValidation(inputEl, form) {
+    if (
+      inputEl.value
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/\w|\.|,/)) === false
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _showZipCodeWarning(inputEl, warning) {
+    if (inputEl.value.length < 3) {
+      warning.textContent = ERROR.zipCodeLength;
+    }
+
+    if (!Number.isInteger(+inputEl.value) && inputEl.value.length >= 3) {
+      warning.textContent = ERROR.zipCode;
+    }
+  }
+
+  _zipCodeValidation(inputEl, form) {
+    if (
+      (inputEl.value.length > 0 && inputEl.value.length < 3) ||
+      !Number.isInteger(+inputEl.value)
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _showPhoneWarning(inputEl, warning) {
+    if (
+      inputEl.value.split('').filter((digit) => Number.isFinite(+digit))
+        .length < 10 &&
+      inputEl.value
+    )
+      warning.textContent = ERROR.phoneLength;
+
+    if (!this._allowedPhoneSigns(inputEl)) warning.textContent = ERROR.phone;
+  }
+
+  _phoneValidation(inputEl, form) {
+    if (
+      (inputEl.value.split('').filter((digit) => Number.isFinite(+digit))
+        .length < 10 &&
+        inputEl.value) ||
+      !this._allowedPhoneSigns(inputEl)
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _allowedPhoneSigns(inputEl) {
+    return inputEl.value
+      .split('')
+      .every(
+        (symbl) =>
+          Number.isFinite(+symbl) ||
+          symbl === '+' ||
+          symbl === '-' ||
+          symbl === '(' ||
+          symbl === ')'
+      );
   }
 }

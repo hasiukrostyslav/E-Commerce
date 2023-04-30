@@ -21,6 +21,19 @@ class AccountView extends View {
   _btnsDeleteAll = [...this._accountPageEl.querySelectorAll('.btn--delete')];
   _selectFormsEl = [...this._accountPageEl.querySelectorAll('.sort__form')];
   _btnDeleteAccount = this._profilePageEl.querySelector('.btn--delete');
+  _profileInputsForm = document.querySelector('.account__form');
+  _profileInputs = this._profileInputsForm.querySelectorAll('.input');
+  _btnSaveProfile = this._profileInputsForm.querySelector('.btn');
+  _inputFirstName = document.getElementById('first-name');
+  _inputLastName = document.getElementById('last-name');
+  _inputEmail = document.getElementById('profile-email');
+  _inputPhone = document.getElementById('phone-profile');
+  _inputAddress = document.getElementById('address');
+  _inputCode = document.getElementById('code');
+  _selectCountry = document.getElementById('country');
+  _selectCity = document.getElementById('city');
+  _inputNewPass = document.getElementById('profile-new-pass');
+  _inputPassConfirm = document.getElementById('profile-confirm-pass');
 
   constructor() {
     super();
@@ -45,42 +58,157 @@ class AccountView extends View {
     ).textContent = `${data.firstName} ${data.lastName}`;
 
     document.querySelector('.account__user-email').textContent = data.email;
-    document.getElementById('first-name').value = data.firstName;
-    document.getElementById('last-name').value = data.lastName;
-    document.getElementById('profile-email').value = data.email;
-    document.getElementById('phone-profile').value = data.phone || '';
-    document.getElementById('address').value = data.address || '';
-    document.getElementById('code').value = data.zipCode || '';
-    document.getElementById('country').value = data.country || '';
+    this._inputFirstName.value = data.firstName;
+    this._inputLastName.value = data.lastName;
+    this._inputEmail.value = data.email;
+    this._inputPhone.value = data.phone || '';
+    this._inputAddress.value = data.address || '';
+    this._inputCode.value = data.zipCode || '';
+    this._selectCountry.value = data.country || '';
 
     if (data.country)
       this._renderSelectCity(
-        document.getElementById('city'),
-        document.getElementById('country').value,
+        this._selectCity,
+        this._selectCountry.value,
         cities
       );
 
-    document.getElementById('city').value = data.city || '';
+    this._selectCity.value = data.city || '';
+    this._addHandlerActivateSaveButton();
   }
 
   _clearProfilePage() {
     document.querySelector('.account__user-name').textContent = 'User name';
     document.querySelector('.account__user-email').textContent = 'User email';
-    document.getElementById('first-name').value = '';
-    document.getElementById('last-name').value = '';
-    document.getElementById('profile-email').value = '';
-    document.getElementById('phone-profile').value = '';
-    document.getElementById('address').value = '';
-    document.getElementById('code').value = '';
-    document.getElementById('country').value = '';
-    document.getElementById('city').value = '';
+    this._inputFirstName.value = '';
+    this._inputLastName.value = '';
+    this._inputEmail.value = '';
+    this._inputPhone.value = '';
+    this._inputAddress.value = '';
+    this._inputCode.value = '';
+    this._inputNewPass.value = '';
+    this._inputPassConfirm.value = '';
+    this._selectCountry.value = '';
+    this._selectCity.value = '';
   }
 
   getUserId() {
     return +this._userProfileIcon.dataset.id;
   }
 
-  _saveChanges() {}
+  _activateSaveButton() {
+    this._btnSaveProfile.classList.remove('btn--idle');
+  }
+
+  _addHandlerActivateSaveButton() {
+    this._profileInputs.forEach((input) =>
+      input.addEventListener('change', this._activateSaveButton.bind(this))
+    );
+  }
+
+  updateProfileData(user, e) {
+    e.preventDefault();
+    if (this._btnSaveProfile.classList.contains('btn--idle')) return;
+    this._profileInputsForm
+      .querySelectorAll('.input__warning')
+      .forEach((el) => el.remove());
+
+    return this._validationProfileData(user);
+  }
+
+  _validationProfileData(user) {
+    const firstName = this._namesValidation(
+      this._inputFirstName,
+      this._profileInputsForm
+    );
+    if (!firstName) return;
+
+    const lastName = this._namesValidation(
+      this._inputLastName,
+      this._profileInputsForm
+    );
+    if (!lastName) return;
+
+    const email = this._globalEmailValidation(
+      this._inputEmail,
+      this._profileInputsForm
+    );
+    if (!email) return;
+
+    let phone = this._phoneValidation(
+      this._inputPhone,
+      this._profileInputsForm
+    );
+    if (!phone && this._inputPhone.value) return;
+    if (!phone && !this._inputPhone.value) phone = '';
+
+    let password = this._passValidation(user);
+    if (!password && this._inputNewPass.value) return;
+    if (!password && !this._inputNewPass.value) password = '';
+
+    const confirmPass = this._passConfirmValidation(
+      this._inputPassConfirm,
+      password,
+      this._profileInputsForm
+    );
+    if (
+      (!confirmPass &&
+        this._inputPassConfirm.value &&
+        this._inputNewPass.value) ||
+      (!confirmPass &&
+        this._inputPassConfirm.value &&
+        !this._inputNewPass.value) ||
+      password !== confirmPass
+    )
+      return;
+
+    const country = this._selectCountry.value;
+    const city = this._selectCity.value;
+    let address = this._addressValidation(
+      this._inputAddress,
+      this._profileInputsForm
+    );
+    if (!address && this._inputAddress.value) return;
+    if (!address && !this._inputAddress.value) address = '';
+
+    let zipCode = this._zipCodeValidation(
+      this._inputCode,
+      this._profileInputsForm
+    );
+    if (!zipCode && this._inputCode.value) return;
+    if (!zipCode && !this._inputCode.value) zipCode = '';
+
+    const validData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password: password || user.password,
+      country,
+      city,
+      address,
+      zipCode: +zipCode,
+    };
+    return validData;
+  }
+
+  _passValidation(user) {
+    if (
+      (this._inputNewPass.value.length < 6 &&
+        this._inputNewPass.value.length > 0) ||
+      this._inputNewPass.value === user.password
+    ) {
+      this._renderWarning(this._inputNewPass, this._inputNewPass.dataset.input);
+      this._showWarning(this._profileInputsForm, this._inputNewPass);
+    } else {
+      this._inputNewPass.classList.remove('input--invalid');
+      return this._inputNewPass.value;
+    }
+  }
+
+  addHandlerUpdateProfileData(handler) {
+    this._profileInputsForm.addEventListener('submit', handler);
+  }
 
   // ORDERS
   _renderOrders(data, type = 'orders') {

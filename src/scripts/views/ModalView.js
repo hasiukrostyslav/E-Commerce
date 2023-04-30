@@ -179,7 +179,11 @@ class ModalView extends View {
     const pass = this._passValidationSignUp();
     if (!pass) return;
 
-    const passConfirm = this._passConfirmValidation(pass);
+    const passConfirm = this._passConfirmValidation(
+      this._inputPassConfirm,
+      pass,
+      this._modalRegister
+    );
     if (pass !== passConfirm) return;
 
     this._clearInputs(this._modalRegister);
@@ -214,24 +218,8 @@ class ModalView extends View {
         ERROR.emailDuplicate;
     }
 
-    if (!user) {
-      const { value } = this._inputEmail;
-      if (
-        !value ||
-        !value.includes('.') ||
-        !value.includes('@') ||
-        value.startsWith('.') ||
-        value.endsWith('.') ||
-        value.startsWith('@') ||
-        value.endsWith('@')
-      ) {
-        this._renderWarning(this._inputEmail, this._inputEmail.dataset.input);
-        this._showWarning(this._modalRegister, this._inputEmail);
-      } else {
-        this._inputEmail.classList.remove('input--invalid');
-        return this._inputEmail.value;
-      }
-    }
+    if (!user)
+      return this._globalEmailValidation(this._inputEmail, this._modalRegister);
   }
 
   _passValidationSignUp() {
@@ -241,19 +229,6 @@ class ModalView extends View {
     } else {
       this._inputPass.classList.remove('input--invalid');
       return this._inputPass.value;
-    }
-  }
-
-  _passConfirmValidation(pass) {
-    if (this._inputPassConfirm.value !== pass) {
-      this._renderWarning(
-        this._inputPassConfirm,
-        this._inputPassConfirm.dataset.input
-      );
-      this._showWarning(this._modalRegister, this._inputPassConfirm);
-    } else {
-      this._inputPassConfirm.classList.remove('input--invalid');
-      return this._inputPassConfirm.value;
     }
   }
 

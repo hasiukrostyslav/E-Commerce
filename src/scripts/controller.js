@@ -94,6 +94,13 @@ function controlSignIn(e) {
   checkoutView.toggleSignInBlock(model.state.users, citiesList, 'hidden');
 }
 
+function controlUpdateProfileData(e) {
+  const user = model.findCurrentUser(accountView.getUserId());
+  const updatedData = accountView.updateProfileData(user, e);
+  if (!updatedData) return;
+  model.updateAccountData(user, updatedData);
+}
+
 function controlAddToWishlist(e) {
   cardView.addToWishlist(e);
 }
@@ -141,6 +148,7 @@ function init() {
   cartModalView.addHandlerAddToCart(controlModalCart);
   checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
   modalView.addHandlerSignIn(controlSignIn);
+  accountView.addHandlerUpdateProfileData(controlUpdateProfileData);
   cardView.addHandlerAddToWishlist(controlAddToWishlist);
   accountView.addHandlerDeleteWishlistItems(controlDeleteWishlist);
   accountView.addHandlerDeleteViewlistItems(controlDeleteViewlist);
