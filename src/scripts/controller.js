@@ -52,6 +52,7 @@ function controlRenderProductPage(e) {
   if (!article) return;
 
   const product = model.findItemByArticle(article);
+  model.addToViewList(article, accountView.getUserId());
 
   productView.renderProductPage(
     product,

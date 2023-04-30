@@ -53,14 +53,17 @@ class ModalView extends View {
     if (!btn) return;
 
     if (btn.tagName === 'a'.toUpperCase()) {
-      const modal = this._modals.find((el) => !el.classList.contains('hidden'));
-      this._addHiddenClass(modal);
+      const curModal = this._modals.find(
+        (el) => !el.classList.contains('hidden')
+      );
+      this._addHiddenClass(curModal);
     }
 
     const modal = this._modals.find(
       (el) => el.dataset.modal === btn.dataset.modal
     );
     this._removeHiddenClass(modal);
+    this._clearInputs(modal);
     modal
       .querySelectorAll('[data-input]')
       .forEach((el) => el.classList.remove('input--invalid'));

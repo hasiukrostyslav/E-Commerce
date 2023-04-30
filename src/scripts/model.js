@@ -175,7 +175,7 @@ export const createAccount = function (newUser) {
   const [fullName, email, pass] = newUser;
 
   const account = {};
-  account.id = Number.parseInt((Math.random() + 1) * 10 ** 5, 10);
+  account.id = Number.parseInt((Math.random() + 1) * 10 ** 7, 10);
   account.firstName = fullName.split(' ').at(0);
   account.lastName = fullName.split(' ').slice(1).join(' ');
   account.phone = '';
@@ -190,5 +190,16 @@ export const createAccount = function (newUser) {
   account.view = [];
 
   state.users.push(account);
+  persistState();
+};
+
+// ADD TO VIEW LIST
+export const addToViewList = function (article, userId) {
+  const item = findItemByArticle(article);
+  const user = state.users.find((el) => el.id === userId);
+  if (!user) return;
+
+  if (user.view.some((el) => el.article === item.article)) return;
+  user.view.push(item);
   persistState();
 };
