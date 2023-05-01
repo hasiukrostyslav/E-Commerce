@@ -1,60 +1,65 @@
 .subscribe {
-    &__flex-container {
-        display: flex;
-        justify-content: space-between;
+  &__flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    .checkbox {
+      margin-top: 2.4rem;
+    }
+  }
+
+  &__email-label {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: $color-gray-dark-2;
+    margin-bottom: 0.8rem;
+  }
+
+  &__input-container {
+    display: flex;
+    // margin-bottom: 2.4rem;
+
+    input[type='submit'] {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      transform: translateX(-1px);
+    }
+  }
+
+  &__email-input {
+    width: 34.1rem;
+    padding: 1.3rem 5rem 1.3rem 1.6rem;
+    border: 1px solid $color-gray-light-4;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: $color-gray-dark-2;
+
+    &--md {
+      width: 100%;
     }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    &:focus {
+      outline: none;
+      border: 1px solid $color-primary;
     }
 
-    &__email-label {
-        display: block;
-        font-size: 1.6rem;
-        line-height: 1.6;
-        color: $color-gray-dark-2;
-        margin-bottom: 0.8rem;
+    &::-webkit-input-placeholder {
+      color: $color-gray-dark-4;
     }
+  }
 
-    &__input-container {
-        display: flex;
-        margin-bottom: 2.4rem;
-
-        input[type='submit'] {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            transform: translateX(-1px);
-        }
-    }
-
-    &__email-input {
-        width: 34.1rem;
-        padding: 1.3rem 5rem 1.3rem 1.6rem;
-        border: 1px solid $color-gray-light-4;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-        font-size: 1.6rem;
-        line-height: 1.5;
-        color: $color-gray-dark-2;
-
-        &--md {
-            width: 100%;
-        }
-
-        &:focus {
-            outline: none;
-            border: 1px solid $color-primary;
-        }
-
-        &::-webkit-input-placeholder {
-            color: $color-gray-dark-4;
-        }
-    }
-
-    &__img {
-        width: 46.1rem;
-        transform: scaleX(-1);
-    }
+  &__img {
+    width: 46.1rem;
+    transform: scaleX(-1);
+  }
 }

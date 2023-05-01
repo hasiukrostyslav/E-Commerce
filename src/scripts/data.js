@@ -1321,6 +1321,7 @@ const data = {
     },
   ],
   contactMessage: [],
+  subscribers: [],
 };
 
 export default data;

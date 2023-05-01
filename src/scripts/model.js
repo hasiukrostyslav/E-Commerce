@@ -9,6 +9,7 @@ function downloadData() {
   state.posts = data.posts;
   state.reviews = data.reviews;
   state.contactMessage = data.contactMessage;
+  state.subscribers = data.subscribers;
 }
 downloadData();
 
@@ -19,6 +20,7 @@ const persistState = function () {
   localStorage.setItem('posts', JSON.stringify(state.posts));
   localStorage.setItem('reviews', JSON.stringify(state.reviews));
   localStorage.setItem('contactMessage', JSON.stringify(state.contactMessage));
+  localStorage.setItem('subscribers', JSON.stringify(state.subscribers));
 };
 
 const init = function () {
@@ -27,6 +29,7 @@ const init = function () {
   const postsStorage = localStorage.getItem('posts');
   const reviewsStorage = localStorage.getItem('reviews');
   const contactMessageStorage = localStorage.getItem('contactMessage');
+  const subscribersStorage = localStorage.getItem('subscribers');
 
   if (usersStorage) state.users = JSON.parse(usersStorage);
   if (catalogStorage) state.catalogStorage = JSON.parse(catalogStorage);
@@ -34,6 +37,7 @@ const init = function () {
   if (reviewsStorage) state.reviews = JSON.parse(reviewsStorage);
   if (contactMessageStorage)
     state.contactMessage = JSON.parse(contactMessageStorage);
+  if (subscribersStorage) state.subscribers = JSON.parse(subscribersStorage);
 };
 init();
 
@@ -43,6 +47,7 @@ const clearState = function () {
   localStorage.clear('posts');
   localStorage.clear('reviews');
   localStorage.clear('contactMessage');
+  localStorage.clear('subscribers');
 };
 
 // CLEAR LOCAL STORAGE HOTKEY
@@ -230,5 +235,11 @@ export const updateAccountData = function (user, newData) {
 // ADD CONTACT MESSAGE
 export const addContactMessage = function (message) {
   state.contactMessage.push(message);
+  persistState();
+};
+
+// ADD SUBSCRIBERS
+export const addSubscribers = function (email) {
+  state.subscribers.push(email);
   persistState();
 };

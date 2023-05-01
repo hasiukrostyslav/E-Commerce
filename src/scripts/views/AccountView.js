@@ -131,7 +131,8 @@ class AccountView extends View {
 
     const email = this._globalEmailValidation(
       this._inputEmail,
-      this._profileInputsForm
+      this._profileInputsForm,
+      this._inputEmail
     );
     if (!email) return;
 

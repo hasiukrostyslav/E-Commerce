@@ -140,7 +140,16 @@ function controlRegister(e) {
 }
 
 function controlSendMessage(e) {
-  model.addContactMessage(contactView.sendMessage(e));
+  const message = contactView.sendMessage(e);
+  if (!message) return;
+  model.addContactMessage(message);
+  modalView.modalTimer();
+}
+
+function controlSubscribe(e) {
+  const email = view.subscribe(e);
+  if (!email) return;
+  model.addSubscribers(email);
   modalView.modalTimer();
 }
 
@@ -161,6 +170,7 @@ function init() {
   accountView.addHandlerDeleteAccount(controlDeleteAccount);
   modalView.addHandlerRegister(controlRegister);
   contactView.addHandlerSendMessage(controlSendMessage);
+  view.addHandlerSubscribe(controlSubscribe);
 }
 
 init();

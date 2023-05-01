@@ -81,7 +81,11 @@ class ContactView extends View {
     const fullName = this._fullNameValidation(this._inputFullName, this._form);
     if (!fullName) return;
 
-    const email = this._globalEmailValidation(this._inputEmail, this._form);
+    const email = this._globalEmailValidation(
+      this._inputEmail,
+      this._form,
+      this._inputEmail
+    );
     if (!email) return;
 
     let phone = this._phoneValidation(this._inputPhone, this._form);

@@ -28,6 +28,7 @@ export default class View {
   _subtotalPriceEl = [...document.querySelectorAll('[data-price="subtotal"]')];
   _modalPopup = document.querySelector('.modal--popup');
   _modalMessage = this._modalPopup.querySelector('.modal__message');
+  _subscribeForms = document.querySelectorAll('[data-form="subscribe"]');
 
   init(data) {
     this._getCurrentDay();
@@ -731,7 +732,7 @@ export default class View {
     if (!inputEl.value) warning.textContent = ERROR.emailEmpty;
   }
 
-  _globalEmailValidation(inputEl, form) {
+  _globalEmailValidation(inputEl, form, container) {
     const { value } = inputEl;
     if (
       !value ||
@@ -742,7 +743,7 @@ export default class View {
       value.startsWith('@') ||
       value.endsWith('@')
     ) {
-      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._renderWarning(container, inputEl.dataset.input);
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
@@ -877,5 +878,23 @@ export default class View {
   _showModalPopup(text) {
     this._modalPopup.classList.remove('hidden');
     this._modalMessage.textContent = POPUP_MESSAGE[text];
+  }
+
+  // SUBSCRIBE
+  subscribe(e) {
+    e.preventDefault();
+    const warning = e.target.querySelector('.input__warning');
+    if (warning) warning.remove();
+    const input = e.target.querySelector('[type="email"]');
+    const container = input.closest('div');
+    const email = this._globalEmailValidation(input, e.target, container);
+    this._showModalPopup('subscribe');
+    return email;
+  }
+
+  addHandlerSubscribe(handler) {
+    this._subscribeForms.forEach((form) =>
+      form.addEventListener('submit', handler)
+    );
   }
 }

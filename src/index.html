@@ -521,11 +521,11 @@
           <h3 class="heading-tertiary heading-tertiary--main">
             Get 5% Off & Free Delivery
           </h3>
-          <form class="delivery__form" action="#">
+          <form class="delivery__form" action="#" data-form="subscribe" novalidate>
             <label class="delivery__email-label" for="email-dl">Email</label>
             <div class="delivery__input-container">
               <input class="delivery__email-input" type="email" name="email" id="email-dl"
-                placeholder="Your working email" required>
+                placeholder="Your working email" required data-input="email">
               <input type="submit" class="btn btn--solid btn--medium-right" value="Subscribe">
             </div>
           </form>
@@ -2651,7 +2651,7 @@
           <p class="subscribe__text">
             Subscribe for exclusive early sale access and new arrivals.
           </p>
-          <form class="subscribe__form">
+          <form class="subscribe__form" data-form="subscribe" novalidate>
             <div class="checkbox__flex-container">
               <div class="checkbox__container">
                 <input class="checkbox__btn" type="checkbox" name="women" id="women">
@@ -2674,7 +2674,7 @@
             <label class="subscribe__email-label" for="email-sb">Email</label>
             <div class="subscribe__input-container">
               <input class="subscribe__email-input" type="email" name="email" id="email-sb"
-                placeholder="Your working email" required>
+                placeholder="Your working email" required data-input="email">
               <input type="submit" class="btn btn--solid btn--large" value="Subscribe">
             </div>
 

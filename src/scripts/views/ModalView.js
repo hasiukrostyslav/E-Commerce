@@ -209,7 +209,11 @@ class ModalView extends View {
     }
 
     if (!user)
-      return this._globalEmailValidation(this._inputEmail, this._modalRegister);
+      return this._globalEmailValidation(
+        this._inputEmail,
+        this._modalRegister,
+        this._inputEmail
+      );
   }
 
   _passValidationSignUp() {
