@@ -139,6 +139,11 @@ function controlRegister(e) {
   model.createAccount(newUser);
 }
 
+function controlSendMessage(e) {
+  model.addContactMessage(contactView.sendMessage(e));
+  modalView.modalTimer();
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -155,6 +160,7 @@ function init() {
   accountView.addHandlerSignOut(controlSignOut);
   accountView.addHandlerDeleteAccount(controlDeleteAccount);
   modalView.addHandlerRegister(controlRegister);
+  contactView.addHandlerSendMessage(controlSendMessage);
 }
 
 init();

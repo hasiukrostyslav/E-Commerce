@@ -8,31 +8,41 @@ function downloadData() {
   state.catalog = data.catalog;
   state.posts = data.posts;
   state.reviews = data.reviews;
+  state.contactMessage = data.contactMessage;
 }
 downloadData();
 
 // LOCAL STORAGE
 const persistState = function () {
   localStorage.setItem('users', JSON.stringify(state.users));
+  localStorage.setItem('catalog', JSON.stringify(state.catalog));
   localStorage.setItem('posts', JSON.stringify(state.posts));
   localStorage.setItem('reviews', JSON.stringify(state.reviews));
+  localStorage.setItem('contactMessage', JSON.stringify(state.contactMessage));
 };
 
 const init = function () {
   const usersStorage = localStorage.getItem('users');
+  const catalogStorage = localStorage.getItem('catalog');
   const postsStorage = localStorage.getItem('posts');
   const reviewsStorage = localStorage.getItem('reviews');
+  const contactMessageStorage = localStorage.getItem('contactMessage');
 
   if (usersStorage) state.users = JSON.parse(usersStorage);
+  if (catalogStorage) state.catalogStorage = JSON.parse(catalogStorage);
   if (postsStorage) state.posts = JSON.parse(postsStorage);
   if (reviewsStorage) state.reviews = JSON.parse(reviewsStorage);
+  if (contactMessageStorage)
+    state.contactMessage = JSON.parse(contactMessageStorage);
 };
 init();
 
 const clearState = function () {
   localStorage.clear('users');
+  localStorage.clear('catalog');
   localStorage.clear('posts');
   localStorage.clear('reviews');
+  localStorage.clear('contactMessage');
 };
 
 // CLEAR LOCAL STORAGE HOTKEY
@@ -214,5 +224,11 @@ export const updateAccountData = function (user, newData) {
   map.forEach((value, key) => {
     user[key] = user[key] === value ? user[key] : value;
   });
+  persistState();
+};
+
+// ADD CONTACT MESSAGE
+export const addContactMessage = function (message) {
+  state.contactMessage.push(message);
   persistState();
 };

@@ -102,6 +102,13 @@ class ModalView extends View {
     );
   }
 
+  modalTimer() {
+    setTimeout(() => {
+      this._modalPopup.classList.add('hidden');
+      this._modalMessage.textContent = '';
+    }, 2000);
+  }
+
   // SIGN IN
   signIn(data) {
     const inputs = [...this._modalSignIn.querySelectorAll('input')].filter(
@@ -169,7 +176,10 @@ class ModalView extends View {
       .querySelectorAll('.input__warning')
       .forEach((el) => el.remove());
 
-    const fullName = this._nameValidationSignUp();
+    const fullName = this._fullNameValidation(
+      this._inputFullName,
+      this._modalRegister
+    );
     if (!fullName) return;
 
     const oldUser = data.find((user) => user.email === this._inputEmail.value);
@@ -189,26 +199,6 @@ class ModalView extends View {
     this._clearInputs(this._modalRegister);
     this._addHiddenClass(this._modalRegister);
     return [fullName, email, pass];
-  }
-
-  _nameValidationSignUp() {
-    if (
-      this._inputFullName.value.split(' ').length <= 1 ||
-      this._inputFullName.value
-        .split(' ')
-        .join('')
-        .split('')
-        .every((el) => el.match(/[a-z]/i)) === false
-    ) {
-      this._renderWarning(
-        this._inputFullName,
-        this._inputFullName.dataset.input
-      );
-      this._showWarning(this._modalRegister, this._inputFullName);
-    } else {
-      this._inputFullName.classList.remove('input--invalid');
-      return this._inputFullName.value;
-    }
   }
 
   _emailValidationSignUp(user) {

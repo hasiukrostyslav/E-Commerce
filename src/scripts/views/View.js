@@ -1,6 +1,6 @@
 import icons from '../../assets/svg/sprite.svg';
 // prettier-ignore
-import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS, DISCOUNT, MAXSCORE, ERROR, } from '../config';
+import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS, DISCOUNT, MAXSCORE, ERROR, POPUP_MESSAGE } from '../config';
 
 export default class View {
   _parentElement = document.querySelector('body');
@@ -26,6 +26,8 @@ export default class View {
   _discounPricetEl = document.querySelector('[data-price="discount"]');
   _totalPriceEl = document.querySelector('[data-price="total"]');
   _subtotalPriceEl = [...document.querySelectorAll('[data-price="subtotal"]')];
+  _modalPopup = document.querySelector('.modal--popup');
+  _modalMessage = this._modalPopup.querySelector('.modal__message');
 
   init(data) {
     this._getCurrentDay();
@@ -647,6 +649,8 @@ export default class View {
 
     if (inputEl.dataset.input === 'address')
       warning.textContent = ERROR.address;
+
+    if (inputEl.dataset.input === 'textarea') warning.textContent = ERROR.field;
   }
 
   _showFullNameWarning(inputEl, warning) {
@@ -661,6 +665,23 @@ export default class View {
 
     if (inputEl.value.split(' ').length <= 1)
       warning.textContent = ERROR.fullName;
+  }
+
+  _fullNameValidation(inputEl, form) {
+    if (
+      inputEl.value.split(' ').length <= 1 ||
+      inputEl.value
+        .split(' ')
+        .join('')
+        .split('')
+        .every((el) => el.match(/[a-z]/i)) === false
+    ) {
+      this._renderWarning(inputEl, inputEl.dataset.input);
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
   }
 
   _showNameWarning(inputEl, warning, type = 'name') {
@@ -781,6 +802,16 @@ export default class View {
     }
   }
 
+  _textareaValidation(inputEl, form) {
+    if (!inputEl.value) {
+      this._renderWarning(inputEl, 'textarea');
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
   _showZipCodeWarning(inputEl, warning) {
     if (inputEl.value.length < 3) {
       warning.textContent = ERROR.zipCodeLength;
@@ -841,5 +872,10 @@ export default class View {
           symbl === '(' ||
           symbl === ')'
       );
+  }
+
+  _showModalPopup(text) {
+    this._modalPopup.classList.remove('hidden');
+    this._modalMessage.textContent = POPUP_MESSAGE[text];
   }
 }

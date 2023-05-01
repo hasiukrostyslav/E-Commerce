@@ -40,6 +40,7 @@ export const ERROR = {
   address: 'Address must contain only letters and digits',
   zipCode: 'ZIP Code must contain only digits',
   zipCodeLength: 'ZIP Code must be at least 3 digits',
+  field: 'This field cannot be empty.',
   rating: 'Please select score.',
   size: 'Please select a size.',
   emptyCart: 'Your cart is empty',
@@ -103,3 +104,12 @@ export const CITIES = [
     ],
   },
 ];
+
+export const POPUP_MESSAGE = {
+  contact: 'Thank you! Your message has been sent.',
+  comment: 'Thank you! Your comment has been added.',
+  saveChanges: 'Your changes have been saved.',
+  addToCart: 'Item has been added to the cart.',
+  checkout: 'Thank you! Your order has been completed.',
+  subscribe: 'Thank you for subscribing.',
+};

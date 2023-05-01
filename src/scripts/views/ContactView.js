@@ -5,6 +5,12 @@ class ContactView extends View {
   _links = document.querySelectorAll('.contacts__link');
   _pages = document.querySelectorAll('.contacts__page');
   _accordionContainer = document.querySelector('.faq');
+  _form = this._contactsEl.querySelector('.contacts__form');
+  _inputFullName = document.getElementById('contact-full-name');
+  _inputEmail = document.getElementById('email');
+  _inputPhone = document.getElementById('phone');
+  _inputSubject = document.getElementById('subject');
+  _inputMessage = document.getElementById('textarea-message');
 
   constructor() {
     super();
@@ -66,6 +72,39 @@ class ContactView extends View {
       ullamcorper morbi semper massa ac facilisis.
     </p>`;
     return this._textElement;
+  }
+
+  sendMessage(e) {
+    e.preventDefault();
+    this._form.querySelectorAll('.input__warning').forEach((el) => el.remove());
+
+    const fullName = this._fullNameValidation(this._inputFullName, this._form);
+    if (!fullName) return;
+
+    const email = this._globalEmailValidation(this._inputEmail, this._form);
+    if (!email) return;
+
+    let phone = this._phoneValidation(this._inputPhone, this._form);
+    if (!phone && this._inputPhone.value) return;
+    if (!phone && !this._inputPhone.value) phone = '';
+
+    const subject = this._inputSubject.value;
+    const message = this._textareaValidation(this._inputMessage, this._form);
+    if (!message) return;
+    this._showModalPopup('contact');
+    this._form.querySelectorAll('.input').forEach((el) => (el.value = ''));
+
+    return {
+      fullName,
+      email,
+      phone,
+      subject,
+      message,
+    };
+  }
+
+  addHandlerSendMessage(handler) {
+    this._form.addEventListener('submit', handler);
   }
 }
 

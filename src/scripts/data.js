@@ -1320,6 +1320,7 @@ const data = {
       text: 'Amet ut augue dignissim lorem. Diam volutpat porttitor vel, pulvinar semper. Faucibus vel accumsan mi diam magna. Nunc diam lorem semper rhoncus in ut. Quis risus viverra bibendum eu.',
     },
   ],
+  contactMessage: [],
 };
 
 export default data;
