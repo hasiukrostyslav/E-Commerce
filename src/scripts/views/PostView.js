@@ -10,6 +10,11 @@ class PostView extends View {
   _postCommentsContainer = this._postPageEl.querySelector('.post__comments');
   _commetsHeading = this._postCommentsContainer.querySelector('h2');
   _postCommentsList = this._postPageEl.querySelector('.comment');
+  _postForm = this._postPageEl.querySelector('.post__form');
+  _inputName = document.getElementById('name');
+  _inputEmail = this._postForm.querySelector('[type="email"]');
+  _inputComment = document.getElementById('textarea-comment');
+  _btnPost = this._postForm.querySelector('.btn');
   _sliderContainer = this._postPageEl.querySelector(
     '.post__carousel-container'
   );
@@ -28,7 +33,7 @@ class PostView extends View {
     this._renderArticle(post);
     this._renderSlider(data);
     this._renderCards(data, post);
-    this._renderComment(post);
+    this.renderComment(post);
   }
 
   // Article
@@ -60,7 +65,7 @@ class PostView extends View {
             <svg class="blog__icon">
               <use xlink:href="${icons}#chat"></use>
             </svg>
-            <p class="heading-quaternary--description">${
+            <p class="heading-quaternary--description comment-amount">${
               data.comments.length > 0 ? data.comments.length : 'No'
             } comment${data.comments.length === 1 ? '' : 's'}</p>
           </li>
@@ -174,7 +179,7 @@ class PostView extends View {
 
   // Comments
 
-  _renderComment(data) {
+  renderComment(data) {
     this._postCommentsList.innerHTML = '';
 
     const { comments } = data;
@@ -183,8 +188,18 @@ class PostView extends View {
     }`;
 
     if (comments.length === 0) return;
-    const markup = comments.map((el) => this._generateComment(el)).join('');
+    const markup = comments
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .map((el) => this._generateComment(el))
+      .join('');
     this._postCommentsList.insertAdjacentHTML('afterbegin', markup);
+    this._updateAmountInfo();
+  }
+
+  _updateAmountInfo() {
+    const info = this._postPageEl.querySelector('.comment-amount');
+    const amount = this._postCommentsList.querySelectorAll('li').length;
+    info.textContent = `${amount} comment${amount === 1 ? '' : 's'}`;
   }
 
   _generateComment(data) {
@@ -250,6 +265,45 @@ class PostView extends View {
     if (this._postPageEl.classList.contains('hidden') && subPage) {
       subPage.closest('li').remove();
     }
+  }
+
+  getPostHeading() {
+    return this._headingEl.textContent;
+  }
+
+  addPostComment(e) {
+    e.preventDefault();
+    this.getPostHeading();
+    const warning = this._postForm.querySelector('.input__warning');
+    if (warning) warning.remove();
+
+    const user = this._fullNameValidation(this._inputName, this._postForm);
+    if (!user) return;
+
+    const email = this._globalEmailValidation(
+      this._inputEmail,
+      this._postForm,
+      this._inputEmail
+    );
+    if (!email) return;
+
+    const text = this._textareaValidation(this._inputComment, this._postForm);
+    if (!text) return;
+
+    this._showModalPopup('comment');
+    this._postForm.querySelectorAll('.input').forEach((el) => (el.value = ''));
+    const date = new Date().toISOString();
+
+    return {
+      user,
+      email,
+      date,
+      text,
+    };
+  }
+
+  addHandlerAddPostComment(handler) {
+    this._postForm.addEventListener('submit', handler);
   }
 }
 

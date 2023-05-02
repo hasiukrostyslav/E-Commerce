@@ -2280,15 +2280,15 @@
         <ul class="comment"></ul>
       </section>
 
-      <form action="#" class="post__form post__container grid grid--col-2-fix">
+      <form action="#" class="post__form post__container grid grid--col-2-fix" novalidate>
         <h2 class="heading-secondary u-margin-bottom-large form__header-grid">
           Leave your comment
         </h2>
 
         <div class="input__box u-margin-bottom-medium">
-          <label class="label label--large" for="name">Name*</label>
-          <input class="input input--large" type="text" data-input="name" id="name" placeholder="Your name" required
-            data-input="name">
+          <label class="label label--large" for="name">Full Name*</label>
+          <input class="input input--large" type="text" data-input="full-name" id="name" placeholder="Your name"
+            required data-input="name">
         </div>
         <div class="input__box u-margin-bottom-medium">
           <label class="label label--large" for="email-sign-up-blog">Email*</label>
@@ -2297,8 +2297,8 @@
         </div>
         <div class="form__textarea-box">
           <label class="label label--large" for="textarea-comment">Your comment*</label>
-          <textarea class="form__textarea input input--large" data-input="text" id="textarea-comment"
-            data-input="textarea" placeholder="Type comment here"></textarea>
+          <textarea class="form__textarea input input--large" id="textarea-comment" data-input="textarea"
+            placeholder="Type comment here"></textarea>
         </div>
         <button type="submit" class="form__btn-grid btn btn--solid btn--large">
           Post comment

@@ -243,3 +243,11 @@ export const addSubscribers = function (email) {
   state.subscribers.push(email);
   persistState();
 };
+
+// ADD POST COMMENT
+export const updatePostComments = function (postHeading, comment) {
+  const post = state.posts.find((el) => el.title === postHeading);
+  post.comments.push(comment);
+  persistState();
+  return post;
+};

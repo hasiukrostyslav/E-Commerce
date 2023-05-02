@@ -888,6 +888,7 @@ export default class View {
     const input = e.target.querySelector('[type="email"]');
     const container = input.closest('div');
     const email = this._globalEmailValidation(input, e.target, container);
+    if (!email) return;
     this._showModalPopup('subscribe');
     return email;
   }

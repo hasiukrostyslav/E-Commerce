@@ -153,6 +153,16 @@ function controlSubscribe(e) {
   modalView.modalTimer();
 }
 
+function controlAddPostComment(e) {
+  const postHeading = postView.getPostHeading();
+  const comment = postView.addPostComment(e);
+  if (!comment) return;
+
+  const updatedData = model.updatePostComments(postHeading, comment);
+  modalView.modalTimer();
+  postView.renderComment(updatedData);
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -171,6 +181,7 @@ function init() {
   modalView.addHandlerRegister(controlRegister);
   contactView.addHandlerSendMessage(controlSendMessage);
   view.addHandlerSubscribe(controlSubscribe);
+  postView.addHandlerAddPostComment(controlAddPostComment);
 }
 
 init();

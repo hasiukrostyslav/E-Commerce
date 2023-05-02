@@ -668,23 +668,26 @@ const data = {
   ],
   posts: [
     {
-      title: '14 Items From End-of-Spring Sales Are Sure to Spark Joy',
+      title: '14 Items From Spring Sales Are Sure to Spark Joy',
       categories: 'Designers',
       date: '2022-07-05T13:26:17.000Z',
       images: [images[`blog-5.jpg`], images[`blog-5-sm.jpg`]],
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
         {
           user: 'Albert Flores',
+          email: 'user@email.com',
           date: '2023-03-07T09:13:10.000Z',
           text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
         },
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
@@ -709,17 +712,20 @@ const data = {
       comments: [
         {
           user: 'Annette Black',
+          email: 'user@email.com',
           date: '2023-03-13T09:13:10.000Z',
           text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
           tag: '@Devon Lane',
         },
         {
           user: 'Albert Flores',
+          email: 'user@email.com',
           date: '2023-03-17T09:13:10.000Z',
           text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
         },
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
@@ -735,22 +741,26 @@ const data = {
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
         {
           user: 'Annette Black',
+          email: 'user@email.com',
           date: '2023-03-01T09:13:10.000Z',
           text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
           tag: '@Devon Lane',
         },
         {
           user: 'Albert Flores',
+          email: 'user@email.com',
           date: '2023-03-07T09:13:10.000Z',
           text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
         },
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
@@ -775,11 +785,13 @@ const data = {
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
         {
           user: 'Annette Black',
+          email: 'user@email.com',
           date: '2023-03-01T09:13:10.000Z',
           text: 'Egestas fermentum natoque sollicitudin mauris. Facilisis praesent urna sed rhoncus quis pharetra pellentesque erat sagittis.',
           tag: '@Devon Lane',
@@ -796,12 +808,14 @@ const data = {
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
 
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
@@ -826,6 +840,7 @@ const data = {
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
@@ -868,11 +883,13 @@ const data = {
       comments: [
         {
           user: 'Albert Flores',
+          email: 'user@email.com',
           date: '2023-03-07T09:13:10.000Z',
           text: 'Libero commodo sit dui ac proin. Penatibus ultricies at adipiscing mauris nunc. Fames faucibus nisl duis id diam.',
         },
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
@@ -888,6 +905,7 @@ const data = {
       comments: [
         {
           user: 'Devon Lane',
+          email: 'user@email.com',
           date: '2023-02-20T13:26:17.000Z',
           text: 'Phasellus varius faucibus ultrices odio in. Massa neque dictum natoque ornare rutrum malesuada et phasellus. Viverra natoque nulla cras vel nisl proin senectus. Tortor sed eleifend ante tristique felis sed urna aliquet. Suspendisse fames egestas sed duis purus diam et.',
         },
@@ -919,6 +937,7 @@ const data = {
       comments: [
         {
           user: 'Marvin McKinney',
+          email: 'user@email.com',
           date: '2023-03-28T08:13:10.000Z',
           text: 'Ullamcorper nibh sed ac ipsum nunc imperdiet rhoncus. Quam donec habitant nibh sit consequat erat libero, tincidunt. Eros ut aliquam proin et duis. Mauris, egestas congue nibh dui a nulla.',
         },
