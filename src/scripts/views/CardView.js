@@ -143,6 +143,22 @@ class CardView extends View {
     });
   }
 
+  updateItemRating(item) {
+    const cards = [...this._parentElement.querySelectorAll('.card')].filter(
+      (card) => +card.dataset.article === item.article
+    );
+
+    cards.forEach((card) => {
+      const labelContainer = card.querySelector('.card__labels');
+      const ratingContainer = card.querySelector('.rating--card');
+      if (ratingContainer) ratingContainer.remove();
+      labelContainer.insertAdjacentHTML(
+        'afterbegin',
+        this._generateRating(item)
+      );
+    });
+  }
+
   generateCardMarkup(data, category = 'item', size = 'large') {
     return `
       <div class="card" data-article="${data.article}">

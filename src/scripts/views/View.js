@@ -483,9 +483,9 @@ export default class View {
   // Reviews
   _generateReviewsComment(reviews, size = 'lg') {
     return `
-          <li class="comment__block--${size} grid grid--col-3-fix grid--row-3" data-timestamp="${Date.parse(
-      reviews.date
-    )}">
+          <li class="comment__block--${size} grid grid--col-3-fix${
+      size === 'sm' ? '' : '-2'
+    } grid--row-3" data-timestamp="${Date.parse(reviews.date)}">
     ${
       size === 'sm'
         ? `
@@ -652,6 +652,8 @@ export default class View {
       warning.textContent = ERROR.address;
 
     if (inputEl.dataset.input === 'textarea') warning.textContent = ERROR.field;
+
+    if (inputEl.dataset.input === 'rating') warning.textContent = ERROR.rating;
   }
 
   _showFullNameWarning(inputEl, warning) {
@@ -806,6 +808,16 @@ export default class View {
   _textareaValidation(inputEl, form) {
     if (!inputEl.value) {
       this._renderWarning(inputEl, 'textarea');
+      this._showWarning(form, inputEl);
+    } else {
+      inputEl.classList.remove('input--invalid');
+      return inputEl.value;
+    }
+  }
+
+  _ratingValidation(inputEl, form) {
+    if (!+inputEl.value) {
+      this._renderWarning(inputEl, 'rating');
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');

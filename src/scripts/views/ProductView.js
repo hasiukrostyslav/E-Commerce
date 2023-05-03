@@ -15,6 +15,14 @@ class ProductView extends View {
   _slideContainer = this._productPageEl.querySelector('.product__img-list');
   _curSlide = 0;
   _currentTab;
+  _modalReview = document.querySelector('.modal--review');
+  _formReview = this._modalReview.querySelector('.review__form');
+  _inputName = document.getElementById('name-review');
+  _inputEmail = document.getElementById('email-review');
+  _ratingSelect = document.getElementById('rating');
+  _textarea = document.getElementById('review-textarea');
+  _btnSubmit = this._modalReview.querySelector('[data-submit]');
+  _article = this._productPageEl.querySelector('.product__article-num');
 
   constructor() {
     super();
@@ -42,6 +50,11 @@ class ProductView extends View {
     this._renderProductOptions(data);
     this._renderProductDetails(data);
     this._renderProductReview(data, reviews);
+  }
+
+  updateProductRating(data, reviews) {
+    this._renderProductReview(data, reviews);
+    this._renderProductOptions(data);
   }
 
   _resetProductPage() {
@@ -166,6 +179,10 @@ class ProductView extends View {
   // Render PRODUCT OPTIONS
 
   _renderProductOptions(data) {
+    this._priceInfo.innerHTML = '';
+    this._formColor.innerHTML = '';
+    this._formSize.innerHTML = '';
+
     this._priceInfo.insertAdjacentHTML(
       'afterbegin',
       this._generatePriceDetails(data)
@@ -561,6 +578,50 @@ class ProductView extends View {
     this._productPageEl
       .querySelector('.pagination')
       .addEventListener('click', handler);
+  }
+
+  addReview(e) {
+    e.preventDefault();
+    const warning = this._formReview.querySelector('.input__warning');
+    if (warning) warning.remove();
+
+    const fullName = this._fullNameValidation(
+      this._inputName,
+      this._formReview
+    );
+    if (!fullName) return;
+
+    const email = this._globalEmailValidation(
+      this._inputEmail,
+      this._formReview,
+      this._inputEmail
+    );
+    if (!email) return;
+
+    const rating = this._ratingValidation(this._ratingSelect, this._formReview);
+    if (!rating) return;
+
+    const text = this._textareaValidation(this._textarea, this._formReview);
+    if (!text) return;
+
+    this._showModalPopup('comment');
+    this._formReview
+      .querySelectorAll('.input')
+      .forEach((el) => (el.value = ''));
+    const date = new Date().toISOString();
+
+    this._modalReview.classList.add('hidden');
+    this._overlay.classList.add('hidden');
+
+    return { fullName, email, rating, text, date };
+  }
+
+  getArticle() {
+    return +this._article.textContent;
+  }
+
+  addHandlerAddReview(handler) {
+    this._formReview.addEventListener('submit', handler);
   }
 
   // Render BREADCRUMB

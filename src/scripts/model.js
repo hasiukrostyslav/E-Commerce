@@ -251,3 +251,20 @@ export const updatePostComments = function (postHeading, comment) {
   persistState();
   return post;
 };
+
+// ADD PRODUCT REVIEW
+export const updateReviewList = function (article, comment) {
+  const item = state.catalog.find((el) => el.article === article);
+  const review = {
+    article: item.article,
+    product: item.description,
+    user: comment.fullName,
+    date: comment.date,
+    rating: +comment.rating,
+    likes: 0,
+    dislikes: 0,
+    text: comment.text,
+  };
+  state.reviews.push(review);
+  persistState();
+};

@@ -163,6 +163,20 @@ function controlAddPostComment(e) {
   postView.renderComment(updatedData);
 }
 
+function controlAddProductReview(e) {
+  const article = productView.getArticle();
+  const review = productView.addReview(e);
+  if (!review) return;
+  model.updateReviewList(article, review);
+  modalView.modalTimer();
+
+  const product = model.findItemByArticle(article);
+  model.calculateItemRating(model.state);
+
+  productView.updateProductRating(product, model.state.reviews);
+  cardView.updateItemRating(product);
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -182,6 +196,7 @@ function init() {
   contactView.addHandlerSendMessage(controlSendMessage);
   view.addHandlerSubscribe(controlSubscribe);
   postView.addHandlerAddPostComment(controlAddPostComment);
+  productView.addHandlerAddReview(controlAddProductReview);
 }
 
 init();
