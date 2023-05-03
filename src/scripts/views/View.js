@@ -120,6 +120,7 @@ export default class View {
     }
 
     this._initContactLinks(link);
+    this._resetSubscribe();
   }
 
   _initContactLinks(link) {
@@ -141,9 +142,11 @@ export default class View {
       this._contactsEl
         .querySelector('a[data-contact="form"]')
         .classList.add('contacts__link--current');
+
       [...pages]
         .find((page) => page.dataset.contact === 'form')
         .classList.remove('hidden');
+      this._clearInputs(this._contactsEl.querySelector('form'));
     }
   }
 
@@ -617,12 +620,28 @@ export default class View {
   }
 
   // INPUT VALIDATION
+  _clearInputs(form) {
+    form.querySelectorAll('[data-input]').forEach((input) => {
+      input.value = '';
+      input.classList.remove('input--invalid');
+    });
+    form.querySelectorAll('.input__warning').forEach((el) => el.remove());
+  }
 
   _renderWarning(input, data) {
-    input.insertAdjacentHTML(
-      'afterend',
-      `<span class="input__warning" data-warning="${data}"></span>`
-    );
+    input
+      .closest('div')
+      .insertAdjacentHTML(
+        'beforeend',
+        `<span class="input__warning ${this._addWarningClass(
+          input
+        )}" data-warning="${data}"></span>`
+      );
+  }
+
+  _addWarningClass(input) {
+    if (input.name === 'textarea') return 'input__warning--big';
+    if (input.id === 'review-textarea') return 'input__warning--large';
   }
 
   _showWarning(form, inputEl, pass) {
@@ -901,8 +920,17 @@ export default class View {
     const container = input.closest('div');
     const email = this._globalEmailValidation(input, e.target, container);
     if (!email) return;
+    input.value = '';
     this._showModalPopup('subscribe');
     return email;
+  }
+
+  _resetSubscribe() {
+    this._subscribeForms.forEach((form) => {
+      const warning = form.querySelector('.input__warning');
+      if (warning) warning.remove();
+      form.querySelector('input[type="email"]').value = '';
+    });
   }
 
   addHandlerSubscribe(handler) {

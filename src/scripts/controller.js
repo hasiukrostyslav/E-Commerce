@@ -76,6 +76,7 @@ function controlModalCart(e) {
   cartModalView.addHandlerChangeAmount(
     cartModalView.changeAmount(model.state.catalog, e)
   );
+  modalView.modalTimer();
 }
 
 function controlCheckoutPage() {
@@ -99,6 +100,7 @@ function controlUpdateProfileData(e) {
   const updatedData = accountView.updateProfileData(user, e);
   if (!updatedData) return;
   model.updateAccountData(user, updatedData);
+  modalView.modalTimer();
 }
 
 function controlAddToWishlist(e) {

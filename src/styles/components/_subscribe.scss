@@ -25,7 +25,7 @@
 
   &__input-container {
     display: flex;
-    // margin-bottom: 2.4rem;
+    position: relative;
 
     input[type='submit'] {
       border-top-left-radius: 0;

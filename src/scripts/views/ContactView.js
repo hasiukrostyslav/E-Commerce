@@ -34,6 +34,8 @@ class ContactView extends View {
       (page) => page.dataset.contact === btn.dataset.contact
     );
     currentPage.classList.remove('hidden');
+
+    if (btn.dataset.contact === 'form') this._clearInputs(this._form);
   }
 
   _toggleAccordion(e) {

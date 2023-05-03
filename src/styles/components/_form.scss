@@ -543,7 +543,16 @@
     font-size: 1.2rem;
     line-height: 1.5;
     color: $color-secondary;
-    margin-top: 0.4rem;
+    position: absolute;
+    bottom: -2rem;
+
+    &--big {
+      bottom: 8rem;
+    }
+
+    &--large {
+      bottom: 11rem;
+    }
   }
 }
 

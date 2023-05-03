@@ -34,6 +34,7 @@ class PostView extends View {
     this._renderSlider(data);
     this._renderCards(data, post);
     this.renderComment(post);
+    this._clearInputs(this._postForm);
   }
 
   // Article

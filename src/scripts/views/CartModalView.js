@@ -87,6 +87,7 @@ class CartMovalView extends View {
 
       this._countItems();
       this._calculateTotalPrice();
+      this._showModalPopup('addToCart');
     } catch (err) {
       const errorEl = document.createElement('span');
       errorEl.classList.add('select__warning');

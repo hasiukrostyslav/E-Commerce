@@ -44,19 +44,12 @@
     }
 
     &__delivery {
-      // background-image: url(../../src/assets/images/delivery.png);
       background-color: $color-gray-light-3;
-      // transform: scaleX(-1);
-    }
-
-    &__delivery * {
-      // transform: scaleX(-1);
     }
   }
 
   .delivery {
     position: relative;
-    // overflow: hidden;
 
     &__form {
       position: relative;
@@ -67,6 +60,7 @@
     &__input-container {
       display: flex;
       align-items: center;
+      position: relative;
     }
 
     &__email-label {

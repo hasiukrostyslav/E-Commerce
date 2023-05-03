@@ -23,6 +23,9 @@ class ProductView extends View {
   _textarea = document.getElementById('review-textarea');
   _btnSubmit = this._modalReview.querySelector('[data-submit]');
   _article = this._productPageEl.querySelector('.product__article-num');
+  _formColor = this._productPageEl.querySelector('.product__color');
+  _formSize = this._productPageEl.querySelector('#size');
+  _priceInfo = this._productPageEl.querySelector('.product__flex-container');
 
   constructor() {
     super();
@@ -62,12 +65,6 @@ class ProductView extends View {
       .querySelectorAll('.checkbox__btn')
       .forEach((el, i) => (el.checked = i === 0 ? true : false));
     this._combineTabsWithPages(this._tabs.querySelector('.checkbox__btn'));
-
-    this._priceInfo = this._productPageEl.querySelector(
-      '.product__flex-container'
-    );
-    this._formColor = this._productPageEl.querySelector('.product__color');
-    this._formSize = this._productPageEl.querySelector('#size');
 
     this._productPageEl.querySelector('.input--number-sm').value = 1;
     this._productPageEl
@@ -182,6 +179,8 @@ class ProductView extends View {
     this._priceInfo.innerHTML = '';
     this._formColor.innerHTML = '';
     this._formSize.innerHTML = '';
+    const warning = this._productPageEl.querySelector('.select__warning');
+    if (warning) warning.remove();
 
     this._priceInfo.insertAdjacentHTML(
       'afterbegin',

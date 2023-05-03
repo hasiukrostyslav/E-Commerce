@@ -100,6 +100,10 @@ class AccountView extends View {
     this._btnSaveProfile.classList.remove('btn--idle');
   }
 
+  _disableSaveButton() {
+    this._btnSaveProfile.classList.add('btn--idle');
+  }
+
   _addHandlerActivateSaveButton() {
     this._profileInputs.forEach((input) =>
       input.addEventListener('change', this._activateSaveButton.bind(this))
@@ -112,8 +116,13 @@ class AccountView extends View {
     this._profileInputsForm
       .querySelectorAll('.input__warning')
       .forEach((el) => el.remove());
-
-    return this._validationProfileData(user);
+    const updateData = this._validationProfileData(user);
+    if (!updateData) return;
+    this._showModalPopup('saveChanges');
+    this._disableSaveButton();
+    this._inputNewPass.value = '';
+    this._inputPassConfirm.value = '';
+    return updateData;
   }
 
   _validationProfileData(user) {
