@@ -154,7 +154,7 @@ export default class View {
     this._parentElement.addEventListener('click', this._initLinks.bind(this));
   }
 
-  // Change tabs in Account/Contact/Product pages
+  // Change tabs in Contact/Product pages
   _addHandlerChangeTabs() {
     this._tabs.addEventListener('click', this._changeTabs.bind(this));
   }

@@ -37,17 +37,15 @@ class AccountView extends View {
 
   constructor() {
     super();
-    this._addHandlerChangeTabs();
     this._addHandlerAccordion();
-    this._addHandlerOpenAccountPages();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
-  renderAccountData(data, reviews, cities) {
-    this._renderProfileData(data, cities);
-    this._renderOrders(data);
-    this._renderWishlist(data);
-    this._renderViewedList(data);
+  renderAccountData(user, reviews, cities) {
+    this._renderProfileData(user, cities);
+    this._renderOrders(user);
+    this._renderWishlist(user);
+    this._renderViewedList(user);
     this._renderReviews(reviews);
   }
 
@@ -58,6 +56,13 @@ class AccountView extends View {
     ).textContent = `${data.firstName} ${data.lastName}`;
 
     document.querySelector('.account__user-email').textContent = data.email;
+    this._fillInputs(data, cities);
+    this._addHandlerActivateSaveButton();
+    this._addHandlerChangeTabs(data, cities);
+    this._addHandlerOpenAccountPages(data, cities);
+  }
+
+  _fillInputs(data, cities) {
     this._inputFirstName.value = data.firstName;
     this._inputLastName.value = data.lastName;
     this._inputEmail.value = data.email;
@@ -74,7 +79,6 @@ class AccountView extends View {
       );
 
     this._selectCity.value = data.city || '';
-    this._addHandlerActivateSaveButton();
   }
 
   _clearProfilePage() {
@@ -221,22 +225,22 @@ class AccountView extends View {
   }
 
   // ORDERS
-  _renderOrders(data, type = 'orders') {
+  _renderOrders(dataOrders, type = 'orders') {
     this._clearOrderPage();
     this._activateSelect(type);
-    const markup = data.orders
+    const markup = dataOrders.orders
       .map((order, i, arr) => this._generateOrderMarkup(order, i, arr))
       .reverse()
       .join('');
     this._accordionContainer.insertAdjacentHTML('afterbegin', markup);
     this._addHandlerSortOrders(this._sortOrders.bind(this));
 
-    if (data.orders.length === 0) {
+    if (dataOrders.orders.length === 0) {
       this._accordionContainer.append(this._createHeading(type));
       this._disableSelect(type);
     }
 
-    if (data.orders.length > NUMBER_OF_ORDERS)
+    if (dataOrders.orders.length > NUMBER_OF_ORDERS)
       this._accordionContainer.insertAdjacentHTML(
         'afterend',
         this._generateLoadSpinnerMarkup()
@@ -467,12 +471,12 @@ class AccountView extends View {
   }
 
   // RENDER WISHLIST
-  _renderWishlist(data, type = 'wishlist') {
+  _renderWishlist(dataWishlist, type = 'wishlist') {
     this._removeEmptyHeading(this._wishlistEl);
     this._renderWishlistBadges();
     this._activateDeleteButton(type);
 
-    if (data.wishlist.length === 0)
+    if (dataWishlist.wishlist.length === 0)
       this._addEmptyHeading(this._wishlistEl, type);
   }
 
@@ -498,11 +502,12 @@ class AccountView extends View {
   }
 
   // VIEWED
-  _renderViewedList(data, type = 'view') {
+  _renderViewedList(dataview, type = 'view') {
     this._activateDeleteButton(type);
     this._removeEmptyHeading(this._viewedPageEl);
 
-    if (data.view.length === 0) this._addEmptyHeading(this._viewedPageEl, type);
+    if (dataview.view.length === 0)
+      this._addEmptyHeading(this._viewedPageEl, type);
   }
 
   _clearViewedPage() {
@@ -672,7 +677,7 @@ class AccountView extends View {
     `;
   }
 
-  _changeTabs(e) {
+  _changeTabs(userData, cities, e) {
     e.preventDefault();
 
     const btn = e.target.closest('.account__item');
@@ -692,9 +697,19 @@ class AccountView extends View {
       (page) => page.dataset.account === this._currentTab.dataset.account
     );
     this._currentPage.classList.remove('hidden');
+    this._fillInputs(userData, cities);
+    this._inputNewPass.value = '';
+    this._inputPassConfirm.value = '';
   }
 
-  _openAccountPages(page) {
+  _addHandlerChangeTabs(userData, cities) {
+    this._tabs.addEventListener(
+      'click',
+      this._changeTabs.bind(this, userData, cities)
+    );
+  }
+
+  _openAccountPages(page, userData, cities) {
     this._currentTab.classList.remove('account__item--current');
     this._currentTab = this._accountPageEl.querySelector(
       `li[data-account="${page}"]`
@@ -706,6 +721,9 @@ class AccountView extends View {
       (tab) => tab.dataset.account === this._currentTab.dataset.account
     );
     this._currentPage.classList.remove('hidden');
+    this._fillInputs(userData, cities);
+    this._inputNewPass.value = '';
+    this._inputPassConfirm.value = '';
   }
 
   _resetAccountPages(e) {
@@ -715,13 +733,19 @@ class AccountView extends View {
     this._resetReviewPage();
   }
 
-  _addHandlerOpenAccountPages() {
+  _addHandlerOpenAccountPages(data, cities) {
     this._navigationEl
       .querySelector('a.btn-user')
-      .addEventListener('click', this._openAccountPages.bind(this, 'profile'));
+      .addEventListener(
+        'click',
+        this._openAccountPages.bind(this, 'profile', data, cities)
+      );
     this._navigationEl
       .querySelector('.navigation__like-link')
-      .addEventListener('click', this._openAccountPages.bind(this, 'wishlist'));
+      .addEventListener(
+        'click',
+        this._openAccountPages.bind(this, 'wishlist', data, cities)
+      );
     this._navigationEl.addEventListener(
       'click',
       this._resetAccountPages.bind(this)
