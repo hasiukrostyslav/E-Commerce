@@ -581,8 +581,7 @@ class ProductView extends View {
 
   addReview(e) {
     e.preventDefault();
-    const warning = this._formReview.querySelector('.input__warning');
-    if (warning) warning.remove();
+    this._removeInputWarnings(this._formReview);
 
     const fullName = this._fullNameValidation(
       this._inputName,

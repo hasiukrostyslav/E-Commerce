@@ -275,8 +275,7 @@ class PostView extends View {
   addPostComment(e) {
     e.preventDefault();
     this.getPostHeading();
-    const warning = this._postForm.querySelector('.input__warning');
-    if (warning) warning.remove();
+    this._removeInputWarnings(this._postForm);
 
     const user = this._fullNameValidation(this._inputName, this._postForm);
     if (!user) return;

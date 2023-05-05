@@ -116,9 +116,7 @@ class ModalView extends View {
     );
     this._inputEmail = inputs.find((el) => el.dataset.input === 'email');
     this._inputPass = inputs.find((el) => el.dataset.input === 'pass');
-    this._modalSignIn
-      .querySelectorAll('.input__warning')
-      .forEach((el) => el.remove());
+    this._removeInputWarnings(this._modalSignIn);
 
     const user = data.find((el) => el.email === this._inputEmail.value);
     const email = this._emailValidationSignIn(user);
@@ -172,9 +170,7 @@ class ModalView extends View {
       (el) => el.dataset.input === 'pass-confirm'
     );
 
-    this._modalRegister
-      .querySelectorAll('.input__warning')
-      .forEach((el) => el.remove());
+    this._removeInputWarnings(this._modalRegister);
 
     const fullName = this._fullNameValidation(
       this._inputFullName,

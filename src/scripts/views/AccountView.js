@@ -82,18 +82,9 @@ class AccountView extends View {
   }
 
   _clearProfilePage() {
+    this._clearInputs(this._profileInputsForm);
     document.querySelector('.account__user-name').textContent = 'User name';
     document.querySelector('.account__user-email').textContent = 'User email';
-    this._inputFirstName.value = '';
-    this._inputLastName.value = '';
-    this._inputEmail.value = '';
-    this._inputPhone.value = '';
-    this._inputAddress.value = '';
-    this._inputCode.value = '';
-    this._inputNewPass.value = '';
-    this._inputPassConfirm.value = '';
-    this._selectCountry.value = '';
-    this._selectCity.value = '';
   }
 
   getUserId() {
@@ -117,9 +108,7 @@ class AccountView extends View {
   updateProfileData(user, e) {
     e.preventDefault();
     if (this._btnSaveProfile.classList.contains('btn--idle')) return;
-    this._profileInputsForm
-      .querySelectorAll('.input__warning')
-      .forEach((el) => el.remove());
+    this._removeInputWarnings(this._profileInputsForm);
     const updateData = this._validationProfileData(user);
     if (!updateData) return;
     this._showModalPopup('saveChanges');
@@ -698,6 +687,7 @@ class AccountView extends View {
     );
     this._currentPage.classList.remove('hidden');
     this._fillInputs(userData, cities);
+    this._removeInputWarnings(this._profileInputsForm);
     this._inputNewPass.value = '';
     this._inputPassConfirm.value = '';
   }
@@ -722,6 +712,7 @@ class AccountView extends View {
     );
     this._currentPage.classList.remove('hidden');
     this._fillInputs(userData, cities);
+    this._removeInputWarnings(this._profileInputsForm);
     this._inputNewPass.value = '';
     this._inputPassConfirm.value = '';
   }
@@ -731,6 +722,7 @@ class AccountView extends View {
     if (!link) return;
     this._resetOrderPage();
     this._resetReviewPage();
+    this._removeInputWarnings(this._profileInputsForm);
   }
 
   _addHandlerOpenAccountPages(data, cities) {

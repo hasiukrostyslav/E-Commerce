@@ -78,7 +78,7 @@ class ContactView extends View {
 
   sendMessage(e) {
     e.preventDefault();
-    this._form.querySelectorAll('.input__warning').forEach((el) => el.remove());
+    this._removeInputWarnings(this._form);
 
     const fullName = this._fullNameValidation(this._inputFullName, this._form);
     if (!fullName) return;

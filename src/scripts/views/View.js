@@ -29,6 +29,10 @@ export default class View {
   _modalPopup = document.querySelector('.modal--popup');
   _modalMessage = this._modalPopup.querySelector('.modal__message');
   _subscribeForms = document.querySelectorAll('[data-form="subscribe"]');
+  _inputsFullName = document.querySelectorAll('[data-input="full-name"]');
+  _inputsFirstName = document.querySelectorAll('[data-input="first-name"]');
+  _inputsLastName = document.querySelectorAll('[data-input="last-name"]');
+  _inputsPhone = document.querySelectorAll('[data-input="phone"]');
 
   init(data) {
     this._getCurrentDay();
@@ -621,11 +625,18 @@ export default class View {
 
   // INPUT VALIDATION
   _clearInputs(form) {
-    form.querySelectorAll('[data-input]').forEach((input) => {
-      input.value = '';
-      input.classList.remove('input--invalid');
-    });
+    form
+      .querySelectorAll('[data-input]')
+      .forEach((input) => (input.value = ''));
+    this._removeInputWarnings(form);
+  }
+
+  _removeInputWarnings(form) {
     form.querySelectorAll('.input__warning').forEach((el) => el.remove());
+
+    form
+      .querySelectorAll('.input--invalid')
+      .forEach((el) => el.classList.remove('input--invalid'));
   }
 
   _renderWarning(input, data) {
@@ -633,9 +644,9 @@ export default class View {
       .closest('div')
       .insertAdjacentHTML(
         'beforeend',
-        `<span class="input__warning ${this._addWarningClass(
-          input
-        )}" data-warning="${data}"></span>`
+        `<span class="input__warning ${
+          this._addWarningClass(input) || ''
+        }" data-warning="${data}"></span>`
       );
   }
 
@@ -658,7 +669,7 @@ export default class View {
     if (inputEl.dataset.input === 'last-name')
       this._showNameWarning(inputEl, warning, 'last-name');
 
-    if (inputEl.dataset.input.startsWith('pass'))
+    if (inputEl.dataset?.input?.startsWith('pass'))
       this._showPasswordWarning(inputEl, warning, pass);
 
     if (inputEl.dataset.input === 'code')
@@ -673,6 +684,10 @@ export default class View {
     if (inputEl.dataset.input === 'textarea') warning.textContent = ERROR.field;
 
     if (inputEl.dataset.input === 'rating') warning.textContent = ERROR.rating;
+    if (inputEl.dataset.select === 'country')
+      warning.textContent = ERROR.country;
+    if (inputEl.dataset.select === 'city') warning.textContent = ERROR.city;
+    if (inputEl.id === 'card-cvc') warning.textContent = ERROR.cardCVC;
   }
 
   _showFullNameWarning(inputEl, warning) {
@@ -690,14 +705,7 @@ export default class View {
   }
 
   _fullNameValidation(inputEl, form) {
-    if (
-      inputEl.value.split(' ').length <= 1 ||
-      inputEl.value
-        .split(' ')
-        .join('')
-        .split('')
-        .every((el) => el.match(/[a-z]/i)) === false
-    ) {
+    if (!inputEl.value.match(/[a-z]+\s[a-z]/gi)) {
       this._renderWarning(inputEl, inputEl.dataset.input);
       this._showWarning(form, inputEl);
     } else {
@@ -755,15 +763,7 @@ export default class View {
 
   _globalEmailValidation(inputEl, form, container) {
     const { value } = inputEl;
-    if (
-      !value ||
-      !value.includes('.') ||
-      !value.includes('@') ||
-      value.startsWith('.') ||
-      value.endsWith('.') ||
-      value.startsWith('@') ||
-      value.endsWith('@')
-    ) {
+    if (!value.match(/^[\w-]+@([\w-]+\.[\w]{2,4})/gi)) {
       this._renderWarning(container, inputEl.dataset.input);
       this._showWarning(form, inputEl);
     } else {
@@ -808,13 +808,14 @@ export default class View {
     }
   }
 
-  _addressValidation(inputEl, form) {
+  _addressValidation(inputEl, form, delivery = false) {
     if (
       inputEl.value
         .split(' ')
         .join('')
         .split('')
-        .every((el) => el.match(/\w|\.|,/)) === false
+        .every((el) => el.match(/\w|\.|,/)) === false ||
+      (delivery === true && !inputEl.value)
     ) {
       this._renderWarning(inputEl, inputEl.dataset.input);
       this._showWarning(form, inputEl);
@@ -867,23 +868,35 @@ export default class View {
     }
   }
 
+  _selectValidation(select, form) {
+    if (!select.value) {
+      this._renderWarning(select, select.dataset.select);
+      this._showWarning(form, select);
+    } else {
+      select.classList.remove('input--invalid');
+      return select.value;
+    }
+  }
+
   _showPhoneWarning(inputEl, warning) {
     if (
-      inputEl.value.split('').filter((digit) => Number.isFinite(+digit))
+      (inputEl.value.split('').filter((digit) => Number.isFinite(+digit))
         .length < 10 &&
-      inputEl.value
+        inputEl.value) ||
+      !inputEl.value
     )
       warning.textContent = ERROR.phoneLength;
 
     if (!this._allowedPhoneSigns(inputEl)) warning.textContent = ERROR.phone;
   }
 
-  _phoneValidation(inputEl, form) {
+  _phoneValidation(inputEl, form, delivery = false) {
     if (
       (inputEl.value.split('').filter((digit) => Number.isFinite(+digit))
         .length < 10 &&
         inputEl.value) ||
-      !this._allowedPhoneSigns(inputEl)
+      !this._allowedPhoneSigns(inputEl) ||
+      (delivery === true && !inputEl.value)
     ) {
       this._renderWarning(inputEl, inputEl.dataset.input);
       this._showWarning(form, inputEl);

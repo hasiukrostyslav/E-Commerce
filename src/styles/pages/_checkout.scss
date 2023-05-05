@@ -1,5 +1,5 @@
 .checkout {
-  &__wrapper {
+  &__form {
     display: flex;
     justify-content: space-between;
     margin: 3.2rem 0 18rem;
@@ -207,6 +207,7 @@
 
       &__card-num {
         margin-top: 1.6rem;
+        position: relative;
       }
 
       &__label {
@@ -224,6 +225,7 @@
         margin-top: 2rem;
         display: flex;
         gap: 2rem;
+        position: relative;
       }
 
       &__card-detail-1 {

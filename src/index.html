@@ -1639,7 +1639,7 @@
 
     <section data-title="Checkout" class="checkout container hidden sb-hide" id="main__checkout">
       <h2 class="hidden">Checkout</h2>
-      <div class="checkout__wrapper">
+      <form action="#" class="checkout__form" novalidate>
         <section class="checkout__section">
           <div class="checkout__flex">
             <h2 class="heading-secondary heading-secondary--zero">
@@ -1658,7 +1658,7 @@
             </p>
           </div>
 
-          <form action="#" class="checkout__details">
+          <div class="checkout__details">
             <ul class="details__list">
               <li class="details__item">
                 <h4 class="checkout__heading details__heading">
@@ -1677,27 +1677,27 @@
 
                 <div class="details__form">
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="first-name-delivery">First name</label>
+                    <label class="label label--large" for="first-name-delivery">First name*</label>
                     <input class="input input--large input--half" type="text" name="first-name" id="first-name-delivery"
                       placeholder="Your first name" required data-input="first-name">
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="last-name-delivery">Last name</label>
+                    <label class="label label--large" for="last-name-delivery">Last name*</label>
                     <input class="input input--large" type="text" name="last-name" id="last-name-delivery"
                       placeholder="Your last name" required data-input="last-name">
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="profile-email-delivery">Email</label>
-                    <input class="input input--large" type="email" name="profile-email" id="profile-email-delivery"
+                    <label class="label label--large" for="email-delivery">Email*</label>
+                    <input class="input input--large" type="email" name="email" id="email-delivery"
                       placeholder="Your working email" required data-input="email">
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="phone-delivery">Phone</label>
+                    <label class="label label--large" for="phone-delivery">Phone*</label>
                     <input class="input input--large" type="tel" name="phone" id="phone-delivery"
                       placeholder="Your phone number" required data-input="phone">
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="country-delivery">Country</label>
+                    <label class="label label--large" for="country-delivery">Country*</label>
                     <select class="input input--large select" data-select="country" name="country" id="country-delivery"
                       required>
                       <option value="" disabled selected hidden>
@@ -1712,8 +1712,9 @@
                     </button>
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="city-delivery">City</label>
-                    <select class="input input--large select" name="city" id="city-delivery" required>
+                    <label class="label label--large" for="city-delivery">City*</label>
+                    <select class="input input--large select" name="city" id="city-delivery" data-select="city"
+                      required>
                       <option value="" disabled selected hidden>
                         Choose your city
                       </option>
@@ -1725,7 +1726,7 @@
                     </button>
                   </div>
                   <div class="input__box input__box--medium">
-                    <label class="label label--large" for="address-delivery">Address</label>
+                    <label class="label label--large" for="address-delivery">Address*</label>
                     <input class="input input--large" type="text" name="address-delivery" id="address-delivery"
                       placeholder="Your address" required data-input="address">
                   </div>
@@ -1755,7 +1756,7 @@
                 </h4>
 
                 <ul class="details__payments">
-                  <li class="details__payment">
+                  <li class="details__payment" data-payment="card">
                     <div class="details__radio">
                       <input class="radio__input" type="radio" name="payment" id="card" checked>
 
@@ -1767,23 +1768,23 @@
                     </div>
                     <div class="details__card-num">
                       <label class="label label--large" for="card-num">Card number</label>
-                      <input class="input input--large" type="text" name="card-num" id="card-num" maxlength="16"
-                        minlength="16" placeholder="0000 0000 0000 0000" data-input="number">
+                      <input class="input input--large" type="tel" name="card-num" id="card-num" maxlength="19"
+                        minlength="16" placeholder="0000 0000 0000 0000" data-input="number" pattern="[0-9]{4}">
                     </div>
                     <div class="details__card-wrapper">
                       <div class="details__card-detail-1">
                         <label class="label label--large" for="card-date">Expiry date</label>
-                        <input class="input input--large" type="text" name="card-date" id="card-date"
+                        <input class="input input--large" type="tel" name="card-date" id="card-date" maxlength="5"
                           placeholder="mm/yy" data-input="number">
                       </div>
                       <div class="details__card-detail-2">
                         <label class="label label--large" for="card-cvc">CVC</label>
-                        <input class="input input--large" type="text" name="card-cvc" id="card-cvc" maxlength="3"
+                        <input class="input input--large" type="tel" name="card-cvc" id="card-cvc" maxlength="3"
                           minlength="3" placeholder="000" data-input="number">
                       </div>
                     </div>
                   </li>
-                  <li class="details__payment">
+                  <li class="details__payment" data-payment="paypal">
                     <div class="details__radio">
                       <input class="radio__input" type="radio" name="payment" id="paypal">
 
@@ -1793,7 +1794,7 @@
                       <img class="details__logo" src="assets/images/pay-pal.jpg" alt="Paypal">
                     </div>
                   </li>
-                  <li class="details__payment">
+                  <li class="details__payment" data-payment="cash">
                     <div class="details__radio">
                       <input class="radio__input" type="radio" name="payment" id="cash">
 
@@ -1815,18 +1816,18 @@
                 </div>
               </li>
             </ul>
-          </form>
+          </div>
         </section>
 
         <aside class="checkout__sidebar">
-          <form class="checkout__promocode" action="#">
+          <div class="checkout__promocode">
             <label class="promocode__label" for="promocode">Apply a promo code</label>
             <div class="promocode__container">
               <input class="promocode__input" type="text" name="promocode" id="promocode" placeholder="Enter promo code"
                 required>
               <input type="submit" class="btn btn--solid btn--large promocode__btn" value="Apply">
             </div>
-          </form>
+          </div>
           <ul class="checkout__summary">
             <li class="checkout__summary-item">
               <h4 class="checkout__heading">Order totals</h4>
@@ -1858,7 +1859,7 @@
             Complete order
           </button>
         </aside>
-      </div>
+      </form>
     </section>
 
     <section data-title="Track order" class="track container hidden sb-hide" id="main__track">

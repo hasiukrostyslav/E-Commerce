@@ -83,6 +83,10 @@ function controlCheckoutPage() {
   checkoutView.renderCheckoutPage(model.state.users, citiesList);
 }
 
+function controlCreateOrder(e) {
+  checkoutView.createOrder(e);
+}
+
 function controlSignIn(e) {
   e.preventDefault();
 
@@ -199,6 +203,7 @@ function init() {
   view.addHandlerSubscribe(controlSubscribe);
   postView.addHandlerAddPostComment(controlAddPostComment);
   productView.addHandlerAddReview(controlAddProductReview);
+  checkoutView.addHandlerCreateOrder(controlCreateOrder);
 }
 
 init();

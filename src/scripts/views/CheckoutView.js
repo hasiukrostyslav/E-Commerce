@@ -7,6 +7,7 @@ import {
   MINUTES,
   SECONDS,
   MILISECONDS,
+  COLOR_SELECTED,
 } from '../config';
 
 class CheckoutView extends View {
@@ -26,12 +27,31 @@ class CheckoutView extends View {
   _totalPriceEl = this._summaryEl.querySelector('[data-price="total"]');
   _btnOrder = this._summaryEl.querySelector('.btn');
   _signInBlockEl = this._checkoutPageEl.querySelector('.checkout__sign-in');
+  _form = this._checkoutPageEl.querySelector('.checkout__form');
+  _inputFirstName = document.getElementById('first-name-delivery');
+  _inputLastName = document.getElementById('last-name-delivery');
+  _inputEmail = document.getElementById('email-delivery');
+  _inputPhone = document.getElementById('phone-delivery');
+  _selectCountry = document.getElementById('country-delivery');
+  _selectCity = document.getElementById('city-delivery');
+  _inputAddress = document.getElementById('address-delivery');
+  _inputCode = document.getElementById('code-delivery');
+  _inputCardNum = document.getElementById('card-num');
+  _inputCardDate = document.getElementById('card-date');
+  _inputCardCVC = document.getElementById('card-cvc');
+  _paymentTypes = [...this._checkoutPageEl.querySelectorAll('.radio__mark')];
+  _codeContainer = this._checkoutPageEl.querySelector('.details__card-wrapper');
+  _cardNumContainer = this._checkoutPageEl.querySelector('.details__card-num');
+  _paymentInputsBox = this._checkoutPageEl.querySelector(
+    '[data-payment="card"]'
+  );
 
   constructor() {
     super();
     this._addHandlerDeleteItem(this._deleteItem.bind(this));
     this._addHandlerSelectShipping(this._selectShipping.bind(this));
     this._addHandlerApplyDiscount(this._applyDiscount.bind(this));
+    this._addHandlerCreditCardFill();
   }
 
   renderCheckoutPage(users, cities) {
@@ -42,6 +62,7 @@ class CheckoutView extends View {
     this._renderShippingMethod();
     this._renderItemsFromCart();
     this._fillInputData(users, cities);
+    this._addHandlerDigitValidation();
   }
 
   addHandlerRenderCheckoutPage(handler) {
@@ -195,7 +216,7 @@ class CheckoutView extends View {
 
     document.getElementById('first-name-delivery').value = user.firstName;
     document.getElementById('last-name-delivery').value = user.lastName;
-    document.getElementById('profile-email-delivery').value = user.email;
+    document.getElementById('email-delivery').value = user.email;
     document.getElementById('phone-delivery').value = user.phone || '';
     document.getElementById('address-delivery').value = user.address || '';
     document.getElementById('code-delivery').value = user.zipCode || '';
@@ -302,6 +323,135 @@ class CheckoutView extends View {
 
   _addHandlerApplyDiscount(handler) {
     this._btnApplyCodeEl.addEventListener('click', handler);
+  }
+
+  createOrder(e) {
+    e.preventDefault();
+    this._removeInputWarnings(this._form);
+    // const deliveryData = this._dataValidation();
+    // console.log(deliveryData);
+    this._paymentValidation();
+  }
+
+  _getOrderItems() {}
+
+  _dataValidation() {
+    const firstName = this._namesValidation(this._inputFirstName, this._form);
+    if (!firstName) return;
+
+    const lastName = this._namesValidation(this._inputLastName, this._form);
+    if (!lastName) return;
+
+    const email = this._globalEmailValidation(
+      this._inputEmail,
+      this._form,
+      this._inputEmail
+    );
+    if (!email) return;
+
+    const phone = this._phoneValidation(this._inputPhone, this._form, true);
+    if (!phone) return;
+    const country = this._selectValidation(this._selectCountry, this._form);
+    if (!country) return;
+    const city = this._selectValidation(this._selectCity, this._form);
+    if (!city) return;
+    const address = this._addressValidation(
+      this._inputAddress,
+      this._form,
+      true
+    );
+    if (!address) return;
+    const zipCode = this._zipCodeValidation(this._inputCode, this._form);
+    if (!zipCode) return;
+
+    const validData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      country,
+      city,
+      address,
+      zipCode: +zipCode,
+    };
+    return validData;
+  }
+
+  _paymentValidation() {
+    const selectedType = this._paymentTypes
+      .find((mark) => getComputedStyle(mark).borderColor === COLOR_SELECTED)
+      .closest('li');
+
+    if (selectedType.dataset.payment !== 'card') return;
+
+    const creditCardNum = this._creditCardValidation();
+    if (!creditCardNum) return;
+    const expiryDate = this._cardDateValidation();
+    if (!expiryDate) return;
+    const cvc = this._cvcValidation();
+    if (!cvc) return;
+  }
+
+  _creditCardValidation() {
+    if (!this._inputCardNum.value || this._inputCardNum.value.length !== 19) {
+      this._renderWarning(this._inputCardNum, this._inputCardNum.dataset.input);
+      this._showWarning(this._cardNumContainer, this._inputCardNum);
+    } else {
+      this._inputCardNum.classList.remove('input--invalid');
+      return this._inputCardNum.value;
+    }
+  }
+
+  _addHandlerCreditCardFill() {
+    this._inputCardNum.addEventListener('keyup', (e) => {
+      const valuesOfInput = e.target.value;
+      e.target.value = valuesOfInput.replace(
+        /(\d{4})(\d{4})(\d{4})(\d{0,4})/,
+        '$1 $2 $3 $4'
+      );
+    });
+
+    this._inputCardDate.addEventListener('keyup', (e) => {
+      const valuesOfInput = e.target.value;
+      e.target.value = valuesOfInput.replace(/(\d{2})(\d{2})/, '$1/$2');
+    });
+  }
+
+  _cardDateValidation() {
+    if (!this._inputCardDate.value || this._inputCardNum.value.length !== 5) {
+      this._renderWarning(
+        this._inputCardDate,
+        this._inputCardDate.dataset.input
+      );
+      this._showWarning(this._codeContainer, this._inputCardDate);
+    } else {
+      this._inputCardDate.classList.remove('input--invalid');
+      return this._inputCardDate.value;
+    }
+  }
+
+  _cvcValidation() {
+    if (this._inputCardCVC.value.length !== 3) {
+      this._renderWarning(this._inputCardCVC, this._inputCardCVC.dataset.input);
+      this._showWarning(this._codeContainer, this._inputCardCVC);
+    } else {
+      this._inputCardCVC.classList.remove('input--invalid');
+      return this._inputCardCVC.value;
+    }
+  }
+
+  _addHandlerDigitValidation() {
+    this._paymentInputsBox
+      .querySelectorAll('input[type="tel"]')
+      .forEach((input) =>
+        input.addEventListener('keydown', (e) => {
+          if (e.key.match(/^[^0-9]$/)) return e.preventDefault();
+        })
+      );
+  }
+
+  addHandlerCreateOrder(handler) {
+    this._form.addEventListener('submit', handler);
   }
 }
 export default new CheckoutView();

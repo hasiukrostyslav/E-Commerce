@@ -37,13 +37,18 @@ export const ERROR = {
   passNew: 'Password cannot be the same as old',
   phoneLength: 'Phone number must be at least 10 digits',
   phone: 'Phone number must contain only digits and signs + - ()',
-  address: 'Address must contain only letters and digits',
+  address: 'Please provide a valid address',
   zipCode: 'ZIP Code must contain only digits',
   zipCodeLength: 'ZIP Code must be at least 3 digits',
   field: 'This field cannot be empty.',
   rating: 'Please select score.',
   size: 'Please select a size.',
   emptyCart: 'Your cart is empty',
+  country: 'Please select a delivery country',
+  city: 'Please select a delivery city',
+  cardNum: 'Invalid Credit Card number',
+  cardDate: 'Invalid Expiry Date',
+  cardCVC: 'Invalid CVC code',
 };
 
 export const ACCOUNT_TEXT = {
