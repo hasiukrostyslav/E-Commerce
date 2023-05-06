@@ -1,15 +1,5 @@
 import images from './helper';
 
-// Courier to your address
-// Estimated date: May 8
-//  Pick up from store
-// Pick up on May 7 from 12:00
-//  UPS Ground Shipping
-// Up to one week
-//  Pick up at Createx Locker
-// Pick up on May 7 from 12:00
-//  Createx Global Export
-
 const data = {
   users: [
     {

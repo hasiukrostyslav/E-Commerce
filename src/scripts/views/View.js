@@ -712,7 +712,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -744,7 +744,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -770,7 +770,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -806,7 +806,7 @@ export default class View {
       this._showWarning(form, inputEl, pass);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -823,7 +823,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -833,7 +833,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -866,7 +866,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 
@@ -904,7 +904,7 @@ export default class View {
       this._showWarning(form, inputEl);
     } else {
       inputEl.classList.remove('input--invalid');
-      return inputEl.value;
+      return inputEl.value.trim();
     }
   }
 

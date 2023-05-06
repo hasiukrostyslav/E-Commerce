@@ -205,7 +205,7 @@ class AccountView extends View {
       this._showWarning(this._profileInputsForm, this._inputNewPass);
     } else {
       this._inputNewPass.classList.remove('input--invalid');
-      return this._inputNewPass.value;
+      return this._inputNewPass.value.trim();
     }
   }
 
