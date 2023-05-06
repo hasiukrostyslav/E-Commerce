@@ -84,7 +84,9 @@ function controlCheckoutPage() {
 }
 
 function controlCreateOrder(e) {
-  checkoutView.createOrder(e);
+  const orderId = model.createOrderId();
+  const order = checkoutView.createOrder(orderId, e);
+  model.addOrder(order);
 }
 
 function controlSignIn(e) {

@@ -1,5 +1,7 @@
 import data from './data';
-import { EXCLUSION_COUNTRIES, CITIES, DOUBLE_COUNTRIES } from './config';
+import images from './helper';
+// prettier-ignore
+import { EXCLUSION_COUNTRIES, CITIES, DOUBLE_COUNTRIES, LETTER_CODE, } from './config';
 
 export const state = {};
 
@@ -10,6 +12,7 @@ function downloadData() {
   state.reviews = data.reviews;
   state.contactMessage = data.contactMessage;
   state.subscribers = data.subscribers;
+  state.orders = data.orders;
 }
 downloadData();
 
@@ -21,6 +24,7 @@ const persistState = function () {
   localStorage.setItem('reviews', JSON.stringify(state.reviews));
   localStorage.setItem('contactMessage', JSON.stringify(state.contactMessage));
   localStorage.setItem('subscribers', JSON.stringify(state.subscribers));
+  localStorage.setItem('orders', JSON.stringify(state.orders));
 };
 
 const init = function () {
@@ -30,6 +34,7 @@ const init = function () {
   const reviewsStorage = localStorage.getItem('reviews');
   const contactMessageStorage = localStorage.getItem('contactMessage');
   const subscribersStorage = localStorage.getItem('subscribers');
+  const ordersStorage = localStorage.getItem('orders');
 
   if (usersStorage) state.users = JSON.parse(usersStorage);
   if (catalogStorage) state.catalogStorage = JSON.parse(catalogStorage);
@@ -38,6 +43,7 @@ const init = function () {
   if (contactMessageStorage)
     state.contactMessage = JSON.parse(contactMessageStorage);
   if (subscribersStorage) state.subscribers = JSON.parse(subscribersStorage);
+  if (ordersStorage) state.orders = JSON.parse(ordersStorage);
 };
 init();
 
@@ -48,6 +54,7 @@ const clearState = function () {
   localStorage.clear('reviews');
   localStorage.clear('contactMessage');
   localStorage.clear('subscribers');
+  localStorage.clear('orders');
 };
 
 // CLEAR LOCAL STORAGE HOTKEY
@@ -266,5 +273,30 @@ export const updateReviewList = function (article, comment) {
     text: comment.text,
   };
   state.reviews.push(review);
+  persistState();
+};
+
+// GENERATE ORDER ID
+const generateRandomLetter = function () {
+  return String.fromCodePoint(Math.floor(Math.random() * (90 - 65 + 1) + 65));
+};
+
+export const createOrderId = function () {
+  const charOne = generateRandomLetter();
+  const charTwo = generateRandomLetter();
+  const charThree = generateRandomLetter();
+  const number = String(Math.random()).slice(2, 11);
+
+  return `${number.slice(0, 2)}${charOne}${charTwo}${number.slice(
+    2,
+    7
+  )}${charThree}${number.slice(7)}`;
+};
+
+export const addOrder = function (newOrder) {
+  newOrder.orders.items.forEach((item) => (item.images = images[item.images]));
+  const activeUser = state.users.find((user) => user.email === newOrder.email);
+  if (activeUser) activeUser.orders.push(newOrder.orders);
+  if (!activeUser) state.orders.push(newOrder);
   persistState();
 };

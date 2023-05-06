@@ -118,3 +118,8 @@ export const POPUP_MESSAGE = {
   checkout: 'Thank you! Your order has been completed.',
   subscribe: 'Thank you for subscribing.',
 };
+
+export const LETTER_CODE = {
+  capitalA: 65,
+  capitalZ: 95,
+};

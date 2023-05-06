@@ -1,14 +1,7 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import {
-  SHIPPING,
-  DISCOUNT,
-  HOURS,
-  MINUTES,
-  SECONDS,
-  MILISECONDS,
-  COLOR_SELECTED,
-} from '../config';
+// prettier-ignore
+import { SHIPPING, DISCOUNT, HOURS, MINUTES, SECONDS, MILISECONDS, COLOR_SELECTED, } from '../config';
 
 class CheckoutView extends View {
   _modalEl = this._parentElement.querySelector('.modal--cart');
@@ -23,8 +16,9 @@ class CheckoutView extends View {
   _summaryEl = this._checkoutPageEl.querySelector('.checkout__summary');
   _summaryCostsEl = this._checkoutPageEl.querySelector('.summary__costs');
   _shippingPriceEl = this._summaryEl.querySelector('[data-price="shipping"]');
-  _discounPricetEl = this._summaryEl.querySelector('[data-price="discount"]');
+  _discountPriceEl = this._summaryEl.querySelector('[data-price="discount"]');
   _totalPriceEl = this._summaryEl.querySelector('[data-price="total"]');
+  _subtotalPrices = this._summaryEl.querySelectorAll('[data-price="subtotal"]');
   _btnOrder = this._summaryEl.querySelector('.btn');
   _signInBlockEl = this._checkoutPageEl.querySelector('.checkout__sign-in');
   _form = this._checkoutPageEl.querySelector('.checkout__form');
@@ -42,6 +36,7 @@ class CheckoutView extends View {
   _paymentTypes = [...this._checkoutPageEl.querySelectorAll('.radio__mark')];
   _codeContainer = this._checkoutPageEl.querySelector('.details__card-wrapper');
   _cardNumContainer = this._checkoutPageEl.querySelector('.details__card-num');
+  _otherInfo = document.getElementById('notes');
   _paymentInputsBox = this._checkoutPageEl.querySelector(
     '[data-payment="card"]'
   );
@@ -57,8 +52,8 @@ class CheckoutView extends View {
   renderCheckoutPage(users, cities) {
     this._modalEl.classList.add('hidden');
     this._overlay.classList.add('hidden');
-    this._inputCodeEl.value = '';
-    this._discounPricetEl.textContent = '';
+    this._discountPriceEl.textContent = this._priceFormatter(0);
+    this._clearInputs(this._form);
     this._renderShippingMethod();
     this._renderItemsFromCart();
     this._fillInputData(users, cities);
@@ -134,11 +129,44 @@ class CheckoutView extends View {
       this._modalEl.querySelectorAll('.cart__item').length;
     this._calculateSubtotalPrice();
     this._calculateTotalPrice();
-    if (Number.parseInt(this._discounPricetEl.textContent.slice(1), 10))
+    if (Number.parseInt(this._discountPriceEl.textContent.slice(1), 10))
       this._calculateDiscount();
 
     if (!this._itemslistEl.querySelector('[data-article]'))
-      this._totalPriceEl.textContent = this._priceFormatter(0);
+      this._clearCheckoutPage();
+  }
+
+  _clearCheckoutPage() {
+    this._shippingPriceEl.textContent = this._priceFormatter(0);
+    this._discountPriceEl.textContent = this._priceFormatter(0);
+    this._totalPriceEl.textContent = this._priceFormatter(0);
+    this._subtotalPrices.forEach(
+      (price) => (price.textContent = this._priceFormatter(0))
+    );
+    this._clearInputs(this._form);
+    this._deleteAllItems();
+    this._hideCheckoutPage();
+  }
+
+  _deleteAllItems() {
+    this._itemslistEl
+      .querySelectorAll('[data-article]')
+      .forEach((item) => item.remove());
+  }
+
+  _hideCheckoutPage() {
+    this._headerEl.classList.remove('hidden');
+    this._homePageEl.classList.remove('hidden');
+    this._checkoutPageEl.classList.add('hidden');
+    this._breadcrumbEl.classList.add('hidden');
+  }
+
+  _clearCart() {
+    this._modalEl.querySelectorAll('.cart__item').forEach((el) => el.remove());
+    this._createCartBadge(this._modalEl.querySelectorAll('.cart__item').length);
+
+    this._modalEl.querySelector('.cart__heading-amount').textContent =
+      this._modalEl.querySelectorAll('.cart__item').length;
   }
 
   _addHandlerDeleteItem(handler) {
@@ -315,7 +343,7 @@ class CheckoutView extends View {
   }
 
   _calculateDiscount() {
-    this._discounPricetEl.textContent = this._priceFormatter(
+    this._discountPriceEl.textContent = this._priceFormatter(
       +this._subtotalPriceEl.at(1).textContent.slice(1).split(',').join('') *
         DISCOUNT.discount
     );
@@ -325,15 +353,98 @@ class CheckoutView extends View {
     this._btnApplyCodeEl.addEventListener('click', handler);
   }
 
-  createOrder(e) {
+  createOrder(orderId, e) {
     e.preventDefault();
     this._removeInputWarnings(this._form);
-    // const deliveryData = this._dataValidation();
-    // console.log(deliveryData);
-    this._paymentValidation();
+    const items = this._getOrderItems();
+    const order = this._dataValidation();
+    if (!order) return;
+
+    const cardValid = this._paymentValidation();
+    if (!cardValid) return;
+
+    const orderInfo = this._getOrderInfo(orderId);
+
+    order.orders = orderInfo;
+    order.orders.items = items;
+
+    this._showModalPopup('checkout');
+    this._clearCart();
+    setTimeout(this._clearCheckoutPage.bind(this), 2000);
+
+    return order;
   }
 
-  _getOrderItems() {}
+  _getOrderInfo(orderId) {
+    const id = orderId;
+    const date = new Date().toISOString();
+    const deliveryType = this._getDeliveryType();
+    const shippingPrice = +this._shippingPriceEl.textContent.slice(1);
+    const subTotalPrice = +this._checkoutPageEl
+      .querySelector('[data-price="subtotal"]')
+      .textContent.slice(1);
+    const discount = +this._discountPriceEl.textContent.slice(1);
+    const discountPrice =
+      discount === 0 ? 0 : Math.trunc((discount * 100) / subTotalPrice);
+
+    const order = {
+      id,
+      date,
+      status: 'progress',
+      deliveryType,
+      shippingPrice,
+      discountPrice,
+      additionalInfo: this._otherInfo.value || '',
+    };
+    return order;
+  }
+
+  _getDeliveryType() {
+    const type = [...this._shippingListEl.querySelectorAll('.radio__mark')]
+      .find((mark) => getComputedStyle(mark).borderColor === COLOR_SELECTED)
+      .closest('label')
+      .lastChild.textContent.trim();
+    return type;
+  }
+
+  _getOrderItems() {
+    const itemsEl = this._itemslistEl.querySelectorAll('[data-article]');
+    const items = [];
+    itemsEl.forEach((el) => {
+      const article = +el.dataset.article;
+      const title = el.querySelector('img').alt.trim();
+      const description = el.querySelector('.order__name').textContent.trim();
+      const quantity = +el.querySelector('[name="number"]').value;
+      const price = +(
+        Number.parseFloat(
+          el.querySelector('.card__price').firstChild.textContent.slice(1)
+        ) / quantity
+      ).toFixed(2);
+
+      const size = el.querySelector('.order__size-value')
+        ? el.querySelector('.order__size-value').textContent.toLowerCase()
+        : '';
+
+      const color = el
+        .querySelector('.order__color-value')
+        .textContent.replace(' ', '-');
+      const images = `catalog${
+        el.querySelector('img').src.match(/-\d{1,2}/)[0]
+      }.jpg`;
+      const item = {
+        article,
+        title,
+        description,
+        price,
+        quantity,
+        size,
+        color,
+        images,
+      };
+      items.push(item);
+    });
+    return items;
+  }
 
   _dataValidation() {
     const firstName = this._namesValidation(this._inputFirstName, this._form);
@@ -382,7 +493,8 @@ class CheckoutView extends View {
       .find((mark) => getComputedStyle(mark).borderColor === COLOR_SELECTED)
       .closest('li');
 
-    if (selectedType.dataset.payment !== 'card') return;
+    if (selectedType.dataset.payment !== 'card')
+      return selectedType.dataset.payment;
 
     const creditCardNum = this._creditCardValidation();
     if (!creditCardNum) return;
@@ -390,15 +502,18 @@ class CheckoutView extends View {
     if (!expiryDate) return;
     const cvc = this._cvcValidation();
     if (!cvc) return;
+
+    if (creditCardNum && expiryDate && cvc) return selectedType.dataset.payment;
   }
 
   _creditCardValidation() {
-    if (!this._inputCardNum.value || this._inputCardNum.value.length !== 19) {
+    const { value } = this._inputCardNum;
+    if (!value || value.length !== 19) {
       this._renderWarning(this._inputCardNum, this._inputCardNum.dataset.input);
       this._showWarning(this._cardNumContainer, this._inputCardNum);
     } else {
       this._inputCardNum.classList.remove('input--invalid');
-      return this._inputCardNum.value;
+      return +value.replaceAll(' ', '');
     }
   }
 
@@ -418,15 +533,34 @@ class CheckoutView extends View {
   }
 
   _cardDateValidation() {
-    if (!this._inputCardDate.value || this._inputCardNum.value.length !== 5) {
+    const { value } = this._inputCardDate;
+    if (!value || value.length !== 5) {
       this._renderWarning(
         this._inputCardDate,
         this._inputCardDate.dataset.input
       );
       this._showWarning(this._codeContainer, this._inputCardDate);
-    } else {
-      this._inputCardDate.classList.remove('input--invalid');
-      return this._inputCardDate.value;
+    }
+    if (value.length === 5) {
+      const [month, year] = value
+        .split('/')
+        .map((num, i) => (i === 1 ? 20 + num : num));
+      const currentYear = new Date().getFullYear();
+      if (
+        +month < 1 ||
+        +month > 12 ||
+        +year < currentYear ||
+        +year > currentYear + 10
+      ) {
+        this._renderWarning(
+          this._inputCardDate,
+          this._inputCardDate.dataset.input
+        );
+        this._showWarning(this._codeContainer, this._inputCardDate);
+      } else {
+        this._inputCardDate.classList.remove('input--invalid');
+        return value;
+      }
     }
   }
 
@@ -436,7 +570,7 @@ class CheckoutView extends View {
       this._showWarning(this._codeContainer, this._inputCardCVC);
     } else {
       this._inputCardCVC.classList.remove('input--invalid');
-      return this._inputCardCVC.value;
+      return +this._inputCardCVC.value;
     }
   }
 

@@ -111,7 +111,7 @@ class CartMovalView extends View {
                 <img
                     class="cart__img"
                     src="${data.images.at(0)}"
-                    alt="${data.description}"
+                    alt="${data.title}"
                 >
                 <div class="cart__info">
                     <a

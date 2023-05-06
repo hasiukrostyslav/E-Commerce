@@ -687,6 +687,8 @@ export default class View {
     if (inputEl.dataset.select === 'country')
       warning.textContent = ERROR.country;
     if (inputEl.dataset.select === 'city') warning.textContent = ERROR.city;
+    if (inputEl.id === 'card-num') warning.textContent = ERROR.cardNum;
+    if (inputEl.id === 'card-date') warning.textContent = ERROR.cardDate;
     if (inputEl.id === 'card-cvc') warning.textContent = ERROR.cardCVC;
   }
 

@@ -1,5 +1,15 @@
 import images from './helper';
 
+// Courier to your address
+// Estimated date: May 8
+//  Pick up from store
+// Pick up on May 7 from 12:00
+//  UPS Ground Shipping
+// Up to one week
+//  Pick up at Createx Locker
+// Pick up on May 7 from 12:00
+//  Createx Global Export
+
 const data = {
   users: [
     {
@@ -18,8 +28,12 @@ const data = {
           id: '47IK678871Y45',
           date: '2022-07-05T13:26:17.000Z',
           status: 'delivered',
+          deliveryType: 'Courier to your address',
+          shippedDate: '2022-07-05T18:26:17.000Z',
+          deliveryDate: '2022-07-06T12:26:17.000Z',
           shippingPrice: 25,
           discountPrice: 0,
+          additionalInfo: '',
           items: [
             {
               article: 113002379,
@@ -37,8 +51,12 @@ const data = {
           id: '12WE95534P90',
           date: '2022-08-12T13:26:17.000Z',
           status: 'delivered',
+          deliveryType: 'UPS Ground Shipping',
+          shippedDate: '2022-08-13T10:00:17.000Z',
+          deliveryDate: '2022-08-14T10:00:17.000Z',
           shippingPrice: 0,
           discountPrice: 0,
+          additionalInfo: '',
           items: [
             {
               article: 151253984,
@@ -56,8 +74,12 @@ const data = {
           id: '66TU12580L11',
           date: '2022-10-24T13:26:17.000Z',
           status: 'canceled',
+          deliveryType: 'Pick up from store',
+          shippedDate: '2022-10-24T13:40:17.000Z',
+          deliveryDate: '',
           shippingPrice: 25,
           discountPrice: 0,
+          additionalInfo: '',
           items: [
             {
               article: 164169335,
@@ -75,8 +97,12 @@ const data = {
           id: '93BR64523J71',
           date: '2023-02-13T13:26:17.000Z',
           status: 'delivered',
+          deliveryType: 'Courier to your address',
+          shippedDate: '2023-02-13T18:00:00.000Z',
+          deliveryDate: '2023-02-15T12:00:00.000Z',
           shippingPrice: 25,
           discountPrice: 0,
+          additionalInfo: '',
           items: [
             {
               article: 113164046,
@@ -93,9 +119,13 @@ const data = {
         {
           id: '50HV46580V84',
           date: '2023-04-23T13:26:17.000Z',
-          status: 'progress',
+          status: 'delivered',
+          deliveryType: 'UPS Ground Shipping',
+          shippedDate: '2023-04-23T17:26:17.000Z',
+          deliveryDate: '2023-04-28T11:00:00.000Z',
           shippingPrice: 25,
           discountPrice: 10,
+          additionalInfo: '',
           items: [
             {
               article: 183260098,
@@ -142,9 +172,13 @@ const data = {
         {
           id: '34BV66580K92',
           date: '2023-04-25T13:26:17.000Z',
-          status: 'progress',
+          status: 'delivered',
+          deliveryType: 'UPS Ground Shipping',
+          shippedDate: '2023-04-25T17:26:17.000Z',
+          deliveryDate: '2023-05-01T11:00:00.000Z',
           shippingPrice: 25,
           discountPrice: 0,
+          additionalInfo: '',
           items: [
             {
               article: 190320414,
@@ -1341,6 +1375,7 @@ const data = {
   ],
   contactMessage: [],
   subscribers: [],
+  orders: [],
 };
 
 export default data;
