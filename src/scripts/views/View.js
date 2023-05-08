@@ -33,6 +33,8 @@ export default class View {
   _inputsFirstName = document.querySelectorAll('[data-input="first-name"]');
   _inputsLastName = document.querySelectorAll('[data-input="last-name"]');
   _inputsPhone = document.querySelectorAll('[data-input="phone"]');
+  _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
+  _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
 
   init(data) {
     this._getCurrentDay();

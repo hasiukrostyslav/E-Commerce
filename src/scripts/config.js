@@ -117,6 +117,8 @@ export const POPUP_MESSAGE = {
   addToCart: 'Item has been added to the cart.',
   checkout: 'Thank you! Your order has been completed.',
   subscribe: 'Thank you for subscribing.',
+  signIn: 'You must sign in to add item to wishlist',
+  addToWishlist: 'Item has been added to the wishlist.',
 };
 
 export const LETTER_CODE = {

@@ -11,6 +11,7 @@ class AccountView extends View {
   _wishlistEl = document.querySelector('.account__wishlist');
   _wishlistBoxEl = document.querySelector('.account__wishlist-container');
   _wishlistBadge = document.querySelector('.account__wishlist-badge');
+  _wishlistTopBadge = document.querySelector('.navigation__like-count');
   _profilePageEl = document.querySelector('section[data-account="profile"]');
   _ordersPageEl = document.querySelector('section[data-account="orders"]');
   _viewedPageEl = document.querySelector('section[data-account="view"]');
@@ -34,6 +35,8 @@ class AccountView extends View {
   _selectCity = document.getElementById('city');
   _inputNewPass = document.getElementById('profile-new-pass');
   _inputPassConfirm = document.getElementById('profile-confirm-pass');
+  _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
+  _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
 
   constructor() {
     super();
@@ -464,6 +467,7 @@ class AccountView extends View {
     this._removeEmptyHeading(this._wishlistEl);
     this._renderWishlistBadges();
     this._activateDeleteButton(type);
+    this._renderFilledIcon(dataWishlist);
 
     if (dataWishlist.wishlist.length === 0)
       this._addEmptyHeading(this._wishlistEl, type);
@@ -488,6 +492,98 @@ class AccountView extends View {
     this._wishlistBoxEl.innerHTML = '';
     this._removeWishlistBadges();
     this._removeEmptyHeading(this._wishlistEl);
+  }
+
+  addToWishlist(e) {
+    const btn = e.target.closest('.btn-wishlist-add');
+    const checkbox = e.target.closest('.checkbox__btn-add');
+    if (!btn && !checkbox) return;
+
+    const userEl = this._navigationEl.querySelector('.user-profile');
+    if (!userEl.dataset.id) {
+      this._showModalPopup('signIn');
+      return;
+    }
+    let card;
+
+    if (userEl.dataset.id && btn) {
+      card = btn.closest('[data-article]');
+      const icon = btn.querySelector('.wishlist__icon');
+
+      if (icon.classList.contains('wishlist__icon--filled')) {
+        icon.classList.remove('wishlist__icon--filled');
+        icon.innerHTML = this._iconRemove;
+        if (card.closest('[data-account="wishlist"]')) {
+          card.remove();
+          const cards = this._wishlistBoxEl.querySelectorAll('.card');
+          this._renderWishlistBadges();
+          this._wishlistTopBadge.textContent = cards.length;
+
+          if (cards.length === 0) {
+            this._addEmptyHeading(
+              this._wishlistEl,
+              this._wishlistEl.dataset.account
+            );
+          }
+        }
+      } else {
+        icon.classList.add('wishlist__icon--filled');
+        icon.innerHTML = this._iconAdd;
+        this._showModalPopup('addToWishlist');
+      }
+    }
+
+    if (userEl.dataset.id && checkbox) {
+      card = checkbox.closest('[data-article]');
+      if (checkbox.classList.contains('checkbox__btn--fill'))
+        this._showModalPopup('addToWishlist');
+    }
+    return [+userEl.dataset.id, +card.dataset.article];
+  }
+
+  _renderFilledIcon(data) {
+    const cards = [...this._parentElement.querySelectorAll('.card')];
+    if (
+      document.querySelector('.modal--cart').querySelector('[data-article]')
+    ) {
+      cards.push([
+        ...document
+          .querySelector('.modal--cart')
+          .querySelectorAll('[data-article]'),
+      ]);
+    }
+    if (this._checkoutPageEl.querySelector('[data-article]')) {
+      cards.push([...this._checkoutPageEl.querySelectorAll('[data-article]')]);
+    }
+
+    cards.flat().forEach((card) => {
+      const wish = data.wishlist.find(
+        (el) => el.article === +card.dataset.article
+      );
+      if (wish) this._fillWishlistIcon(card);
+    });
+  }
+
+  _fillWishlistIcon(card) {
+    const icon = card.querySelector('.wishlist__icon');
+    icon.classList.add('wishlist__icon--filled');
+    icon.innerHTML = this._iconAdd;
+  }
+
+  _renderOutlineIcon() {
+    [...this._parentElement.querySelectorAll('[data-article]')]
+      .filter((el) => el.querySelector('.wishlist__icon--filled'))
+      .forEach((card) => this._removeFilldeWishIcon(card));
+  }
+
+  _removeFilldeWishIcon(card) {
+    const icon = card.querySelector('.wishlist__icon');
+    icon.classList.remove('wishlist__icon--filled');
+    icon.innerHTML = this._iconRemove;
+  }
+
+  addHandlerAddToWishlist(handler) {
+    this._parentElement.addEventListener('click', handler);
   }
 
   // VIEWED
@@ -593,9 +689,8 @@ class AccountView extends View {
 
     section.querySelectorAll('.card').forEach((card) => card.remove());
     this._addEmptyHeading(section, section.dataset.account);
-
     this._removeWishlistBadges();
-    this._navigationEl.querySelector('.navigation__like-count').textContent = 0;
+    this._wishlistTopBadge.textContent = 0;
 
     return this._userProfileIcon.dataset.id;
   }
@@ -788,6 +883,7 @@ class AccountView extends View {
     this._clearWhishlistPage();
     this._clearViewedPage();
     this._clearReviewPage();
+    this._renderOutlineIcon();
 
     if (this._accountPageEl.classList.contains('hidden')) return;
     this._headerEl.classList.remove('hidden');

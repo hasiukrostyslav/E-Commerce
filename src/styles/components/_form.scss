@@ -132,15 +132,14 @@
     outline: 1px solid $color-primary;
   }
 
-  &__btn:checked + &__btn-add {
+  &__btn--fill {
     color: $color-white;
     background-color: $color-primary;
     border: 1px solid $color-primary;
   }
-
-  &__btn:checked + &__btn-add > svg {
-    fill: $color-white;
-  }
+}
+.wishlist__icon--white {
+  fill: $color-white;
 }
 
 // RADIO BUTTON

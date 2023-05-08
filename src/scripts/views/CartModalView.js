@@ -190,9 +190,15 @@ class CartMovalView extends View {
                     </div>
                     <button type="button" class="btn cart__wishlist btn-wishlist-add">
                         Move to 
-                        <svg class="wishlist__icon">
+                        <svg class="wishlist__icon ${
+                          card.querySelector('.wishlist__icon--filled')
+                            ? 'wishlist__icon--filled'
+                            : ''
+                        }">
                             <use
-                                xlink:href="${icons}#heart-outline"
+                                xlink:href="${icons}#heart-${
+      card.querySelector('.wishlist__icon--filled') ? 'filled' : 'outline'
+    }"
                             ></use>
                         </svg>
                     </button>

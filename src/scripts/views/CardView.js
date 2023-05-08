@@ -2,8 +2,6 @@ import View from './View';
 import icons from '../../assets/svg/sprite.svg';
 
 class CardView extends View {
-  _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
-  _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
   _curSlide = 0;
 
   constructor() {
@@ -18,10 +16,11 @@ class CardView extends View {
     const viewedListEl = document.querySelector('.account__viewed');
     wishlistEl.innerHTML = '';
     viewedListEl.innerHTML = '';
-    const wishlisMarkup = data.wishlist
+    const wishlistMarkup = data.wishlist
       .map((item) => this.generateCardMarkup(item, 'acc-wishlist'))
       .join('');
-    wishlistEl.insertAdjacentHTML('afterbegin', wishlisMarkup);
+    wishlistEl.insertAdjacentHTML('afterbegin', wishlistMarkup);
+
     const viewedMarkup = data.view
       .map((item) => this.generateCardMarkup(item, 'acc-view'))
       .join('');
@@ -40,30 +39,6 @@ class CardView extends View {
 
   addHandlerRenderProductPage(handler) {
     this._parentElement.addEventListener('click', handler);
-  }
-
-  addToWishlist(e) {
-    const btn = e.target.closest('.btn-wishlist-add');
-    const checkbox = e.target.closest('.checkbox-wishlist-add');
-    if (!btn && !checkbox) return;
-
-    if (btn) {
-      const { article } = btn.closest('[data-article]').dataset;
-      const cards = [
-        ...this._parentElement.querySelectorAll('[data-article]'),
-      ].find((card) => card.dataset.article === article);
-      console.log(article);
-      console.log(cards);
-      const icon = btn.querySelector('.wishlist__icon');
-
-      if (icon.classList.contains('wishlist__icon--filled')) {
-        icon.classList.remove('wishlist__icon--filled');
-        icon.innerHTML = this._iconRemove;
-      } else {
-        icon.classList.add('wishlist__icon--filled');
-        icon.innerHTML = this._iconAdd;
-      }
-    }
   }
 
   addHandlerAddToWishlist(handler) {

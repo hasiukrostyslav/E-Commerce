@@ -57,7 +57,8 @@ function controlRenderProductPage(e) {
   productView.renderProductPage(
     product,
     model.state.reviews,
-    cardView.generateCardMarkup(product)
+    cardView.generateCardMarkup(product),
+    model.checkWishlist(accountView.getUserId(), article)
   );
 }
 
@@ -110,7 +111,10 @@ function controlUpdateProfileData(e) {
 }
 
 function controlAddToWishlist(e) {
-  cardView.addToWishlist(e);
+  const id = accountView.addToWishlist(e);
+  modalView.modalTimer();
+  if (!id) return;
+  model.addRemoveWish(id);
 }
 
 function controlDeleteWishlist(e) {
@@ -195,7 +199,7 @@ function init() {
   checkoutView.addHandlerRenderCheckoutPage(controlCheckoutPage);
   modalView.addHandlerSignIn(controlSignIn);
   accountView.addHandlerUpdateProfileData(controlUpdateProfileData);
-  cardView.addHandlerAddToWishlist(controlAddToWishlist);
+  accountView.addHandlerAddToWishlist(controlAddToWishlist);
   accountView.addHandlerDeleteWishlistItems(controlDeleteWishlist);
   accountView.addHandlerDeleteViewlistItems(controlDeleteViewlist);
   accountView.addHandlerSignOut(controlSignOut);

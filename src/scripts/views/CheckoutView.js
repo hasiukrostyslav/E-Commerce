@@ -225,8 +225,14 @@ class CheckoutView extends View {
                 </button>
                 <button type="button" class="btn cart__wishlist btn-wishlist-add">
                   Move to
-                  <svg class="wishlist__icon">
-                    <use xlink:href="${icons}#heart-outline"></use>
+                  <svg class="wishlist__icon ${
+                    item.querySelector('.wishlist__icon--filled')
+                      ? 'wishlist__icon--filled'
+                      : ''
+                  }">
+                    <use xlink:href="${icons}#heart-${
+      item.querySelector('.wishlist__icon--filled') ? 'filled' : 'outline'
+    }"></use>
                   </svg>
                 </button>
               </div>

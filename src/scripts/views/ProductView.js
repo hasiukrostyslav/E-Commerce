@@ -1,6 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import { MAXSCORE, NUMBER_OF_ITEMS } from '../config';
+import { MAXSCORE, NUMBER_OF_ITEMS, COLOR_SELECTED } from '../config';
 
 class ProductView extends View {
   _tabs = document.querySelector('.product__tabs');
@@ -26,6 +26,7 @@ class ProductView extends View {
   _formColor = this._productPageEl.querySelector('.product__color');
   _formSize = this._productPageEl.querySelector('#size');
   _priceInfo = this._productPageEl.querySelector('.product__flex-container');
+  _btnAddWishlist = this._productPageEl.querySelector('.checkbox__btn-add');
 
   constructor() {
     super();
@@ -35,9 +36,10 @@ class ProductView extends View {
     this._addHandlerSwitchColor(this._switchColor.bind(this));
     this._addHandlerChangePaginationPage(this._changePaginationPage.bind(this));
     this._addHandlerChangeSlide();
+    this._addHandlerToggleWishBtn();
   }
 
-  renderProductPage(data, reviews, markup) {
+  renderProductPage(data, reviews, markup, boolean) {
     this._resetProductPage();
     this._productPageEl.querySelector('.heading-secondary').textContent =
       data.description;
@@ -48,9 +50,9 @@ class ProductView extends View {
     this._productPageEl.querySelector('.product__card').dataset.article =
       data.article;
 
-    this._renderCard(markup);
+    this._renderCard(markup, boolean);
     this._renderProductGallery(data);
-    this._renderProductOptions(data);
+    this._renderProductOptions(data, boolean);
     this._renderProductDetails(data);
     this._renderProductReview(data, reviews);
   }
@@ -78,7 +80,7 @@ class ProductView extends View {
 
   // Render PRODUCT CARD
 
-  _renderCard(markup) {
+  _renderCard(markup, boolean) {
     if (this._detailsPage.querySelector('.card'))
       this._detailsPage.querySelector('.card').remove();
 
@@ -87,6 +89,12 @@ class ProductView extends View {
     const card = this._detailsPage.querySelector('.card');
     card.querySelector('.card__slider-buttons').classList.remove('hidden');
     card.querySelector('.card__form').classList.remove('hidden');
+
+    if (boolean) {
+      const icon = card.querySelector('.wishlist__icon');
+      icon.classList.add('wishlist__icon--filled');
+      icon.innerHTML = this._iconAdd;
+    }
   }
 
   // RENDER PRODUCT GALLERY
@@ -175,12 +183,16 @@ class ProductView extends View {
 
   // Render PRODUCT OPTIONS
 
-  _renderProductOptions(data) {
+  _renderProductOptions(data, boolean) {
     this._priceInfo.innerHTML = '';
     this._formColor.innerHTML = '';
     this._formSize.innerHTML = '';
     const warning = this._productPageEl.querySelector('.select__warning');
     if (warning) warning.remove();
+    this._btnAddWishlist.classList.remove('checkbox__btn--fill');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.remove('wishlist__icon--white');
 
     this._priceInfo.insertAdjacentHTML(
       'afterbegin',
@@ -194,6 +206,13 @@ class ProductView extends View {
       'afterbegin',
       this._generateSizeMenu(data)
     );
+
+    if (boolean) {
+      this._btnAddWishlist.classList.add('checkbox__btn--fill');
+      this._btnAddWishlist
+        .querySelector('svg')
+        .classList.add('wishlist__icon--white');
+    }
   }
 
   _generatePriceDetails(data) {
@@ -312,6 +331,21 @@ class ProductView extends View {
           )
           .join('')
       : '';
+  }
+
+  _toggleWishBtn() {
+    if (!document.querySelector('.user-profile').dataset.id) return;
+    this._btnAddWishlist.classList.toggle('checkbox__btn--fill');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.toggle('wishlist__icon--white');
+  }
+
+  _addHandlerToggleWishBtn() {
+    this._btnAddWishlist.addEventListener(
+      'click',
+      this._toggleWishBtn.bind(this)
+    );
   }
 
   // Render PRODUCT DETAILS

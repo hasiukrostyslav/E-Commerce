@@ -300,3 +300,25 @@ export const addOrder = function (newOrder) {
   if (!activeUser) state.orders.push(newOrder);
   persistState();
 };
+
+// ADD ITEM TO WISHLIST
+export const addRemoveWish = function (id) {
+  const [userId, itemId] = id;
+  const user = findCurrentUser(userId);
+  const item = user.wishlist.find((el) => el.article === itemId);
+
+  if (item) user.wishlist.splice(user.wishlist.indexOf(item), 1);
+
+  if (!item) {
+    const newItem = findItemByArticle(itemId);
+    user.wishlist.push(newItem);
+  }
+  persistState();
+};
+
+export const checkWishlist = function (id, article) {
+  const user = findCurrentUser(id);
+  if (!user) return;
+  const item = user.wishlist.find((el) => el.article === article);
+  if (item) return true;
+};
