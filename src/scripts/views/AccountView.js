@@ -220,6 +220,8 @@ class AccountView extends View {
   renderOrders(dataOrders, type = 'orders') {
     this._clearOrderPage();
     this._activateSelect(type);
+    this._removeLoadSpinner(this._ordersPageEl);
+
     const markup = dataOrders.orders
       .map((order, i, arr) => this._generateOrderMarkup(order, i, arr))
       .reverse()
@@ -554,7 +556,7 @@ class AccountView extends View {
       this._removeFilldeIconClass(wishIcon);
     });
 
-    if (card.closest('[data-account="wishlist"]')) this._deleteWishItem();
+    if (card.closest('[data-account="wishlist"]')) this._deleteWishItem(card);
     if (btn && btn.closest('.product')) this._removeFillledClassBtn();
   }
 
@@ -613,6 +615,7 @@ class AccountView extends View {
     this._addHandlerSortReviews(this._sortReviews.bind(this, reviews));
     this._activateSelect(type);
     this._removeEmptyHeading(this._reviewPageEl);
+    this._removeLoadSpinner(this._reviewPageEl);
 
     if (reviews.length === 0) {
       this._reviewPageEl.append(this._createHeading(type));
@@ -768,6 +771,11 @@ class AccountView extends View {
           Load more
         </button>
     `;
+  }
+
+  _removeLoadSpinner(page) {
+    const spinner = page.querySelector('.btn-load');
+    if (spinner) spinner.remove();
   }
 
   _changeTabs(userData, cities, e) {

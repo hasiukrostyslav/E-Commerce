@@ -64,6 +64,7 @@ function controlRenderProductPage(e) {
   const user = model.findCurrentUser(accountView.getUserId());
   if (user) {
     cardView.renderProfileCards(user);
+    accountView.renderWishlist(user);
     accountView.renderViewedList(user);
   }
 }
