@@ -471,6 +471,9 @@ class AccountView extends View {
 
     if (dataWishlist.wishlist.length === 0)
       this._addEmptyHeading(this._wishlistEl, type);
+
+    this._wishlistTopBadge.textContent =
+      this._wishlistBoxEl.querySelectorAll('.card').length;
   }
 
   _deleteWishItem(card) {
