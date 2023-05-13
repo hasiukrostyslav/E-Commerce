@@ -115,6 +115,7 @@ function controlAddToWishlist(e) {
   modalView.modalTimer();
   if (!id) return;
   model.addRemoveWish(id);
+  accountView.renderWishlist(model.findCurrentUser(id[0]));
 }
 
 function controlDeleteWishlist(e) {

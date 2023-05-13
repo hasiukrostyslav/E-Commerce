@@ -35,6 +35,7 @@ export default class View {
   _inputsPhone = document.querySelectorAll('[data-input="phone"]');
   _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
   _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
+  _btnAddWishlist = this._productPageEl.querySelector('.checkbox__btn-add');
 
   init(data) {
     this._getCurrentDay();
@@ -954,5 +955,20 @@ export default class View {
     this._subscribeForms.forEach((form) =>
       form.addEventListener('submit', handler)
     );
+  }
+
+  // Wishlist
+  _addFillledClassBtn() {
+    this._btnAddWishlist.classList.add('checkbox__btn--fill');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.add('wishlist__icon--white');
+  }
+
+  _removeFillledClassBtn() {
+    this._btnAddWishlist.classList.remove('checkbox__btn--fill');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.remove('wishlist__icon--white');
   }
 }

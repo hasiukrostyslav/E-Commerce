@@ -479,7 +479,6 @@ class CheckoutView extends View {
     );
     if (!address) return;
     const zipCode = this._zipCodeValidation(this._inputCode, this._form);
-    if (!zipCode) return;
 
     const validData = {
       firstName,
@@ -489,7 +488,7 @@ class CheckoutView extends View {
       country,
       city,
       address,
-      zipCode: +zipCode,
+      zipCode: +zipCode || '',
     };
     return validData;
   }

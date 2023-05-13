@@ -26,7 +26,6 @@ class ProductView extends View {
   _formColor = this._productPageEl.querySelector('.product__color');
   _formSize = this._productPageEl.querySelector('#size');
   _priceInfo = this._productPageEl.querySelector('.product__flex-container');
-  _btnAddWishlist = this._productPageEl.querySelector('.checkbox__btn-add');
 
   constructor() {
     super();
@@ -182,17 +181,13 @@ class ProductView extends View {
   }
 
   // Render PRODUCT OPTIONS
-
   _renderProductOptions(data, boolean) {
     this._priceInfo.innerHTML = '';
     this._formColor.innerHTML = '';
     this._formSize.innerHTML = '';
     const warning = this._productPageEl.querySelector('.select__warning');
     if (warning) warning.remove();
-    this._btnAddWishlist.classList.remove('checkbox__btn--fill');
-    this._btnAddWishlist
-      .querySelector('svg')
-      .classList.remove('wishlist__icon--white');
+    this._removeFillledClassBtn();
 
     this._priceInfo.insertAdjacentHTML(
       'afterbegin',
@@ -207,12 +202,7 @@ class ProductView extends View {
       this._generateSizeMenu(data)
     );
 
-    if (boolean) {
-      this._btnAddWishlist.classList.add('checkbox__btn--fill');
-      this._btnAddWishlist
-        .querySelector('svg')
-        .classList.add('wishlist__icon--white');
-    }
+    if (boolean) this._addFillledClassBtn();
   }
 
   _generatePriceDetails(data) {
