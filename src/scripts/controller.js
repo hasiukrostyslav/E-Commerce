@@ -60,6 +60,12 @@ function controlRenderProductPage(e) {
     cardView.generateCardMarkup(product),
     model.checkWishlist(accountView.getUserId(), article)
   );
+
+  const user = model.findCurrentUser(accountView.getUserId());
+  if (user) {
+    cardView.renderProfileCards(user);
+    accountView.renderViewedList(user);
+  }
 }
 
 function controlRenderBlogPage(e) {
@@ -88,6 +94,9 @@ function controlCreateOrder(e) {
   const orderId = model.createOrderId();
   const order = checkoutView.createOrder(orderId, e);
   model.addOrder(order);
+
+  const user = model.findCurrentUser(accountView.getUserId());
+  if (user) accountView.renderOrders(user);
 }
 
 function controlSignIn(e) {
@@ -190,6 +199,12 @@ function controlAddProductReview(e) {
 
   productView.updateProductRating(product, model.state.reviews);
   cardView.updateItemRating(product);
+
+  const user = model.findCurrentUser(accountView.getUserId());
+  if (user) {
+    const comments = model.findUsersComments(user);
+    accountView.renderReviews(comments);
+  }
 }
 
 function init() {

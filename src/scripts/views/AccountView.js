@@ -46,10 +46,10 @@ class AccountView extends View {
 
   renderAccountData(user, reviews, cities) {
     this._renderProfileData(user, cities);
-    this._renderOrders(user);
+    this.renderOrders(user);
     this.renderWishlist(user);
-    this._renderViewedList(user);
-    this._renderReviews(reviews);
+    this.renderViewedList(user);
+    this.renderReviews(reviews);
   }
 
   // PROFILE
@@ -217,7 +217,7 @@ class AccountView extends View {
   }
 
   // ORDERS
-  _renderOrders(dataOrders, type = 'orders') {
+  renderOrders(dataOrders, type = 'orders') {
     this._clearOrderPage();
     this._activateSelect(type);
     const markup = dataOrders.orders
@@ -595,7 +595,7 @@ class AccountView extends View {
   }
 
   // VIEWED
-  _renderViewedList(dataview, type = 'view') {
+  renderViewedList(dataview, type = 'view') {
     this._activateDeleteButton(type);
     this._removeEmptyHeading(this._viewedPageEl);
 
@@ -608,7 +608,7 @@ class AccountView extends View {
   }
 
   // REVIEWS
-  _renderReviews(reviews, type = 'review') {
+  renderReviews(reviews, type = 'review') {
     this._insertReviewMarkup(reviews);
     this._addHandlerSortReviews(this._sortReviews.bind(this, reviews));
     this._activateSelect(type);
