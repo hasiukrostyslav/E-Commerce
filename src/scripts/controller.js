@@ -94,6 +94,7 @@ function controlCheckoutPage() {
 function controlCreateOrder(e) {
   const orderId = model.createOrderId();
   const order = checkoutView.createOrder(orderId, e);
+  if (!order) return;
   model.addOrder(order);
 
   const user = model.findCurrentUser(accountView.getUserId());

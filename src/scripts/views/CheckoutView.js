@@ -364,10 +364,16 @@ class CheckoutView extends View {
     this._removeInputWarnings(this._form);
     const items = this._getOrderItems();
     const order = this._dataValidation();
-    if (!order) return;
+    if (!order) {
+      this._scrolToWarning();
+      return;
+    }
 
     const cardValid = this._paymentValidation();
-    if (!cardValid) return;
+    if (!cardValid) {
+      this._scrolToWarning();
+      return;
+    }
 
     const orderInfo = this._getOrderInfo(orderId);
 
@@ -379,6 +385,14 @@ class CheckoutView extends View {
     setTimeout(this._clearCheckoutPage.bind(this), 2000);
 
     return order;
+  }
+
+  _scrolToWarning() {
+    const warning = this._checkoutPageEl.querySelector('.input__warning');
+    warning.scrollIntoView({
+      block: 'end',
+      behavior: 'smooth',
+    });
   }
 
   _getOrderInfo(orderId) {
