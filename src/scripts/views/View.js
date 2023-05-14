@@ -495,7 +495,9 @@ export default class View {
     return `
           <li class="comment__block--${size} grid grid--col-3-fix${
       size === 'sm' ? '' : '-2'
-    } grid--row-3" data-timestamp="${Date.parse(reviews.date)}">
+    } grid--row-3" data-timestamp="${Date.parse(reviews.date)}" data-id="${
+      reviews.id
+    }">
     ${
       size === 'sm'
         ? `
@@ -531,17 +533,17 @@ export default class View {
                 : ''
             }
             <div class="comment__vote">
-              <button class="comment__vote-btn" type="button">
+              <button class="comment__vote-btn btn__like" type="button">
                 <svg class="comment__vote-icon comment__vote-icon--like">
                   <use xlink:href="${icons}#like"></use>
                 </svg>
-                  ${reviews.likes}
+                  ${reviews.likes.length}
               </button>
-              <button class="comment__vote-btn" type="button">
+              <button class="comment__vote-btn btn__dislike" type="button">
                 <svg class="comment__vote-icon comment__vote-icon--dislike">
                   <use xlink:href="${icons}#dislike"></use>
                 </svg>
-                ${reviews.dislikes}
+                ${reviews.dislikes.length}
               </button>
             </div>
           </li>

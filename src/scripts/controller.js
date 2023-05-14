@@ -208,6 +208,15 @@ function controlAddProductReview(e) {
   }
 }
 
+function controlAddLikes(e) {
+  const reviewData = productView.addLikes(e);
+  if (!reviewData) return;
+  modalView.modalTimer();
+
+  model.addLikes(reviewData);
+  productView.updateReview(reviewData, model.findReview(reviewData));
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -229,6 +238,7 @@ function init() {
   postView.addHandlerAddPostComment(controlAddPostComment);
   productView.addHandlerAddReview(controlAddProductReview);
   checkoutView.addHandlerCreateOrder(controlCreateOrder);
+  productView.addHandlerAddLikes(controlAddLikes);
 }
 
 init();

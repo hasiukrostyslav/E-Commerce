@@ -260,10 +260,15 @@ export const updatePostComments = function (postHeading, comment) {
 };
 
 // ADD PRODUCT REVIEW
+const generateReviewId = function () {
+  return `RV${String(Math.random()).slice(2, 8)}`;
+};
+
 export const updateReviewList = function (article, comment) {
   const item = state.catalog.find((el) => el.article === article);
   const review = {
     article: item.article,
+    id: generateReviewId(),
     product: item.description,
     user: comment.fullName,
     date: comment.date,
@@ -321,4 +326,25 @@ export const checkWishlist = function (id, article) {
   if (!user) return;
   const item = user.wishlist.find((el) => el.article === article);
   if (item) return true;
+};
+
+export const findReview = function (reviewData) {
+  return state.reviews.find((el) => el.id === reviewData.id);
+};
+
+export const addLikes = function (reviewData) {
+  const review = findReview(reviewData);
+  if (reviewData.likes === true) {
+    const user = review.likes.find((el) => el === reviewData.userId);
+    if (user) review.likes.splice(review.likes.indexOf(user), 1);
+    if (!user) review.likes.push(reviewData.userId);
+  }
+
+  if (reviewData.dislikes === true) {
+    const user = review.dislikes.find((el) => el === reviewData.userId);
+    if (user) review.dislikes.splice(review.dislikes.indexOf(user), 1);
+    if (!user) review.dislikes.push(reviewData.userId);
+  }
+
+  persistState();
 };

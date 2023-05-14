@@ -737,6 +737,49 @@ class ProductView extends View {
       this._closeAccordion(btn);
     else this._openAccordion(btn);
   }
+
+  // ADD LIKE/DISLIKE
+  addLikes(e) {
+    const btn = e.target.closest('.comment__vote-btn');
+    if (!btn) return;
+
+    const userEl = this._navigationEl.querySelector('.user-profile');
+    if (!userEl.dataset.id) {
+      this._showModalPopup('addLikes');
+      return;
+    }
+
+    const reviewId = btn.closest('[data-id]');
+
+    const data = {
+      userId: +userEl.dataset.id,
+      id: reviewId.dataset.id,
+      likes: btn.classList.contains('btn__like'),
+      dislikes: btn.classList.contains('btn__dislike'),
+    };
+    return data;
+  }
+
+  updateReview(reviewId, reviewData) {
+    const reviews = [
+      ...this._parentElement.querySelectorAll('li[data-id]'),
+    ].filter((review) => review.dataset.id === reviewId.id);
+
+    reviews.forEach((el) => {
+      const btnLike = el.querySelector('.btn__like');
+
+      if (+btnLike.lastChild.textContent !== reviewData.likes.length);
+      btnLike.lastChild.textContent = reviewData.likes.length;
+
+      const btnDislike = el.querySelector('.btn__dislike');
+      if (+btnDislike.lastChild.textContent !== reviewData.dislikes.length);
+      btnDislike.lastChild.textContent = reviewData.dislikes.length;
+    });
+  }
+
+  addHandlerAddLikes(handler) {
+    this._parentElement.addEventListener('click', handler);
+  }
 }
 
 export default new ProductView();
