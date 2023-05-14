@@ -41,6 +41,7 @@ class AccountView extends View {
   constructor() {
     super();
     this._addHandlerAccordion();
+    this._addHandlerLoadSpinner();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
@@ -220,7 +221,7 @@ class AccountView extends View {
   renderOrders(dataOrders, type = 'orders') {
     this._clearOrderPage();
     this._activateSelect(type);
-    this._removeLoadSpinner(this._ordersPageEl);
+    this._removeSpinner(this._ordersPageEl);
 
     const markup = dataOrders.orders
       .map((order, i, arr) => this._generateOrderMarkup(order, i, arr))
@@ -234,16 +235,32 @@ class AccountView extends View {
       this._disableSelect(type);
     }
 
-    if (dataOrders.orders.length > NUMBER_OF_ORDERS)
+    this._addOrdersHiddenClass();
+  }
+
+  _addOrdersHiddenClass(status = 'all') {
+    const orders = [
+      ...this._accordionContainer.querySelectorAll('.order__panel'),
+    ].filter((el) =>
+      status === 'all' ? el : el.dataset.orderStatus === status
+    );
+
+    orders.forEach((el, i) => {
+      if (i >= NUMBER_OF_ORDERS) el.classList.add('hidden');
+    });
+
+    if (orders.filter((el) => el.classList.contains('hidden')).length > 0)
       this._accordionContainer.insertAdjacentHTML(
         'afterend',
-        this._generateLoadSpinnerMarkup()
+        this._generateSpinner()
       );
   }
 
   _generateOrderMarkup(order, i, arr) {
     return `
-    <li class="order__panel ${i === arr.length - 1 ? 'u-padding-top' : ''}">
+    <li class="order__panel ${
+      i === arr.length - 1 ? 'u-padding-top' : ''
+    }" data-order-status="${order.status}">
     <ul class="order__panel-list">
       <li class="order__item">
         <p class="order__id"># ${order.id}</p>
@@ -414,13 +431,19 @@ class AccountView extends View {
     const options = [
       ...document.getElementById('orders').querySelectorAll('option'),
     ];
-    options.forEach((el) => (el.selected = false));
-    options.find((el) => el.value === 'All').selected = true;
-    this._resetAccordions();
+    const optionAll = options.find((el) => el.value === 'all');
+    if (optionAll.selected !== true) {
+      options.forEach((el) => (el.selected = false));
+      optionAll.selected = true;
 
-    this._accordionContainer
-      .querySelectorAll('.order__panel')
-      .forEach((el) => el.classList.remove('hidden'));
+      this._accordionContainer
+        .querySelectorAll('.order__panel')
+        .forEach((el) => el.classList.remove('hidden'));
+    }
+
+    this._removeSpinner(this._ordersPageEl);
+    this._resetAccordions();
+    this._addOrdersHiddenClass();
   }
 
   _clearOrderPage() {
@@ -435,33 +458,56 @@ class AccountView extends View {
     orderList.forEach((el) => el.classList.add('hidden'));
     this._resetAccordions();
     orderList
-      .filter(
-        (el) => el.querySelector('.order__status').textContent.trim() === value
-      )
+      .filter((el) => el.dataset.orderStatus === value)
       .forEach((el) => el.classList.remove('hidden'));
 
-    if (value === 'All')
+    if (value === 'all') {
       orderList.forEach((el) => el.classList.remove('hidden'));
+      this._removeSpinner(this._ordersPageEl);
+      this._addOrdersHiddenClass();
+    }
 
-    if (
-      orderList.filter((el) => !el.classList.contains('hidden')).length <=
-        NUMBER_OF_ORDERS &&
-      this._ordersPageEl.querySelector('.btn-load')
-    )
-      this._ordersPageEl.querySelector('.btn-load').remove();
-    if (
-      orderList.filter((el) => !el.classList.contains('hidden')).length >
-        NUMBER_OF_ORDERS &&
-      !this._ordersPageEl.querySelector('.btn-load')
-    )
-      this._accordionContainer.insertAdjacentHTML(
-        'afterend',
-        this._generateLoadSpinnerMarkup()
-      );
+    if (value === 'canceled') {
+      this._removeSpinner(this._ordersPageEl);
+      this._addOrdersHiddenClass(value);
+    }
+
+    if (value === 'delivered') {
+      this._removeSpinner(this._ordersPageEl);
+      this._addOrdersHiddenClass(value);
+    }
+
+    if (value === 'progress') {
+      this._removeSpinner(this._ordersPageEl);
+      this._addOrdersHiddenClass(value);
+    }
   }
 
   _addHandlerSortOrders(handler) {
     document.getElementById('orders').addEventListener('change', handler);
+  }
+
+  _showOrders() {
+    const selectValue = [
+      ...document.getElementById('orders').querySelectorAll('option'),
+    ].find((el) => el.selected === true).value;
+
+    const orders = [...this._ordersPageEl.querySelectorAll('.order__panel')];
+
+    const filterOrders = orders.filter((el) =>
+      selectValue === 'all' ? el : el.dataset.orderStatus === selectValue
+    );
+
+    filterOrders
+      .filter((el) => el.classList.contains('hidden'))
+      .forEach((el, i) => {
+        if (i < NUMBER_OF_ORDERS) el.classList.remove('hidden');
+      });
+
+    if (
+      filterOrders.filter((el) => el.classList.contains('hidden')).length === 0
+    )
+      this._ordersPageEl.querySelector('.btn-load').remove();
   }
 
   // RENDER WISHLIST
@@ -615,18 +661,23 @@ class AccountView extends View {
     this._addHandlerSortReviews(this._sortReviews.bind(this, reviews));
     this._activateSelect(type);
     this._removeEmptyHeading(this._reviewPageEl);
-    this._removeLoadSpinner(this._reviewPageEl);
+    this._removeSpinner(this._reviewPageEl);
 
     if (reviews.length === 0) {
       this._reviewPageEl.append(this._createHeading(type));
       this._disableSelect(type);
     }
 
-    if (reviews.length > NUMBER_OF_ITEMS)
-      this._reviewsListEl.insertAdjacentHTML(
-        'afterend',
-        this._generateLoadSpinnerMarkup()
-      );
+    if (reviews.length > NUMBER_OF_ITEMS) this._addReviewsHiddenClass();
+  }
+
+  _addReviewsHiddenClass() {
+    this._reviewsListEl
+      .querySelectorAll('.comment__block--sm')
+      .forEach((el, i) => {
+        if (i >= NUMBER_OF_ITEMS) el.classList.add('hidden');
+      });
+    this._reviewsListEl.insertAdjacentHTML('afterend', this._generateSpinner());
   }
 
   _insertReviewMarkup(reviews, sort = 'newest') {
@@ -645,10 +696,18 @@ class AccountView extends View {
 
   _sortReviews(reviews, e) {
     const { value } = e.target;
+    const btn = this._reviewPageEl.querySelector('.btn-load');
+    if (btn) btn.remove();
 
-    if (value === 'newest') this._insertReviewMarkup(reviews);
+    if (value === 'newest') {
+      this._insertReviewMarkup(reviews);
+      if (reviews.length > NUMBER_OF_ITEMS) this._addReviewsHiddenClass();
+    }
 
-    if (value === 'oldest') this._insertReviewMarkup(reviews, 'oldest');
+    if (value === 'oldest') {
+      this._insertReviewMarkup(reviews, 'oldest');
+      if (reviews.length > NUMBER_OF_ITEMS) this._addReviewsHiddenClass();
+    }
   }
 
   _addHandlerSortReviews(handler) {
@@ -664,17 +723,36 @@ class AccountView extends View {
 
     options.forEach((el) => (el.selected = false));
     selectedEl.selected = true;
-    const markup = [...this._reviewsListEl.querySelectorAll('li')]
+    const reviews = [...this._reviewsListEl.querySelectorAll('li')];
+    reviews.forEach((el) => el.classList.remove('hidden'));
+    const markup = reviews
       .sort((a, b) => b.dataset.timestamp - a.dataset.timestamp)
       .map((el) => el.outerHTML)
       .join('');
 
     this._reviewsListEl.innerHTML = '';
     this._reviewsListEl.insertAdjacentHTML('afterbegin', markup);
+    this._removeSpinner(this._reviewPageEl);
+    this._addReviewsHiddenClass();
   }
 
   _clearReviewPage() {
     this._reviewsListEl.innerHTML = '';
+  }
+
+  _showReviews() {
+    const reviews = [
+      ...this._reviewsListEl.querySelectorAll('.comment__block--sm'),
+    ];
+
+    reviews
+      .filter((el) => el.classList.contains('hidden'))
+      .forEach((el, i) => {
+        if (i < NUMBER_OF_ITEMS) el.classList.remove('hidden');
+      });
+
+    if (reviews.filter((el) => el.classList.contains('hidden')).length === 0)
+      this._reviewPageEl.querySelector('.btn-load').remove();
   }
 
   // FUNCTIONS
@@ -762,10 +840,11 @@ class AccountView extends View {
     if (heading) heading.remove();
   }
 
-  _generateLoadSpinnerMarkup() {
+  // SPINNER
+  _generateSpinner() {
     return `
         <button type="button" class="btn-load">
-          <svg class="btn-load__icon">
+          <svg class="spinner">
             <use xlink:href="${icons}#convert"></use>
           </svg>
           Load more
@@ -773,11 +852,33 @@ class AccountView extends View {
     `;
   }
 
-  _removeLoadSpinner(page) {
+  _removeSpinner(page) {
     const spinner = page.querySelector('.btn-load');
     if (spinner) spinner.remove();
   }
 
+  async _loadSpinner(e) {
+    const btn = e.target.closest('.btn-load');
+    if (!btn) return;
+    const spinner = btn.querySelector('.spinner');
+    spinner.classList.add('spinner--rotate');
+
+    await this._delay(1000);
+    spinner.classList.remove('spinner--rotate');
+
+    if (btn.closest('section[data-account="orders"]')) this._showOrders();
+    if (btn.closest('section[data-account="review"]')) this._showReviews();
+  }
+
+  _delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  _addHandlerLoadSpinner() {
+    this._accountPageEl.addEventListener('click', this._loadSpinner.bind(this));
+  }
+
+  // TABS
   _changeTabs(userData, cities, e) {
     e.preventDefault();
 

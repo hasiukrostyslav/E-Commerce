@@ -339,8 +339,12 @@
   cursor: pointer;
   background-color: transparent;
 
-  &__icon {
+  .spinner {
     @include icon-medium($color: $color-gray-dark-2);
+
+    &--rotate {
+      animation: rotate 1s linear;
+    }
   }
 }
 

@@ -31,6 +31,7 @@
     "func-names": ["error", "as-needed"],
     "consistent-return": "off",
     "no-unneeded-ternary": "off",
-    "no-useless-catch": "off"
+    "no-useless-catch": "off",
+    "no-promise-executor-return": "off"
   }
 }
