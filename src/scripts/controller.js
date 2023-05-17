@@ -33,6 +33,9 @@ async function controlInitPage() {
     // Init sliders config
     slidersView.initSlider();
 
+    // Init orders status
+    model.initOrdersStatus();
+
     // Get Countries and Cities List
     const countriesList = await model.getCountry();
 
@@ -218,6 +221,10 @@ function controlAddLikes(e) {
   productView.updateReview(reviewData, model.findReview(reviewData));
 }
 
+function controlTrackOrder(e) {
+  trackView.trackOrder(model.getAllOrders(), e);
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -240,6 +247,7 @@ function init() {
   productView.addHandlerAddReview(controlAddProductReview);
   checkoutView.addHandlerCreateOrder(controlCreateOrder);
   productView.addHandlerAddLikes(controlAddLikes);
+  trackView.addHandlerTrackOrder(controlTrackOrder);
 }
 
 init();

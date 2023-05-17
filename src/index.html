@@ -1872,42 +1872,40 @@
           This form allows you to search for tracking details from anywhere
           within Createx Tracking Service.
         </p>
-        <form class="track__form">
-          <label class="subscribe__email-label" for="order-sb">Order No</label>
+        <form class="track__form" novalidate>
+          <label class="subscribe__email-label" for="order-num">Order No</label>
           <div class="subscribe__input-container u-margin-bottom-large">
-            <input class="subscribe__email-input subscribe__email-input--md" type="text" name="order" id="order-sb"
-              placeholder="Order number" required value="# 34BV66580K92">
+            <input class="subscribe__email-input subscribe__email-input--md" type="text" name="order" id="order-num"
+              placeholder="Order number" required data-input="search">
             <input type="submit" class="btn btn--solid btn--large" value="Search">
           </div>
 
-          <ul class="track__info-list">
+          <ul class="track__info-list hidden">
             <li class="track__info-item">
               <p class="track__info track__info--title">Order No:</p>
-              <p class="track__info track__info--data">34BV66580K92</p>
+              <p class="track__info track__info--data" data-track="id"></p>
             </li>
             <li class="track__info-item">
               <p class="track__info track__info--title">Shiped via:</p>
-              <p class="track__info track__info--data">UPS Ground</p>
+              <p class="track__info track__info--data" data-track="method"></p>
             </li>
             <li class="track__info-item">
               <p class="track__info track__info--title">Shipped on:</p>
-              <p class="track__info track__info--data">
-                August 29, 2020, 6:00 pm
+              <p class="track__info track__info--data" data-track="order-date">
               </p>
             </li>
             <li class="track__info-item">
               <p class="track__info track__info--title">Destination:</p>
-              <p class="track__info track__info--data">
-                London, United Kingdom
+              <p class="track__info track__info--data" data-track="destination">
               </p>
             </li>
             <li class="track__info-item">
               <p class="track__info track__info--title">Expected date:</p>
-              <p class="track__info track__info--data">September 4, 2020</p>
+              <p class="track__info track__info--data" data-track="delivery-date"></p>
             </li>
             <li class="track__info-item">
               <p class="track__info track__info--title">Status:</p>
-              <p class="track__info track__info--data">In Transit</p>
+              <p class="track__info track__info--data" data-track="status"></p>
             </li>
           </ul>
 
@@ -1920,7 +1918,7 @@
           </div>
         </form>
       </aside>
-      <table class="track__table table">
+      <table class="track__table table hidden">
         <thead class="table__head">
           <tr class="table__row table__row--head">
             <th class="table__heading table--width">Status</th>
@@ -1931,74 +1929,74 @@
         </thead>
         <tbody class="table__body">
           <tr class="table__row">
-            <td class="table__data table__data--done table__circle table__circle--y table__line table__line--y">
+            <td class="table__data table__data--done table__circle table__line">
               Order Placed
             </td>
-            <td class="table__data table__data--done">New York, USA</td>
-            <td class="table__data table__data--done">August 29, 2020</td>
-            <td class="table__data table__data--done">2:00 pm</td>
+            <td class="table__data">Warsaw, Poland</td>
+            <td class="table__data" data-date="shipped"></td>
+            <td class="table__data" data-time="shipped"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--done table__circle table__circle--y table__line table__line--y">
+            <td class="table__data table__circle table__line">
               Documentation Prepared
             </td>
-            <td class="table__data table__data--done">New York, USA</td>
-            <td class="table__data table__data--done">August 29, 2020</td>
-            <td class="table__data table__data--done">3:30 pm</td>
+            <td class="table__data">Warsaw, Poland</td>
+            <td class="table__data" data-date="shipped"></td>
+            <td class="table__data" data-time="shipped"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--done table__circle table__circle--y table__line table__line--y">
+            <td class="table__data table__circle table__line">
               Booking Arranged
             </td>
-            <td class="table__data table__data--done">New York, USA</td>
-            <td class="table__data table__data--done">August 29, 2020</td>
-            <td class="table__data table__data--done">3:35 pm</td>
+            <td class="table__data">Warsaw, Poland</td>
+            <td class="table__data" data-date="shipped"></td>
+            <td class="table__data" data-time="shipped"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--done table__circle table__circle--y table__line table__line--y">
+            <td class="table__data table__circle table__line">
               Collected
             </td>
-            <td class="table__data table__data--done">New York, USA</td>
-            <td class="table__data table__data--done">August 29, 2020</td>
-            <td class="table__data table__data--done">4:00 pm</td>
+            <td class="table__data">Warsaw, Poland</td>
+            <td class="table__data" data-date="shipped"></td>
+            <td class="table__data" data-time="shipped"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--done table__circle table__circle--y table__line table__line--n">
+            <td class="table__data table__circle table__line">
               In Transit to Destination
             </td>
-            <td class="table__data table__data--done">New York, USA</td>
-            <td class="table__data table__data--done">August 29, 2020</td>
-            <td class="table__data table__data--done">6:00 pm</td>
+            <td class="table__data">Warsaw, Poland</td>
+            <td class="table__data" data-date="shipped"></td>
+            <td class="table__data" data-time="shipped"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n">
+            <td class="table__data table__circle table__line">
               Arrived at Destination
             </td>
-            <td class="table__data table__data--no-done">
+            <td class="table__data" data-destination="">
               London, United Kingdom
             </td>
-            <td class="table__data table__data--done"></td>
-            <td class="table__data table__data--done"></td>
+            <td class="table__data" data-date="delivery"></td>
+            <td class="table__data" data-time="delivery"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--no-done table__circle table__circle--n table__line table__line--n">
+            <td class="table__data table__circle table__line">
               Out for Delivery
             </td>
-            <td class="table__data table__data--no-done">
+            <td class="table__data" data-destination="">
               London, United Kingdom
             </td>
-            <td class="table__data table__data--done"></td>
-            <td class="table__data table__data--done"></td>
+            <td class="table__data" data-date="delivery"></td>
+            <td class="table__data" data-time="delivery"></td>
           </tr>
           <tr class="table__row">
-            <td class="table__data table__data--no-done table__circle table__circle--n">
+            <td class="table__data table__circle">
               Delivered
             </td>
-            <td class="table__data table__data--no-done">
+            <td class="table__data" data-destination="">
               London, United Kingdom
             </td>
-            <td class="table__data table__data--done"></td>
-            <td class="table__data table__data--done"></td>
+            <td class="table__data" data-date="delivery"></td>
+            <td class="table__data" data-time="delivery"></td>
           </tr>
         </tbody>
       </table>

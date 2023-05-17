@@ -49,6 +49,7 @@ export const ERROR = {
   cardNum: 'Invalid Credit Card number',
   cardDate: 'Invalid Expiry Date',
   cardCVC: 'Invalid CVC code',
+  orderNum: 'Please enter Orders number',
 };
 
 export const ACCOUNT_TEXT = {
@@ -56,6 +57,8 @@ export const ACCOUNT_TEXT = {
   wishlist: 'You have not added items to the wishlist yet',
   view: 'You have not viewed items yet',
   review: 'You have not added comments to the products yet',
+  trackOrder:
+    'We did not find the order with this number. Maybe the number is incorrect.',
 };
 
 export const SHIPPING = [

@@ -42,6 +42,7 @@ class AccountView extends View {
     super();
     this._addHandlerAccordion();
     this._addHandlerLoadSpinner();
+    this._addHandlerOpenTrackPage();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
@@ -260,7 +261,7 @@ class AccountView extends View {
     return `
     <li class="order__panel ${
       i === arr.length - 1 ? 'u-padding-top' : ''
-    }" data-order-status="${order.status}">
+    }" data-order-status="${order.status}" data-order-id="${order.id}">
     <ul class="order__panel-list">
       <li class="order__item">
         <p class="order__id"># ${order.id}</p>
@@ -508,6 +509,22 @@ class AccountView extends View {
       filterOrders.filter((el) => el.classList.contains('hidden')).length === 0
     )
       this._ordersPageEl.querySelector('.btn-load').remove();
+  }
+
+  _openTrackPage(e) {
+    const btn = e.target.closest('[data-link="track"]');
+    if (!btn) return;
+
+    const { orderId } = btn.closest('[data-order-id]').dataset;
+    const orderInput = document.getElementById('order-num');
+    orderInput.value = orderId;
+  }
+
+  _addHandlerOpenTrackPage() {
+    this._ordersPageEl.addEventListener(
+      'click',
+      this._openTrackPage.bind(this)
+    );
   }
 
   // RENDER WISHLIST

@@ -273,8 +273,8 @@ export const updateReviewList = function (article, comment) {
     user: comment.fullName,
     date: comment.date,
     rating: +comment.rating,
-    likes: 0,
-    dislikes: 0,
+    likes: [],
+    dislikes: [],
     text: comment.text,
   };
   state.reviews.push(review);
@@ -347,4 +347,23 @@ export const addLikes = function (reviewData) {
   }
 
   persistState();
+};
+
+export const getAllOrders = function () {
+  const usersOrders = state.users.map((user) => user.orders).flat();
+  const otherOrders = state.orders.map((user) => user.orders).flat();
+
+  const orders = [...usersOrders, ...otherOrders];
+  return orders;
+};
+
+export const initOrdersStatus = function () {
+  const orders = getAllOrders();
+  orders.forEach((order) => {
+    if (
+      Date.now() > +new Date(order.deliveryDate) &&
+      order.status === 'progress'
+    )
+      order.status = 'delivered';
+  });
 };

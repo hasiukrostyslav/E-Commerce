@@ -58,6 +58,7 @@ class CheckoutView extends View {
     this._renderItemsFromCart();
     this._fillInputData(users, cities);
     this._addHandlerDigitValidation();
+    this._paymentReset();
   }
 
   addHandlerRenderCheckoutPage(handler) {
@@ -377,14 +378,52 @@ class CheckoutView extends View {
 
     const orderInfo = this._getOrderInfo(orderId);
 
+    const shippedDate = this._calculateDeliveryDate().toISOString();
+    const deliveryDate = this._calculateDeliveryDate(
+      this._getDeliveryDays()
+    ).toISOString();
+
     order.orders = orderInfo;
     order.orders.items = items;
+    order.orders.deliveryCountry = order.country;
+    order.orders.deliveryCity = order.city;
+    order.orders.shippedDate = shippedDate;
+    order.orders.deliveryDate = deliveryDate;
 
     this._showModalPopup('checkout');
     this._clearCart();
     setTimeout(this._clearCheckoutPage.bind(this), 2000);
 
     return order;
+  }
+
+  _calculateDeliveryDate(days = 1) {
+    const timestamp = Date.now() + days * 24 * 3600 * 1000;
+    return new Date(timestamp);
+  }
+
+  _getDeliveryDays() {
+    const shippingPrice = +this._shippingPriceEl.textContent.slice(1);
+    let days;
+
+    switch (shippingPrice) {
+      case 25:
+        days = 2;
+        break;
+
+      case 10:
+        days = 7;
+        break;
+
+      case 15:
+        days = 4;
+        break;
+
+      default:
+        days = 1;
+    }
+
+    return days;
   }
 
   _scrolToWarning() {
@@ -523,6 +562,13 @@ class CheckoutView extends View {
     if (!cvc) return;
 
     if (creditCardNum && expiryDate && cvc) return selectedType.dataset.payment;
+  }
+
+  _paymentReset() {
+    this._paymentTypes.forEach((el, i) => {
+      el.closest('div').querySelector('input').checked = false;
+      if (i === 0) el.closest('div').querySelector('input').checked = true;
+    });
   }
 
   _creditCardValidation() {

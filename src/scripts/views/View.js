@@ -187,14 +187,13 @@ export default class View {
   // Scroll to top
   _scrollToTop(e) {
     e.preventDefault();
-    const btn = e.target.closest('.footer__btn-up');
-    if (!btn) return;
-
     this._parentElement.scrollIntoView({ behavior: 'smooth' });
   }
 
   _addHandlerScrollToTop() {
-    this._footerEl.addEventListener('click', this._scrollToTop.bind(this));
+    this._footerEl
+      .querySelector('.footer__btn-up')
+      .addEventListener('click', this._scrollToTop.bind(this));
   }
 
   // Slider functionality
@@ -449,14 +448,14 @@ export default class View {
     return formatter.format(data);
   }
 
-  _dateFormatter(data) {
+  _dateFormatter(data, relative = true) {
     const today = new Date();
     const date = new Date(data);
     const difference = Math.trunc(
       (today - date) / MILISECONDS / SECONDS / MINUTES / HOURS
     );
 
-    if (difference > 3) {
+    if (difference > 3 || !relative) {
       const formatDate = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: 'long',
@@ -466,7 +465,7 @@ export default class View {
       return formatDate.format(date);
     }
 
-    if (difference <= 3) {
+    if (difference <= 3 && relative) {
       const formatRelativeDate = new Intl.RelativeTimeFormat('en-US', {
         style: 'long',
         numeric: 'auto',
@@ -687,6 +686,8 @@ export default class View {
       warning.textContent = ERROR.address;
 
     if (inputEl.dataset.input === 'textarea') warning.textContent = ERROR.field;
+    if (inputEl.dataset.input === 'search')
+      warning.textContent = ERROR.orderNum;
 
     if (inputEl.dataset.input === 'rating') warning.textContent = ERROR.rating;
     if (inputEl.dataset.select === 'country')
