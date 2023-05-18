@@ -343,9 +343,10 @@ class CartMovalView extends View {
             : +priceOldEl.textContent.slice(1).split(',').join('') - item.price
         );
       // NEED TO BE FIXED
-      // this._countItems();
     }
+    // console.dir(this._cartListEl.querySelector('.input--number-sm').value);
     this._calculateTotalPrice();
+    // this._countItems();
   }
 
   _deleteItem(e) {

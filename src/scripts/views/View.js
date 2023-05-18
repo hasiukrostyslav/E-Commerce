@@ -36,6 +36,7 @@ export default class View {
   _iconAdd = `<use xlink:href="${icons}#heart-filled"></use>`;
   _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
   _btnAddWishlist = this._productPageEl.querySelector('.checkbox__btn-add');
+  _modalCart = this._parentElement.querySelector('.modal--cart');
 
   init(data) {
     this._getCurrentDay();
@@ -331,6 +332,7 @@ export default class View {
       } else {
         this._stepUp(input);
         this._calculateTotalPrice();
+        if (!this._modalCart.classList.contains('hidden')) this._countItems();
       }
     }
 
@@ -346,6 +348,7 @@ export default class View {
       } else {
         this._stepDown(input);
         this._calculateTotalPrice();
+        if (!this._modalCart.classList.contains('hidden')) this._countItems();
       }
     }
   }
@@ -487,6 +490,19 @@ export default class View {
     }
 
     if (badge && itemsAmount === 0) badge.remove();
+  }
+
+  _countItems() {
+    const itemsAmountEl = this._modalCart.querySelector(
+      '.cart__heading-amount'
+    );
+    const cartListEl = this._modalCart.querySelector('.cart__list');
+    const itemsAmount = [...cartListEl.querySelectorAll('.input--number-sm')]
+      .map((num) => +num.value)
+      .reduce((acc, amount) => acc + amount, 0);
+
+    itemsAmountEl.textContent = itemsAmount;
+    this._createCartBadge(itemsAmount);
   }
 
   // Reviews
