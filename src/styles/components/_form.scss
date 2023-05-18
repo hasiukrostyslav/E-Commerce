@@ -138,8 +138,14 @@
     border: 1px solid $color-primary;
   }
 }
-.wishlist__icon--white {
-  fill: $color-white;
+.wishlist__icon {
+  &--white {
+    fill: $color-white;
+  }
+
+  &--green {
+    fill: $color-primary;
+  }
 }
 
 // RADIO BUTTON

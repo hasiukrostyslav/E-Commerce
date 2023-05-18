@@ -191,13 +191,17 @@ class CartMovalView extends View {
                     <button type="button" class="btn cart__wishlist btn-wishlist-add">
                         Move to 
                         <svg class="wishlist__icon ${
-                          card.querySelector('.wishlist__icon--filled')
+                          card.querySelector('.wishlist__icon--filled') ||
+                          card.querySelector('.checkbox__btn--fill')
                             ? 'wishlist__icon--filled'
                             : ''
                         }">
                             <use
                                 xlink:href="${icons}#heart-${
-      card.querySelector('.wishlist__icon--filled') ? 'filled' : 'outline'
+      card.querySelector('.wishlist__icon--filled') ||
+      card.querySelector('.checkbox__btn--fill')
+        ? 'filled'
+        : 'outline'
     }"
                             ></use>
                         </svg>
@@ -327,8 +331,6 @@ class CartMovalView extends View {
             ? item.price * 10
             : +priceOldEl.textContent.slice(1).split(',').join('') + item.price
         );
-      // NEED TO BE FIXED
-      // this._countItems();
     }
     if (e.target.closest('.caret-down')) {
       priceEl.textContent = this._priceFormatter(
@@ -342,11 +344,8 @@ class CartMovalView extends View {
             ? item.price
             : +priceOldEl.textContent.slice(1).split(',').join('') - item.price
         );
-      // NEED TO BE FIXED
     }
-    // console.dir(this._cartListEl.querySelector('.input--number-sm').value);
     this._calculateTotalPrice();
-    // this._countItems();
   }
 
   _deleteItem(e) {
@@ -362,17 +361,6 @@ class CartMovalView extends View {
     this._calculateTotalPrice();
     this._createCartBadge(length);
     this._addScrollBar();
-  }
-
-  _countItems() {
-    const itemsAmount = [
-      ...this._cartListEl.querySelectorAll('.input--number-sm'),
-    ]
-      .map((num) => +num.value)
-      .reduce((acc, amount) => acc + amount, 0);
-
-    this._itemsAmountEl.textContent = itemsAmount;
-    this._createCartBadge(itemsAmount);
   }
 
   _calculateTotalPrice() {

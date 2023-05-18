@@ -1,6 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import { MAXSCORE, NUMBER_OF_ITEMS, COLOR_SELECTED } from '../config';
+import { MAXSCORE, NUMBER_OF_ITEMS } from '../config';
 
 class ProductView extends View {
   _tabs = document.querySelector('.product__tabs');
@@ -329,6 +329,9 @@ class ProductView extends View {
     this._btnAddWishlist
       .querySelector('svg')
       .classList.toggle('wishlist__icon--white');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.toggle('wishlist__icon--green');
   }
 
   _addHandlerToggleWishBtn() {

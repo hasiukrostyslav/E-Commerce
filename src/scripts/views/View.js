@@ -982,6 +982,9 @@ export default class View {
     this._btnAddWishlist
       .querySelector('svg')
       .classList.add('wishlist__icon--white');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.remove('wishlist__icon--green');
   }
 
   _removeFillledClassBtn() {
@@ -989,5 +992,8 @@ export default class View {
     this._btnAddWishlist
       .querySelector('svg')
       .classList.remove('wishlist__icon--white');
+    this._btnAddWishlist
+      .querySelector('svg')
+      .classList.add('wishlist__icon--green');
   }
 }
