@@ -4,8 +4,11 @@ import { ERROR } from '../config';
 class ModalView extends View {
   _modalSignIn = document.querySelector('.modal--sign-in');
   _modalRegister = document.querySelector('.modal--sign-up');
+  _modalSize = document.querySelector('.modal--size');
   _btnLogIn = document.querySelector('.btn[data-submit="sign-in"]');
   _btnRegister = document.querySelector('.btn[data-submit="sign-up"]');
+  _btnModalSize = document.querySelector('.size-chart');
+  _sizeUnitLabel = document.querySelector('.size__unit');
 
   constructor() {
     super();
@@ -224,6 +227,83 @@ class ModalView extends View {
 
   addHandlerRegister(handler) {
     this._btnRegister.addEventListener('click', handler);
+  }
+
+  // MODAL SIZE
+  renderModalSize(data, e) {
+    const btn = e.target.closest('.size-chart');
+    const tabType = e.target.closest('label[data-size]');
+    const tabUnit = e.target.closest('label[data-unit]');
+    if (!btn && !tabType && !tabUnit) return;
+
+    if (btn) {
+      this._resetModalSize(e);
+      this._renderSizeData(data);
+      this._renderUnitsData(data);
+    }
+
+    if (tabType) {
+      this._renderSizeData(data, tabType.dataset.size);
+      const unit = this._getUnit();
+      this._renderUnitsData(data, tabType.dataset.size, unit);
+    }
+
+    if (tabUnit) {
+      const category = this._getCategory();
+      const { unit } = tabUnit.dataset;
+      this._renderUnitsData(data, category, unit);
+    }
+  }
+
+  _resetModalSize(e) {
+    const btn = e.target.closest('.size-chart');
+    if (!btn) return;
+
+    const tabsType = this._modalSize.querySelectorAll('input[name="category"]');
+    tabsType.forEach((tab, i) => {
+      tab.checked = false;
+      if (i === 0) tab.checked = true;
+    });
+
+    const tabsUnit = this._modalSize.querySelectorAll('input[name="units"]');
+    tabsUnit.forEach((tab, i) => {
+      tab.checked = false;
+      if (i === 0) tab.checked = true;
+    });
+  }
+
+  _renderSizeData(data, type = 'women') {
+    const sizeRows = this._modalSize.querySelectorAll('[data-size-region]');
+    const category = data[type];
+
+    sizeRows.forEach((row) => {
+      const dataSize = category[row.dataset.sizeRegion];
+      const cells = row.querySelectorAll('[data-size]');
+      cells.forEach((cell, i) => (cell.textContent = dataSize[i]));
+    });
+  }
+
+  _renderUnitsData(data, category = 'women', unit = 'cm') {
+    const unitData = data[category].units[unit];
+    const cells = this._modalSize.querySelectorAll('[data-size="length"]');
+    cells.forEach((cell, i) => (cell.textContent = `${unitData[i]} ${unit}`));
+    this._sizeUnitLabel.textContent = unit === 'cm' ? 'centimetres' : 'inches';
+  }
+
+  _getUnit() {
+    return [...this._modalSize.querySelectorAll('input[name="units"]')].find(
+      (unit) => unit.checked === true
+    ).nextElementSibling.dataset.unit;
+  }
+
+  _getCategory() {
+    return [...this._modalSize.querySelectorAll('input[name="category"]')].find(
+      (category) => category.checked === true
+    ).nextElementSibling.dataset.size;
+  }
+
+  addHandlerRenderModalSize(handler) {
+    document.addEventListener('click', handler);
   }
 }
 export default new ModalView();

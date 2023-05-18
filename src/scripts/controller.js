@@ -225,6 +225,10 @@ function controlTrackOrder(e) {
   trackView.trackOrder(model.getAllOrders(), e);
 }
 
+function controlRenderModalSize(e) {
+  modalView.renderModalSize(model.state.size, e);
+}
+
 function init() {
   view.addHandlerRender(controlInitPage);
   cardView.addHandlerRenderProductPage(controlRenderProductPage);
@@ -248,6 +252,7 @@ function init() {
   checkoutView.addHandlerCreateOrder(controlCreateOrder);
   productView.addHandlerAddLikes(controlAddLikes);
   trackView.addHandlerTrackOrder(controlTrackOrder);
+  modalView.addHandlerRenderModalSize(controlRenderModalSize);
 }
 
 init();

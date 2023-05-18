@@ -13,6 +13,7 @@ function downloadData() {
   state.contactMessage = data.contactMessage;
   state.subscribers = data.subscribers;
   state.orders = data.orders;
+  state.size = data.size;
 }
 downloadData();
 
