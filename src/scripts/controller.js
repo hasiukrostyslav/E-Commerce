@@ -261,7 +261,3 @@ function init() {
 }
 
 init();
-
-const time1 = '2022-01-15T13:26:17.000Z';
-const time2 = '2022-03-15T13:26:17.000Z';
-console.log(new Date(time2) < new Date(time1));

@@ -178,12 +178,6 @@ class CatalogView extends View {
           )
         );
       }
-
-      this._breadcrumbFilters.classList.remove('hidden');
-    }
-
-    if (this._catalogPageEl.classList.contains('hidden')) {
-      this._breadcrumbFilters.classList.add('hidden');
     }
 
     if (
