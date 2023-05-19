@@ -50,6 +50,10 @@ function controlInitCatalogPage(e) {
   catalogView.init(e, model.state.catalog);
 }
 
+function controlCatalogFilters(e) {
+  cardView.catalogInit(e, model.sortItems);
+}
+
 function controlRenderProductPage(e) {
   const article = cardView.clickOnCardLink(e);
   if (!article) return;
@@ -253,6 +257,11 @@ function init() {
   productView.addHandlerAddLikes(controlAddLikes);
   trackView.addHandlerTrackOrder(controlTrackOrder);
   modalView.addHandlerRenderModalSize(controlRenderModalSize);
+  cardView.addHandlerCatalogFilters(controlCatalogFilters);
 }
 
 init();
+
+const time1 = '2022-01-15T13:26:17.000Z';
+const time2 = '2022-03-15T13:26:17.000Z';
+console.log(new Date(time2) < new Date(time1));

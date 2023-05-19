@@ -1,7 +1,7 @@
 import data from './data';
 import images from './helper';
 // prettier-ignore
-import { EXCLUSION_COUNTRIES, CITIES, DOUBLE_COUNTRIES, LETTER_CODE, } from './config';
+import { EXCLUSION_COUNTRIES, CITIES, DOUBLE_COUNTRIES, } from './config';
 
 export const state = {};
 
@@ -367,4 +367,33 @@ export const initOrdersStatus = function () {
     )
       order.status = 'delivered';
   });
+};
+
+export const sortItems = function (value) {
+  state.catalog.forEach(
+    (item) =>
+      (item.newPrice =
+        item.discountPercentage === 0
+          ? item.price
+          : item.price - (item.discountPercentage * item.price) / 100)
+  );
+
+  let sortedData;
+  if (value === 'newest') {
+    sortedData = state.catalog.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+  }
+  if (value === 'oldest') {
+    sortedData = state.catalog.sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+  }
+  if (value === 'low') {
+    sortedData = state.catalog.sort((a, b) => a.newPrice - b.newPrice);
+  }
+  if (value === 'high') {
+    sortedData = state.catalog.sort((a, b) => b.newPrice - a.newPrice);
+  }
+  return sortedData;
 };

@@ -3,6 +3,7 @@ import icons from '../../assets/svg/sprite.svg';
 
 class CardView extends View {
   _curSlide = 0;
+  _catalogEl = this._catalogPageEl.querySelector('.catalog__product');
 
   constructor() {
     super();
@@ -290,5 +291,52 @@ class CardView extends View {
       </li>
     `;
   }
+
+  // CATALOG FILTERS
+  catalogInit(e, func) {
+    if (!e.target.closest('a[data-link="catalog"]')) return;
+    this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
+  }
+
+  _sortCatalog(func, e) {
+    const form = e.target.closest('.sort__form');
+    if (!form) return;
+
+    const selectedValue = [...e.target.querySelectorAll('option')].find(
+      (el) => el.selected
+    ).value;
+
+    this._catalogPageEl.querySelectorAll('.sort__select').forEach((select) => {
+      select.querySelectorAll('option').forEach((option) => {
+        option.selected = false;
+        if (option.value === selectedValue) option.selected = true;
+      });
+    });
+
+    this._catalogEl.innerHTML = '';
+    const sortedData = func(selectedValue);
+    sortedData.forEach((item) => this._renderCatalogItems(item));
+    this._showNumbresOfCards();
+  }
+
+  _renderCatalogItems(item) {
+    this._catalogEl.insertAdjacentHTML(
+      'beforeend',
+      this.generateCardMarkup(
+        item,
+        this._catalogEl.dataset.cards,
+        this._catalogEl.dataset.cardsSize
+      )
+    );
+  }
+
+  _addHandlerSortCatalog(handler) {
+    this._catalogPageEl.addEventListener('change', handler);
+  }
+
+  addHandlerCatalogFilters(handler) {
+    this._parentElement.addEventListener('click', handler);
+  }
 }
+
 export default new CardView();

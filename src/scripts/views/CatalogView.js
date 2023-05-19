@@ -9,7 +9,6 @@ class CatalogView extends View {
   _filterColorList = document.querySelector('.catalog__color-list');
   _catalog = document.querySelector('.catalog__product');
   _btnClearList = document.querySelectorAll('.clear-one');
-  _sortForm = this._catalogPageEl.querySelectorAll('.sort__form');
   _breadcrumbFilters = this._breadcrumbEl.querySelector(
     '.breadcrumb__catalog-list'
   );
@@ -20,7 +19,6 @@ class CatalogView extends View {
     this._addHandlerToggleFilterContainer();
     this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
-    this._addHandlerSortCatalog();
   }
 
   // Render filters
@@ -30,16 +28,6 @@ class CatalogView extends View {
     this._setFiltersDataAttribute();
     this._renderFiltersCheckList(data);
     this._renderFiltersColor(data);
-  }
-
-  _sortCatalog(e) {
-    console.log(e);
-  }
-
-  _addHandlerSortCatalog() {
-    this._sortForm.forEach((form) =>
-      form.addEventListener('change', this._sortCatalog.bind(this))
-    );
   }
 
   _setFiltersDataAttribute() {
