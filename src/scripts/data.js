@@ -346,6 +346,7 @@ const data = {
     {
       id: 1,
       article: 151253984,
+      date: '2022-12-15T13:26:17.000Z',
       title: 'Cap',
       description: 'Black and white sport cap',
       price: 18.15,
@@ -367,6 +368,7 @@ const data = {
     {
       id: 2,
       article: 183591002,
+      date: '2022-12-14T13:26:17.000Z',
       title: 'Sunglasses',
       description: 'Metal bridge sunglasses',
       price: 89.95,
@@ -388,6 +390,7 @@ const data = {
     {
       id: 3,
       article: 164169335,
+      date: '2022-12-13T13:26:17.000Z',
       title: 'Romper',
       description: 'Green baby romper',
       price: 20.4,
@@ -409,6 +412,7 @@ const data = {
     {
       id: 4,
       article: 140168894,
+      date: '2022-12-10T13:26:17.000Z',
       title: 'Jeans',
       description: 'Mid-rise slim cropped fit jeans',
       price: 40,
@@ -430,6 +434,7 @@ const data = {
     {
       id: 5,
       article: 103758821,
+      date: '2022-12-05T13:26:17.000Z',
       title: 'Earrings',
       description: 'Red dangle earrings',
       price: 29.95,
@@ -451,6 +456,7 @@ const data = {
     {
       id: 6,
       article: 151492427,
+      date: '2022-11-15T13:26:17.000Z',
       title: 'Baby shoes',
       description: 'Baby shoes with laces',
       price: 30.6,
@@ -472,6 +478,7 @@ const data = {
     {
       id: 7,
       article: 166411108,
+      date: '2022-05-15T13:26:17.000Z',
       title: 'Shirt',
       description: 'Shirt with insertion lace trims',
       price: 49.95,
@@ -493,6 +500,7 @@ const data = {
     {
       id: 8,
       article: 113002379,
+      date: '2022-05-15T13:26:17.000Z',
       title: 'Watch',
       description: 'Chrono classic watch',
       price: 120.6,
@@ -514,6 +522,7 @@ const data = {
     {
       id: 9,
       article: 190320414,
+      date: '2022-05-15T13:26:17.000Z',
       title: 'Coat',
       description: 'Coat with colour contrast',
       price: 183.45,
@@ -535,6 +544,7 @@ const data = {
     {
       id: 10,
       article: 147140718,
+      date: '2022-05-15T13:26:17.000Z',
       title: 'Bag',
       description: 'Leather crossbody bag',
       price: 179,
@@ -556,6 +566,7 @@ const data = {
     {
       id: 11,
       article: 123186238,
+      date: '2022-05-10T13:26:17.000Z',
       title: 'Jeans',
       description: 'Skinny push-up jeans',
       price: 80,
@@ -577,6 +588,7 @@ const data = {
     {
       id: 12,
       article: 113164046,
+      date: '2022-05-10T13:26:17.000Z',
       title: 'Boots',
       description: 'Wide heel suede ankle boots',
       price: 148.95,
@@ -599,6 +611,7 @@ const data = {
     {
       id: 13,
       article: 183260098,
+      date: '2022-05-10T13:26:17.000Z',
       title: 'Sweatshirt',
       description: 'Basic hooded sweatshirt',
       price: 31,
@@ -620,6 +633,7 @@ const data = {
     {
       id: 14,
       article: 130753077,
+      date: '2022-01-15T13:26:17.000Z',
       title: 'Shoes',
       description: 'Men fashion gray shoes',
       price: 85.5,
@@ -641,6 +655,7 @@ const data = {
     {
       id: 15,
       article: 136421110,
+      date: '2022-01-15T13:26:17.000Z',
       title: 'Shorts',
       description: 'Denim shorts',
       price: 24,
@@ -662,6 +677,7 @@ const data = {
     {
       id: 16,
       article: 106254276,
+      date: '2022-01-15T13:26:17.000Z',
       title: 'Trenchcoat',
       description: 'Modal-blend trenchcoat',
       price: 18.15,
@@ -683,6 +699,7 @@ const data = {
     {
       id: 17,
       article: 146175048,
+      date: '2022-01-15T13:26:17.000Z',
       title: 'Sandals',
       description: 'Leather sandals',
       price: 48,
