@@ -104,7 +104,7 @@ export const CITIES = [
   },
   {
     Ukraine: [
-      'Bila Tserkva', 'Cherkasy', 'Chernihiv', 'Chernivtsi', 'Dnipro', 'Ivano-Frankivsk', 'Kamianske', 'Kharkiv', 'Kherson', 'Khmelnytskyi', 'Kiyv', 'Kramatorsk', 'Kremenchuk', 'Kropyvnytskyi', 'Kryvyi Rih', 'Lutsk', 'Lviv', 'Mykolaiv', 'Odesa', 'Poltava', 'Rivne', 'Sumy', 'Ternopil', 'Uzhhorod', 'Vinnytsia', 'Zaporizhzhia', 'Zhytomyr',
+      'Bila Tserkva', 'Cherkasy', 'Chernihiv', 'Chernivtsi', 'Dnipro', 'Ivano-Frankivsk', 'Kamianske', 'Kharkiv', 'Kherson', 'Khmelnytskyi', 'Kyiv', 'Kramatorsk', 'Kremenchuk', 'Kropyvnytskyi', 'Kryvyi Rih', 'Lutsk', 'Lviv', 'Mykolaiv', 'Odesa', 'Poltava', 'Rivne', 'Sumy', 'Ternopil', 'Uzhhorod', 'Vinnytsia', 'Zaporizhzhia', 'Zhytomyr',
     ],
   },
   {

@@ -295,6 +295,7 @@ class CardView extends View {
   // CATALOG FILTERS
   catalogInit(e, func) {
     if (!e.target.closest('a[data-link="catalog"]')) return;
+    this._resetCatalog(func);
     this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
     this._addHandlerChangePage(this._changePage.bind(this));
     this._setPaginationAttribute();
@@ -314,14 +315,7 @@ class CardView extends View {
         if (option.value === selectedValue) option.selected = true;
       });
     });
-
-    this._catalogEl.innerHTML = '';
-    const sortedData = func(selectedValue);
-    sortedData.forEach((item) => this._renderCatalogItems(item));
-    this._showNumbresOfCards();
-    this._renderCatalogPagination();
-    this._updateWishIcons();
-    this._setPaginationAttribute();
+    this._initFilters(func, selectedValue);
   }
 
   _renderCatalogItems(item) {
@@ -342,7 +336,6 @@ class CardView extends View {
   _changePage(e) {
     const btn = e.target.closest('.pagination__btn');
     if (!btn || btn.classList.contains('pagination__btn--current')) return;
-
     const currentPage = this._changeCurrentBtn(e, btn);
     this._showCurrentPage(currentPage);
   }
@@ -357,6 +350,7 @@ class CardView extends View {
   }
 
   _changeCurrentBtn(e, btn) {
+    e.stopImmediatePropagation();
     const btns = [
       ...e.target.closest('.pagination').querySelectorAll('.pagination__btn'),
     ];
@@ -371,8 +365,9 @@ class CardView extends View {
       }
 
       if (btn.querySelector('svg')) {
-        if (i === currentBtnIndex + 1)
+        if (i === currentBtnIndex + 1) {
           el.classList.add('pagination__btn--current');
+        }
 
         if (currentBtnIndex === arr.length - 2) {
           const lasteEl = arr[arr.length - 2];
@@ -402,6 +397,31 @@ class CardView extends View {
 
   addHandlerCatalogFilters(handler) {
     this._parentElement.addEventListener('click', handler);
+  }
+
+  _resetCatalog(func) {
+    this._catalogPageEl.querySelectorAll('.sort__select').forEach((select) => {
+      select.querySelectorAll('option').forEach((option) => {
+        option.selected = false;
+        if (option.value === 'newest') option.selected = true;
+      });
+    });
+
+    this._catalogPageEl
+      .querySelectorAll('.input--number')
+      .forEach((input) => (input.value = 12));
+
+    this._initFilters(func, 'newest');
+  }
+
+  _initFilters(func, value) {
+    this._catalogEl.innerHTML = '';
+    const sortedData = func(value);
+    sortedData.forEach((item) => this._renderCatalogItems(item));
+    this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
   }
 }
 
