@@ -28,6 +28,7 @@ class CatalogView extends View {
     this._setFiltersDataAttribute();
     this._renderFiltersCheckList(data);
     this._renderFiltersColor(data);
+    this._renderCatalogPagination();
   }
 
   _setFiltersDataAttribute() {

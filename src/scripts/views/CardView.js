@@ -296,6 +296,8 @@ class CardView extends View {
   catalogInit(e, func) {
     if (!e.target.closest('a[data-link="catalog"]')) return;
     this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
+    this._addHandlerChangePage(this._changePage.bind(this));
+    this._setPaginationAttribute();
   }
 
   _sortCatalog(func, e) {
@@ -317,6 +319,9 @@ class CardView extends View {
     const sortedData = func(selectedValue);
     sortedData.forEach((item) => this._renderCatalogItems(item));
     this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
   }
 
   _renderCatalogItems(item) {
@@ -332,6 +337,67 @@ class CardView extends View {
 
   _addHandlerSortCatalog(handler) {
     this._catalogPageEl.addEventListener('change', handler);
+  }
+
+  _changePage(e) {
+    const btn = e.target.closest('.pagination__btn');
+    if (!btn || btn.classList.contains('pagination__btn--current')) return;
+
+    const currentPage = this._changeCurrentBtn(e, btn);
+    this._showCurrentPage(currentPage);
+  }
+
+  _showCurrentPage(page) {
+    const items = [...this._catalogPageEl.querySelectorAll('.card')];
+    items.forEach((card) => {
+      card.classList.add('hidden');
+    });
+    const currentItems = items.filter((el) => el.dataset.pagination === page);
+    currentItems.forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _changeCurrentBtn(e, btn) {
+    const btns = [
+      ...e.target.closest('.pagination').querySelectorAll('.pagination__btn'),
+    ];
+    const currentBtnIndex = btns.findIndex((el) =>
+      el.classList.contains('pagination__btn--current')
+    );
+
+    btns.forEach((el, i, arr) => {
+      el.classList.remove('pagination__btn--current');
+      if (!btn.querySelector('svg')) {
+        btn.classList.add('pagination__btn--current');
+      }
+
+      if (btn.querySelector('svg')) {
+        if (i === currentBtnIndex + 1)
+          el.classList.add('pagination__btn--current');
+
+        if (currentBtnIndex === arr.length - 2) {
+          const lasteEl = arr[arr.length - 2];
+          lasteEl.classList.add('pagination__btn--current');
+        }
+      }
+
+      const curIndex = btns.findIndex((elem) =>
+        elem.classList.contains('pagination__btn--current')
+      );
+
+      this._catalogPageEl.querySelectorAll('.pagination').forEach((pagin) => {
+        pagin.querySelectorAll('.pagination__btn').forEach((page, index) => {
+          page.classList.remove('pagination__btn--current');
+          if (index === curIndex)
+            page.classList.add('pagination__btn--current');
+        });
+      });
+    });
+    return this._catalogPageEl.querySelector('.pagination__btn--current')
+      .dataset.pagination;
+  }
+
+  _addHandlerChangePage(handler) {
+    this._catalogPageEl.addEventListener('click', handler);
   }
 
   addHandlerCatalogFilters(handler) {
