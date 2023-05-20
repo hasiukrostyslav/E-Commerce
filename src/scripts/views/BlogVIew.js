@@ -9,7 +9,7 @@ class BlogView extends View {
   _searchInputEl = this._blogPageEl.querySelector('.search__input');
   _searchBtnEl = this._searchFormEl.querySelector('.search__button');
   _categoriesEl = this._blogPageEl.querySelector('.sidebar__categories');
-  _categoriesLabelEl = this._categoriesEl.querySelectorAll('label');
+
   _featuredEl = this._blogPageEl.querySelector('.sidebar__featured');
 
   constructor() {
@@ -26,6 +26,7 @@ class BlogView extends View {
     this._renderBlogFeatured(data);
     this._addHandlerShowCategory(this._showCategoryBlog.bind(this, data));
     this._addHandlerSearchBlog(this._searchBlog.bind(this, data));
+    this._categoriesLabelEl = this._categoriesEl.querySelectorAll('label');
   }
 
   // Blog list
