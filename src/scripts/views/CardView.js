@@ -4,6 +4,10 @@ import icons from '../../assets/svg/sprite.svg';
 class CardView extends View {
   _curSlide = 0;
   _catalogEl = this._catalogPageEl.querySelector('.catalog__product');
+  _btnFilter = document.querySelector('.catalog__btn').lastChild;
+  _catalogContainer = document.querySelector('.catalog');
+  _accordionContainer = document.querySelector('.catalog__filter');
+  _catalogFilters = document.querySelector('.catalog__filter');
 
   constructor() {
     super();
@@ -295,7 +299,13 @@ class CardView extends View {
   // CATALOG FILTERS
   catalogInit(e, func) {
     if (!e.target.closest('a[data-link="catalog"]')) return;
+    this._resetCatalog(func);
     this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
+    this._addHandlerFilterItems(this._showFilteredItems.bind(this, func));
+    this._addHandlerChangePage(this._changePage.bind(this));
+    this._addHandlerSearchFilters(this._searchFilters.bind(this));
+    this._setPaginationAttribute();
+    this._showFilterContainer();
   }
 
   _sortCatalog(func, e) {
@@ -312,11 +322,7 @@ class CardView extends View {
         if (option.value === selectedValue) option.selected = true;
       });
     });
-
-    this._catalogEl.innerHTML = '';
-    const sortedData = func(selectedValue);
-    sortedData.forEach((item) => this._renderCatalogItems(item));
-    this._showNumbresOfCards();
+    this._initFilters(func, selectedValue);
   }
 
   _renderCatalogItems(item) {
@@ -334,8 +340,185 @@ class CardView extends View {
     this._catalogPageEl.addEventListener('change', handler);
   }
 
+  _changePage(e) {
+    const btn = e.target.closest('.pagination__btn');
+    if (!btn || btn.classList.contains('pagination__btn--current')) return;
+    const currentPage = this._changeCurrentBtn(e, btn);
+    this._showCurrentPage(currentPage);
+  }
+
+  _showCurrentPage(page) {
+    const items = [...this._catalogPageEl.querySelectorAll('.card')];
+    items.forEach((card) => {
+      card.classList.add('hidden');
+    });
+    const currentItems = items.filter((el) => el.dataset.pagination === page);
+    currentItems.forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _changeCurrentBtn(e, btn) {
+    e.stopImmediatePropagation();
+    const btns = [
+      ...e.target.closest('.pagination').querySelectorAll('.pagination__btn'),
+    ];
+    const currentBtnIndex = btns.findIndex((el) =>
+      el.classList.contains('pagination__btn--current')
+    );
+
+    btns.forEach((el, i, arr) => {
+      el.classList.remove('pagination__btn--current');
+      if (!btn.querySelector('svg')) {
+        btn.classList.add('pagination__btn--current');
+      }
+
+      if (btn.querySelector('svg')) {
+        if (i === currentBtnIndex + 1) {
+          el.classList.add('pagination__btn--current');
+        }
+
+        if (currentBtnIndex === arr.length - 2) {
+          const lasteEl = arr[arr.length - 2];
+          lasteEl.classList.add('pagination__btn--current');
+        }
+      }
+
+      const curIndex = btns.findIndex((elem) =>
+        elem.classList.contains('pagination__btn--current')
+      );
+
+      this._catalogPageEl.querySelectorAll('.pagination').forEach((pagin) => {
+        pagin.querySelectorAll('.pagination__btn').forEach((page, index) => {
+          page.classList.remove('pagination__btn--current');
+          if (index === curIndex)
+            page.classList.add('pagination__btn--current');
+        });
+      });
+    });
+    return this._catalogPageEl.querySelector('.pagination__btn--current')
+      .dataset.pagination;
+  }
+
+  _addHandlerChangePage(handler) {
+    this._catalogPageEl.addEventListener('click', handler);
+  }
+
   addHandlerCatalogFilters(handler) {
     this._parentElement.addEventListener('click', handler);
+  }
+
+  _resetCatalog(func) {
+    this._catalogPageEl.querySelectorAll('.sort__select').forEach((select) => {
+      select.querySelectorAll('option').forEach((option) => {
+        option.selected = false;
+        if (option.value === 'newest') option.selected = true;
+      });
+    });
+
+    this._catalogPageEl
+      .querySelectorAll('.input--number')
+      .forEach((input) => (input.value = 12));
+
+    this._initFilters(func, 'newest');
+  }
+
+  _initFilters(func, value) {
+    this._catalogEl.innerHTML = '';
+    const sortedData = func(value);
+    sortedData.forEach((item) => this._renderCatalogItems(item));
+    this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
+    this._resetSearchInput();
+  }
+
+  _showFilterContainer() {
+    this._btnFilter.textContent = 'Hide filters';
+    this._catalogContainer.classList.remove('block');
+    this._catalogContainer.classList.add('grid');
+    this._accordionContainer.classList.remove('hidden');
+  }
+
+  _resetSearchInput() {
+    this._catalogPageEl
+      .querySelectorAll('.search__input')
+      .forEach((input) => (input.value = ''));
+  }
+
+  _searchFilters(e) {
+    const input = e.target.closest('.search__input');
+    if (!input) return;
+
+    const options = [...input.closest('div').querySelectorAll('[data-type]')];
+    options.forEach((el) => {
+      el.classList.add('hidden');
+    });
+
+    const searchedOptions = options.filter((el) =>
+      el.dataset.type.toLowerCase().includes(input.value.toLowerCase())
+    );
+
+    searchedOptions.forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _addHandlerSearchFilters(handler) {
+    this._catalogPageEl.addEventListener('input', handler);
+  }
+
+  _showFilteredItems(func, e) {
+    e.preventDefault();
+    const checkBox = e.target.closest('.checked__label');
+    if (!checkBox) return;
+    if (!checkBox.classList.contains('color__label'))
+      checkBox
+        .querySelector('.checkbox__mark')
+        .classList.toggle('checkbox__mark--checked');
+
+    if (checkBox.classList.contains('color__label'))
+      checkBox.classList.toggle('color__label--checked');
+
+    const checkedFilters = this._getFilteredOptions();
+
+    const items = func(this._getSelectedValue());
+
+    const filteredItems = this._getFilteredItems(items, checkedFilters);
+
+    this._catalogEl.innerHTML = '';
+    filteredItems.forEach((item) => this._renderCatalogItems(item));
+  }
+
+  _getFilteredOptions() {
+    return [
+      ...this._catalogFilters.querySelectorAll('.checkbox__mark--checked'),
+      ...this._catalogFilters.querySelectorAll('.color__label--checked'),
+    ]
+      .map((el) => el.closest('.checked__label'))
+      .map((el) => ({
+        category: el.closest('[data-filter]').dataset.filter,
+        value: +el.previousElementSibling.id || el.previousElementSibling.id,
+      }));
+  }
+
+  _getFilteredItems(items, filters) {
+    return items.filter((el) =>
+      filters.every((filter) =>
+        filter.category === 'clothes' || filter.category === 'brand'
+          ? el[filter.category] === filter.value
+          : el[filter.category].find((option) => option === filter.value)
+      )
+    );
+  }
+
+  _getSelectedValue() {
+    return [
+      ...this._catalogPageEl
+        .querySelector('.sort__select')
+        .querySelectorAll('option'),
+    ].find((option) => option.selected === true).value;
+  }
+
+  _addHandlerFilterItems(handler) {
+    this._catalogFilters.addEventListener('click', handler);
   }
 }
 

@@ -1,6 +1,6 @@
 import icons from '../../assets/svg/sprite.svg';
 // prettier-ignore
-import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS, DISCOUNT, MAXSCORE, ERROR, POPUP_MESSAGE } from '../config';
+import { DAYS, HOURS, MINUTES, SECONDS, MILISECONDS, DISCOUNT, MAXSCORE, ERROR, POPUP_MESSAGE, ITEMS_PER_PAGE } from '../config';
 
 export default class View {
   _parentElement = document.querySelector('body');
@@ -37,6 +37,7 @@ export default class View {
   _iconRemove = `<use xlink:href="${icons}#heart-outline"></use>`;
   _btnAddWishlist = this._productPageEl.querySelector('.checkbox__btn-add');
   _modalCart = this._parentElement.querySelector('.modal--cart');
+  _catalogPagination = this._catalogPageEl.querySelectorAll('.pagination');
 
   init(data) {
     this._getCurrentDay();
@@ -329,6 +330,8 @@ export default class View {
           .querySelectorAll('.input--number')
           .forEach((num) => this._stepUp(num));
         this._showNumbresOfCards();
+        this._renderCatalogPagination();
+        this._setPaginationAttribute();
       } else {
         this._stepUp(input);
         this._calculateTotalPrice();
@@ -345,6 +348,8 @@ export default class View {
           .querySelectorAll('.input--number')
           .forEach((num) => this._stepDown(num));
         this._showNumbresOfCards();
+        this._renderCatalogPagination();
+        this._setPaginationAttribute();
       } else {
         this._stepDown(input);
         this._calculateTotalPrice();
@@ -995,5 +1000,95 @@ export default class View {
     this._btnAddWishlist
       .querySelector('svg')
       .classList.add('wishlist__icon--green');
+  }
+
+  // Catalog
+  _renderCatalogPagination() {
+    const pages = Array.from(
+      { length: this._calculatePagesNum() },
+      (_, i) => i + 1
+    );
+
+    this._catalogPagination.forEach((el) => {
+      el.innerHTML = '';
+      const markup = pages
+        .map((page, i) => this._generatePaginationMarkup(page, i))
+        .join('');
+      el.insertAdjacentHTML('afterbegin', markup);
+
+      if (pages.length > 1)
+        el.insertAdjacentHTML(
+          'beforeend',
+          this._generatePaginationArrowMarkup()
+        );
+    });
+  }
+
+  _generatePaginationMarkup(page, i) {
+    return `
+    <li class="pagination__item">
+      <button type="button" class="btn pagination__btn ${
+        i === 0 ? 'pagination__btn--current' : ''
+      }" data-pagination="${i + 1}">${page}</button>
+    </li>
+ 
+    `;
+  }
+
+  _generatePaginationArrowMarkup() {
+    return `
+    <li class="pagination__item">
+      <button type="button" class="btn pagination__btn">
+        <svg class="pagination__icon">
+          <use xlink:href="${icons}#right"></use>
+        </svg>
+      </button>
+    </li>
+    `;
+  }
+
+  _updateWishIcons() {
+    if (!document.querySelector('.user-profile').dataset.id) return;
+    const items = [
+      ...document
+        .querySelector('.account__wishlist-container')
+        .querySelectorAll('.card'),
+    ].map((card) => card.dataset.article);
+
+    this._catalogPageEl.querySelectorAll('.card').forEach((card) => {
+      items.forEach((el) => {
+        if (card.dataset.article === el) {
+          const icon = card.querySelector('.wishlist__icon');
+          icon.classList.add('wishlist__icon--filled');
+          icon.innerHTML = this._iconAdd;
+        }
+      });
+    });
+  }
+
+  _calculatePagesNum() {
+    const items = [...this._catalogPageEl.querySelectorAll('.card')];
+    const visibleItems = items.filter(
+      (item) => !item.classList.contains('hidden')
+    );
+
+    return Math.ceil((items.length - visibleItems.length) / ITEMS_PER_PAGE) + 1;
+  }
+
+  _setPaginationAttribute() {
+    const numValue = +this._catalogPageEl.querySelector('.input--number').value;
+    this._catalogPageEl.querySelectorAll('.card').forEach((card, i) => {
+      if (numValue === 6) {
+        if (i < 6) card.dataset.pagination = 1;
+        if (i >= 6 && i < 12) card.dataset.pagination = 2;
+        if (i >= 12) card.dataset.pagination = 3;
+      }
+
+      if (numValue === 12) {
+        if (i < 12) card.dataset.pagination = 1;
+        else card.dataset.pagination = 2;
+      }
+      if (numValue > 12) card.dataset.pagination = 1;
+    });
   }
 }

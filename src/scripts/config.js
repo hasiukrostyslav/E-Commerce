@@ -6,6 +6,7 @@ export const MILISECONDS = 1000;
 export const MAXSCORE = 5;
 export const NUMBER_OF_ITEMS = 4;
 export const NUMBER_OF_ORDERS = 6;
+export const ITEMS_PER_PAGE = 6;
 export const MIN_PRICE = 0;
 export const MAX_PRICE = 1000;
 export const COLOR_SELECTED = 'rgb(23, 105, 106)';
@@ -103,7 +104,7 @@ export const CITIES = [
   },
   {
     Ukraine: [
-      'Bila Tserkva', 'Cherkasy', 'Chernihiv', 'Chernivtsi', 'Dnipro', 'Ivano-Frankivsk', 'Kamianske', 'Kharkiv', 'Kherson', 'Khmelnytskyi', 'Kiyv', 'Kramatorsk', 'Kremenchuk', 'Kropyvnytskyi', 'Kryvyi Rih', 'Lutsk', 'Lviv', 'Mykolaiv', 'Odesa', 'Poltava', 'Rivne', 'Sumy', 'Ternopil', 'Uzhhorod', 'Vinnytsia', 'Zaporizhzhia', 'Zhytomyr',
+      'Bila Tserkva', 'Cherkasy', 'Chernihiv', 'Chernivtsi', 'Dnipro', 'Ivano-Frankivsk', 'Kamianske', 'Kharkiv', 'Kherson', 'Khmelnytskyi', 'Kyiv', 'Kramatorsk', 'Kremenchuk', 'Kropyvnytskyi', 'Kryvyi Rih', 'Lutsk', 'Lviv', 'Mykolaiv', 'Odesa', 'Poltava', 'Rivne', 'Sumy', 'Ternopil', 'Uzhhorod', 'Vinnytsia', 'Zaporizhzhia', 'Zhytomyr',
     ],
   },
   {

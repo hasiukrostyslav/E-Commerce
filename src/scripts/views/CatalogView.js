@@ -1,5 +1,4 @@
 import View from './View';
-import { MIN_PRICE, MAX_PRICE } from '../config';
 
 class CatalogView extends View {
   _accordionContainer = document.querySelector('.catalog__filter');
@@ -28,6 +27,7 @@ class CatalogView extends View {
     this._setFiltersDataAttribute();
     this._renderFiltersCheckList(data);
     this._renderFiltersColor(data);
+    this._renderCatalogPagination();
   }
 
   _setFiltersDataAttribute() {
@@ -57,9 +57,8 @@ class CatalogView extends View {
               type="checkbox"
               name="color"
               id="${data}"
-              checked
             >
-            <label class="color__label color__label--lg" for="${data}"
+            <label class="color__label color__label--lg checked__label" for="${data}"
             >&nbsp;
               <span
                 class="color__type color__type--lg color__type--${data}"
@@ -108,16 +107,15 @@ class CatalogView extends View {
 
   _generateFilterCheckList(data, type, quantity) {
     return `
-          <li class="catalog__check-item">
+          <li class="catalog__check-item" data-type="${data}">
             <input
               class="checkbox__input"
               type="checkbox"
               name="${type}"
               id="${data}"
-              checked
             >
             <label
-              class="checkbox__label checkbox__label--small"
+              class="checkbox__label checkbox__label--small checked__label"
               for="${data}">
               <span class="checkbox__mark">&nbsp;
               </span>${
