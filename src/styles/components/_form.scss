@@ -52,6 +52,15 @@
       opacity: 0;
       transition: opacity 0.5s;
     }
+
+    &--checked {
+      background-color: $color-primary;
+      border: 1px solid $color-primary;
+
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 
   &__input:checked ~ &__label &__mark {
@@ -259,6 +268,10 @@
   }
 
   &__radio:checked ~ &__label {
+    border: 1px solid $color-primary;
+  }
+
+  &__label--checked {
     border: 1px solid $color-primary;
   }
 

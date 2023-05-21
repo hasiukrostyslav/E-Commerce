@@ -301,7 +301,7 @@ class CardView extends View {
     if (!e.target.closest('a[data-link="catalog"]')) return;
     this._resetCatalog(func);
     this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
-    this._addHandlerFilterItems(this._filterItems.bind(this, func));
+    this._addHandlerFilterItems(this._showFilteredItems.bind(this, func));
     this._addHandlerChangePage(this._changePage.bind(this));
     this._addHandlerSearchFilters(this._searchFilters.bind(this));
     this._setPaginationAttribute();
@@ -465,27 +465,48 @@ class CardView extends View {
     this._catalogPageEl.addEventListener('input', handler);
   }
 
-  _filterItems(func, e) {
+  _showFilteredItems(func, e) {
+    e.preventDefault();
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
-    if (!checkBox.previousElementSibling.checked)
-      this._showFilteredItem(checkBox, func);
-  }
+    if (!checkBox.classList.contains('color__label'))
+      checkBox
+        .querySelector('.checkbox__mark')
+        .classList.toggle('checkbox__mark--checked');
 
-  _showFilteredItem(checkBox, func) {
-    const filterType = checkBox.closest('[data-filter]').dataset.filter;
-    const checkboxValue =
-      +checkBox.previousElementSibling.id || checkBox.previousElementSibling.id;
+    if (checkBox.classList.contains('color__label'))
+      checkBox.classList.toggle('color__label--checked');
+
+    const checkedFilters = this._getFilteredOptions();
 
     const items = func(this._getSelectedValue());
-    const filteredItems = items.filter((el) =>
-      filterType === 'clothes' || filterType === 'brand'
-        ? el[filterType] === checkboxValue
-        : el[filterType].find((option) => option === checkboxValue)
-    );
+
+    const filteredItems = this._getFilteredItems(items, checkedFilters);
 
     this._catalogEl.innerHTML = '';
     filteredItems.forEach((item) => this._renderCatalogItems(item));
+  }
+
+  _getFilteredOptions() {
+    return [
+      ...this._catalogFilters.querySelectorAll('.checkbox__mark--checked'),
+      ...this._catalogFilters.querySelectorAll('.color__label--checked'),
+    ]
+      .map((el) => el.closest('.checked__label'))
+      .map((el) => ({
+        category: el.closest('[data-filter]').dataset.filter,
+        value: +el.previousElementSibling.id || el.previousElementSibling.id,
+      }));
+  }
+
+  _getFilteredItems(items, filters) {
+    return items.filter((el) =>
+      filters.every((filter) =>
+        filter.category === 'clothes' || filter.category === 'brand'
+          ? el[filter.category] === filter.value
+          : el[filter.category].find((option) => option === filter.value)
+      )
+    );
   }
 
   _getSelectedValue() {
