@@ -4,6 +4,10 @@ import icons from '../../assets/svg/sprite.svg';
 class CardView extends View {
   _curSlide = 0;
   _catalogEl = this._catalogPageEl.querySelector('.catalog__product');
+  _btnFilter = document.querySelector('.catalog__btn').lastChild;
+  _catalogContainer = document.querySelector('.catalog');
+  _accordionContainer = document.querySelector('.catalog__filter');
+  _catalogFilters = document.querySelector('.catalog__filter');
 
   constructor() {
     super();
@@ -297,8 +301,11 @@ class CardView extends View {
     if (!e.target.closest('a[data-link="catalog"]')) return;
     this._resetCatalog(func);
     this._addHandlerSortCatalog(this._sortCatalog.bind(this, func));
+    this._addHandlerFilterItems(this._filterItems.bind(this, func));
     this._addHandlerChangePage(this._changePage.bind(this));
+    this._addHandlerSearchFilters(this._searchFilters.bind(this));
     this._setPaginationAttribute();
+    this._showFilterContainer();
   }
 
   _sortCatalog(func, e) {
@@ -422,6 +429,75 @@ class CardView extends View {
     this._renderCatalogPagination();
     this._updateWishIcons();
     this._setPaginationAttribute();
+    this._resetSearchInput();
+  }
+
+  _showFilterContainer() {
+    this._btnFilter.textContent = 'Hide filters';
+    this._catalogContainer.classList.remove('block');
+    this._catalogContainer.classList.add('grid');
+    this._accordionContainer.classList.remove('hidden');
+  }
+
+  _resetSearchInput() {
+    this._catalogPageEl
+      .querySelectorAll('.search__input')
+      .forEach((input) => (input.value = ''));
+  }
+
+  _searchFilters(e) {
+    const input = e.target.closest('.search__input');
+    if (!input) return;
+
+    const options = [...input.closest('div').querySelectorAll('[data-type]')];
+    options.forEach((el) => {
+      el.classList.add('hidden');
+    });
+
+    const searchedOptions = options.filter((el) =>
+      el.dataset.type.toLowerCase().includes(input.value.toLowerCase())
+    );
+
+    searchedOptions.forEach((el) => el.classList.remove('hidden'));
+  }
+
+  _addHandlerSearchFilters(handler) {
+    this._catalogPageEl.addEventListener('input', handler);
+  }
+
+  _filterItems(func, e) {
+    const checkBox = e.target.closest('.checked__label');
+    if (!checkBox) return;
+    if (!checkBox.previousElementSibling.checked)
+      this._showFilteredItem(checkBox, func);
+  }
+
+  _showFilteredItem(checkBox, func) {
+    const filterType = checkBox.closest('[data-filter]').dataset.filter;
+    const checkboxValue =
+      +checkBox.previousElementSibling.id || checkBox.previousElementSibling.id;
+
+    const items = func(this._getSelectedValue());
+    const filteredItems = items.filter((el) =>
+      filterType === 'clothes' || filterType === 'brand'
+        ? el[filterType] === checkboxValue
+        : el[filterType].find((option) => option === checkboxValue)
+    );
+
+    this._catalogEl.innerHTML = '';
+    filteredItems.forEach((item) => this._renderCatalogItems(item));
+  }
+
+  _getSelectedValue() {
+    return [
+      ...this._catalogPageEl
+        .querySelector('.sort__select')
+        .querySelectorAll('option'),
+    ].find((option) => option.selected === true).value;
+  }
+
+  _addHandlerFilterItems(handler) {
+    this._catalogFilters.addEventListener('click', handler);
   }
 }
 
