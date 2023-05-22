@@ -422,6 +422,7 @@ class CardView extends View {
     this._initFilters(func, 'newest');
     this._removeAllFilters();
     this._resetAccordion();
+    this._scrollFormToTop();
   }
 
   _resetAccordion() {
@@ -440,27 +441,12 @@ class CardView extends View {
     this._updateWishIcons();
     this._setPaginationAttribute();
     this._resetSearchInput();
-    this._scrollFormToTop();
-    this.test();
   }
 
   _scrollFormToTop() {
-    // console.log(this._catalogFilters.querySelectorAll('.catalog__scroll'));
-    // this._catalogFilters
-    //   .querySelectorAll('.catalog__scroll')
-    //   .forEach((el) => el.scrollTo(0, 0));
-    console.log('test');
-    // this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
-    this._catalogFilters.querySelector('.catalog__scroll').scrollIntoView();
-  }
-
-  test() {
     this._catalogFilters
-      .querySelector('[data-filter="clothes"]')
-      .addEventListener('click', (e) => {
-        console.log(e);
-        this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
-      });
+      .querySelectorAll('.catalog__scroll')
+      .forEach((el) => (el.scrollTop = 0));
   }
 
   _showFilterContainer() {
@@ -498,6 +484,7 @@ class CardView extends View {
 
   _showFilteredItems(func, e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
 
@@ -520,6 +507,10 @@ class CardView extends View {
 
     this._catalogEl.innerHTML = '';
     filteredItems.forEach((item) => this._renderCatalogItems(item));
+    this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
   }
 
   _getFilteredOptions() {

@@ -22,7 +22,6 @@ class CatalogView extends View {
   // Render filters
   init(e, data) {
     if (!e.target.closest('a[data-link="catalog"]')) return;
-
     this._setFiltersDataAttribute();
     this._renderFiltersCheckList(data);
     this._renderFiltersColor(data);
