@@ -8,6 +8,7 @@ class CardView extends View {
   _catalogContainer = document.querySelector('.catalog');
   _accordionContainer = document.querySelector('.catalog__filter');
   _catalogFilters = document.querySelector('.catalog__filter');
+  _breadcrumbFilters = document.querySelector('.breadcrumb__catalog-list');
 
   constructor() {
     super();
@@ -419,6 +420,15 @@ class CardView extends View {
       .forEach((input) => (input.value = 12));
 
     this._initFilters(func, 'newest');
+    this._removeAllFilters();
+    this._resetAccordion();
+  }
+
+  _resetAccordion() {
+    this._catalogFilters.querySelectorAll('.btn__accordion').forEach((btn) => {
+      btn.nextElementSibling.classList.remove('hidden');
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
+    });
   }
 
   _initFilters(func, value) {
@@ -430,6 +440,27 @@ class CardView extends View {
     this._updateWishIcons();
     this._setPaginationAttribute();
     this._resetSearchInput();
+    this._scrollFormToTop();
+    this.test();
+  }
+
+  _scrollFormToTop() {
+    // console.log(this._catalogFilters.querySelectorAll('.catalog__scroll'));
+    // this._catalogFilters
+    //   .querySelectorAll('.catalog__scroll')
+    //   .forEach((el) => el.scrollTo(0, 0));
+    console.log('test');
+    // this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
+    this._catalogFilters.querySelector('.catalog__scroll').scrollIntoView();
+  }
+
+  test() {
+    this._catalogFilters
+      .querySelector('[data-filter="clothes"]')
+      .addEventListener('click', (e) => {
+        console.log(e);
+        this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
+      });
   }
 
   _showFilterContainer() {
@@ -469,6 +500,10 @@ class CardView extends View {
     e.preventDefault();
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
+
+    this._toggleBreadcrumbFilter(checkBox);
+    this._addHandlerRemoveFilter(func);
+
     if (!checkBox.classList.contains('color__label'))
       checkBox
         .querySelector('.checkbox__mark')
@@ -515,6 +550,129 @@ class CardView extends View {
         .querySelector('.sort__select')
         .querySelectorAll('option'),
     ].find((option) => option.selected === true).value;
+  }
+
+  // BREADCRUMB
+  _removeFilter(func, e) {
+    const btn = e.target.closest('.breadcrumb__catalog-btn');
+    if (!btn) return;
+    const items = func(this._getSelectedValue());
+
+    if (btn.classList.contains('clear-all')) {
+      this._removeAllFilters();
+
+      this._catalogEl.innerHTML = '';
+      items.forEach((item) => this._renderCatalogItems(item));
+    }
+
+    if (btn.classList.contains('clear-one')) {
+      this._removeOneFilter(btn);
+
+      const checkedFilters = this._getFilteredOptions();
+      const filteredItems = this._getFilteredItems(items, checkedFilters);
+      this._catalogEl.innerHTML = '';
+      filteredItems.forEach((item) => this._renderCatalogItems(item));
+    }
+  }
+
+  _addHandlerRemoveFilter(func) {
+    this._breadcrumbFilters.addEventListener(
+      'click',
+      this._removeFilter.bind(this, func)
+    );
+  }
+
+  _removeOneFilter(btn) {
+    const { type } = btn.closest('li').dataset;
+    btn.closest('li').remove();
+    const checkBox = [
+      ...this._catalogFilters.querySelectorAll('[data-type]'),
+    ].find((el) => el.dataset.type.toLowerCase() === type);
+
+    if (checkBox.querySelector('.checkbox__mark')) {
+      checkBox
+        .querySelector('.checkbox__mark')
+        .classList.remove('checkbox__mark--checked');
+    }
+
+    if (checkBox.querySelector('.color__label')) {
+      checkBox
+        .querySelector('.color__label')
+        .classList.remove('color__label--checked');
+    }
+  }
+
+  _removeAllFilters() {
+    [...this._breadcrumbFilters.querySelectorAll('button')]
+      .filter((el) => el.classList.contains('clear-one'))
+      .forEach((el) => el.closest('li').remove());
+
+    const checkMark = this._catalogFilters.querySelectorAll(
+      '.checkbox__mark--checked'
+    );
+    const colors = this._catalogFilters.querySelectorAll(
+      '.color__label--checked'
+    );
+
+    if (checkMark.length > 0)
+      checkMark.forEach((mark) =>
+        mark.classList.remove('checkbox__mark--checked')
+      );
+
+    if (colors.length > 0)
+      colors.forEach((color) =>
+        color.classList.remove('color__label--checked')
+      );
+  }
+
+  _toggleBreadcrumbFilter(checkBox) {
+    if (
+      !checkBox.querySelector('.checkbox__mark--checked') &&
+      !checkBox.classList.contains('color__label--checked')
+    ) {
+      this._renderBreadcrumbFilter(checkBox);
+    }
+    if (
+      checkBox.querySelector('.checkbox__mark--checked') ||
+      checkBox.classList.contains('color__label--checked')
+    ) {
+      const element = [
+        ...this._breadcrumbFilters.querySelectorAll('.breadcrumb__filter'),
+      ].find(
+        (el) =>
+          el.dataset.type === checkBox.closest('li').dataset.type.toLowerCase()
+      );
+      element.remove();
+    }
+  }
+
+  _renderBreadcrumbFilter(filter) {
+    const filterTitle = filter.previousElementSibling.id
+      .split(' ')
+      .map((word) =>
+        word.length === 2
+          ? word.toUpperCase()
+          : word[0].toUpperCase() + word.slice(1)
+      )
+      .join(' ');
+
+    this._breadcrumbFilters.insertAdjacentHTML(
+      'afterbegin',
+      this._generateFilterMarkup(filterTitle)
+    );
+  }
+
+  _generateFilterMarkup(filter) {
+    return `
+          <li class="breadcrumb__catalog-item breadcrumb__filter" data-type="${filter.toLowerCase()}">
+            <button class="breadcrumb__catalog-btn clear-one">
+              <svg class="breadcrumb__icon breadcrumb__icon--light">
+                <use xlink:href="${icons}#cross"></use>
+              </svg>
+            </button>
+            <a href="#" class="breadcrumb__link breadcrumb__link--current">${filter}</a>
+          </li>
+    `;
   }
 
   _addHandlerFilterItems(handler) {

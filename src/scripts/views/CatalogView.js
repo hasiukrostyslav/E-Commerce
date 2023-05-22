@@ -16,7 +16,6 @@ class CatalogView extends View {
     super();
     this._addHandlerAccordion();
     this._addHandlerToggleFilterContainer();
-    this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 
@@ -51,7 +50,7 @@ class CatalogView extends View {
 
   _generateFilterColor(data) {
     return `
-          <li class="catalog__color-item">
+          <li class="catalog__color-item" data-type="${data}">
             <input
               class="color__radio"
               type="checkbox"
@@ -133,27 +132,6 @@ class CatalogView extends View {
     this._parentElement.addEventListener('click', handler);
   }
 
-  // Remove breadcrumb filters
-  _removeFilter(e) {
-    const btn = e.target.closest('.breadcrumb__catalog-btn');
-    if (!btn) return;
-
-    if (btn.classList.contains('clear-all'))
-      [...this._btnClearList]
-        .filter((el) => el.classList.contains('clear-one'))
-        .forEach((el) => el.closest('li').remove());
-
-    if (btn.classList.contains('clear-one')) btn.closest('li').remove();
-  }
-
-  _addHandlerRemoveFilter() {
-    if (!this._breadcrumbFilters) return;
-    this._breadcrumbFilters.addEventListener(
-      'click',
-      this._removeFilter.bind(this)
-    );
-  }
-
   _renderBreadcrumb() {
     if (!this._catalogPageEl.classList.contains('hidden')) {
       const link = this._breadcrumbEl.querySelector('.breadcrumb__link--page');
@@ -176,6 +154,12 @@ class CatalogView extends View {
           )
         );
       }
+
+      this._breadcrumbFilters.classList.remove('hidden');
+    }
+
+    if (this._catalogPageEl.classList.contains('hidden')) {
+      this._breadcrumbFilters.classList.add('hidden');
     }
 
     if (
