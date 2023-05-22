@@ -124,7 +124,7 @@ export const getCountry = async function () {
     throw err;
   }
 };
-getCountry();
+// getCountry();
 
 function formatCityList(cities, country) {
   return cities.data

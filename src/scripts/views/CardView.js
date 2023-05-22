@@ -420,6 +420,15 @@ class CardView extends View {
       .forEach((input) => (input.value = 12));
 
     this._initFilters(func, 'newest');
+    this._removeAllFilters();
+    this._resetAccordion();
+  }
+
+  _resetAccordion() {
+    this._catalogFilters.querySelectorAll('.btn__accordion').forEach((btn) => {
+      btn.nextElementSibling.classList.remove('hidden');
+      btn.innerHTML = this._generateAccordionBtnIcon('sm', 'minus');
+    });
   }
 
   _initFilters(func, value) {
@@ -431,6 +440,27 @@ class CardView extends View {
     this._updateWishIcons();
     this._setPaginationAttribute();
     this._resetSearchInput();
+    this._scrollFormToTop();
+    this.test();
+  }
+
+  _scrollFormToTop() {
+    // console.log(this._catalogFilters.querySelectorAll('.catalog__scroll'));
+    // this._catalogFilters
+    //   .querySelectorAll('.catalog__scroll')
+    //   .forEach((el) => el.scrollTo(0, 0));
+    console.log('test');
+    // this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
+    this._catalogFilters.querySelector('.catalog__scroll').scrollIntoView();
+  }
+
+  test() {
+    this._catalogFilters
+      .querySelector('[data-filter="clothes"]')
+      .addEventListener('click', (e) => {
+        console.log(e);
+        this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
+      });
   }
 
   _showFilterContainer() {
@@ -580,13 +610,15 @@ class CardView extends View {
     const checkMark = this._catalogFilters.querySelectorAll(
       '.checkbox__mark--checked'
     );
+    const colors = this._catalogFilters.querySelectorAll(
+      '.color__label--checked'
+    );
+
     if (checkMark.length > 0)
       checkMark.forEach((mark) =>
         mark.classList.remove('checkbox__mark--checked')
       );
-    const colors = this._catalogFilters.querySelectorAll(
-      '.color__label--checked'
-    );
+
     if (colors.length > 0)
       colors.forEach((color) =>
         color.classList.remove('color__label--checked')

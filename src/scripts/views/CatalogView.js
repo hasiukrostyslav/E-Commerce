@@ -16,7 +16,6 @@ class CatalogView extends View {
     super();
     this._addHandlerAccordion();
     this._addHandlerToggleFilterContainer();
-    // this._addHandlerRemoveFilter();
     this._setObserver(this._renderBreadcrumb.bind(this));
   }
 

@@ -37,10 +37,10 @@ async function controlInitPage() {
     model.initOrdersStatus();
 
     // Get Countries and Cities List
-    const countriesList = await model.getCountry();
+    // const countriesList = await model.getCountry();
 
-    citiesList = await model.getCity(countriesList);
-    view.asyncInit(countriesList, citiesList);
+    // citiesList = await model.getCity(countriesList);
+    // view.asyncInit(countriesList, citiesList);
   } catch (err) {
     console.error(err);
   }
