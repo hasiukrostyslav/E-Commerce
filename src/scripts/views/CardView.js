@@ -493,18 +493,37 @@ class CardView extends View {
       this._setParentFilter(checkBox);
 
     const parentFilter = this._catalogFilters.querySelector('[data-parent]');
-
     this._toggleBreadcrumbFilter(checkBox);
     this._addHandlerRemoveFilter(func);
     this._fillCheckbox(checkBox);
-    this._hideCheckboxes(parentFilter, items);
 
+    const filteredData = this._getFilteredData(parentFilter, items);
     const checkedFilters = this._getCheckboxesData();
 
-    const filteredItems = this._getFilteredItems(items, checkedFilters);
+    const filteredItems = this._getFilteredItems(filteredData, checkedFilters);
 
     this._catalogEl.innerHTML = '';
     filteredItems.forEach((item) => this._renderCatalogItems(item));
+
+    if (this._getCheckboxes(this._catalogFilters).length === 0)
+      items.forEach((item) => this._renderCatalogItems(item));
+
+    this._initToolBar(parentFilter);
+  }
+
+  // NEED TO FIX
+  _getFilteredItems(items, filters) {
+    console.log(filters);
+    return items.filter((el) =>
+      filters.every((filter) =>
+        filter.category === 'clothes' || filter.category === 'brand'
+          ? el[filter.category] === filter.value
+          : el[filter.category].find((option) => option === filter.value)
+      )
+    );
+  }
+
+  _initToolBar(parentFilter) {
     this._showNumbresOfCards();
     this._renderCatalogPagination();
     this._updateWishIcons();
@@ -529,7 +548,7 @@ class CardView extends View {
     ];
   }
 
-  _hideCheckboxes(parentFilter, data) {
+  _getFilteredData(parentFilter, data) {
     const checkedOptions = this._getCheckboxes(parentFilter).map(
       (el) => el.closest('[data-type]').dataset.type
     );
@@ -541,21 +560,12 @@ class CardView extends View {
             (option) => option === el[parentFilter.dataset.filter]
           )
         : checkedOptions.find((option) =>
-            el[parentFilter.dataset.filter].find((filter) => filter === option)
+            el[parentFilter.dataset.filter].find(
+              (filter) => filter === option || +option
+            )
           )
     );
-    console.log(items);
-  }
-
-  // NEED TO FIX
-  _getFilteredItems(items, filters) {
-    return items.filter((el) =>
-      filters.every((filter) =>
-        filter.category === 'clothes' || filter.category === 'brand'
-          ? el[filter.category] === filter.value
-          : el[filter.category].find((option) => option === filter.value)
-      )
-    );
+    return items;
   }
 
   _setParentFilter(click) {
@@ -585,6 +595,7 @@ class CardView extends View {
     ].find((option) => option.selected === true).value;
   }
 
+  // NEED TO FIX
   _removeFilter(func, e) {
     const btn = e.target.closest('.breadcrumb__catalog-btn');
     if (!btn) return;
