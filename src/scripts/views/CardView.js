@@ -488,20 +488,18 @@ class CardView extends View {
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
 
+    const items = func(this._getSelectedValue());
+    if (!this._catalogFilters.querySelector('[data-parent]'))
+      this._setParentFilter(checkBox);
+
+    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
+
     this._toggleBreadcrumbFilter(checkBox);
     this._addHandlerRemoveFilter(func);
+    this._fillCheckbox(checkBox);
+    this._hideCheckboxes(parentFilter, items);
 
-    if (!checkBox.classList.contains('color__label'))
-      checkBox
-        .querySelector('.checkbox__mark')
-        .classList.toggle('checkbox__mark--checked');
-
-    if (checkBox.classList.contains('color__label'))
-      checkBox.classList.toggle('color__label--checked');
-
-    const checkedFilters = this._getFilteredOptions();
-
-    const items = func(this._getSelectedValue());
+    const checkedFilters = this._getCheckboxesData();
 
     const filteredItems = this._getFilteredItems(items, checkedFilters);
 
@@ -511,13 +509,12 @@ class CardView extends View {
     this._renderCatalogPagination();
     this._updateWishIcons();
     this._setPaginationAttribute();
+    this._removeParentFilter(parentFilter);
   }
 
-  _getFilteredOptions() {
-    return [
-      ...this._catalogFilters.querySelectorAll('.checkbox__mark--checked'),
-      ...this._catalogFilters.querySelectorAll('.color__label--checked'),
-    ]
+  _getCheckboxesData() {
+    const data = this._getCheckboxes(this._catalogFilters);
+    return data
       .map((el) => el.closest('.checked__label'))
       .map((el) => ({
         category: el.closest('[data-filter]').dataset.filter,
@@ -525,6 +522,32 @@ class CardView extends View {
       }));
   }
 
+  _getCheckboxes(container) {
+    return [
+      ...container.querySelectorAll('.checkbox__mark--checked'),
+      ...container.querySelectorAll('.color__label--checked'),
+    ];
+  }
+
+  _hideCheckboxes(parentFilter, data) {
+    const checkedOptions = this._getCheckboxes(parentFilter).map(
+      (el) => el.closest('[data-type]').dataset.type
+    );
+
+    const items = data.filter((el) =>
+      parentFilter.dataset.filter === 'clothes' ||
+      parentFilter.dataset.filter === 'brand'
+        ? checkedOptions.find(
+            (option) => option === el[parentFilter.dataset.filter]
+          )
+        : checkedOptions.find((option) =>
+            el[parentFilter.dataset.filter].find((filter) => filter === option)
+          )
+    );
+    console.log(items);
+  }
+
+  // NEED TO FIX
   _getFilteredItems(items, filters) {
     return items.filter((el) =>
       filters.every((filter) =>
@@ -535,6 +558,25 @@ class CardView extends View {
     );
   }
 
+  _setParentFilter(click) {
+    click.closest('[data-filter]').dataset.parent = true;
+  }
+
+  _removeParentFilter(parentFilter) {
+    if (this._getCheckboxes(parentFilter).length === 0)
+      parentFilter.removeAttribute('data-parent');
+  }
+
+  _fillCheckbox(checkBox) {
+    if (!checkBox.classList.contains('color__label'))
+      checkBox
+        .querySelector('.checkbox__mark')
+        .classList.toggle('checkbox__mark--checked');
+
+    if (checkBox.classList.contains('color__label'))
+      checkBox.classList.toggle('color__label--checked');
+  }
+
   _getSelectedValue() {
     return [
       ...this._catalogPageEl
@@ -543,7 +585,6 @@ class CardView extends View {
     ].find((option) => option.selected === true).value;
   }
 
-  // BREADCRUMB
   _removeFilter(func, e) {
     const btn = e.target.closest('.breadcrumb__catalog-btn');
     if (!btn) return;
@@ -559,7 +600,7 @@ class CardView extends View {
     if (btn.classList.contains('clear-one')) {
       this._removeOneFilter(btn);
 
-      const checkedFilters = this._getFilteredOptions();
+      const checkedFilters = this._getCheckboxesData();
       const filteredItems = this._getFilteredItems(items, checkedFilters);
       this._catalogEl.innerHTML = '';
       filteredItems.forEach((item) => this._renderCatalogItems(item));
