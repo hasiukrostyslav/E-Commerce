@@ -422,6 +422,7 @@ class CardView extends View {
     this._initFilters(func, 'newest');
     this._removeAllFilters();
     this._resetAccordion();
+    this._scrollFormToTop();
   }
 
   _resetAccordion() {
@@ -440,27 +441,12 @@ class CardView extends View {
     this._updateWishIcons();
     this._setPaginationAttribute();
     this._resetSearchInput();
-    this._scrollFormToTop();
-    this.test();
   }
 
   _scrollFormToTop() {
-    // console.log(this._catalogFilters.querySelectorAll('.catalog__scroll'));
-    // this._catalogFilters
-    //   .querySelectorAll('.catalog__scroll')
-    //   .forEach((el) => el.scrollTo(0, 0));
-    console.log('test');
-    // this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
-    this._catalogFilters.querySelector('.catalog__scroll').scrollIntoView();
-  }
-
-  test() {
     this._catalogFilters
-      .querySelector('[data-filter="clothes"]')
-      .addEventListener('click', (e) => {
-        console.log(e);
-        this._catalogFilters.querySelector('.catalog__scroll').scrollTop = 0;
-      });
+      .querySelectorAll('.catalog__scroll')
+      .forEach((el) => (el.scrollTop = 0));
   }
 
   _showFilterContainer() {
@@ -498,43 +484,36 @@ class CardView extends View {
 
   _showFilteredItems(func, e) {
     e.preventDefault();
+    e.stopImmediatePropagation();
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
 
+    const items = func(this._getSelectedValue());
+    if (!this._catalogFilters.querySelector('[data-parent]'))
+      this._setParentFilter(checkBox);
+
+    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
     this._toggleBreadcrumbFilter(checkBox);
     this._addHandlerRemoveFilter(func);
+    this._fillCheckbox(checkBox);
 
-    if (!checkBox.classList.contains('color__label'))
-      checkBox
-        .querySelector('.checkbox__mark')
-        .classList.toggle('checkbox__mark--checked');
+    const filteredData = this._getFilteredData(parentFilter, items);
+    const checkedFilters = this._getCheckboxesData();
 
-    if (checkBox.classList.contains('color__label'))
-      checkBox.classList.toggle('color__label--checked');
-
-    const checkedFilters = this._getFilteredOptions();
-
-    const items = func(this._getSelectedValue());
-
-    const filteredItems = this._getFilteredItems(items, checkedFilters);
+    const filteredItems = this._getFilteredItems(filteredData, checkedFilters);
 
     this._catalogEl.innerHTML = '';
     filteredItems.forEach((item) => this._renderCatalogItems(item));
+
+    if (this._getCheckboxes(this._catalogFilters).length === 0)
+      items.forEach((item) => this._renderCatalogItems(item));
+
+    this._initToolBar(parentFilter);
   }
 
-  _getFilteredOptions() {
-    return [
-      ...this._catalogFilters.querySelectorAll('.checkbox__mark--checked'),
-      ...this._catalogFilters.querySelectorAll('.color__label--checked'),
-    ]
-      .map((el) => el.closest('.checked__label'))
-      .map((el) => ({
-        category: el.closest('[data-filter]').dataset.filter,
-        value: +el.previousElementSibling.id || el.previousElementSibling.id,
-      }));
-  }
-
+  // NEED TO FIX
   _getFilteredItems(items, filters) {
+    console.log(filters);
     return items.filter((el) =>
       filters.every((filter) =>
         filter.category === 'clothes' || filter.category === 'brand'
@@ -542,6 +521,70 @@ class CardView extends View {
           : el[filter.category].find((option) => option === filter.value)
       )
     );
+  }
+
+  _initToolBar(parentFilter) {
+    this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
+    this._removeParentFilter(parentFilter);
+  }
+
+  _getCheckboxesData() {
+    const data = this._getCheckboxes(this._catalogFilters);
+    return data
+      .map((el) => el.closest('.checked__label'))
+      .map((el) => ({
+        category: el.closest('[data-filter]').dataset.filter,
+        value: +el.previousElementSibling.id || el.previousElementSibling.id,
+      }));
+  }
+
+  _getCheckboxes(container) {
+    return [
+      ...container.querySelectorAll('.checkbox__mark--checked'),
+      ...container.querySelectorAll('.color__label--checked'),
+    ];
+  }
+
+  _getFilteredData(parentFilter, data) {
+    const checkedOptions = this._getCheckboxes(parentFilter).map(
+      (el) => el.closest('[data-type]').dataset.type
+    );
+
+    const items = data.filter((el) =>
+      parentFilter.dataset.filter === 'clothes' ||
+      parentFilter.dataset.filter === 'brand'
+        ? checkedOptions.find(
+            (option) => option === el[parentFilter.dataset.filter]
+          )
+        : checkedOptions.find((option) =>
+            el[parentFilter.dataset.filter].find(
+              (filter) => filter === option || +option
+            )
+          )
+    );
+    return items;
+  }
+
+  _setParentFilter(click) {
+    click.closest('[data-filter]').dataset.parent = true;
+  }
+
+  _removeParentFilter(parentFilter) {
+    if (this._getCheckboxes(parentFilter).length === 0)
+      parentFilter.removeAttribute('data-parent');
+  }
+
+  _fillCheckbox(checkBox) {
+    if (!checkBox.classList.contains('color__label'))
+      checkBox
+        .querySelector('.checkbox__mark')
+        .classList.toggle('checkbox__mark--checked');
+
+    if (checkBox.classList.contains('color__label'))
+      checkBox.classList.toggle('color__label--checked');
   }
 
   _getSelectedValue() {
@@ -552,7 +595,7 @@ class CardView extends View {
     ].find((option) => option.selected === true).value;
   }
 
-  // BREADCRUMB
+  // NEED TO FIX
   _removeFilter(func, e) {
     const btn = e.target.closest('.breadcrumb__catalog-btn');
     if (!btn) return;
@@ -568,7 +611,7 @@ class CardView extends View {
     if (btn.classList.contains('clear-one')) {
       this._removeOneFilter(btn);
 
-      const checkedFilters = this._getFilteredOptions();
+      const checkedFilters = this._getCheckboxesData();
       const filteredItems = this._getFilteredItems(items, checkedFilters);
       this._catalogEl.innerHTML = '';
       filteredItems.forEach((item) => this._renderCatalogItems(item));
