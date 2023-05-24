@@ -1,5 +1,6 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
+import data from '../data';
 
 class CardView extends View {
   _curSlide = 0;
@@ -482,99 +483,58 @@ class CardView extends View {
     this._catalogPageEl.addEventListener('input', handler);
   }
 
+  // ************************************************************************************
+
   _showFilteredItems(func, e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     const checkBox = e.target.closest('.checked__label');
     if (!checkBox) return;
 
-    const items = func(this._getSelectedValue());
     if (!this._catalogFilters.querySelector('[data-parent]'))
       this._setParentFilter(checkBox);
 
-    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
     this._toggleBreadcrumbFilter(checkBox);
-    this._addHandlerRemoveFilter(func);
     this._fillCheckbox(checkBox);
+    const items = func(this._getSelectedValue());
+    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
+    const oneFiltersType = this._checkParentFilter();
 
-    const filteredData = this._getFilteredData(parentFilter, items);
-    const checkedFilters = this._getCheckboxesData();
+    if (this._getCheckboxes(this._catalogFilters).length !== 0) {
+      if (oneFiltersType) {
+        const filteredItems = this._getFilteredData(items, parentFilter);
+        this._catalogEl.innerHTML = '';
+        filteredItems.forEach((item) => this._renderCatalogItems(item));
+        this._initToolBar();
+      } else {
+        console.log("Wasn't empty");
 
-    const filteredItems = this._getFilteredItems(filteredData, checkedFilters);
+        const prevFilterItems = this._getFilteredCatalog();
+        console.log(prevFilterItems);
+      }
+    }
 
-    this._catalogEl.innerHTML = '';
-    filteredItems.forEach((item) => this._renderCatalogItems(item));
-
-    if (this._getCheckboxes(this._catalogFilters).length === 0)
+    if (this._getCheckboxes(this._catalogFilters).length === 0) {
+      this._catalogEl.innerHTML = '';
       items.forEach((item) => this._renderCatalogItems(item));
+      this._initToolBar();
+      this._removeParentFilter();
+    }
 
-    this._initToolBar(parentFilter);
+    if (parentFilter && this._getCheckboxes(parentFilter).length === 0)
+      this._removeParentFilter();
   }
 
-  // NEED TO FIX
-  _getFilteredItems(items, filters) {
-    console.log(filters);
-    return items.filter((el) =>
-      filters.every((filter) =>
-        filter.category === 'clothes' || filter.category === 'brand'
-          ? el[filter.category] === filter.value
-          : el[filter.category].find((option) => option === filter.value)
-      )
-    );
-  }
-
-  _initToolBar(parentFilter) {
-    this._showNumbresOfCards();
-    this._renderCatalogPagination();
-    this._updateWishIcons();
-    this._setPaginationAttribute();
-    this._removeParentFilter(parentFilter);
-  }
-
-  _getCheckboxesData() {
-    const data = this._getCheckboxes(this._catalogFilters);
-    return data
-      .map((el) => el.closest('.checked__label'))
-      .map((el) => ({
-        category: el.closest('[data-filter]').dataset.filter,
-        value: +el.previousElementSibling.id || el.previousElementSibling.id,
-      }));
-  }
-
-  _getCheckboxes(container) {
+  _getSelectedValue() {
     return [
-      ...container.querySelectorAll('.checkbox__mark--checked'),
-      ...container.querySelectorAll('.color__label--checked'),
-    ];
-  }
-
-  _getFilteredData(parentFilter, data) {
-    const checkedOptions = this._getCheckboxes(parentFilter).map(
-      (el) => el.closest('[data-type]').dataset.type
-    );
-
-    const items = data.filter((el) =>
-      parentFilter.dataset.filter === 'clothes' ||
-      parentFilter.dataset.filter === 'brand'
-        ? checkedOptions.find(
-            (option) => option === el[parentFilter.dataset.filter]
-          )
-        : checkedOptions.find((option) =>
-            el[parentFilter.dataset.filter].find(
-              (filter) => filter === option || +option
-            )
-          )
-    );
-    return items;
+      ...this._catalogPageEl
+        .querySelector('.sort__select')
+        .querySelectorAll('option'),
+    ].find((option) => option.selected === true).value;
   }
 
   _setParentFilter(click) {
     click.closest('[data-filter]').dataset.parent = true;
-  }
-
-  _removeParentFilter(parentFilter) {
-    if (this._getCheckboxes(parentFilter).length === 0)
-      parentFilter.removeAttribute('data-parent');
   }
 
   _fillCheckbox(checkBox) {
@@ -587,12 +547,82 @@ class CardView extends View {
       checkBox.classList.toggle('color__label--checked');
   }
 
-  _getSelectedValue() {
+  _getCheckboxes(container) {
     return [
-      ...this._catalogPageEl
-        .querySelector('.sort__select')
-        .querySelectorAll('option'),
-    ].find((option) => option.selected === true).value;
+      ...container.querySelectorAll('.checkbox__mark--checked'),
+      ...container.querySelectorAll('.color__label--checked'),
+    ];
+  }
+
+  _getFilteredData(info, filterContainer) {
+    const checkedOptions = this._getCheckboxes(filterContainer).map(
+      (el) => el.closest('[data-type]').dataset.type
+    );
+
+    const items = info.filter((el) =>
+      filterContainer.dataset.filter === 'clothes' ||
+      filterContainer.dataset.filter === 'brand'
+        ? checkedOptions.find(
+            (option) => option === el[filterContainer.dataset.filter]
+          )
+        : checkedOptions.find((option) =>
+            el[filterContainer.dataset.filter].find(
+              (filter) => filter === option || +option
+            )
+          )
+    );
+    return items;
+  }
+
+  _getCheckboxesData() {
+    const items = this._getCheckboxes(this._catalogFilters);
+    return items
+      .map((el) => el.closest('.checked__label'))
+      .map((el) => ({
+        category: el.closest('[data-filter]').dataset.filter,
+        value: +el.previousElementSibling.id || el.previousElementSibling.id,
+      }));
+  }
+
+  _initToolBar() {
+    this._showNumbresOfCards();
+    this._renderCatalogPagination();
+    this._updateWishIcons();
+    this._setPaginationAttribute();
+  }
+
+  _removeParentFilter() {
+    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
+    if (!parentFilter) return;
+    parentFilter.removeAttribute('data-parent');
+  }
+
+  _checkParentFilter() {
+    const amountOfFilters = new Set(
+      this._getCheckboxes(this._catalogFilters).map(
+        (filter) => filter.closest('[data-filter]').dataset.filter
+      )
+    );
+
+    if (amountOfFilters.size === 1) return true;
+  }
+
+  _getFilteredCatalog() {
+    return [...this._catalogEl.querySelectorAll('.card')].map(
+      (card) => +card.dataset.article
+    );
+  }
+
+  // /////////////////////////////////----------------------------
+  // NEED TO FIX
+  _getFilteredItems(items, filters) {
+    return items.filter((el) =>
+      filters.some((filter) =>
+        filter.category === 'clothes' || filter.category === 'brand'
+          ? el[filter.category] === filter.value
+          : el[filter.category].find((option) => option === filter.value)
+      )
+    );
   }
 
   // NEED TO FIX
