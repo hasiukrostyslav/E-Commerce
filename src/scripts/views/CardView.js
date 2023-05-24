@@ -1,6 +1,5 @@
 import View from './View';
 import icons from '../../assets/svg/sprite.svg';
-import data from '../data';
 
 class CardView extends View {
   _curSlide = 0;
@@ -507,10 +506,14 @@ class CardView extends View {
         filteredItems.forEach((item) => this._renderCatalogItems(item));
         this._initToolBar();
       } else {
-        console.log("Wasn't empty");
-
-        const prevFilterItems = this._getFilteredCatalog();
-        console.log(prevFilterItems);
+        const curArticles = this._getFilteredCatalog();
+        const curCatalog = this._getCatalogArticles(items, curArticles);
+        const curCheckboxData = this._getCurrentCheckboxData(checkBox);
+        const newCatalog = this._getNewCatalog(curCatalog, curCheckboxData);
+        console.log(newCatalog);
+        this._catalogEl.innerHTML = '';
+        newCatalog.forEach((item) => this._renderCatalogItems(item));
+        this._initToolBar();
       }
     }
 
@@ -584,6 +587,13 @@ class CardView extends View {
       }));
   }
 
+  _getCurrentCheckboxData(checkbox) {
+    return {
+      filter: checkbox.closest('[data-filter]').dataset.filter,
+      type: checkbox.closest('[data-type]').dataset.type,
+    };
+  }
+
   _initToolBar() {
     this._showNumbresOfCards();
     this._renderCatalogPagination();
@@ -613,15 +623,18 @@ class CardView extends View {
     );
   }
 
-  // /////////////////////////////////----------------------------
-  // NEED TO FIX
-  _getFilteredItems(items, filters) {
+  _getCatalogArticles(items, articles) {
     return items.filter((el) =>
-      filters.some((filter) =>
-        filter.category === 'clothes' || filter.category === 'brand'
-          ? el[filter.category] === filter.value
-          : el[filter.category].find((option) => option === filter.value)
-      )
+      articles.find((article) => article === el.article)
+    );
+  }
+
+  _getNewCatalog(catalog, checkbox) {
+    console.log(catalog, checkbox);
+    return catalog.filter((el) =>
+      checkbox.filter === 'clothes' || checkbox.filter === 'brand'
+        ? el[checkbox.filter] === checkbox.type
+        : el[checkbox.filter].find((type) => type === checkbox.type)
     );
   }
 
