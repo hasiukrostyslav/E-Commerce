@@ -361,6 +361,10 @@ class CartMovalView extends View {
     this._calculateTotalPrice();
     this._createCartBadge(length);
     this._addScrollBar();
+    if (length === 0) {
+      this._modalEl.classList.add('hidden');
+      this._overlay.classList.add('hidden');
+    }
   }
 
   _calculateTotalPrice() {
