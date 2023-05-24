@@ -44,8 +44,9 @@ async function controlInitPage() {
 
     citiesList = await model.getCity(countriesList);
     view.asyncInit(countriesList, citiesList);
-  } catch (err) {
-    console.error(err);
+  } catch {
+    modalView.showModalPopup();
+    modalView.modalTimer();
   }
 }
 

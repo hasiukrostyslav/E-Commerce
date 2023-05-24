@@ -124,6 +124,7 @@ export const POPUP_MESSAGE = {
   signIn: 'You must sign in to add item to wishlist',
   addToWishlist: 'Item has been added to the wishlist.',
   addLikes: 'You must sign in to add like to the item.',
+  pageError: 'Something gets wrong. Please reload the page.',
 };
 
 export const LETTER_CODE = {
