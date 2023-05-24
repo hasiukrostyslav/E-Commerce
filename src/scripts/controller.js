@@ -24,6 +24,9 @@ async function controlInitPage() {
     // Init page config
     view.init(model.state);
 
+    // Header init
+    headerView.init();
+
     // Calculate item rating
     model.calculateItemRating(model.state);
 

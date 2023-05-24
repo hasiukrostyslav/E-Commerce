@@ -9,9 +9,7 @@ class HeaderView extends View {
   _maxSlide = this._slides.length;
   _interval;
 
-  constructor() {
-    super();
-
+  init() {
     this._createSlideTabs();
     this._activateSlideTab();
     this._setSlideInterval();
