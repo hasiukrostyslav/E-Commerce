@@ -38,6 +38,7 @@
       font-size: 1.4rem;
       line-height: 1.5;
       color: inherit;
+      flex-shrink: 0;
     }
 
     &--home {
@@ -63,7 +64,11 @@
   &__catalog-list {
     list-style: none;
     display: flex;
+    justify-content: flex-end;
     gap: 2rem;
+    flex-basis: 80%;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
   }
 
   &__catalog-item {
@@ -71,6 +76,7 @@
     gap: 0.8rem;
     align-items: center;
     color: $color-gray-dark-4;
+    flex-shrink: 0;
 
     &:last-child {
       color: $color-gray-dark-2;
