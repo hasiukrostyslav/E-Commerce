@@ -1,5 +1,5 @@
 import View from './View';
-import { ERROR } from '../config';
+import { ERROR, POPUP_MESSAGE } from '../config';
 
 class ModalView extends View {
   _modalSignIn = document.querySelector('.modal--sign-in');
@@ -304,6 +304,11 @@ class ModalView extends View {
 
   addHandlerRenderModalSize(handler) {
     document.addEventListener('click', handler);
+  }
+
+  showModalPopup() {
+    this._modalPopup.classList.remove('hidden');
+    this._modalMessage.textContent = POPUP_MESSAGE.pageError;
   }
 }
 export default new ModalView();

@@ -24,6 +24,9 @@ async function controlInitPage() {
     // Init page config
     view.init(model.state);
 
+    // Header init
+    headerView.init();
+
     // Calculate item rating
     model.calculateItemRating(model.state);
 
@@ -41,8 +44,9 @@ async function controlInitPage() {
 
     citiesList = await model.getCity(countriesList);
     view.asyncInit(countriesList, citiesList);
-  } catch (err) {
-    console.error(err);
+  } catch {
+    modalView.showModalPopup();
+    modalView.modalTimer();
   }
 }
 
