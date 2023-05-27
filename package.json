@@ -4,8 +4,7 @@
   "description": "Ecommerce app",
   "main": "controller.js",
   "scripts": {
-    "build": "CI= webpack",
-    "local-build": "webpack",
+    "build": "webpack",
     "dev": "webpack server",
     "lint": "eslint src"
   },
