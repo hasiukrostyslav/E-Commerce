@@ -2,7 +2,7 @@
   "name": "ecommerceapp",
   "version": "1.0.0",
   "description": "Ecommerce app",
-  "main": "index.html",
+  "main": "controller.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack server",
