@@ -323,7 +323,11 @@ class CardView extends View {
         if (option.value === selectedValue) option.selected = true;
       });
     });
-    this._initFilters(func, selectedValue);
+
+    const checkedFilters = this._getCheckboxes(this._catalogFilters);
+    if (checkedFilters.length === 0) this._initFilters(func, selectedValue);
+    // NEED TO FIX
+    else console.log('filter');
   }
 
   _renderCatalogItems(item) {
@@ -497,35 +501,112 @@ class CardView extends View {
     this._fillCheckbox(checkBox);
     const items = func(this._getSelectedValue());
     const parentFilter = this._catalogFilters.querySelector('[data-parent]');
-    const oneFiltersType = this._checkParentFilter();
+    // const oneFiltersType = this._checkParentFilter();
 
     if (this._getCheckboxes(this._catalogFilters).length !== 0) {
-      if (oneFiltersType) {
+      if (checkBox.closest('[data-parent]')) {
         const filteredItems = this._getFilteredData(items, parentFilter);
         this._catalogEl.innerHTML = '';
         filteredItems.forEach((item) => this._renderCatalogItems(item));
         this._initToolBar();
+        this._showRelevantFilters(filteredItems, checkBox);
       } else {
         const curArticles = this._getFilteredCatalog();
         const curCatalog = this._getCatalogArticles(items, curArticles);
+        const prevFilters = this._getPrevFilters(checkBox);
         const curCheckboxData = this._getCurrentCheckboxData(checkBox);
-        const newCatalog = this._getNewCatalog(curCatalog, curCheckboxData);
-        console.log(newCatalog);
-        this._catalogEl.innerHTML = '';
-        newCatalog.forEach((item) => this._renderCatalogItems(item));
-        this._initToolBar();
+        const filteredItems = this._filterOneOption(items, checkBox);
+        // const newCatalog = this._getNewCatalog(curCatalog, curCheckboxData);
+        // console.log(curCatalog);
+        // console.log(checkBox);
+        // console.log(prevFilters);
+        // this._catalogEl.innerHTML = '';
+        // newCatalog.forEach((item) => this._renderCatalogItems(item));
+        // this._initToolBar();
+        this._showRelevantFilters(curCatalog, checkBox);
       }
     }
 
-    if (this._getCheckboxes(this._catalogFilters).length === 0) {
+    if (
+      this._getCheckboxes(this._catalogFilters).length === 0 ||
+      (parentFilter && this._getCheckboxes(parentFilter).length === 0)
+    ) {
       this._catalogEl.innerHTML = '';
       items.forEach((item) => this._renderCatalogItems(item));
       this._initToolBar();
       this._removeParentFilter();
+      this._showAllFilters();
+    }
+  }
+
+  _showRelevantFilters(items, checkbox) {
+    const allFilters = [
+      ...this._catalogFilters.querySelectorAll('li[data-type]'),
+    ].filter((el) => !el.closest('[data-parent]'));
+
+    if (checkbox.closest('[data-parent]')) {
+      allFilters.forEach((el) => {
+        const { filter } = el.closest('[data-filter]').dataset;
+        const { type } = el.dataset;
+        const curItem = items.find((item) =>
+          filter === 'clothes' || filter === 'brand'
+            ? item[filter] === type
+            : item[filter].find((value) => String(value) === type)
+        );
+        if (curItem) el.classList.remove('hidden');
+        if (!curItem) el.classList.add('hidden');
+      });
     }
 
-    if (parentFilter && this._getCheckboxes(parentFilter).length === 0)
-      this._removeParentFilter();
+    if (!checkbox.closest('[data-parent]')) {
+      const subParentFilter = checkbox.closest('[data-filter]');
+      const restFilters = allFilters.filter(
+        (el) =>
+          !el.classList.contains('hidden') &&
+          el.closest('[data-filter]').dataset.filter !==
+            subParentFilter.dataset.filter
+      );
+
+      const { filter } = checkbox.closest('[data-filter]').dataset;
+      const { type } = checkbox.closest('[data-type]').dataset;
+      console.log(checkbox);
+      console.log(filter, type);
+      const restItems = items.filter((el) =>
+        filter === 'clothes' || filter === 'brand'
+          ? el[filter] === type
+          : el[filter].find((value) => String(value) === type)
+      );
+      console.log(items);
+      console.log(restItems);
+
+      restFilters.forEach((el) => {
+        const { filter } = el.closest('[data-filter]').dataset;
+        const { type } = el.dataset;
+        const curItem = restItems.find((item) =>
+          filter === 'clothes' || filter === 'brand'
+            ? item[filter] === type
+            : item[filter].find((value) => String(value) === type)
+        );
+        // console.log(curItem);
+        if (curItem) el.classList.remove('hidden');
+        if (!curItem) el.classList.add('hidden');
+      });
+    }
+  }
+
+  _showAllFilters() {
+    this._catalogFilters.querySelectorAll('li[data-type]').forEach((filter) => {
+      filter.classList.remove('hidden');
+      if (filter.querySelector('.color__label'))
+        filter
+          .querySelector('.color__label')
+          .classList.remove('color__label--checked');
+
+      if (filter.querySelector('.checkbox__mark'))
+        filter
+          .querySelector('.checkbox__mark')
+          .classList.remove('checkbox__mark--checked');
+    });
   }
 
   _getSelectedValue() {
@@ -557,24 +638,47 @@ class CardView extends View {
     ];
   }
 
+  _getPrevFilters(checkbox) {
+    const allFilters = this._getCheckboxes(this._catalogFilters);
+    const currentCheckbox = checkbox.classList.contains('color__label--checked')
+      ? checkbox
+      : checkbox.querySelector('.checkbox__mark--checked');
+    return allFilters.filter(
+      (el) =>
+        el.closest('[data-type]').dataset.type !==
+        currentCheckbox.closest('[data-type]').dataset.type
+    );
+  }
+
   _getFilteredData(info, filterContainer) {
     const checkedOptions = this._getCheckboxes(filterContainer).map(
       (el) => el.closest('[data-type]').dataset.type
     );
 
-    const items = info.filter((el) =>
+    const items = this._filterItems(info, filterContainer, checkedOptions);
+    return items;
+  }
+
+  _filterOneOption(info, checkbox) {
+    const checkedOption = [checkbox.closest('[data-type]').dataset.type];
+    const filterContainer = checkbox.closest('[data-filter]');
+    const items = this._filterItems(info, filterContainer, checkedOption);
+    return items;
+  }
+
+  _filterItems(items, filterContainer, options) {
+    return items.filter((el) =>
       filterContainer.dataset.filter === 'clothes' ||
       filterContainer.dataset.filter === 'brand'
-        ? checkedOptions.find(
+        ? options.find(
             (option) => option === el[filterContainer.dataset.filter]
           )
-        : checkedOptions.find((option) =>
+        : options.find((option) =>
             el[filterContainer.dataset.filter].find(
               (filter) => filter === option || +option
             )
           )
     );
-    return items;
   }
 
   _getCheckboxesData() {
@@ -607,15 +711,15 @@ class CardView extends View {
     parentFilter.removeAttribute('data-parent');
   }
 
-  _checkParentFilter() {
-    const amountOfFilters = new Set(
-      this._getCheckboxes(this._catalogFilters).map(
-        (filter) => filter.closest('[data-filter]').dataset.filter
-      )
-    );
+  // _checkParentFilter() {
+  //   const amountOfFilters = new Set(
+  //     this._getCheckboxes(this._catalogFilters).map(
+  //       (filter) => filter.closest('[data-filter]').dataset.filter
+  //     )
+  //   );
 
-    if (amountOfFilters.size === 1) return true;
-  }
+  //   if (amountOfFilters.size === 1) return true;
+  // }
 
   _getFilteredCatalog() {
     return [...this._catalogEl.querySelectorAll('.card')].map(
