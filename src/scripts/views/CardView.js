@@ -505,6 +505,46 @@ class CardView extends View {
     const mainFilterBox = this._catalogFilters.querySelector('[data-main]');
 
     // IF SELECTED FILTERS
+    if (
+      currentFilter.querySelector('.checkbox__mark--checked') ||
+      currentFilter.classList.contains('color__label--checked')
+    )
+      this._addCatalogFilter(currentFilter, mainFilterBox, items);
+
+    // IF UNSELECTED FILTER
+    if (
+      !currentFilter.querySelector('.checkbox__mark--checked') &&
+      !currentFilter.classList.contains('color__label--checked')
+    ) {
+      // If unselect all filters or filters from main type
+      if (
+        this._getSelectedFilters(this._catalogFilters).length === 0 ||
+        (mainFilterBox && this._getSelectedFilters(mainFilterBox).length === 0)
+      ) {
+        this._renderFilteredItems(items);
+        this._removeMainFilterBox();
+        this._showAllFilters();
+      } else this._removeCatalogFilter(currentFilter, mainFilterBox, items);
+    }
+  }
+
+  _removeCatalogFilter(currentFilter, mainFilterBox, items) {
+    if (currentFilter.closest('[data-main]')) {
+      // If selected only one type of filters
+      if (this._getFilteredSelectedFilters(mainFilterBox).length === 0) {
+        const filteredItems = this._getFilteredItems(items, mainFilterBox);
+        this._renderFilteredItems(filteredItems);
+        this._showRelevantFilters(filteredItems, currentFilter);
+      }
+      // If selected different type of filters
+      else {
+        this._removeFilterFromMainBox(items, currentFilter, mainFilterBox);
+      }
+    } else {
+    }
+  }
+
+  _addCatalogFilter(currentFilter, mainFilterBox, items) {
     if (this._getSelectedFilters(this._catalogFilters).length !== 0) {
       // If selected filter form main filter type
       if (currentFilter.closest('[data-main]')) {
@@ -552,16 +592,6 @@ class CardView extends View {
           this._showRelevantFilters(filteredItems, currentFilter);
         }
       }
-    }
-
-    // IF UNSELECT ALL FILTERS OR MAIN TYPE FILTERS
-    if (
-      this._getSelectedFilters(this._catalogFilters).length === 0 ||
-      (mainFilterBox && this._getSelectedFilters(mainFilterBox).length === 0)
-    ) {
-      this._renderFilteredItems(items);
-      this._removeMainFilterBox();
-      this._showAllFilters();
     }
   }
 
@@ -754,6 +784,25 @@ class CardView extends View {
     );
 
     this._renderFilteredItems([...currentCards, ...filterSelectedItems]);
+  }
+
+  _removeFilterFromMainBox(items, currentFilter, mainFilterBox) {
+    const restItems = this._getFilteredItems(items, mainFilterBox);
+    const filters = this._getFilteredSelectedFilters(mainFilterBox).map(
+      (el) => ({
+        type: el.closest('[data-filter-type]').dataset.filterType,
+        filter: el.closest('[data-filter]').dataset.filter,
+      })
+    );
+
+    const filteredItems = restItems.filter((item) =>
+      filters.every((el) =>
+        el.type === 'clothes' || el.type === 'brand'
+          ? item[el.type] === el.filter
+          : item[el.type].find((value) => value === el.filter || +el.filter)
+      )
+    );
+    this._renderFilteredItems(filteredItems);
   }
 
   _getFilteredFilters(item, filterType, filter) {
