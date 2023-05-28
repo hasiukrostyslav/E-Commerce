@@ -427,6 +427,12 @@ class CardView extends View {
     this._removeAllFilters();
     this._resetAccordion();
     this._scrollFormToTop();
+
+    this._breadcrumbFilters
+      .querySelectorAll('.breadcrumb__catalog-item')
+      .forEach((item) => {
+        if (item.classList.contains('breadcrumb__filter')) item.remove();
+      });
   }
 
   _resetAccordion() {
@@ -501,6 +507,7 @@ class CardView extends View {
 
     this._markSelectedFilter(currentFilter);
     this._toggleBreadcrumbFilter(currentFilter);
+    this._addHandlerRemoveFilter(sortItems);
     const items = sortItems(this._getSortValue());
     const mainFilterBox = this._catalogFilters.querySelector('[data-main]');
 
@@ -541,7 +548,20 @@ class CardView extends View {
         this._removeFilterFromMainBox(items, currentFilter, mainFilterBox);
       }
     } else {
+      const filteredItems = this._getFilteredItems(items, mainFilterBox);
+      this._renderFilteredItems(filteredItems);
+      this._showRelevantFilters(filteredItems, currentFilter);
+      this._resetSubFilters(mainFilterBox);
     }
+  }
+
+  _resetSubFilters(mainFilterBox) {
+    this._getFilteredSelectedFilters(mainFilterBox).forEach((filter) => {
+      if (filter.classList.contains('color__label'))
+        filter.classList.remove('color__label--checked');
+      if (filter.classList.contains('checkbox__mark'))
+        filter.classList.remove('checkbox__mark--checked');
+    });
   }
 
   _addCatalogFilter(currentFilter, mainFilterBox, items) {
@@ -656,11 +676,7 @@ class CardView extends View {
   _generateFilterMarkup(filter) {
     return `
           <li class="breadcrumb__catalog-item breadcrumb__filter" data-type="${filter.toLowerCase()}">
-            <button class="breadcrumb__catalog-btn clear-one">
-              <svg class="breadcrumb__icon breadcrumb__icon--light">
-                <use xlink:href="${icons}#cross"></use>
-              </svg>
-            </button>
+            
             <a href="#" class="breadcrumb__link breadcrumb__link--current">${filter}</a>
           </li>
     `;
@@ -834,38 +850,14 @@ class CardView extends View {
       });
   }
 
-  //--------------------------------------------------
-  // NEED TO FIX
-  _getSelectedFiltersData() {
-    const items = this._getSelectedFilters(this._catalogFilters);
-    return items
-      .map((el) => el.closest('.checked__label'))
-      .map((el) => ({
-        category: el.closest('[data-filter]').dataset.filterType,
-        value: +el.previousElementSibling.id || el.previousElementSibling.id,
-      }));
-  }
-
   _removeFilter(func, e) {
     const btn = e.target.closest('.breadcrumb__catalog-btn');
     if (!btn) return;
     const items = func(this._getSortValue());
 
-    if (btn.classList.contains('clear-all')) {
-      this._removeAllFilters();
-
-      this._catalogEl.innerHTML = '';
-      items.forEach((item) => this._renderCatalogItems(item));
-    }
-
-    if (btn.classList.contains('clear-one')) {
-      this._removeOneFilter(btn);
-
-      const checkedFilters = this._getSelectedFiltersData();
-      const filteredItems = this._getFilteredItems(items, checkedFilters);
-      this._catalogEl.innerHTML = '';
-      filteredItems.forEach((item) => this._renderCatalogItems(item));
-    }
+    this._removeAllFilters();
+    this._catalogEl.innerHTML = '';
+    items.forEach((item) => this._renderCatalogItems(item));
   }
 
   _addHandlerRemoveFilter(func) {
@@ -875,29 +867,9 @@ class CardView extends View {
     );
   }
 
-  _removeOneFilter(btn) {
-    const { filter } = btn.closest('li').dataset;
-    btn.closest('li').remove();
-    const checkBox = [
-      ...this._catalogFilters.querySelectorAll('[data-filter]'),
-    ].find((el) => el.dataset.type.toLowerCase() === filter);
-
-    if (checkBox.querySelector('.checkbox__mark')) {
-      checkBox
-        .querySelector('.checkbox__mark')
-        .classList.remove('checkbox__mark--checked');
-    }
-
-    if (checkBox.querySelector('.color__label')) {
-      checkBox
-        .querySelector('.color__label')
-        .classList.remove('color__label--checked');
-    }
-  }
-
   _removeAllFilters() {
     [...this._breadcrumbFilters.querySelectorAll('button')]
-      .filter((el) => el.classList.contains('clear-one'))
+      .filter((el) => !el.classList.contains('clear-all'))
       .forEach((el) => el.closest('li').remove());
 
     const checkMark = this._catalogFilters.querySelectorAll(
