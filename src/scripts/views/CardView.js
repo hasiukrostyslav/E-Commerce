@@ -491,42 +491,76 @@ class CardView extends View {
     this._catalogFilters.addEventListener('click', handler);
   }
 
-  _showFilteredItems(func, e) {
+  _showFilteredItems(sortItems, e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     const currentFilter = e.target.closest('.checked__label');
     if (!currentFilter) return;
-
     if (!this._catalogFilters.querySelector('[data-parent]'))
-      this._setParentFilter(currentFilter);
+      this._setParentFilterBox(currentFilter);
 
     this._markSelectedFilter(currentFilter);
     this._toggleBreadcrumbFilter(currentFilter);
-    const items = func(this._getSortValue());
-    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
+    const items = sortItems(this._getSortValue());
+    const parentFilterBox = this._catalogFilters.querySelector('[data-parent]');
 
+    // IF SELECTED FILTERS
     if (this._getSelectedFilters(this._catalogFilters).length !== 0) {
       if (currentFilter.closest('[data-parent]')) {
-        const filteredItems = this._getFilteredItems(items, parentFilter);
-
-        this._renderFilteredItems(filteredItems);
-        this._showRelevantFilters(filteredItems, currentFilter);
+        if (this._getFilteredSelectedFilters(parentFilterBox).length === 0) {
+          const filteredItems = this._getFilteredItems(items, parentFilterBox);
+          this._renderFilteredItems(filteredItems);
+          this._showRelevantFilters(filteredItems, currentFilter);
+        } else {
+        }
       } else {
+        const filterContainer = currentFilter.closest('[data-filter-type]');
+        const currentItems = this._getFilteredItems(items, parentFilterBox);
+        const prevFilters = this._getFilteredSubfilters(
+          parentFilterBox,
+          currentFilter
+        );
+        if (prevFilters.length === 0) {
+          const filteredItems = this._getFilteredItems(
+            currentItems,
+            filterContainer
+          );
+          this._renderFilteredItems(filteredItems);
+        }
+        if (prevFilters.length !== 0) {
+          const currentCards = [
+            ...this._catalogEl.querySelectorAll('.card'),
+          ].map((card) =>
+            items.find((item) => item.article === +card.dataset.article)
+          );
+          const filteredItems = this._getFilteredItems(
+            currentCards,
+            filterContainer
+          );
+          this._renderFilteredItems(filteredItems);
+        }
+
+        if (this._getFilteredSelectedFilters(parentFilterBox).length === 0) {
+          const filteredItems = this._getFilteredItems(items, parentFilterBox);
+          this._renderFilteredItems(filteredItems);
+          this._showRelevantFilters(filteredItems, currentFilter);
+        }
       }
     }
 
+    // IF NO SELECTED FILTERS
     if (
       this._getSelectedFilters(this._catalogFilters).length === 0 ||
-      (parentFilter && this._getSelectedFilters(parentFilter).length === 0)
+      (parentFilterBox &&
+        this._getSelectedFilters(parentFilterBox).length === 0)
     ) {
       this._renderFilteredItems(items);
-      this._removeParentFilter();
+      this._removeParentFilterBox();
       this._showAllFilters();
     }
   }
-  //----------------------------------------------------------------------------------
 
-  _setParentFilter(click) {
+  _setParentFilterBox(click) {
     click.closest('[data-filter-type]').dataset.parent = true;
   }
 
@@ -606,11 +640,31 @@ class CardView extends View {
     ];
   }
 
-  _getFilteredItems(items, filterContainer) {
-    const selectedValue = this._getSelectedFilters(filterContainer).map(
-      (el) => el.closest('[data-filter]').dataset.filter
+  _getFilteredSelectedFilters(container) {
+    return this._getSelectedFilters(this._catalogFilters).filter(
+      (filter) =>
+        filter.closest('[data-filter-type]').dataset.filterType !==
+        container.dataset.filterType
     );
+  }
 
+  _getFilteredSubfilters(parentFilterBox, currentFilter) {
+    const filters = this._getFilteredSelectedFilters(parentFilterBox);
+    return filters
+      .filter(
+        (el) =>
+          el.closest('[data-filter]').dataset.filter !==
+          currentFilter.closest('[data-filter]').dataset.filter
+      )
+      .map((el) => el.closest('[data-filter]'));
+  }
+
+  _getFilteredItems(items, filterContainer) {
+    const selectedValue = this._getSelectedFilters(filterContainer).map((el) =>
+      +el.closest('[data-filter]').dataset.filter
+        ? +el.closest('[data-filter]').dataset.filter
+        : el.closest('[data-filter]').dataset.filter
+    );
     return this._filterItems(items, filterContainer, selectedValue);
   }
 
@@ -623,7 +677,7 @@ class CardView extends View {
           )
         : selectedValue.find((value) =>
             el[filterContainer.dataset.filterType].find(
-              (filter) => filter === value || +value
+              (filter) => filter === value
             )
           )
     );
@@ -652,55 +706,60 @@ class CardView extends View {
         const { filterType } = el.closest('[data-filter-type]').dataset;
         const { filter } = el.dataset;
         const curItem = items.find((item) =>
-          filterType === 'clothes' || filterType === 'brand'
-            ? item[filterType] === filter
-            : item[filterType].find((value) => String(value) === filter)
+          this._getFilteredFilters(item, filterType, filter)
         );
         if (curItem) el.classList.remove('hidden');
         if (!curItem) el.classList.add('hidden');
       });
     }
 
-    // if (!currentFilter.closest('[data-parent]')) {
-    //   const subParentFilter = currentFilter.closest('[data-filter-type]');
-    //   const restFilters = allFilters.filter(
-    //     (el) =>
-    //       !el.classList.contains('hidden') &&
-    //       el.closest('[data-filter-type]').dataset.filterType !==
-    //         subParentFilter.dataset.filterType
-    //   );
+    if (!currentFilter.closest('[data-parent]')) {
+      const subparentFilterBox = currentFilter.closest('[data-filter-type]');
+      const restFilters = allFilters.filter(
+        (el) =>
+          !el.classList.contains('hidden') &&
+          el.closest('[data-filter-type]').dataset.filterType !==
+            subparentFilterBox.dataset.filterType
+      );
 
-    //   const { filter } = currentFilter.closest('[data-filter]').dataset;
-    //   const { type } = currentFilter.closest('[data-type]').dataset;
-    //   console.log(currentFilter);
-    //   console.log(filter, type);
-    //   const restItems = items.filter((el) =>
-    //     filter === 'clothes' || filter === 'brand'
-    //       ? el[filter] === type
-    //       : el[filter].find((value) => String(value) === type)
-    //   );
-    //   console.log(items);
-    //   console.log(restItems);
+      const { filterType } =
+        currentFilter.closest('[data-filter-type]').dataset;
+      const { filter } = currentFilter.closest('[data-filter]').dataset;
+      console.log(currentFilter);
+      console.log(filterType, filter);
+      const restItems = items.filter((el) =>
+        filterType === 'clothes' || filterType === 'brand'
+          ? el[filterType] === filter
+          : el[filterType].find((value) => String(value) === filter)
+      );
+      console.log(items);
+      console.log(restItems);
 
-    //   restFilters.forEach((el) => {
-    //     const { filterType } = el.closest('[data-filterType]').dataset;
-    //     const { type } = el.dataset;
-    //     const curItem = restItems.find((item) =>
-    //       filterType === 'clothes' || filterType === 'brand'
-    //         ? item[filterType] === type
-    //         : item[filterType].find((value) => String(value) === type)
-    //     );
-    //     // console.log(curItem);
-    //     if (curItem) el.classList.remove('hidden');
-    //     if (!curItem) el.classList.add('hidden');
-    //   });
-    // }
+      restFilters.forEach((el) => {
+        const { filterType } = el.closest('[data-filterType]').dataset;
+        const { filter } = el.dataset;
+        const curItem = restItems.find((item) =>
+          filterType === 'clothes' || filterType === 'brand'
+            ? item[filterType] === filter
+            : item[filterType].find((value) => String(value) === filter)
+        );
+        // console.log(curItem);
+        if (curItem) el.classList.remove('hidden');
+        if (!curItem) el.classList.add('hidden');
+      });
+    }
   }
 
-  _removeParentFilter() {
-    const parentFilter = this._catalogFilters.querySelector('[data-parent]');
-    if (!parentFilter) return;
-    parentFilter.removeAttribute('data-parent');
+  _getFilteredFilters(item, filterType, filter) {
+    return filterType === 'clothes' || filterType === 'brand'
+      ? item[filterType] === filter
+      : item[filterType].find((value) => String(value) === filter);
+  }
+
+  _removeParentFilterBox() {
+    const parentFilterBox = this._catalogFilters.querySelector('[data-parent]');
+    if (!parentFilterBox) return;
+    parentFilterBox.removeAttribute('data-parent');
   }
 
   _showAllFilters() {
