@@ -31,7 +31,7 @@ class CatalogView extends View {
   _setFiltersDataAttribute() {
     this._filterItemEl.forEach(
       (item) =>
-        (item.dataset.filter = item
+        (item.dataset.filterType = item
           .querySelector('p')
           .textContent.toLowerCase())
     );
@@ -49,7 +49,7 @@ class CatalogView extends View {
 
   _generateFilterColor(data) {
     return `
-          <li class="catalog__color-item" data-type="${data}">
+          <li class="catalog__color-item" data-filter="${data}">
             <input
               class="color__radio"
               type="checkbox"
@@ -79,7 +79,7 @@ class CatalogView extends View {
       list.innerHTML = '';
       list.insertAdjacentHTML(
         'beforeend',
-        this._getFiltersMarkup(data, filter.dataset.filter)
+        this._getFiltersMarkup(data, filter.dataset.filterType)
       );
     });
   }
@@ -105,7 +105,7 @@ class CatalogView extends View {
 
   _generateFilterCheckList(data, type, quantity) {
     return `
-          <li class="catalog__check-item" data-type="${data}">
+          <li class="catalog__check-item" data-filter="${data}">
             <input
               class="checkbox__input"
               type="checkbox"

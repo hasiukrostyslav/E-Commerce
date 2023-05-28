@@ -324,8 +324,8 @@ class CardView extends View {
       });
     });
 
-    const checkedFilters = this._getCheckboxes(this._catalogFilters);
-    if (checkedFilters.length === 0) this._initFilters(func, selectedValue);
+    const selectedFilters = this._getSelectedFilters(this._catalogFilters);
+    if (selectedFilters.length === 0) this._initFilters(func, selectedValue);
     // NEED TO FIX
     else console.log('filter');
   }
@@ -470,13 +470,13 @@ class CardView extends View {
     const input = e.target.closest('.search__input');
     if (!input) return;
 
-    const options = [...input.closest('div').querySelectorAll('[data-type]')];
+    const options = [...input.closest('div').querySelectorAll('[data-filter]')];
     options.forEach((el) => {
       el.classList.add('hidden');
     });
 
     const searchedOptions = options.filter((el) =>
-      el.dataset.type.toLowerCase().includes(input.value.toLowerCase())
+      el.dataset.filter.toLowerCase().includes(input.value.toLowerCase())
     );
 
     searchedOptions.forEach((el) => el.classList.remove('hidden'));
@@ -487,129 +487,111 @@ class CardView extends View {
   }
 
   // ************************************************************************************
+  _addHandlerFilterItems(handler) {
+    this._catalogFilters.addEventListener('click', handler);
+  }
 
   _showFilteredItems(func, e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-    const checkBox = e.target.closest('.checked__label');
-    if (!checkBox) return;
+    const currentFilter = e.target.closest('.checked__label');
+    if (!currentFilter) return;
 
     if (!this._catalogFilters.querySelector('[data-parent]'))
-      this._setParentFilter(checkBox);
+      this._setParentFilter(currentFilter);
 
-    this._toggleBreadcrumbFilter(checkBox);
-    this._fillCheckbox(checkBox);
-    const items = func(this._getSelectedValue());
+    this._markSelectedFilter(currentFilter);
+    this._toggleBreadcrumbFilter(currentFilter);
+    const items = func(this._getSortValue());
     const parentFilter = this._catalogFilters.querySelector('[data-parent]');
-    // const oneFiltersType = this._checkParentFilter();
 
-    if (this._getCheckboxes(this._catalogFilters).length !== 0) {
-      if (checkBox.closest('[data-parent]')) {
-        const filteredItems = this._getFilteredData(items, parentFilter);
-        this._catalogEl.innerHTML = '';
-        filteredItems.forEach((item) => this._renderCatalogItems(item));
-        this._initToolBar();
-        this._showRelevantFilters(filteredItems, checkBox);
+    if (this._getSelectedFilters(this._catalogFilters).length !== 0) {
+      if (currentFilter.closest('[data-parent]')) {
+        const filteredItems = this._getFilteredItems(items, parentFilter);
+
+        this._renderFilteredItems(filteredItems);
+        this._showRelevantFilters(filteredItems, currentFilter);
       } else {
-        const curArticles = this._getFilteredCatalog();
-        const curCatalog = this._getCatalogArticles(items, curArticles);
-        const prevFilters = this._getPrevFilters(checkBox);
-        const curCheckboxData = this._getCurrentCheckboxData(checkBox);
-        const filteredItems = this._filterOneOption(items, checkBox);
-        // const newCatalog = this._getNewCatalog(curCatalog, curCheckboxData);
-        // console.log(curCatalog);
-        // console.log(checkBox);
-        // console.log(prevFilters);
-        // this._catalogEl.innerHTML = '';
-        // newCatalog.forEach((item) => this._renderCatalogItems(item));
-        // this._initToolBar();
-        this._showRelevantFilters(curCatalog, checkBox);
       }
     }
 
     if (
-      this._getCheckboxes(this._catalogFilters).length === 0 ||
-      (parentFilter && this._getCheckboxes(parentFilter).length === 0)
+      this._getSelectedFilters(this._catalogFilters).length === 0 ||
+      (parentFilter && this._getSelectedFilters(parentFilter).length === 0)
     ) {
-      this._catalogEl.innerHTML = '';
-      items.forEach((item) => this._renderCatalogItems(item));
-      this._initToolBar();
+      this._renderFilteredItems(items);
       this._removeParentFilter();
       this._showAllFilters();
     }
   }
+  //----------------------------------------------------------------------------------
 
-  _showRelevantFilters(items, checkbox) {
-    const allFilters = [
-      ...this._catalogFilters.querySelectorAll('li[data-type]'),
-    ].filter((el) => !el.closest('[data-parent]'));
+  _setParentFilter(click) {
+    click.closest('[data-filter-type]').dataset.parent = true;
+  }
 
-    if (checkbox.closest('[data-parent]')) {
-      allFilters.forEach((el) => {
-        const { filter } = el.closest('[data-filter]').dataset;
-        const { type } = el.dataset;
-        const curItem = items.find((item) =>
-          filter === 'clothes' || filter === 'brand'
-            ? item[filter] === type
-            : item[filter].find((value) => String(value) === type)
-        );
-        if (curItem) el.classList.remove('hidden');
-        if (!curItem) el.classList.add('hidden');
-      });
+  _markSelectedFilter(currentFilter) {
+    if (!currentFilter.classList.contains('color__label'))
+      currentFilter
+        .querySelector('.checkbox__mark')
+        .classList.toggle('checkbox__mark--checked');
+
+    if (currentFilter.classList.contains('color__label'))
+      currentFilter.classList.toggle('color__label--checked');
+  }
+
+  _toggleBreadcrumbFilter(currentFilter) {
+    if (
+      currentFilter.querySelector('.checkbox__mark--checked') ||
+      currentFilter.classList.contains('color__label--checked')
+    ) {
+      this._renderBreadcrumbFilter(currentFilter);
     }
-
-    if (!checkbox.closest('[data-parent]')) {
-      const subParentFilter = checkbox.closest('[data-filter]');
-      const restFilters = allFilters.filter(
+    if (
+      !currentFilter.querySelector('.checkbox__mark--checked') &&
+      !currentFilter.classList.contains('color__label--checked')
+    ) {
+      const element = [
+        ...this._breadcrumbFilters.querySelectorAll('.breadcrumb__filter'),
+      ].find(
         (el) =>
-          !el.classList.contains('hidden') &&
-          el.closest('[data-filter]').dataset.filter !==
-            subParentFilter.dataset.filter
+          el.dataset.type ===
+          currentFilter.closest('li').dataset.filter.toLowerCase()
       );
-
-      const { filter } = checkbox.closest('[data-filter]').dataset;
-      const { type } = checkbox.closest('[data-type]').dataset;
-      console.log(checkbox);
-      console.log(filter, type);
-      const restItems = items.filter((el) =>
-        filter === 'clothes' || filter === 'brand'
-          ? el[filter] === type
-          : el[filter].find((value) => String(value) === type)
-      );
-      console.log(items);
-      console.log(restItems);
-
-      restFilters.forEach((el) => {
-        const { filter } = el.closest('[data-filter]').dataset;
-        const { type } = el.dataset;
-        const curItem = restItems.find((item) =>
-          filter === 'clothes' || filter === 'brand'
-            ? item[filter] === type
-            : item[filter].find((value) => String(value) === type)
-        );
-        // console.log(curItem);
-        if (curItem) el.classList.remove('hidden');
-        if (!curItem) el.classList.add('hidden');
-      });
+      element.remove();
     }
   }
 
-  _showAllFilters() {
-    this._catalogFilters.querySelectorAll('li[data-type]').forEach((filter) => {
-      filter.classList.remove('hidden');
-      if (filter.querySelector('.color__label'))
-        filter
-          .querySelector('.color__label')
-          .classList.remove('color__label--checked');
+  _renderBreadcrumbFilter(currentFilter) {
+    const filterTitle = currentFilter.previousElementSibling.id
+      .split(' ')
+      .map((word) =>
+        word.length === 2
+          ? word.toUpperCase()
+          : word[0].toUpperCase() + word.slice(1)
+      )
+      .join(' ');
 
-      if (filter.querySelector('.checkbox__mark'))
-        filter
-          .querySelector('.checkbox__mark')
-          .classList.remove('checkbox__mark--checked');
-    });
+    this._breadcrumbFilters.insertAdjacentHTML(
+      'afterbegin',
+      this._generateFilterMarkup(filterTitle)
+    );
   }
 
-  _getSelectedValue() {
+  _generateFilterMarkup(filter) {
+    return `
+          <li class="breadcrumb__catalog-item breadcrumb__filter" data-type="${filter.toLowerCase()}">
+            <button class="breadcrumb__catalog-btn clear-one">
+              <svg class="breadcrumb__icon breadcrumb__icon--light">
+                <use xlink:href="${icons}#cross"></use>
+              </svg>
+            </button>
+            <a href="#" class="breadcrumb__link breadcrumb__link--current">${filter}</a>
+          </li>
+    `;
+  }
+
+  _getSortValue() {
     return [
       ...this._catalogPageEl
         .querySelector('.sort__select')
@@ -617,85 +599,40 @@ class CardView extends View {
     ].find((option) => option.selected === true).value;
   }
 
-  _setParentFilter(click) {
-    click.closest('[data-filter]').dataset.parent = true;
-  }
-
-  _fillCheckbox(checkBox) {
-    if (!checkBox.classList.contains('color__label'))
-      checkBox
-        .querySelector('.checkbox__mark')
-        .classList.toggle('checkbox__mark--checked');
-
-    if (checkBox.classList.contains('color__label'))
-      checkBox.classList.toggle('color__label--checked');
-  }
-
-  _getCheckboxes(container) {
+  _getSelectedFilters(container) {
     return [
       ...container.querySelectorAll('.checkbox__mark--checked'),
       ...container.querySelectorAll('.color__label--checked'),
     ];
   }
 
-  _getPrevFilters(checkbox) {
-    const allFilters = this._getCheckboxes(this._catalogFilters);
-    const currentCheckbox = checkbox.classList.contains('color__label--checked')
-      ? checkbox
-      : checkbox.querySelector('.checkbox__mark--checked');
-    return allFilters.filter(
-      (el) =>
-        el.closest('[data-type]').dataset.type !==
-        currentCheckbox.closest('[data-type]').dataset.type
-    );
-  }
-
-  _getFilteredData(info, filterContainer) {
-    const checkedOptions = this._getCheckboxes(filterContainer).map(
-      (el) => el.closest('[data-type]').dataset.type
+  _getFilteredItems(items, filterContainer) {
+    const selectedValue = this._getSelectedFilters(filterContainer).map(
+      (el) => el.closest('[data-filter]').dataset.filter
     );
 
-    const items = this._filterItems(info, filterContainer, checkedOptions);
-    return items;
+    return this._filterItems(items, filterContainer, selectedValue);
   }
 
-  _filterOneOption(info, checkbox) {
-    const checkedOption = [checkbox.closest('[data-type]').dataset.type];
-    const filterContainer = checkbox.closest('[data-filter]');
-    const items = this._filterItems(info, filterContainer, checkedOption);
-    return items;
-  }
-
-  _filterItems(items, filterContainer, options) {
+  _filterItems(items, filterContainer, selectedValue) {
     return items.filter((el) =>
-      filterContainer.dataset.filter === 'clothes' ||
-      filterContainer.dataset.filter === 'brand'
-        ? options.find(
-            (option) => option === el[filterContainer.dataset.filter]
+      filterContainer.dataset.filterType === 'clothes' ||
+      filterContainer.dataset.filterType === 'brand'
+        ? selectedValue.find(
+            (option) => option === el[filterContainer.dataset.filterType]
           )
-        : options.find((option) =>
-            el[filterContainer.dataset.filter].find(
-              (filter) => filter === option || +option
+        : selectedValue.find((value) =>
+            el[filterContainer.dataset.filterType].find(
+              (filter) => filter === value || +value
             )
           )
     );
   }
 
-  _getCheckboxesData() {
-    const items = this._getCheckboxes(this._catalogFilters);
-    return items
-      .map((el) => el.closest('.checked__label'))
-      .map((el) => ({
-        category: el.closest('[data-filter]').dataset.filter,
-        value: +el.previousElementSibling.id || el.previousElementSibling.id,
-      }));
-  }
-
-  _getCurrentCheckboxData(checkbox) {
-    return {
-      filter: checkbox.closest('[data-filter]').dataset.filter,
-      type: checkbox.closest('[data-type]').dataset.type,
-    };
+  _renderFilteredItems(items) {
+    this._catalogEl.innerHTML = '';
+    items.forEach((item) => this._renderCatalogItems(item));
+    this._initToolBar();
   }
 
   _initToolBar() {
@@ -705,48 +642,100 @@ class CardView extends View {
     this._setPaginationAttribute();
   }
 
+  _showRelevantFilters(items, currentFilter) {
+    const allFilters = [
+      ...this._catalogFilters.querySelectorAll('li[data-filter]'),
+    ].filter((el) => !el.closest('[data-parent]'));
+
+    if (currentFilter.closest('[data-parent]')) {
+      allFilters.forEach((el) => {
+        const { filterType } = el.closest('[data-filter-type]').dataset;
+        const { filter } = el.dataset;
+        const curItem = items.find((item) =>
+          filterType === 'clothes' || filterType === 'brand'
+            ? item[filterType] === filter
+            : item[filterType].find((value) => String(value) === filter)
+        );
+        if (curItem) el.classList.remove('hidden');
+        if (!curItem) el.classList.add('hidden');
+      });
+    }
+
+    // if (!currentFilter.closest('[data-parent]')) {
+    //   const subParentFilter = currentFilter.closest('[data-filter-type]');
+    //   const restFilters = allFilters.filter(
+    //     (el) =>
+    //       !el.classList.contains('hidden') &&
+    //       el.closest('[data-filter-type]').dataset.filterType !==
+    //         subParentFilter.dataset.filterType
+    //   );
+
+    //   const { filter } = currentFilter.closest('[data-filter]').dataset;
+    //   const { type } = currentFilter.closest('[data-type]').dataset;
+    //   console.log(currentFilter);
+    //   console.log(filter, type);
+    //   const restItems = items.filter((el) =>
+    //     filter === 'clothes' || filter === 'brand'
+    //       ? el[filter] === type
+    //       : el[filter].find((value) => String(value) === type)
+    //   );
+    //   console.log(items);
+    //   console.log(restItems);
+
+    //   restFilters.forEach((el) => {
+    //     const { filterType } = el.closest('[data-filterType]').dataset;
+    //     const { type } = el.dataset;
+    //     const curItem = restItems.find((item) =>
+    //       filterType === 'clothes' || filterType === 'brand'
+    //         ? item[filterType] === type
+    //         : item[filterType].find((value) => String(value) === type)
+    //     );
+    //     // console.log(curItem);
+    //     if (curItem) el.classList.remove('hidden');
+    //     if (!curItem) el.classList.add('hidden');
+    //   });
+    // }
+  }
+
   _removeParentFilter() {
     const parentFilter = this._catalogFilters.querySelector('[data-parent]');
     if (!parentFilter) return;
     parentFilter.removeAttribute('data-parent');
   }
 
-  // _checkParentFilter() {
-  //   const amountOfFilters = new Set(
-  //     this._getCheckboxes(this._catalogFilters).map(
-  //       (filter) => filter.closest('[data-filter]').dataset.filter
-  //     )
-  //   );
+  _showAllFilters() {
+    this._catalogFilters
+      .querySelectorAll('li[data-filter]')
+      .forEach((filter) => {
+        filter.classList.remove('hidden');
+        if (filter.querySelector('.color__label'))
+          filter
+            .querySelector('.color__label')
+            .classList.remove('color__label--checked');
 
-  //   if (amountOfFilters.size === 1) return true;
-  // }
-
-  _getFilteredCatalog() {
-    return [...this._catalogEl.querySelectorAll('.card')].map(
-      (card) => +card.dataset.article
-    );
+        if (filter.querySelector('.checkbox__mark'))
+          filter
+            .querySelector('.checkbox__mark')
+            .classList.remove('checkbox__mark--checked');
+      });
   }
 
-  _getCatalogArticles(items, articles) {
-    return items.filter((el) =>
-      articles.find((article) => article === el.article)
-    );
-  }
-
-  _getNewCatalog(catalog, checkbox) {
-    console.log(catalog, checkbox);
-    return catalog.filter((el) =>
-      checkbox.filter === 'clothes' || checkbox.filter === 'brand'
-        ? el[checkbox.filter] === checkbox.type
-        : el[checkbox.filter].find((type) => type === checkbox.type)
-    );
-  }
-
+  //--------------------------------------------------
   // NEED TO FIX
+  _getSelectedFiltersData() {
+    const items = this._getSelectedFilters(this._catalogFilters);
+    return items
+      .map((el) => el.closest('.checked__label'))
+      .map((el) => ({
+        category: el.closest('[data-filter]').dataset.filterType,
+        value: +el.previousElementSibling.id || el.previousElementSibling.id,
+      }));
+  }
+
   _removeFilter(func, e) {
     const btn = e.target.closest('.breadcrumb__catalog-btn');
     if (!btn) return;
-    const items = func(this._getSelectedValue());
+    const items = func(this._getSortValue());
 
     if (btn.classList.contains('clear-all')) {
       this._removeAllFilters();
@@ -758,7 +747,7 @@ class CardView extends View {
     if (btn.classList.contains('clear-one')) {
       this._removeOneFilter(btn);
 
-      const checkedFilters = this._getCheckboxesData();
+      const checkedFilters = this._getSelectedFiltersData();
       const filteredItems = this._getFilteredItems(items, checkedFilters);
       this._catalogEl.innerHTML = '';
       filteredItems.forEach((item) => this._renderCatalogItems(item));
@@ -773,11 +762,11 @@ class CardView extends View {
   }
 
   _removeOneFilter(btn) {
-    const { type } = btn.closest('li').dataset;
+    const { filter } = btn.closest('li').dataset;
     btn.closest('li').remove();
     const checkBox = [
-      ...this._catalogFilters.querySelectorAll('[data-type]'),
-    ].find((el) => el.dataset.type.toLowerCase() === type);
+      ...this._catalogFilters.querySelectorAll('[data-filter]'),
+    ].find((el) => el.dataset.type.toLowerCase() === filter);
 
     if (checkBox.querySelector('.checkbox__mark')) {
       checkBox
@@ -813,60 +802,6 @@ class CardView extends View {
       colors.forEach((color) =>
         color.classList.remove('color__label--checked')
       );
-  }
-
-  _toggleBreadcrumbFilter(checkBox) {
-    if (
-      !checkBox.querySelector('.checkbox__mark--checked') &&
-      !checkBox.classList.contains('color__label--checked')
-    ) {
-      this._renderBreadcrumbFilter(checkBox);
-    }
-    if (
-      checkBox.querySelector('.checkbox__mark--checked') ||
-      checkBox.classList.contains('color__label--checked')
-    ) {
-      const element = [
-        ...this._breadcrumbFilters.querySelectorAll('.breadcrumb__filter'),
-      ].find(
-        (el) =>
-          el.dataset.type === checkBox.closest('li').dataset.type.toLowerCase()
-      );
-      element.remove();
-    }
-  }
-
-  _renderBreadcrumbFilter(filter) {
-    const filterTitle = filter.previousElementSibling.id
-      .split(' ')
-      .map((word) =>
-        word.length === 2
-          ? word.toUpperCase()
-          : word[0].toUpperCase() + word.slice(1)
-      )
-      .join(' ');
-
-    this._breadcrumbFilters.insertAdjacentHTML(
-      'afterbegin',
-      this._generateFilterMarkup(filterTitle)
-    );
-  }
-
-  _generateFilterMarkup(filter) {
-    return `
-          <li class="breadcrumb__catalog-item breadcrumb__filter" data-type="${filter.toLowerCase()}">
-            <button class="breadcrumb__catalog-btn clear-one">
-              <svg class="breadcrumb__icon breadcrumb__icon--light">
-                <use xlink:href="${icons}#cross"></use>
-              </svg>
-            </button>
-            <a href="#" class="breadcrumb__link breadcrumb__link--current">${filter}</a>
-          </li>
-    `;
-  }
-
-  _addHandlerFilterItems(handler) {
-    this._catalogFilters.addEventListener('click', handler);
   }
 }
 
