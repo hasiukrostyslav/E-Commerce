@@ -496,30 +496,38 @@ class CardView extends View {
     e.stopImmediatePropagation();
     const currentFilter = e.target.closest('.checked__label');
     if (!currentFilter) return;
-    if (!this._catalogFilters.querySelector('[data-parent]'))
-      this._setParentFilterBox(currentFilter);
+    if (!this._catalogFilters.querySelector('[data-main]'))
+      this._setMainFilterBox(currentFilter);
 
     this._markSelectedFilter(currentFilter);
     this._toggleBreadcrumbFilter(currentFilter);
     const items = sortItems(this._getSortValue());
-    const parentFilterBox = this._catalogFilters.querySelector('[data-parent]');
+    const mainFilterBox = this._catalogFilters.querySelector('[data-main]');
 
     // IF SELECTED FILTERS
     if (this._getSelectedFilters(this._catalogFilters).length !== 0) {
-      if (currentFilter.closest('[data-parent]')) {
-        if (this._getFilteredSelectedFilters(parentFilterBox).length === 0) {
-          const filteredItems = this._getFilteredItems(items, parentFilterBox);
+      // If selected filter form main filter type
+      if (currentFilter.closest('[data-main]')) {
+        // If selected only one type of filters
+        if (this._getFilteredSelectedFilters(mainFilterBox).length === 0) {
+          const filteredItems = this._getFilteredItems(items, mainFilterBox);
           this._renderFilteredItems(filteredItems);
           this._showRelevantFilters(filteredItems, currentFilter);
-        } else {
         }
-      } else {
+        // If selected different type of filters
+        else {
+          this._addFilterToMainBox(items, currentFilter, mainFilterBox);
+        }
+      }
+      // If selected filter isn't from main type filter
+      else {
         const filterContainer = currentFilter.closest('[data-filter-type]');
-        const currentItems = this._getFilteredItems(items, parentFilterBox);
+        const currentItems = this._getFilteredItems(items, mainFilterBox);
         const prevFilters = this._getFilteredSubfilters(
-          parentFilterBox,
+          mainFilterBox,
           currentFilter
         );
+        // If it is first filter from other type
         if (prevFilters.length === 0) {
           const filteredItems = this._getFilteredItems(
             currentItems,
@@ -527,12 +535,10 @@ class CardView extends View {
           );
           this._renderFilteredItems(filteredItems);
         }
+
+        // If it isn't first filter from other type
         if (prevFilters.length !== 0) {
-          const currentCards = [
-            ...this._catalogEl.querySelectorAll('.card'),
-          ].map((card) =>
-            items.find((item) => item.article === +card.dataset.article)
-          );
+          const currentCards = this._getCurrentCard(items);
           const filteredItems = this._getFilteredItems(
             currentCards,
             filterContainer
@@ -540,28 +546,33 @@ class CardView extends View {
           this._renderFilteredItems(filteredItems);
         }
 
-        if (this._getFilteredSelectedFilters(parentFilterBox).length === 0) {
-          const filteredItems = this._getFilteredItems(items, parentFilterBox);
+        if (this._getFilteredSelectedFilters(mainFilterBox).length === 0) {
+          const filteredItems = this._getFilteredItems(items, mainFilterBox);
           this._renderFilteredItems(filteredItems);
           this._showRelevantFilters(filteredItems, currentFilter);
         }
       }
     }
 
-    // IF NO SELECTED FILTERS
+    // IF UNSELECT ALL FILTERS OR MAIN TYPE FILTERS
     if (
       this._getSelectedFilters(this._catalogFilters).length === 0 ||
-      (parentFilterBox &&
-        this._getSelectedFilters(parentFilterBox).length === 0)
+      (mainFilterBox && this._getSelectedFilters(mainFilterBox).length === 0)
     ) {
       this._renderFilteredItems(items);
-      this._removeParentFilterBox();
+      this._removeMainFilterBox();
       this._showAllFilters();
     }
   }
 
-  _setParentFilterBox(click) {
-    click.closest('[data-filter-type]').dataset.parent = true;
+  _getCurrentCard(items) {
+    return [...this._catalogEl.querySelectorAll('.card')].map((card) =>
+      items.find((item) => item.article === +card.dataset.article)
+    );
+  }
+
+  _setMainFilterBox(click) {
+    click.closest('[data-filter-type]').dataset.main = true;
   }
 
   _markSelectedFilter(currentFilter) {
@@ -648,8 +659,8 @@ class CardView extends View {
     );
   }
 
-  _getFilteredSubfilters(parentFilterBox, currentFilter) {
-    const filters = this._getFilteredSelectedFilters(parentFilterBox);
+  _getFilteredSubfilters(mainFilterBox, currentFilter) {
+    const filters = this._getFilteredSelectedFilters(mainFilterBox);
     return filters
       .filter(
         (el) =>
@@ -699,9 +710,9 @@ class CardView extends View {
   _showRelevantFilters(items, currentFilter) {
     const allFilters = [
       ...this._catalogFilters.querySelectorAll('li[data-filter]'),
-    ].filter((el) => !el.closest('[data-parent]'));
+    ].filter((el) => !el.closest('[data-main]'));
 
-    if (currentFilter.closest('[data-parent]')) {
+    if (currentFilter.closest('[data-main]')) {
       allFilters.forEach((el) => {
         const { filterType } = el.closest('[data-filter-type]').dataset;
         const { filter } = el.dataset;
@@ -713,41 +724,36 @@ class CardView extends View {
       });
     }
 
-    if (!currentFilter.closest('[data-parent]')) {
-      const subparentFilterBox = currentFilter.closest('[data-filter-type]');
-      const restFilters = allFilters.filter(
-        (el) =>
-          !el.classList.contains('hidden') &&
-          el.closest('[data-filter-type]').dataset.filterType !==
-            subparentFilterBox.dataset.filterType
-      );
-
-      const { filterType } =
-        currentFilter.closest('[data-filter-type]').dataset;
-      const { filter } = currentFilter.closest('[data-filter]').dataset;
-      console.log(currentFilter);
-      console.log(filterType, filter);
-      const restItems = items.filter((el) =>
-        filterType === 'clothes' || filterType === 'brand'
-          ? el[filterType] === filter
-          : el[filterType].find((value) => String(value) === filter)
-      );
-      console.log(items);
-      console.log(restItems);
-
-      restFilters.forEach((el) => {
-        const { filterType } = el.closest('[data-filterType]').dataset;
-        const { filter } = el.dataset;
-        const curItem = restItems.find((item) =>
-          filterType === 'clothes' || filterType === 'brand'
-            ? item[filterType] === filter
-            : item[filterType].find((value) => String(value) === filter)
-        );
-        // console.log(curItem);
-        if (curItem) el.classList.remove('hidden');
-        if (!curItem) el.classList.add('hidden');
-      });
+    if (!currentFilter.closest('[data-main]')) {
     }
+  }
+
+  _addFilterToMainBox(items, currentFilter, mainFilterBox) {
+    const currentCards = this._getCurrentCard(items);
+    const { filterType } = currentFilter.closest('[data-filter-type]').dataset;
+    const { filter } = currentFilter.closest('[data-filter]').dataset;
+    const selectedItems = items.filter((item) =>
+      filterType === 'clothes' || filterType === 'brand'
+        ? item[filterType] === filter
+        : item[filterType].find((el) => el === filter || +filter)
+    );
+
+    const filters = this._getFilteredSelectedFilters(mainFilterBox).map(
+      (el) => ({
+        type: el.closest('[data-filter-type]').dataset.filterType,
+        filter: el.closest('[data-filter]').dataset.filter,
+      })
+    );
+
+    const filterSelectedItems = selectedItems.filter((item) =>
+      filters.every((el) =>
+        el.type === 'clothes' || el.type === 'brand'
+          ? item[el.type] === el.filter
+          : item[el.type].find((value) => value === el.filter || +el.filter)
+      )
+    );
+
+    this._renderFilteredItems([...currentCards, ...filterSelectedItems]);
   }
 
   _getFilteredFilters(item, filterType, filter) {
@@ -756,10 +762,10 @@ class CardView extends View {
       : item[filterType].find((value) => String(value) === filter);
   }
 
-  _removeParentFilterBox() {
-    const parentFilterBox = this._catalogFilters.querySelector('[data-parent]');
-    if (!parentFilterBox) return;
-    parentFilterBox.removeAttribute('data-parent');
+  _removeMainFilterBox() {
+    const mainFilterBox = this._catalogFilters.querySelector('[data-main]');
+    if (!mainFilterBox) return;
+    mainFilterBox.removeAttribute('data-main');
   }
 
   _showAllFilters() {
