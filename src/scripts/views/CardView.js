@@ -327,7 +327,7 @@ class CardView extends View {
     const selectedFilters = this._getSelectedFilters(this._catalogFilters);
     if (selectedFilters.length === 0) this._initFilters(func, selectedValue);
     // NEED TO FIX
-    else console.log('filter');
+    // else console.log('filter');
   }
 
   _renderCatalogItems(item) {
@@ -424,7 +424,7 @@ class CardView extends View {
       .forEach((input) => (input.value = 12));
 
     this._initFilters(func, 'newest');
-    this._removeAllFilters();
+    this._removeAllBreadcrumbFilters();
     this._resetAccordion();
     this._scrollFormToTop();
 
@@ -529,8 +529,9 @@ class CardView extends View {
         (mainFilterBox && this._getSelectedFilters(mainFilterBox).length === 0)
       ) {
         this._renderFilteredItems(items);
-        this._removeMainFilterBox();
+        // this._removeMainFilterBox();
         this._showAllFilters();
+        this._removeAllBreadcrumbFilters();
       } else this._removeCatalogFilter(currentFilter, mainFilterBox, items);
     }
   }
@@ -770,8 +771,8 @@ class CardView extends View {
       });
     }
 
-    if (!currentFilter.closest('[data-main]')) {
-    }
+    // if (!currentFilter.closest('[data-main]')) {
+    // }
   }
 
   _addFilterToMainBox(items, currentFilter, mainFilterBox) {
@@ -855,7 +856,7 @@ class CardView extends View {
     if (!btn) return;
     const items = func(this._getSortValue());
 
-    this._removeAllFilters();
+    this._removeAllBreadcrumbFilters();
     this._catalogEl.innerHTML = '';
     items.forEach((item) => this._renderCatalogItems(item));
   }
@@ -867,11 +868,12 @@ class CardView extends View {
     );
   }
 
-  _removeAllFilters() {
-    [...this._breadcrumbFilters.querySelectorAll('button')]
-      .filter((el) => !el.classList.contains('clear-all'))
-      .forEach((el) => el.closest('li').remove());
-
+  _removeAllBreadcrumbFilters() {
+    [...this._breadcrumbFilters.querySelectorAll('[data-type]')].forEach((el) =>
+      el.remove()
+    );
+    this._showAllFilters();
+    this._removeMainFilterBox();
     const checkMark = this._catalogFilters.querySelectorAll(
       '.checkbox__mark--checked'
     );
