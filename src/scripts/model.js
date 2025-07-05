@@ -108,7 +108,10 @@ export const findUsersComments = function (user) {
 // GET COUNTRY/CITY TO SELECT ELEMENTS
 export const getCountry = async function () {
   try {
-    const response = await fetch('https://restcountries.com/v3.1/all');
+    const response = await fetch(
+      'https://restcountries.com/v3.1/all?fields=name,region,independent'
+    );
+
     const countries = await response.json();
     const europe = countries
       .filter(
