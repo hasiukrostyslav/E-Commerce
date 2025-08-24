@@ -608,6 +608,8 @@ export default class View {
   }
 
   _renderSelectCity(select, country, cities) {
+    if (!country) return;
+
     select.innerHTML = '';
     select.insertAdjacentHTML(
       'afterbegin',
